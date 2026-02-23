@@ -1,0 +1,1 @@
+{"version":"1.0.0","organization":"Apideck","date":"February 2026","abstract":"Check connector API coverage before building integrations. Query the Connector API for real-time coverage data.","references":["https://developers.apideck.com/apis/connector/reference"]}

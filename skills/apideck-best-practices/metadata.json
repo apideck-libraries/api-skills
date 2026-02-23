@@ -1,0 +1,1 @@
+{"version":"1.0.0","organization":"Apideck","date":"February 2026","abstract":"Best practices for building Apideck integrations covering architecture, authentication, pagination, error handling, and Vault.","references":["https://developers.apideck.com","https://developers.apideck.com/guides/getting-started","https://developers.apideck.com/errors"]}

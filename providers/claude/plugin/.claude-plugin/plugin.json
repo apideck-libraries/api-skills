@@ -1,0 +1,13 @@
+{
+  "name": "apideck",
+  "description": "Apideck Unified API development plugin for Claude",
+  "version": "1.0.0",
+  "author": {
+    "name": "Apideck",
+    "url": "https://apideck.com"
+  },
+  "homepage": "https://developers.apideck.com",
+  "repository": "https://github.com/apideck/api-skills",
+  "license": "Apache-2.0",
+  "keywords": ["apideck", "unified-api", "integrations", "accounting", "crm", "hris", "ats", "file-storage"]
+}
