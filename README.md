@@ -89,6 +89,17 @@ Pre-configured plugins with skills and slash commands:
 | `/list-connectors` | Show available connectors and their capabilities for a unified API |
 | `/portman-init` | Generate a Portman config for API contract testing against an Apideck spec |
 
+## Testing
+
+Validate all skills locally:
+
+```bash
+node skills/test.js              # Run all validations
+node skills/test.js --check-links  # Also verify external URLs
+```
+
+This checks frontmatter, metadata, code blocks, links, SDK content consistency, and provider sync status.
+
 ## Skill Sync
 
 Skills are synced to provider plugin directories using the sync script:
