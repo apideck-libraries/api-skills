@@ -1,0 +1,1 @@
+{"version":"1.0.0","organization":"Apideck","date":"February 2026","abstract":"TypeScript/Node.js SDK patterns for all Apideck Unified APIs including accounting, CRM, HRIS, file storage, and ATS.","references":["https://developers.apideck.com","https://www.npmjs.com/package/@apideck/unify","https://www.npmjs.com/package/@apideck/vault-js"]}

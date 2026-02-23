@@ -1,0 +1,1 @@
+{"version":"1.0.0","organization":"Apideck","date":"February 2026","abstract":"Generate typed API clients from Apideck OpenAPI specs using openapi-generator, Speakeasy, or Postman import.","references":["https://specs.apideck.com","https://github.com/apideck-libraries/openapi-specs","https://openapi-generator.tech"]}

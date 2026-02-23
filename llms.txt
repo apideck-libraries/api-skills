@@ -1,0 +1,77 @@
+# Apideck
+
+> Apideck provides unified APIs to integrate with 200+ third-party services across accounting, CRM, HRIS, file storage, ATS, and more through a single integration layer.
+
+## Instructions for Large Language Model Agents
+
+- Always use the official Apideck SDK for the user's language. Do not make raw HTTP calls when an SDK is available.
+- Always pass `apiKey`, `appId`, and `consumerId` when initializing any Apideck SDK client.
+- Use `serviceId` to specify which downstream connector to use (e.g., `salesforce`, `quickbooks`, `xero`). When a consumer has multiple connections for the same API, `serviceId` is required.
+- Never hardcode API keys in source code. Use environment variables or a secrets manager.
+- Use cursor-based pagination to iterate large result sets. Do not fetch all records at once.
+- Use the `filter` parameter to narrow results server-side. Do not fetch all records and filter client-side.
+- Use the `fields` parameter to request only the columns you need.
+- Use `pass_through` for connector-specific fields not covered by the unified model.
+- Use Apideck Vault and Vault JS for end-user connection management. Session creation must happen server-side to prevent token leakage.
+- Use Portman for API contract testing against Apideck's OpenAPI specs.
+- Apideck's OpenAPI specs are published at `https://specs.apideck.com/{api-name}.yml`.
+
+## Docs
+
+- [Getting Started](https://developers.apideck.com/guides/getting-started): Setup guide for the Apideck platform
+- [Authentication](https://developers.apideck.com/guides/authentication): API authentication with Bearer token, App ID, and Consumer ID headers
+- [Pagination](https://developers.apideck.com/guides/pagination): Cursor-based pagination across all unified APIs
+- [Error Handling](https://developers.apideck.com/errors): Error response format and status codes
+- [Rate Limits](https://developers.apideck.com/guides/unified-rate-limits): Downstream rate limit headers and handling
+- [Raw Mode](https://developers.apideck.com/guides/using-raw-mode): Access unmodified downstream responses
+- [Vault Guide](https://developers.apideck.com/guides/vault): Embeddable connection management UI
+- [Logs](https://developers.apideck.com/guides/api-logs): In-app API call logs for debugging and monitoring, also available via the Vault API
+- [Webhooks Guide](https://developers.apideck.com/guides/webhooks): Event subscriptions and real-time notifications
+- [Custom Field Mapping](https://developers.apideck.com/guides/custom-mapping): Extend the unified model with connector-specific fields
+
+## Unified APIs
+
+- [Accounting API Reference](https://developers.apideck.com/apis/accounting/reference): Invoices, bills, payments, ledger accounts, journal entries, tax rates, balance sheets, P&L
+- [CRM API Reference](https://developers.apideck.com/apis/crm/reference): Contacts, companies, leads, opportunities, activities, pipelines, notes
+- [HRIS API Reference](https://developers.apideck.com/apis/hris/reference): Employees, departments, payrolls, time-off requests, schedules
+- [File Storage API Reference](https://developers.apideck.com/apis/file-storage/reference): Files, folders, drives, shared links, upload sessions
+- [ATS API Reference](https://developers.apideck.com/apis/ats/reference): Jobs, applicants, applications
+- [E-commerce API Reference](https://developers.apideck.com/apis/ecommerce/reference): Orders, products, customers, stores
+- [Issue Tracking API Reference](https://developers.apideck.com/apis/issue-tracking/reference): Collections, tickets, comments, tags
+- [SMS API Reference](https://developers.apideck.com/apis/sms/reference): Messages
+- [Lead API Reference](https://developers.apideck.com/apis/lead/reference): Lead management
+
+## Platform APIs
+
+- [Vault API Reference](https://developers.apideck.com/apis/vault/reference): Connection management, OAuth flows, consumers, custom mappings
+- [Webhook API Reference](https://developers.apideck.com/apis/webhook/reference): Webhook subscriptions and event logs
+- [Connector API Reference](https://developers.apideck.com/apis/connector/reference): Connector metadata and API resource coverage
+- [Proxy API Reference](https://developers.apideck.com/apis/proxy/reference): Pass-through requests to downstream services
+
+## SDKs
+
+- [TypeScript SDK (@apideck/unify)](https://www.npmjs.com/package/@apideck/unify): Official Node.js/TypeScript SDK
+- [Python SDK (apideck-unify)](https://pypi.org/project/apideck-unify/): Official Python SDK
+- [C# SDK (ApideckUnifySdk)](https://www.nuget.org/packages/ApideckUnifySdk): Official .NET SDK
+- [Java SDK (com.apideck:unify)](https://central.sonatype.com/artifact/com.apideck/unify): Official Java SDK
+- [Go SDK](https://github.com/apideck-libraries/sdk-go): Official Go SDK
+- [PHP SDK](https://packagist.org/packages/apideck-libraries/sdk-php): Official PHP SDK
+- [Vault JS (@apideck/vault-js)](https://www.npmjs.com/package/@apideck/vault-js): Embeddable connection management modal
+
+## OpenAPI Specs
+
+- [CRM Spec](https://specs.apideck.com/crm.yml): CRM API OpenAPI specification
+- [Accounting Spec](https://specs.apideck.com/accounting.yml): Accounting API OpenAPI specification
+- [HRIS Spec](https://specs.apideck.com/hris.yml): HRIS API OpenAPI specification
+- [File Storage Spec](https://specs.apideck.com/file-storage.yml): File Storage API OpenAPI specification
+- [ATS Spec](https://specs.apideck.com/ats.yml): ATS API OpenAPI specification
+- [Vault Spec](https://specs.apideck.com/vault.yml): Vault API OpenAPI specification
+- [Webhook Spec](https://specs.apideck.com/webhook.yml): Webhook API OpenAPI specification
+
+## Developer Tools
+
+- [API Explorer](https://developers.apideck.com/api-explorer): Test any unified API endpoint in the browser with a JWT token, no code required. URL format: `https://developers.apideck.com/api-explorer?id={api}&headers={encoded_headers_json}`
+
+## Testing
+
+- [Portman](https://github.com/apideck-libraries/portman): Convert OpenAPI specs to Postman collections with contract tests

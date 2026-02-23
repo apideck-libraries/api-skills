@@ -1,0 +1,1 @@
+{"version":"1.0.0","organization":"Apideck","date":"February 2026","abstract":"API contract testing with Portman — convert OpenAPI specs to Postman collections with auto-generated tests.","references":["https://github.com/apideck-libraries/portman","https://www.npmjs.com/package/@apideck/portman"]}
