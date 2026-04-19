@@ -34,8 +34,7 @@ QuickBooks Online is the most widely used SMB accounting connector on Apideck. C
 ### QuickBooks-specific auth notes
 
 - **Company/realm selection:** QuickBooks is multi-tenant via `realmId`. The user picks their company during OAuth; the connection is bound to that single realm. Multi-company = one connection per realm (distinct `consumerId`).
-- **Token expiry:** Intuit enforces short-lived access tokens and longer-lived refresh tokens (see Intuit docs for current values). Apideck refreshes automatically, but long inactivity can invalidate refresh tokens — the connection then needs re-authorization.
-- **Sandbox:** QuickBooks Sandbox is a separate environment. Apideck exposes it as a distinct connection; the user toggles sandbox during Vault OAuth.
+- **Sandbox:** QuickBooks Sandbox is a separate environment. The user toggles sandbox vs. production during Vault OAuth — connection is bound to whichever was selected.
 
 ### Common QuickBooks quirks handled by Apideck
 

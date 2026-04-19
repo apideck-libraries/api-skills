@@ -116,8 +116,7 @@ Intuit Enterprise Suite (IES) is Intuit's enterprise-grade offering, above Quick
 
 - **Type:** OAuth 2.0, managed by Apideck Vault
 - **Realm binding:** same pattern as QuickBooks — one realm per connection. IES multi-entity setups expose child entities through the parent realm.
-- **Higher API limits vs QBO:** IES has extended rate limits and throughput appropriate for mid-market volumes.
-- **Compared to QuickBooks:** use [`quickbooks`](../quickbooks/) for QBO (SMB), [`intuit-enterprise-suite`](../intuit-enterprise-suite/) for IES (enterprise multi-entity).
+- **Compared to QuickBooks:** use [`quickbooks`](../quickbooks/) for QBO (SMB single-entity), [`intuit-enterprise-suite`](../intuit-enterprise-suite/) for IES (enterprise multi-entity). The product the user subscribed to determines which connector to pick.
 
 ### Example: list invoices across all entities in the realm
 

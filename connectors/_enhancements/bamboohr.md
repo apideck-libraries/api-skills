@@ -29,10 +29,9 @@ BambooHR is the reference SMB HRIS connector on Apideck. Full employee and org c
 
 ### BambooHR-specific auth notes
 
-- **Auth type:** API key (not OAuth). The user generates a key from BambooHR under "API Keys" in their account settings.
-- **Subdomain binding:** BambooHR API keys are bound to a company subdomain (e.g., `acme.bamboohr.com`). Apideck stores the subdomain as part of the connection. If the user changes subdomain (rare), the connection needs reconfiguration.
-- **Permissions:** the API key inherits the permissions of the user who generated it. For full HRIS sync, the user must be an admin. Limited keys produce 403s on sensitive fields — Apideck surfaces these as `partial` responses with missing fields.
-- **Rate limit:** BambooHR enforces per-company rate limits. Apideck respects upstream 429 responses with automatic backoff — check BambooHR's current docs for exact thresholds.
+- **Auth type:** API key (not OAuth). The user generates a key from BambooHR under "API Keys" in their account settings and pastes it into the Vault modal.
+- **Subdomain required:** BambooHR API keys are bound to a company subdomain (e.g., `acme.bamboohr.com`). The user provides the subdomain alongside the key during Vault setup. Changing subdomain = reconfigure the connection.
+- **Key permissions = user permissions:** the API key inherits the generating user's role. Sensitive fields (SSN, DOB, compensation) require admin-level access — limited keys get 403s on those fields. If sensitive data is missing from responses, check whether the key-generating user is an admin.
 
 ### Common BambooHR quirks handled by Apideck
 

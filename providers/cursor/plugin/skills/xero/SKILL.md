@@ -104,8 +104,7 @@ Xero is a widely-used cloud accounting platform, strong in UK/AU/NZ markets. Api
 ### Auth
 
 - **Type:** OAuth 2.0, managed by Apideck Vault
-- **Tenant selection:** Xero users can belong to multiple organizations. OAuth returns the chosen `tenantId`; one Apideck connection = one Xero org.
-- **API limits:** Xero enforces daily and minute-level limits per tenant. Apideck backs off on 429.
+- **Tenant selection:** Xero users can belong to multiple organizations. The user picks which org to authorize during the Vault flow; one Apideck connection = one Xero org.
 
 ### Example: create an invoice
 

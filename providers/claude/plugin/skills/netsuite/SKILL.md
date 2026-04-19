@@ -104,10 +104,9 @@ NetSuite is Oracle's enterprise ERP. Apideck abstracts the SuiteTalk REST API; d
 
 ### Auth
 
-- **Type:** OAuth 2.0 (Token-Based Authentication / OAuth 2.0 M2M) — managed by Apideck Vault
-- **Account binding:** each connection is bound to one NetSuite account ID. Sandbox vs. production is distinguished by account suffix (e.g., `TSTDRV`).
-- **Role impact:** the token's role determines visibility. Admin roles recommended for full coverage.
-- **Rate limits:** NetSuite enforces concurrency limits per role/account. Apideck backs off; heavy workloads should batch.
+- **Type:** OAuth 2.0, managed by Apideck Vault
+- **Account binding:** each connection is bound to one NetSuite account ID. Sandbox accounts have a distinct suffix (e.g. `TSTDRV`) — the user picks the right one during OAuth.
+- **Role selection:** NetSuite auth ties to a specific user + role. The role's permissions determine which records are readable/writable. Admin roles are required for broadest coverage — limited roles will 403 on restricted operations.
 
 ### Example: list open invoices with multi-subsidiary filter
 

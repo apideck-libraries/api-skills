@@ -115,10 +115,8 @@ Jira Cloud is the reference Issue Tracking connector. Covers issues (tickets), p
 ### Jira-specific auth notes
 
 - **Type:** OAuth 2.0 (3LO) via Atlassian, managed by Apideck Vault
-- **Typical Atlassian scopes:** Apideck Vault requests read/write scopes for Jira work and user data. Exact scopes are configured in the Vault app — check the consent screen or Apideck dashboard.
-- **Cloud only:** this connector targets Jira Cloud. Self-hosted Jira (Data Center / Server) is a separate surface — use Proxy with basic auth or a PAT.
-- **Resource selection:** OAuth 3LO returns a list of accessible Atlassian resources (cloudIds); the first is selected by default. Users with multiple Jira sites under one account should verify the right site was connected.
-- **API version:** Apideck targets Jira REST API v3. Some v2-only endpoints (deprecated) require Proxy.
+- **Cloud only:** this connector targets Jira Cloud. Self-hosted Jira (Data Center / Server) is a separate surface — use the Proxy API with basic auth or a PAT.
+- **Site selection:** Atlassian accounts can have access to multiple Jira sites (cloudIds). OAuth picks one — if the user has several, confirm the right site was selected. Multi-site access = multiple connections.
 
 ### Common Jira quirks handled by Apideck
 

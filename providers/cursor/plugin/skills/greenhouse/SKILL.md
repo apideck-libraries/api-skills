@@ -102,10 +102,9 @@ Greenhouse is the reference enterprise ATS connector on Apideck. Strong coverage
 
 ### Greenhouse-specific auth notes
 
-- **Auth type:** API key — managed by Apideck Vault. Users paste their Greenhouse key in the Vault modal.
-- **Permissions:** Greenhouse keys can be Harvest (read/write) or Job Board (public-facing, limited). Apideck requires Harvest for full coverage — Job Board keys will 403 on writes.
-- **On-Behalf-Of:** some Greenhouse operations require an `On-Behalf-Of` user header. Apideck injects this based on the connection's configured user; consult Apideck dashboard to set or override.
-- **Rate limits:** Greenhouse enforces per-endpoint rate limits. Apideck respects upstream 429 responses with automatic backoff — check Greenhouse's current docs for exact thresholds.
+- **Auth type:** API key — user pastes their Greenhouse key into the Vault modal.
+- **Key type matters:** Greenhouse keys are either **Harvest** (read/write, full coverage) or **Job Board** (public-facing, read-only). Apideck needs a Harvest key for anything beyond reading published jobs. If the user provides a Job Board key, writes will 403 — direct them to generate a Harvest key in Greenhouse admin.
+- **On-Behalf-Of user:** some Greenhouse writes (moving applications, rejecting candidates) require an `On-Behalf-Of` user header. This is configured on the connection in the Apideck dashboard — the user picks which Greenhouse user Apideck acts as.
 
 ### Common Greenhouse quirks handled by Apideck
 

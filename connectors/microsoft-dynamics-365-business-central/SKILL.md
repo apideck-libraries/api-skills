@@ -116,9 +116,9 @@ Dynamics 365 Business Central (BC) is Microsoft's SMB ERP, successor to Dynamics
 ### Auth notes
 
 - **Type:** OAuth 2.0 (Microsoft identity platform), managed by Apideck Vault
-- **Typical scopes:** Apideck Vault requests BC-specific scopes (`Financials.ReadWrite.All` or similar). Admin consent usually required for corporate tenants.
-- **Environment binding:** each connection is bound to one environment (Production or Sandbox); choose during OAuth.
-- **Company selection:** multi-company BC tenants have one connection but require a company parameter on many calls — Apideck handles this via connection metadata.
+- **Admin consent on corporate tenants:** same caveat as SharePoint — the customer's Microsoft 365 tenant admin must approve the Apideck Vault app. First user in a tenant usually hits "Need admin approval."
+- **Environment binding:** each connection is bound to one environment (Production or Sandbox); user chooses during OAuth.
+- **Company selection:** multi-company BC tenants have one connection but expose multiple companies — Apideck surfaces them via the `companies` resource, and the user picks which to target per call.
 
 ### Example: create a sales invoice
 

@@ -107,11 +107,10 @@ Always verify exact coverage with `GET /connector/connectors/sharepoint`.
 
 ### SharePoint-specific auth notes
 
-- **Type:** OAuth 2.0 (Microsoft identity platform) — managed by Apideck Vault
-- **Typical Microsoft Graph scopes requested:** Apideck Vault requests the scopes needed to read/write Drive contents and enumerate Sites. The exact scope set is configured in Apideck's Vault app — check the consent screen shown to the user or Apideck dashboard for the current list.
-- **Gotcha — admin consent:** On most corporate tenants, scopes that enumerate Sites (e.g., `Sites.Read.All`, `Sites.ReadWrite.All`) are admin-consented. The first user in a tenant may hit "admin approval required" and must route to their Microsoft 365 tenant admin.
-- **Personal vs. Work accounts:** personal Microsoft accounts don't require admin consent. Corporate tenants typically do.
-- **Tenant isolation:** each Apideck connection is bound to one tenant. Multi-tenant access = one connection per tenant, distinct `consumerId`s.
+- **Type:** OAuth 2.0 (Microsoft identity platform), managed by Apideck Vault
+- **Admin consent on corporate tenants:** scopes that enumerate SharePoint sites are typically admin-consented. Users in corporate Microsoft 365 tenants may hit a "Need admin approval" screen on first authorization — they must route to their M365 tenant admin to grant consent once for the tenant. This is the single most common cause of SharePoint onboarding friction.
+- **Personal vs. Work accounts:** personal Microsoft accounts (`@outlook.com`, `@hotmail.com`) don't require admin consent and authorize on first try. Work accounts typically do.
+- **Tenant isolation:** each Apideck connection is bound to one M365 tenant. Multi-tenant access = one connection per tenant.
 
 ### Common SharePoint quirks
 

@@ -29,9 +29,8 @@ Salesforce is the reference implementation for Apideck CRM. All Tier 1 CRM resou
 ### Salesforce-specific auth notes
 
 - **Type:** OAuth 2.0, managed by Apideck Vault
-- **Sandboxes:** Apideck supports both production and sandbox orgs. Environment is selected during the Vault OAuth flow; the same `serviceId` routes to both.
-- **Session timeout:** Salesforce sessions expire based on org profile settings. Apideck's token refresh handles this transparently. If you see `INVALID_SESSION_ID` after refresh, the connection state is likely `invalid` and needs re-authorization.
-- **API limits:** Salesforce enforces per-org daily API call limits. Apideck surfaces rate-limit headers via the `raw=true` parameter — monitor these in production.
+- **Sandbox vs. production:** the user picks environment during the Vault OAuth flow. The same `serviceId` routes to both; connection is bound to whichever was chosen.
+- **API daily limits:** Salesforce enforces per-org daily API call limits based on edition (Professional/Enterprise/Unlimited). Apideck surfaces Salesforce's remaining-limit headers via `raw=true` — monitor these for high-volume integrations. Hitting the daily limit means API calls fail until the 24h rolling window resets.
 
 ### Common Salesforce quirks handled by Apideck
 

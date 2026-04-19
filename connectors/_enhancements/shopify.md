@@ -34,11 +34,10 @@ Shopify is the reference Ecommerce connector. Strong coverage for orders, produc
 ### Shopify-specific auth notes
 
 - **Two app models:**
-  - **Custom app** (single store): API key + admin access token, manually configured per store. Use `shopify` serviceId.
-  - **Public app** (many stores): OAuth 2.0 install flow. Use `shopify-public-app` serviceId (separate connector).
-- **Typical scopes (public app):** `read_orders`, `read_products`, `read_customers`, plus writes as needed. Apideck Vault requests the minimum needed — consult Apideck dashboard for the current scope list.
-- **Shop binding:** each Shopify connection is bound to one shop (`myshop.myshopify.com`). Multi-shop = multi-connection.
-- **Rate limits:** Shopify uses a leaky-bucket model with different limits on standard vs. Shopify Plus. Apideck respects upstream 429 responses with automatic backoff.
+  - **Custom app** (single store): store owner generates an admin API token and pastes it into Vault. Use `shopify` serviceId.
+  - **Public app** (many stores): OAuth install flow from the Shopify App Store. Use `shopify-public-app` serviceId (separate connector).
+- **Shop binding:** each connection is bound to one shop (`myshop.myshopify.com`). Multi-shop = multi-connection.
+- **Merchant app review (public app only):** if you're a Shopify App Store app, Apideck's Vault app must pass Shopify's review process before install. Existing Apideck customers typically use the custom-app route to avoid the review.
 
 ### Common Shopify quirks handled by Apideck
 

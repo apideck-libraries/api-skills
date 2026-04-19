@@ -25,9 +25,10 @@ Sage Intacct is a cloud accounting platform for mid-market. Apideck covers core 
 
 ### Auth
 
-- **Type:** Basic auth (username / password + company ID) — managed by Apideck Vault
-- **Session tokens:** Intacct uses session-based auth under the hood. Apideck handles session lifecycle automatically.
-- **Sender credentials:** Apideck's Vault app has the required Sender ID/password; end-user only needs to provide their own login.
+- **Type:** Basic auth (username / password + company ID), managed by Apideck Vault
+- **Company ID required:** the user provides their Intacct Company ID alongside credentials — it's a per-tenant identifier, not a global login.
+- **Sender credentials:** Apideck's Vault app already has the required Sender ID/password registered with Sage; the end-user provides only their own Intacct login.
+- **Web Services subscription required:** Sage Intacct customers need the Web Services add-on enabled on their Intacct subscription before any API access works. If auth fails with "API not enabled," direct the user to their Intacct admin.
 
 ### Example: list invoices posted in last month
 

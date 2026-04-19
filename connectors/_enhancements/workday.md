@@ -39,6 +39,5 @@ const { data } = await apideck.ats.jobs.list({
 ### Auth notes
 
 - **Type:** OAuth 2.0, managed by Apideck Vault
-- **Tenant binding:** each connection is bound to one Workday tenant. Module access (HCM, Financials, Recruiting) depends on what's licensed in that tenant.
-- **Integration System User (ISU):** Workday best practice is to use a dedicated ISU with scoped permissions. Consult your Workday admin for ISU setup before provisioning the Apideck connection.
-- **API versioning:** Workday web services are versioned; Apideck targets the latest supported version per module.
+- **Tenant binding:** each connection is bound to one Workday tenant. Module access (HCM, Financials, Recruiting) depends on what's licensed in that tenant — a Financials-only tenant won't expose HRIS or ATS data regardless of Apideck setup.
+- **Integration System User (ISU) required:** Workday access goes through a dedicated ISU account with scoped permissions, set up by the customer's Workday admin. Apideck cannot provision this; the user must coordinate with their admin before connection will work. Expect 1–2 weeks lead time for enterprise Workday onboarding.
