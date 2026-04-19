@@ -27,6 +27,7 @@ Access Acumatica through Apideck's **Accounting** unified API — one of 34 Acco
 - **Unified API:** Accounting
 - **Auth type:** oauth2
 - **Status:** beta
+- **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/acumatica/docs/consumer+connection)
 - **Acumatica docs:** https://help.acumatica.com
 - **Homepage:** https://www.acumatica.com/
 
@@ -154,6 +155,7 @@ Other **Accounting** connectors that share this unified API surface (same method
 
 ## See also
 
+- [Apideck connection guide for Acumatica](https://developers.apideck.com/connectors/acumatica/docs/consumer+connection)
 - [Accounting OpenAPI spec](https://specs.apideck.com/accounting.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=accounting)
 - [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) — programmatic coverage checks
 - [`apideck-best-practices`](../../skills/apideck-best-practices/) — architecture, Vault, pagination, error handling

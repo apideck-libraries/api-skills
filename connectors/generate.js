@@ -219,6 +219,15 @@ function renderSkill(connector) {
   lines.push(`- **Unified API${connector.unifiedApis.length > 1 ? "s" : ""}:** ${apisList}`);
   lines.push(`- **Auth type:** ${connector.authType}`);
   if (connector.status === "beta") lines.push(`- **Status:** beta`);
+  if (connector.guides && connector.guides.length) {
+    const guideLinks = connector.guides
+      .map((g) => {
+        const label = g.name === "oauth_credentials" ? "OAuth credentials" : g.name === "connection" ? "Connection guide" : g.name.replace(/_/g, " ");
+        return `[${label}](${g.url})`;
+      })
+      .join(" · ");
+    lines.push(`- **Apideck setup guide:** ${guideLinks}`);
+  }
   if (connector.docsUrl) {
     lines.push(`- **${connector.name} docs:** ${connector.docsUrl}`);
   }
@@ -304,6 +313,13 @@ function renderSkill(connector) {
     lines.push("");
     lines.push(authBlock(connector.authType, connector.name));
     lines.push("");
+    if (connector.guides && connector.guides.length) {
+      const guideLink = connector.guides.find((g) => g.name === "connection") || connector.guides.find((g) => g.name === "oauth_credentials") || connector.guides[0];
+      lines.push(
+        `**Setup guide:** Apideck publishes a step-by-step guide for registering an OAuth app / configuring credentials for ${connector.name} — see [${guideLink.url}](${guideLink.url}). Use that as the authoritative source when walking users through connection setup.`
+      );
+      lines.push("");
+    }
     lines.push(
       `See [\`apideck-best-practices\`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.`
     );
@@ -380,6 +396,12 @@ function renderSkill(connector) {
   // See also
   lines.push("## See also");
   lines.push("");
+  if (connector.guides && connector.guides.length) {
+    for (const g of connector.guides) {
+      const label = g.name === "oauth_credentials" ? `Apideck OAuth setup guide for ${connector.name}` : g.name === "connection" ? `Apideck connection guide for ${connector.name}` : `Apideck ${g.name.replace(/_/g, " ")} guide`;
+      lines.push(`- [${label}](${g.url})`);
+    }
+  }
   for (const api of connector.unifiedApis) {
     const info = manifest.unifiedApis[api];
     lines.push(`- [${info.displayName} OpenAPI spec](${info.specUrl}) · [API Explorer](${info.apiExplorerUrl})`);

@@ -23,6 +23,7 @@ Access Personio through Apideck's **HRIS** unified API — one of 58 HRIS connec
 - **Apideck serviceId:** `personio`
 - **Unified API:** HRIS
 - **Auth type:** oauth2
+- **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/personio/docs/consumer+connection)
 - **Personio docs:** https://developer.personio.de
 - **Homepage:** https://www.personio.com/
 
@@ -137,6 +138,7 @@ Other **HRIS** connectors that share this unified API surface (same method signa
 
 ## See also
 
+- [Apideck connection guide for Personio](https://developers.apideck.com/connectors/personio/docs/consumer+connection)
 - [HRIS OpenAPI spec](https://specs.apideck.com/hris.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=hris)
 - [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) — programmatic coverage checks
 - [`apideck-best-practices`](../../skills/apideck-best-practices/) — architecture, Vault, pagination, error handling

@@ -27,6 +27,7 @@ Access Yuki through Apideck's **Accounting** unified API — one of 34 Accountin
 - **Unified API:** Accounting
 - **Auth type:** apiKey
 - **Status:** beta
+- **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/yuki/docs/consumer+connection)
 - **Yuki docs:** https://api.yukiworks.nl
 - **Homepage:** https://www.yuki.nl/
 
@@ -145,6 +146,7 @@ Other **Accounting** connectors that share this unified API surface (same method
 
 ## See also
 
+- [Apideck connection guide for Yuki](https://developers.apideck.com/connectors/yuki/docs/consumer+connection)
 - [Accounting OpenAPI spec](https://specs.apideck.com/accounting.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=accounting)
 - [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) — programmatic coverage checks
 - [`apideck-best-practices`](../../skills/apideck-best-practices/) — architecture, Vault, pagination, error handling

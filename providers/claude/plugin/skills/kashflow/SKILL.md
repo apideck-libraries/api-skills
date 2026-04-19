@@ -27,6 +27,7 @@ Access Kashflow through Apideck's **Accounting** unified API — one of 34 Accou
 - **Unified API:** Accounting
 - **Auth type:** basic
 - **Status:** beta
+- **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/kashflow/docs/consumer+connection)
 - **Kashflow docs:** https://developer.kashflow.com
 - **Homepage:** https://www.kashflow.com/
 
@@ -148,6 +149,7 @@ Other **Accounting** connectors that share this unified API surface (same method
 
 ## See also
 
+- [Apideck connection guide for Kashflow](https://developers.apideck.com/connectors/kashflow/docs/consumer+connection)
 - [Accounting OpenAPI spec](https://specs.apideck.com/accounting.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=accounting)
 - [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) — programmatic coverage checks
 - [`apideck-best-practices`](../../skills/apideck-best-practices/) — architecture, Vault, pagination, error handling

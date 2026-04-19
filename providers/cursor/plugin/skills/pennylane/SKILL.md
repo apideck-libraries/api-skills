@@ -27,6 +27,7 @@ Access Pennylane through Apideck's **Accounting** unified API — one of 34 Acco
 - **Unified API:** Accounting
 - **Auth type:** oauth2
 - **Status:** beta
+- **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/pennylane/docs/consumer+connection)
 - **Pennylane docs:** https://pennylane.readme.io
 - **Homepage:** https://www.pennylane.com/
 
@@ -155,6 +156,7 @@ Other **Accounting** connectors that share this unified API surface (same method
 
 ## See also
 
+- [Apideck connection guide for Pennylane](https://developers.apideck.com/connectors/pennylane/docs/consumer+connection)
 - [Accounting OpenAPI spec](https://specs.apideck.com/accounting.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=accounting)
 - [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) — programmatic coverage checks
 - [`apideck-best-practices`](../../skills/apideck-best-practices/) — architecture, Vault, pagination, error handling

@@ -64,7 +64,13 @@
       "verified": true,
       "status": "beta",
       "docsUrl": "https://www.theaccessgroup.com/en-gb/finance/",
-      "homepage": "https://www.theaccessgroup.com/en-gb/finance/products/access-financials/"
+      "homepage": "https://www.theaccessgroup.com/en-gb/finance/products/access-financials/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/access-financials/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "acumatica",
@@ -78,7 +84,13 @@
       "verified": true,
       "status": "beta",
       "docsUrl": "https://help.acumatica.com",
-      "homepage": "https://www.acumatica.com/"
+      "homepage": "https://www.acumatica.com/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/acumatica/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "bamboohr",
@@ -91,7 +103,13 @@
       "tier": "1a",
       "verified": true,
       "docsUrl": "https://documentation.bamboohr.com/docs",
-      "homepage": "https://www.bamboohr.com"
+      "homepage": "https://www.bamboohr.com",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/bamboohr/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "banqup",
@@ -119,7 +137,13 @@
       "verified": true,
       "status": "beta",
       "docsUrl": "https://www.campfire.com",
-      "homepage": "https://campfire.ai/"
+      "homepage": "https://campfire.ai/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/campfire/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "clearbooks-uk",
@@ -160,7 +184,13 @@
       "tier": "1a",
       "verified": true,
       "docsUrl": "https://dualentry.com",
-      "homepage": "https://www.dualentry.com/"
+      "homepage": "https://www.dualentry.com/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/dualentry/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "exact-online",
@@ -241,7 +271,13 @@
       "tier": "1a",
       "verified": true,
       "docsUrl": "https://developers.greenhouse.io",
-      "homepage": "https://www.greenhouse.io/"
+      "homepage": "https://www.greenhouse.io/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/greenhouse/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "intuit-enterprise-suite",
@@ -282,7 +318,13 @@
       "verified": true,
       "status": "beta",
       "docsUrl": "https://developer.kashflow.com",
-      "homepage": "https://www.kashflow.com/"
+      "homepage": "https://www.kashflow.com/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/kashflow/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "microsoft-dynamics-365-business-central",
@@ -309,7 +351,13 @@
       "verified": true,
       "status": "beta",
       "docsUrl": "https://developer.moneybird.com",
-      "homepage": "https://www.moneybird.com/"
+      "homepage": "https://www.moneybird.com/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/moneybird/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "mrisoftware",
@@ -350,7 +398,13 @@
       "verified": true,
       "status": "beta",
       "docsUrl": "https://developer.myob.com",
-      "homepage": "https://www.myob.com/au/erp-software/products/myob-acumatica"
+      "homepage": "https://www.myob.com/au/erp-software/products/myob-acumatica",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/myob-acumatica/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "netsuite",
@@ -363,7 +417,13 @@
       "tier": "1a",
       "verified": true,
       "docsUrl": "https://docs.oracle.com/en/cloud/saas/netsuite/",
-      "homepage": "https://netsuite.com"
+      "homepage": "https://netsuite.com",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/netsuite/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "odoo",
@@ -378,7 +438,13 @@
       "verified": true,
       "status": "beta",
       "docsUrl": "https://www.odoo.com/documentation/",
-      "homepage": "https://www.odoo.com/"
+      "homepage": "https://www.odoo.com/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/odoo/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "pennylane",
@@ -392,7 +458,13 @@
       "verified": true,
       "status": "beta",
       "docsUrl": "https://pennylane.readme.io",
-      "homepage": "https://www.pennylane.com/"
+      "homepage": "https://www.pennylane.com/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/pennylane/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "procountor-fi",
@@ -432,7 +504,13 @@
       "verified": true,
       "status": "beta",
       "docsUrl": "https://rillet.com",
-      "homepage": "https://rillet.com/"
+      "homepage": "https://rillet.com/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/rillet/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "sage-business-cloud-accounting",
@@ -459,7 +537,13 @@
       "tier": "1a",
       "verified": true,
       "docsUrl": "https://developer.intacct.com",
-      "homepage": "https://www.sageintacct.com/"
+      "homepage": "https://www.sageintacct.com/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/sage-intacct/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "salesforce",
@@ -499,7 +583,13 @@
       "verified": true,
       "status": "beta",
       "docsUrl": "https://shopify.dev/docs/api",
-      "homepage": "https://www.shopify.com/"
+      "homepage": "https://www.shopify.com/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/shopify/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "stripe",
@@ -512,7 +602,13 @@
       "tier": "1a",
       "verified": true,
       "docsUrl": "https://stripe.com/docs/api",
-      "homepage": "https://stripe.com/"
+      "homepage": "https://stripe.com/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/stripe/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "visma-netvisor",
@@ -540,7 +636,13 @@
       "verified": true,
       "status": "beta",
       "docsUrl": "https://developer.waveapps.com",
-      "homepage": "https://www.waveapps.com/"
+      "homepage": "https://www.waveapps.com/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/wave/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "workday",
@@ -555,7 +657,13 @@
       "tier": "1a",
       "verified": true,
       "docsUrl": "https://community.workday.com",
-      "homepage": "https://workday.com"
+      "homepage": "https://workday.com",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/workday/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "xero",
@@ -582,7 +690,13 @@
       "verified": true,
       "status": "beta",
       "docsUrl": "https://api.yukiworks.nl",
-      "homepage": "https://www.yuki.nl/"
+      "homepage": "https://www.yuki.nl/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/yuki/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "zoho-books",
@@ -703,7 +817,13 @@
       "tier": "1b",
       "verified": true,
       "docsUrl": "https://apidocs.hibob.com",
-      "homepage": "https://www.hibob.com/"
+      "homepage": "https://www.hibob.com/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/hibob/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "hubspot",
@@ -769,7 +889,13 @@
       "tier": "1b",
       "verified": true,
       "docsUrl": "https://developer.personio.de",
-      "homepage": "https://www.personio.com/"
+      "homepage": "https://www.personio.com/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/personio/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "pipedrive",
@@ -796,7 +922,13 @@
       "verified": true,
       "status": "beta",
       "docsUrl": "https://shopify.dev/docs/apps",
-      "homepage": "https://www.shopify.com/"
+      "homepage": "https://www.shopify.com/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/shopify-public-app/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "woocommerce",
@@ -878,7 +1010,13 @@
       "verified": true,
       "status": "beta",
       "docsUrl": "https://developers.adp.com",
-      "homepage": "https://www.adp.com/what-we-offer/products/adp-workforce-now.aspx"
+      "homepage": "https://www.adp.com/what-we-offer/products/adp-workforce-now.aspx",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/adp-workforce-now/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "amazon-seller-central",
@@ -891,7 +1029,13 @@
       "tier": "1c",
       "verified": true,
       "status": "beta",
-      "docsUrl": "https://developer-docs.amazon.com/sp-api/"
+      "docsUrl": "https://developer-docs.amazon.com/sp-api/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/amazon-seller-central/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "bullhorn-ats",
@@ -946,7 +1090,13 @@
       "verified": true,
       "status": "beta",
       "docsUrl": "https://developers.etsy.com",
-      "homepage": "https://etsy.com"
+      "homepage": "https://etsy.com",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/etsy/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "magento",
@@ -960,7 +1110,13 @@
       "verified": true,
       "status": "beta",
       "docsUrl": "https://developer.adobe.com/commerce/webapi/",
-      "homepage": "https://magento.com/"
+      "homepage": "https://magento.com/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/magento/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "microsoft-dynamics",
@@ -973,7 +1129,13 @@
       "tier": "1c",
       "verified": true,
       "docsUrl": "https://learn.microsoft.com/dynamics365/",
-      "homepage": "https://dynamics.microsoft.com/en-us/"
+      "homepage": "https://dynamics.microsoft.com/en-us/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/microsoft-dynamics/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "paychex",
@@ -987,7 +1149,13 @@
       "verified": true,
       "status": "beta",
       "docsUrl": "https://developer.paychex.com",
-      "homepage": "https://www.paychex.com/"
+      "homepage": "https://www.paychex.com/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/paychex/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "paylocity",
@@ -1027,7 +1195,13 @@
       "verified": true,
       "status": "beta",
       "docsUrl": "https://docs.teamtailor.com",
-      "homepage": "https://www.teamtailor.com/"
+      "homepage": "https://www.teamtailor.com/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/teamtailor/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "zendesk-sell",
@@ -1094,7 +1268,13 @@
       "verified": true,
       "status": "beta",
       "docsUrl": "https://www.afas.nl",
-      "homepage": "https://www.afas.nl/"
+      "homepage": "https://www.afas.nl/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/afas/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "alexishr",
@@ -1108,7 +1288,13 @@
       "verified": true,
       "status": "beta",
       "docsUrl": "https://www.simployer.com",
-      "homepage": "https://www.simployer.com/"
+      "homepage": "https://www.simployer.com/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/alexishr/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "attio",
@@ -1163,7 +1349,13 @@
       "verified": true,
       "status": "beta",
       "docsUrl": "https://api.bol.com",
-      "homepage": "https://www.bol.com"
+      "homepage": "https://www.bol.com",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/bol-com/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "breathehr",
@@ -1203,7 +1395,13 @@
       "verified": true,
       "status": "beta",
       "docsUrl": "https://www.catalystone.com",
-      "homepage": "https://www.catalystone.com/"
+      "homepage": "https://www.catalystone.com/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/catalystone/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "cegid-talentsoft",
@@ -1231,7 +1429,13 @@
       "verified": true,
       "status": "beta",
       "docsUrl": "https://developers.ceridian.com",
-      "homepage": "https://www.ceridian.com/products/dayforce"
+      "homepage": "https://www.ceridian.com/products/dayforce",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/ceridian-dayforce/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "cezannehr",
@@ -1245,7 +1449,13 @@
       "verified": true,
       "status": "beta",
       "docsUrl": "https://cezannehr.com",
-      "homepage": "https://cezannehr.com/"
+      "homepage": "https://cezannehr.com/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/cezannehr/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "charliehr",
@@ -1259,7 +1469,13 @@
       "verified": true,
       "status": "beta",
       "docsUrl": "https://charliehr.com",
-      "homepage": "https://www.charliehr.com/"
+      "homepage": "https://www.charliehr.com/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/charliehr/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "ciphr",
@@ -1339,7 +1555,13 @@
       "verified": true,
       "status": "beta",
       "docsUrl": "https://developer.folk.app",
-      "homepage": "https://www.folk.app/"
+      "homepage": "https://www.folk.app/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/folk/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "folks-hr",
@@ -1379,7 +1601,13 @@
       "tier": "2",
       "verified": true,
       "docsUrl": "https://developers.freshworks.com",
-      "homepage": "https://www.freshworks.com/freshsales-crm/"
+      "homepage": "https://www.freshworks.com/freshsales-crm/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/freshsales/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "freshteam",
@@ -1407,7 +1635,13 @@
       "verified": true,
       "status": "beta",
       "docsUrl": "https://docs.gitlab.com/ee/api/",
-      "homepage": "https://www.gitlab.com/"
+      "homepage": "https://www.gitlab.com/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/gitlab-server/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "google-contacts",
@@ -1445,7 +1679,17 @@
       "authType": "apiKey",
       "tier": "2",
       "verified": true,
-      "homepage": "https://www.holded.com/"
+      "homepage": "https://www.holded.com/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/holded/docs/consumer+connection"
+        },
+        {
+          "name": "image",
+          "url": "https://developers.apideck.com/connectors/holded/docs/consumer+image"
+        }
+      ]
     },
     {
       "slug": "homerun-hr",
@@ -1473,7 +1717,13 @@
       "verified": true,
       "status": "beta",
       "docsUrl": "https://www.hrworks.de",
-      "homepage": "https://hrworks-inc.com/"
+      "homepage": "https://hrworks-inc.com/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/hr-works/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "humaans-io",
@@ -1487,7 +1737,13 @@
       "verified": true,
       "status": "beta",
       "docsUrl": "https://docs.humaans.io",
-      "homepage": "https://humaans.io/"
+      "homepage": "https://humaans.io/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/humaans-io/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "jobadder",
@@ -1609,7 +1865,13 @@
       "verified": true,
       "status": "beta",
       "docsUrl": "https://developers.linear.app",
-      "homepage": "https://linear.app/"
+      "homepage": "https://linear.app/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/linear-multiworkspace/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "loket-nl",
@@ -1648,7 +1910,13 @@
       "tier": "2",
       "verified": true,
       "docsUrl": "https://learn.microsoft.com/dynamics365/human-resources/",
-      "homepage": "https://dynamics.microsoft.com/en-us/human-resources/"
+      "homepage": "https://dynamics.microsoft.com/en-us/human-resources/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/microsoft-dynamics-hr/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "microsoft-outlook",
@@ -1661,7 +1929,13 @@
       "tier": "2",
       "verified": true,
       "status": "beta",
-      "docsUrl": "https://learn.microsoft.com/graph/api/overview"
+      "docsUrl": "https://learn.microsoft.com/graph/api/overview",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/microsoft-outlook/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "namely",
@@ -1726,7 +2000,13 @@
       "tier": "2",
       "verified": true,
       "status": "beta",
-      "homepage": "https://www.onelogin.com/"
+      "homepage": "https://www.onelogin.com/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/onelogin/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "payfit",
@@ -1806,7 +2086,13 @@
       "authType": "apiKey",
       "tier": "2",
       "verified": true,
-      "homepage": "https://recruitee.com/"
+      "homepage": "https://recruitee.com/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/recruitee/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "remote",
@@ -1820,7 +2106,13 @@
       "verified": true,
       "status": "beta",
       "docsUrl": "https://developer.remote.com",
-      "homepage": "https://remote.com/"
+      "homepage": "https://remote.com/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/remote/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "sage-hr",
@@ -1860,7 +2152,13 @@
       "tier": "2",
       "verified": true,
       "docsUrl": "https://help.sap.com/docs/SAP_SUCCESSFACTORS_PLATFORM",
-      "homepage": "https://successfactors.com"
+      "homepage": "https://successfactors.com",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/sap-successfactors/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "sapling",
@@ -1915,7 +2213,13 @@
       "verified": true,
       "status": "beta",
       "docsUrl": "https://developer.shopware.com",
-      "homepage": "https://en.shopware.com/"
+      "homepage": "https://en.shopware.com/",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://developers.apideck.com/connectors/shopware/docs/consumer+connection"
+        }
+      ]
     },
     {
       "slug": "silae-fr",

@@ -23,6 +23,7 @@ Access Microsoft Dynamics 365 Human Resources through Apideck's **HRIS** unified
 - **Apideck serviceId:** `microsoft-dynamics-hr`
 - **Unified API:** HRIS
 - **Auth type:** oauth2
+- **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/microsoft-dynamics-hr/docs/consumer+connection)
 - **Microsoft Dynamics 365 Human Resources docs:** https://learn.microsoft.com/dynamics365/human-resources/
 - **Homepage:** https://dynamics.microsoft.com/en-us/human-resources/
 
@@ -81,6 +82,8 @@ This is the compounding advantage of using Apideck over integrating Microsoft Dy
 - **User setup:** Users authorize via the Vault modal. Connection state progresses `available → added → authorized → callable`.
 - **Token refresh:** automatic. Expired tokens are refreshed transparently on the next API call.
 
+**Setup guide:** Apideck publishes a step-by-step guide for registering an OAuth app / configuring credentials for Microsoft Dynamics 365 Human Resources — see [https://developers.apideck.com/connectors/microsoft-dynamics-hr/docs/consumer+connection](https://developers.apideck.com/connectors/microsoft-dynamics-hr/docs/consumer+connection). Use that as the authoritative source when walking users through connection setup.
+
 See [`apideck-best-practices`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.
 
 ## Verifying coverage
@@ -119,6 +122,7 @@ Other **HRIS** connectors that share this unified API surface (same method signa
 
 ## See also
 
+- [Apideck connection guide for Microsoft Dynamics 365 Human Resources](https://developers.apideck.com/connectors/microsoft-dynamics-hr/docs/consumer+connection)
 - [HRIS OpenAPI spec](https://specs.apideck.com/hris.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=hris)
 - [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) — programmatic coverage checks
 - [`apideck-best-practices`](../../skills/apideck-best-practices/) — architecture, Vault, pagination, error handling

@@ -23,6 +23,7 @@ Access NetSuite through Apideck's **Accounting** unified API — one of 34 Accou
 - **Apideck serviceId:** `netsuite`
 - **Unified API:** Accounting
 - **Auth type:** custom
+- **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/netsuite/docs/consumer+connection)
 - **NetSuite docs:** https://docs.oracle.com/en/cloud/saas/netsuite/
 - **Homepage:** https://netsuite.com
 
@@ -141,6 +142,7 @@ Other **Accounting** connectors that share this unified API surface (same method
 
 ## See also
 
+- [Apideck connection guide for NetSuite](https://developers.apideck.com/connectors/netsuite/docs/consumer+connection)
 - [Accounting OpenAPI spec](https://specs.apideck.com/accounting.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=accounting)
 - [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) — programmatic coverage checks
 - [`apideck-best-practices`](../../skills/apideck-best-practices/) — architecture, Vault, pagination, error handling

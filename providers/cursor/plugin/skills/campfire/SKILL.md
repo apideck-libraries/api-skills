@@ -27,6 +27,7 @@ Access Campfire through Apideck's **Accounting** unified API — one of 34 Accou
 - **Unified API:** Accounting
 - **Auth type:** apiKey
 - **Status:** beta
+- **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/campfire/docs/consumer+connection)
 - **Campfire docs:** https://www.campfire.com
 - **Homepage:** https://campfire.ai/
 
@@ -154,6 +155,7 @@ Other **Accounting** connectors that share this unified API surface (same method
 
 ## See also
 
+- [Apideck connection guide for Campfire](https://developers.apideck.com/connectors/campfire/docs/consumer+connection)
 - [Accounting OpenAPI spec](https://specs.apideck.com/accounting.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=accounting)
 - [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) — programmatic coverage checks
 - [`apideck-best-practices`](../../skills/apideck-best-practices/) — architecture, Vault, pagination, error handling

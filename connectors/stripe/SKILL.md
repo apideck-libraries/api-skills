@@ -23,6 +23,7 @@ Access Stripe through Apideck's **Accounting** unified API — one of 34 Account
 - **Apideck serviceId:** `stripe`
 - **Unified API:** Accounting
 - **Auth type:** oauth2
+- **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/stripe/docs/consumer+connection)
 - **Stripe docs:** https://stripe.com/docs/api
 - **Homepage:** https://stripe.com/
 
@@ -146,6 +147,7 @@ Other **Accounting** connectors that share this unified API surface (same method
 
 ## See also
 
+- [Apideck connection guide for Stripe](https://developers.apideck.com/connectors/stripe/docs/consumer+connection)
 - [Accounting OpenAPI spec](https://specs.apideck.com/accounting.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=accounting)
 - [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) — programmatic coverage checks
 - [`apideck-best-practices`](../../skills/apideck-best-practices/) — architecture, Vault, pagination, error handling

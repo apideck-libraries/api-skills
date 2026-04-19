@@ -27,6 +27,7 @@ Access Remote through Apideck's **HRIS** unified API — one of 58 HRIS connecto
 - **Unified API:** HRIS
 - **Auth type:** apiKey
 - **Status:** beta
+- **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/remote/docs/consumer+connection)
 - **Remote docs:** https://developer.remote.com
 - **Homepage:** https://remote.com/
 
@@ -84,6 +85,8 @@ This is the compounding advantage of using Apideck over integrating Remote direc
 - **Managed by:** Apideck Vault — the user pastes their Remote API key into the Vault modal; Apideck stores it encrypted and injects it on every request.
 - **Rotation:** if the user rotates their key, they re-enter it in Vault. No code changes needed.
 
+**Setup guide:** Apideck publishes a step-by-step guide for registering an OAuth app / configuring credentials for Remote — see [https://developers.apideck.com/connectors/remote/docs/consumer+connection](https://developers.apideck.com/connectors/remote/docs/consumer+connection). Use that as the authoritative source when walking users through connection setup.
+
 See [`apideck-best-practices`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.
 
 ## Verifying coverage
@@ -122,6 +125,7 @@ Other **HRIS** connectors that share this unified API surface (same method signa
 
 ## See also
 
+- [Apideck connection guide for Remote](https://developers.apideck.com/connectors/remote/docs/consumer+connection)
 - [HRIS OpenAPI spec](https://specs.apideck.com/hris.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=hris)
 - [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) — programmatic coverage checks
 - [`apideck-best-practices`](../../skills/apideck-best-practices/) — architecture, Vault, pagination, error handling

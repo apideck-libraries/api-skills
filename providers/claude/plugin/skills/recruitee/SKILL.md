@@ -23,6 +23,7 @@ Access Recruitee through Apideck's **ATS** unified API — one of 11 ATS connect
 - **Apideck serviceId:** `recruitee`
 - **Unified API:** ATS
 - **Auth type:** apiKey
+- **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/recruitee/docs/consumer+connection)
 - **Homepage:** https://recruitee.com/
 
 ## When to use this skill
@@ -79,6 +80,8 @@ This is the compounding advantage of using Apideck over integrating Recruitee di
 - **Managed by:** Apideck Vault — the user pastes their Recruitee API key into the Vault modal; Apideck stores it encrypted and injects it on every request.
 - **Rotation:** if the user rotates their key, they re-enter it in Vault. No code changes needed.
 
+**Setup guide:** Apideck publishes a step-by-step guide for registering an OAuth app / configuring credentials for Recruitee — see [https://developers.apideck.com/connectors/recruitee/docs/consumer+connection](https://developers.apideck.com/connectors/recruitee/docs/consumer+connection). Use that as the authoritative source when walking users through connection setup.
+
 See [`apideck-best-practices`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.
 
 ## Verifying coverage
@@ -117,6 +120,7 @@ Other **ATS** connectors that share this unified API surface (same method signat
 
 ## See also
 
+- [Apideck connection guide for Recruitee](https://developers.apideck.com/connectors/recruitee/docs/consumer+connection)
 - [ATS OpenAPI spec](https://specs.apideck.com/ats.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=ats)
 - [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) — programmatic coverage checks
 - [`apideck-best-practices`](../../skills/apideck-best-practices/) — architecture, Vault, pagination, error handling

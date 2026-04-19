@@ -27,6 +27,7 @@ Access GitLab server (on-prem) through Apideck's **Issue Tracking** unified API 
 - **Unified API:** Issue Tracking
 - **Auth type:** apiKey
 - **Status:** beta
+- **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/gitlab-server/docs/consumer+connection)
 - **GitLab server (on-prem) docs:** https://docs.gitlab.com/ee/api/
 - **Homepage:** https://www.gitlab.com/
 
@@ -84,6 +85,8 @@ This is the compounding advantage of using Apideck over integrating GitLab serve
 - **Managed by:** Apideck Vault — the user pastes their GitLab server (on-prem) API key into the Vault modal; Apideck stores it encrypted and injects it on every request.
 - **Rotation:** if the user rotates their key, they re-enter it in Vault. No code changes needed.
 
+**Setup guide:** Apideck publishes a step-by-step guide for registering an OAuth app / configuring credentials for GitLab server (on-prem) — see [https://developers.apideck.com/connectors/gitlab-server/docs/consumer+connection](https://developers.apideck.com/connectors/gitlab-server/docs/consumer+connection). Use that as the authoritative source when walking users through connection setup.
+
 See [`apideck-best-practices`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.
 
 ## Verifying coverage
@@ -122,6 +125,7 @@ Other **Issue Tracking** connectors that share this unified API surface (same me
 
 ## See also
 
+- [Apideck connection guide for GitLab server (on-prem)](https://developers.apideck.com/connectors/gitlab-server/docs/consumer+connection)
 - [Issue Tracking OpenAPI spec](https://specs.apideck.com/issue-tracking.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=issue-tracking)
 - [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) — programmatic coverage checks
 - [`apideck-best-practices`](../../skills/apideck-best-practices/) — architecture, Vault, pagination, error handling

@@ -27,6 +27,7 @@ Access Teamtailor through Apideck's **ATS** unified API — one of 11 ATS connec
 - **Unified API:** ATS
 - **Auth type:** apiKey
 - **Status:** beta
+- **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/teamtailor/docs/consumer+connection)
 - **Teamtailor docs:** https://docs.teamtailor.com
 - **Homepage:** https://www.teamtailor.com/
 
@@ -84,6 +85,8 @@ This is the compounding advantage of using Apideck over integrating Teamtailor d
 - **Managed by:** Apideck Vault — the user pastes their Teamtailor API key into the Vault modal; Apideck stores it encrypted and injects it on every request.
 - **Rotation:** if the user rotates their key, they re-enter it in Vault. No code changes needed.
 
+**Setup guide:** Apideck publishes a step-by-step guide for registering an OAuth app / configuring credentials for Teamtailor — see [https://developers.apideck.com/connectors/teamtailor/docs/consumer+connection](https://developers.apideck.com/connectors/teamtailor/docs/consumer+connection). Use that as the authoritative source when walking users through connection setup.
+
 See [`apideck-best-practices`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.
 
 ## Verifying coverage
@@ -122,6 +125,7 @@ Other **ATS** connectors that share this unified API surface (same method signat
 
 ## See also
 
+- [Apideck connection guide for Teamtailor](https://developers.apideck.com/connectors/teamtailor/docs/consumer+connection)
 - [ATS OpenAPI spec](https://specs.apideck.com/ats.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=ats)
 - [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) — programmatic coverage checks
 - [`apideck-best-practices`](../../skills/apideck-best-practices/) — architecture, Vault, pagination, error handling

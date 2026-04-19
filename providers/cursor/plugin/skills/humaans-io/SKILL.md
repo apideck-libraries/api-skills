@@ -27,6 +27,7 @@ Access Humaans through Apideck's **HRIS** unified API — one of 58 HRIS connect
 - **Unified API:** HRIS
 - **Auth type:** apiKey
 - **Status:** beta
+- **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/humaans-io/docs/consumer+connection)
 - **Humaans docs:** https://docs.humaans.io
 - **Homepage:** https://humaans.io/
 
@@ -84,6 +85,8 @@ This is the compounding advantage of using Apideck over integrating Humaans dire
 - **Managed by:** Apideck Vault — the user pastes their Humaans API key into the Vault modal; Apideck stores it encrypted and injects it on every request.
 - **Rotation:** if the user rotates their key, they re-enter it in Vault. No code changes needed.
 
+**Setup guide:** Apideck publishes a step-by-step guide for registering an OAuth app / configuring credentials for Humaans — see [https://developers.apideck.com/connectors/humaans-io/docs/consumer+connection](https://developers.apideck.com/connectors/humaans-io/docs/consumer+connection). Use that as the authoritative source when walking users through connection setup.
+
 See [`apideck-best-practices`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.
 
 ## Verifying coverage
@@ -122,6 +125,7 @@ Other **HRIS** connectors that share this unified API surface (same method signa
 
 ## See also
 
+- [Apideck connection guide for Humaans](https://developers.apideck.com/connectors/humaans-io/docs/consumer+connection)
 - [HRIS OpenAPI spec](https://specs.apideck.com/hris.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=hris)
 - [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) — programmatic coverage checks
 - [`apideck-best-practices`](../../skills/apideck-best-practices/) — architecture, Vault, pagination, error handling

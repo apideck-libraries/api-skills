@@ -23,6 +23,7 @@ Access Sage Intacct through Apideck's **Accounting** unified API — one of 34 A
 - **Apideck serviceId:** `sage-intacct`
 - **Unified API:** Accounting
 - **Auth type:** oauth2
+- **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/sage-intacct/docs/consumer+connection)
 - **Sage Intacct docs:** https://developer.intacct.com
 - **Homepage:** https://www.sageintacct.com/
 
@@ -139,6 +140,7 @@ Other **Accounting** connectors that share this unified API surface (same method
 
 ## See also
 
+- [Apideck connection guide for Sage Intacct](https://developers.apideck.com/connectors/sage-intacct/docs/consumer+connection)
 - [Accounting OpenAPI spec](https://specs.apideck.com/accounting.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=accounting)
 - [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) — programmatic coverage checks
 - [`apideck-best-practices`](../../skills/apideck-best-practices/) — architecture, Vault, pagination, error handling

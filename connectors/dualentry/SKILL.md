@@ -23,6 +23,7 @@ Access Dualentry through Apideck's **Accounting** unified API — one of 34 Acco
 - **Apideck serviceId:** `dualentry`
 - **Unified API:** Accounting
 - **Auth type:** apiKey
+- **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/dualentry/docs/consumer+connection)
 - **Dualentry docs:** https://dualentry.com
 - **Homepage:** https://www.dualentry.com/
 
@@ -157,6 +158,7 @@ Other **Accounting** connectors that share this unified API surface (same method
 
 ## See also
 
+- [Apideck connection guide for Dualentry](https://developers.apideck.com/connectors/dualentry/docs/consumer+connection)
 - [Accounting OpenAPI spec](https://specs.apideck.com/accounting.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=accounting)
 - [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) — programmatic coverage checks
 - [`apideck-best-practices`](../../skills/apideck-best-practices/) — architecture, Vault, pagination, error handling

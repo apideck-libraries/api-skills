@@ -27,6 +27,7 @@ Access Linear Multiworkspace through Apideck's **Issue Tracking** unified API �
 - **Unified API:** Issue Tracking
 - **Auth type:** apiKey
 - **Status:** beta
+- **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/linear-multiworkspace/docs/consumer+connection)
 - **Linear Multiworkspace docs:** https://developers.linear.app
 - **Homepage:** https://linear.app/
 
@@ -84,6 +85,8 @@ This is the compounding advantage of using Apideck over integrating Linear Multi
 - **Managed by:** Apideck Vault — the user pastes their Linear Multiworkspace API key into the Vault modal; Apideck stores it encrypted and injects it on every request.
 - **Rotation:** if the user rotates their key, they re-enter it in Vault. No code changes needed.
 
+**Setup guide:** Apideck publishes a step-by-step guide for registering an OAuth app / configuring credentials for Linear Multiworkspace — see [https://developers.apideck.com/connectors/linear-multiworkspace/docs/consumer+connection](https://developers.apideck.com/connectors/linear-multiworkspace/docs/consumer+connection). Use that as the authoritative source when walking users through connection setup.
+
 See [`apideck-best-practices`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.
 
 ## Verifying coverage
@@ -122,6 +125,7 @@ Other **Issue Tracking** connectors that share this unified API surface (same me
 
 ## See also
 
+- [Apideck connection guide for Linear Multiworkspace](https://developers.apideck.com/connectors/linear-multiworkspace/docs/consumer+connection)
 - [Issue Tracking OpenAPI spec](https://specs.apideck.com/issue-tracking.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=issue-tracking)
 - [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) — programmatic coverage checks
 - [`apideck-best-practices`](../../skills/apideck-best-practices/) — architecture, Vault, pagination, error handling

@@ -27,6 +27,7 @@ Access Shopify (Public App) through Apideck's **Ecommerce** unified API — one 
 - **Unified API:** Ecommerce
 - **Auth type:** oauth2
 - **Status:** beta
+- **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/shopify-public-app/docs/consumer+connection)
 - **Shopify (Public App) docs:** https://shopify.dev/docs/apps
 - **Homepage:** https://www.shopify.com/
 
@@ -141,6 +142,7 @@ Other **Ecommerce** connectors that share this unified API surface (same method 
 
 ## See also
 
+- [Apideck connection guide for Shopify (Public App)](https://developers.apideck.com/connectors/shopify-public-app/docs/consumer+connection)
 - [Ecommerce OpenAPI spec](https://specs.apideck.com/ecommerce.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=ecommerce)
 - [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) — programmatic coverage checks
 - [`apideck-best-practices`](../../skills/apideck-best-practices/) — architecture, Vault, pagination, error handling

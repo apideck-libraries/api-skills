@@ -27,6 +27,7 @@ Access Access Financials through Apideck's **Accounting** unified API — one of
 - **Unified API:** Accounting
 - **Auth type:** apiKey
 - **Status:** beta
+- **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/access-financials/docs/consumer+connection)
 - **Access Financials docs:** https://www.theaccessgroup.com/en-gb/finance/
 - **Homepage:** https://www.theaccessgroup.com/en-gb/finance/products/access-financials/
 
@@ -146,6 +147,7 @@ Other **Accounting** connectors that share this unified API surface (same method
 
 ## See also
 
+- [Apideck connection guide for Access Financials](https://developers.apideck.com/connectors/access-financials/docs/consumer+connection)
 - [Accounting OpenAPI spec](https://specs.apideck.com/accounting.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=accounting)
 - [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) — programmatic coverage checks
 - [`apideck-best-practices`](../../skills/apideck-best-practices/) — architecture, Vault, pagination, error handling

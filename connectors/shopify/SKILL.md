@@ -27,6 +27,7 @@ Access Shopify through Apideck's **Ecommerce** unified API — one of 17 Ecommer
 - **Unified API:** Ecommerce
 - **Auth type:** custom
 - **Status:** beta
+- **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/shopify/docs/consumer+connection)
 - **Shopify docs:** https://shopify.dev/docs/api
 - **Homepage:** https://www.shopify.com/
 
@@ -197,6 +198,7 @@ Other **Ecommerce** connectors that share this unified API surface (same method 
 
 ## See also
 
+- [Apideck connection guide for Shopify](https://developers.apideck.com/connectors/shopify/docs/consumer+connection)
 - [Ecommerce OpenAPI spec](https://specs.apideck.com/ecommerce.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=ecommerce)
 - [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) — programmatic coverage checks
 - [`apideck-best-practices`](../../skills/apideck-best-practices/) — architecture, Vault, pagination, error handling

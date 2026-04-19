@@ -27,6 +27,7 @@ Access MYOB Acumatica through Apideck's **Accounting** unified API — one of 34
 - **Unified API:** Accounting
 - **Auth type:** oauth2
 - **Status:** beta
+- **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/myob-acumatica/docs/consumer+connection)
 - **MYOB Acumatica docs:** https://developer.myob.com
 - **Homepage:** https://www.myob.com/au/erp-software/products/myob-acumatica
 
@@ -147,6 +148,7 @@ Other **Accounting** connectors that share this unified API surface (same method
 
 ## See also
 
+- [Apideck connection guide for MYOB Acumatica](https://developers.apideck.com/connectors/myob-acumatica/docs/consumer+connection)
 - [Accounting OpenAPI spec](https://specs.apideck.com/accounting.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=accounting)
 - [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) — programmatic coverage checks
 - [`apideck-best-practices`](../../skills/apideck-best-practices/) — architecture, Vault, pagination, error handling

@@ -27,6 +27,7 @@ Access Folk through Apideck's **CRM** unified API — one of 21 CRM connectors t
 - **Unified API:** CRM
 - **Auth type:** apiKey
 - **Status:** beta
+- **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/folk/docs/consumer+connection)
 - **Folk docs:** https://developer.folk.app
 - **Homepage:** https://www.folk.app/
 
@@ -84,6 +85,8 @@ This is the compounding advantage of using Apideck over integrating Folk directl
 - **Managed by:** Apideck Vault — the user pastes their Folk API key into the Vault modal; Apideck stores it encrypted and injects it on every request.
 - **Rotation:** if the user rotates their key, they re-enter it in Vault. No code changes needed.
 
+**Setup guide:** Apideck publishes a step-by-step guide for registering an OAuth app / configuring credentials for Folk — see [https://developers.apideck.com/connectors/folk/docs/consumer+connection](https://developers.apideck.com/connectors/folk/docs/consumer+connection). Use that as the authoritative source when walking users through connection setup.
+
 See [`apideck-best-practices`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.
 
 ## Verifying coverage
@@ -122,6 +125,7 @@ Other **CRM** connectors that share this unified API surface (same method signat
 
 ## See also
 
+- [Apideck connection guide for Folk](https://developers.apideck.com/connectors/folk/docs/consumer+connection)
 - [CRM OpenAPI spec](https://specs.apideck.com/crm.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=crm)
 - [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) — programmatic coverage checks
 - [`apideck-best-practices`](../../skills/apideck-best-practices/) — architecture, Vault, pagination, error handling

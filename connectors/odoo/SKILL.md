@@ -27,6 +27,7 @@ Access Odoo through Apideck's **CRM, Accounting** unified API — one of 21 CRM 
 - **Unified APIs:** CRM, Accounting
 - **Auth type:** basic
 - **Status:** beta
+- **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/odoo/docs/consumer+connection)
 - **Odoo docs:** https://www.odoo.com/documentation/
 - **Homepage:** https://www.odoo.com/
 
@@ -154,6 +155,7 @@ Other **Accounting** connectors that share this unified API surface (same method
 
 ## See also
 
+- [Apideck connection guide for Odoo](https://developers.apideck.com/connectors/odoo/docs/consumer+connection)
 - [CRM OpenAPI spec](https://specs.apideck.com/crm.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=crm)
 - [Accounting OpenAPI spec](https://specs.apideck.com/accounting.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=accounting)
 - [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) — programmatic coverage checks

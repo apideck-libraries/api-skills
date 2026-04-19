@@ -23,6 +23,7 @@ Access Freshworks CRM through Apideck's **CRM** unified API — one of 21 CRM co
 - **Apideck serviceId:** `freshsales`
 - **Unified API:** CRM
 - **Auth type:** apiKey
+- **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/freshsales/docs/consumer+connection)
 - **Freshworks CRM docs:** https://developers.freshworks.com
 - **Homepage:** https://www.freshworks.com/freshsales-crm/
 
@@ -80,6 +81,8 @@ This is the compounding advantage of using Apideck over integrating Freshworks C
 - **Managed by:** Apideck Vault — the user pastes their Freshworks CRM API key into the Vault modal; Apideck stores it encrypted and injects it on every request.
 - **Rotation:** if the user rotates their key, they re-enter it in Vault. No code changes needed.
 
+**Setup guide:** Apideck publishes a step-by-step guide for registering an OAuth app / configuring credentials for Freshworks CRM — see [https://developers.apideck.com/connectors/freshsales/docs/consumer+connection](https://developers.apideck.com/connectors/freshsales/docs/consumer+connection). Use that as the authoritative source when walking users through connection setup.
+
 See [`apideck-best-practices`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.
 
 ## Verifying coverage
@@ -118,6 +121,7 @@ Other **CRM** connectors that share this unified API surface (same method signat
 
 ## See also
 
+- [Apideck connection guide for Freshworks CRM](https://developers.apideck.com/connectors/freshsales/docs/consumer+connection)
 - [CRM OpenAPI spec](https://specs.apideck.com/crm.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=crm)
 - [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) — programmatic coverage checks
 - [`apideck-best-practices`](../../skills/apideck-best-practices/) — architecture, Vault, pagination, error handling

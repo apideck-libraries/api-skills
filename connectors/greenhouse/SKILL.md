@@ -23,6 +23,7 @@ Access Greenhouse through Apideck's **ATS** unified API — one of 11 ATS connec
 - **Apideck serviceId:** `greenhouse`
 - **Unified API:** ATS
 - **Auth type:** basic
+- **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/greenhouse/docs/consumer+connection)
 - **Greenhouse docs:** https://developers.greenhouse.io
 - **Homepage:** https://www.greenhouse.io/
 
@@ -171,6 +172,7 @@ Other **ATS** connectors that share this unified API surface (same method signat
 
 ## See also
 
+- [Apideck connection guide for Greenhouse](https://developers.apideck.com/connectors/greenhouse/docs/consumer+connection)
 - [ATS OpenAPI spec](https://specs.apideck.com/ats.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=ats)
 - [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) — programmatic coverage checks
 - [`apideck-best-practices`](../../skills/apideck-best-practices/) — architecture, Vault, pagination, error handling

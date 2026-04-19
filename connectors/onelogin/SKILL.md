@@ -27,6 +27,7 @@ Access OneLogin through Apideck's **HRIS** unified API — one of 58 HRIS connec
 - **Unified API:** HRIS
 - **Auth type:** oauth2
 - **Status:** beta
+- **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/onelogin/docs/consumer+connection)
 - **Homepage:** https://www.onelogin.com/
 
 ## When to use this skill
@@ -84,6 +85,8 @@ This is the compounding advantage of using Apideck over integrating OneLogin dir
 - **User setup:** Users authorize via the Vault modal. Connection state progresses `available → added → authorized → callable`.
 - **Token refresh:** automatic. Expired tokens are refreshed transparently on the next API call.
 
+**Setup guide:** Apideck publishes a step-by-step guide for registering an OAuth app / configuring credentials for OneLogin — see [https://developers.apideck.com/connectors/onelogin/docs/consumer+connection](https://developers.apideck.com/connectors/onelogin/docs/consumer+connection). Use that as the authoritative source when walking users through connection setup.
+
 See [`apideck-best-practices`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.
 
 ## Verifying coverage
@@ -122,6 +125,7 @@ Other **HRIS** connectors that share this unified API surface (same method signa
 
 ## See also
 
+- [Apideck connection guide for OneLogin](https://developers.apideck.com/connectors/onelogin/docs/consumer+connection)
 - [HRIS OpenAPI spec](https://specs.apideck.com/hris.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=hris)
 - [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) — programmatic coverage checks
 - [`apideck-best-practices`](../../skills/apideck-best-practices/) — architecture, Vault, pagination, error handling

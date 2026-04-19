@@ -23,6 +23,7 @@ Access Hibob through Apideck's **HRIS** unified API — one of 58 HRIS connector
 - **Apideck serviceId:** `hibob`
 - **Unified API:** HRIS
 - **Auth type:** basic
+- **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/hibob/docs/consumer+connection)
 - **Hibob docs:** https://apidocs.hibob.com
 - **Homepage:** https://www.hibob.com/
 
@@ -134,6 +135,7 @@ Other **HRIS** connectors that share this unified API surface (same method signa
 
 ## See also
 
+- [Apideck connection guide for Hibob](https://developers.apideck.com/connectors/hibob/docs/consumer+connection)
 - [HRIS OpenAPI spec](https://specs.apideck.com/hris.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=hris)
 - [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) — programmatic coverage checks
 - [`apideck-best-practices`](../../skills/apideck-best-practices/) — architecture, Vault, pagination, error handling

@@ -27,6 +27,7 @@ Access Magento through Apideck's **Ecommerce** unified API — one of 17 Ecommer
 - **Unified API:** Ecommerce
 - **Auth type:** custom
 - **Status:** beta
+- **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/magento/docs/consumer+connection)
 - **Magento docs:** https://developer.adobe.com/commerce/webapi/
 - **Homepage:** https://magento.com/
 
@@ -84,6 +85,8 @@ This is the compounding advantage of using Apideck over integrating Magento dire
 - **Managed by:** Apideck Vault — setup may involve extra fields beyond a single token. The Vault modal will prompt for everything required.
 - **Refer to:** the Apideck dashboard or [apideck-best-practices](../../skills/apideck-best-practices/) for auth troubleshooting.
 
+**Setup guide:** Apideck publishes a step-by-step guide for registering an OAuth app / configuring credentials for Magento — see [https://developers.apideck.com/connectors/magento/docs/consumer+connection](https://developers.apideck.com/connectors/magento/docs/consumer+connection). Use that as the authoritative source when walking users through connection setup.
+
 See [`apideck-best-practices`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.
 
 ## Verifying coverage
@@ -122,6 +125,7 @@ Other **Ecommerce** connectors that share this unified API surface (same method 
 
 ## See also
 
+- [Apideck connection guide for Magento](https://developers.apideck.com/connectors/magento/docs/consumer+connection)
 - [Ecommerce OpenAPI spec](https://specs.apideck.com/ecommerce.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=ecommerce)
 - [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) — programmatic coverage checks
 - [`apideck-best-practices`](../../skills/apideck-best-practices/) — architecture, Vault, pagination, error handling
