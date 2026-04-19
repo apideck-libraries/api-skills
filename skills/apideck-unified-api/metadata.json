@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "Front-door meta-skill for the Apideck catalog. Teaches the compounding-abstraction model (one set of methods, 146+ SaaS connectors) and routes to per-connector, per-SDK, and per-tool skills.",
+  "references": [
+    "https://apideck.com",
+    "https://developers.apideck.com",
+    "https://developers.apideck.com/building-with-llms",
+    "https://specs.apideck.com",
+    "https://developers.apideck.com/api-explorer"
+  ]
+}
