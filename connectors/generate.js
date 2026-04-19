@@ -4,9 +4,15 @@
  * Connector skill generator
  *
  * Reads connectors/manifest.json and writes SKILL.md + metadata.json for each
- * connector in connectors/{slug}/. For Tier 1a connectors, merges in per-connector
- * enhancements from connectors/_enhancements/{slug}.md (if present) to give those
- * skills hand-authored depth beyond the baseline template.
+ * connector to skills/{slug}/ at the repo root — this is the path convention
+ * the `skills` CLI (skills.sh) scans. For Tier 1a connectors, merges in
+ * per-connector enhancements from connectors/_enhancements/{slug}.md (if
+ * present) to give those skills hand-authored depth beyond the baseline
+ * template.
+ *
+ * The connectors/ directory holds tooling only: manifest.json, this generator,
+ * validate.js, and _enhancements/. Generated SKILL.md output lives under
+ * skills/{slug}/ alongside the apideck-* skills.
  *
  * Usage:
  *   node connectors/generate.js                # Generate all from manifest
@@ -21,6 +27,7 @@ const ROOT = path.join(__dirname, "..");
 const CONNECTORS_DIR = __dirname;
 const MANIFEST_PATH = path.join(CONNECTORS_DIR, "manifest.json");
 const ENHANCEMENTS_DIR = path.join(CONNECTORS_DIR, "_enhancements");
+const SKILLS_OUTPUT_DIR = path.join(ROOT, "skills");
 
 const args = process.argv.slice(2);
 const onlyArg = args.find((a) => a.startsWith("--only="));
@@ -453,7 +460,7 @@ function main() {
 
   let written = 0;
   for (const connector of connectors) {
-    const dir = path.join(CONNECTORS_DIR, connector.slug);
+    const dir = path.join(SKILLS_OUTPUT_DIR, connector.slug);
     fs.mkdirSync(dir, { recursive: true });
 
     const skillMd = renderSkill(connector);
@@ -472,7 +479,7 @@ function main() {
     console.log(`  OK ${connector.slug}${enhancedMark}`);
   }
 
-  console.log(`\nWrote ${written} connector skill(s).\n`);
+  console.log(`\nWrote ${written} connector skill(s) to skills/.\n`);
 }
 
 main();

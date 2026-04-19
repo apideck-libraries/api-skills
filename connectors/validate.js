@@ -26,6 +26,7 @@ const path = require("path");
 
 const CONNECTORS_DIR = __dirname;
 const MANIFEST_PATH = path.join(CONNECTORS_DIR, "manifest.json");
+const SKILLS_DIR = path.join(CONNECTORS_DIR, "..", "skills");
 const LINE_SOFT_LIMIT = 500;
 
 const SECRET_PATTERNS = [
@@ -101,7 +102,7 @@ function parseFrontmatter(content) {
 }
 
 function validateConnector(connector) {
-  const dir = path.join(CONNECTORS_DIR, connector.slug);
+  const dir = path.join(SKILLS_DIR, connector.slug);
   const skillFile = path.join(dir, "SKILL.md");
   const metaFile = path.join(dir, "metadata.json");
 
@@ -222,21 +223,27 @@ function main() {
   console.log(`Manifest has ${connectors.length} connector(s)`);
   const manifestSlugs = new Set(connectors.map((c) => c.slug));
 
-  // Check for orphan directories (exist in connectors/ but not in manifest)
+  // Check for orphan connector directories (exist in skills/ with a bare
+  // slug that isn't apideck-* and isn't in the manifest). apideck-* skills
+  // are managed separately by skills/test.js.
   const dirs = fs
-    .readdirSync(CONNECTORS_DIR, { withFileTypes: true })
+    .readdirSync(SKILLS_DIR, { withFileTypes: true })
     .filter(
-      (d) => d.isDirectory() && !d.name.startsWith("_") && !d.name.startsWith(".")
+      (d) =>
+        d.isDirectory() &&
+        !d.name.startsWith("_") &&
+        !d.name.startsWith(".") &&
+        !d.name.startsWith("apideck-")
     )
     .map((d) => d.name);
 
   for (const dir of dirs) {
     if (!manifestSlugs.has(dir)) {
-      fail(dir, `directory exists but no manifest entry (stale — delete or add to manifest)`);
+      fail(dir, `directory exists in skills/ but no manifest entry (stale — delete or add to manifest)`);
     }
   }
 
-  console.log(`Directory listing has ${dirs.length} skill folder(s)\n`);
+  console.log(`Connector skill folders in skills/: ${dirs.length}\n`);
 
   for (const connector of connectors) {
     validateConnector(connector);

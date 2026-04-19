@@ -8,11 +8,9 @@
  * skills to provider plugin directories (Claude, Cursor).
  *
  * Usage:
- *   node skills/sync.js                  # Sync all SDK/integration skills
- *   node skills/sync.js --skills-only    # Skip specs fetch, just sync
+ *   node skills/sync.js                  # Sync everything under skills/ (apideck-* + connectors) to providers
+ *   node skills/sync.js --skills-only    # Skip specs fetch, just sync skill folders
  *   node skills/sync.js --specs-only     # Only update from OpenAPI specs
- *   node skills/sync.js --connectors     # Also mirror connector catalog to providers
- *   node skills/sync.js --all            # Specs + skills + connectors
  *
  * Environment:
  *   APIDECK_SPECS_BASE_URL  Override specs base URL (default: https://specs.apideck.com)
@@ -53,10 +51,18 @@ const PROVIDER_TARGETS = [
 // ── Skill Sync ──────────────────────────────────────────────────────────────
 
 function getSkillDirs() {
+  // Returns ALL skill dirs under skills/ — apideck-* SDK/meta skills plus
+  // bare-slug connector skills (salesforce, quickbooks, etc.) generated from
+  // connectors/manifest.json. Skip apideck-node here; it's handled separately
+  // to preserve existing sync semantics for its references/ tree.
   return fs
     .readdirSync(SKILLS_DIR, { withFileTypes: true })
     .filter(
-      (d) => d.isDirectory() && d.name.startsWith("apideck-") && d.name !== "apideck-node"
+      (d) =>
+        d.isDirectory() &&
+        !d.name.startsWith("_") &&
+        !d.name.startsWith(".") &&
+        d.name !== "apideck-node"
     )
     .map((d) => d.name);
 }
@@ -100,33 +106,12 @@ function syncSkillToProviders(skillName) {
   console.log(`  OK ${skillName} -> ${PROVIDER_TARGETS.length} providers`);
 }
 
-function getConnectorDirs() {
-  if (!fs.existsSync(CONNECTORS_DIR)) return [];
-  return fs
-    .readdirSync(CONNECTORS_DIR, { withFileTypes: true })
-    .filter((d) => d.isDirectory() && !d.name.startsWith("_") && !d.name.startsWith("."))
-    .map((d) => d.name);
-}
+// NOTE: connector skills now live under skills/<slug>/ alongside apideck-* skills
+// (moved in the restructure PR). They're picked up by getSkillDirs() — no
+// separate helper needed. connectors/ holds only tooling (manifest, generator,
+// validator, enhancements).
 
-function syncConnectorToProviders(slug) {
-  const srcDir = path.join(CONNECTORS_DIR, slug);
-  const skillFile = path.join(srcDir, "SKILL.md");
-  if (!fs.existsSync(skillFile)) return;
-
-  for (const targetBase of PROVIDER_TARGETS) {
-    const targetDir = path.join(targetBase, slug);
-    fs.mkdirSync(targetDir, { recursive: true });
-    fs.copyFileSync(skillFile, path.join(targetDir, "SKILL.md"));
-    const metaFile = path.join(srcDir, "metadata.json");
-    if (fs.existsSync(metaFile)) {
-      fs.copyFileSync(metaFile, path.join(targetDir, "metadata.json"));
-    }
-  }
-
-  console.log(`  OK ${slug} -> ${PROVIDER_TARGETS.length} providers`);
-}
-
-function syncAllSkills(includeConnectors) {
+function syncAllSkills() {
   console.log("Syncing skills to provider directories...\n");
 
   const allSkills = [
@@ -136,16 +121,6 @@ function syncAllSkills(includeConnectors) {
 
   for (const skill of allSkills) {
     syncSkillToProviders(skill);
-  }
-
-  if (includeConnectors) {
-    const connectors = getConnectorDirs();
-    if (connectors.length > 0) {
-      console.log(`\nSyncing ${connectors.length} connector(s)...\n`);
-      for (const slug of connectors) {
-        syncConnectorToProviders(slug);
-      }
-    }
   }
 
   // Also copy commands to Cursor
@@ -248,14 +223,12 @@ async function main() {
   const args = process.argv.slice(2);
   const skillsOnly = args.includes("--skills-only");
   const specsOnly = args.includes("--specs-only");
-  const includeConnectors = args.includes("--connectors") || args.includes("--all");
-
   if (!skillsOnly) {
     await updateSpecsInfo();
   }
 
   if (!specsOnly) {
-    syncAllSkills(includeConnectors);
+    syncAllSkills();
   }
 }
 

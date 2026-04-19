@@ -1,7 +1,7 @@
 # Apideck API Skills
 
 [![Tessl Review Score](https://img.shields.io/badge/Tessl%20Review-85%25-yellow?labelColor=0f172a)](https://tessl.io/registry/skills/submit)
-[![Connectors](https://img.shields.io/badge/connectors-146-blue)](connectors/)
+[![Connectors](https://img.shields.io/badge/connectors-146-blue)](connectors/manifest.json)
 [![Unified APIs](https://img.shields.io/badge/unified%20APIs-7-blue)](#connector-skills)
 [![License](https://img.shields.io/badge/license-Apache--2.0-green)](LICENSE)
 
@@ -73,10 +73,12 @@ Add `--global` to install globally across all projects.
 
 ## Skills
 
-The catalog has two kinds of skills:
+Every skill in the catalog lives under `skills/` — the canonical path scanned by the `skills` CLI. Two naming conventions coexist there:
 
-- **Skills** under `skills/` — Apideck-specific API abstractions and SDK patterns. Names start with `apideck-`.
-- **Connector skills** under `connectors/` — one per downstream app (Salesforce, QuickBooks, Jira, etc.). Names are bare (no `apideck-` prefix). These are routing skills: they teach the agent which unified API covers the connector, the correct `serviceId`, auth gotchas, and escape-hatch patterns.
+- **`skills/apideck-*`** — Apideck-specific API abstractions and SDK patterns (`apideck-node`, `apideck-unified-api`, `apideck-best-practices`, etc.)
+- **`skills/<bare-slug>`** — per-connector routing skills (`salesforce`, `quickbooks`, `sharepoint`, etc.). Generated from `connectors/manifest.json` by `node connectors/generate.js`; do not hand-edit.
+
+The `connectors/` directory holds the tooling that generates connector skills (`manifest.json`, `generate.js`, `validate.js`, `_enhancements/`) — no SKILL.md output lives there.
 
 ### SDK Skills
 
@@ -109,13 +111,13 @@ Per-connector skills for the top apps across seven unified APIs: Ecommerce, Acco
 
 | Connector | Unified API |
 |---|---|
-| [salesforce](connectors/salesforce/) | CRM |
-| [quickbooks](connectors/quickbooks/) | Accounting |
-| [bamboohr](connectors/bamboohr/) | HRIS |
-| [greenhouse](connectors/greenhouse/) | ATS |
-| [sharepoint](connectors/sharepoint/) | File Storage |
-| [jira](connectors/jira/) | Issue Tracking |
-| [shopify](connectors/shopify/) | Ecommerce |
+| [salesforce](skills/salesforce/) | CRM |
+| [quickbooks](skills/quickbooks/) | Accounting |
+| [bamboohr](skills/bamboohr/) | HRIS |
+| [greenhouse](skills/greenhouse/) | ATS |
+| [sharepoint](skills/sharepoint/) | File Storage |
+| [jira](skills/jira/) | Issue Tracking |
+| [shopify](skills/shopify/) | Ecommerce |
 
 **Tier 1b — abbreviated depth** (21 connectors): HubSpot, Pipedrive, Zoho CRM, Xero, NetSuite, Sage Intacct, Workable, Lever, Google Drive, OneDrive, Dropbox, Box, GitHub, GitLab, Linear, BigCommerce, WooCommerce, Shopify Public App, Personio, Workday, Deel, HiBob.
 
@@ -134,14 +136,14 @@ npx skills add apideck/api-skills
 
 **Authoring workflow:**
 
-Connector skills are generated from [`connectors/manifest.json`](connectors/manifest.json) and optional per-connector enhancement files in `connectors/_enhancements/`. Do not hand-edit `connectors/{slug}/SKILL.md` — regenerate:
+Connector skills are generated from [`connectors/manifest.json`](connectors/manifest.json) and optional per-connector enhancement files in `connectors/_enhancements/`. Generator output lands at `skills/{slug}/` alongside the apideck-* skills — do not hand-edit those files, regenerate instead:
 
 ```bash
-node connectors/generate.js          # regenerate all
+node connectors/generate.js          # regenerate all into skills/
 node connectors/generate.js --only=salesforce
 node connectors/generate.js --tier=1a
 
-node connectors/validate.js          # lint against manifest
+node connectors/validate.js          # lint skills/ connector entries against manifest
 ```
 
 ## IDE Plugins
