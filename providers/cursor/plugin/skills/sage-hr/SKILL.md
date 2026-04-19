@@ -16,7 +16,7 @@ metadata:
 
 # Sage HR (via Apideck)
 
-Access Sage HR through Apideck's **HRIS, ATS** unified API — one of 58 HRIS connectors that share the same method surface. Code you write here ports to BambooHR, Deel, Hibob and 54 other HRIS connectors by changing a single `serviceId` string. Apideck handles auth, pagination, rate limiting, and retries so you don't write per-tenant Sage HR plumbing.
+Access Sage HR through Apideck's **HRIS, ATS** unified API — one of 58 HRIS connectors that share the same method surface. Code you write here ports to BambooHR, Workday, Deel and 54 other HRIS connectors by changing a single `serviceId` string. Apideck handles auth, pagination, rate limiting, and retries so you don't write per-tenant Sage HR plumbing.
 
 ## Quick facts
 
@@ -69,7 +69,7 @@ await apideck.hris.employees.list({ serviceId: "sage-hr" });
 
 // Tomorrow — same code, different connector
 await apideck.hris.employees.list({ serviceId: "bamboohr" });
-await apideck.hris.employees.list({ serviceId: "deel" });
+await apideck.hris.employees.list({ serviceId: "workday" });
 ```
 
 This is the compounding advantage of using Apideck over integrating Sage HR directly: code against the unified HRIS API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
@@ -114,11 +114,11 @@ See [Sage HR's API docs](#) for available endpoints.
 
 Other **HRIS** connectors that share this unified API surface (same method signatures, just change `serviceId`):
 
-[`bamboohr`](../bamboohr/), [`deel`](../deel/) *(beta)*, [`hibob`](../hibob/), [`personio`](../personio/), [`workday`](../workday/), [`adp-ihcm`](../adp-ihcm/) *(beta)*, [`adp-workforce-now`](../adp-workforce-now/) *(beta)*, [`paychex`](../paychex/) *(beta)*, and 49 more.
+[`bamboohr`](../bamboohr/), [`workday`](../workday/), [`deel`](../deel/) *(beta)*, [`hibob`](../hibob/), [`personio`](../personio/), [`adp-ihcm`](../adp-ihcm/) *(beta)*, [`adp-workforce-now`](../adp-workforce-now/) *(beta)*, [`paychex`](../paychex/) *(beta)*, and 49 more.
 
 Other **ATS** connectors that share this unified API surface (same method signatures, just change `serviceId`):
 
-[`greenhouse`](../greenhouse/), [`lever`](../lever/), [`workable`](../workable/) *(beta)*, [`workday`](../workday/), [`bullhorn-ats`](../bullhorn-ats/) *(beta)*, [`teamtailor`](../teamtailor/) *(beta)*, [`freshteam`](../freshteam/), [`jobadder`](../jobadder/) *(beta)*, and 2 more.
+[`greenhouse`](../greenhouse/), [`workday`](../workday/), [`lever`](../lever/), [`workable`](../workable/) *(beta)*, [`bullhorn-ats`](../bullhorn-ats/) *(beta)*, [`teamtailor`](../teamtailor/) *(beta)*, [`freshteam`](../freshteam/), [`jobadder`](../jobadder/) *(beta)*, and 2 more.
 
 ## See also
 

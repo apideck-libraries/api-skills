@@ -16,7 +16,7 @@ metadata:
 
 # Lever (via Apideck)
 
-Access Lever through Apideck's **ATS** unified API — one of 11 ATS connectors that share the same method surface. Code you write here ports to Greenhouse, Workable, Workday and 7 other ATS connectors by changing a single `serviceId` string. Apideck handles auth, pagination, rate limiting, and retries so you don't write per-tenant Lever plumbing.
+Access Lever through Apideck's **ATS** unified API — one of 11 ATS connectors that share the same method surface. Code you write here ports to Greenhouse, Workday, Workable and 7 other ATS connectors by changing a single `serviceId` string. Apideck handles auth, pagination, rate limiting, and retries so you don't write per-tenant Lever plumbing.
 
 ## Quick facts
 
@@ -69,7 +69,7 @@ await apideck.ats.applicants.list({ serviceId: "lever" });
 
 // Tomorrow — same code, different connector
 await apideck.ats.applicants.list({ serviceId: "greenhouse" });
-await apideck.ats.applicants.list({ serviceId: "workable" });
+await apideck.ats.applicants.list({ serviceId: "workday" });
 ```
 
 This is the compounding advantage of using Apideck over integrating Lever directly: code against the unified ATS API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
@@ -136,7 +136,7 @@ See [Lever's API docs](https://hire.lever.co/developer) for available endpoints.
 
 Other **ATS** connectors that share this unified API surface (same method signatures, just change `serviceId`):
 
-[`greenhouse`](../greenhouse/), [`workable`](../workable/) *(beta)*, [`workday`](../workday/), [`bullhorn-ats`](../bullhorn-ats/) *(beta)*, [`teamtailor`](../teamtailor/) *(beta)*, [`freshteam`](../freshteam/), [`jobadder`](../jobadder/) *(beta)*, [`recruitee`](../recruitee/), and 2 more.
+[`greenhouse`](../greenhouse/), [`workday`](../workday/), [`workable`](../workable/) *(beta)*, [`bullhorn-ats`](../bullhorn-ats/) *(beta)*, [`teamtailor`](../teamtailor/) *(beta)*, [`freshteam`](../freshteam/), [`jobadder`](../jobadder/) *(beta)*, [`recruitee`](../recruitee/), and 2 more.
 
 ## See also
 

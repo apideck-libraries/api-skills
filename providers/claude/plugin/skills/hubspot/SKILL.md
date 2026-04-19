@@ -16,7 +16,7 @@ metadata:
 
 # HubSpot (via Apideck)
 
-Access HubSpot through Apideck's **CRM** unified API — one of 21 CRM connectors that share the same method surface. Code you write here ports to Salesforce, Pipedrive, Zoho CRM and 17 other CRM connectors by changing a single `serviceId` string. Apideck handles auth, pagination, rate limiting, and retries so you don't write per-tenant HubSpot plumbing.
+Access HubSpot through Apideck's **CRM** unified API — one of 21 CRM connectors that share the same method surface. Code you write here ports to Odoo, Salesforce, Pipedrive and 17 other CRM connectors by changing a single `serviceId` string. Apideck handles auth, pagination, rate limiting, and retries so you don't write per-tenant HubSpot plumbing.
 
 ## Quick facts
 
@@ -68,8 +68,8 @@ The Apideck **CRM** unified API exposes the same methods for every connector in 
 await apideck.crm.contacts.list({ serviceId: "hubspot" });
 
 // Tomorrow — same code, different connector
+await apideck.crm.contacts.list({ serviceId: "odoo" });
 await apideck.crm.contacts.list({ serviceId: "salesforce" });
-await apideck.crm.contacts.list({ serviceId: "pipedrive" });
 ```
 
 This is the compounding advantage of using Apideck over integrating HubSpot directly: code against the unified CRM API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
@@ -152,7 +152,7 @@ See [HubSpot's API docs](https://developers.hubspot.com) for available endpoints
 
 Other **CRM** connectors that share this unified API surface (same method signatures, just change `serviceId`):
 
-[`salesforce`](../salesforce/), [`pipedrive`](../pipedrive/), [`zoho-crm`](../zoho-crm/), [`activecampaign`](../activecampaign/), [`close`](../close/), [`microsoft-dynamics`](../microsoft-dynamics/), [`teamleader`](../teamleader/), [`zendesk-sell`](../zendesk-sell/), and 12 more.
+[`odoo`](../odoo/) *(beta)*, [`salesforce`](../salesforce/), [`pipedrive`](../pipedrive/), [`zoho-crm`](../zoho-crm/), [`activecampaign`](../activecampaign/), [`close`](../close/), [`microsoft-dynamics`](../microsoft-dynamics/), [`teamleader`](../teamleader/), and 12 more.
 
 ## See also
 

@@ -10,7 +10,7 @@ metadata:
   serviceId: odoo
   unifiedApis: ["crm", "accounting"]
   authType: basic
-  tier: "2"
+  tier: "1a"
   verified: true
   status: beta
 ---
@@ -123,7 +123,7 @@ Other **CRM** connectors that share this unified API surface (same method signat
 
 Other **Accounting** connectors that share this unified API surface (same method signatures, just change `serviceId`):
 
-[`quickbooks`](../quickbooks/), [`netsuite`](../netsuite/), [`sage-intacct`](../sage-intacct/), [`workday`](../workday/), [`xero`](../xero/), [`exact-online`](../exact-online/), [`freeagent`](../freeagent/) *(beta)*, [`freshbooks`](../freshbooks/), and 25 more.
+[`access-financials`](../access-financials/) *(beta)*, [`acumatica`](../acumatica/) *(beta)*, [`banqup`](../banqup/) *(beta)*, [`campfire`](../campfire/) *(beta)*, [`clearbooks-uk`](../clearbooks-uk/) *(beta)*, [`digits`](../digits/) *(beta)*, [`dualentry`](../dualentry/), [`exact-online`](../exact-online/), and 25 more.
 
 ## See also
 

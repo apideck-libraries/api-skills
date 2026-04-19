@@ -10,14 +10,14 @@ metadata:
   serviceId: myob-acumatica
   unifiedApis: ["accounting"]
   authType: oauth2
-  tier: "2"
+  tier: "1a"
   verified: true
   status: beta
 ---
 
 # MYOB Acumatica (via Apideck)
 
-Access MYOB Acumatica through Apideck's **Accounting** unified API — one of 34 Accounting connectors that share the same method surface. Code you write here ports to QuickBooks, NetSuite, Sage Intacct and 30 other Accounting connectors by changing a single `serviceId` string. Apideck handles auth, pagination, rate limiting, and retries so you don't write per-tenant MYOB Acumatica plumbing.
+Access MYOB Acumatica through Apideck's **Accounting** unified API — one of 34 Accounting connectors that share the same method surface. Code you write here ports to Access Financials, Acumatica, banqUP and 30 other Accounting connectors by changing a single `serviceId` string. Apideck handles auth, pagination, rate limiting, and retries so you don't write per-tenant MYOB Acumatica plumbing.
 
 > **Beta connector.** MYOB Acumatica is currently in beta on Apideck. Expect partial resource coverage and occasional mapping gaps. Always verify coverage (see below) and fall back to the Proxy API for unsupported operations.
 
@@ -72,8 +72,8 @@ The Apideck **Accounting** unified API exposes the same methods for every connec
 await apideck.accounting.invoices.list({ serviceId: "myob-acumatica" });
 
 // Tomorrow — same code, different connector
-await apideck.accounting.invoices.list({ serviceId: "quickbooks" });
-await apideck.accounting.invoices.list({ serviceId: "netsuite" });
+await apideck.accounting.invoices.list({ serviceId: "access-financials" });
+await apideck.accounting.invoices.list({ serviceId: "acumatica" });
 ```
 
 This is the compounding advantage of using Apideck over integrating MYOB Acumatica directly: code against the unified Accounting API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
@@ -119,7 +119,7 @@ See [MYOB Acumatica's API docs](https://developer.myob.com) for available endpoi
 
 Other **Accounting** connectors that share this unified API surface (same method signatures, just change `serviceId`):
 
-[`quickbooks`](../quickbooks/), [`netsuite`](../netsuite/), [`sage-intacct`](../sage-intacct/), [`workday`](../workday/), [`xero`](../xero/), [`exact-online`](../exact-online/), [`freeagent`](../freeagent/) *(beta)*, [`freshbooks`](../freshbooks/), and 25 more.
+[`access-financials`](../access-financials/) *(beta)*, [`acumatica`](../acumatica/) *(beta)*, [`banqup`](../banqup/) *(beta)*, [`campfire`](../campfire/) *(beta)*, [`clearbooks-uk`](../clearbooks-uk/) *(beta)*, [`digits`](../digits/) *(beta)*, [`dualentry`](../dualentry/), [`exact-online`](../exact-online/), and 25 more.
 
 ## See also
 

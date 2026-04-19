@@ -16,7 +16,7 @@ metadata:
 
 # BambooHR (via Apideck)
 
-Access BambooHR through Apideck's **HRIS** unified API — one of 58 HRIS connectors that share the same method surface. Code you write here ports to Deel, Hibob, Personio and 54 other HRIS connectors by changing a single `serviceId` string. Apideck handles auth, pagination, rate limiting, and retries so you don't write per-tenant BambooHR plumbing.
+Access BambooHR through Apideck's **HRIS** unified API — one of 58 HRIS connectors that share the same method surface. Code you write here ports to Workday, Deel, Hibob and 54 other HRIS connectors by changing a single `serviceId` string. Apideck handles auth, pagination, rate limiting, and retries so you don't write per-tenant BambooHR plumbing.
 
 ## Quick facts
 
@@ -68,8 +68,8 @@ The Apideck **HRIS** unified API exposes the same methods for every connector in
 await apideck.hris.employees.list({ serviceId: "bamboohr" });
 
 // Tomorrow — same code, different connector
+await apideck.hris.employees.list({ serviceId: "workday" });
 await apideck.hris.employees.list({ serviceId: "deel" });
-await apideck.hris.employees.list({ serviceId: "hibob" });
 ```
 
 This is the compounding advantage of using Apideck over integrating BambooHR directly: code against the unified HRIS API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
@@ -169,7 +169,7 @@ See [BambooHR's API docs](https://documentation.bamboohr.com/docs) for available
 
 Other **HRIS** connectors that share this unified API surface (same method signatures, just change `serviceId`):
 
-[`deel`](../deel/) *(beta)*, [`hibob`](../hibob/), [`personio`](../personio/), [`workday`](../workday/), [`adp-ihcm`](../adp-ihcm/) *(beta)*, [`adp-workforce-now`](../adp-workforce-now/) *(beta)*, [`paychex`](../paychex/) *(beta)*, [`paylocity`](../paylocity/), and 49 more.
+[`workday`](../workday/), [`deel`](../deel/) *(beta)*, [`hibob`](../hibob/), [`personio`](../personio/), [`adp-ihcm`](../adp-ihcm/) *(beta)*, [`adp-workforce-now`](../adp-workforce-now/) *(beta)*, [`paychex`](../paychex/) *(beta)*, [`paylocity`](../paylocity/), and 49 more.
 
 ## See also
 

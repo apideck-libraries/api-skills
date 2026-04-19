@@ -10,13 +10,13 @@ metadata:
   serviceId: freshbooks
   unifiedApis: ["accounting"]
   authType: oauth2
-  tier: "1c"
+  tier: "1a"
   verified: true
 ---
 
 # FreshBooks (via Apideck)
 
-Access FreshBooks through Apideck's **Accounting** unified API — one of 34 Accounting connectors that share the same method surface. Code you write here ports to QuickBooks, NetSuite, Sage Intacct and 30 other Accounting connectors by changing a single `serviceId` string. Apideck handles auth, pagination, rate limiting, and retries so you don't write per-tenant FreshBooks plumbing.
+Access FreshBooks through Apideck's **Accounting** unified API — one of 34 Accounting connectors that share the same method surface. Code you write here ports to Access Financials, Acumatica, banqUP and 30 other Accounting connectors by changing a single `serviceId` string. Apideck handles auth, pagination, rate limiting, and retries so you don't write per-tenant FreshBooks plumbing.
 
 ## Quick facts
 
@@ -68,8 +68,8 @@ The Apideck **Accounting** unified API exposes the same methods for every connec
 await apideck.accounting.invoices.list({ serviceId: "freshbooks" });
 
 // Tomorrow — same code, different connector
-await apideck.accounting.invoices.list({ serviceId: "quickbooks" });
-await apideck.accounting.invoices.list({ serviceId: "netsuite" });
+await apideck.accounting.invoices.list({ serviceId: "access-financials" });
+await apideck.accounting.invoices.list({ serviceId: "acumatica" });
 ```
 
 This is the compounding advantage of using Apideck over integrating FreshBooks directly: code against the unified Accounting API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
@@ -115,7 +115,7 @@ See [FreshBooks's API docs](https://www.freshbooks.com/api/start) for available 
 
 Other **Accounting** connectors that share this unified API surface (same method signatures, just change `serviceId`):
 
-[`quickbooks`](../quickbooks/), [`netsuite`](../netsuite/), [`sage-intacct`](../sage-intacct/), [`workday`](../workday/), [`xero`](../xero/), [`exact-online`](../exact-online/), [`freeagent`](../freeagent/) *(beta)*, [`wave`](../wave/) *(beta)*, and 25 more.
+[`access-financials`](../access-financials/) *(beta)*, [`acumatica`](../acumatica/) *(beta)*, [`banqup`](../banqup/) *(beta)*, [`campfire`](../campfire/) *(beta)*, [`clearbooks-uk`](../clearbooks-uk/) *(beta)*, [`digits`](../digits/) *(beta)*, [`dualentry`](../dualentry/), [`exact-online`](../exact-online/), and 25 more.
 
 ## See also
 

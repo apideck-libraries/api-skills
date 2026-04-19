@@ -17,7 +17,7 @@ metadata:
 
 # Microsoft Outlook (via Apideck)
 
-Access Microsoft Outlook through Apideck's **CRM** unified API — one of 21 CRM connectors that share the same method surface. Code you write here ports to Salesforce, HubSpot, Pipedrive and 17 other CRM connectors by changing a single `serviceId` string. Apideck handles auth, pagination, rate limiting, and retries so you don't write per-tenant Microsoft Outlook plumbing.
+Access Microsoft Outlook through Apideck's **CRM** unified API — one of 21 CRM connectors that share the same method surface. Code you write here ports to Odoo, Salesforce, HubSpot and 17 other CRM connectors by changing a single `serviceId` string. Apideck handles auth, pagination, rate limiting, and retries so you don't write per-tenant Microsoft Outlook plumbing.
 
 > **Beta connector.** Microsoft Outlook is currently in beta on Apideck. Expect partial resource coverage and occasional mapping gaps. Always verify coverage (see below) and fall back to the Proxy API for unsupported operations.
 
@@ -71,8 +71,8 @@ The Apideck **CRM** unified API exposes the same methods for every connector in 
 await apideck.crm.contacts.list({ serviceId: "microsoft-outlook" });
 
 // Tomorrow — same code, different connector
+await apideck.crm.contacts.list({ serviceId: "odoo" });
 await apideck.crm.contacts.list({ serviceId: "salesforce" });
-await apideck.crm.contacts.list({ serviceId: "hubspot" });
 ```
 
 This is the compounding advantage of using Apideck over integrating Microsoft Outlook directly: code against the unified CRM API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
@@ -118,7 +118,7 @@ See [Microsoft Outlook's API docs](https://learn.microsoft.com/graph/api/overvie
 
 Other **CRM** connectors that share this unified API surface (same method signatures, just change `serviceId`):
 
-[`salesforce`](../salesforce/), [`hubspot`](../hubspot/), [`pipedrive`](../pipedrive/), [`zoho-crm`](../zoho-crm/), [`activecampaign`](../activecampaign/), [`close`](../close/), [`microsoft-dynamics`](../microsoft-dynamics/), [`teamleader`](../teamleader/), and 12 more.
+[`odoo`](../odoo/) *(beta)*, [`salesforce`](../salesforce/), [`hubspot`](../hubspot/), [`pipedrive`](../pipedrive/), [`zoho-crm`](../zoho-crm/), [`activecampaign`](../activecampaign/), [`close`](../close/), [`microsoft-dynamics`](../microsoft-dynamics/), and 12 more.
 
 ## See also
 

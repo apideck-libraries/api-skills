@@ -17,7 +17,7 @@ metadata:
 
 # Teamtailor (via Apideck)
 
-Access Teamtailor through Apideck's **ATS** unified API — one of 11 ATS connectors that share the same method surface. Code you write here ports to Greenhouse, Lever, Workable and 7 other ATS connectors by changing a single `serviceId` string. Apideck handles auth, pagination, rate limiting, and retries so you don't write per-tenant Teamtailor plumbing.
+Access Teamtailor through Apideck's **ATS** unified API — one of 11 ATS connectors that share the same method surface. Code you write here ports to Greenhouse, Workday, Lever and 7 other ATS connectors by changing a single `serviceId` string. Apideck handles auth, pagination, rate limiting, and retries so you don't write per-tenant Teamtailor plumbing.
 
 > **Beta connector.** Teamtailor is currently in beta on Apideck. Expect partial resource coverage and occasional mapping gaps. Always verify coverage (see below) and fall back to the Proxy API for unsupported operations.
 
@@ -73,7 +73,7 @@ await apideck.ats.applicants.list({ serviceId: "teamtailor" });
 
 // Tomorrow — same code, different connector
 await apideck.ats.applicants.list({ serviceId: "greenhouse" });
-await apideck.ats.applicants.list({ serviceId: "lever" });
+await apideck.ats.applicants.list({ serviceId: "workday" });
 ```
 
 This is the compounding advantage of using Apideck over integrating Teamtailor directly: code against the unified ATS API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
@@ -118,7 +118,7 @@ See [Teamtailor's API docs](https://docs.teamtailor.com) for available endpoints
 
 Other **ATS** connectors that share this unified API surface (same method signatures, just change `serviceId`):
 
-[`greenhouse`](../greenhouse/), [`lever`](../lever/), [`workable`](../workable/) *(beta)*, [`workday`](../workday/), [`bullhorn-ats`](../bullhorn-ats/) *(beta)*, [`freshteam`](../freshteam/), [`jobadder`](../jobadder/) *(beta)*, [`recruitee`](../recruitee/), and 2 more.
+[`greenhouse`](../greenhouse/), [`workday`](../workday/), [`lever`](../lever/), [`workable`](../workable/) *(beta)*, [`bullhorn-ats`](../bullhorn-ats/) *(beta)*, [`freshteam`](../freshteam/), [`jobadder`](../jobadder/) *(beta)*, [`recruitee`](../recruitee/), and 2 more.
 
 ## See also
 

@@ -53,6 +53,34 @@
   },
   "connectors": [
     {
+      "slug": "access-financials",
+      "name": "Access Financials",
+      "serviceId": "access-financials",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "apiKey",
+      "tier": "1a",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://www.theaccessgroup.com/en-gb/finance/",
+      "homepage": "https://www.theaccessgroup.com/en-gb/finance/products/access-financials/"
+    },
+    {
+      "slug": "acumatica",
+      "name": "Acumatica",
+      "serviceId": "acumatica",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "1a",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://help.acumatica.com",
+      "homepage": "https://www.acumatica.com/"
+    },
+    {
       "slug": "bamboohr",
       "name": "BambooHR",
       "serviceId": "bamboohr",
@@ -66,6 +94,143 @@
       "homepage": "https://www.bamboohr.com"
     },
     {
+      "slug": "banqup",
+      "name": "banqUP",
+      "serviceId": "banqup",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "1a",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://banqup.com",
+      "homepage": "https://banqup.com/"
+    },
+    {
+      "slug": "campfire",
+      "name": "Campfire",
+      "serviceId": "campfire",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "apiKey",
+      "tier": "1a",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://www.campfire.com",
+      "homepage": "https://campfire.ai/"
+    },
+    {
+      "slug": "clearbooks-uk",
+      "name": "Clear Books",
+      "serviceId": "clearbooks-uk",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "apiKey",
+      "tier": "1a",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://www.clearbooks.co.uk/support/api/",
+      "homepage": "https://www.clearbooks.co.uk/"
+    },
+    {
+      "slug": "digits",
+      "name": "Digits",
+      "serviceId": "digits",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "1a",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://digits.com",
+      "homepage": "https://www.digits.com/"
+    },
+    {
+      "slug": "dualentry",
+      "name": "Dualentry",
+      "serviceId": "dualentry",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "apiKey",
+      "tier": "1a",
+      "verified": true,
+      "docsUrl": "https://dualentry.com",
+      "homepage": "https://www.dualentry.com/"
+    },
+    {
+      "slug": "exact-online",
+      "name": "Exact Online",
+      "serviceId": "exact-online",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "1a",
+      "verified": true,
+      "docsUrl": "https://support.exactonline.com/community/s/knowledge-base",
+      "homepage": "https://www.exact.com/"
+    },
+    {
+      "slug": "exact-online-nl",
+      "name": "Exact Online NL",
+      "serviceId": "exact-online-nl",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "1a",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://support.exactonline.com",
+      "homepage": "https://www.exact.com/nl"
+    },
+    {
+      "slug": "exact-online-uk",
+      "name": "Exact Online UK",
+      "serviceId": "exact-online-uk",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "1a",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://support.exactonline.com",
+      "homepage": "https://www.exact.com/uk"
+    },
+    {
+      "slug": "freeagent",
+      "name": "FreeAgent",
+      "serviceId": "freeagent",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "1a",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://dev.freeagent.com",
+      "homepage": "https://www.freeagent.com/"
+    },
+    {
+      "slug": "freshbooks",
+      "name": "FreshBooks",
+      "serviceId": "freshbooks",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "1a",
+      "verified": true,
+      "docsUrl": "https://www.freshbooks.com/api/start",
+      "homepage": "https://www.freshbooks.com/"
+    },
+    {
       "slug": "greenhouse",
       "name": "Greenhouse",
       "serviceId": "greenhouse",
@@ -77,6 +242,19 @@
       "verified": true,
       "docsUrl": "https://developers.greenhouse.io",
       "homepage": "https://www.greenhouse.io/"
+    },
+    {
+      "slug": "intuit-enterprise-suite",
+      "name": "Intuit Enterprise Suite",
+      "serviceId": "intuit-enterprise-suite",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "1a",
+      "verified": true,
+      "docsUrl": "https://developer.intuit.com",
+      "homepage": "https://developer.intuit.com"
     },
     {
       "slug": "jira",
@@ -93,6 +271,143 @@
       "homepage": "https://www.atlassian.com/software/jira"
     },
     {
+      "slug": "kashflow",
+      "name": "Kashflow",
+      "serviceId": "kashflow",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "basic",
+      "tier": "1a",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developer.kashflow.com",
+      "homepage": "https://www.kashflow.com/"
+    },
+    {
+      "slug": "microsoft-dynamics-365-business-central",
+      "name": "Microsoft Dynamics 365 Business Central",
+      "serviceId": "microsoft-dynamics-365-business-central",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "1a",
+      "verified": true,
+      "docsUrl": "https://learn.microsoft.com/dynamics365/business-central/",
+      "homepage": "https://dynamics.microsoft.com/en-us/business-central/overview/"
+    },
+    {
+      "slug": "moneybird",
+      "name": "Moneybird",
+      "serviceId": "moneybird",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "1a",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developer.moneybird.com",
+      "homepage": "https://www.moneybird.com/"
+    },
+    {
+      "slug": "mrisoftware",
+      "name": "MRI Software",
+      "serviceId": "mrisoftware",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "basic",
+      "tier": "1a",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://www.mrisoftware.com",
+      "homepage": "https://www.mrisoftware.com/"
+    },
+    {
+      "slug": "myob",
+      "name": "MYOB",
+      "serviceId": "myob",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "1a",
+      "verified": true,
+      "docsUrl": "https://developer.myob.com",
+      "homepage": "https://myob.com"
+    },
+    {
+      "slug": "myob-acumatica",
+      "name": "MYOB Acumatica",
+      "serviceId": "myob-acumatica",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "1a",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developer.myob.com",
+      "homepage": "https://www.myob.com/au/erp-software/products/myob-acumatica"
+    },
+    {
+      "slug": "netsuite",
+      "name": "NetSuite",
+      "serviceId": "netsuite",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "custom",
+      "tier": "1a",
+      "verified": true,
+      "docsUrl": "https://docs.oracle.com/en/cloud/saas/netsuite/",
+      "homepage": "https://netsuite.com"
+    },
+    {
+      "slug": "odoo",
+      "name": "Odoo",
+      "serviceId": "odoo",
+      "unifiedApis": [
+        "crm",
+        "accounting"
+      ],
+      "authType": "basic",
+      "tier": "1a",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://www.odoo.com/documentation/",
+      "homepage": "https://www.odoo.com/"
+    },
+    {
+      "slug": "pennylane",
+      "name": "Pennylane",
+      "serviceId": "pennylane",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "1a",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://pennylane.readme.io",
+      "homepage": "https://www.pennylane.com/"
+    },
+    {
+      "slug": "procountor-fi",
+      "name": "Procountor",
+      "serviceId": "procountor-fi",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "1a",
+      "verified": true,
+      "docsUrl": "https://dev.procountor.com",
+      "homepage": "https://procountor.fi/"
+    },
+    {
       "slug": "quickbooks",
       "name": "QuickBooks",
       "serviceId": "quickbooks",
@@ -104,6 +419,47 @@
       "verified": true,
       "docsUrl": "https://developer.intuit.com/app/developer/qbo/docs",
       "homepage": "https://quickbooks.intuit.com/"
+    },
+    {
+      "slug": "rillet",
+      "name": "Rillet",
+      "serviceId": "rillet",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "apiKey",
+      "tier": "1a",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://rillet.com",
+      "homepage": "https://rillet.com/"
+    },
+    {
+      "slug": "sage-business-cloud-accounting",
+      "name": "Sage Business Cloud Accounting",
+      "serviceId": "sage-business-cloud-accounting",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "1a",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developer.sage.com/accounting/",
+      "homepage": "https://www.sage.com/en-za/sage-business-cloud/accounting/"
+    },
+    {
+      "slug": "sage-intacct",
+      "name": "Sage Intacct",
+      "serviceId": "sage-intacct",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "1a",
+      "verified": true,
+      "docsUrl": "https://developer.intacct.com",
+      "homepage": "https://www.sageintacct.com/"
     },
     {
       "slug": "salesforce",
@@ -144,6 +500,102 @@
       "status": "beta",
       "docsUrl": "https://shopify.dev/docs/api",
       "homepage": "https://www.shopify.com/"
+    },
+    {
+      "slug": "stripe",
+      "name": "Stripe",
+      "serviceId": "stripe",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "1a",
+      "verified": true,
+      "docsUrl": "https://stripe.com/docs/api",
+      "homepage": "https://stripe.com/"
+    },
+    {
+      "slug": "visma-netvisor",
+      "name": "Visma Netvisor",
+      "serviceId": "visma-netvisor",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "custom",
+      "tier": "1a",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://support.netvisor.fi",
+      "homepage": "https://netvisor.fi/accounting-software/"
+    },
+    {
+      "slug": "wave",
+      "name": "Wave",
+      "serviceId": "wave",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "1a",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developer.waveapps.com",
+      "homepage": "https://www.waveapps.com/"
+    },
+    {
+      "slug": "workday",
+      "name": "Workday",
+      "serviceId": "workday",
+      "unifiedApis": [
+        "accounting",
+        "hris",
+        "ats"
+      ],
+      "authType": "custom",
+      "tier": "1a",
+      "verified": true,
+      "docsUrl": "https://community.workday.com",
+      "homepage": "https://workday.com"
+    },
+    {
+      "slug": "xero",
+      "name": "Xero",
+      "serviceId": "xero",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "1a",
+      "verified": true,
+      "docsUrl": "https://developer.xero.com",
+      "homepage": "https://www.xero.com/"
+    },
+    {
+      "slug": "yuki",
+      "name": "Yuki",
+      "serviceId": "yuki",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "apiKey",
+      "tier": "1a",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://api.yukiworks.nl",
+      "homepage": "https://www.yuki.nl/"
+    },
+    {
+      "slug": "zoho-books",
+      "name": "Zoho Books",
+      "serviceId": "zoho-books",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "1a",
+      "verified": true,
+      "docsUrl": "https://www.zoho.com/books/api/v3/",
+      "homepage": "https://www.zoho.com/books/"
     },
     {
       "slug": "bigcommerce",
@@ -294,19 +746,6 @@
       "homepage": "https://linear.app/"
     },
     {
-      "slug": "netsuite",
-      "name": "NetSuite",
-      "serviceId": "netsuite",
-      "unifiedApis": [
-        "accounting"
-      ],
-      "authType": "custom",
-      "tier": "1b",
-      "verified": true,
-      "docsUrl": "https://docs.oracle.com/en/cloud/saas/netsuite/",
-      "homepage": "https://netsuite.com"
-    },
-    {
       "slug": "onedrive",
       "name": "OneDrive",
       "serviceId": "onedrive",
@@ -344,19 +783,6 @@
       "verified": true,
       "docsUrl": "https://developers.pipedrive.com",
       "homepage": "https://www.pipedrive.com/"
-    },
-    {
-      "slug": "sage-intacct",
-      "name": "Sage Intacct",
-      "serviceId": "sage-intacct",
-      "unifiedApis": [
-        "accounting"
-      ],
-      "authType": "oauth2",
-      "tier": "1b",
-      "verified": true,
-      "docsUrl": "https://developer.intacct.com",
-      "homepage": "https://www.sageintacct.com/"
     },
     {
       "slug": "shopify-public-app",
@@ -399,34 +825,6 @@
       "status": "beta",
       "docsUrl": "https://workable.readme.io",
       "homepage": "https://workable.com"
-    },
-    {
-      "slug": "workday",
-      "name": "Workday",
-      "serviceId": "workday",
-      "unifiedApis": [
-        "accounting",
-        "hris",
-        "ats"
-      ],
-      "authType": "custom",
-      "tier": "1b",
-      "verified": true,
-      "docsUrl": "https://community.workday.com",
-      "homepage": "https://workday.com"
-    },
-    {
-      "slug": "xero",
-      "name": "Xero",
-      "serviceId": "xero",
-      "unifiedApis": [
-        "accounting"
-      ],
-      "authType": "oauth2",
-      "tier": "1b",
-      "verified": true,
-      "docsUrl": "https://developer.xero.com",
-      "homepage": "https://www.xero.com/"
     },
     {
       "slug": "zoho-crm",
@@ -551,46 +949,6 @@
       "homepage": "https://etsy.com"
     },
     {
-      "slug": "exact-online",
-      "name": "Exact Online",
-      "serviceId": "exact-online",
-      "unifiedApis": [
-        "accounting"
-      ],
-      "authType": "oauth2",
-      "tier": "1c",
-      "verified": true,
-      "docsUrl": "https://support.exactonline.com/community/s/knowledge-base",
-      "homepage": "https://www.exact.com/"
-    },
-    {
-      "slug": "freeagent",
-      "name": "FreeAgent",
-      "serviceId": "freeagent",
-      "unifiedApis": [
-        "accounting"
-      ],
-      "authType": "oauth2",
-      "tier": "1c",
-      "verified": true,
-      "status": "beta",
-      "docsUrl": "https://dev.freeagent.com",
-      "homepage": "https://www.freeagent.com/"
-    },
-    {
-      "slug": "freshbooks",
-      "name": "FreshBooks",
-      "serviceId": "freshbooks",
-      "unifiedApis": [
-        "accounting"
-      ],
-      "authType": "oauth2",
-      "tier": "1c",
-      "verified": true,
-      "docsUrl": "https://www.freshbooks.com/api/start",
-      "homepage": "https://www.freshbooks.com/"
-    },
-    {
       "slug": "magento",
       "name": "Magento",
       "serviceId": "magento",
@@ -672,20 +1030,6 @@
       "homepage": "https://www.teamtailor.com/"
     },
     {
-      "slug": "wave",
-      "name": "Wave",
-      "serviceId": "wave",
-      "unifiedApis": [
-        "accounting"
-      ],
-      "authType": "oauth2",
-      "tier": "1c",
-      "verified": true,
-      "status": "beta",
-      "docsUrl": "https://developer.waveapps.com",
-      "homepage": "https://www.waveapps.com/"
-    },
-    {
       "slug": "zendesk-sell",
       "name": "Zendesk Sell",
       "serviceId": "zendesk-sell",
@@ -697,20 +1041,6 @@
       "verified": true,
       "docsUrl": "https://developer.zendesk.com/api-reference/sales-crm/",
       "homepage": "https://www.zendesk.com/sell/"
-    },
-    {
-      "slug": "access-financials",
-      "name": "Access Financials",
-      "serviceId": "access-financials",
-      "unifiedApis": [
-        "accounting"
-      ],
-      "authType": "apiKey",
-      "tier": "2",
-      "verified": true,
-      "status": "beta",
-      "docsUrl": "https://www.theaccessgroup.com/en-gb/finance/",
-      "homepage": "https://www.theaccessgroup.com/en-gb/finance/products/access-financials/"
     },
     {
       "slug": "acerta",
@@ -737,20 +1067,6 @@
       "tier": "2",
       "verified": true,
       "homepage": "https://act.com"
-    },
-    {
-      "slug": "acumatica",
-      "name": "Acumatica",
-      "serviceId": "acumatica",
-      "unifiedApis": [
-        "accounting"
-      ],
-      "authType": "oauth2",
-      "tier": "2",
-      "verified": true,
-      "status": "beta",
-      "docsUrl": "https://help.acumatica.com",
-      "homepage": "https://www.acumatica.com/"
     },
     {
       "slug": "adp-run",
@@ -822,20 +1138,6 @@
       "homepage": "https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-whatis"
     },
     {
-      "slug": "banqup",
-      "name": "banqUP",
-      "serviceId": "banqup",
-      "unifiedApis": [
-        "accounting"
-      ],
-      "authType": "oauth2",
-      "tier": "2",
-      "verified": true,
-      "status": "beta",
-      "docsUrl": "https://banqup.com",
-      "homepage": "https://banqup.com/"
-    },
-    {
       "slug": "blackbaud",
       "name": "Blackbaud",
       "serviceId": "blackbaud",
@@ -875,20 +1177,6 @@
       "verified": true,
       "docsUrl": "https://developer.breathehr.com",
       "homepage": "https://www.breathehr.com/"
-    },
-    {
-      "slug": "campfire",
-      "name": "Campfire",
-      "serviceId": "campfire",
-      "unifiedApis": [
-        "accounting"
-      ],
-      "authType": "apiKey",
-      "tier": "2",
-      "verified": true,
-      "status": "beta",
-      "docsUrl": "https://www.campfire.com",
-      "homepage": "https://campfire.ai/"
     },
     {
       "slug": "cascade-hr",
@@ -988,20 +1276,6 @@
       "homepage": "https://www.ciphr.com/"
     },
     {
-      "slug": "clearbooks-uk",
-      "name": "Clear Books",
-      "serviceId": "clearbooks-uk",
-      "unifiedApis": [
-        "accounting"
-      ],
-      "authType": "apiKey",
-      "tier": "2",
-      "verified": true,
-      "status": "beta",
-      "docsUrl": "https://www.clearbooks.co.uk/support/api/",
-      "homepage": "https://www.clearbooks.co.uk/"
-    },
-    {
       "slug": "copper",
       "name": "Copper",
       "serviceId": "copper",
@@ -1013,33 +1287,6 @@
       "verified": true,
       "docsUrl": "https://developer.copper.com",
       "homepage": "https://www.copper.com/"
-    },
-    {
-      "slug": "digits",
-      "name": "Digits",
-      "serviceId": "digits",
-      "unifiedApis": [
-        "accounting"
-      ],
-      "authType": "oauth2",
-      "tier": "2",
-      "verified": true,
-      "status": "beta",
-      "docsUrl": "https://digits.com",
-      "homepage": "https://www.digits.com/"
-    },
-    {
-      "slug": "dualentry",
-      "name": "Dualentry",
-      "serviceId": "dualentry",
-      "unifiedApis": [
-        "accounting"
-      ],
-      "authType": "apiKey",
-      "tier": "2",
-      "verified": true,
-      "docsUrl": "https://dualentry.com",
-      "homepage": "https://www.dualentry.com/"
     },
     {
       "slug": "employmenthero",
@@ -1054,34 +1301,6 @@
       "status": "beta",
       "docsUrl": "https://developer.employmenthero.com",
       "homepage": "https://employmenthero.com"
-    },
-    {
-      "slug": "exact-online-nl",
-      "name": "Exact Online NL",
-      "serviceId": "exact-online-nl",
-      "unifiedApis": [
-        "accounting"
-      ],
-      "authType": "oauth2",
-      "tier": "2",
-      "verified": true,
-      "status": "beta",
-      "docsUrl": "https://support.exactonline.com",
-      "homepage": "https://www.exact.com/nl"
-    },
-    {
-      "slug": "exact-online-uk",
-      "name": "Exact Online UK",
-      "serviceId": "exact-online-uk",
-      "unifiedApis": [
-        "accounting"
-      ],
-      "authType": "oauth2",
-      "tier": "2",
-      "verified": true,
-      "status": "beta",
-      "docsUrl": "https://support.exactonline.com",
-      "homepage": "https://www.exact.com/uk"
     },
     {
       "slug": "factorialhr",
@@ -1271,19 +1490,6 @@
       "homepage": "https://humaans.io/"
     },
     {
-      "slug": "intuit-enterprise-suite",
-      "name": "Intuit Enterprise Suite",
-      "serviceId": "intuit-enterprise-suite",
-      "unifiedApis": [
-        "accounting"
-      ],
-      "authType": "oauth2",
-      "tier": "2",
-      "verified": true,
-      "docsUrl": "https://developer.intuit.com",
-      "homepage": "https://developer.intuit.com"
-    },
-    {
       "slug": "jobadder",
       "name": "JobAdder",
       "serviceId": "jobadder",
@@ -1320,20 +1526,6 @@
       "tier": "2",
       "verified": true,
       "homepage": "https://justworks.com/"
-    },
-    {
-      "slug": "kashflow",
-      "name": "Kashflow",
-      "serviceId": "kashflow",
-      "unifiedApis": [
-        "accounting"
-      ],
-      "authType": "basic",
-      "tier": "2",
-      "verified": true,
-      "status": "beta",
-      "docsUrl": "https://developer.kashflow.com",
-      "homepage": "https://www.kashflow.com/"
     },
     {
       "slug": "keka",
@@ -1446,19 +1638,6 @@
       "homepage": "https://www.lucca-hr.com/"
     },
     {
-      "slug": "microsoft-dynamics-365-business-central",
-      "name": "Microsoft Dynamics 365 Business Central",
-      "serviceId": "microsoft-dynamics-365-business-central",
-      "unifiedApis": [
-        "accounting"
-      ],
-      "authType": "oauth2",
-      "tier": "2",
-      "verified": true,
-      "docsUrl": "https://learn.microsoft.com/dynamics365/business-central/",
-      "homepage": "https://dynamics.microsoft.com/en-us/business-central/overview/"
-    },
-    {
       "slug": "microsoft-dynamics-hr",
       "name": "Microsoft Dynamics 365 Human Resources",
       "serviceId": "microsoft-dynamics-hr",
@@ -1485,61 +1664,6 @@
       "docsUrl": "https://learn.microsoft.com/graph/api/overview"
     },
     {
-      "slug": "moneybird",
-      "name": "Moneybird",
-      "serviceId": "moneybird",
-      "unifiedApis": [
-        "accounting"
-      ],
-      "authType": "oauth2",
-      "tier": "2",
-      "verified": true,
-      "status": "beta",
-      "docsUrl": "https://developer.moneybird.com",
-      "homepage": "https://www.moneybird.com/"
-    },
-    {
-      "slug": "mrisoftware",
-      "name": "MRI Software",
-      "serviceId": "mrisoftware",
-      "unifiedApis": [
-        "accounting"
-      ],
-      "authType": "basic",
-      "tier": "2",
-      "verified": true,
-      "status": "beta",
-      "docsUrl": "https://www.mrisoftware.com",
-      "homepage": "https://www.mrisoftware.com/"
-    },
-    {
-      "slug": "myob",
-      "name": "MYOB",
-      "serviceId": "myob",
-      "unifiedApis": [
-        "accounting"
-      ],
-      "authType": "oauth2",
-      "tier": "2",
-      "verified": true,
-      "docsUrl": "https://developer.myob.com",
-      "homepage": "https://myob.com"
-    },
-    {
-      "slug": "myob-acumatica",
-      "name": "MYOB Acumatica",
-      "serviceId": "myob-acumatica",
-      "unifiedApis": [
-        "accounting"
-      ],
-      "authType": "oauth2",
-      "tier": "2",
-      "verified": true,
-      "status": "beta",
-      "docsUrl": "https://developer.myob.com",
-      "homepage": "https://www.myob.com/au/erp-software/products/myob-acumatica"
-    },
-    {
       "slug": "namely",
       "name": "Namely",
       "serviceId": "namely",
@@ -1564,21 +1688,6 @@
       "verified": true,
       "docsUrl": "https://support.nmbrs.com",
       "homepage": "https://www.nmbrs.com"
-    },
-    {
-      "slug": "odoo",
-      "name": "Odoo",
-      "serviceId": "odoo",
-      "unifiedApis": [
-        "crm",
-        "accounting"
-      ],
-      "authType": "basic",
-      "tier": "2",
-      "verified": true,
-      "status": "beta",
-      "docsUrl": "https://www.odoo.com/documentation/",
-      "homepage": "https://www.odoo.com/"
     },
     {
       "slug": "officient-io",
@@ -1631,20 +1740,6 @@
       "verified": true,
       "docsUrl": "https://developers.payfit.com",
       "homepage": "https://payfit.com/"
-    },
-    {
-      "slug": "pennylane",
-      "name": "Pennylane",
-      "serviceId": "pennylane",
-      "unifiedApis": [
-        "accounting"
-      ],
-      "authType": "oauth2",
-      "tier": "2",
-      "verified": true,
-      "status": "beta",
-      "docsUrl": "https://pennylane.readme.io",
-      "homepage": "https://www.pennylane.com/"
     },
     {
       "slug": "people-hr",
@@ -1702,19 +1797,6 @@
       "homepage": "https://www.prestashop.com/"
     },
     {
-      "slug": "procountor-fi",
-      "name": "Procountor",
-      "serviceId": "procountor-fi",
-      "unifiedApis": [
-        "accounting"
-      ],
-      "authType": "oauth2",
-      "tier": "2",
-      "verified": true,
-      "docsUrl": "https://dev.procountor.com",
-      "homepage": "https://procountor.fi/"
-    },
-    {
       "slug": "recruitee",
       "name": "Recruitee",
       "serviceId": "recruitee",
@@ -1739,34 +1821,6 @@
       "status": "beta",
       "docsUrl": "https://developer.remote.com",
       "homepage": "https://remote.com/"
-    },
-    {
-      "slug": "rillet",
-      "name": "Rillet",
-      "serviceId": "rillet",
-      "unifiedApis": [
-        "accounting"
-      ],
-      "authType": "apiKey",
-      "tier": "2",
-      "verified": true,
-      "status": "beta",
-      "docsUrl": "https://rillet.com",
-      "homepage": "https://rillet.com/"
-    },
-    {
-      "slug": "sage-business-cloud-accounting",
-      "name": "Sage Business Cloud Accounting",
-      "serviceId": "sage-business-cloud-accounting",
-      "unifiedApis": [
-        "accounting"
-      ],
-      "authType": "oauth2",
-      "tier": "2",
-      "verified": true,
-      "status": "beta",
-      "docsUrl": "https://developer.sage.com/accounting/",
-      "homepage": "https://www.sage.com/en-za/sage-business-cloud/accounting/"
     },
     {
       "slug": "sage-hr",
@@ -1877,19 +1931,6 @@
       "homepage": "https://www.silae.fr/"
     },
     {
-      "slug": "stripe",
-      "name": "Stripe",
-      "serviceId": "stripe",
-      "unifiedApis": [
-        "accounting"
-      ],
-      "authType": "oauth2",
-      "tier": "2",
-      "verified": true,
-      "docsUrl": "https://stripe.com/docs/api",
-      "homepage": "https://stripe.com/"
-    },
-    {
       "slug": "sympa",
       "name": "Sympa",
       "serviceId": "sympa",
@@ -1942,20 +1983,6 @@
       "homepage": "https://www.ukg.com/solutions/ukg-pro"
     },
     {
-      "slug": "visma-netvisor",
-      "name": "Visma Netvisor",
-      "serviceId": "visma-netvisor",
-      "unifiedApis": [
-        "accounting"
-      ],
-      "authType": "custom",
-      "tier": "2",
-      "verified": true,
-      "status": "beta",
-      "docsUrl": "https://support.netvisor.fi",
-      "homepage": "https://netvisor.fi/accounting-software/"
-    },
-    {
       "slug": "walmart",
       "name": "Walmart",
       "serviceId": "walmart",
@@ -1980,33 +2007,6 @@
       "verified": true,
       "status": "beta",
       "homepage": "https://wix.com"
-    },
-    {
-      "slug": "yuki",
-      "name": "Yuki",
-      "serviceId": "yuki",
-      "unifiedApis": [
-        "accounting"
-      ],
-      "authType": "apiKey",
-      "tier": "2",
-      "verified": true,
-      "status": "beta",
-      "docsUrl": "https://api.yukiworks.nl",
-      "homepage": "https://www.yuki.nl/"
-    },
-    {
-      "slug": "zoho-books",
-      "name": "Zoho Books",
-      "serviceId": "zoho-books",
-      "unifiedApis": [
-        "accounting"
-      ],
-      "authType": "oauth2",
-      "tier": "2",
-      "verified": true,
-      "docsUrl": "https://www.zoho.com/books/api/v3/",
-      "homepage": "https://www.zoho.com/books/"
     },
     {
       "slug": "zoho-people",

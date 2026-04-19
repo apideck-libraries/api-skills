@@ -16,7 +16,7 @@ metadata:
 
 # Hibob (via Apideck)
 
-Access Hibob through Apideck's **HRIS** unified API — one of 58 HRIS connectors that share the same method surface. Code you write here ports to BambooHR, Deel, Personio and 54 other HRIS connectors by changing a single `serviceId` string. Apideck handles auth, pagination, rate limiting, and retries so you don't write per-tenant Hibob plumbing.
+Access Hibob through Apideck's **HRIS** unified API — one of 58 HRIS connectors that share the same method surface. Code you write here ports to BambooHR, Workday, Deel and 54 other HRIS connectors by changing a single `serviceId` string. Apideck handles auth, pagination, rate limiting, and retries so you don't write per-tenant Hibob plumbing.
 
 ## Quick facts
 
@@ -69,7 +69,7 @@ await apideck.hris.employees.list({ serviceId: "hibob" });
 
 // Tomorrow — same code, different connector
 await apideck.hris.employees.list({ serviceId: "bamboohr" });
-await apideck.hris.employees.list({ serviceId: "deel" });
+await apideck.hris.employees.list({ serviceId: "workday" });
 ```
 
 This is the compounding advantage of using Apideck over integrating Hibob directly: code against the unified HRIS API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
@@ -130,7 +130,7 @@ See [Hibob's API docs](https://apidocs.hibob.com) for available endpoints.
 
 Other **HRIS** connectors that share this unified API surface (same method signatures, just change `serviceId`):
 
-[`bamboohr`](../bamboohr/), [`deel`](../deel/) *(beta)*, [`personio`](../personio/), [`workday`](../workday/), [`adp-ihcm`](../adp-ihcm/) *(beta)*, [`adp-workforce-now`](../adp-workforce-now/) *(beta)*, [`paychex`](../paychex/) *(beta)*, [`paylocity`](../paylocity/), and 49 more.
+[`bamboohr`](../bamboohr/), [`workday`](../workday/), [`deel`](../deel/) *(beta)*, [`personio`](../personio/), [`adp-ihcm`](../adp-ihcm/) *(beta)*, [`adp-workforce-now`](../adp-workforce-now/) *(beta)*, [`paychex`](../paychex/) *(beta)*, [`paylocity`](../paylocity/), and 49 more.
 
 ## See also
 

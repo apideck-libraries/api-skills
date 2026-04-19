@@ -17,7 +17,7 @@ metadata:
 
 # Zoho People (via Apideck)
 
-Access Zoho People through Apideck's **HRIS** unified API — one of 58 HRIS connectors that share the same method surface. Code you write here ports to BambooHR, Deel, Hibob and 54 other HRIS connectors by changing a single `serviceId` string. Apideck handles auth, pagination, rate limiting, and retries so you don't write per-tenant Zoho People plumbing.
+Access Zoho People through Apideck's **HRIS** unified API — one of 58 HRIS connectors that share the same method surface. Code you write here ports to BambooHR, Workday, Deel and 54 other HRIS connectors by changing a single `serviceId` string. Apideck handles auth, pagination, rate limiting, and retries so you don't write per-tenant Zoho People plumbing.
 
 > **Beta connector.** Zoho People is currently in beta on Apideck. Expect partial resource coverage and occasional mapping gaps. Always verify coverage (see below) and fall back to the Proxy API for unsupported operations.
 
@@ -73,7 +73,7 @@ await apideck.hris.employees.list({ serviceId: "zoho-people" });
 
 // Tomorrow — same code, different connector
 await apideck.hris.employees.list({ serviceId: "bamboohr" });
-await apideck.hris.employees.list({ serviceId: "deel" });
+await apideck.hris.employees.list({ serviceId: "workday" });
 ```
 
 This is the compounding advantage of using Apideck over integrating Zoho People directly: code against the unified HRIS API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
@@ -119,7 +119,7 @@ See [Zoho People's API docs](https://www.zoho.com/people/api/) for available end
 
 Other **HRIS** connectors that share this unified API surface (same method signatures, just change `serviceId`):
 
-[`bamboohr`](../bamboohr/), [`deel`](../deel/) *(beta)*, [`hibob`](../hibob/), [`personio`](../personio/), [`workday`](../workday/), [`adp-ihcm`](../adp-ihcm/) *(beta)*, [`adp-workforce-now`](../adp-workforce-now/) *(beta)*, [`paychex`](../paychex/) *(beta)*, and 49 more.
+[`bamboohr`](../bamboohr/), [`workday`](../workday/), [`deel`](../deel/) *(beta)*, [`hibob`](../hibob/), [`personio`](../personio/), [`adp-ihcm`](../adp-ihcm/) *(beta)*, [`adp-workforce-now`](../adp-workforce-now/) *(beta)*, [`paychex`](../paychex/) *(beta)*, and 49 more.
 
 ## See also
 

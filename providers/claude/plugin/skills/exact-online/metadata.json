@@ -8,7 +8,7 @@
     "accounting"
   ],
   "authType": "oauth2",
-  "tier": "1c",
+  "tier": "1a",
   "references": [
     "https://developers.apideck.com",
     "https://apideck.com",

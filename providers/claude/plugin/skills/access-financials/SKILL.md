@@ -10,14 +10,14 @@ metadata:
   serviceId: access-financials
   unifiedApis: ["accounting"]
   authType: apiKey
-  tier: "2"
+  tier: "1a"
   verified: true
   status: beta
 ---
 
 # Access Financials (via Apideck)
 
-Access Access Financials through Apideck's **Accounting** unified API — one of 34 Accounting connectors that share the same method surface. Code you write here ports to QuickBooks, NetSuite, Sage Intacct and 30 other Accounting connectors by changing a single `serviceId` string. Apideck handles auth, pagination, rate limiting, and retries so you don't write per-tenant Access Financials plumbing.
+Access Access Financials through Apideck's **Accounting** unified API — one of 34 Accounting connectors that share the same method surface. Code you write here ports to Acumatica, banqUP, Campfire and 30 other Accounting connectors by changing a single `serviceId` string. Apideck handles auth, pagination, rate limiting, and retries so you don't write per-tenant Access Financials plumbing.
 
 > **Beta connector.** Access Financials is currently in beta on Apideck. Expect partial resource coverage and occasional mapping gaps. Always verify coverage (see below) and fall back to the Proxy API for unsupported operations.
 
@@ -72,8 +72,8 @@ The Apideck **Accounting** unified API exposes the same methods for every connec
 await apideck.accounting.invoices.list({ serviceId: "access-financials" });
 
 // Tomorrow — same code, different connector
-await apideck.accounting.invoices.list({ serviceId: "quickbooks" });
-await apideck.accounting.invoices.list({ serviceId: "netsuite" });
+await apideck.accounting.invoices.list({ serviceId: "acumatica" });
+await apideck.accounting.invoices.list({ serviceId: "banqup" });
 ```
 
 This is the compounding advantage of using Apideck over integrating Access Financials directly: code against the unified Accounting API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
@@ -118,7 +118,7 @@ See [Access Financials's API docs](https://www.theaccessgroup.com/en-gb/finance/
 
 Other **Accounting** connectors that share this unified API surface (same method signatures, just change `serviceId`):
 
-[`quickbooks`](../quickbooks/), [`netsuite`](../netsuite/), [`sage-intacct`](../sage-intacct/), [`workday`](../workday/), [`xero`](../xero/), [`exact-online`](../exact-online/), [`freeagent`](../freeagent/) *(beta)*, [`freshbooks`](../freshbooks/), and 25 more.
+[`acumatica`](../acumatica/) *(beta)*, [`banqup`](../banqup/) *(beta)*, [`campfire`](../campfire/) *(beta)*, [`clearbooks-uk`](../clearbooks-uk/) *(beta)*, [`digits`](../digits/) *(beta)*, [`dualentry`](../dualentry/), [`exact-online`](../exact-online/), [`exact-online-nl`](../exact-online-nl/) *(beta)*, and 25 more.
 
 ## See also
 

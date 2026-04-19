@@ -17,7 +17,7 @@ metadata:
 
 # Microsoft Entra (via Apideck)
 
-Access Microsoft Entra through Apideck's **HRIS** unified API — one of 58 HRIS connectors that share the same method surface. Code you write here ports to BambooHR, Deel, Hibob and 54 other HRIS connectors by changing a single `serviceId` string. Apideck handles auth, pagination, rate limiting, and retries so you don't write per-tenant Microsoft Entra plumbing.
+Access Microsoft Entra through Apideck's **HRIS** unified API — one of 58 HRIS connectors that share the same method surface. Code you write here ports to BambooHR, Workday, Deel and 54 other HRIS connectors by changing a single `serviceId` string. Apideck handles auth, pagination, rate limiting, and retries so you don't write per-tenant Microsoft Entra plumbing.
 
 > **Beta connector.** Microsoft Entra is currently in beta on Apideck. Expect partial resource coverage and occasional mapping gaps. Always verify coverage (see below) and fall back to the Proxy API for unsupported operations.
 
@@ -72,7 +72,7 @@ await apideck.hris.employees.list({ serviceId: "azure-active-directory" });
 
 // Tomorrow — same code, different connector
 await apideck.hris.employees.list({ serviceId: "bamboohr" });
-await apideck.hris.employees.list({ serviceId: "deel" });
+await apideck.hris.employees.list({ serviceId: "workday" });
 ```
 
 This is the compounding advantage of using Apideck over integrating Microsoft Entra directly: code against the unified HRIS API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
@@ -118,7 +118,7 @@ See [Microsoft Entra's API docs](#) for available endpoints.
 
 Other **HRIS** connectors that share this unified API surface (same method signatures, just change `serviceId`):
 
-[`bamboohr`](../bamboohr/), [`deel`](../deel/) *(beta)*, [`hibob`](../hibob/), [`personio`](../personio/), [`workday`](../workday/), [`adp-ihcm`](../adp-ihcm/) *(beta)*, [`adp-workforce-now`](../adp-workforce-now/) *(beta)*, [`paychex`](../paychex/) *(beta)*, and 49 more.
+[`bamboohr`](../bamboohr/), [`workday`](../workday/), [`deel`](../deel/) *(beta)*, [`hibob`](../hibob/), [`personio`](../personio/), [`adp-ihcm`](../adp-ihcm/) *(beta)*, [`adp-workforce-now`](../adp-workforce-now/) *(beta)*, [`paychex`](../paychex/) *(beta)*, and 49 more.
 
 ## See also
 

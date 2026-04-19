@@ -16,7 +16,7 @@ metadata:
 
 # Breathe HR (via Apideck)
 
-Access Breathe HR through Apideck's **HRIS** unified API — one of 58 HRIS connectors that share the same method surface. Code you write here ports to BambooHR, Deel, Hibob and 54 other HRIS connectors by changing a single `serviceId` string. Apideck handles auth, pagination, rate limiting, and retries so you don't write per-tenant Breathe HR plumbing.
+Access Breathe HR through Apideck's **HRIS** unified API — one of 58 HRIS connectors that share the same method surface. Code you write here ports to BambooHR, Workday, Deel and 54 other HRIS connectors by changing a single `serviceId` string. Apideck handles auth, pagination, rate limiting, and retries so you don't write per-tenant Breathe HR plumbing.
 
 ## Quick facts
 
@@ -69,7 +69,7 @@ await apideck.hris.employees.list({ serviceId: "breathehr" });
 
 // Tomorrow — same code, different connector
 await apideck.hris.employees.list({ serviceId: "bamboohr" });
-await apideck.hris.employees.list({ serviceId: "deel" });
+await apideck.hris.employees.list({ serviceId: "workday" });
 ```
 
 This is the compounding advantage of using Apideck over integrating Breathe HR directly: code against the unified HRIS API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
@@ -114,7 +114,7 @@ See [Breathe HR's API docs](https://developer.breathehr.com) for available endpo
 
 Other **HRIS** connectors that share this unified API surface (same method signatures, just change `serviceId`):
 
-[`bamboohr`](../bamboohr/), [`deel`](../deel/) *(beta)*, [`hibob`](../hibob/), [`personio`](../personio/), [`workday`](../workday/), [`adp-ihcm`](../adp-ihcm/) *(beta)*, [`adp-workforce-now`](../adp-workforce-now/) *(beta)*, [`paychex`](../paychex/) *(beta)*, and 49 more.
+[`bamboohr`](../bamboohr/), [`workday`](../workday/), [`deel`](../deel/) *(beta)*, [`hibob`](../hibob/), [`personio`](../personio/), [`adp-ihcm`](../adp-ihcm/) *(beta)*, [`adp-workforce-now`](../adp-workforce-now/) *(beta)*, [`paychex`](../paychex/) *(beta)*, and 49 more.
 
 ## See also
 

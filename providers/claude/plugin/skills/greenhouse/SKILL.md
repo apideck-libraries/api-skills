@@ -16,7 +16,7 @@ metadata:
 
 # Greenhouse (via Apideck)
 
-Access Greenhouse through Apideck's **ATS** unified API — one of 11 ATS connectors that share the same method surface. Code you write here ports to Lever, Workable, Workday and 7 other ATS connectors by changing a single `serviceId` string. Apideck handles auth, pagination, rate limiting, and retries so you don't write per-tenant Greenhouse plumbing.
+Access Greenhouse through Apideck's **ATS** unified API — one of 11 ATS connectors that share the same method surface. Code you write here ports to Workday, Lever, Workable and 7 other ATS connectors by changing a single `serviceId` string. Apideck handles auth, pagination, rate limiting, and retries so you don't write per-tenant Greenhouse plumbing.
 
 ## Quick facts
 
@@ -68,8 +68,8 @@ The Apideck **ATS** unified API exposes the same methods for every connector in 
 await apideck.ats.applicants.list({ serviceId: "greenhouse" });
 
 // Tomorrow — same code, different connector
+await apideck.ats.applicants.list({ serviceId: "workday" });
 await apideck.ats.applicants.list({ serviceId: "lever" });
-await apideck.ats.applicants.list({ serviceId: "workable" });
 ```
 
 This is the compounding advantage of using Apideck over integrating Greenhouse directly: code against the unified ATS API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
@@ -168,7 +168,7 @@ See [Greenhouse's API docs](https://developers.greenhouse.io) for available endp
 
 Other **ATS** connectors that share this unified API surface (same method signatures, just change `serviceId`):
 
-[`lever`](../lever/), [`workable`](../workable/) *(beta)*, [`workday`](../workday/), [`bullhorn-ats`](../bullhorn-ats/) *(beta)*, [`teamtailor`](../teamtailor/) *(beta)*, [`freshteam`](../freshteam/), [`jobadder`](../jobadder/) *(beta)*, [`recruitee`](../recruitee/), and 2 more.
+[`workday`](../workday/), [`lever`](../lever/), [`workable`](../workable/) *(beta)*, [`bullhorn-ats`](../bullhorn-ats/) *(beta)*, [`teamtailor`](../teamtailor/) *(beta)*, [`freshteam`](../freshteam/), [`jobadder`](../jobadder/) *(beta)*, [`recruitee`](../recruitee/), and 2 more.
 
 ## See also
 
