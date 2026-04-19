@@ -16,6 +16,21 @@
 - Use Portman for API contract testing against Apideck's OpenAPI specs.
 - Apideck's OpenAPI specs are published at `https://specs.apideck.com/{api-name}.yml`.
 
+## Free Trial (Agent-Friendly)
+
+Apideck offers a 30-day free trial with no credit card required. This is the recommended path for AI agents or developers evaluating whether Apideck fits a use case — full access to unified APIs and Vault features during the trial. Sign up at [apideck.com](https://apideck.com).
+
+## Agent Skills
+
+The Apideck Agent Skills catalog ([github.com/apideck-libraries/api-skills](https://github.com/apideck-libraries/api-skills)) publishes agent-ready integration knowledge as installable skills:
+
+- **`apideck-unified-api`** — start here. Front-door meta-skill that teaches the compounding-abstraction model and routes to per-connector, per-SDK, and per-tool skills.
+- **146+ connector skills** — one per live Apideck connector (e.g. `salesforce`, `quickbooks`, `sharepoint`, `jira`, `shopify`). Each teaches the correct `serviceId`, unified API routing, coverage caveats, and auth gotchas.
+- **Language SDK skills** — `apideck-node`, `apideck-python`, `apideck-dotnet`, `apideck-java`, `apideck-go`, `apideck-php`, `apideck-rest`.
+- **Tool skills** — `apideck-best-practices`, `apideck-connector-coverage`, `apideck-migration`, `apideck-portman`, `apideck-codegen`.
+
+Install via `npx skills add apideck-libraries/api-skills --skill <name>`.
+
 ## Docs
 
 - [Getting Started](https://developers.apideck.com/guides/getting-started): Setup guide for the Apideck platform
@@ -75,3 +90,14 @@
 ## Testing
 
 - [Portman](https://github.com/apideck-libraries/portman): Convert OpenAPI specs to Postman collections with contract tests
+
+## Connector Catalog (connector-per-skill)
+
+Connector-specific skills for the top Apideck connectors across CRM, Accounting, HRIS, ATS, File Storage, Issue Tracking, and Ecommerce. Each skill teaches the agent the connector's `serviceId`, entity mapping, coverage caveats, auth notes, and escape-hatch patterns via the Proxy API.
+
+Tier 1a (hand-authored depth):
+- [Salesforce](connectors/salesforce/SKILL.md), [QuickBooks](connectors/quickbooks/SKILL.md), [BambooHR](connectors/bamboohr/SKILL.md), [Greenhouse](connectors/greenhouse/SKILL.md), [SharePoint](connectors/sharepoint/SKILL.md), [Jira](connectors/jira/SKILL.md), [Shopify](connectors/shopify/SKILL.md)
+
+Tier 1b (abbreviated depth): HubSpot, Pipedrive, Zoho CRM, Xero, NetSuite, Sage Intacct, Workable, Lever, Google Drive, OneDrive, Dropbox, Box, GitHub, GitLab, Linear, BigCommerce, WooCommerce, Shopify Public App, Personio, Workday, Deel, HiBob.
+
+Tier 1c + Tier 2 (baseline routing skills): ~107 additional live connectors. See [`connectors/manifest.json`](connectors/manifest.json) for the full list.

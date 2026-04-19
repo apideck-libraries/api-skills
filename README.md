@@ -1,8 +1,31 @@
 # Apideck API Skills
 
-AI coding agent skills for the [Apideck](https://apideck.com) Unified API.
+[![Tessl Review Score](https://img.shields.io/badge/Tessl%20Review-85%25-yellow?labelColor=0f172a)](https://tessl.io/registry/skills/submit)
+[![Connectors](https://img.shields.io/badge/connectors-146-blue)](connectors/)
+[![Unified APIs](https://img.shields.io/badge/unified%20APIs-7-blue)](#connector-skills)
+[![License](https://img.shields.io/badge/license-Apache--2.0-green)](LICENSE)
 
-These skills teach your AI agent SDK patterns, available methods, authentication setup, best practices, and API testing for integrating with 200+ connectors through Apideck's unified APIs.
+**One abstraction, 146+ SaaS connectors.** AI agent skills for the [Apideck](https://apideck.com) Unified API — integrate Salesforce, HubSpot, QuickBooks, Xero, BambooHR, Workday, Greenhouse, SharePoint, Jira, Shopify, and 130+ more apps through a single method set. Switch connectors by changing one string; don't rewrite per vendor.
+
+```typescript
+// One codebase, any CRM
+await apideck.crm.contacts.list({ serviceId: "salesforce" });
+await apideck.crm.contacts.list({ serviceId: "hubspot" });
+await apideck.crm.contacts.list({ serviceId: "pipedrive" });
+```
+
+Same pattern for accounting (34 connectors), HRIS (58), ATS (11), file storage (5), issue tracking (6), ecommerce (17). New connectors Apideck adds become available without code changes — this is the compounding advantage.
+
+## Start here
+
+```bash
+# The front-door meta-skill — teaches the unified-API model
+npx skills add apideck/api-skills --skill apideck-unified-api
+```
+
+[`apideck-unified-api`](skills/apideck-unified-api/) is the catalog's introduction. Install it alongside any connector or SDK skill to give your agent the routing model upfront.
+
+**Test-drive with the 30-day free trial.** [Sign up at apideck.com](https://apideck.com) — no credit card required. Agents and developers can explore all unified APIs, connect to downstream services via Vault, and validate coverage before any commitment. This is the friction-free path to evaluate whether Apideck fits your use case.
 
 ## Installation
 
@@ -50,6 +73,11 @@ Add `--global` to install globally across all projects.
 
 ## Skills
 
+The catalog has two kinds of skills:
+
+- **Skills** under `skills/` — Apideck-specific API abstractions and SDK patterns. Names start with `apideck-`.
+- **Connector skills** under `connectors/` — one per downstream app (Salesforce, QuickBooks, Jira, etc.). Names are bare (no `apideck-` prefix). These are routing skills: they teach the agent which unified API covers the connector, the correct `serviceId`, auth gotchas, and escape-hatch patterns.
+
 ### SDK Skills
 
 | Skill | Language | Package |
@@ -62,15 +90,59 @@ Add `--global` to install globally across all projects.
 | [apideck-php](skills/apideck-php/) | PHP | `apideck-libraries/sdk-php` |
 | [apideck-rest](skills/apideck-rest/) | Any (HTTP) | Direct REST API calls |
 
-### Integration Skills
+### Meta & Integration Skills
 
 | Skill | Description |
 |-------|-------------|
+| [apideck-unified-api](skills/apideck-unified-api/) | **Start here.** Front-door skill teaching the unified-API model, routing to connector / SDK skills |
 | [apideck-best-practices](skills/apideck-best-practices/) | Architecture patterns, authentication, pagination, error handling, Vault, webhooks, and common pitfalls |
 | [apideck-portman](skills/apideck-portman/) | API contract testing with Portman — generate Postman collections with tests from OpenAPI specs |
 | [apideck-codegen](skills/apideck-codegen/) | Generate typed clients from OpenAPI specs using openapi-generator, Speakeasy, or Postman import |
 | [apideck-connector-coverage](skills/apideck-connector-coverage/) | Check connector API coverage before building — verify which operations each connector supports |
 | [apideck-migration](skills/apideck-migration/) | Migrate from direct Salesforce/HubSpot/QuickBooks/Xero integrations to Apideck's unified layer |
+
+### Connector Skills
+
+Per-connector skills for the top apps across seven unified APIs: Ecommerce, Accounting, CRM, ATS, File Storage, Issue Tracking, HRIS. Auth-only connectors are excluded.
+
+**Tier 1a — hand-authored depth** (entity mapping, coverage ✅/❌, auth gotchas, 2–3 worked examples):
+
+| Connector | Unified API |
+|---|---|
+| [salesforce](connectors/salesforce/) | CRM |
+| [quickbooks](connectors/quickbooks/) | Accounting |
+| [bamboohr](connectors/bamboohr/) | HRIS |
+| [greenhouse](connectors/greenhouse/) | ATS |
+| [sharepoint](connectors/sharepoint/) | File Storage |
+| [jira](connectors/jira/) | Issue Tracking |
+| [shopify](connectors/shopify/) | Ecommerce |
+
+**Tier 1b — abbreviated depth** (21 connectors): HubSpot, Pipedrive, Zoho CRM, Xero, NetSuite, Sage Intacct, Workable, Lever, Google Drive, OneDrive, Dropbox, Box, GitHub, GitLab, Linear, BigCommerce, WooCommerce, Shopify Public App, Personio, Workday, Deel, HiBob.
+
+**Tier 1c + Tier 2 — baseline routing skills** (~107 connectors): every live connector in scope gets a minimal routing skill (serviceId, unified API, Proxy escape hatch). See [`connectors/manifest.json`](connectors/manifest.json) for the full list and tier assignment.
+
+**Installation:**
+
+```bash
+# Install a specific connector skill
+npx skills add apideck/api-skills --skill salesforce
+npx skills add apideck/api-skills --skill sharepoint
+
+# Or install the full catalog (all connectors)
+npx skills add apideck/api-skills
+```
+
+**Authoring workflow:**
+
+Connector skills are generated from [`connectors/manifest.json`](connectors/manifest.json) and optional per-connector enhancement files in `connectors/_enhancements/`. Do not hand-edit `connectors/{slug}/SKILL.md` — regenerate:
+
+```bash
+node connectors/generate.js          # regenerate all
+node connectors/generate.js --only=salesforce
+node connectors/generate.js --tier=1a
+
+node connectors/validate.js          # lint against manifest
+```
 
 ## IDE Plugins
 
@@ -91,14 +163,40 @@ Pre-configured plugins with skills and slash commands:
 
 ## Testing
 
-Validate all skills locally:
+Two levels of quality checks.
+
+### 1. Structural validation (fast, deterministic)
 
 ```bash
-node skills/test.js              # Run all validations
-node skills/test.js --check-links  # Also verify external URLs
+node skills/test.js                 # Validate apideck-* skills
+node skills/test.js --check-links   # Also verify external URLs
+node connectors/validate.js         # Validate connector catalog against manifest
 ```
 
-This checks frontmatter, metadata, code blocks, links, SDK content consistency, and provider sync status.
+Checks frontmatter, metadata, code blocks, links, SDK content consistency, provider sync status, serviceId/manifest consistency.
+
+### 2. Tessl quality review (slow, LLM-as-judge)
+
+[Tessl](https://tessl.io) scores skills on validation + description quality + content quality using the [agentskills.io spec](https://agentskills.io/specification). Scores:
+
+- **≥ 90%** — conforms to best practices
+- **70–89%** — good, minor improvements needed
+- **< 70%** — needs work
+
+Run against a sample or the full catalog:
+
+```bash
+node scripts/tessl-check.js                       # Tier 1a sample (fast baseline)
+node scripts/tessl-check.js --tier=1b             # Tier 1b connectors
+node scripts/tessl-check.js --only=salesforce     # One skill
+node scripts/tessl-check.js --all                 # Full catalog (slow)
+node scripts/tessl-check.js --threshold=70        # Exit non-zero if any skill < 70%
+node scripts/tessl-check.js --report              # Save full reports to .planning/tessl-reports/
+```
+
+Current baseline (Tier 1a + meta/SDK skills, 20 skills): **85% average**, every skill in the 70–89% "good" band.
+
+Tessl uses LLMs for parts of its evaluation, so `--all` against 158 skills takes a while and may cost real tokens on your account. Default mode (Tier 1a sample) runs in ~5 min.
 
 ## Skill Sync
 
