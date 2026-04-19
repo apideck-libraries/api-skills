@@ -78,26 +78,45 @@ await apideck.accounting.invoices.list({ serviceId: "acumatica" });
 
 This is the compounding advantage of using Apideck over integrating Digits directly: code against the unified Accounting API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
 
-## Authentication
+## Digits via Apideck Accounting
 
-- **Type:** OAuth 2.0
-- **Managed by:** Apideck Vault — Apideck handles the full OAuth dance (authorization code flow, token exchange, refresh). Never ask the user for API keys or tokens directly.
-- **User setup:** Users authorize via the Vault modal. Connection state progresses `available → added → authorized → callable`.
-- **Token refresh:** automatic. Expired tokens are refreshed transparently on the next API call.
+Digits is a modern US-focused accounting platform built for real-time financial visibility, popular with startups and venture-backed companies. Apideck coverage focuses on reporting and ledger views.
 
-See [`apideck-best-practices`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.
+### Entity mapping
 
-## Verifying coverage
+| Digits entity | Apideck Accounting resource |
+|---|---|
+| Account | `ledger-accounts` |
+| Journal Entry | `journal-entries` |
+| Customer | `customers` |
+| Vendor | `suppliers` |
+| Dimension | `tracking-categories` |
+| P&L, Balance Sheet | `profit-and-loss`, `balance-sheet` |
 
-Not every Accounting operation is supported by every connector. Always verify before assuming a method works:
+### Coverage highlights
 
-```bash
-curl 'https://unify.apideck.com/connector/connectors/digits' \
-  -H "Authorization: Bearer ${APIDECK_API_KEY}" \
-  -H "x-apideck-app-id: ${APIDECK_APP_ID}"
+- ✅ Ledger accounts (chart of accounts)
+- ✅ Journal entries
+- ✅ Customers, suppliers
+- ✅ Financial reports (P&L, Balance Sheet)
+- ✅ Dimensions (tracking categories)
+- ❌ Invoices, bills, payments — Digits is primarily a reporting/analytics layer on top of QuickBooks/Xero; transactional writes go through those source systems
+- ❌ AI-driven insights — Digits' signature feature; proprietary, not exposed
+
+### Auth notes
+
+- **Type:** OAuth 2.0, managed by Apideck Vault
+- **Workspace binding:** one Digits workspace per connection.
+- **Upstream source:** Digits typically syncs from QuickBooks or Xero. For transactional writes, use those connectors directly; use Digits for unified reporting views.
+
+### Example: fetch P&L for the quarter
+
+```typescript
+const { data } = await apideck.accounting.profitAndLoss.get({
+  serviceId: "digits",
+  filter: { start_date: "2026-01-01", end_date: "2026-03-31" },
+});
 ```
-
-See [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) for patterns around `UnsupportedOperationError` and connector-specific fallbacks.
 
 ## Escape hatch: Proxy API
 

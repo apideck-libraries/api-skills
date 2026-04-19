@@ -78,26 +78,47 @@ await apideck.accounting.invoices.list({ serviceId: "acumatica" });
 
 This is the compounding advantage of using Apideck over integrating banqUP directly: code against the unified Accounting API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
 
-## Authentication
+## banqUP via Apideck Accounting
 
-- **Type:** OAuth 2.0
-- **Managed by:** Apideck Vault — Apideck handles the full OAuth dance (authorization code flow, token exchange, refresh). Never ask the user for API keys or tokens directly.
-- **User setup:** Users authorize via the Vault modal. Connection state progresses `available → added → authorized → callable`.
-- **Token refresh:** automatic. Expired tokens are refreshed transparently on the next API call.
+banqUP is a Belgian cloud invoicing and business banking platform targeting SMBs and accountants. Apideck coverage is invoice-focused.
 
-See [`apideck-best-practices`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.
+### Entity mapping
 
-## Verifying coverage
+| banqUP entity | Apideck Accounting resource |
+|---|---|
+| Invoice | `invoices` |
+| Customer | `customers` |
 
-Not every Accounting operation is supported by every connector. Always verify before assuming a method works:
+### Coverage highlights
 
-```bash
-curl 'https://unify.apideck.com/connector/connectors/banqup' \
-  -H "Authorization: Bearer ${APIDECK_API_KEY}" \
-  -H "x-apideck-app-id: ${APIDECK_APP_ID}"
+- ✅ Invoices (CRUD)
+- ✅ Customers
+- ⚠️ AP / bills — not in current Apideck mapping; use Proxy
+- ❌ Payments, journal entries, ledger accounts — use Proxy
+- ❌ Business banking features — separate banqUP API surface
+
+### Auth notes
+
+- **Type:** OAuth 2.0, managed by Apideck Vault
+- **Organization binding:** one banqUP organization per connection.
+- **Belgium-focused:** Belgian compliance (PEPPOL e-invoicing, Belgian VAT) built-in.
+- **Coverage is narrow:** this connector currently exposes only invoices + customers. If you need full accounting breadth, pick a different Belgian connector (e.g. [`exact-online`](../exact-online/)).
+
+### Example: create an invoice
+
+```typescript
+const { data } = await apideck.accounting.invoices.create({
+  serviceId: "banqup",
+  invoice: {
+    customer_id: "cust_abc",
+    invoice_date: "2026-04-18",
+    line_items: [
+      { description: "Consulting", quantity: 5, unit_price: 120 },
+    ],
+    currency: "EUR",
+  },
+});
 ```
-
-See [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) for patterns around `UnsupportedOperationError` and connector-specific fallbacks.
 
 ## Escape hatch: Proxy API
 

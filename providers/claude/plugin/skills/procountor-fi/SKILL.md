@@ -74,26 +74,51 @@ await apideck.accounting.invoices.list({ serviceId: "acumatica" });
 
 This is the compounding advantage of using Apideck over integrating Procountor directly: code against the unified Accounting API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
 
-## Authentication
+## Procountor via Apideck Accounting
 
-- **Type:** OAuth 2.0
-- **Managed by:** Apideck Vault — Apideck handles the full OAuth dance (authorization code flow, token exchange, refresh). Never ask the user for API keys or tokens directly.
-- **User setup:** Users authorize via the Vault modal. Connection state progresses `available → added → authorized → callable`.
-- **Token refresh:** automatic. Expired tokens are refreshed transparently on the next API call.
+Procountor is a Finnish cloud accounting and financial management platform, part of Accountor Group. Popular with Finnish SMBs and accounting firms.
 
-See [`apideck-best-practices`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.
+### Entity mapping
 
-## Verifying coverage
+| Procountor entity | Apideck Accounting resource |
+|---|---|
+| Sales Invoice | `invoices` |
+| Purchase Invoice | `bills` |
+| Customer | `customers` |
+| Supplier | `suppliers` |
+| Payment | `payments` |
+| Account | `ledger-accounts` |
+| Product | `invoice-items` |
+| Company Info | `company-info` |
+| VAT | `tax-rates` |
+| Purchase Order | `purchase-orders` |
+| Journal | `journal-entries` |
 
-Not every Accounting operation is supported by every connector. Always verify before assuming a method works:
+### Coverage highlights
 
-```bash
-curl 'https://unify.apideck.com/connector/connectors/procountor-fi' \
-  -H "Authorization: Bearer ${APIDECK_API_KEY}" \
-  -H "x-apideck-app-id: ${APIDECK_APP_ID}"
+- ✅ Full CRUD on invoices, bills, payments, customers, suppliers
+- ✅ Purchase orders
+- ✅ Journal entries
+- ✅ Finnish VAT handling
+- ⚠️ E-invoicing (Finland uses Finvoice 3.0) — handled under the hood; specific formatting via Proxy
+- ❌ Payroll — separate Procountor module
+- ❌ Banking / reconciliation rules — use Proxy
+
+### Auth notes
+
+- **Type:** OAuth 2.0, managed by Apideck Vault
+- **Company binding:** one Procountor company per connection.
+- **Finnish market focus:** Procountor is Finland-specific. Regulatory compliance (Finnish Accounting Act, OmaVero) is built-in.
+- **API version:** Procountor v2 API; Apideck tracks current stable.
+
+### Example: list bills updated this week
+
+```typescript
+const { data } = await apideck.accounting.bills.list({
+  serviceId: "procountor-fi",
+  filter: { updated_since: "2026-04-14T00:00:00Z" },
+});
 ```
-
-See [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) for patterns around `UnsupportedOperationError` and connector-specific fallbacks.
 
 ## Escape hatch: Proxy API
 

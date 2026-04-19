@@ -78,26 +78,54 @@ await apideck.accounting.invoices.list({ serviceId: "acumatica" });
 
 This is the compounding advantage of using Apideck over integrating Moneybird directly: code against the unified Accounting API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
 
-## Authentication
+## Moneybird via Apideck Accounting
 
-- **Type:** OAuth 2.0
-- **Managed by:** Apideck Vault — Apideck handles the full OAuth dance (authorization code flow, token exchange, refresh). Never ask the user for API keys or tokens directly.
-- **User setup:** Users authorize via the Vault modal. Connection state progresses `available → added → authorized → callable`.
-- **Token refresh:** automatic. Expired tokens are refreshed transparently on the next API call.
+Moneybird is a popular Dutch SMB accounting platform favored by freelancers and small businesses. Strong coverage of the core invoicing + expense workflow, plus banking integration.
 
-See [`apideck-best-practices`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.
+### Entity mapping
 
-## Verifying coverage
+| Moneybird entity | Apideck Accounting resource |
+|---|---|
+| SalesInvoice | `invoices` |
+| PurchaseInvoice / Receipt | `bills` |
+| Payment | `payments` |
+| Bill Payment | `bill-payments` |
+| Journal (BookingEntry) | `journal-entries` |
+| Ledger Account | `ledger-accounts` |
+| Contact (customer) | `customers` |
+| Contact (supplier) | `suppliers` |
+| Product | `invoice-items` |
+| Tax Rate | `tax-rates` |
+| Bank Account | `bank-accounts` |
+| Administration | `subsidiaries` |
+| Expense | `expenses` |
+| Tracking Category | `tracking-categories` |
 
-Not every Accounting operation is supported by every connector. Always verify before assuming a method works:
+### Coverage highlights
 
-```bash
-curl 'https://unify.apideck.com/connector/connectors/moneybird' \
-  -H "Authorization: Bearer ${APIDECK_API_KEY}" \
-  -H "x-apideck-app-id: ${APIDECK_APP_ID}"
+- ✅ CRUD on invoices, bills, payments, customers, suppliers
+- ✅ Expense management (Moneybird's first-class "expense" workflow)
+- ✅ Journal entries and tax rates (Dutch BTW)
+- ✅ Multi-administration (Moneybird's term for tenants/subsidiaries)
+- ✅ Bank accounts for reconciliation
+- ⚠️ OCR receipt processing — Moneybird-specific; not in unified API
+- ❌ Quote/proposal flows — use Proxy
+- ❌ Time tracking — use Proxy
+
+### Auth notes
+
+- **Type:** OAuth 2.0, managed by Apideck Vault
+- **Administration selection:** Moneybird accounts can contain multiple administrations. The connection is bound to one — for multi-admin access, create separate connections with different consumer IDs, or pass administration ID through pass-through.
+- **Dutch-only UI:** Moneybird itself is Dutch-market. Users outside NL rarely have accounts here.
+
+### Example: list overdue invoices
+
+```typescript
+const { data } = await apideck.accounting.invoices.list({
+  serviceId: "moneybird",
+  filter: { status: "overdue" },
+});
 ```
-
-See [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) for patterns around `UnsupportedOperationError` and connector-specific fallbacks.
 
 ## Escape hatch: Proxy API
 

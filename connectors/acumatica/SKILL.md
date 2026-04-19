@@ -78,26 +78,57 @@ await apideck.accounting.invoices.list({ serviceId: "banqup" });
 
 This is the compounding advantage of using Apideck over integrating Acumatica directly: code against the unified Accounting API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
 
-## Authentication
+## Acumatica via Apideck Accounting
 
-- **Type:** OAuth 2.0
-- **Managed by:** Apideck Vault — Apideck handles the full OAuth dance (authorization code flow, token exchange, refresh). Never ask the user for API keys or tokens directly.
-- **User setup:** Users authorize via the Vault modal. Connection state progresses `available → added → authorized → callable`.
-- **Token refresh:** automatic. Expired tokens are refreshed transparently on the next API call.
+Acumatica is a cloud ERP platform for mid-market businesses, with strong distribution, manufacturing, and services verticals. Apideck coverage targets the core financial management surface.
 
-See [`apideck-best-practices`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.
+### Entity mapping
 
-## Verifying coverage
+| Acumatica entity | Apideck Accounting resource |
+|---|---|
+| AR Invoice | `invoices` |
+| AP Bill | `bills` |
+| Payment | `payments` |
+| Credit Memo | `credit-notes` |
+| GL Transaction | `journal-entries` |
+| Account | `ledger-accounts` |
+| Customer | `customers` |
+| Vendor | `suppliers` |
+| Inventory Item | `invoice-items` |
+| Tax | `tax-rates` |
+| Purchase Order | `purchase-orders` |
 
-Not every Accounting operation is supported by every connector. Always verify before assuming a method works:
+### Coverage highlights
 
-```bash
-curl 'https://unify.apideck.com/connector/connectors/acumatica' \
-  -H "Authorization: Bearer ${APIDECK_API_KEY}" \
-  -H "x-apideck-app-id: ${APIDECK_APP_ID}"
+- ✅ Full CRUD on invoices, bills, payments, customers, suppliers
+- ✅ Journal entries
+- ✅ Purchase orders
+- ✅ Credit notes
+- ⚠️ Acumatica Generic Inquiries — powerful custom reports; not exposed, use Proxy
+- ❌ Manufacturing and distribution modules — use Proxy for BOM, work orders, shipments
+- ❌ Payroll
+
+### Auth notes
+
+- **Type:** OAuth 2.0, managed by Apideck Vault
+- **Tenant + branch binding:** Acumatica supports multi-tenant + multi-branch. The connection is bound to one tenant; branch selection is typically passed per call.
+- **Screen-based APIs:** Acumatica has both OData-style REST and "Screen-Based" Contract API. Apideck abstracts this; Proxy calls can hit either.
+
+### Example: create an AR invoice
+
+```typescript
+const { data } = await apideck.accounting.invoices.create({
+  serviceId: "acumatica",
+  invoice: {
+    customer_id: "cust_abc",
+    invoice_date: "2026-04-18",
+    line_items: [
+      { description: "Consulting", quantity: 10, unit_price: 150 },
+    ],
+    currency: "USD",
+  },
+});
 ```
-
-See [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) for patterns around `UnsupportedOperationError` and connector-specific fallbacks.
 
 ## Escape hatch: Proxy API
 

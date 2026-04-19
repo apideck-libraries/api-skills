@@ -74,26 +74,59 @@ await apideck.accounting.invoices.list({ serviceId: "acumatica" });
 
 This is the compounding advantage of using Apideck over integrating Intuit Enterprise Suite directly: code against the unified Accounting API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
 
-## Authentication
+## Intuit Enterprise Suite via Apideck
 
-- **Type:** OAuth 2.0
-- **Managed by:** Apideck Vault — Apideck handles the full OAuth dance (authorization code flow, token exchange, refresh). Never ask the user for API keys or tokens directly.
-- **User setup:** Users authorize via the Vault modal. Connection state progresses `available → added → authorized → callable`.
-- **Token refresh:** automatic. Expired tokens are refreshed transparently on the next API call.
+Intuit Enterprise Suite (IES) is Intuit's enterprise-grade offering, above QuickBooks Online Advanced. Targets mid-market and multi-entity customers with deeper consolidation, multi-GL, and dimension tracking.
 
-See [`apideck-best-practices`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.
+### Entity mapping
 
-## Verifying coverage
+| IES entity | Apideck Accounting resource |
+|---|---|
+| Invoice | `invoices` |
+| Bill | `bills` |
+| Customer Payment | `payments` |
+| Vendor Payment | `bill-payments` |
+| Credit Memo | `credit-notes` |
+| Journal Entry | `journal-entries` |
+| Chart of Accounts | `ledger-accounts` |
+| Customer | `customers` |
+| Vendor | `suppliers` |
+| Item | `invoice-items` |
+| Tax Rate | `tax-rates` |
+| Purchase Order | `purchase-orders` |
+| Class / Location | `tracking-categories`, `locations` |
+| Department | `departments` |
+| Expense | `expenses` |
+| Attachments | `attachments` |
+| Company | `companies` |
+| P&L, Balance Sheet | `profit-and-loss`, `balance-sheet` |
 
-Not every Accounting operation is supported by every connector. Always verify before assuming a method works:
+### Coverage highlights
 
-```bash
-curl 'https://unify.apideck.com/connector/connectors/intuit-enterprise-suite' \
-  -H "Authorization: Bearer ${APIDECK_API_KEY}" \
-  -H "x-apideck-app-id: ${APIDECK_APP_ID}"
+- ✅ Full CRUD on invoices, bills, payments, customers, suppliers
+- ✅ Journal entries, credit memos, purchase orders
+- ✅ Multi-dimension tracking (Class, Location, Department)
+- ✅ Multi-entity / consolidated reporting
+- ✅ Financial reports (P&L, Balance Sheet)
+- ✅ Attachments on transactions
+- ⚠️ Custom fields — more flexible than QBO; exposed via `custom_fields[]`
+- ❌ Intuit-specific AI features (e.g., Transaction Matching) — use Proxy
+
+### Auth notes
+
+- **Type:** OAuth 2.0, managed by Apideck Vault
+- **Realm binding:** same pattern as QuickBooks — one realm per connection. IES multi-entity setups expose child entities through the parent realm.
+- **Higher API limits vs QBO:** IES has extended rate limits and throughput appropriate for mid-market volumes.
+- **Compared to QuickBooks:** use [`quickbooks`](../quickbooks/) for QBO (SMB), [`intuit-enterprise-suite`](../intuit-enterprise-suite/) for IES (enterprise multi-entity).
+
+### Example: list invoices across all entities in the realm
+
+```typescript
+const { data } = await apideck.accounting.invoices.list({
+  serviceId: "intuit-enterprise-suite",
+  limit: 100,
+});
 ```
-
-See [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) for patterns around `UnsupportedOperationError` and connector-specific fallbacks.
 
 ## Escape hatch: Proxy API
 

@@ -78,25 +78,51 @@ await apideck.accounting.invoices.list({ serviceId: "acumatica" });
 
 This is the compounding advantage of using Apideck over integrating MRI Software directly: code against the unified Accounting API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
 
-## Authentication
+## MRI Software via Apideck Accounting
 
-- **Type:** Basic auth (username/password)
-- **Managed by:** Apideck Vault — credentials are collected through the Vault modal and stored encrypted server-side.
-- **Note:** basic auth connectors often require manual rotation by the end user. If auth fails persistently, prompt them to re-enter credentials in Vault.
+MRI Software is an enterprise real-estate management platform (property management + accounting). Apideck coverage targets the accounting surface within MRI's financial modules.
 
-See [`apideck-best-practices`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.
+### Entity mapping
 
-## Verifying coverage
+| MRI entity | Apideck Accounting resource |
+|---|---|
+| Journal Entry | `journal-entries` |
+| Tenant / Receivable | `customers` |
+| Vendor | `suppliers` |
+| Account | `ledger-accounts` |
+| Department | `departments` |
+| Location / Property | `locations` |
+| Purchase Order | `purchase-orders` |
+| Tax | `tax-rates` |
+| Bill | `bills` |
+| Entity / Portfolio | `subsidiaries` |
 
-Not every Accounting operation is supported by every connector. Always verify before assuming a method works:
+### Coverage highlights
 
-```bash
-curl 'https://unify.apideck.com/connector/connectors/mrisoftware' \
-  -H "Authorization: Bearer ${APIDECK_API_KEY}" \
-  -H "x-apideck-app-id: ${APIDECK_APP_ID}"
+- ✅ Journal entries (general ledger)
+- ✅ Customers (tenants), suppliers (vendors)
+- ✅ Chart of accounts
+- ✅ Purchase orders
+- ✅ Multi-entity / multi-property via departments, locations, subsidiaries
+- ❌ Invoices in the unified sense — MRI uses tenant billing workflows; use Proxy for invoice-like records
+- ❌ Lease management, property records — separate MRI module surfaces
+- ❌ MRI-specific reporting tools — use Proxy
+
+### Auth notes
+
+- **Type:** Basic auth (MRI API username + password), managed by Apideck Vault
+- **Client binding:** MRI installations are per-client; one connection per client ID.
+- **Version / product variant:** MRI has many product lines (Commercial Management, Residential Management, AnyBUILD). Confirm which API surface the user has access to.
+- **Enterprise-only:** MRI is typically sold to large real-estate organizations — integration setup requires coordination with MRI admin staff.
+
+### Example: list journal entries for a property
+
+```typescript
+const { data } = await apideck.accounting.journalEntries.list({
+  serviceId: "mrisoftware",
+  filter: { location_id: "property_xyz" },
+});
 ```
-
-See [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) for patterns around `UnsupportedOperationError` and connector-specific fallbacks.
 
 ## Escape hatch: Proxy API
 

@@ -78,25 +78,58 @@ await apideck.accounting.invoices.list({ serviceId: "acumatica" });
 
 This is the compounding advantage of using Apideck over integrating Rillet directly: code against the unified Accounting API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
 
-## Authentication
+## Rillet via Apideck Accounting
 
-- **Type:** API Key
-- **Managed by:** Apideck Vault — the user pastes their Rillet API key into the Vault modal; Apideck stores it encrypted and injects it on every request.
-- **Rotation:** if the user rotates their key, they re-enter it in Vault. No code changes needed.
+Rillet is a modern SaaS finance platform (general ledger + revenue recognition) targeting B2B SaaS companies. Deep coverage via Apideck.
 
-See [`apideck-best-practices`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.
+### Entity mapping
 
-## Verifying coverage
+| Rillet entity | Apideck Accounting resource |
+|---|---|
+| Invoice | `invoices` |
+| Bill | `bills` |
+| Bill Payment | `bill-payments` |
+| Credit Note | `credit-notes` |
+| Payment | `payments` |
+| Journal Entry | `journal-entries` |
+| Account | `ledger-accounts` |
+| Customer | `customers` |
+| Supplier | `suppliers` |
+| Item | `invoice-items` |
+| Tax Rate | `tax-rates` |
+| Expense | `expenses` |
+| Subsidiary | `subsidiaries` |
+| Bank Account | `bank-accounts` |
+| Bank Feed Statement | `bank-feed-statements` |
+| Company Info | `company-info` |
+| P&L, Balance Sheet | `profit-and-loss`, `balance-sheet` |
 
-Not every Accounting operation is supported by every connector. Always verify before assuming a method works:
+### Coverage highlights
 
-```bash
-curl 'https://unify.apideck.com/connector/connectors/rillet' \
-  -H "Authorization: Bearer ${APIDECK_API_KEY}" \
-  -H "x-apideck-app-id: ${APIDECK_APP_ID}"
+- ✅ Full CRUD on invoices, bills, payments
+- ✅ Credit notes
+- ✅ Journal entries
+- ✅ Expenses
+- ✅ Multi-subsidiary
+- ✅ Bank feeds for reconciliation
+- ✅ Financial reports (P&L, Balance Sheet)
+- ⚠️ Revenue recognition schedules (Rillet's signature feature) — not in unified; use Proxy
+- ❌ SaaS metrics (ARR, MRR) — Rillet-specific; use Proxy
+
+### Auth notes
+
+- **Type:** API key, managed by Apideck Vault
+- **Organization binding:** one Rillet organization per connection.
+- **B2B SaaS focus:** Rillet's model assumes subscription revenue. Customers without subscription semantics may not use all features.
+
+### Example: fetch P&L for YTD
+
+```typescript
+const { data } = await apideck.accounting.profitAndLoss.get({
+  serviceId: "rillet",
+  filter: { start_date: "2026-01-01", end_date: "2026-04-18" },
+});
 ```
-
-See [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) for patterns around `UnsupportedOperationError` and connector-specific fallbacks.
 
 ## Escape hatch: Proxy API
 

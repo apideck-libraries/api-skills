@@ -74,26 +74,60 @@ await apideck.accounting.invoices.list({ serviceId: "acumatica" });
 
 This is the compounding advantage of using Apideck over integrating Zoho Books directly: code against the unified Accounting API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
 
-## Authentication
+## Zoho Books via Apideck Accounting
 
-- **Type:** OAuth 2.0
-- **Managed by:** Apideck Vault — Apideck handles the full OAuth dance (authorization code flow, token exchange, refresh). Never ask the user for API keys or tokens directly.
-- **User setup:** Users authorize via the Vault modal. Connection state progresses `available → added → authorized → callable`.
-- **Token refresh:** automatic. Expired tokens are refreshed transparently on the next API call.
+Zoho Books is Zoho's accounting product, part of the Zoho One suite. Strong in India and emerging markets, with multi-currency and multi-entity support.
 
-See [`apideck-best-practices`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.
+### Entity mapping
 
-## Verifying coverage
+| Zoho Books entity | Apideck Accounting resource |
+|---|---|
+| Invoice | `invoices` |
+| Bill | `bills` |
+| Payment (Customer Payment) | `payments` |
+| Bill Payment (Vendor Payment) | `bill-payments` |
+| Journal | `journal-entries` |
+| Chart of Account | `ledger-accounts` |
+| Contact (customer) | `customers` |
+| Contact (vendor) | `suppliers` |
+| Item | `invoice-items` |
+| Tax | `tax-rates` |
+| Credit Note | `credit-notes` |
+| Purchase Order | `purchase-orders` |
 
-Not every Accounting operation is supported by every connector. Always verify before assuming a method works:
+### Coverage highlights
 
-```bash
-curl 'https://unify.apideck.com/connector/connectors/zoho-books' \
-  -H "Authorization: Bearer ${APIDECK_API_KEY}" \
-  -H "x-apideck-app-id: ${APIDECK_APP_ID}"
+- ✅ Full CRUD on invoices, bills, payments, customers, suppliers
+- ✅ Journal entries
+- ✅ Multi-currency
+- ✅ Purchase orders
+- ✅ GST / VAT handling (India and other regions)
+- ⚠️ Recurring invoices — not exposed; use Proxy
+- ❌ Projects and time tracking — separate Zoho products (Zoho Projects, Zoho People)
+- ❌ Expense claim workflow — use Proxy with Zoho Expense API
+
+### Auth notes
+
+- **Type:** OAuth 2.0, managed by Apideck Vault
+- **Data center / region:** Zoho is sharded by region (US, EU, IN, AU, CN, JP). The user's data center is determined during OAuth; wrong-DC errors mean re-authorization is needed.
+- **Organization binding:** one Zoho Books organization per connection.
+- **Zoho One:** users on Zoho One share auth across Zoho apps — connecting Books doesn't automatically connect CRM/People etc.
+
+### Example: create an invoice with tax
+
+```typescript
+const { data } = await apideck.accounting.invoices.create({
+  serviceId: "zoho-books",
+  invoice: {
+    customer_id: "contact_abc",
+    invoice_date: "2026-04-18",
+    line_items: [
+      { description: "Software license", quantity: 1, unit_price: 500, tax_rate: { id: "tax_gst_18" } },
+    ],
+    currency: "INR",
+  },
+});
 ```
-
-See [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) for patterns around `UnsupportedOperationError` and connector-specific fallbacks.
 
 ## Escape hatch: Proxy API
 

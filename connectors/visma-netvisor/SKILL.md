@@ -78,25 +78,50 @@ await apideck.accounting.invoices.list({ serviceId: "acumatica" });
 
 This is the compounding advantage of using Apideck over integrating Visma Netvisor directly: code against the unified Accounting API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
 
-## Authentication
+## Visma Netvisor via Apideck Accounting
 
-- **Type:** custom (connector-specific)
-- **Managed by:** Apideck Vault — setup may involve extra fields beyond a single token. The Vault modal will prompt for everything required.
-- **Refer to:** the Apideck dashboard or [apideck-best-practices](../../skills/apideck-best-practices/) for auth troubleshooting.
+Visma Netvisor is a Finnish financial management platform under the Visma Group, popular with Finnish SMBs and service businesses.
 
-See [`apideck-best-practices`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.
+### Entity mapping
 
-## Verifying coverage
+| Netvisor entity | Apideck Accounting resource |
+|---|---|
+| Sales Invoice | `invoices` |
+| Purchase Invoice | `bills` |
+| Customer | `customers` |
+| Supplier | `suppliers` |
+| Credit Note | `credit-notes` |
+| Payment | `payments` |
+| Item | `invoice-items` |
+| Purchase Order | `purchase-orders` |
+| Journal | `journal-entries` |
 
-Not every Accounting operation is supported by every connector. Always verify before assuming a method works:
+### Coverage highlights
 
-```bash
-curl 'https://unify.apideck.com/connector/connectors/visma-netvisor' \
-  -H "Authorization: Bearer ${APIDECK_API_KEY}" \
-  -H "x-apideck-app-id: ${APIDECK_APP_ID}"
+- ✅ Sales and purchase invoices
+- ✅ Customers, suppliers
+- ✅ Credit notes, payments
+- ✅ Purchase orders
+- ✅ Journal entries
+- ✅ Finnish VAT
+- ❌ Finnish-specific regulatory submissions — use Proxy
+- ❌ Payroll — separate Visma product
+
+### Auth notes
+
+- **Type:** Custom (Netvisor-specific signed-request auth), managed by Apideck Vault
+- **Company binding:** one Netvisor company per connection. Netvisor identifies companies via Business ID (Y-tunnus).
+- **Sender credentials:** Apideck's Vault app handles sender key rotation; end-user provides their Netvisor partner credentials.
+- **Finnish compliance:** Netvisor is certified for Finnish accounting standards (Kirjanpitolaki).
+
+### Example: list open invoices
+
+```typescript
+const { data } = await apideck.accounting.invoices.list({
+  serviceId: "visma-netvisor",
+  filter: { status: "open" },
+});
 ```
-
-See [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) for patterns around `UnsupportedOperationError` and connector-specific fallbacks.
 
 ## Escape hatch: Proxy API
 

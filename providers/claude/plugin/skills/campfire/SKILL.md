@@ -78,25 +78,57 @@ await apideck.accounting.invoices.list({ serviceId: "acumatica" });
 
 This is the compounding advantage of using Apideck over integrating Campfire directly: code against the unified Accounting API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
 
-## Authentication
+## Campfire via Apideck Accounting
 
-- **Type:** API Key
-- **Managed by:** Apideck Vault — the user pastes their Campfire API key into the Vault modal; Apideck stores it encrypted and injects it on every request.
-- **Rotation:** if the user rotates their key, they re-enter it in Vault. No code changes needed.
+Campfire is a modern accounting platform designed for fast-growing companies with multi-entity and multi-dimensional tracking needs. Very broad Apideck coverage.
 
-See [`apideck-best-practices`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.
+### Entity mapping
 
-## Verifying coverage
+| Campfire entity | Apideck Accounting resource |
+|---|---|
+| Invoice | `invoices` |
+| Bill | `bills` |
+| Bill Payment | `bill-payments` |
+| Credit Note | `credit-notes` |
+| Payment | `payments` |
+| Journal Entry | `journal-entries` |
+| Account | `ledger-accounts` |
+| Customer | `customers` |
+| Supplier | `suppliers` |
+| Item | `invoice-items` |
+| Department | `departments` |
+| Subsidiary | `subsidiaries` |
+| Tracking Category | `tracking-categories` |
+| Bank Feed Account | `bank-feed-accounts` |
+| Bank Feed Statement | `bank-feed-statements` |
+| Company Info | `company-info` |
+| P&L, Balance Sheet | `profit-and-loss`, `balance-sheet` |
 
-Not every Accounting operation is supported by every connector. Always verify before assuming a method works:
+### Coverage highlights
 
-```bash
-curl 'https://unify.apideck.com/connector/connectors/campfire' \
-  -H "Authorization: Bearer ${APIDECK_API_KEY}" \
-  -H "x-apideck-app-id: ${APIDECK_APP_ID}"
+- ✅ Full CRUD on invoices, bills, payments (incl. bill payments)
+- ✅ Credit notes
+- ✅ Journal entries
+- ✅ Departments, subsidiaries, tracking categories (deep multi-dim support)
+- ✅ Bank feeds
+- ✅ Financial reports (P&L, Balance Sheet)
+- ⚠️ Revenue recognition — not in unified; use Proxy
+- ❌ Audit trail detail beyond `updated_at` — use Proxy
+
+### Auth notes
+
+- **Type:** API key, managed by Apideck Vault
+- **Organization binding:** one Campfire organization per connection.
+- **Multi-entity:** subsidiaries exposed as a first-class resource; scale to dozens of entities per org.
+
+### Example: list bills with department filter
+
+```typescript
+const { data } = await apideck.accounting.bills.list({
+  serviceId: "campfire",
+  filter: { department_id: "dept_marketing" },
+});
 ```
-
-See [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) for patterns around `UnsupportedOperationError` and connector-specific fallbacks.
 
 ## Escape hatch: Proxy API
 

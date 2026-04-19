@@ -78,14 +78,40 @@ await apideck.accounting.invoices.list({ serviceId: "acumatica" });
 
 This is the compounding advantage of using Apideck over integrating Exact Online UK directly: code against the unified Accounting API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
 
-## Authentication
+## Exact Online UK via Apideck Accounting
 
-- **Type:** OAuth 2.0
-- **Managed by:** Apideck Vault — Apideck handles the full OAuth dance (authorization code flow, token exchange, refresh). Never ask the user for API keys or tokens directly.
-- **User setup:** Users authorize via the Vault modal. Connection state progresses `available → added → authorized → callable`.
-- **Token refresh:** automatic. Expired tokens are refreshed transparently on the next API call.
+UK-specific variant of Exact Online. Use this connector when the user's Exact instance is on the UK data center. Coverage mirrors [`exact-online`](../exact-online/).
 
-See [`apideck-best-practices`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.
+### When to use this vs `exact-online`
+
+| User scenario | Use |
+|---|---|
+| User's division is in the UK | `exact-online-uk` |
+| User's division is in the Netherlands | `exact-online-nl` |
+| User's division is in Belgium or other EU | `exact-online` |
+
+### Entity mapping + coverage
+
+Identical to [`exact-online`](../exact-online/). See that skill for the full mapping table and coverage highlights.
+
+Key UK-specific behaviors:
+- **VAT handling:** UK 20% / 5% / 0% rates; Brexit-era rules (reverse charge on EU imports) handled through `tax-rates`.
+- **Making Tax Digital (MTD) compliance:** UK divisions may have MTD-specific fields on invoices (HMRC submission). Use Proxy for MTD submission endpoints not covered by the unified model.
+- **Currency:** typically GBP-denominated; multi-currency supported for international customers.
+
+### Auth notes
+
+- **Type:** OAuth 2.0, managed by Apideck Vault
+- **Data center:** `start.exactonline.co.uk`. Wrong-DC errors = wrong connector variant.
+
+### Example: list customers with invoices due in 30 days
+
+```typescript
+const { data: invoices } = await apideck.accounting.invoices.list({
+  serviceId: "exact-online-uk",
+  filter: { status: "open" },
+});
+```
 
 ## Verifying coverage
 

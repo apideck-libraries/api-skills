@@ -74,25 +74,64 @@ await apideck.accounting.invoices.list({ serviceId: "acumatica" });
 
 This is the compounding advantage of using Apideck over integrating Dualentry directly: code against the unified Accounting API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
 
-## Authentication
+## Dualentry via Apideck Accounting
 
-- **Type:** API Key
-- **Managed by:** Apideck Vault — the user pastes their Dualentry API key into the Vault modal; Apideck stores it encrypted and injects it on every request.
-- **Rotation:** if the user rotates their key, they re-enter it in Vault. No code changes needed.
+Dualentry is a cloud accounting platform offering modern, double-entry bookkeeping with comprehensive multi-entity support. Broad Apideck coverage.
 
-See [`apideck-best-practices`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.
+### Entity mapping
 
-## Verifying coverage
+| Dualentry entity | Apideck Accounting resource |
+|---|---|
+| Invoice | `invoices` |
+| Bill | `bills` |
+| Bill Payment | `bill-payments` |
+| Credit Note | `credit-notes` |
+| Payment | `payments` |
+| Journal Entry | `journal-entries` |
+| Ledger Account | `ledger-accounts` |
+| Customer | `customers` |
+| Supplier | `suppliers` |
+| Item | `invoice-items` |
+| Purchase Order | `purchase-orders` |
+| Expense | `expenses` |
+| Subsidiary | `subsidiaries` |
+| Attachments | `attachments` |
 
-Not every Accounting operation is supported by every connector. Always verify before assuming a method works:
+### Coverage highlights
 
-```bash
-curl 'https://unify.apideck.com/connector/connectors/dualentry' \
-  -H "Authorization: Bearer ${APIDECK_API_KEY}" \
-  -H "x-apideck-app-id: ${APIDECK_APP_ID}"
+- ✅ Full CRUD on invoices, bills, payments (incl. bill payments)
+- ✅ Credit notes
+- ✅ Journal entries
+- ✅ Purchase orders
+- ✅ Expenses
+- ✅ Multi-subsidiary support
+- ✅ Attachments on transactions
+- ⚠️ Financial reports (P&L, Balance Sheet) — not in current mapping; use Proxy
+- ❌ Payroll — separate surface
+
+### Auth notes
+
+- **Type:** API key, managed by Apideck Vault
+- **Organization binding:** one Dualentry organization per connection.
+- **Multi-subsidiary:** subsidiaries are exposed as a first-class resource; use `subsidiaries` to fetch and filter.
+
+### Example: create a multi-line bill
+
+```typescript
+const { data } = await apideck.accounting.bills.create({
+  serviceId: "dualentry",
+  bill: {
+    supplier_id: "sup_abc",
+    bill_date: "2026-04-18",
+    due_date: "2026-05-18",
+    line_items: [
+      { description: "Service A", quantity: 1, unit_price: 500 },
+      { description: "Service B", quantity: 2, unit_price: 250 },
+    ],
+    currency: "USD",
+  },
+});
 ```
-
-See [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) for patterns around `UnsupportedOperationError` and connector-specific fallbacks.
 
 ## Escape hatch: Proxy API
 

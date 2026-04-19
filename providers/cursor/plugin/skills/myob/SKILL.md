@@ -74,30 +74,60 @@ await apideck.accounting.invoices.list({ serviceId: "acumatica" });
 
 This is the compounding advantage of using Apideck over integrating MYOB directly: code against the unified Accounting API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
 
-## Authentication
+## MYOB via Apideck Accounting
 
-- **Type:** OAuth 2.0
-- **Managed by:** Apideck Vault — Apideck handles the full OAuth dance (authorization code flow, token exchange, refresh). Never ask the user for API keys or tokens directly.
-- **User setup:** Users authorize via the Vault modal. Connection state progresses `available → added → authorized → callable`.
-- **Token refresh:** automatic. Expired tokens are refreshed transparently on the next API call.
+MYOB is a major Australian/New Zealand accounting platform for SMB and mid-market. Apideck coverage focuses on invoicing and sales, with limited AP coverage currently.
 
-See [`apideck-best-practices`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.
+### Entity mapping
 
-## Verifying coverage
+| MYOB entity | Apideck Accounting resource |
+|---|---|
+| Sale Invoice | `invoices` |
+| Item Invoice | `invoices` |
+| Customer | `customers` |
+| Item | `invoice-items` |
+| Account | `ledger-accounts` |
+| TaxCode | `tax-rates` |
+| Payment | `payments` |
+| Company File | `company-info` |
 
-Not every Accounting operation is supported by every connector. Always verify before assuming a method works:
+### Coverage highlights
 
-```bash
-curl 'https://unify.apideck.com/connector/connectors/myob' \
-  -H "Authorization: Bearer ${APIDECK_API_KEY}" \
-  -H "x-apideck-app-id: ${APIDECK_APP_ID}"
+- ✅ Invoices (CRUD)
+- ✅ Customers
+- ✅ Items / products
+- ✅ Chart of accounts
+- ✅ Tax codes (GST handling for AU/NZ)
+- ✅ Customer payments
+- ⚠️ Bills / supplier invoices — not in current Apideck mapping; use Proxy
+- ⚠️ Journal entries — use Proxy
+- ❌ Payroll — MYOB Payroll is a separate product surface
+- ❌ Inventory management — use Proxy
+
+### Auth notes
+
+- **Type:** OAuth 2.0, managed by Apideck Vault
+- **Company file binding:** MYOB uses "company files" as the multi-tenant boundary. Each connection is bound to one company file. Multi-file access = multi-connection.
+- **Cloud vs desktop:** Apideck targets MYOB AccountRight Live (cloud) and MYOB Business. Desktop-only company files aren't accessible.
+- **API rate limit:** MYOB applies per-file rate limits; Apideck handles 429s with backoff.
+
+### Example: create an invoice for an AU customer
+
+```typescript
+const { data } = await apideck.accounting.invoices.create({
+  serviceId: "myob",
+  invoice: {
+    customer_id: "cust_abc",
+    invoice_date: "2026-04-18",
+    line_items: [
+      { description: "Consulting", quantity: 10, unit_price: 220, tax_rate: { id: "GST" } },
+    ],
+    currency: "AUD",
+  },
+});
 ```
 
-See [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) for patterns around `UnsupportedOperationError` and connector-specific fallbacks.
-
-## Escape hatch: Proxy API
-
-When an endpoint isn't covered by the Accounting unified API, use Apideck's Proxy to call MYOB directly — Apideck injects auth headers and handles token refresh. Set `x-apideck-downstream-url` to the target endpoint on MYOB's own API:
+### Example: reach bills via Proxy
 
 ```bash
 curl 'https://unify.apideck.com/proxy' \
@@ -105,11 +135,9 @@ curl 'https://unify.apideck.com/proxy' \
   -H "x-apideck-app-id: ${APIDECK_APP_ID}" \
   -H "x-apideck-consumer-id: ${CONSUMER_ID}" \
   -H "x-apideck-service-id: myob" \
-  -H "x-apideck-downstream-url: <target endpoint on MYOB>" \
+  -H "x-apideck-downstream-url: /{company-file-id}/Purchase/Bill" \
   -H "x-apideck-downstream-method: GET"
 ```
-
-See [MYOB's API docs](https://developer.myob.com) for available endpoints.
 
 ## Sibling connectors
 

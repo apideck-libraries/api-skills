@@ -74,26 +74,53 @@ await apideck.accounting.invoices.list({ serviceId: "acumatica" });
 
 This is the compounding advantage of using Apideck over integrating Stripe directly: code against the unified Accounting API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
 
-## Authentication
+## Stripe via Apideck Accounting
 
-- **Type:** OAuth 2.0
-- **Managed by:** Apideck Vault — Apideck handles the full OAuth dance (authorization code flow, token exchange, refresh). Never ask the user for API keys or tokens directly.
-- **User setup:** Users authorize via the Vault modal. Connection state progresses `available → added → authorized → callable`.
-- **Token refresh:** automatic. Expired tokens are refreshed transparently on the next API call.
+Stripe is the dominant online payments platform. Apideck surfaces Stripe's accounting-adjacent resources (customers, invoices, payments, refunds) through the unified Accounting API — not the full Stripe surface.
 
-See [`apideck-best-practices`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.
+> **Scope:** use this connector when you want to read Stripe data as part of an accounting workflow (invoices, payments, tax). For subscription management, Stripe Elements, Connect, or Terminal, go direct to Stripe's API or use the Proxy.
 
-## Verifying coverage
+### Entity mapping
 
-Not every Accounting operation is supported by every connector. Always verify before assuming a method works:
+| Stripe entity | Apideck Accounting resource |
+|---|---|
+| Invoice | `invoices` |
+| Customer | `customers` |
+| PaymentIntent / Charge | `payments` |
+| Refund | `refunds` |
+| Credit Note | `credit-notes` |
+| Tax Rate | `tax-rates` |
+| Invoice Item | `invoice-items` |
+| Account | `company-info` |
+| Bank Account | `bank-accounts` |
+| Expense | `expenses` |
 
-```bash
-curl 'https://unify.apideck.com/connector/connectors/stripe' \
-  -H "Authorization: Bearer ${APIDECK_API_KEY}" \
-  -H "x-apideck-app-id: ${APIDECK_APP_ID}"
+### Coverage highlights
+
+- ✅ Invoices and invoice items
+- ✅ Customers
+- ✅ Payments / charges
+- ✅ Refunds (critical for reconciliation workflows)
+- ✅ Tax rates
+- ⚠️ Bills / supplier AP concepts — not meaningful in Stripe (no AP); treat as empty
+- ❌ Subscriptions, plans, pricing — use Proxy or the Stripe SDK directly
+- ❌ Connect (multi-party) flows — complex; use Proxy
+- ❌ Webhooks — use Stripe's webhook endpoints directly, not the Apideck unified webhook
+
+### Auth notes
+
+- **Type:** OAuth 2.0 (Stripe Connect flow) — managed by Apideck Vault
+- **Account binding:** one Stripe account per connection. Connect-based marketplaces need per-seller connections.
+- **Test vs live mode:** Stripe distinguishes test and live keys. Ensure the user authorizes the intended mode during Vault OAuth.
+- **Alternative for accounting reconciliation:** many teams already use Stripe's own data sync to QuickBooks/Xero. Apideck via Stripe is best when you need unified data across multiple providers (e.g., Stripe + QuickBooks).
+
+### Example: list customers with payment totals
+
+```typescript
+const { data } = await apideck.accounting.customers.list({
+  serviceId: "stripe",
+});
 ```
-
-See [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) for patterns around `UnsupportedOperationError` and connector-specific fallbacks.
 
 ## Escape hatch: Proxy API
 

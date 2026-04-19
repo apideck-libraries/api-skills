@@ -78,26 +78,50 @@ await apideck.accounting.invoices.list({ serviceId: "acumatica" });
 
 This is the compounding advantage of using Apideck over integrating MYOB Acumatica directly: code against the unified Accounting API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
 
-## Authentication
+## MYOB Acumatica via Apideck Accounting
 
-- **Type:** OAuth 2.0
-- **Managed by:** Apideck Vault — Apideck handles the full OAuth dance (authorization code flow, token exchange, refresh). Never ask the user for API keys or tokens directly.
-- **User setup:** Users authorize via the Vault modal. Connection state progresses `available → added → authorized → callable`.
-- **Token refresh:** automatic. Expired tokens are refreshed transparently on the next API call.
+MYOB Acumatica (formerly MYOB Advanced) is MYOB's enterprise ERP for mid-market, built on the Acumatica platform. Wider ERP coverage than MYOB Business; closer in feel to [`acumatica`](../acumatica/).
 
-See [`apideck-best-practices`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.
+### Entity mapping
 
-## Verifying coverage
+| MYOB Acumatica entity | Apideck Accounting resource |
+|---|---|
+| AR Invoice | `invoices` |
+| AP Bill | `bills` |
+| Payment | `payments` |
+| Credit Note | `credit-notes` |
+| Journal Transaction | `journal-entries` |
+| Account | `ledger-accounts` |
+| Customer | `customers` |
+| Vendor | `suppliers` |
+| Inventory Item | `invoice-items` |
+| Tax | `tax-rates` |
+| Purchase Order | `purchase-orders` |
 
-Not every Accounting operation is supported by every connector. Always verify before assuming a method works:
+### Coverage highlights
 
-```bash
-curl 'https://unify.apideck.com/connector/connectors/myob-acumatica' \
-  -H "Authorization: Bearer ${APIDECK_API_KEY}" \
-  -H "x-apideck-app-id: ${APIDECK_APP_ID}"
+- ✅ Full CRUD on invoices, bills, payments, customers, suppliers
+- ✅ Journal entries
+- ✅ Credit notes
+- ✅ Purchase orders (ERP-grade)
+- ✅ Multi-entity / multi-branch
+- ⚠️ Projects, manufacturing — not in unified accounting; use Proxy
+- ❌ Payroll — separate product
+
+### Auth notes
+
+- **Type:** OAuth 2.0, managed by Apideck Vault
+- **Tenant binding:** one MYOB Acumatica tenant per connection.
+- **Role-based access:** the user's Acumatica role determines which records are readable/writable; Apideck surfaces 403s transparently.
+
+### Example: list open AR invoices
+
+```typescript
+const { data } = await apideck.accounting.invoices.list({
+  serviceId: "myob-acumatica",
+  filter: { status: "open" },
+});
 ```
-
-See [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) for patterns around `UnsupportedOperationError` and connector-specific fallbacks.
 
 ## Escape hatch: Proxy API
 

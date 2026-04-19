@@ -78,26 +78,50 @@ await apideck.accounting.invoices.list({ serviceId: "acumatica" });
 
 This is the compounding advantage of using Apideck over integrating FreeAgent directly: code against the unified Accounting API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
 
-## Authentication
+## FreeAgent via Apideck Accounting
 
-- **Type:** OAuth 2.0
-- **Managed by:** Apideck Vault — Apideck handles the full OAuth dance (authorization code flow, token exchange, refresh). Never ask the user for API keys or tokens directly.
-- **User setup:** Users authorize via the Vault modal. Connection state progresses `available → added → authorized → callable`.
-- **Token refresh:** automatic. Expired tokens are refreshed transparently on the next API call.
+FreeAgent is a UK-focused cloud accounting platform for freelancers and small businesses, part of NatWest Group. Popular for MTD-compliant VAT and self-assessment flows.
 
-See [`apideck-best-practices`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.
+### Entity mapping
 
-## Verifying coverage
+| FreeAgent entity | Apideck Accounting resource |
+|---|---|
+| Invoice | `invoices` |
+| Bill | `bills` |
+| Credit Note | `credit-notes` |
+| Contact (customer) | `customers` |
+| Contact (supplier) | `suppliers` |
+| Category | `ledger-accounts` |
+| Invoice Item | `invoice-items` |
+| Journal Set | `journal-entries` |
+| Bank Account | `bank-accounts` |
+| Company Info | `company-info` |
+| P&L, Balance Sheet | `profit-and-loss`, `balance-sheet` |
 
-Not every Accounting operation is supported by every connector. Always verify before assuming a method works:
+### Coverage highlights
 
-```bash
-curl 'https://unify.apideck.com/connector/connectors/freeagent' \
-  -H "Authorization: Bearer ${APIDECK_API_KEY}" \
-  -H "x-apideck-app-id: ${APIDECK_APP_ID}"
+- ✅ CRUD on invoices, bills, credit notes, customers, suppliers
+- ✅ Journal entries
+- ✅ Financial reports (P&L, Balance Sheet)
+- ✅ Bank accounts
+- ⚠️ VAT returns / MTD submission — use Proxy with FreeAgent's `/v2/vat_returns` endpoints
+- ❌ Time tracking, project management — use Proxy
+- ❌ Self-assessment / Personal tax — use Proxy
+
+### Auth notes
+
+- **Type:** OAuth 2.0, managed by Apideck Vault
+- **Company binding:** one FreeAgent company per connection.
+- **MTD (Making Tax Digital):** FreeAgent is HMRC-recognized. VAT submission requires additional Agent Services Account permissions not covered by the unified API.
+
+### Example: list unpaid invoices
+
+```typescript
+const { data } = await apideck.accounting.invoices.list({
+  serviceId: "freeagent",
+  filter: { status: "open" },
+});
 ```
-
-See [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) for patterns around `UnsupportedOperationError` and connector-specific fallbacks.
 
 ## Escape hatch: Proxy API
 

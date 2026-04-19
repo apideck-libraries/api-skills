@@ -78,25 +78,48 @@ await apideck.accounting.invoices.list({ serviceId: "acumatica" });
 
 This is the compounding advantage of using Apideck over integrating Yuki directly: code against the unified Accounting API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
 
-## Authentication
+## Yuki via Apideck Accounting
 
-- **Type:** API Key
-- **Managed by:** Apideck Vault — the user pastes their Yuki API key into the Vault modal; Apideck stores it encrypted and injects it on every request.
-- **Rotation:** if the user rotates their key, they re-enter it in Vault. No code changes needed.
+Yuki is a Dutch cloud accounting and bookkeeping platform, strong in automated document processing and NL/BE SMB markets.
 
-See [`apideck-best-practices`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.
+### Entity mapping
 
-## Verifying coverage
+| Yuki entity | Apideck Accounting resource |
+|---|---|
+| Sales Invoice | `invoices` |
+| Purchase Invoice | `bills` |
+| Journal Entry (GB-mutation) | `journal-entries` |
+| GL Account | `ledger-accounts` |
+| Customer (Debtor) | `customers` |
+| Supplier (Creditor) | `suppliers` |
+| BTW code | `tax-rates` |
+| Cost centre | `tracking-categories` |
+| Company (Administration) | `company-info` |
+| Attachments | `attachments` |
 
-Not every Accounting operation is supported by every connector. Always verify before assuming a method works:
+### Coverage highlights
 
-```bash
-curl 'https://unify.apideck.com/connector/connectors/yuki' \
-  -H "Authorization: Bearer ${APIDECK_API_KEY}" \
-  -H "x-apideck-app-id: ${APIDECK_APP_ID}"
+- ✅ CRUD on invoices, bills, customers, suppliers
+- ✅ Journal entries and Dutch BTW handling
+- ✅ Tracking categories (cost centres)
+- ✅ Document attachments (Yuki's OCR output)
+- ❌ Automated document recognition workflow (Yuki's signature feature) — not exposed; use Proxy
+- ❌ Bank reconciliation rules — use Proxy
+
+### Auth notes
+
+- **Type:** API key, managed by Apideck Vault
+- **Administration-scoped:** Yuki API keys are tied to a single administration (tenant). Multi-admin customers need one connection per admin.
+- **Permission scope:** key inherits the generator's role — admin-level access recommended for full coverage.
+
+### Example: list invoices for a specific period
+
+```typescript
+const { data } = await apideck.accounting.invoices.list({
+  serviceId: "yuki",
+  filter: { updated_since: "2026-01-01T00:00:00Z" },
+});
 ```
-
-See [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) for patterns around `UnsupportedOperationError` and connector-specific fallbacks.
 
 ## Escape hatch: Proxy API
 

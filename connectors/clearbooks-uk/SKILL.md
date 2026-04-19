@@ -78,25 +78,46 @@ await apideck.accounting.invoices.list({ serviceId: "acumatica" });
 
 This is the compounding advantage of using Apideck over integrating Clear Books directly: code against the unified Accounting API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
 
-## Authentication
+## Clear Books via Apideck Accounting
 
-- **Type:** API Key
-- **Managed by:** Apideck Vault — the user pastes their Clear Books API key into the Vault modal; Apideck stores it encrypted and injects it on every request.
-- **Rotation:** if the user rotates their key, they re-enter it in Vault. No code changes needed.
+Clear Books is a UK SMB cloud accounting platform with a focus on simplicity for small businesses, contractors, and accountants.
 
-See [`apideck-best-practices`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.
+### Entity mapping
 
-## Verifying coverage
+| Clear Books entity | Apideck Accounting resource |
+|---|---|
+| Sales Invoice | `invoices` |
+| Purchase Invoice / Bill | `bills` |
+| Credit Note | `credit-notes` |
+| Customer | `customers` |
+| Supplier | `suppliers` |
+| Account Code | `ledger-accounts` |
 
-Not every Accounting operation is supported by every connector. Always verify before assuming a method works:
+### Coverage highlights
 
-```bash
-curl 'https://unify.apideck.com/connector/connectors/clearbooks-uk' \
-  -H "Authorization: Bearer ${APIDECK_API_KEY}" \
-  -H "x-apideck-app-id: ${APIDECK_APP_ID}"
+- ✅ Sales invoices (CRUD)
+- ✅ Bills
+- ✅ Credit notes
+- ✅ Customers, suppliers
+- ✅ Chart of accounts
+- ⚠️ Payments, journal entries — not in current coverage; use Proxy
+- ❌ UK VAT return / MTD submission — use Proxy
+- ❌ Payroll — separate product
+
+### Auth notes
+
+- **Type:** API key, managed by Apideck Vault
+- **Business binding:** one Clear Books business per connection.
+- **UK-only:** Clear Books is UK-market. Multi-regional customers typically use a different platform.
+
+### Example: list unpaid bills
+
+```typescript
+const { data } = await apideck.accounting.bills.list({
+  serviceId: "clearbooks-uk",
+  filter: { status: "open" },
+});
 ```
-
-See [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) for patterns around `UnsupportedOperationError` and connector-specific fallbacks.
 
 ## Escape hatch: Proxy API
 

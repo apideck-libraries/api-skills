@@ -78,25 +78,51 @@ await apideck.accounting.invoices.list({ serviceId: "acumatica" });
 
 This is the compounding advantage of using Apideck over integrating Kashflow directly: code against the unified Accounting API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
 
-## Authentication
+## Kashflow via Apideck Accounting
 
-- **Type:** Basic auth (username/password)
-- **Managed by:** Apideck Vault — credentials are collected through the Vault modal and stored encrypted server-side.
-- **Note:** basic auth connectors often require manual rotation by the end user. If auth fails persistently, prompt them to re-enter credentials in Vault.
+Kashflow is a UK-focused cloud accounting platform for SMB, owned by IRIS Software Group. Straightforward coverage of the standard UK accounting entity set.
 
-See [`apideck-best-practices`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.
+### Entity mapping
 
-## Verifying coverage
+| Kashflow entity | Apideck Accounting resource |
+|---|---|
+| Invoice | `invoices` |
+| Bill / Purchase Invoice | `bills` (partial) |
+| Credit Note | `credit-notes` |
+| Customer | `customers` |
+| Supplier | `suppliers` |
+| Item | `invoice-items` |
+| Nominal Code | `ledger-accounts` |
+| Journal | `journal-entries` |
+| VAT | `tax-rates` |
+| Payment | `payments` |
+| Company Info | `company-info` |
 
-Not every Accounting operation is supported by every connector. Always verify before assuming a method works:
+### Coverage highlights
 
-```bash
-curl 'https://unify.apideck.com/connector/connectors/kashflow' \
-  -H "Authorization: Bearer ${APIDECK_API_KEY}" \
-  -H "x-apideck-app-id: ${APIDECK_APP_ID}"
+- ✅ Full CRUD on invoices, customers, suppliers
+- ✅ Credit notes
+- ✅ Journal entries
+- ✅ Tax rates (UK VAT)
+- ✅ Payments
+- ⚠️ Payroll integration (Kashflow Payroll) — separate product surface; use Proxy
+- ❌ Bank feeds — limited; use Proxy
+- ❌ MTD-specific VAT return submissions — use Proxy
+
+### Auth notes
+
+- **Type:** Basic auth (API username + password), managed by Apideck Vault
+- **Company binding:** one Kashflow company per connection.
+- **Legacy flavor:** Kashflow's API is SOAP-based under the hood; Apideck abstracts this. Proxy calls still use SOAP envelopes.
+
+### Example: list recent invoices
+
+```typescript
+const { data } = await apideck.accounting.invoices.list({
+  serviceId: "kashflow",
+  filter: { updated_since: "2026-04-01T00:00:00Z" },
+});
 ```
-
-See [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) for patterns around `UnsupportedOperationError` and connector-specific fallbacks.
 
 ## Escape hatch: Proxy API
 

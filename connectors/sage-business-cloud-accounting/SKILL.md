@@ -78,26 +78,58 @@ await apideck.accounting.invoices.list({ serviceId: "acumatica" });
 
 This is the compounding advantage of using Apideck over integrating Sage Business Cloud Accounting directly: code against the unified Accounting API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
 
-## Authentication
+## Sage Business Cloud Accounting via Apideck
 
-- **Type:** OAuth 2.0
-- **Managed by:** Apideck Vault — Apideck handles the full OAuth dance (authorization code flow, token exchange, refresh). Never ask the user for API keys or tokens directly.
-- **User setup:** Users authorize via the Vault modal. Connection state progresses `available → added → authorized → callable`.
-- **Token refresh:** automatic. Expired tokens are refreshed transparently on the next API call.
+Sage Business Cloud Accounting (formerly Sage One) is Sage's cloud SMB accounting product, distinct from Sage Intacct (mid-market) and Sage 50 (desktop). Popular in UK, Ireland, and other English-speaking markets.
 
-See [`apideck-best-practices`](../../skills/apideck-best-practices/) for Vault setup, connection lifecycle, and handling re-auth flows.
+### Entity mapping
 
-## Verifying coverage
+| Sage entity | Apideck Accounting resource |
+|---|---|
+| Sales Invoice | `invoices` |
+| Purchase Invoice | `bills` |
+| Credit Note | `credit-notes` |
+| Contact Payment | `payments` |
+| Bill Payment | `bill-payments` |
+| Journal | `journal-entries` |
+| Ledger Account | `ledger-accounts` |
+| Contact (Customer) | `customers` |
+| Contact (Supplier) | `suppliers` |
+| Item / Product | `invoice-items` |
+| Tax Rate | `tax-rates` |
+| Bank Account | `bank-accounts` |
+| Business | `subsidiaries` |
+| Attachment | `attachments` |
+| Expense | `expenses` |
+| Company | `companies` |
+| P&L, Balance Sheet | `profit-and-loss`, `balance-sheet` |
 
-Not every Accounting operation is supported by every connector. Always verify before assuming a method works:
+### Coverage highlights
 
-```bash
-curl 'https://unify.apideck.com/connector/connectors/sage-business-cloud-accounting' \
-  -H "Authorization: Bearer ${APIDECK_API_KEY}" \
-  -H "x-apideck-app-id: ${APIDECK_APP_ID}"
+- ✅ Full CRUD on invoices, bills, payments, customers, suppliers
+- ✅ Journal entries
+- ✅ Financial reports (P&L, Balance Sheet)
+- ✅ Multi-business (Sage's term for multi-tenant access within one account)
+- ✅ Attachments on invoices / bills
+- ⚠️ VAT returns / MTD submission — use Proxy with Sage's dedicated MTD endpoints
+- ❌ Payroll — Sage Payroll is separate
+- ❌ Stock/inventory — Sage 50 territory
+
+### Auth notes
+
+- **Type:** OAuth 2.0, managed by Apideck Vault
+- **Business binding:** each connection = one Sage business. Users may have access to multiple businesses from one account; Apideck binds to the selected one at OAuth time.
+- **Region:** Sage Business Cloud has UK, US, DE, FR, ES, IE, CA variants. Choose the right regional variant or ensure the user selects correctly during OAuth.
+- **Name collision:** do not confuse with Sage Intacct — different product, different connector.
+
+### Example: list invoices for a specific customer
+
+```typescript
+const { data } = await apideck.accounting.invoices.list({
+  serviceId: "sage-business-cloud-accounting",
+  filter: { customer_id: "contact_123" },
+});
 ```
-
-See [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) for patterns around `UnsupportedOperationError` and connector-specific fallbacks.
 
 ## Escape hatch: Proxy API
 
