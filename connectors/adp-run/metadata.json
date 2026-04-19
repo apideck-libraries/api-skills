@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "RUN Powered by ADP connector skill. Routes through Apideck's HRIS unified API using serviceId \"adp-run\".",
+  "serviceId": "adp-run",
+  "unifiedApis": [
+    "hris"
+  ],
+  "authType": "oauth2",
+  "tier": "2",
+  "references": [
+    "https://developers.apideck.com",
+    "https://apideck.com",
+    "https://unify.apideck.com/connector/connectors/adp-run",
+    "https://developers.adp.com"
+  ]
+}

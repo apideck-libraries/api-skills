@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "Bullhorn ATS connector skill. Routes through Apideck's ATS unified API using serviceId \"bullhorn-ats\".",
+  "serviceId": "bullhorn-ats",
+  "unifiedApis": [
+    "ats"
+  ],
+  "authType": "oauth2",
+  "tier": "1c",
+  "references": [
+    "https://developers.apideck.com",
+    "https://apideck.com",
+    "https://unify.apideck.com/connector/connectors/bullhorn-ats",
+    "https://bullhorn.github.io/rest-api-docs/"
+  ]
+}

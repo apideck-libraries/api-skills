@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "FreeAgent connector skill. Routes through Apideck's Accounting unified API using serviceId \"freeagent\".",
+  "serviceId": "freeagent",
+  "unifiedApis": [
+    "accounting"
+  ],
+  "authType": "oauth2",
+  "tier": "1c",
+  "references": [
+    "https://developers.apideck.com",
+    "https://apideck.com",
+    "https://unify.apideck.com/connector/connectors/freeagent",
+    "https://dev.freeagent.com"
+  ]
+}

@@ -1,0 +1,174 @@
+---
+name: workday
+description: |
+  Workday integration via Apideck's Accounting, HRIS, ATS unified API — same methods work across every connector in Accounting, HRIS, ATS, switch by changing `serviceId`. Use when the user wants to read, write, or reconcile invoices, bills, payments, ledger accounts, and journal entries in Workday. Routes through Apideck with serviceId "workday".
+license: Apache-2.0
+alwaysApply: false
+metadata:
+  author: apideck
+  version: "1.0.0"
+  serviceId: workday
+  unifiedApis: ["accounting", "hris", "ats"]
+  authType: custom
+  tier: "1b"
+  verified: true
+---
+
+# Workday (via Apideck)
+
+Access Workday through Apideck's **Accounting, HRIS, ATS** unified API — one of 34 Accounting connectors that share the same method surface. Code you write here ports to QuickBooks, NetSuite, Sage Intacct and 30 other Accounting connectors by changing a single `serviceId` string. Apideck handles auth, pagination, rate limiting, and retries so you don't write per-tenant Workday plumbing.
+
+## Quick facts
+
+- **Apideck serviceId:** `workday`
+- **Unified APIs:** Accounting, HRIS, ATS
+- **Auth type:** custom
+- **Workday docs:** https://community.workday.com
+- **Homepage:** https://workday.com
+
+## When to use this skill
+
+Activate this skill when the user explicitly wants to work with **Workday** — for example, "create an invoice in Workday" or "reconcile payments in Workday". This skill teaches the agent:
+
+1. Which Apideck unified API covers Workday (Accounting, HRIS, ATS)
+2. The correct `serviceId` to pass on every call (`workday`)
+3. Workday-specific auth and coverage caveats
+
+For the full method surface (parameters, pagination, filtering), use your language SDK skill:
+
+- [`apideck-node`](../../skills/apideck-node/), [`apideck-python`](../../skills/apideck-python/), [`apideck-dotnet`](../../skills/apideck-dotnet/), [`apideck-java`](../../skills/apideck-java/), [`apideck-go`](../../skills/apideck-go/), [`apideck-php`](../../skills/apideck-php/), or [`apideck-rest`](../../skills/apideck-rest/)
+
+For the raw OpenAPI spec:
+
+- **Accounting:** [https://specs.apideck.com/accounting.yml](https://specs.apideck.com/accounting.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=accounting)
+- **HRIS:** [https://specs.apideck.com/hris.yml](https://specs.apideck.com/hris.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=hris)
+- **ATS:** [https://specs.apideck.com/ats.yml](https://specs.apideck.com/ats.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=ats)
+
+## Minimal example (TypeScript)
+
+```typescript
+import { Apideck } from "@apideck/unify";
+
+const apideck = new Apideck({
+  apiKey: process.env.APIDECK_API_KEY,
+  appId: process.env.APIDECK_APP_ID,
+  consumerId: "your-consumer-id",
+});
+
+// List invoices in Workday
+const { data } = await apideck.accounting.invoices.list({
+  serviceId: "workday",
+});
+```
+
+## Portable across 34 Accounting connectors
+
+The Apideck **Accounting** unified API exposes the same methods for every connector in its catalog. Switching from Workday to another Accounting connector is a one-string change — no rewrite, no new SDK.
+
+```typescript
+// Today — Workday
+await apideck.accounting.invoices.list({ serviceId: "workday" });
+
+// Tomorrow — same code, different connector
+await apideck.accounting.invoices.list({ serviceId: "quickbooks" });
+await apideck.accounting.invoices.list({ serviceId: "netsuite" });
+```
+
+This is the compounding advantage of using Apideck over integrating Workday directly: code against the unified Accounting API once, gain access to every connector in it. New connectors Apideck adds become available to your app without code changes.
+
+## Workday via Apideck
+
+Workday is an enterprise cloud platform covering HCM, Finance, and Recruiting. Apideck exposes Workday across **HRIS**, **Accounting**, and **ATS** unified APIs — one of only a handful of multi-API connectors in the catalog.
+
+### Unified API coverage (verified via Connector API)
+
+| Apideck API | Resources mapped | Notes |
+|---|---|---|
+| Accounting | 20 resources | invoices, bills, journal entries, GL accounts, customers, suppliers, more |
+| HRIS | 3 resources | employees + org hierarchy |
+| ATS | 2 resources | job requisitions + applicants (limited) |
+
+Always verify current coverage with `GET /connector/connectors/workday`.
+
+### Example: list employees (HRIS)
+
+```typescript
+const { data } = await apideck.hris.employees.list({
+  serviceId: "workday",
+});
+```
+
+### Example: list invoices (Accounting)
+
+```typescript
+const { data } = await apideck.accounting.invoices.list({
+  serviceId: "workday",
+});
+```
+
+### Example: list job requisitions (ATS)
+
+```typescript
+const { data } = await apideck.ats.jobs.list({
+  serviceId: "workday",
+});
+```
+
+### Auth notes
+
+- **Type:** OAuth 2.0, managed by Apideck Vault
+- **Tenant binding:** each connection is bound to one Workday tenant. Module access (HCM, Financials, Recruiting) depends on what's licensed in that tenant.
+- **Integration System User (ISU):** Workday best practice is to use a dedicated ISU with scoped permissions. Consult your Workday admin for ISU setup before provisioning the Apideck connection.
+- **API versioning:** Workday web services are versioned; Apideck targets the latest supported version per module.
+
+## Verifying coverage
+
+Not every Accounting operation is supported by every connector. Always verify before assuming a method works:
+
+```bash
+curl 'https://unify.apideck.com/connector/connectors/workday' \
+  -H "Authorization: Bearer ${APIDECK_API_KEY}" \
+  -H "x-apideck-app-id: ${APIDECK_APP_ID}"
+```
+
+See [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) for patterns around `UnsupportedOperationError` and connector-specific fallbacks.
+
+## Escape hatch: Proxy API
+
+When an endpoint isn't covered by the Accounting unified API, use Apideck's Proxy to call Workday directly — Apideck injects auth headers and handles token refresh. Set `x-apideck-downstream-url` to the target endpoint on Workday's own API:
+
+```bash
+curl 'https://unify.apideck.com/proxy' \
+  -H "Authorization: Bearer ${APIDECK_API_KEY}" \
+  -H "x-apideck-app-id: ${APIDECK_APP_ID}" \
+  -H "x-apideck-consumer-id: ${CONSUMER_ID}" \
+  -H "x-apideck-service-id: workday" \
+  -H "x-apideck-downstream-url: <target endpoint on Workday>" \
+  -H "x-apideck-downstream-method: GET"
+```
+
+See [Workday's API docs](https://community.workday.com) for available endpoints.
+
+## Sibling connectors
+
+Other **Accounting** connectors that share this unified API surface (same method signatures, just change `serviceId`):
+
+[`quickbooks`](../quickbooks/), [`netsuite`](../netsuite/), [`sage-intacct`](../sage-intacct/), [`xero`](../xero/), [`exact-online`](../exact-online/), [`freeagent`](../freeagent/) *(beta)*, [`freshbooks`](../freshbooks/), [`wave`](../wave/) *(beta)*, and 25 more.
+
+Other **HRIS** connectors that share this unified API surface (same method signatures, just change `serviceId`):
+
+[`bamboohr`](../bamboohr/), [`deel`](../deel/) *(beta)*, [`hibob`](../hibob/), [`personio`](../personio/), [`adp-ihcm`](../adp-ihcm/) *(beta)*, [`adp-workforce-now`](../adp-workforce-now/) *(beta)*, [`paychex`](../paychex/) *(beta)*, [`paylocity`](../paylocity/), and 49 more.
+
+Other **ATS** connectors that share this unified API surface (same method signatures, just change `serviceId`):
+
+[`greenhouse`](../greenhouse/), [`lever`](../lever/), [`workable`](../workable/) *(beta)*, [`bullhorn-ats`](../bullhorn-ats/) *(beta)*, [`teamtailor`](../teamtailor/) *(beta)*, [`freshteam`](../freshteam/), [`jobadder`](../jobadder/) *(beta)*, [`recruitee`](../recruitee/), and 2 more.
+
+## See also
+
+- [Accounting OpenAPI spec](https://specs.apideck.com/accounting.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=accounting)
+- [HRIS OpenAPI spec](https://specs.apideck.com/hris.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=hris)
+- [ATS OpenAPI spec](https://specs.apideck.com/ats.yml) · [API Explorer](https://developers.apideck.com/api-explorer?id=ats)
+- [`apideck-connector-coverage`](../../skills/apideck-connector-coverage/) — programmatic coverage checks
+- [`apideck-best-practices`](../../skills/apideck-best-practices/) — architecture, Vault, pagination, error handling
+- [`apideck-node`](../../skills/apideck-node/) — TypeScript / Node SDK patterns
+- [Workday official docs](https://community.workday.com)

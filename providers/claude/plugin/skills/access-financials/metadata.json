@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "Access Financials connector skill. Routes through Apideck's Accounting unified API using serviceId \"access-financials\".",
+  "serviceId": "access-financials",
+  "unifiedApis": [
+    "accounting"
+  ],
+  "authType": "apiKey",
+  "tier": "2",
+  "references": [
+    "https://developers.apideck.com",
+    "https://apideck.com",
+    "https://unify.apideck.com/connector/connectors/access-financials",
+    "https://www.theaccessgroup.com/en-gb/finance/"
+  ]
+}

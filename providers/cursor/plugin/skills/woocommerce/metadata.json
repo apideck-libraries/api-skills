@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "WooCommerce connector skill. Routes through Apideck's Ecommerce unified API using serviceId \"woocommerce\".",
+  "serviceId": "woocommerce",
+  "unifiedApis": [
+    "ecommerce"
+  ],
+  "authType": "custom",
+  "tier": "1b",
+  "references": [
+    "https://developers.apideck.com",
+    "https://apideck.com",
+    "https://unify.apideck.com/connector/connectors/woocommerce",
+    "https://woocommerce.github.io/woocommerce-rest-api-docs/"
+  ]
+}

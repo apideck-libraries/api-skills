@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "JumpCloud connector skill. Routes through Apideck's HRIS unified API using serviceId \"jumpcloud\".",
+  "serviceId": "jumpcloud",
+  "unifiedApis": [
+    "hris"
+  ],
+  "authType": "apiKey",
+  "tier": "2",
+  "references": [
+    "https://developers.apideck.com",
+    "https://apideck.com",
+    "https://unify.apideck.com/connector/connectors/jumpcloud"
+  ]
+}

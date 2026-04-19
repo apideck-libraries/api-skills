@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "OneLogin connector skill. Routes through Apideck's HRIS unified API using serviceId \"onelogin\".",
+  "serviceId": "onelogin",
+  "unifiedApis": [
+    "hris"
+  ],
+  "authType": "oauth2",
+  "tier": "2",
+  "references": [
+    "https://developers.apideck.com",
+    "https://apideck.com",
+    "https://unify.apideck.com/connector/connectors/onelogin"
+  ]
+}

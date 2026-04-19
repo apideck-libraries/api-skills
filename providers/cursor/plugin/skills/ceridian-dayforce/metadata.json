@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "Ceridian Dayforce connector skill. Routes through Apideck's HRIS unified API using serviceId \"ceridian-dayforce\".",
+  "serviceId": "ceridian-dayforce",
+  "unifiedApis": [
+    "hris"
+  ],
+  "authType": "oauth2",
+  "tier": "2",
+  "references": [
+    "https://developers.apideck.com",
+    "https://apideck.com",
+    "https://unify.apideck.com/connector/connectors/ceridian-dayforce",
+    "https://developers.ceridian.com"
+  ]
+}

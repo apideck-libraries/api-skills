@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "Copper connector skill. Routes through Apideck's CRM unified API using serviceId \"copper\".",
+  "serviceId": "copper",
+  "unifiedApis": [
+    "crm"
+  ],
+  "authType": "apiKey",
+  "tier": "2",
+  "references": [
+    "https://developers.apideck.com",
+    "https://apideck.com",
+    "https://unify.apideck.com/connector/connectors/copper",
+    "https://developer.copper.com"
+  ]
+}

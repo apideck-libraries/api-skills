@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "Procountor connector skill. Routes through Apideck's Accounting unified API using serviceId \"procountor-fi\".",
+  "serviceId": "procountor-fi",
+  "unifiedApis": [
+    "accounting"
+  ],
+  "authType": "oauth2",
+  "tier": "2",
+  "references": [
+    "https://developers.apideck.com",
+    "https://apideck.com",
+    "https://unify.apideck.com/connector/connectors/procountor-fi",
+    "https://dev.procountor.com"
+  ]
+}

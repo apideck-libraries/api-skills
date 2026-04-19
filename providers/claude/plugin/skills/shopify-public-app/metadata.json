@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "Shopify (Public App) connector skill. Routes through Apideck's Ecommerce unified API using serviceId \"shopify-public-app\".",
+  "serviceId": "shopify-public-app",
+  "unifiedApis": [
+    "ecommerce"
+  ],
+  "authType": "oauth2",
+  "tier": "1b",
+  "references": [
+    "https://developers.apideck.com",
+    "https://apideck.com",
+    "https://unify.apideck.com/connector/connectors/shopify-public-app",
+    "https://shopify.dev/docs/apps"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "Rillet connector skill. Routes through Apideck's Accounting unified API using serviceId \"rillet\".",
+  "serviceId": "rillet",
+  "unifiedApis": [
+    "accounting"
+  ],
+  "authType": "apiKey",
+  "tier": "2",
+  "references": [
+    "https://developers.apideck.com",
+    "https://apideck.com",
+    "https://unify.apideck.com/connector/connectors/rillet",
+    "https://rillet.com"
+  ]
+}

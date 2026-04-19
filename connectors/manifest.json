@@ -1,0 +1,2026 @@
+{
+  "$comment": "Connector manifest. All serviceIds, names, auth types, and unified-API coverage verified against https://unify.apideck.com/connector/connectors (snapshot in .planning/connector-api-snapshots/). Beta connectors noted. Gusto and Rippling excluded per user directive.",
+  "unifiedApis": {
+    "crm": {
+      "displayName": "CRM",
+      "packageName": "crm",
+      "specUrl": "https://specs.apideck.com/crm.yml",
+      "apiExplorerUrl": "https://developers.apideck.com/api-explorer?id=crm",
+      "resources": "contacts, companies, leads, opportunities, activities, pipelines, notes, users"
+    },
+    "accounting": {
+      "displayName": "Accounting",
+      "packageName": "accounting",
+      "specUrl": "https://specs.apideck.com/accounting.yml",
+      "apiExplorerUrl": "https://developers.apideck.com/api-explorer?id=accounting",
+      "resources": "invoices, bills, payments, ledger accounts, journal entries, tax rates, customers, suppliers, reports"
+    },
+    "hris": {
+      "displayName": "HRIS",
+      "packageName": "hris",
+      "specUrl": "https://specs.apideck.com/hris.yml",
+      "apiExplorerUrl": "https://developers.apideck.com/api-explorer?id=hris",
+      "resources": "employees, departments, payrolls, time-off, companies, jobs"
+    },
+    "ats": {
+      "displayName": "ATS",
+      "packageName": "ats",
+      "specUrl": "https://specs.apideck.com/ats.yml",
+      "apiExplorerUrl": "https://developers.apideck.com/api-explorer?id=ats",
+      "resources": "jobs, applicants, applications"
+    },
+    "file-storage": {
+      "displayName": "File Storage",
+      "packageName": "fileStorage",
+      "specUrl": "https://specs.apideck.com/file-storage.yml",
+      "apiExplorerUrl": "https://developers.apideck.com/api-explorer?id=file-storage",
+      "resources": "files, folders, drives, shared links, upload sessions"
+    },
+    "issue-tracking": {
+      "displayName": "Issue Tracking",
+      "packageName": "issueTracking",
+      "specUrl": "https://specs.apideck.com/issue-tracking.yml",
+      "apiExplorerUrl": "https://developers.apideck.com/api-explorer?id=issue-tracking",
+      "resources": "collections, tickets, comments, users, tags"
+    },
+    "ecommerce": {
+      "displayName": "Ecommerce",
+      "packageName": "ecommerce",
+      "specUrl": "https://specs.apideck.com/ecommerce.yml",
+      "apiExplorerUrl": "https://developers.apideck.com/api-explorer?id=ecommerce",
+      "resources": "orders, products, customers, stores"
+    }
+  },
+  "connectors": [
+    {
+      "slug": "bamboohr",
+      "name": "BambooHR",
+      "serviceId": "bamboohr",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "basic",
+      "tier": "1a",
+      "verified": true,
+      "docsUrl": "https://documentation.bamboohr.com/docs",
+      "homepage": "https://www.bamboohr.com"
+    },
+    {
+      "slug": "greenhouse",
+      "name": "Greenhouse",
+      "serviceId": "greenhouse",
+      "unifiedApis": [
+        "ats"
+      ],
+      "authType": "basic",
+      "tier": "1a",
+      "verified": true,
+      "docsUrl": "https://developers.greenhouse.io",
+      "homepage": "https://www.greenhouse.io/"
+    },
+    {
+      "slug": "jira",
+      "name": "Jira",
+      "serviceId": "jira",
+      "unifiedApis": [
+        "issue-tracking"
+      ],
+      "authType": "oauth2",
+      "tier": "1a",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developer.atlassian.com/cloud/jira/platform/rest/v3/",
+      "homepage": "https://www.atlassian.com/software/jira"
+    },
+    {
+      "slug": "quickbooks",
+      "name": "QuickBooks",
+      "serviceId": "quickbooks",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "1a",
+      "verified": true,
+      "docsUrl": "https://developer.intuit.com/app/developer/qbo/docs",
+      "homepage": "https://quickbooks.intuit.com/"
+    },
+    {
+      "slug": "salesforce",
+      "name": "Salesforce",
+      "serviceId": "salesforce",
+      "unifiedApis": [
+        "crm"
+      ],
+      "authType": "oauth2",
+      "tier": "1a",
+      "verified": true,
+      "docsUrl": "https://developer.salesforce.com/docs",
+      "homepage": "https://www.salesforce.com"
+    },
+    {
+      "slug": "sharepoint",
+      "name": "SharePoint",
+      "serviceId": "sharepoint",
+      "unifiedApis": [
+        "file-storage"
+      ],
+      "authType": "oauth2",
+      "tier": "1a",
+      "verified": true,
+      "docsUrl": "https://learn.microsoft.com/sharepoint/dev/",
+      "homepage": "https://products.office.com"
+    },
+    {
+      "slug": "shopify",
+      "name": "Shopify",
+      "serviceId": "shopify",
+      "unifiedApis": [
+        "ecommerce"
+      ],
+      "authType": "custom",
+      "tier": "1a",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://shopify.dev/docs/api",
+      "homepage": "https://www.shopify.com/"
+    },
+    {
+      "slug": "bigcommerce",
+      "name": "BigCommerce",
+      "serviceId": "bigcommerce",
+      "unifiedApis": [
+        "ecommerce"
+      ],
+      "authType": "apiKey",
+      "tier": "1b",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developer.bigcommerce.com",
+      "homepage": "https://www.bigcommerce.com/"
+    },
+    {
+      "slug": "box",
+      "name": "Box",
+      "serviceId": "box",
+      "unifiedApis": [
+        "file-storage"
+      ],
+      "authType": "oauth2",
+      "tier": "1b",
+      "verified": true,
+      "docsUrl": "https://developer.box.com",
+      "homepage": "https://www.box.com/"
+    },
+    {
+      "slug": "deel",
+      "name": "Deel",
+      "serviceId": "deel",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "1b",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developer.deel.com",
+      "homepage": "https://www.deel.com/"
+    },
+    {
+      "slug": "dropbox",
+      "name": "Dropbox",
+      "serviceId": "dropbox",
+      "unifiedApis": [
+        "file-storage"
+      ],
+      "authType": "oauth2",
+      "tier": "1b",
+      "verified": true,
+      "docsUrl": "https://www.dropbox.com/developers",
+      "homepage": "https://www.dropbox.com/"
+    },
+    {
+      "slug": "github",
+      "name": "GitHub",
+      "serviceId": "github",
+      "unifiedApis": [
+        "issue-tracking"
+      ],
+      "authType": "oauth2",
+      "tier": "1b",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://docs.github.com/en/rest",
+      "homepage": "https://github.com/"
+    },
+    {
+      "slug": "gitlab",
+      "name": "GitLab",
+      "serviceId": "gitlab",
+      "unifiedApis": [
+        "issue-tracking"
+      ],
+      "authType": "oauth2",
+      "tier": "1b",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://docs.gitlab.com/ee/api/",
+      "homepage": "https://www.gitlab.com/"
+    },
+    {
+      "slug": "google-drive",
+      "name": "Google Drive",
+      "serviceId": "google-drive",
+      "unifiedApis": [
+        "file-storage"
+      ],
+      "authType": "oauth2",
+      "tier": "1b",
+      "verified": true,
+      "docsUrl": "https://developers.google.com/drive",
+      "homepage": "https://www.google.com/drive/index.html"
+    },
+    {
+      "slug": "hibob",
+      "name": "Hibob",
+      "serviceId": "hibob",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "basic",
+      "tier": "1b",
+      "verified": true,
+      "docsUrl": "https://apidocs.hibob.com",
+      "homepage": "https://www.hibob.com/"
+    },
+    {
+      "slug": "hubspot",
+      "name": "HubSpot",
+      "serviceId": "hubspot",
+      "unifiedApis": [
+        "crm"
+      ],
+      "authType": "oauth2",
+      "tier": "1b",
+      "verified": true,
+      "docsUrl": "https://developers.hubspot.com",
+      "homepage": "https://www.hubspot.com/"
+    },
+    {
+      "slug": "lever",
+      "name": "Lever",
+      "serviceId": "lever",
+      "unifiedApis": [
+        "ats"
+      ],
+      "authType": "oauth2",
+      "tier": "1b",
+      "verified": true,
+      "docsUrl": "https://hire.lever.co/developer",
+      "homepage": "https://www.lever.co/"
+    },
+    {
+      "slug": "linear",
+      "name": "Linear",
+      "serviceId": "linear",
+      "unifiedApis": [
+        "issue-tracking"
+      ],
+      "authType": "oauth2",
+      "tier": "1b",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developers.linear.app",
+      "homepage": "https://linear.app/"
+    },
+    {
+      "slug": "netsuite",
+      "name": "NetSuite",
+      "serviceId": "netsuite",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "custom",
+      "tier": "1b",
+      "verified": true,
+      "docsUrl": "https://docs.oracle.com/en/cloud/saas/netsuite/",
+      "homepage": "https://netsuite.com"
+    },
+    {
+      "slug": "onedrive",
+      "name": "OneDrive",
+      "serviceId": "onedrive",
+      "unifiedApis": [
+        "file-storage"
+      ],
+      "authType": "oauth2",
+      "tier": "1b",
+      "verified": true,
+      "docsUrl": "https://learn.microsoft.com/onedrive/developer/",
+      "homepage": "https://onedrive.live.com/"
+    },
+    {
+      "slug": "personio",
+      "name": "Personio",
+      "serviceId": "personio",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "1b",
+      "verified": true,
+      "docsUrl": "https://developer.personio.de",
+      "homepage": "https://www.personio.com/"
+    },
+    {
+      "slug": "pipedrive",
+      "name": "Pipedrive",
+      "serviceId": "pipedrive",
+      "unifiedApis": [
+        "crm"
+      ],
+      "authType": "oauth2",
+      "tier": "1b",
+      "verified": true,
+      "docsUrl": "https://developers.pipedrive.com",
+      "homepage": "https://www.pipedrive.com/"
+    },
+    {
+      "slug": "sage-intacct",
+      "name": "Sage Intacct",
+      "serviceId": "sage-intacct",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "1b",
+      "verified": true,
+      "docsUrl": "https://developer.intacct.com",
+      "homepage": "https://www.sageintacct.com/"
+    },
+    {
+      "slug": "shopify-public-app",
+      "name": "Shopify (Public App)",
+      "serviceId": "shopify-public-app",
+      "unifiedApis": [
+        "ecommerce"
+      ],
+      "authType": "oauth2",
+      "tier": "1b",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://shopify.dev/docs/apps",
+      "homepage": "https://www.shopify.com/"
+    },
+    {
+      "slug": "woocommerce",
+      "name": "WooCommerce",
+      "serviceId": "woocommerce",
+      "unifiedApis": [
+        "ecommerce"
+      ],
+      "authType": "custom",
+      "tier": "1b",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://woocommerce.github.io/woocommerce-rest-api-docs/",
+      "homepage": "https://woocommerce.com/"
+    },
+    {
+      "slug": "workable",
+      "name": "Workable",
+      "serviceId": "workable",
+      "unifiedApis": [
+        "ats"
+      ],
+      "authType": "oauth2",
+      "tier": "1b",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://workable.readme.io",
+      "homepage": "https://workable.com"
+    },
+    {
+      "slug": "workday",
+      "name": "Workday",
+      "serviceId": "workday",
+      "unifiedApis": [
+        "accounting",
+        "hris",
+        "ats"
+      ],
+      "authType": "custom",
+      "tier": "1b",
+      "verified": true,
+      "docsUrl": "https://community.workday.com",
+      "homepage": "https://workday.com"
+    },
+    {
+      "slug": "xero",
+      "name": "Xero",
+      "serviceId": "xero",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "1b",
+      "verified": true,
+      "docsUrl": "https://developer.xero.com",
+      "homepage": "https://www.xero.com/"
+    },
+    {
+      "slug": "zoho-crm",
+      "name": "Zoho CRM",
+      "serviceId": "zoho-crm",
+      "unifiedApis": [
+        "crm"
+      ],
+      "authType": "oauth2",
+      "tier": "1b",
+      "verified": true,
+      "docsUrl": "https://www.zoho.com/crm/developer/docs/api/",
+      "homepage": "https://www.zoho.com/crm/"
+    },
+    {
+      "slug": "activecampaign",
+      "name": "ActiveCampaign",
+      "serviceId": "activecampaign",
+      "unifiedApis": [
+        "crm"
+      ],
+      "authType": "apiKey",
+      "tier": "1c",
+      "verified": true,
+      "docsUrl": "https://developers.activecampaign.com",
+      "homepage": "https://www.activecampaign.com/"
+    },
+    {
+      "slug": "adp-ihcm",
+      "name": "ADP iHCM",
+      "serviceId": "adp-ihcm",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "1c",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developers.adp.com",
+      "homepage": "https://www.adp.com/"
+    },
+    {
+      "slug": "adp-workforce-now",
+      "name": "ADP Workforce Now",
+      "serviceId": "adp-workforce-now",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "1c",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developers.adp.com",
+      "homepage": "https://www.adp.com/what-we-offer/products/adp-workforce-now.aspx"
+    },
+    {
+      "slug": "amazon-seller-central",
+      "name": "Amazon Seller Central",
+      "serviceId": "amazon-seller-central",
+      "unifiedApis": [
+        "ecommerce"
+      ],
+      "authType": "oauth2",
+      "tier": "1c",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developer-docs.amazon.com/sp-api/"
+    },
+    {
+      "slug": "bullhorn-ats",
+      "name": "Bullhorn ATS",
+      "serviceId": "bullhorn-ats",
+      "unifiedApis": [
+        "ats"
+      ],
+      "authType": "oauth2",
+      "tier": "1c",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://bullhorn.github.io/rest-api-docs/",
+      "homepage": "https://www.bullhorn.com/"
+    },
+    {
+      "slug": "close",
+      "name": "Close",
+      "serviceId": "close",
+      "unifiedApis": [
+        "crm"
+      ],
+      "authType": "basic",
+      "tier": "1c",
+      "verified": true,
+      "docsUrl": "https://developer.close.com",
+      "homepage": "https://close.com/"
+    },
+    {
+      "slug": "ebay",
+      "name": "eBay",
+      "serviceId": "ebay",
+      "unifiedApis": [
+        "ecommerce"
+      ],
+      "authType": "oauth2",
+      "tier": "1c",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developer.ebay.com",
+      "homepage": "https://www.ebay.com/"
+    },
+    {
+      "slug": "etsy",
+      "name": "Etsy",
+      "serviceId": "etsy",
+      "unifiedApis": [
+        "ecommerce"
+      ],
+      "authType": "oauth2",
+      "tier": "1c",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developers.etsy.com",
+      "homepage": "https://etsy.com"
+    },
+    {
+      "slug": "exact-online",
+      "name": "Exact Online",
+      "serviceId": "exact-online",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "1c",
+      "verified": true,
+      "docsUrl": "https://support.exactonline.com/community/s/knowledge-base",
+      "homepage": "https://www.exact.com/"
+    },
+    {
+      "slug": "freeagent",
+      "name": "FreeAgent",
+      "serviceId": "freeagent",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "1c",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://dev.freeagent.com",
+      "homepage": "https://www.freeagent.com/"
+    },
+    {
+      "slug": "freshbooks",
+      "name": "FreshBooks",
+      "serviceId": "freshbooks",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "1c",
+      "verified": true,
+      "docsUrl": "https://www.freshbooks.com/api/start",
+      "homepage": "https://www.freshbooks.com/"
+    },
+    {
+      "slug": "magento",
+      "name": "Magento",
+      "serviceId": "magento",
+      "unifiedApis": [
+        "ecommerce"
+      ],
+      "authType": "custom",
+      "tier": "1c",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developer.adobe.com/commerce/webapi/",
+      "homepage": "https://magento.com/"
+    },
+    {
+      "slug": "microsoft-dynamics",
+      "name": "Microsoft Dynamics CRM",
+      "serviceId": "microsoft-dynamics",
+      "unifiedApis": [
+        "crm"
+      ],
+      "authType": "oauth2",
+      "tier": "1c",
+      "verified": true,
+      "docsUrl": "https://learn.microsoft.com/dynamics365/",
+      "homepage": "https://dynamics.microsoft.com/en-us/"
+    },
+    {
+      "slug": "paychex",
+      "name": "Paychex",
+      "serviceId": "paychex",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "1c",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developer.paychex.com",
+      "homepage": "https://www.paychex.com/"
+    },
+    {
+      "slug": "paylocity",
+      "name": "Paylocity",
+      "serviceId": "paylocity",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "1c",
+      "verified": true,
+      "docsUrl": "https://developer.paylocity.com",
+      "homepage": "https://www.paylocity.com/"
+    },
+    {
+      "slug": "teamleader",
+      "name": "Teamleader",
+      "serviceId": "teamleader",
+      "unifiedApis": [
+        "crm"
+      ],
+      "authType": "oauth2",
+      "tier": "1c",
+      "verified": true,
+      "docsUrl": "https://developer.teamleader.eu",
+      "homepage": "https://www.teamleader.eu/"
+    },
+    {
+      "slug": "teamtailor",
+      "name": "Teamtailor",
+      "serviceId": "teamtailor",
+      "unifiedApis": [
+        "ats"
+      ],
+      "authType": "apiKey",
+      "tier": "1c",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://docs.teamtailor.com",
+      "homepage": "https://www.teamtailor.com/"
+    },
+    {
+      "slug": "wave",
+      "name": "Wave",
+      "serviceId": "wave",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "1c",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developer.waveapps.com",
+      "homepage": "https://www.waveapps.com/"
+    },
+    {
+      "slug": "zendesk-sell",
+      "name": "Zendesk Sell",
+      "serviceId": "zendesk-sell",
+      "unifiedApis": [
+        "crm"
+      ],
+      "authType": "oauth2",
+      "tier": "1c",
+      "verified": true,
+      "docsUrl": "https://developer.zendesk.com/api-reference/sales-crm/",
+      "homepage": "https://www.zendesk.com/sell/"
+    },
+    {
+      "slug": "access-financials",
+      "name": "Access Financials",
+      "serviceId": "access-financials",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://www.theaccessgroup.com/en-gb/finance/",
+      "homepage": "https://www.theaccessgroup.com/en-gb/finance/products/access-financials/"
+    },
+    {
+      "slug": "acerta",
+      "name": "Acerta",
+      "serviceId": "acerta",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://www.acerta.be",
+      "homepage": "https://www.acerta.be/nl"
+    },
+    {
+      "slug": "act",
+      "name": "Act",
+      "serviceId": "act",
+      "unifiedApis": [
+        "crm"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "homepage": "https://act.com"
+    },
+    {
+      "slug": "acumatica",
+      "name": "Acumatica",
+      "serviceId": "acumatica",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://help.acumatica.com",
+      "homepage": "https://www.acumatica.com/"
+    },
+    {
+      "slug": "adp-run",
+      "name": "RUN Powered by ADP",
+      "serviceId": "adp-run",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developers.adp.com",
+      "homepage": "https://www.adp.com/what-we-offer/products/run-powered-by-adp.aspx"
+    },
+    {
+      "slug": "afas",
+      "name": "AFAS Software",
+      "serviceId": "afas",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://www.afas.nl",
+      "homepage": "https://www.afas.nl/"
+    },
+    {
+      "slug": "alexishr",
+      "name": "Simployer One",
+      "serviceId": "alexishr",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://www.simployer.com",
+      "homepage": "https://www.simployer.com/"
+    },
+    {
+      "slug": "attio",
+      "name": "Attio",
+      "serviceId": "attio",
+      "unifiedApis": [
+        "crm"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developers.attio.com",
+      "homepage": "https://attio.com/"
+    },
+    {
+      "slug": "azure-active-directory",
+      "name": "Microsoft Entra",
+      "serviceId": "azure-active-directory",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "homepage": "https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-whatis"
+    },
+    {
+      "slug": "banqup",
+      "name": "banqUP",
+      "serviceId": "banqup",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://banqup.com",
+      "homepage": "https://banqup.com/"
+    },
+    {
+      "slug": "blackbaud",
+      "name": "Blackbaud",
+      "serviceId": "blackbaud",
+      "unifiedApis": [
+        "crm"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developer.blackbaud.com",
+      "homepage": "https://blackbaud.com"
+    },
+    {
+      "slug": "bol-com",
+      "name": "bol.com",
+      "serviceId": "bol-com",
+      "unifiedApis": [
+        "ecommerce"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://api.bol.com",
+      "homepage": "https://www.bol.com"
+    },
+    {
+      "slug": "breathehr",
+      "name": "Breathe HR",
+      "serviceId": "breathehr",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "docsUrl": "https://developer.breathehr.com",
+      "homepage": "https://www.breathehr.com/"
+    },
+    {
+      "slug": "campfire",
+      "name": "Campfire",
+      "serviceId": "campfire",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://www.campfire.com",
+      "homepage": "https://campfire.ai/"
+    },
+    {
+      "slug": "cascade-hr",
+      "name": "IRIS Cascade HR",
+      "serviceId": "cascade-hr",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "docsUrl": "https://www.iris.co.uk",
+      "homepage": "https://www.iris.co.uk/products/iris-cascade-b/"
+    },
+    {
+      "slug": "catalystone",
+      "name": "CatalystOne",
+      "serviceId": "catalystone",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://www.catalystone.com",
+      "homepage": "https://www.catalystone.com/"
+    },
+    {
+      "slug": "cegid-talentsoft",
+      "name": "Cegid Talentsoft",
+      "serviceId": "cegid-talentsoft",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://www.cegid.com",
+      "homepage": "https://www.cegid.com/en/products/cegid-talentsoft/"
+    },
+    {
+      "slug": "ceridian-dayforce",
+      "name": "Ceridian Dayforce",
+      "serviceId": "ceridian-dayforce",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developers.ceridian.com",
+      "homepage": "https://www.ceridian.com/products/dayforce"
+    },
+    {
+      "slug": "cezannehr",
+      "name": "Cezanne HR",
+      "serviceId": "cezannehr",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://cezannehr.com",
+      "homepage": "https://cezannehr.com/"
+    },
+    {
+      "slug": "charliehr",
+      "name": "CharlieHR",
+      "serviceId": "charliehr",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://charliehr.com",
+      "homepage": "https://www.charliehr.com/"
+    },
+    {
+      "slug": "ciphr",
+      "name": "CIPHR",
+      "serviceId": "ciphr",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://www.ciphr.com",
+      "homepage": "https://www.ciphr.com/"
+    },
+    {
+      "slug": "clearbooks-uk",
+      "name": "Clear Books",
+      "serviceId": "clearbooks-uk",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://www.clearbooks.co.uk/support/api/",
+      "homepage": "https://www.clearbooks.co.uk/"
+    },
+    {
+      "slug": "copper",
+      "name": "Copper",
+      "serviceId": "copper",
+      "unifiedApis": [
+        "crm"
+      ],
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "docsUrl": "https://developer.copper.com",
+      "homepage": "https://www.copper.com/"
+    },
+    {
+      "slug": "digits",
+      "name": "Digits",
+      "serviceId": "digits",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://digits.com",
+      "homepage": "https://www.digits.com/"
+    },
+    {
+      "slug": "dualentry",
+      "name": "Dualentry",
+      "serviceId": "dualentry",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "docsUrl": "https://dualentry.com",
+      "homepage": "https://www.dualentry.com/"
+    },
+    {
+      "slug": "employmenthero",
+      "name": "Employment Hero",
+      "serviceId": "employmenthero",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developer.employmenthero.com",
+      "homepage": "https://employmenthero.com"
+    },
+    {
+      "slug": "exact-online-nl",
+      "name": "Exact Online NL",
+      "serviceId": "exact-online-nl",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://support.exactonline.com",
+      "homepage": "https://www.exact.com/nl"
+    },
+    {
+      "slug": "exact-online-uk",
+      "name": "Exact Online UK",
+      "serviceId": "exact-online-uk",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://support.exactonline.com",
+      "homepage": "https://www.exact.com/uk"
+    },
+    {
+      "slug": "factorialhr",
+      "name": "Factorial",
+      "serviceId": "factorialhr",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "homepage": "https://factorialhr.com/"
+    },
+    {
+      "slug": "flexmail",
+      "name": "Flexmail",
+      "serviceId": "flexmail",
+      "unifiedApis": [
+        "crm"
+      ],
+      "authType": "basic",
+      "tier": "2",
+      "verified": true,
+      "docsUrl": "https://help.flexmail.eu",
+      "homepage": "https://flexmail.be"
+    },
+    {
+      "slug": "folk",
+      "name": "Folk",
+      "serviceId": "folk",
+      "unifiedApis": [
+        "crm"
+      ],
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developer.folk.app",
+      "homepage": "https://www.folk.app/"
+    },
+    {
+      "slug": "folks-hr",
+      "name": "Folks HR",
+      "serviceId": "folks-hr",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "docsUrl": "https://www.folkshr.com",
+      "homepage": "https://folksrh.com/"
+    },
+    {
+      "slug": "fourth",
+      "name": "Fourth",
+      "serviceId": "fourth",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "basic",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://www.fourth.com",
+      "homepage": "https://www.fourth.com/"
+    },
+    {
+      "slug": "freshsales",
+      "name": "Freshworks CRM",
+      "serviceId": "freshsales",
+      "unifiedApis": [
+        "crm"
+      ],
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "docsUrl": "https://developers.freshworks.com",
+      "homepage": "https://www.freshworks.com/freshsales-crm/"
+    },
+    {
+      "slug": "freshteam",
+      "name": "Freshteam",
+      "serviceId": "freshteam",
+      "unifiedApis": [
+        "hris",
+        "ats"
+      ],
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "docsUrl": "https://developers.freshworks.com/freshteam/",
+      "homepage": "https://www.freshworks.com/hrms/"
+    },
+    {
+      "slug": "gitlab-server",
+      "name": "GitLab server (on-prem)",
+      "serviceId": "gitlab-server",
+      "unifiedApis": [
+        "issue-tracking"
+      ],
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://docs.gitlab.com/ee/api/",
+      "homepage": "https://www.gitlab.com/"
+    },
+    {
+      "slug": "google-contacts",
+      "name": "Google Contacts",
+      "serviceId": "google-contacts",
+      "unifiedApis": [
+        "crm"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developers.google.com/people",
+      "homepage": "https://www.google.com/contacts"
+    },
+    {
+      "slug": "google-workspace",
+      "name": "Google Workspace",
+      "serviceId": "google-workspace",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "homepage": "https://workspace.google.com/"
+    },
+    {
+      "slug": "holded",
+      "name": "Holded",
+      "serviceId": "holded",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "homepage": "https://www.holded.com/"
+    },
+    {
+      "slug": "homerun-hr",
+      "name": "Homerun HR",
+      "serviceId": "homerun-hr",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://www.homerun.co",
+      "homepage": "https://www.homerun.co/"
+    },
+    {
+      "slug": "hr-works",
+      "name": "HR Works",
+      "serviceId": "hr-works",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://www.hrworks.de",
+      "homepage": "https://hrworks-inc.com/"
+    },
+    {
+      "slug": "humaans-io",
+      "name": "Humaans",
+      "serviceId": "humaans-io",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://docs.humaans.io",
+      "homepage": "https://humaans.io/"
+    },
+    {
+      "slug": "intuit-enterprise-suite",
+      "name": "Intuit Enterprise Suite",
+      "serviceId": "intuit-enterprise-suite",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "docsUrl": "https://developer.intuit.com",
+      "homepage": "https://developer.intuit.com"
+    },
+    {
+      "slug": "jobadder",
+      "name": "JobAdder",
+      "serviceId": "jobadder",
+      "unifiedApis": [
+        "ats"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "homepage": "https://www.jobadder.com/"
+    },
+    {
+      "slug": "jumpcloud",
+      "name": "JumpCloud",
+      "serviceId": "jumpcloud",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "homepage": "https://jumpcloud.com/"
+    },
+    {
+      "slug": "justworks",
+      "name": "Justworks",
+      "serviceId": "justworks",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "none",
+      "tier": "2",
+      "verified": true,
+      "homepage": "https://justworks.com/"
+    },
+    {
+      "slug": "kashflow",
+      "name": "Kashflow",
+      "serviceId": "kashflow",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "basic",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developer.kashflow.com",
+      "homepage": "https://www.kashflow.com/"
+    },
+    {
+      "slug": "keka",
+      "name": "Keka HR",
+      "serviceId": "keka",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developers.keka.com",
+      "homepage": "https://www.keka.com/"
+    },
+    {
+      "slug": "kenjo",
+      "name": "Kenjo",
+      "serviceId": "kenjo",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developers.kenjo.io",
+      "homepage": "https://www.kenjo.io/"
+    },
+    {
+      "slug": "liantis",
+      "name": "Liantis",
+      "serviceId": "liantis",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://www.liantis.be",
+      "homepage": "https://www.liantis.be"
+    },
+    {
+      "slug": "lightspeed",
+      "name": "Lightspeed",
+      "serviceId": "lightspeed",
+      "unifiedApis": [
+        "ecommerce"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developers.lightspeedhq.com",
+      "homepage": "https://lightspeedhq.com"
+    },
+    {
+      "slug": "lightspeed-ecommerce",
+      "name": "Lightspeed eCom (C-Series)",
+      "serviceId": "lightspeed-ecommerce",
+      "unifiedApis": [
+        "ecommerce"
+      ],
+      "authType": "basic",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developers.lightspeedhq.com",
+      "homepage": "https://www.lightspeedhq.com/ecommerce"
+    },
+    {
+      "slug": "linear-multiworkspace",
+      "name": "Linear Multiworkspace",
+      "serviceId": "linear-multiworkspace",
+      "unifiedApis": [
+        "issue-tracking"
+      ],
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developers.linear.app",
+      "homepage": "https://linear.app/"
+    },
+    {
+      "slug": "loket-nl",
+      "name": "Loket.nl",
+      "serviceId": "loket-nl",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "docsUrl": "https://developer.loket.nl",
+      "homepage": "https://www.loket.nl/"
+    },
+    {
+      "slug": "lucca-hr",
+      "name": "Lucca",
+      "serviceId": "lucca-hr",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "docsUrl": "https://developers.lucca.fr",
+      "homepage": "https://www.lucca-hr.com/"
+    },
+    {
+      "slug": "microsoft-dynamics-365-business-central",
+      "name": "Microsoft Dynamics 365 Business Central",
+      "serviceId": "microsoft-dynamics-365-business-central",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "docsUrl": "https://learn.microsoft.com/dynamics365/business-central/",
+      "homepage": "https://dynamics.microsoft.com/en-us/business-central/overview/"
+    },
+    {
+      "slug": "microsoft-dynamics-hr",
+      "name": "Microsoft Dynamics 365 Human Resources",
+      "serviceId": "microsoft-dynamics-hr",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "docsUrl": "https://learn.microsoft.com/dynamics365/human-resources/",
+      "homepage": "https://dynamics.microsoft.com/en-us/human-resources/"
+    },
+    {
+      "slug": "microsoft-outlook",
+      "name": "Microsoft Outlook",
+      "serviceId": "microsoft-outlook",
+      "unifiedApis": [
+        "crm"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://learn.microsoft.com/graph/api/overview"
+    },
+    {
+      "slug": "moneybird",
+      "name": "Moneybird",
+      "serviceId": "moneybird",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developer.moneybird.com",
+      "homepage": "https://www.moneybird.com/"
+    },
+    {
+      "slug": "mrisoftware",
+      "name": "MRI Software",
+      "serviceId": "mrisoftware",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "basic",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://www.mrisoftware.com",
+      "homepage": "https://www.mrisoftware.com/"
+    },
+    {
+      "slug": "myob",
+      "name": "MYOB",
+      "serviceId": "myob",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "docsUrl": "https://developer.myob.com",
+      "homepage": "https://myob.com"
+    },
+    {
+      "slug": "myob-acumatica",
+      "name": "MYOB Acumatica",
+      "serviceId": "myob-acumatica",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developer.myob.com",
+      "homepage": "https://www.myob.com/au/erp-software/products/myob-acumatica"
+    },
+    {
+      "slug": "namely",
+      "name": "Namely",
+      "serviceId": "namely",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "docsUrl": "https://developers.namely.com",
+      "homepage": "https://www.namely.com/"
+    },
+    {
+      "slug": "nmbrs",
+      "name": "Visma Nmbrs",
+      "serviceId": "nmbrs",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "docsUrl": "https://support.nmbrs.com",
+      "homepage": "https://www.nmbrs.com"
+    },
+    {
+      "slug": "odoo",
+      "name": "Odoo",
+      "serviceId": "odoo",
+      "unifiedApis": [
+        "crm",
+        "accounting"
+      ],
+      "authType": "basic",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://www.odoo.com/documentation/",
+      "homepage": "https://www.odoo.com/"
+    },
+    {
+      "slug": "officient-io",
+      "name": "Officient",
+      "serviceId": "officient-io",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "docsUrl": "https://developers.officient.io",
+      "homepage": "https://officient.io"
+    },
+    {
+      "slug": "okta",
+      "name": "Okta",
+      "serviceId": "okta",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "homepage": "https://www.okta.com/"
+    },
+    {
+      "slug": "onelogin",
+      "name": "OneLogin",
+      "serviceId": "onelogin",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "homepage": "https://www.onelogin.com/"
+    },
+    {
+      "slug": "payfit",
+      "name": "PayFit",
+      "serviceId": "payfit",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "docsUrl": "https://developers.payfit.com",
+      "homepage": "https://payfit.com/"
+    },
+    {
+      "slug": "pennylane",
+      "name": "Pennylane",
+      "serviceId": "pennylane",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://pennylane.readme.io",
+      "homepage": "https://www.pennylane.com/"
+    },
+    {
+      "slug": "people-hr",
+      "name": "People HR",
+      "serviceId": "people-hr",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://help.peoplehr.com",
+      "homepage": "https://www.peoplehr.com/"
+    },
+    {
+      "slug": "picqer",
+      "name": "Picqer",
+      "serviceId": "picqer",
+      "unifiedApis": [
+        "ecommerce"
+      ],
+      "authType": "basic",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://picqer.com/en/api",
+      "homepage": "https://picqer.com"
+    },
+    {
+      "slug": "planhat",
+      "name": "Planhat",
+      "serviceId": "planhat",
+      "unifiedApis": [
+        "crm"
+      ],
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "docsUrl": "https://docs.planhat.com",
+      "homepage": "https://planhat.com"
+    },
+    {
+      "slug": "prestashop",
+      "name": "Prestashop",
+      "serviceId": "prestashop",
+      "unifiedApis": [
+        "ecommerce"
+      ],
+      "authType": "basic",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://devdocs.prestashop-project.org",
+      "homepage": "https://www.prestashop.com/"
+    },
+    {
+      "slug": "procountor-fi",
+      "name": "Procountor",
+      "serviceId": "procountor-fi",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "docsUrl": "https://dev.procountor.com",
+      "homepage": "https://procountor.fi/"
+    },
+    {
+      "slug": "recruitee",
+      "name": "Recruitee",
+      "serviceId": "recruitee",
+      "unifiedApis": [
+        "ats"
+      ],
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "homepage": "https://recruitee.com/"
+    },
+    {
+      "slug": "remote",
+      "name": "Remote",
+      "serviceId": "remote",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developer.remote.com",
+      "homepage": "https://remote.com/"
+    },
+    {
+      "slug": "rillet",
+      "name": "Rillet",
+      "serviceId": "rillet",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://rillet.com",
+      "homepage": "https://rillet.com/"
+    },
+    {
+      "slug": "sage-business-cloud-accounting",
+      "name": "Sage Business Cloud Accounting",
+      "serviceId": "sage-business-cloud-accounting",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developer.sage.com/accounting/",
+      "homepage": "https://www.sage.com/en-za/sage-business-cloud/accounting/"
+    },
+    {
+      "slug": "sage-hr",
+      "name": "Sage HR",
+      "serviceId": "sage-hr",
+      "unifiedApis": [
+        "hris",
+        "ats"
+      ],
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "homepage": "https://sage.hr/"
+    },
+    {
+      "slug": "salesflare",
+      "name": "Salesflare",
+      "serviceId": "salesflare",
+      "unifiedApis": [
+        "crm"
+      ],
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "docsUrl": "https://api.salesflare.com/docs",
+      "homepage": "https://salesflare.com"
+    },
+    {
+      "slug": "sap-successfactors",
+      "name": "SAP SuccessFactors",
+      "serviceId": "sap-successfactors",
+      "unifiedApis": [
+        "hris",
+        "ats"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "docsUrl": "https://help.sap.com/docs/SAP_SUCCESSFACTORS_PLATFORM",
+      "homepage": "https://successfactors.com"
+    },
+    {
+      "slug": "sapling",
+      "name": "Sapling",
+      "serviceId": "sapling",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developer.saplinghr.com",
+      "homepage": "https://www.saplinghr.com/"
+    },
+    {
+      "slug": "sdworx",
+      "name": "SD Worx",
+      "serviceId": "sdworx",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "docsUrl": "https://www.sdworx.com",
+      "homepage": "https://www.sdworx.com/"
+    },
+    {
+      "slug": "sdworx-webservice",
+      "name": "SD Worx (Web service)",
+      "serviceId": "sdworx-webservice",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "basic",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://www.sdworx.com",
+      "homepage": "https://www.sdworx.com/"
+    },
+    {
+      "slug": "shopware",
+      "name": "Shopware",
+      "serviceId": "shopware",
+      "unifiedApis": [
+        "ecommerce"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developer.shopware.com",
+      "homepage": "https://en.shopware.com/"
+    },
+    {
+      "slug": "silae-fr",
+      "name": "Silae",
+      "serviceId": "silae-fr",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "homepage": "https://www.silae.fr/"
+    },
+    {
+      "slug": "stripe",
+      "name": "Stripe",
+      "serviceId": "stripe",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "docsUrl": "https://stripe.com/docs/api",
+      "homepage": "https://stripe.com/"
+    },
+    {
+      "slug": "sympa",
+      "name": "Sympa",
+      "serviceId": "sympa",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "basic",
+      "tier": "2",
+      "verified": true,
+      "docsUrl": "https://www.sympa.com",
+      "homepage": "https://www.sympa.com/"
+    },
+    {
+      "slug": "tiktok",
+      "name": "TikTok Shop",
+      "serviceId": "tiktok",
+      "unifiedApis": [
+        "ecommerce"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://partner.tiktokshop.com/doc",
+      "homepage": "https://www.tiktok.com/"
+    },
+    {
+      "slug": "trinet",
+      "name": "TriNet",
+      "serviceId": "trinet",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "homepage": "https://www.trinet.com/"
+    },
+    {
+      "slug": "ukg-pro",
+      "name": "UKG Pro",
+      "serviceId": "ukg-pro",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "basic",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "homepage": "https://www.ukg.com/solutions/ukg-pro"
+    },
+    {
+      "slug": "visma-netvisor",
+      "name": "Visma Netvisor",
+      "serviceId": "visma-netvisor",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "custom",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://support.netvisor.fi",
+      "homepage": "https://netvisor.fi/accounting-software/"
+    },
+    {
+      "slug": "walmart",
+      "name": "Walmart",
+      "serviceId": "walmart",
+      "unifiedApis": [
+        "ecommerce"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "docsUrl": "https://developer.walmart.com",
+      "homepage": "https://www.walmart.com/"
+    },
+    {
+      "slug": "wix",
+      "name": "Wix ",
+      "serviceId": "wix",
+      "unifiedApis": [
+        "ecommerce"
+      ],
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "homepage": "https://wix.com"
+    },
+    {
+      "slug": "yuki",
+      "name": "Yuki",
+      "serviceId": "yuki",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://api.yukiworks.nl",
+      "homepage": "https://www.yuki.nl/"
+    },
+    {
+      "slug": "zoho-books",
+      "name": "Zoho Books",
+      "serviceId": "zoho-books",
+      "unifiedApis": [
+        "accounting"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "docsUrl": "https://www.zoho.com/books/api/v3/",
+      "homepage": "https://www.zoho.com/books/"
+    },
+    {
+      "slug": "zoho-people",
+      "name": "Zoho People",
+      "serviceId": "zoho-people",
+      "unifiedApis": [
+        "hris"
+      ],
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://www.zoho.com/people/api/",
+      "homepage": "https://www.zoho.com/people/"
+    }
+  ]
+}
