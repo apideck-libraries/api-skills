@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "BambooHR connector skill. Routes through Apideck's HRIS unified API using serviceId \"bamboohr\".",
+  "serviceId": "bamboohr",
+  "unifiedApis": [
+    "hris"
+  ],
+  "authType": "basic",
+  "tier": "1a",
+  "references": [
+    "https://developers.apideck.com",
+    "https://apideck.com",
+    "https://unify.apideck.com/connector/connectors/bamboohr",
+    "https://documentation.bamboohr.com/docs"
+  ]
+}

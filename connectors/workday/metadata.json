@@ -1,0 +1,20 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "Workday connector skill. Routes through Apideck's Accounting, HRIS, ATS unified API using serviceId \"workday\".",
+  "serviceId": "workday",
+  "unifiedApis": [
+    "accounting",
+    "hris",
+    "ats"
+  ],
+  "authType": "custom",
+  "tier": "1a",
+  "references": [
+    "https://developers.apideck.com",
+    "https://apideck.com",
+    "https://unify.apideck.com/connector/connectors/workday",
+    "https://community.workday.com"
+  ]
+}

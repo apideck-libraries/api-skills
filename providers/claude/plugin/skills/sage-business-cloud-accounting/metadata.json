@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "Sage Business Cloud Accounting connector skill. Routes through Apideck's Accounting unified API using serviceId \"sage-business-cloud-accounting\".",
+  "serviceId": "sage-business-cloud-accounting",
+  "unifiedApis": [
+    "accounting"
+  ],
+  "authType": "oauth2",
+  "tier": "1a",
+  "references": [
+    "https://developers.apideck.com",
+    "https://apideck.com",
+    "https://unify.apideck.com/connector/connectors/sage-business-cloud-accounting",
+    "https://developer.sage.com/accounting/"
+  ]
+}

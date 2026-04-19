@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "Microsoft Dynamics 365 Business Central connector skill. Routes through Apideck's Accounting unified API using serviceId \"microsoft-dynamics-365-business-central\".",
+  "serviceId": "microsoft-dynamics-365-business-central",
+  "unifiedApis": [
+    "accounting"
+  ],
+  "authType": "oauth2",
+  "tier": "1a",
+  "references": [
+    "https://developers.apideck.com",
+    "https://apideck.com",
+    "https://unify.apideck.com/connector/connectors/microsoft-dynamics-365-business-central",
+    "https://learn.microsoft.com/dynamics365/business-central/"
+  ]
+}

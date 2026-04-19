@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "HubSpot connector skill. Routes through Apideck's CRM unified API using serviceId \"hubspot\".",
+  "serviceId": "hubspot",
+  "unifiedApis": [
+    "crm"
+  ],
+  "authType": "oauth2",
+  "tier": "1b",
+  "references": [
+    "https://developers.apideck.com",
+    "https://apideck.com",
+    "https://unify.apideck.com/connector/connectors/hubspot",
+    "https://developers.hubspot.com"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "Microsoft Entra connector skill. Routes through Apideck's HRIS unified API using serviceId \"azure-active-directory\".",
+  "serviceId": "azure-active-directory",
+  "unifiedApis": [
+    "hris"
+  ],
+  "authType": "oauth2",
+  "tier": "2",
+  "references": [
+    "https://developers.apideck.com",
+    "https://apideck.com",
+    "https://unify.apideck.com/connector/connectors/azure-active-directory"
+  ]
+}

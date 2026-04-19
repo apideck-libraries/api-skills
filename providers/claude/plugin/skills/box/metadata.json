@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "Box connector skill. Routes through Apideck's File Storage unified API using serviceId \"box\".",
+  "serviceId": "box",
+  "unifiedApis": [
+    "file-storage"
+  ],
+  "authType": "oauth2",
+  "tier": "1b",
+  "references": [
+    "https://developers.apideck.com",
+    "https://apideck.com",
+    "https://unify.apideck.com/connector/connectors/box",
+    "https://developer.box.com"
+  ]
+}

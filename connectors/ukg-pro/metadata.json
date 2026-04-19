@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "UKG Pro connector skill. Routes through Apideck's HRIS unified API using serviceId \"ukg-pro\".",
+  "serviceId": "ukg-pro",
+  "unifiedApis": [
+    "hris"
+  ],
+  "authType": "basic",
+  "tier": "2",
+  "references": [
+    "https://developers.apideck.com",
+    "https://apideck.com",
+    "https://unify.apideck.com/connector/connectors/ukg-pro"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "Linear connector skill. Routes through Apideck's Issue Tracking unified API using serviceId \"linear\".",
+  "serviceId": "linear",
+  "unifiedApis": [
+    "issue-tracking"
+  ],
+  "authType": "oauth2",
+  "tier": "1b",
+  "references": [
+    "https://developers.apideck.com",
+    "https://apideck.com",
+    "https://unify.apideck.com/connector/connectors/linear",
+    "https://developers.linear.app"
+  ]
+}

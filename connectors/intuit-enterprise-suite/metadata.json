@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "Intuit Enterprise Suite connector skill. Routes through Apideck's Accounting unified API using serviceId \"intuit-enterprise-suite\".",
+  "serviceId": "intuit-enterprise-suite",
+  "unifiedApis": [
+    "accounting"
+  ],
+  "authType": "oauth2",
+  "tier": "1a",
+  "references": [
+    "https://developers.apideck.com",
+    "https://apideck.com",
+    "https://unify.apideck.com/connector/connectors/intuit-enterprise-suite",
+    "https://developer.intuit.com"
+  ]
+}

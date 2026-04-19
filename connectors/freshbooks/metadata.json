@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "FreshBooks connector skill. Routes through Apideck's Accounting unified API using serviceId \"freshbooks\".",
+  "serviceId": "freshbooks",
+  "unifiedApis": [
+    "accounting"
+  ],
+  "authType": "oauth2",
+  "tier": "1a",
+  "references": [
+    "https://developers.apideck.com",
+    "https://apideck.com",
+    "https://unify.apideck.com/connector/connectors/freshbooks",
+    "https://www.freshbooks.com/api/start"
+  ]
+}

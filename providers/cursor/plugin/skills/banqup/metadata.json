@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "banqUP connector skill. Routes through Apideck's Accounting unified API using serviceId \"banqup\".",
+  "serviceId": "banqup",
+  "unifiedApis": [
+    "accounting"
+  ],
+  "authType": "oauth2",
+  "tier": "1a",
+  "references": [
+    "https://developers.apideck.com",
+    "https://apideck.com",
+    "https://unify.apideck.com/connector/connectors/banqup",
+    "https://banqup.com"
+  ]
+}

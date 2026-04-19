@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "Campfire connector skill. Routes through Apideck's Accounting unified API using serviceId \"campfire\".",
+  "serviceId": "campfire",
+  "unifiedApis": [
+    "accounting"
+  ],
+  "authType": "apiKey",
+  "tier": "1a",
+  "references": [
+    "https://developers.apideck.com",
+    "https://apideck.com",
+    "https://unify.apideck.com/connector/connectors/campfire",
+    "https://www.campfire.com"
+  ]
+}

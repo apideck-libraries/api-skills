@@ -18,56 +18,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Validate SKILL.md frontmatter
-        run: |
-          errors=0
-          for skill_dir in skills/apideck-*/; do
-            skill_name=$(basename "$skill_dir")
-            skill_file="$skill_dir/SKILL.md"
-
-            if [ ! -f "$skill_file" ]; then
-              echo "ERROR: $skill_dir missing SKILL.md"
-              errors=$((errors + 1))
-              continue
-            fi
-
-            # Check name field matches directory
-            name_field=$(sed -n '/^---$/,/^---$/p' "$skill_file" | grep '^name:' | head -1 | sed 's/name: *//')
-            if [ "$name_field" != "$skill_name" ]; then
-              echo "ERROR: $skill_file name '$name_field' does not match directory '$skill_name'"
-              errors=$((errors + 1))
-            fi
-
-            # Check required frontmatter fields
-            for field in name description license alwaysApply; do
-              if ! sed -n '/^---$/,/^---$/p' "$skill_file" | grep -q "^${field}:"; then
-                echo "ERROR: $skill_file missing required field: $field"
-                errors=$((errors + 1))
-              fi
-            done
-
-            # Check metadata.json exists
-            if [ ! -f "$skill_dir/metadata.json" ]; then
-              echo "WARN: $skill_dir missing metadata.json"
-            fi
-
-            # Check SKILL.md line count
-            lines=$(wc -l < "$skill_file")
-            if [ "$lines" -gt 500 ]; then
-              echo "WARN: $skill_file is $lines lines (recommended: under 500)"
-            fi
-
-            echo "OK: $skill_name ($lines lines)"
-          done
-
-          if [ $errors -gt 0 ]; then
-            echo ""
-            echo "FAILED: $errors error(s) found"
-            exit 1
-          fi
-
-          echo ""
-          echo "All skills validated successfully"
+      - name: Validate skills
+        run: node skills/test.js
 
       - name: Validate provider sync
         run: |

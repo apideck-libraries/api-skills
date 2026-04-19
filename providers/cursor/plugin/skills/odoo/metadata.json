@@ -1,0 +1,19 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "Odoo connector skill. Routes through Apideck's CRM, Accounting unified API using serviceId \"odoo\".",
+  "serviceId": "odoo",
+  "unifiedApis": [
+    "crm",
+    "accounting"
+  ],
+  "authType": "basic",
+  "tier": "1a",
+  "references": [
+    "https://developers.apideck.com",
+    "https://apideck.com",
+    "https://unify.apideck.com/connector/connectors/odoo",
+    "https://www.odoo.com/documentation/"
+  ]
+}

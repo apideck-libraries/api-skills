@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "Sage HR connector skill. Routes through Apideck's HRIS, ATS unified API using serviceId \"sage-hr\".",
+  "serviceId": "sage-hr",
+  "unifiedApis": [
+    "hris",
+    "ats"
+  ],
+  "authType": "apiKey",
+  "tier": "2",
+  "references": [
+    "https://developers.apideck.com",
+    "https://apideck.com",
+    "https://unify.apideck.com/connector/connectors/sage-hr"
+  ]
+}

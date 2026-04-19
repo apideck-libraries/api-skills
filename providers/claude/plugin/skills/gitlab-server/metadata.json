@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "GitLab server (on-prem) connector skill. Routes through Apideck's Issue Tracking unified API using serviceId \"gitlab-server\".",
+  "serviceId": "gitlab-server",
+  "unifiedApis": [
+    "issue-tracking"
+  ],
+  "authType": "apiKey",
+  "tier": "2",
+  "references": [
+    "https://developers.apideck.com",
+    "https://apideck.com",
+    "https://unify.apideck.com/connector/connectors/gitlab-server",
+    "https://docs.gitlab.com/ee/api/"
+  ]
+}
