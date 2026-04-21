@@ -1,0 +1,23 @@
+README.md
+  b440e28964a1855b 83-101
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.2",
+  "base_commit_sha": "8c9d37428d803ec23035a2fc24b8fcb436605b19",
+  "prompts": {
+    "b440e28964a1855b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "90bb1484-b3b9-4369-8e74-ccc9d617aa4d",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "GJ",
+      "messages": [],
+      "total_additions": 17,
+      "total_deletions": 20,
+      "accepted_lines": 17,
+      "overriden_lines": 0
+    }
+  }
+}
