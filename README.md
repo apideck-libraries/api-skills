@@ -80,28 +80,25 @@ Every skill in the catalog lives under `skills/` — the canonical path scanned 
 
 The `connectors/` directory holds the tooling that generates connector skills (`manifest.json`, `generate.js`, `validate.js`, `_enhancements/`) — no SKILL.md output lives there.
 
-### SDK Skills
+### `apideck-*` skills (13)
 
-| Skill | Language | Package |
-|-------|----------|---------|
-| [apideck-node](skills/apideck-node/) | TypeScript / Node.js | `@apideck/unify` |
-| [apideck-python](skills/apideck-python/) | Python | `apideck-unify` |
-| [apideck-dotnet](skills/apideck-dotnet/) | C# / .NET | `ApideckUnifySdk` |
-| [apideck-java](skills/apideck-java/) | Java | `com.apideck:unify` |
-| [apideck-go](skills/apideck-go/) | Go | `github.com/apideck-libraries/sdk-go` |
-| [apideck-php](skills/apideck-php/) | PHP | `apideck-libraries/sdk-php` |
-| [apideck-rest](skills/apideck-rest/) | Any (HTTP) | Direct REST API calls |
+Apideck-specific API abstractions, SDK wrappers, and tooling. Install individually or as a set. **`apideck-unified-api` is the front door** — install it first.
 
-### Meta & Integration Skills
-
-| Skill | Description |
-|-------|-------------|
-| [apideck-unified-api](skills/apideck-unified-api/) | **Start here.** Front-door skill teaching the unified-API model, routing to connector / SDK skills |
-| [apideck-best-practices](skills/apideck-best-practices/) | Architecture patterns, authentication, pagination, error handling, Vault, webhooks, and common pitfalls |
-| [apideck-portman](skills/apideck-portman/) | API contract testing with Portman — generate Postman collections with tests from OpenAPI specs |
-| [apideck-codegen](skills/apideck-codegen/) | Generate typed clients from OpenAPI specs using openapi-generator, Speakeasy, or Postman import |
-| [apideck-connector-coverage](skills/apideck-connector-coverage/) | Check connector API coverage before building — verify which operations each connector supports |
-| [apideck-migration](skills/apideck-migration/) | Migrate from direct Salesforce/HubSpot/QuickBooks/Xero integrations to Apideck's unified layer |
+| Skill | Kind | Purpose | Package / Language |
+|-------|------|---------|--------------------|
+| [apideck-unified-api](skills/apideck-unified-api/) | Meta | **Start here.** Front-door skill teaching the compounding-abstraction model (one method set, 146+ connectors, switch via `serviceId`) and routing to per-connector / per-SDK skills | — |
+| [apideck-best-practices](skills/apideck-best-practices/) | Integration | Architecture patterns, Vault auth, pagination, error handling, webhooks, common pitfalls | — |
+| [apideck-connector-coverage](skills/apideck-connector-coverage/) | Integration | Check connector API coverage before building — verify which operations each connector supports via the Connector API | — |
+| [apideck-migration](skills/apideck-migration/) | Integration | Migrate from direct Salesforce/HubSpot/QuickBooks/Xero integrations to Apideck's unified layer | — |
+| [apideck-portman](skills/apideck-portman/) | Tooling | API contract testing with Portman — generate Postman collections with tests from OpenAPI specs | [Portman](https://github.com/apideck-libraries/portman) |
+| [apideck-codegen](skills/apideck-codegen/) | Tooling | Generate typed clients from OpenAPI specs using openapi-generator, Speakeasy, or Postman import | — |
+| [apideck-node](skills/apideck-node/) | SDK | Unified API integration patterns for TypeScript / Node.js — CRUD, pagination, filtering, Vault | `@apideck/unify` |
+| [apideck-python](skills/apideck-python/) | SDK | Unified API integration patterns for Python | `apideck-unify` |
+| [apideck-dotnet](skills/apideck-dotnet/) | SDK | Unified API integration patterns for C# / .NET | `ApideckUnifySdk` |
+| [apideck-java](skills/apideck-java/) | SDK | Unified API integration patterns for Java | `com.apideck:unify` |
+| [apideck-go](skills/apideck-go/) | SDK | Unified API integration patterns for Go | `github.com/apideck-libraries/sdk-go` |
+| [apideck-php](skills/apideck-php/) | SDK | Unified API integration patterns for PHP | `apideck-libraries/sdk-php` |
+| [apideck-rest](skills/apideck-rest/) | SDK | Direct REST patterns for any language — raw HTTP, authentication headers, response handling | — |
 
 ### Connector Skills
 
