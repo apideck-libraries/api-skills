@@ -1,0 +1,45 @@
+skills/apideck-mcp-receive-payment/metadata.json
+  1843bf7ab16e94b4 1
+skills/apideck-mcp-onboard-employee/metadata.json
+  1843bf7ab16e94b4 1
+skills/apideck-unified-api/SKILL.md
+  1843bf7ab16e94b4 47
+skills/apideck-mcp-pay-bill/SKILL.md
+  1843bf7ab16e94b4 1-116
+skills/apideck-mcp/metadata.json
+  1843bf7ab16e94b4 1
+skills/apideck-mcp-month-end-close/metadata.json
+  1843bf7ab16e94b4 1
+README.md
+  1843bf7ab16e94b4 56-58,86,105-109
+skills/apideck-mcp-pay-bill/metadata.json
+  1843bf7ab16e94b4 1
+skills/apideck-mcp-month-end-close/SKILL.md
+  1843bf7ab16e94b4 1-117
+skills/apideck-mcp/SKILL.md
+  1843bf7ab16e94b4 1-139
+skills/apideck-mcp-receive-payment/SKILL.md
+  1843bf7ab16e94b4 1-114
+skills/apideck-mcp-onboard-employee/SKILL.md
+  1843bf7ab16e94b4 1-132
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "5e53872df3af305f604b41f2d85db4caf8d98a53",
+  "prompts": {
+    "1843bf7ab16e94b4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1fb22ac8-4dcb-4934-a3f7-7269809084d6",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "GJ",
+      "messages": [],
+      "total_additions": 633,
+      "total_deletions": 2,
+      "accepted_lines": 633,
+      "overriden_lines": 0
+    }
+  }
+}
