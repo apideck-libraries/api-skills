@@ -1,0 +1,1 @@
+{"version":"1.0.0","organization":"Apideck","date":"April 2026","abstract":"Task playbook for converting a hired ATS applicant into an HRIS employee via the Apideck MCP server's apideck-onboard-employee workflow tool.","references":["https://github.com/apideck-libraries/mcp/blob/main/src/gen/workflows/onboardEmployee.ts","https://mcp.apideck.dev/mcp"]}
