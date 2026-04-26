@@ -1,5 +1,6 @@
 {
   "$comment": "Connector manifest. All serviceIds, names, auth types, and unified-API coverage verified against https://unify.apideck.com/connector/connectors (snapshot in .planning/connector-api-snapshots/). Beta connectors noted. Gusto and Rippling excluded per user directive.",
+  "$proxyOnlyNote": "Connectors with `proxyOnly: true` appear under unified-API filters in Apideck's catalog but have `auth_only: true` and zero supported resources — they get skills routing through the Proxy API + Vault auth, not the unified resource API. Verified against snapshot 2026-04.",
   "unifiedApis": {
     "crm": {
       "displayName": "CRM",
@@ -1620,6 +1621,7 @@
       "authType": "apiKey",
       "tier": "2",
       "verified": true,
+      "noGotchas": true,
       "docsUrl": "https://developers.freshworks.com/freshteam/",
       "homepage": "https://www.freshworks.com/hrms/"
     },
@@ -2232,6 +2234,7 @@
       "tier": "2",
       "verified": true,
       "status": "beta",
+      "noGotchas": true,
       "homepage": "https://www.silae.fr/"
     },
     {
@@ -2325,6 +2328,290 @@
       "status": "beta",
       "docsUrl": "https://www.zoho.com/people/api/",
       "homepage": "https://www.zoho.com/people/"
+    },
+    {
+      "slug": "asana",
+      "name": "Asana",
+      "serviceId": "asana",
+      "unifiedApis": [],
+      "proxyOnly": true,
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developers.asana.com/docs",
+      "homepage": "https://asana.com/",
+      "guides": [
+        {
+          "name": "oauth_credentials",
+          "url": "https://unify.apideck.com/connector/connectors/asana/docs/application_owner+oauth_credentials"
+        }
+      ]
+    },
+    {
+      "slug": "azure-devops",
+      "name": "Azure DevOps",
+      "serviceId": "azure-devops",
+      "unifiedApis": [],
+      "proxyOnly": true,
+      "authType": "basic",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://learn.microsoft.com/en-us/rest/api/azure/devops/",
+      "homepage": "https://azure.microsoft.com/en-us/products/devops"
+    },
+    {
+      "slug": "basecamp",
+      "name": "Basecamp",
+      "serviceId": "basecamp",
+      "unifiedApis": [],
+      "proxyOnly": true,
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://github.com/basecamp/bc3-api",
+      "homepage": "https://basecamp.com"
+    },
+    {
+      "slug": "clickup",
+      "name": "ClickUp",
+      "serviceId": "clickup",
+      "unifiedApis": [],
+      "proxyOnly": true,
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://clickup.com/api",
+      "homepage": "https://clickup.com/",
+      "guides": [
+        {
+          "name": "oauth_credentials",
+          "url": "https://unify.apideck.com/connector/connectors/clickup/docs/application_owner+oauth_credentials"
+        }
+      ]
+    },
+    {
+      "slug": "intercom",
+      "name": "Intercom",
+      "serviceId": "intercom",
+      "unifiedApis": [],
+      "proxyOnly": true,
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developers.intercom.com/docs",
+      "homepage": "https://www.intercom.com/"
+    },
+    {
+      "slug": "jetbrains-youtrack",
+      "name": "JetBrains YouTrack",
+      "serviceId": "jetbrains-youtrack",
+      "unifiedApis": [],
+      "proxyOnly": true,
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://www.jetbrains.com/help/youtrack/devportal/youtrack-rest-api.html",
+      "homepage": "https://www.jetbrains.com/youtrack/"
+    },
+    {
+      "slug": "jira-data-center",
+      "name": "Jira Data Center",
+      "serviceId": "jira-data-center",
+      "unifiedApis": [],
+      "proxyOnly": true,
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "status": "live",
+      "docsUrl": "https://developer.atlassian.com/server/jira/platform/rest/",
+      "homepage": "https://www.atlassian.com/enterprise/data-center/jira"
+    },
+    {
+      "slug": "jira-service-desk",
+      "name": "Jira Service Desk",
+      "serviceId": "jira-service-desk",
+      "unifiedApis": [],
+      "proxyOnly": true,
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developer.atlassian.com/cloud/jira/service-desk/rest/intro/",
+      "homepage": "https://www.atlassian.com/software/jira/service-management",
+      "guides": [
+        {
+          "name": "oauth_credentials",
+          "url": "https://unify.apideck.com/connector/connectors/jira-service-desk/docs/application_owner+oauth_credentials"
+        }
+      ]
+    },
+    {
+      "slug": "jira-teams",
+      "name": "Jira Teams",
+      "serviceId": "jira-teams",
+      "unifiedApis": [],
+      "proxyOnly": true,
+      "authType": "basic",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "homepage": "https://www.atlassian.com",
+      "guides": [
+        {
+          "name": "connection",
+          "url": "https://unify.apideck.com/connector/connectors/jira-teams/docs/consumer+connection"
+        }
+      ]
+    },
+    {
+      "slug": "mollie",
+      "name": "Mollie",
+      "serviceId": "mollie",
+      "unifiedApis": [],
+      "proxyOnly": true,
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "early-access",
+      "docsUrl": "https://docs.mollie.com/",
+      "homepage": "https://mollie.com",
+      "guides": [
+        {
+          "name": "oauth_credentials",
+          "url": "https://unify.apideck.com/connector/connectors/mollie/docs/application_owner+oauth_credentials"
+        }
+      ]
+    },
+    {
+      "slug": "monday",
+      "name": "monday.com",
+      "serviceId": "monday",
+      "unifiedApis": [],
+      "proxyOnly": true,
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developer.monday.com/api-reference/docs",
+      "homepage": "https://monday.com/",
+      "guides": [
+        {
+          "name": "oauth_credentials",
+          "url": "https://unify.apideck.com/connector/connectors/monday/docs/application_owner+oauth_credentials"
+        }
+      ]
+    },
+    {
+      "slug": "notion",
+      "name": "Notion",
+      "serviceId": "notion",
+      "unifiedApis": [],
+      "proxyOnly": true,
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developers.notion.com/",
+      "homepage": "https://notion.so",
+      "guides": [
+        {
+          "name": "oauth_credentials",
+          "url": "https://unify.apideck.com/connector/connectors/notion/docs/application_owner+oauth_credentials"
+        }
+      ]
+    },
+    {
+      "slug": "sage-intacct-rest",
+      "name": "Sage Intacct REST",
+      "serviceId": "sage-intacct-rest",
+      "unifiedApis": [],
+      "proxyOnly": true,
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "live",
+      "docsUrl": "https://developer.intacct.com/api/",
+      "homepage": "https://www.sageintacct.com/",
+      "guides": [
+        {
+          "name": "oauth_credentials",
+          "url": "https://unify.apideck.com/connector/connectors/sage-intacct-rest/docs/application_owner+oauth_credentials"
+        }
+      ]
+    },
+    {
+      "slug": "servicenow",
+      "name": "ServiceNow",
+      "serviceId": "servicenow",
+      "unifiedApis": [],
+      "proxyOnly": true,
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developer.servicenow.com/dev.do",
+      "homepage": "https://servicenow.com",
+      "guides": [
+        {
+          "name": "oauth_credentials",
+          "url": "https://unify.apideck.com/connector/connectors/servicenow/docs/application-owner+oauth_credentials"
+        },
+        {
+          "name": "connection",
+          "url": "https://unify.apideck.com/connector/connectors/servicenow/docs/consumer+connection"
+        }
+      ]
+    },
+    {
+      "slug": "sesamehr",
+      "name": "Sesame HR",
+      "serviceId": "sesamehr",
+      "unifiedApis": [],
+      "proxyOnly": true,
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "status": "early-access",
+      "docsUrl": "https://developer.sesametime.com/",
+      "homepage": "https://www.sesamehr.com/"
+    },
+    {
+      "slug": "shortcut",
+      "name": "Shortcut",
+      "serviceId": "shortcut",
+      "unifiedApis": [],
+      "proxyOnly": true,
+      "authType": "apiKey",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developer.shortcut.com/api/rest/v3",
+      "homepage": "https://shortcut.com/",
+      "guides": [
+        {
+          "name": "oauth_credentials",
+          "url": "https://unify.apideck.com/connector/connectors/shortcut/docs/application_owner+oauth_credentials"
+        }
+      ]
+    },
+    {
+      "slug": "zendesk",
+      "name": "Zendesk",
+      "serviceId": "zendesk",
+      "unifiedApis": [],
+      "proxyOnly": true,
+      "authType": "oauth2",
+      "tier": "2",
+      "verified": true,
+      "status": "beta",
+      "docsUrl": "https://developer.zendesk.com/api-reference/",
+      "homepage": "https://www.zendesk.com/"
     }
   ]
 }

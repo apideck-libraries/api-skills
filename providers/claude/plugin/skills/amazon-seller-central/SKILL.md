@@ -28,6 +28,7 @@ Access Amazon Seller Central through Apideck's **Ecommerce** unified API — one
 - **Auth type:** oauth2
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/amazon-seller-central/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/amazon-seller-central/gotchas)
 - **Amazon Seller Central docs:** https://developer-docs.amazon.com/sp-api/
 
 ## When to use this skill

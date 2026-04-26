@@ -27,6 +27,7 @@ Access banqUP through Apideck's **Accounting** unified API — one of 34 Account
 - **Unified API:** Accounting
 - **Auth type:** oauth2
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/accounting/banqup/gotchas)
 - **banqUP docs:** https://banqup.com
 - **Homepage:** https://banqup.com/
 

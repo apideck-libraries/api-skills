@@ -23,6 +23,7 @@ Access PayFit through Apideck's **HRIS** unified API — one of 58 HRIS connecto
 - **Apideck serviceId:** `payfit`
 - **Unified API:** HRIS
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/payfit/gotchas)
 - **PayFit docs:** https://developers.payfit.com
 - **Homepage:** https://payfit.com/
 

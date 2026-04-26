@@ -23,6 +23,7 @@ Access Loket.nl through Apideck's **HRIS** unified API — one of 58 HRIS connec
 - **Apideck serviceId:** `loket-nl`
 - **Unified API:** HRIS
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/loket-nl/gotchas)
 - **Loket.nl docs:** https://developer.loket.nl
 - **Homepage:** https://www.loket.nl/
 

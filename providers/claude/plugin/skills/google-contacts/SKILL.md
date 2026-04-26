@@ -27,6 +27,7 @@ Access Google Contacts through Apideck's **CRM** unified API — one of 21 CRM c
 - **Unified API:** CRM
 - **Auth type:** oauth2
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/crm/google-contacts/gotchas)
 - **Google Contacts docs:** https://developers.google.com/people
 - **Homepage:** https://www.google.com/contacts
 

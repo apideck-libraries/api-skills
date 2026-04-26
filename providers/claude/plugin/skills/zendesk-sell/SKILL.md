@@ -23,6 +23,7 @@ Access Zendesk Sell through Apideck's **CRM** unified API — one of 21 CRM conn
 - **Apideck serviceId:** `zendesk-sell`
 - **Unified API:** CRM
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/crm/zendesk-sell/gotchas)
 - **Zendesk Sell docs:** https://developer.zendesk.com/api-reference/sales-crm/
 - **Homepage:** https://www.zendesk.com/sell/
 

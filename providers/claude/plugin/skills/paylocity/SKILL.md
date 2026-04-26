@@ -23,6 +23,7 @@ Access Paylocity through Apideck's **HRIS** unified API — one of 58 HRIS conne
 - **Apideck serviceId:** `paylocity`
 - **Unified API:** HRIS
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/paylocity/gotchas)
 - **Paylocity docs:** https://developer.paylocity.com
 - **Homepage:** https://www.paylocity.com/
 

@@ -27,6 +27,7 @@ Access Attio through Apideck's **CRM** unified API — one of 21 CRM connectors 
 - **Unified API:** CRM
 - **Auth type:** oauth2
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/crm/attio/gotchas)
 - **Attio docs:** https://developers.attio.com
 - **Homepage:** https://attio.com/
 

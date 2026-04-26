@@ -27,6 +27,7 @@ Access Microsoft Entra through Apideck's **HRIS** unified API — one of 58 HRIS
 - **Unified API:** HRIS
 - **Auth type:** oauth2
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/azure-active-directory/gotchas)
 - **Homepage:** https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-whatis
 
 ## When to use this skill

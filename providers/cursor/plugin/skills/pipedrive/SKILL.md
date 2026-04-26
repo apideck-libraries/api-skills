@@ -23,6 +23,7 @@ Access Pipedrive through Apideck's **CRM** unified API — one of 21 CRM connect
 - **Apideck serviceId:** `pipedrive`
 - **Unified API:** CRM
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/crm/pipedrive/gotchas)
 - **Pipedrive docs:** https://developers.pipedrive.com
 - **Homepage:** https://www.pipedrive.com/
 

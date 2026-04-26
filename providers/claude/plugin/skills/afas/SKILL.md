@@ -28,6 +28,7 @@ Access AFAS Software through Apideck's **HRIS** unified API — one of 58 HRIS c
 - **Auth type:** apiKey
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/afas/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/afas/gotchas)
 - **AFAS Software docs:** https://www.afas.nl
 - **Homepage:** https://www.afas.nl/
 

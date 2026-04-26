@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "Basecamp connector skill. Proxy-only — routes through Apideck's Proxy API + Vault auth using serviceId \"basecamp\". No unified API resource mapping.",
+  "serviceId": "basecamp",
+  "proxyOnly": true,
+  "unifiedApis": [],
+  "authType": "oauth2",
+  "tier": "2",
+  "references": [
+    "https://developers.apideck.com",
+    "https://developers.apideck.com/apis/proxy/reference",
+    "https://developers.apideck.com/apis/proxy/basecamp/gotchas",
+    "https://unify.apideck.com/connector/connectors/basecamp",
+    "https://github.com/basecamp/bc3-api"
+  ]
+}

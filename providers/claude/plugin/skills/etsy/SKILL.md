@@ -28,6 +28,7 @@ Access Etsy through Apideck's **Ecommerce** unified API — one of 17 Ecommerce 
 - **Auth type:** oauth2
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/etsy/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/etsy/gotchas)
 - **Etsy docs:** https://developers.etsy.com
 - **Homepage:** https://etsy.com
 

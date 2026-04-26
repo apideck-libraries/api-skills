@@ -27,6 +27,7 @@ Access Picqer through Apideck's **Ecommerce** unified API — one of 17 Ecommerc
 - **Unified API:** Ecommerce
 - **Auth type:** basic
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/picqer/gotchas)
 - **Picqer docs:** https://picqer.com/en/api
 - **Homepage:** https://picqer.com
 

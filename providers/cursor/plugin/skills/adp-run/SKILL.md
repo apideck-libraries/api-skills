@@ -27,6 +27,7 @@ Access RUN Powered by ADP through Apideck's **HRIS** unified API — one of 58 H
 - **Unified API:** HRIS
 - **Auth type:** oauth2
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/adp-run/gotchas)
 - **RUN Powered by ADP docs:** https://developers.adp.com
 - **Homepage:** https://www.adp.com/what-we-offer/products/run-powered-by-adp.aspx
 

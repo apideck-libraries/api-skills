@@ -23,6 +23,7 @@ Access Google Workspace through Apideck's **HRIS** unified API — one of 58 HRI
 - **Apideck serviceId:** `google-workspace`
 - **Unified API:** HRIS
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/google-workspace/gotchas)
 - **Homepage:** https://workspace.google.com/
 
 ## When to use this skill

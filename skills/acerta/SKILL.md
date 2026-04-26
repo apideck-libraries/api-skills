@@ -27,6 +27,7 @@ Access Acerta through Apideck's **HRIS** unified API — one of 58 HRIS connecto
 - **Unified API:** HRIS
 - **Auth type:** oauth2
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/acerta/gotchas)
 - **Acerta docs:** https://www.acerta.be
 - **Homepage:** https://www.acerta.be/nl
 

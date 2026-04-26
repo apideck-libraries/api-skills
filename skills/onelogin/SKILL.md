@@ -28,6 +28,7 @@ Access OneLogin through Apideck's **HRIS** unified API — one of 58 HRIS connec
 - **Auth type:** oauth2
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/onelogin/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/onelogin/gotchas)
 - **Homepage:** https://www.onelogin.com/
 
 ## When to use this skill

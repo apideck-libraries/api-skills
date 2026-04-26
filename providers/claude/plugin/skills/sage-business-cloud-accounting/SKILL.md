@@ -27,6 +27,7 @@ Access Sage Business Cloud Accounting through Apideck's **Accounting** unified A
 - **Unified API:** Accounting
 - **Auth type:** oauth2
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/accounting/sage-business-cloud-accounting/gotchas)
 - **Sage Business Cloud Accounting docs:** https://developer.sage.com/accounting/
 - **Homepage:** https://www.sage.com/en-za/sage-business-cloud/accounting/
 

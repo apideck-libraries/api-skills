@@ -27,6 +27,7 @@ Access Exact Online NL through Apideck's **Accounting** unified API — one of 3
 - **Unified API:** Accounting
 - **Auth type:** oauth2
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/accounting/exact-online-nl/gotchas)
 - **Exact Online NL docs:** https://support.exactonline.com
 - **Homepage:** https://www.exact.com/nl
 

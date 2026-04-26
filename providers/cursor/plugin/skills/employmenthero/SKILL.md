@@ -27,6 +27,7 @@ Access Employment Hero through Apideck's **HRIS** unified API — one of 58 HRIS
 - **Unified API:** HRIS
 - **Auth type:** oauth2
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/employmenthero/gotchas)
 - **Employment Hero docs:** https://developer.employmenthero.com
 - **Homepage:** https://employmenthero.com
 

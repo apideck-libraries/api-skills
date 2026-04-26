@@ -23,6 +23,7 @@ Access Lucca through Apideck's **HRIS** unified API — one of 58 HRIS connector
 - **Apideck serviceId:** `lucca-hr`
 - **Unified API:** HRIS
 - **Auth type:** apiKey
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/lucca-hr/gotchas)
 - **Lucca docs:** https://developers.lucca.fr
 - **Homepage:** https://www.lucca-hr.com/
 

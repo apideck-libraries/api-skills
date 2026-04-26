@@ -28,6 +28,7 @@ Access CharlieHR through Apideck's **HRIS** unified API — one of 58 HRIS conne
 - **Auth type:** apiKey
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/charliehr/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/charliehr/gotchas)
 - **CharlieHR docs:** https://charliehr.com
 - **Homepage:** https://www.charliehr.com/
 

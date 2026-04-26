@@ -23,6 +23,7 @@ Access Act through Apideck's **CRM** unified API — one of 21 CRM connectors th
 - **Apideck serviceId:** `act`
 - **Unified API:** CRM
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/crm/act/gotchas)
 - **Homepage:** https://act.com
 
 ## When to use this skill

@@ -27,6 +27,7 @@ Access Fourth through Apideck's **HRIS** unified API — one of 58 HRIS connecto
 - **Unified API:** HRIS
 - **Auth type:** basic
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/fourth/gotchas)
 - **Fourth docs:** https://www.fourth.com
 - **Homepage:** https://www.fourth.com/
 

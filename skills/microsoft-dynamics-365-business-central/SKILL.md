@@ -23,6 +23,7 @@ Access Microsoft Dynamics 365 Business Central through Apideck's **Accounting** 
 - **Apideck serviceId:** `microsoft-dynamics-365-business-central`
 - **Unified API:** Accounting
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/accounting/microsoft-dynamics-365-business-central/gotchas)
 - **Microsoft Dynamics 365 Business Central docs:** https://learn.microsoft.com/dynamics365/business-central/
 - **Homepage:** https://dynamics.microsoft.com/en-us/business-central/overview/
 

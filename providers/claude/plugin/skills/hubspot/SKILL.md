@@ -23,6 +23,7 @@ Access HubSpot through Apideck's **CRM** unified API — one of 21 CRM connector
 - **Apideck serviceId:** `hubspot`
 - **Unified API:** CRM
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/crm/hubspot/gotchas)
 - **HubSpot docs:** https://developers.hubspot.com
 - **Homepage:** https://www.hubspot.com/
 

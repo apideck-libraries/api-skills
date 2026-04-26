@@ -23,6 +23,7 @@ Access Lever through Apideck's **ATS** unified API — one of 11 ATS connectors 
 - **Apideck serviceId:** `lever`
 - **Unified API:** ATS
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/ats/lever/gotchas)
 - **Lever docs:** https://hire.lever.co/developer
 - **Homepage:** https://www.lever.co/
 

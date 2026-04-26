@@ -23,6 +23,7 @@ Access Google Drive through Apideck's **File Storage** unified API — one of 5 
 - **Apideck serviceId:** `google-drive`
 - **Unified API:** File Storage
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/file-storage/google-drive/gotchas)
 - **Google Drive docs:** https://developers.google.com/drive
 - **Homepage:** https://www.google.com/drive/index.html
 

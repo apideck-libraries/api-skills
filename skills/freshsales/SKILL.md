@@ -24,6 +24,7 @@ Access Freshworks CRM through Apideck's **CRM** unified API — one of 21 CRM co
 - **Unified API:** CRM
 - **Auth type:** apiKey
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/freshsales/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/crm/freshsales/gotchas)
 - **Freshworks CRM docs:** https://developers.freshworks.com
 - **Homepage:** https://www.freshworks.com/freshsales-crm/
 

@@ -23,6 +23,7 @@ Access Walmart through Apideck's **Ecommerce** unified API — one of 17 Ecommer
 - **Apideck serviceId:** `walmart`
 - **Unified API:** Ecommerce
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/walmart/gotchas)
 - **Walmart docs:** https://developer.walmart.com
 - **Homepage:** https://www.walmart.com/
 

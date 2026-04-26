@@ -23,6 +23,7 @@ Access Dropbox through Apideck's **File Storage** unified API — one of 5 File 
 - **Apideck serviceId:** `dropbox`
 - **Unified API:** File Storage
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/file-storage/dropbox/gotchas)
 - **Dropbox docs:** https://www.dropbox.com/developers
 - **Homepage:** https://www.dropbox.com/
 

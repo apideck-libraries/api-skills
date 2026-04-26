@@ -235,6 +235,20 @@ function renderSkill(connector) {
       .join(" · ");
     lines.push(`- **Apideck setup guide:** ${guideLinks}`);
   }
+  // Per-connector "gotchas" pages document resource-level quirks (required
+  // fields, enum values, behavioural deviations from the unified spec). Apideck
+  // publishes one per (unifiedApi, connector) pair. A small set is missing —
+  // those are flagged with `noGotchas: true` on the manifest entry.
+  if (!connector.noGotchas) {
+    const gotchaLinks = connector.unifiedApis
+      .map((api) => {
+        const info = manifest.unifiedApis[api];
+        const label = connector.unifiedApis.length > 1 ? info.displayName : "page";
+        return `[${label}](https://developers.apideck.com/apis/${api}/${connector.slug}/gotchas)`;
+      })
+      .join(" · ");
+    lines.push(`- **Gotchas:** ${gotchaLinks}`);
+  }
   if (connector.docsUrl) {
     lines.push(`- **${connector.name} docs:** ${connector.docsUrl}`);
   }
@@ -425,6 +439,26 @@ function renderSkill(connector) {
 }
 
 function renderMetadata(connector) {
+  if (connector.proxyOnly) {
+    return {
+      version: "1.0.0",
+      organization: "Apideck",
+      date: "April 2026",
+      abstract: `${connector.name} connector skill. Proxy-only — routes through Apideck's Proxy API + Vault auth using serviceId "${connector.serviceId}". No unified API resource mapping.`,
+      serviceId: connector.serviceId,
+      proxyOnly: true,
+      unifiedApis: [],
+      authType: connector.authType,
+      tier: connector.tier,
+      references: [
+        "https://developers.apideck.com",
+        "https://developers.apideck.com/apis/proxy/reference",
+        `https://developers.apideck.com/apis/proxy/${connector.serviceId}/gotchas`,
+        `https://unify.apideck.com/connector/connectors/${connector.serviceId}`,
+        connector.docsUrl,
+      ].filter(Boolean),
+    };
+  }
   const apis = connector.unifiedApis.map((a) => manifest.unifiedApis[a].displayName).join(", ");
   return {
     version: "1.0.0",
@@ -442,6 +476,168 @@ function renderMetadata(connector) {
       connector.docsUrl,
     ].filter(Boolean),
   };
+}
+
+// ── Proxy-only template ────────────────────────────────────────────────────
+//
+// Proxy-only connectors have `auth_only: true` in Apideck's connector API and
+// no unified-resource coverage. The skill teaches: route through Apideck's
+// Proxy API (`/proxy`) with managed Vault auth, keep using the vendor's native
+// request/response shapes. Distinct from the unified-API template — no peer
+// connectors, no resource methods, no portability pitch.
+
+function renderProxyOnlySkill(connector) {
+  const enhancementPath = path.join(ENHANCEMENTS_DIR, `${connector.slug}.md`);
+  const enhancement = fs.existsSync(enhancementPath)
+    ? fs.readFileSync(enhancementPath, "utf-8").trim()
+    : null;
+
+  const description = `${connector.name} via Apideck's Proxy API + managed Vault auth — Apideck handles auth and proxies HTTP calls to ${connector.name}'s native API. Use when the user wants to call ${connector.name} (no unified API resource mapping). Routes through Apideck with serviceId "${connector.serviceId}".`;
+
+  const lines = [];
+  lines.push("---");
+  lines.push(`name: ${connector.slug}`);
+  lines.push(`description: |`);
+  lines.push(`  ${description}`);
+  lines.push(`license: Apache-2.0`);
+  lines.push(`alwaysApply: false`);
+  lines.push(`metadata:`);
+  lines.push(`  author: apideck`);
+  lines.push(`  version: "1.0.0"`);
+  lines.push(`  serviceId: ${connector.serviceId}`);
+  lines.push(`  proxyOnly: true`);
+  lines.push(`  unifiedApis: []`);
+  lines.push(`  authType: ${connector.authType}`);
+  lines.push(`  tier: "${connector.tier}"`);
+  if (connector.verified) lines.push(`  verified: true`);
+  if (connector.status) lines.push(`  status: ${connector.status}`);
+  lines.push("---");
+  lines.push("");
+
+  lines.push(`# ${connector.name} (via Apideck Proxy)`);
+  lines.push("");
+
+  lines.push(
+    `Access ${connector.name} through Apideck's **Proxy API** with managed Vault auth. Apideck stores credentials, refreshes tokens, and forwards your HTTP calls to ${connector.name}'s native API — you keep using ${connector.name}'s own request and response shapes, while Apideck eliminates per-tenant credential plumbing and gives you a single auth integration shared across every Apideck connector.`
+  );
+  lines.push("");
+
+  lines.push(
+    `> **Auth-only / proxy-only connector.** Apideck does not map ${connector.name} to a unified-API resource model — your code talks ${connector.name}'s own API directly through the Proxy. You still get Vault credential storage, token refresh, retries, and a consistent request envelope.`
+  );
+  lines.push("");
+
+  // Quick facts
+  lines.push("## Quick facts");
+  lines.push("");
+  lines.push(`- **Apideck serviceId:** \`${connector.serviceId}\``);
+  lines.push(`- **Mode:** Proxy-only (no unified API resources)`);
+  lines.push(`- **Auth type:** ${connector.authType}`);
+  if (connector.status) lines.push(`- **Status:** ${connector.status}`);
+  if (connector.guides && connector.guides.length) {
+    const guideLinks = connector.guides
+      .map((g) => {
+        const label =
+          g.name === "oauth_credentials"
+            ? "OAuth credentials"
+            : g.name === "connection"
+            ? "Connection guide"
+            : g.name.replace(/_/g, " ");
+        return `[${label}](${g.url})`;
+      })
+      .join(" · ");
+    lines.push(`- **Apideck setup guide:** ${guideLinks}`);
+  }
+  lines.push(
+    `- **Gotchas:** [page](https://developers.apideck.com/apis/proxy/${connector.slug}/gotchas)`
+  );
+  if (connector.docsUrl) {
+    lines.push(`- **${connector.name} docs:** ${connector.docsUrl}`);
+  }
+  if (connector.homepage) {
+    lines.push(`- **Homepage:** ${connector.homepage}`);
+  }
+  lines.push("");
+
+  // When to use
+  lines.push("## When to use this skill");
+  lines.push("");
+  lines.push(
+    `Activate this skill when the user wants to call ${connector.name} via Apideck — for example, "call the ${connector.name} API" or "fetch data from ${connector.name}". This skill teaches the agent:`
+  );
+  lines.push("");
+  lines.push(`1. That ${connector.name} routes through Apideck's **Proxy API**, not a unified resource API`);
+  lines.push(`2. The correct \`serviceId\` to pass on every call (\`${connector.serviceId}\`)`);
+  lines.push(`3. How to keep using ${connector.name}'s native request/response shapes while Apideck handles Vault auth`);
+  lines.push("");
+  lines.push(
+    "If you need a unified-API surface (one method shape across many vendors), see the connector skills in this catalog whose serviceId is mapped to a unified API."
+  );
+  lines.push("");
+
+  // Auth
+  lines.push("## Auth");
+  lines.push("");
+  lines.push(authBlock(connector.authType, connector.name));
+  lines.push("");
+
+  // Proxy call shape
+  lines.push(`## Calling ${connector.name} via the Proxy API`);
+  lines.push("");
+  lines.push(
+    `Send any HTTP request to \`https://unify.apideck.com/proxy\`. Apideck looks up the user's stored ${connector.name} credentials by \`x-apideck-consumer-id\` + \`x-apideck-service-id\`, injects them on the way out, and returns ${connector.name}'s raw response.`
+  );
+  lines.push("");
+  lines.push("```bash");
+  lines.push(`curl 'https://unify.apideck.com/proxy' \\`);
+  lines.push(`  -H "Authorization: Bearer \${APIDECK_API_KEY}" \\`);
+  lines.push(`  -H "x-apideck-app-id: \${APIDECK_APP_ID}" \\`);
+  lines.push(`  -H "x-apideck-consumer-id: \${CONSUMER_ID}" \\`);
+  lines.push(`  -H "x-apideck-service-id: ${connector.serviceId}" \\`);
+  lines.push(`  -H "x-apideck-downstream-url: <target endpoint on ${connector.name}>" \\`);
+  lines.push(`  -H "x-apideck-downstream-method: GET"`);
+  lines.push("```");
+  lines.push("");
+  lines.push(
+    `For \`POST\`/\`PATCH\`/\`PUT\`/\`DELETE\`, change \`x-apideck-downstream-method\` and pass the body as you would to ${connector.name} directly. Apideck does not transform the body — it forwards bytes.`
+  );
+  lines.push("");
+  if (connector.docsUrl) {
+    lines.push(`See [${connector.name}'s API docs](${connector.docsUrl}) for available endpoints.`);
+    lines.push("");
+  }
+
+  // Enhancement (real worked examples per connector)
+  if (enhancement) {
+    lines.push(enhancement);
+    lines.push("");
+  }
+
+  // See also
+  lines.push("## See also");
+  lines.push("");
+  if (connector.guides && connector.guides.length) {
+    for (const g of connector.guides) {
+      const label =
+        g.name === "oauth_credentials"
+          ? `Apideck OAuth setup guide for ${connector.name}`
+          : g.name === "connection"
+          ? `Apideck connection guide for ${connector.name}`
+          : `Apideck ${g.name.replace(/_/g, " ")} guide`;
+      lines.push(`- [${label}](${g.url})`);
+    }
+  }
+  lines.push(`- [${connector.name} gotchas](https://developers.apideck.com/apis/proxy/${connector.slug}/gotchas)`);
+  lines.push(`- [Apideck Proxy API reference](https://developers.apideck.com/apis/proxy/reference)`);
+  lines.push("- [`apideck-rest`](../../skills/apideck-rest/) — REST patterns including the Proxy");
+  lines.push("- [`apideck-best-practices`](../../skills/apideck-best-practices/) — Vault, error handling, retries");
+  lines.push("- [`apideck-unified-api`](../../skills/apideck-unified-api/) — when to use unified vs proxy");
+  if (connector.docsUrl) {
+    lines.push(`- [${connector.name} official docs](${connector.docsUrl})`);
+  }
+  lines.push("");
+
+  return lines.join("\n");
 }
 
 // ── Main ────────────────────────────────────────────────────────────────────
@@ -463,7 +659,7 @@ function main() {
     const dir = path.join(SKILLS_OUTPUT_DIR, connector.slug);
     fs.mkdirSync(dir, { recursive: true });
 
-    const skillMd = renderSkill(connector);
+    const skillMd = connector.proxyOnly ? renderProxyOnlySkill(connector) : renderSkill(connector);
     fs.writeFileSync(path.join(dir, "SKILL.md"), skillMd);
 
     const meta = renderMetadata(connector);

@@ -28,6 +28,7 @@ Access Folk through Apideck's **CRM** unified API — one of 21 CRM connectors t
 - **Auth type:** apiKey
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/folk/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/crm/folk/gotchas)
 - **Folk docs:** https://developer.folk.app
 - **Homepage:** https://www.folk.app/
 

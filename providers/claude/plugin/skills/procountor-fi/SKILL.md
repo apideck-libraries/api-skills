@@ -23,6 +23,7 @@ Access Procountor through Apideck's **Accounting** unified API — one of 34 Acc
 - **Apideck serviceId:** `procountor-fi`
 - **Unified API:** Accounting
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/accounting/procountor-fi/gotchas)
 - **Procountor docs:** https://dev.procountor.com
 - **Homepage:** https://procountor.fi/
 

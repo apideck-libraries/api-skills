@@ -23,6 +23,7 @@ Access Namely through Apideck's **HRIS** unified API — one of 58 HRIS connecto
 - **Apideck serviceId:** `namely`
 - **Unified API:** HRIS
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/namely/gotchas)
 - **Namely docs:** https://developers.namely.com
 - **Homepage:** https://www.namely.com/
 

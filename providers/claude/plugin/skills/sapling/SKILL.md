@@ -27,6 +27,7 @@ Access Sapling through Apideck's **HRIS** unified API — one of 58 HRIS connect
 - **Unified API:** HRIS
 - **Auth type:** apiKey
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/sapling/gotchas)
 - **Sapling docs:** https://developer.saplinghr.com
 - **Homepage:** https://www.saplinghr.com/
 

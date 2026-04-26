@@ -24,6 +24,7 @@ Access Recruitee through Apideck's **ATS** unified API — one of 11 ATS connect
 - **Unified API:** ATS
 - **Auth type:** apiKey
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/recruitee/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/ats/recruitee/gotchas)
 - **Homepage:** https://recruitee.com/
 
 ## When to use this skill

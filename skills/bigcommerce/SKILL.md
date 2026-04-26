@@ -27,6 +27,7 @@ Access BigCommerce through Apideck's **Ecommerce** unified API — one of 17 Eco
 - **Unified API:** Ecommerce
 - **Auth type:** apiKey
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/bigcommerce/gotchas)
 - **BigCommerce docs:** https://developer.bigcommerce.com
 - **Homepage:** https://www.bigcommerce.com/
 

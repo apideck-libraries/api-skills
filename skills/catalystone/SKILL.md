@@ -28,6 +28,7 @@ Access CatalystOne through Apideck's **HRIS** unified API — one of 58 HRIS con
 - **Auth type:** oauth2
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/catalystone/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/catalystone/gotchas)
 - **CatalystOne docs:** https://www.catalystone.com
 - **Homepage:** https://www.catalystone.com/
 

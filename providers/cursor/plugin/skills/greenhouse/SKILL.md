@@ -24,6 +24,7 @@ Access Greenhouse through Apideck's **ATS** unified API — one of 11 ATS connec
 - **Unified API:** ATS
 - **Auth type:** basic
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/greenhouse/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/ats/greenhouse/gotchas)
 - **Greenhouse docs:** https://developers.greenhouse.io
 - **Homepage:** https://www.greenhouse.io/
 

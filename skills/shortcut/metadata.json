@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "Shortcut connector skill. Proxy-only — routes through Apideck's Proxy API + Vault auth using serviceId \"shortcut\". No unified API resource mapping.",
+  "serviceId": "shortcut",
+  "proxyOnly": true,
+  "unifiedApis": [],
+  "authType": "apiKey",
+  "tier": "2",
+  "references": [
+    "https://developers.apideck.com",
+    "https://developers.apideck.com/apis/proxy/reference",
+    "https://developers.apideck.com/apis/proxy/shortcut/gotchas",
+    "https://unify.apideck.com/connector/connectors/shortcut",
+    "https://developer.shortcut.com/api/rest/v3"
+  ]
+}

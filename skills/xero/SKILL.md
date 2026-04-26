@@ -23,6 +23,7 @@ Access Xero through Apideck's **Accounting** unified API — one of 34 Accountin
 - **Apideck serviceId:** `xero`
 - **Unified API:** Accounting
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/accounting/xero/gotchas)
 - **Xero docs:** https://developer.xero.com
 - **Homepage:** https://www.xero.com/
 

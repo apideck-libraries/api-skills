@@ -24,6 +24,7 @@ Access Workday through Apideck's **Accounting, HRIS, ATS** unified API — one o
 - **Unified APIs:** Accounting, HRIS, ATS
 - **Auth type:** custom
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/workday/docs/consumer+connection)
+- **Gotchas:** [Accounting](https://developers.apideck.com/apis/accounting/workday/gotchas) · [HRIS](https://developers.apideck.com/apis/hris/workday/gotchas) · [ATS](https://developers.apideck.com/apis/ats/workday/gotchas)
 - **Workday docs:** https://community.workday.com
 - **Homepage:** https://workday.com
 

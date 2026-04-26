@@ -27,6 +27,7 @@ Access Zoho People through Apideck's **HRIS** unified API — one of 58 HRIS con
 - **Unified API:** HRIS
 - **Auth type:** oauth2
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/zoho-people/gotchas)
 - **Zoho People docs:** https://www.zoho.com/people/api/
 - **Homepage:** https://www.zoho.com/people/
 

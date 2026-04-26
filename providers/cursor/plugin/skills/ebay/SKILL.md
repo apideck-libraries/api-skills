@@ -27,6 +27,7 @@ Access eBay through Apideck's **Ecommerce** unified API — one of 17 Ecommerce 
 - **Unified API:** Ecommerce
 - **Auth type:** oauth2
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/ebay/gotchas)
 - **eBay docs:** https://developer.ebay.com
 - **Homepage:** https://www.ebay.com/
 

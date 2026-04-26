@@ -28,6 +28,7 @@ Access Microsoft Outlook through Apideck's **CRM** unified API — one of 21 CRM
 - **Auth type:** oauth2
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/microsoft-outlook/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/crm/microsoft-outlook/gotchas)
 - **Microsoft Outlook docs:** https://learn.microsoft.com/graph/api/overview
 
 ## When to use this skill

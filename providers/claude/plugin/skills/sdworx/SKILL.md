@@ -23,6 +23,7 @@ Access SD Worx through Apideck's **HRIS** unified API — one of 58 HRIS connect
 - **Apideck serviceId:** `sdworx`
 - **Unified API:** HRIS
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/sdworx/gotchas)
 - **SD Worx docs:** https://www.sdworx.com
 - **Homepage:** https://www.sdworx.com/
 

@@ -24,6 +24,7 @@ Access Personio through Apideck's **HRIS** unified API — one of 58 HRIS connec
 - **Unified API:** HRIS
 - **Auth type:** oauth2
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/personio/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/personio/gotchas)
 - **Personio docs:** https://developer.personio.de
 - **Homepage:** https://www.personio.com/
 

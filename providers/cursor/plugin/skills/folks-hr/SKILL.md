@@ -23,6 +23,7 @@ Access Folks HR through Apideck's **HRIS** unified API — one of 58 HRIS connec
 - **Apideck serviceId:** `folks-hr`
 - **Unified API:** HRIS
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/folks-hr/gotchas)
 - **Folks HR docs:** https://www.folkshr.com
 - **Homepage:** https://folksrh.com/
 

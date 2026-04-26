@@ -28,6 +28,7 @@ Access Shopify through Apideck's **Ecommerce** unified API — one of 17 Ecommer
 - **Auth type:** custom
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/shopify/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/shopify/gotchas)
 - **Shopify docs:** https://shopify.dev/docs/api
 - **Homepage:** https://www.shopify.com/
 

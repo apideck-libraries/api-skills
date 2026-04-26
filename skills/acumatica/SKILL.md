@@ -28,6 +28,7 @@ Access Acumatica through Apideck's **Accounting** unified API — one of 34 Acco
 - **Auth type:** oauth2
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/acumatica/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/accounting/acumatica/gotchas)
 - **Acumatica docs:** https://help.acumatica.com
 - **Homepage:** https://www.acumatica.com/
 

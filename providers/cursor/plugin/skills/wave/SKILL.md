@@ -28,6 +28,7 @@ Access Wave through Apideck's **Accounting** unified API — one of 34 Accountin
 - **Auth type:** oauth2
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/wave/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/accounting/wave/gotchas)
 - **Wave docs:** https://developer.waveapps.com
 - **Homepage:** https://www.waveapps.com/
 

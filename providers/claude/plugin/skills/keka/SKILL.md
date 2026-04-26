@@ -27,6 +27,7 @@ Access Keka HR through Apideck's **HRIS** unified API — one of 58 HRIS connect
 - **Unified API:** HRIS
 - **Auth type:** oauth2
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/keka/gotchas)
 - **Keka HR docs:** https://developers.keka.com
 - **Homepage:** https://www.keka.com/
 

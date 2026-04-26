@@ -23,6 +23,7 @@ Access Factorial through Apideck's **HRIS** unified API — one of 58 HRIS conne
 - **Apideck serviceId:** `factorialhr`
 - **Unified API:** HRIS
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/factorialhr/gotchas)
 - **Homepage:** https://factorialhr.com/
 
 ## When to use this skill

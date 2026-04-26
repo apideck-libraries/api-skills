@@ -23,6 +23,7 @@ Access MYOB through Apideck's **Accounting** unified API — one of 34 Accountin
 - **Apideck serviceId:** `myob`
 - **Unified API:** Accounting
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/accounting/myob/gotchas)
 - **MYOB docs:** https://developer.myob.com
 - **Homepage:** https://myob.com
 

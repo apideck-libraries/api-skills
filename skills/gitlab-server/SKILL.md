@@ -28,6 +28,7 @@ Access GitLab server (on-prem) through Apideck's **Issue Tracking** unified API 
 - **Auth type:** apiKey
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/gitlab-server/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/issue-tracking/gitlab-server/gotchas)
 - **GitLab server (on-prem) docs:** https://docs.gitlab.com/ee/api/
 - **Homepage:** https://www.gitlab.com/
 

@@ -27,6 +27,7 @@ Access Visma Netvisor through Apideck's **Accounting** unified API — one of 34
 - **Unified API:** Accounting
 - **Auth type:** custom
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/accounting/visma-netvisor/gotchas)
 - **Visma Netvisor docs:** https://support.netvisor.fi
 - **Homepage:** https://netvisor.fi/accounting-software/
 

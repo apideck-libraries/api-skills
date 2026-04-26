@@ -23,6 +23,7 @@ Access Breathe HR through Apideck's **HRIS** unified API — one of 58 HRIS conn
 - **Apideck serviceId:** `breathehr`
 - **Unified API:** HRIS
 - **Auth type:** apiKey
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/breathehr/gotchas)
 - **Breathe HR docs:** https://developer.breathehr.com
 - **Homepage:** https://www.breathehr.com/
 

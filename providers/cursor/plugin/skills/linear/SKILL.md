@@ -27,6 +27,7 @@ Access Linear through Apideck's **Issue Tracking** unified API — one of 6 Issu
 - **Unified API:** Issue Tracking
 - **Auth type:** oauth2
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/issue-tracking/linear/gotchas)
 - **Linear docs:** https://developers.linear.app
 - **Homepage:** https://linear.app/
 

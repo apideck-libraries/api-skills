@@ -27,6 +27,7 @@ Access Kenjo through Apideck's **HRIS** unified API — one of 58 HRIS connector
 - **Unified API:** HRIS
 - **Auth type:** oauth2
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/kenjo/gotchas)
 - **Kenjo docs:** https://developers.kenjo.io
 - **Homepage:** https://www.kenjo.io/
 

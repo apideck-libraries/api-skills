@@ -27,6 +27,7 @@ Access Bullhorn ATS through Apideck's **ATS** unified API — one of 11 ATS conn
 - **Unified API:** ATS
 - **Auth type:** oauth2
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/ats/bullhorn-ats/gotchas)
 - **Bullhorn ATS docs:** https://bullhorn.github.io/rest-api-docs/
 - **Homepage:** https://www.bullhorn.com/
 

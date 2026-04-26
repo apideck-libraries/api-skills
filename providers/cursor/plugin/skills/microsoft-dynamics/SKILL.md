@@ -24,6 +24,7 @@ Access Microsoft Dynamics CRM through Apideck's **CRM** unified API — one of 2
 - **Unified API:** CRM
 - **Auth type:** oauth2
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/microsoft-dynamics/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/crm/microsoft-dynamics/gotchas)
 - **Microsoft Dynamics CRM docs:** https://learn.microsoft.com/dynamics365/
 - **Homepage:** https://dynamics.microsoft.com/en-us/
 

@@ -28,6 +28,7 @@ Access Campfire through Apideck's **Accounting** unified API — one of 34 Accou
 - **Auth type:** apiKey
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/campfire/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/accounting/campfire/gotchas)
 - **Campfire docs:** https://www.campfire.com
 - **Homepage:** https://campfire.ai/
 

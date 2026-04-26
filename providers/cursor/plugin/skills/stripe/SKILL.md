@@ -24,6 +24,7 @@ Access Stripe through Apideck's **Accounting** unified API — one of 34 Account
 - **Unified API:** Accounting
 - **Auth type:** oauth2
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/stripe/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/accounting/stripe/gotchas)
 - **Stripe docs:** https://stripe.com/docs/api
 - **Homepage:** https://stripe.com/
 

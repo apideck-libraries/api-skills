@@ -28,6 +28,7 @@ Access Pennylane through Apideck's **Accounting** unified API — one of 34 Acco
 - **Auth type:** oauth2
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/pennylane/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/accounting/pennylane/gotchas)
 - **Pennylane docs:** https://pennylane.readme.io
 - **Homepage:** https://www.pennylane.com/
 

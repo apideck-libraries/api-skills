@@ -27,6 +27,7 @@ Access People HR through Apideck's **HRIS** unified API — one of 58 HRIS conne
 - **Unified API:** HRIS
 - **Auth type:** apiKey
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/people-hr/gotchas)
 - **People HR docs:** https://help.peoplehr.com
 - **Homepage:** https://www.peoplehr.com/
 

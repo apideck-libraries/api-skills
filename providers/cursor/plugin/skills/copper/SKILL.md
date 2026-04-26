@@ -23,6 +23,7 @@ Access Copper through Apideck's **CRM** unified API — one of 21 CRM connectors
 - **Apideck serviceId:** `copper`
 - **Unified API:** CRM
 - **Auth type:** apiKey
+- **Gotchas:** [page](https://developers.apideck.com/apis/crm/copper/gotchas)
 - **Copper docs:** https://developer.copper.com
 - **Homepage:** https://www.copper.com/
 

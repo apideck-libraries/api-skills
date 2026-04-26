@@ -28,6 +28,7 @@ Access Remote through Apideck's **HRIS** unified API — one of 58 HRIS connecto
 - **Auth type:** apiKey
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/remote/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/remote/gotchas)
 - **Remote docs:** https://developer.remote.com
 - **Homepage:** https://remote.com/
 

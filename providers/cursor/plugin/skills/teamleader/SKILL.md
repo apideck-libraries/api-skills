@@ -23,6 +23,7 @@ Access Teamleader through Apideck's **CRM** unified API — one of 21 CRM connec
 - **Apideck serviceId:** `teamleader`
 - **Unified API:** CRM
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/crm/teamleader/gotchas)
 - **Teamleader docs:** https://developer.teamleader.eu
 - **Homepage:** https://www.teamleader.eu/
 

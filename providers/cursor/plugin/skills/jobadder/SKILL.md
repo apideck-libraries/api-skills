@@ -27,6 +27,7 @@ Access JobAdder through Apideck's **ATS** unified API — one of 11 ATS connecto
 - **Unified API:** ATS
 - **Auth type:** oauth2
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/ats/jobadder/gotchas)
 - **Homepage:** https://www.jobadder.com/
 
 ## When to use this skill

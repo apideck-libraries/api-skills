@@ -28,6 +28,7 @@ Access Linear Multiworkspace through Apideck's **Issue Tracking** unified API â€
 - **Auth type:** apiKey
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/linear-multiworkspace/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/issue-tracking/linear-multiworkspace/gotchas)
 - **Linear Multiworkspace docs:** https://developers.linear.app
 - **Homepage:** https://linear.app/
 

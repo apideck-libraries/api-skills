@@ -28,6 +28,7 @@ Access Teamtailor through Apideck's **ATS** unified API — one of 11 ATS connec
 - **Auth type:** apiKey
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/teamtailor/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/ats/teamtailor/gotchas)
 - **Teamtailor docs:** https://docs.teamtailor.com
 - **Homepage:** https://www.teamtailor.com/
 

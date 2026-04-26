@@ -24,6 +24,7 @@ Access Microsoft Dynamics 365 Human Resources through Apideck's **HRIS** unified
 - **Unified API:** HRIS
 - **Auth type:** oauth2
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/microsoft-dynamics-hr/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/microsoft-dynamics-hr/gotchas)
 - **Microsoft Dynamics 365 Human Resources docs:** https://learn.microsoft.com/dynamics365/human-resources/
 - **Homepage:** https://dynamics.microsoft.com/en-us/human-resources/
 

@@ -24,6 +24,7 @@ Access NetSuite through Apideck's **Accounting** unified API — one of 34 Accou
 - **Unified API:** Accounting
 - **Auth type:** custom
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/netsuite/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/accounting/netsuite/gotchas)
 - **NetSuite docs:** https://docs.oracle.com/en/cloud/saas/netsuite/
 - **Homepage:** https://netsuite.com
 

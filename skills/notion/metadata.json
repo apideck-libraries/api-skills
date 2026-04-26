@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "Notion connector skill. Proxy-only — routes through Apideck's Proxy API + Vault auth using serviceId \"notion\". No unified API resource mapping.",
+  "serviceId": "notion",
+  "proxyOnly": true,
+  "unifiedApis": [],
+  "authType": "oauth2",
+  "tier": "2",
+  "references": [
+    "https://developers.apideck.com",
+    "https://developers.apideck.com/apis/proxy/reference",
+    "https://developers.apideck.com/apis/proxy/notion/gotchas",
+    "https://unify.apideck.com/connector/connectors/notion",
+    "https://developers.notion.com/"
+  ]
+}

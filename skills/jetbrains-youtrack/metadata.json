@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "JetBrains YouTrack connector skill. Proxy-only — routes through Apideck's Proxy API + Vault auth using serviceId \"jetbrains-youtrack\". No unified API resource mapping.",
+  "serviceId": "jetbrains-youtrack",
+  "proxyOnly": true,
+  "unifiedApis": [],
+  "authType": "apiKey",
+  "tier": "2",
+  "references": [
+    "https://developers.apideck.com",
+    "https://developers.apideck.com/apis/proxy/reference",
+    "https://developers.apideck.com/apis/proxy/jetbrains-youtrack/gotchas",
+    "https://unify.apideck.com/connector/connectors/jetbrains-youtrack",
+    "https://www.jetbrains.com/help/youtrack/devportal/youtrack-rest-api.html"
+  ]
+}

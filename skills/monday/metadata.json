@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "monday.com connector skill. Proxy-only — routes through Apideck's Proxy API + Vault auth using serviceId \"monday\". No unified API resource mapping.",
+  "serviceId": "monday",
+  "proxyOnly": true,
+  "unifiedApis": [],
+  "authType": "apiKey",
+  "tier": "2",
+  "references": [
+    "https://developers.apideck.com",
+    "https://developers.apideck.com/apis/proxy/reference",
+    "https://developers.apideck.com/apis/proxy/monday/gotchas",
+    "https://unify.apideck.com/connector/connectors/monday",
+    "https://developer.monday.com/api-reference/docs"
+  ]
+}

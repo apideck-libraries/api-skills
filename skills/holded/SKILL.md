@@ -24,6 +24,7 @@ Access Holded through Apideck's **HRIS** unified API — one of 58 HRIS connecto
 - **Unified API:** HRIS
 - **Auth type:** apiKey
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/holded/docs/consumer+connection) · [image](https://developers.apideck.com/connectors/holded/docs/consumer+image)
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/holded/gotchas)
 - **Homepage:** https://www.holded.com/
 
 ## When to use this skill

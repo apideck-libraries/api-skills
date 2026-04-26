@@ -28,6 +28,7 @@ Access Magento through Apideck's **Ecommerce** unified API — one of 17 Ecommer
 - **Auth type:** custom
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/magento/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/magento/gotchas)
 - **Magento docs:** https://developer.adobe.com/commerce/webapi/
 - **Homepage:** https://magento.com/
 
