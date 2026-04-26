@@ -1,0 +1,1 @@
+{"version":"1.0.0","organization":"Apideck","date":"April 2026","abstract":"Task playbook for fetching a month-end financial snapshot via the Apideck MCP server's apideck-month-end-close-check workflow tool.","references":["https://github.com/apideck-libraries/mcp/blob/main/src/gen/workflows/monthEndClose.ts","https://mcp.apideck.dev/mcp"]}

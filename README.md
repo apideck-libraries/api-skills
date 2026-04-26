@@ -53,6 +53,9 @@ npx skills add apideck/api-skills --skill apideck-php
 # REST API (any language)
 npx skills add apideck/api-skills --skill apideck-rest
 
+# MCP server (for agent-driven integrations: Claude Code, Cursor, OpenAI Agents SDK, Pydantic AI)
+npx skills add apideck/api-skills --skill apideck-mcp
+
 # Best practices (recommended with any SDK skill)
 npx skills add apideck/api-skills --skill apideck-best-practices
 
@@ -80,7 +83,7 @@ Every skill in the catalog lives under `skills/` — the canonical path scanned 
 
 The `connectors/` directory holds the tooling that generates connector skills (`manifest.json`, `generate.js`, `validate.js`, `_enhancements/`) — no SKILL.md output lives there.
 
-### `apideck-*` skills (13)
+### `apideck-*` skills (18)
 
 Apideck-specific API abstractions, SDK wrappers, and tooling. Install individually or as a set. **`apideck-unified-api` is the front door** — install it first.
 
@@ -99,6 +102,11 @@ Apideck-specific API abstractions, SDK wrappers, and tooling. Install individual
 | [apideck-go](skills/apideck-go/) | SDK | Unified API integration patterns for Go | `github.com/apideck-libraries/sdk-go` |
 | [apideck-php](skills/apideck-php/) | SDK | Unified API integration patterns for PHP | `apideck-libraries/sdk-php` |
 | [apideck-rest](skills/apideck-rest/) | SDK | Direct REST patterns for any language — raw HTTP, authentication headers, response handling | — |
+| [apideck-mcp](skills/apideck-mcp/) | MCP | Front-door for the Apideck MCP server — 330 unified-API tools + 4 intent-grouped workflow tools, dynamic discovery, Vault OAuth elicitations | [`@apideck/mcp`](https://github.com/apideck-libraries/mcp) |
+| [apideck-mcp-pay-bill](skills/apideck-mcp-pay-bill/) | MCP playbook | Task playbook for `apideck-pay-bill` — pay a known vendor bill (AP) | — |
+| [apideck-mcp-receive-payment](skills/apideck-mcp-receive-payment/) | MCP playbook | Task playbook for `apideck-receive-customer-payment` — record a customer payment against an invoice (AR) | — |
+| [apideck-mcp-onboard-employee](skills/apideck-mcp-onboard-employee/) | MCP playbook | Task playbook for `apideck-onboard-employee` — convert a hired ATS applicant into an HRIS employee (cross-API) | — |
+| [apideck-mcp-month-end-close](skills/apideck-mcp-month-end-close/) | MCP playbook | Task playbook for `apideck-month-end-close-check` — fetch P&L + balance sheet + aged AP/AR in one shot | — |
 
 ### Connector Skills
 

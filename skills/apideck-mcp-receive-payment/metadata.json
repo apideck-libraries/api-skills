@@ -1,0 +1,1 @@
+{"version":"1.0.0","organization":"Apideck","date":"April 2026","abstract":"Task playbook for recording a customer payment against an invoice via the Apideck MCP server's apideck-receive-customer-payment workflow tool.","references":["https://github.com/apideck-libraries/mcp/blob/main/src/gen/workflows/receivePayment.ts","https://mcp.apideck.dev/mcp"]}
