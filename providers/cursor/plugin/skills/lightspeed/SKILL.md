@@ -27,6 +27,7 @@ Access Lightspeed through Apideck's **Ecommerce** unified API — one of 17 Ecom
 - **Unified API:** Ecommerce
 - **Auth type:** oauth2
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/lightspeed/gotchas)
 - **Lightspeed docs:** https://developers.lightspeedhq.com
 - **Homepage:** https://lightspeedhq.com
 

@@ -27,6 +27,7 @@ Access Digits through Apideck's **Accounting** unified API — one of 34 Account
 - **Unified API:** Accounting
 - **Auth type:** oauth2
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/accounting/digits/gotchas)
 - **Digits docs:** https://digits.com
 - **Homepage:** https://www.digits.com/
 

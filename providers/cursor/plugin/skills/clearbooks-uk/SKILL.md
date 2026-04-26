@@ -27,6 +27,7 @@ Access Clear Books through Apideck's **Accounting** unified API — one of 34 Ac
 - **Unified API:** Accounting
 - **Auth type:** apiKey
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/accounting/clearbooks-uk/gotchas)
 - **Clear Books docs:** https://www.clearbooks.co.uk/support/api/
 - **Homepage:** https://www.clearbooks.co.uk/
 

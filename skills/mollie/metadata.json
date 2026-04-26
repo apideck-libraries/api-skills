@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "Mollie connector skill. Proxy-only — routes through Apideck's Proxy API + Vault auth using serviceId \"mollie\". No unified API resource mapping.",
+  "serviceId": "mollie",
+  "proxyOnly": true,
+  "unifiedApis": [],
+  "authType": "oauth2",
+  "tier": "2",
+  "references": [
+    "https://developers.apideck.com",
+    "https://developers.apideck.com/apis/proxy/reference",
+    "https://developers.apideck.com/apis/proxy/mollie/gotchas",
+    "https://unify.apideck.com/connector/connectors/mollie",
+    "https://docs.mollie.com/"
+  ]
+}

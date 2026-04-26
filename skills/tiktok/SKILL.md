@@ -27,6 +27,7 @@ Access TikTok Shop through Apideck's **Ecommerce** unified API — one of 17 Eco
 - **Unified API:** Ecommerce
 - **Auth type:** oauth2
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/tiktok/gotchas)
 - **TikTok Shop docs:** https://partner.tiktokshop.com/doc
 - **Homepage:** https://www.tiktok.com/
 

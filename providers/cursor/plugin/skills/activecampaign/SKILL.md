@@ -23,6 +23,7 @@ Access ActiveCampaign through Apideck's **CRM** unified API — one of 21 CRM co
 - **Apideck serviceId:** `activecampaign`
 - **Unified API:** CRM
 - **Auth type:** apiKey
+- **Gotchas:** [page](https://developers.apideck.com/apis/crm/activecampaign/gotchas)
 - **ActiveCampaign docs:** https://developers.activecampaign.com
 - **Homepage:** https://www.activecampaign.com/
 

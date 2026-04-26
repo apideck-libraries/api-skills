@@ -27,6 +27,7 @@ Access MRI Software through Apideck's **Accounting** unified API — one of 34 A
 - **Unified API:** Accounting
 - **Auth type:** basic
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/accounting/mrisoftware/gotchas)
 - **MRI Software docs:** https://www.mrisoftware.com
 - **Homepage:** https://www.mrisoftware.com/
 

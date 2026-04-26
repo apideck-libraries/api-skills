@@ -27,6 +27,7 @@ Access Cegid Talentsoft through Apideck's **HRIS** unified API — one of 58 HRI
 - **Unified API:** HRIS
 - **Auth type:** oauth2
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/cegid-talentsoft/gotchas)
 - **Cegid Talentsoft docs:** https://www.cegid.com
 - **Homepage:** https://www.cegid.com/en/products/cegid-talentsoft/
 

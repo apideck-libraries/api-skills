@@ -28,6 +28,7 @@ Access MYOB Acumatica through Apideck's **Accounting** unified API — one of 34
 - **Auth type:** oauth2
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/myob-acumatica/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/accounting/myob-acumatica/gotchas)
 - **MYOB Acumatica docs:** https://developer.myob.com
 - **Homepage:** https://www.myob.com/au/erp-software/products/myob-acumatica
 

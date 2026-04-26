@@ -28,6 +28,7 @@ Access Yuki through Apideck's **Accounting** unified API — one of 34 Accountin
 - **Auth type:** apiKey
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/yuki/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/accounting/yuki/gotchas)
 - **Yuki docs:** https://api.yukiworks.nl
 - **Homepage:** https://www.yuki.nl/
 

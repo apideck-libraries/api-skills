@@ -27,6 +27,7 @@ Access Okta through Apideck's **HRIS** unified API — one of 58 HRIS connectors
 - **Unified API:** HRIS
 - **Auth type:** apiKey
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/okta/gotchas)
 - **Homepage:** https://www.okta.com/
 
 ## When to use this skill

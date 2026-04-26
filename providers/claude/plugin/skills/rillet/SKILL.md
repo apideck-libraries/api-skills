@@ -28,6 +28,7 @@ Access Rillet through Apideck's **Accounting** unified API — one of 34 Account
 - **Auth type:** apiKey
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/rillet/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/accounting/rillet/gotchas)
 - **Rillet docs:** https://rillet.com
 - **Homepage:** https://rillet.com/
 

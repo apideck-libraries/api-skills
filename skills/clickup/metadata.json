@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "ClickUp connector skill. Proxy-only — routes through Apideck's Proxy API + Vault auth using serviceId \"clickup\". No unified API resource mapping.",
+  "serviceId": "clickup",
+  "proxyOnly": true,
+  "unifiedApis": [],
+  "authType": "oauth2",
+  "tier": "2",
+  "references": [
+    "https://developers.apideck.com",
+    "https://developers.apideck.com/apis/proxy/reference",
+    "https://developers.apideck.com/apis/proxy/clickup/gotchas",
+    "https://unify.apideck.com/connector/connectors/clickup",
+    "https://clickup.com/api"
+  ]
+}

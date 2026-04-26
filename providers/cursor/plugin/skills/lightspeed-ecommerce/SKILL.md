@@ -27,6 +27,7 @@ Access Lightspeed eCom (C-Series) through Apideck's **Ecommerce** unified API â€
 - **Unified API:** Ecommerce
 - **Auth type:** basic
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/lightspeed-ecommerce/gotchas)
 - **Lightspeed eCom (C-Series) docs:** https://developers.lightspeedhq.com
 - **Homepage:** https://www.lightspeedhq.com/ecommerce
 

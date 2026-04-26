@@ -28,6 +28,7 @@ Access ADP Workforce Now through Apideck's **HRIS** unified API — one of 58 HR
 - **Auth type:** oauth2
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/adp-workforce-now/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/adp-workforce-now/gotchas)
 - **ADP Workforce Now docs:** https://developers.adp.com
 - **Homepage:** https://www.adp.com/what-we-offer/products/adp-workforce-now.aspx
 

@@ -23,6 +23,7 @@ Access SharePoint through Apideck's **File Storage** unified API — one of 5 Fi
 - **Apideck serviceId:** `sharepoint`
 - **Unified API:** File Storage
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/file-storage/sharepoint/gotchas)
 - **SharePoint docs:** https://learn.microsoft.com/sharepoint/dev/
 - **Homepage:** https://products.office.com
 

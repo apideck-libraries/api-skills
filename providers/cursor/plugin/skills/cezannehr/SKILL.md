@@ -28,6 +28,7 @@ Access Cezanne HR through Apideck's **HRIS** unified API — one of 58 HRIS conn
 - **Auth type:** oauth2
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/cezannehr/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/cezannehr/gotchas)
 - **Cezanne HR docs:** https://cezannehr.com
 - **Homepage:** https://cezannehr.com/
 

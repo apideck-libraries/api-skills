@@ -23,6 +23,7 @@ Access Zoho CRM through Apideck's **CRM** unified API — one of 21 CRM connecto
 - **Apideck serviceId:** `zoho-crm`
 - **Unified API:** CRM
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/crm/zoho-crm/gotchas)
 - **Zoho CRM docs:** https://www.zoho.com/crm/developer/docs/api/
 - **Homepage:** https://www.zoho.com/crm/
 

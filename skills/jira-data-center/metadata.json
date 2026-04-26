@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "organization": "Apideck",
+  "date": "April 2026",
+  "abstract": "Jira Data Center connector skill. Proxy-only — routes through Apideck's Proxy API + Vault auth using serviceId \"jira-data-center\". No unified API resource mapping.",
+  "serviceId": "jira-data-center",
+  "proxyOnly": true,
+  "unifiedApis": [],
+  "authType": "apiKey",
+  "tier": "2",
+  "references": [
+    "https://developers.apideck.com",
+    "https://developers.apideck.com/apis/proxy/reference",
+    "https://developers.apideck.com/apis/proxy/jira-data-center/gotchas",
+    "https://unify.apideck.com/connector/connectors/jira-data-center",
+    "https://developer.atlassian.com/server/jira/platform/rest/"
+  ]
+}

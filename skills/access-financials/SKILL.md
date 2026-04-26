@@ -28,6 +28,7 @@ Access Access Financials through Apideck's **Accounting** unified API — one of
 - **Auth type:** apiKey
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/access-financials/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/accounting/access-financials/gotchas)
 - **Access Financials docs:** https://www.theaccessgroup.com/en-gb/finance/
 - **Homepage:** https://www.theaccessgroup.com/en-gb/finance/products/access-financials/
 

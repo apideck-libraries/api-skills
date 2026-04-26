@@ -27,6 +27,7 @@ Access GitLab through Apideck's **Issue Tracking** unified API — one of 6 Issu
 - **Unified API:** Issue Tracking
 - **Auth type:** oauth2
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/issue-tracking/gitlab/gotchas)
 - **GitLab docs:** https://docs.gitlab.com/ee/api/
 - **Homepage:** https://www.gitlab.com/
 

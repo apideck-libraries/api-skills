@@ -28,6 +28,7 @@ Access Odoo through Apideck's **CRM, Accounting** unified API — one of 21 CRM 
 - **Auth type:** basic
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/odoo/docs/consumer+connection)
+- **Gotchas:** [CRM](https://developers.apideck.com/apis/crm/odoo/gotchas) · [Accounting](https://developers.apideck.com/apis/accounting/odoo/gotchas)
 - **Odoo docs:** https://www.odoo.com/documentation/
 - **Homepage:** https://www.odoo.com/
 

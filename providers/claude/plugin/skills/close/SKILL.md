@@ -23,6 +23,7 @@ Access Close through Apideck's **CRM** unified API — one of 21 CRM connectors 
 - **Apideck serviceId:** `close`
 - **Unified API:** CRM
 - **Auth type:** basic
+- **Gotchas:** [page](https://developers.apideck.com/apis/crm/close/gotchas)
 - **Close docs:** https://developer.close.com
 - **Homepage:** https://close.com/
 

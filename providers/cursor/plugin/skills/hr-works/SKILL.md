@@ -28,6 +28,7 @@ Access HR Works through Apideck's **HRIS** unified API — one of 58 HRIS connec
 - **Auth type:** oauth2
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/hr-works/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/hr-works/gotchas)
 - **HR Works docs:** https://www.hrworks.de
 - **Homepage:** https://hrworks-inc.com/
 

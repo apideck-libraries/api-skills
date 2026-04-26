@@ -1,7 +1,7 @@
 # Apideck API Skills
 
 [![Tessl Review Score](https://img.shields.io/badge/Tessl%20Review-85%25-yellow?labelColor=0f172a)](https://tessl.io/registry/skills/submit)
-[![Connectors](https://img.shields.io/badge/connectors-146-blue)](connectors/manifest.json)
+[![Connectors](https://img.shields.io/badge/connectors-163-blue)](connectors/manifest.json)
 [![Unified APIs](https://img.shields.io/badge/unified%20APIs-7-blue)](#connector-skills)
 [![License](https://img.shields.io/badge/license-Apache--2.0-green)](LICENSE)
 
@@ -89,7 +89,7 @@ Apideck-specific API abstractions, SDK wrappers, and tooling. Install individual
 
 | Skill | Kind | Purpose | Package / Language |
 |-------|------|---------|--------------------|
-| [apideck-unified-api](skills/apideck-unified-api/) | Meta | **Start here.** Front-door skill teaching the compounding-abstraction model (one method set, 146+ connectors, switch via `serviceId`) and routing to per-connector / per-SDK skills | — |
+| [apideck-unified-api](skills/apideck-unified-api/) | Meta | **Start here.** Front-door skill teaching the compounding-abstraction model (one method set, 163+ connectors, switch via `serviceId`) and routing to per-connector / per-SDK skills | — |
 | [apideck-best-practices](skills/apideck-best-practices/) | Integration | Architecture patterns, Vault auth, pagination, error handling, webhooks, common pitfalls | — |
 | [apideck-connector-coverage](skills/apideck-connector-coverage/) | Integration | Check connector API coverage before building — verify which operations each connector supports via the Connector API | — |
 | [apideck-migration](skills/apideck-migration/) | Integration | Migrate from direct Salesforce/HubSpot/QuickBooks/Xero integrations to Apideck's unified layer | — |
@@ -110,7 +110,7 @@ Apideck-specific API abstractions, SDK wrappers, and tooling. Install individual
 
 ### Connector Skills
 
-Per-connector skills for the top apps across seven unified APIs: Ecommerce, Accounting, CRM, ATS, File Storage, Issue Tracking, HRIS. Auth-only connectors are excluded.
+Per-connector skills for the top apps across seven unified APIs: Ecommerce, Accounting, CRM, ATS, File Storage, Issue Tracking, HRIS — plus a set of **proxy-only connectors** (Asana, Notion, Zendesk, Jira Service Desk, ServiceNow, monday.com, etc.) that route through Apideck's Proxy API + Vault auth instead of a unified resource API.
 
 **Tier 1a — hand-authored depth** (entity mapping, coverage ✅/❌, auth gotchas, 2–3 worked examples):
 
@@ -127,6 +127,8 @@ Per-connector skills for the top apps across seven unified APIs: Ecommerce, Acco
 **Tier 1b — abbreviated depth** (21 connectors): HubSpot, Pipedrive, Zoho CRM, Xero, NetSuite, Sage Intacct, Workable, Lever, Google Drive, OneDrive, Dropbox, Box, GitHub, GitLab, Linear, BigCommerce, WooCommerce, Shopify Public App, Personio, Workday, Deel, HiBob.
 
 **Tier 1c + Tier 2 — baseline routing skills** (~107 connectors): every live connector in scope gets a minimal routing skill (serviceId, unified API, Proxy escape hatch). See [`connectors/manifest.json`](connectors/manifest.json) for the full list and tier assignment.
+
+**Proxy-only connectors** (17): Apideck handles auth + token refresh but exposes the vendor's native API through the Proxy rather than a unified resource model. Skills teach the Proxy call shape with `x-apideck-downstream-url` and the vendor's own request/response format. List: Asana, Azure DevOps, Basecamp, ClickUp, Intercom, JetBrains YouTrack, Jira Data Center, Jira Service Desk, Jira Teams, Mollie, monday.com, Notion, Sage Intacct REST, ServiceNow, Sesame HR, Shortcut, Zendesk.
 
 **Installation:**
 

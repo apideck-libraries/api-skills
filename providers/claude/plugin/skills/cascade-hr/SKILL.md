@@ -23,6 +23,7 @@ Access IRIS Cascade HR through Apideck's **HRIS** unified API — one of 58 HRIS
 - **Apideck serviceId:** `cascade-hr`
 - **Unified API:** HRIS
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/cascade-hr/gotchas)
 - **IRIS Cascade HR docs:** https://www.iris.co.uk
 - **Homepage:** https://www.iris.co.uk/products/iris-cascade-b/
 

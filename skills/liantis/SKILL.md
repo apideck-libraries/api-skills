@@ -27,6 +27,7 @@ Access Liantis through Apideck's **HRIS** unified API — one of 58 HRIS connect
 - **Unified API:** HRIS
 - **Auth type:** oauth2
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/liantis/gotchas)
 - **Liantis docs:** https://www.liantis.be
 - **Homepage:** https://www.liantis.be
 

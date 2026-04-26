@@ -24,6 +24,7 @@ Access Sage Intacct through Apideck's **Accounting** unified API — one of 34 A
 - **Unified API:** Accounting
 - **Auth type:** oauth2
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/sage-intacct/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/accounting/sage-intacct/gotchas)
 - **Sage Intacct docs:** https://developer.intacct.com
 - **Homepage:** https://www.sageintacct.com/
 

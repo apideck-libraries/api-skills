@@ -23,6 +23,7 @@ Access Planhat through Apideck's **CRM** unified API — one of 21 CRM connector
 - **Apideck serviceId:** `planhat`
 - **Unified API:** CRM
 - **Auth type:** apiKey
+- **Gotchas:** [page](https://developers.apideck.com/apis/crm/planhat/gotchas)
 - **Planhat docs:** https://docs.planhat.com
 - **Homepage:** https://planhat.com
 

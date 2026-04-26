@@ -27,6 +27,7 @@ Access Wix  through Apideck's **Ecommerce** unified API — one of 17 Ecommerce 
 - **Unified API:** Ecommerce
 - **Auth type:** apiKey
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/wix/gotchas)
 - **Homepage:** https://wix.com
 
 ## When to use this skill

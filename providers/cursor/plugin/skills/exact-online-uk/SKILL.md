@@ -27,6 +27,7 @@ Access Exact Online UK through Apideck's **Accounting** unified API — one of 3
 - **Unified API:** Accounting
 - **Auth type:** oauth2
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/accounting/exact-online-uk/gotchas)
 - **Exact Online UK docs:** https://support.exactonline.com
 - **Homepage:** https://www.exact.com/uk
 

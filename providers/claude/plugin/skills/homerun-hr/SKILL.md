@@ -27,6 +27,7 @@ Access Homerun HR through Apideck's **HRIS** unified API — one of 58 HRIS conn
 - **Unified API:** HRIS
 - **Auth type:** oauth2
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/homerun-hr/gotchas)
 - **Homerun HR docs:** https://www.homerun.co
 - **Homepage:** https://www.homerun.co/
 

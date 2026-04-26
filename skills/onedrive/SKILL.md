@@ -23,6 +23,7 @@ Access OneDrive through Apideck's **File Storage** unified API — one of 5 File
 - **Apideck serviceId:** `onedrive`
 - **Unified API:** File Storage
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/file-storage/onedrive/gotchas)
 - **OneDrive docs:** https://learn.microsoft.com/onedrive/developer/
 - **Homepage:** https://onedrive.live.com/
 

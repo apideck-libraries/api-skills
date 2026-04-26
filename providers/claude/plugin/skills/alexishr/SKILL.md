@@ -28,6 +28,7 @@ Access Simployer One through Apideck's **HRIS** unified API — one of 58 HRIS c
 - **Auth type:** apiKey
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/alexishr/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/alexishr/gotchas)
 - **Simployer One docs:** https://www.simployer.com
 - **Homepage:** https://www.simployer.com/
 

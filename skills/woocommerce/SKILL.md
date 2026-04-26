@@ -27,6 +27,7 @@ Access WooCommerce through Apideck's **Ecommerce** unified API — one of 17 Eco
 - **Unified API:** Ecommerce
 - **Auth type:** custom
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/woocommerce/gotchas)
 - **WooCommerce docs:** https://woocommerce.github.io/woocommerce-rest-api-docs/
 - **Homepage:** https://woocommerce.com/
 

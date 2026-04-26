@@ -23,6 +23,7 @@ Access Exact Online through Apideck's **Accounting** unified API — one of 34 A
 - **Apideck serviceId:** `exact-online`
 - **Unified API:** Accounting
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/accounting/exact-online/gotchas)
 - **Exact Online docs:** https://support.exactonline.com/community/s/knowledge-base
 - **Homepage:** https://www.exact.com/
 

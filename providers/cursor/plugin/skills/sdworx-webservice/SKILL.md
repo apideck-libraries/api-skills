@@ -27,6 +27,7 @@ Access SD Worx (Web service) through Apideck's **HRIS** unified API — one of 5
 - **Unified API:** HRIS
 - **Auth type:** basic
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/sdworx-webservice/gotchas)
 - **SD Worx (Web service) docs:** https://www.sdworx.com
 - **Homepage:** https://www.sdworx.com/
 

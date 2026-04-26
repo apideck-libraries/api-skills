@@ -27,6 +27,7 @@ Access Workable through Apideck's **ATS** unified API — one of 11 ATS connecto
 - **Unified API:** ATS
 - **Auth type:** oauth2
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/ats/workable/gotchas)
 - **Workable docs:** https://workable.readme.io
 - **Homepage:** https://workable.com
 

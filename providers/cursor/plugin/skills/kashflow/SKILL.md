@@ -28,6 +28,7 @@ Access Kashflow through Apideck's **Accounting** unified API — one of 34 Accou
 - **Auth type:** basic
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/kashflow/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/accounting/kashflow/gotchas)
 - **Kashflow docs:** https://developer.kashflow.com
 - **Homepage:** https://www.kashflow.com/
 

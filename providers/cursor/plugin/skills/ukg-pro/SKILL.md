@@ -27,6 +27,7 @@ Access UKG Pro through Apideck's **HRIS** unified API — one of 58 HRIS connect
 - **Unified API:** HRIS
 - **Auth type:** basic
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/ukg-pro/gotchas)
 - **Homepage:** https://www.ukg.com/solutions/ukg-pro
 
 ## When to use this skill

@@ -28,6 +28,7 @@ Access Shopify (Public App) through Apideck's **Ecommerce** unified API — one 
 - **Auth type:** oauth2
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/shopify-public-app/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/shopify-public-app/gotchas)
 - **Shopify (Public App) docs:** https://shopify.dev/docs/apps
 - **Homepage:** https://www.shopify.com/
 

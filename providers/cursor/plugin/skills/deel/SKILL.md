@@ -27,6 +27,7 @@ Access Deel through Apideck's **HRIS** unified API — one of 58 HRIS connectors
 - **Unified API:** HRIS
 - **Auth type:** oauth2
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/deel/gotchas)
 - **Deel docs:** https://developer.deel.com
 - **Homepage:** https://www.deel.com/
 

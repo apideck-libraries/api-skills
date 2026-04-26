@@ -23,6 +23,7 @@ Access Sage HR through Apideck's **HRIS, ATS** unified API — one of 58 HRIS co
 - **Apideck serviceId:** `sage-hr`
 - **Unified APIs:** HRIS, ATS
 - **Auth type:** apiKey
+- **Gotchas:** [HRIS](https://developers.apideck.com/apis/hris/sage-hr/gotchas) · [ATS](https://developers.apideck.com/apis/ats/sage-hr/gotchas)
 - **Homepage:** https://sage.hr/
 
 ## When to use this skill

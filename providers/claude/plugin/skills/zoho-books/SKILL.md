@@ -23,6 +23,7 @@ Access Zoho Books through Apideck's **Accounting** unified API — one of 34 Acc
 - **Apideck serviceId:** `zoho-books`
 - **Unified API:** Accounting
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/accounting/zoho-books/gotchas)
 - **Zoho Books docs:** https://www.zoho.com/books/api/v3/
 - **Homepage:** https://www.zoho.com/books/
 

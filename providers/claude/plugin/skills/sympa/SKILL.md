@@ -23,6 +23,7 @@ Access Sympa through Apideck's **HRIS** unified API — one of 58 HRIS connector
 - **Apideck serviceId:** `sympa`
 - **Unified API:** HRIS
 - **Auth type:** basic
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/sympa/gotchas)
 - **Sympa docs:** https://www.sympa.com
 - **Homepage:** https://www.sympa.com/
 

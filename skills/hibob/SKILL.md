@@ -24,6 +24,7 @@ Access Hibob through Apideck's **HRIS** unified API — one of 58 HRIS connector
 - **Unified API:** HRIS
 - **Auth type:** basic
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/hibob/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/hibob/gotchas)
 - **Hibob docs:** https://apidocs.hibob.com
 - **Homepage:** https://www.hibob.com/
 

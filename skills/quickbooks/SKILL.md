@@ -23,6 +23,7 @@ Access QuickBooks through Apideck's **Accounting** unified API — one of 34 Acc
 - **Apideck serviceId:** `quickbooks`
 - **Unified API:** Accounting
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/accounting/quickbooks/gotchas)
 - **QuickBooks docs:** https://developer.intuit.com/app/developer/qbo/docs
 - **Homepage:** https://quickbooks.intuit.com/
 

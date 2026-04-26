@@ -27,6 +27,7 @@ Access Blackbaud through Apideck's **CRM** unified API — one of 21 CRM connect
 - **Unified API:** CRM
 - **Auth type:** oauth2
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/crm/blackbaud/gotchas)
 - **Blackbaud docs:** https://developer.blackbaud.com
 - **Homepage:** https://blackbaud.com
 

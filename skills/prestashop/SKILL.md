@@ -27,6 +27,7 @@ Access Prestashop through Apideck's **Ecommerce** unified API — one of 17 Ecom
 - **Unified API:** Ecommerce
 - **Auth type:** basic
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/prestashop/gotchas)
 - **Prestashop docs:** https://devdocs.prestashop-project.org
 - **Homepage:** https://www.prestashop.com/
 

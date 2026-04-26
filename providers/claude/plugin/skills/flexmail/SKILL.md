@@ -23,6 +23,7 @@ Access Flexmail through Apideck's **CRM** unified API — one of 21 CRM connecto
 - **Apideck serviceId:** `flexmail`
 - **Unified API:** CRM
 - **Auth type:** basic
+- **Gotchas:** [page](https://developers.apideck.com/apis/crm/flexmail/gotchas)
 - **Flexmail docs:** https://help.flexmail.eu
 - **Homepage:** https://flexmail.be
 

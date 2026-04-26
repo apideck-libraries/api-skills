@@ -23,6 +23,7 @@ Access Salesforce through Apideck's **CRM** unified API — one of 21 CRM connec
 - **Apideck serviceId:** `salesforce`
 - **Unified API:** CRM
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/crm/salesforce/gotchas)
 - **Salesforce docs:** https://developer.salesforce.com/docs
 - **Homepage:** https://www.salesforce.com
 

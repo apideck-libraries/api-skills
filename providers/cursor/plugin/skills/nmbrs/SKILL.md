@@ -23,6 +23,7 @@ Access Visma Nmbrs through Apideck's **HRIS** unified API — one of 58 HRIS con
 - **Apideck serviceId:** `nmbrs`
 - **Unified API:** HRIS
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/nmbrs/gotchas)
 - **Visma Nmbrs docs:** https://support.nmbrs.com
 - **Homepage:** https://www.nmbrs.com
 

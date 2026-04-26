@@ -28,6 +28,7 @@ Access Paychex through Apideck's **HRIS** unified API — one of 58 HRIS connect
 - **Auth type:** oauth2
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/paychex/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/paychex/gotchas)
 - **Paychex docs:** https://developer.paychex.com
 - **Homepage:** https://www.paychex.com/
 

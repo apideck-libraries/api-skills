@@ -28,6 +28,7 @@ Access bol.com through Apideck's **Ecommerce** unified API — one of 17 Ecommer
 - **Auth type:** oauth2
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/bol-com/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/bol-com/gotchas)
 - **bol.com docs:** https://api.bol.com
 - **Homepage:** https://www.bol.com
 

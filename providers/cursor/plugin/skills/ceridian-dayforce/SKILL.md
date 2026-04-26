@@ -28,6 +28,7 @@ Access Ceridian Dayforce through Apideck's **HRIS** unified API — one of 58 HR
 - **Auth type:** oauth2
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/ceridian-dayforce/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/ceridian-dayforce/gotchas)
 - **Ceridian Dayforce docs:** https://developers.ceridian.com
 - **Homepage:** https://www.ceridian.com/products/dayforce
 

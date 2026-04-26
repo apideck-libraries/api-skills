@@ -27,6 +27,7 @@ Access CIPHR through Apideck's **HRIS** unified API — one of 58 HRIS connector
 - **Unified API:** HRIS
 - **Auth type:** apiKey
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/ciphr/gotchas)
 - **CIPHR docs:** https://www.ciphr.com
 - **Homepage:** https://www.ciphr.com/
 

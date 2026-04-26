@@ -24,6 +24,7 @@ Access BambooHR through Apideck's **HRIS** unified API — one of 58 HRIS connec
 - **Unified API:** HRIS
 - **Auth type:** basic
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/bamboohr/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/bamboohr/gotchas)
 - **BambooHR docs:** https://documentation.bamboohr.com/docs
 - **Homepage:** https://www.bamboohr.com
 

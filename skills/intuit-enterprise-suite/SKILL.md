@@ -23,6 +23,7 @@ Access Intuit Enterprise Suite through Apideck's **Accounting** unified API — 
 - **Apideck serviceId:** `intuit-enterprise-suite`
 - **Unified API:** Accounting
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/accounting/intuit-enterprise-suite/gotchas)
 - **Intuit Enterprise Suite docs:** https://developer.intuit.com
 - **Homepage:** https://developer.intuit.com
 

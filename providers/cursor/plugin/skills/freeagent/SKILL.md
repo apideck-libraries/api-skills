@@ -27,6 +27,7 @@ Access FreeAgent through Apideck's **Accounting** unified API — one of 34 Acco
 - **Unified API:** Accounting
 - **Auth type:** oauth2
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/accounting/freeagent/gotchas)
 - **FreeAgent docs:** https://dev.freeagent.com
 - **Homepage:** https://www.freeagent.com/
 

@@ -23,6 +23,7 @@ Access Box through Apideck's **File Storage** unified API — one of 5 File Stor
 - **Apideck serviceId:** `box`
 - **Unified API:** File Storage
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/file-storage/box/gotchas)
 - **Box docs:** https://developer.box.com
 - **Homepage:** https://www.box.com/
 

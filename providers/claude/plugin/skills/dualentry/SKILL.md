@@ -24,6 +24,7 @@ Access Dualentry through Apideck's **Accounting** unified API — one of 34 Acco
 - **Unified API:** Accounting
 - **Auth type:** apiKey
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/dualentry/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/accounting/dualentry/gotchas)
 - **Dualentry docs:** https://dualentry.com
 - **Homepage:** https://www.dualentry.com/
 

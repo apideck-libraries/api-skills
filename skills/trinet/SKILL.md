@@ -23,6 +23,7 @@ Access TriNet through Apideck's **HRIS** unified API — one of 58 HRIS connecto
 - **Apideck serviceId:** `trinet`
 - **Unified API:** HRIS
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/trinet/gotchas)
 - **Homepage:** https://www.trinet.com/
 
 ## When to use this skill

@@ -24,6 +24,7 @@ Access SAP SuccessFactors through Apideck's **HRIS, ATS** unified API — one of
 - **Unified APIs:** HRIS, ATS
 - **Auth type:** oauth2
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/sap-successfactors/docs/consumer+connection)
+- **Gotchas:** [HRIS](https://developers.apideck.com/apis/hris/sap-successfactors/gotchas) · [ATS](https://developers.apideck.com/apis/ats/sap-successfactors/gotchas)
 - **SAP SuccessFactors docs:** https://help.sap.com/docs/SAP_SUCCESSFACTORS_PLATFORM
 - **Homepage:** https://successfactors.com
 

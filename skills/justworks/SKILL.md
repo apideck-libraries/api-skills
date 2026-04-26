@@ -23,6 +23,7 @@ Access Justworks through Apideck's **HRIS** unified API — one of 58 HRIS conne
 - **Apideck serviceId:** `justworks`
 - **Unified API:** HRIS
 - **Auth type:** none
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/justworks/gotchas)
 - **Homepage:** https://justworks.com/
 
 ## When to use this skill

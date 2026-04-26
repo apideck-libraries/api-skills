@@ -28,6 +28,7 @@ Access Moneybird through Apideck's **Accounting** unified API — one of 34 Acco
 - **Auth type:** oauth2
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/moneybird/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/accounting/moneybird/gotchas)
 - **Moneybird docs:** https://developer.moneybird.com
 - **Homepage:** https://www.moneybird.com/
 

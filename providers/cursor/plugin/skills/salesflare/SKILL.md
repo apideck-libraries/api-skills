@@ -23,6 +23,7 @@ Access Salesflare through Apideck's **CRM** unified API — one of 21 CRM connec
 - **Apideck serviceId:** `salesflare`
 - **Unified API:** CRM
 - **Auth type:** apiKey
+- **Gotchas:** [page](https://developers.apideck.com/apis/crm/salesflare/gotchas)
 - **Salesflare docs:** https://api.salesflare.com/docs
 - **Homepage:** https://salesflare.com
 

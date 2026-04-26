@@ -23,6 +23,7 @@ Access FreshBooks through Apideck's **Accounting** unified API — one of 34 Acc
 - **Apideck serviceId:** `freshbooks`
 - **Unified API:** Accounting
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/accounting/freshbooks/gotchas)
 - **FreshBooks docs:** https://www.freshbooks.com/api/start
 - **Homepage:** https://www.freshbooks.com/
 

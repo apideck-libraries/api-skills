@@ -25,7 +25,7 @@ Apideck offers a 30-day free trial with no credit card required. This is the rec
 The Apideck Agent Skills catalog ([github.com/apideck-libraries/api-skills](https://github.com/apideck-libraries/api-skills)) publishes agent-ready integration knowledge as installable skills:
 
 - **`apideck-unified-api`** — start here. Front-door meta-skill that teaches the compounding-abstraction model and routes to per-connector, per-SDK, and per-tool skills.
-- **146+ connector skills** — one per live Apideck connector (e.g. `salesforce`, `quickbooks`, `sharepoint`, `jira`, `shopify`). Each teaches the correct `serviceId`, unified API routing, coverage caveats, and auth gotchas.
+- **163+ connector skills** — one per live Apideck connector (e.g. `salesforce`, `quickbooks`, `sharepoint`, `jira`, `shopify`). Each teaches the correct `serviceId`, unified API routing, coverage caveats, and auth gotchas. Includes proxy-only connectors (Asana, Notion, Zendesk, ServiceNow, monday.com, Jira Service Desk, etc.) where Apideck handles Vault auth but exposes the vendor's native API via the Proxy rather than a unified resource model.
 - **Language SDK skills** — `apideck-node`, `apideck-python`, `apideck-dotnet`, `apideck-java`, `apideck-go`, `apideck-php`, `apideck-rest`.
 - **Tool skills** — `apideck-best-practices`, `apideck-connector-coverage`, `apideck-migration`, `apideck-portman`, `apideck-codegen`.
 

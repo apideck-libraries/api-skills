@@ -23,6 +23,7 @@ Access Officient through Apideck's **HRIS** unified API — one of 58 HRIS conne
 - **Apideck serviceId:** `officient-io`
 - **Unified API:** HRIS
 - **Auth type:** oauth2
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/officient-io/gotchas)
 - **Officient docs:** https://developers.officient.io
 - **Homepage:** https://officient.io
 

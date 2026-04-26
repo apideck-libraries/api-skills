@@ -27,6 +27,7 @@ Access Jira through Apideck's **Issue Tracking** unified API — one of 6 Issue 
 - **Unified API:** Issue Tracking
 - **Auth type:** oauth2
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/issue-tracking/jira/gotchas)
 - **Jira docs:** https://developer.atlassian.com/cloud/jira/platform/rest/v3/
 - **Homepage:** https://www.atlassian.com/software/jira
 

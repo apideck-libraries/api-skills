@@ -28,6 +28,7 @@ Access Humaans through Apideck's **HRIS** unified API — one of 58 HRIS connect
 - **Auth type:** apiKey
 - **Status:** beta
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/humaans-io/docs/consumer+connection)
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/humaans-io/gotchas)
 - **Humaans docs:** https://docs.humaans.io
 - **Homepage:** https://humaans.io/
 

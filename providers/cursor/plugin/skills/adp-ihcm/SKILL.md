@@ -27,6 +27,7 @@ Access ADP iHCM through Apideck's **HRIS** unified API — one of 58 HRIS connec
 - **Unified API:** HRIS
 - **Auth type:** oauth2
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/hris/adp-ihcm/gotchas)
 - **ADP iHCM docs:** https://developers.adp.com
 - **Homepage:** https://www.adp.com/
 

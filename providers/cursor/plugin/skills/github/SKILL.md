@@ -27,6 +27,7 @@ Access GitHub through Apideck's **Issue Tracking** unified API — one of 6 Issu
 - **Unified API:** Issue Tracking
 - **Auth type:** oauth2
 - **Status:** beta
+- **Gotchas:** [page](https://developers.apideck.com/apis/issue-tracking/github/gotchas)
 - **GitHub docs:** https://docs.github.com/en/rest
 - **Homepage:** https://github.com/
 
