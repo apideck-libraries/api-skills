@@ -12,6 +12,9 @@ metadata:
   authType: custom
   tier: "1a"
   verified: true
+  difficulty: highly_complex
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # NetSuite (via Apideck)
@@ -27,6 +30,28 @@ Access NetSuite through Apideck's **Accounting** unified API — one of 34 Accou
 - **Gotchas:** [page](https://developers.apideck.com/apis/accounting/netsuite/gotchas)
 - **NetSuite docs:** https://docs.oracle.com/en/cloud/saas/netsuite/
 - **Homepage:** https://netsuite.com
+
+## At a glance
+
+- **Implementation difficulty:** highly complex — Custom Auth + Manual Token Setup
+- **Vendor partnership required:** no ([NetSuite Partner Program](https://www.netsuite.com/portal/partners.shtml))
+- **Apideck-managed credentials:** not available
+- **Account type required:** NetSuite with SuiteTalk (Web Services) enabled
+- **Consumer access level:** Administrator or role with User Access Tokens and SOAP Web Services permissions
+- **Sandbox:** available — Via Apideck's temporary shared sandbox (enterprise contract required — contact Apideck Support).
+- **Costs:** No additional platform fees, and no connection limits imposed.
+- **Rate limits:** Vary by the consumer's NetSuite subscription and are not publicly documented by Oracle; Apideck handles retries automatically.
+- **Authentication:** Token-Based Authentication (TBA), NetSuite's OAuth 1.0-based scheme — consumers create an integration record and credentials manually; no interactive OAuth flow.
+- **Webhooks:** Native webhooks not supported — Apideck provides Virtual Webhooks (polling-based change detection) instead.
+
+**Important to know:**
+
+- SuiteTax not supported — tax data is unavailable when SuiteTax is enabled on a consumer's account.
+- Oracle has scheduled SOAP removal: 2025.2 is the last SOAP endpoint, release 2027.1 blocks new SOAP integrations, and 2028.2 removes SOAP entirely. Apideck has made a NetSuite REST integration available via Proxy.
+- TBA tokens never expire on their own — a connection keeps working until the consumer regenerates the token or deletes the integration record.
+- Custom forms can break writes: a mandatory custom field on a standard NetSuite form makes API writes to that record type fail, blocking creates you had tested successfully.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/netsuite` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

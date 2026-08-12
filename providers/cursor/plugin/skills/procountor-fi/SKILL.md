@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "1a"
   verified: true
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Procountor (via Apideck)
@@ -26,6 +29,26 @@ Access Procountor through Apideck's **Accounting** unified API — one of 34 Acc
 - **Gotchas:** [page](https://developers.apideck.com/apis/accounting/procountor-fi/gotchas)
 - **Procountor docs:** https://dev.procountor.com
 - **Homepage:** https://procountor.fi/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Vendor-Issued Credentials — API access is requested from Procountor rather than created in a self-service developer portal.
+- **Vendor partnership required:** no ([developer portal](https://procountor.fi/en/integrations-api/#form)) — Credentials are requested via Procountor's integrations form; certification applies only to the optional Partner Programme.
+- **Apideck-managed credentials:** not available
+- **Account type required:** Active Procountor environment
+- **Consumer access level:** A Procountor user with API rights to authorize the connection
+- **Sandbox:** available — Procountor runs a separate Public Testing Server with its own base URL and its own credentials.
+- **Costs:** Procountor publishes no API usage fees; the cost is the consumer's own Procountor subscription. A free product trial is available.
+- **Rate limits:** Documented by Procountor: 60 requests/second per client on the production server; 90 requests/minute per client on the testing server.
+- **Authentication:** Bearer token — not OAuth. Procountor issues an API token that you configure in Apideck; there is no consent-screen redirect flow.
+- **Webhooks:** No webhooks — change detection is polling-based.
+
+**Important to know:**
+
+- Production credentials come last. Procountor releases them only after your integration has been validated against its testing server, so budget for a build-and-validate cycle before you can reach live customer data.
+- Journal entries include Procountor's system-generated postings, not just manually entered ones. Invoice and payment postings arrive mixed in with manual entries, which matters if you are reconciling or reporting off journal entries.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/procountor-fi` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

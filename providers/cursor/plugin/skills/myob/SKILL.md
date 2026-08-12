@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "1a"
   verified: true
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # MYOB (via Apideck)
@@ -26,6 +29,26 @@ Access MYOB through Apideck's **Accounting** unified API — one of 34 Accountin
 - **Gotchas:** [page](https://developers.apideck.com/apis/accounting/myob/gotchas)
 - **MYOB docs:** https://developer.myob.com
 - **Homepage:** https://myob.com
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Sandbox access is tied to the paid Developer Program — there is no free self-service sandbox
+- **Vendor partnership required:** no ([MYOB Developer Program](https://developer.myob.com/become-a-myob-developer-partner/)) — No partner program gates API access; the optional Developer Program adds software entitlements and an App Marketplace listing.
+- **Apideck-managed credentials:** available — Available for testing — the OAuth consent screen shows "Apideck". Use your own registered MYOB app for production.
+- **Account type required:** Active MYOB Business subscription (formerly Essentials); AccountRight is also supported.
+- **Consumer access level:** Account holder, or any user with access to the company file.
+- **Sandbox:** available ([signup](https://www.myob.com/au)) — Shared sandbox company file, included with Developer Program membership.
+- **Costs:** API access is free. The optional Developer Program costs AUD $110, $220, or $630 per month incl. GST (2026 pricing).
+- **Rate limits:** 8 requests/second and 1,000,000 requests/day per API key.
+- **Authentication:** OAuth 2.0 (Authorization Code)
+- **Webhooks:** No webhooks — MYOB Business exposes no native webhook API and virtual webhooks are not enabled for this connector; sync by polling.
+
+**Important to know:**
+
+- One connection covers one company file — consumers running several MYOB company files need a separate connection for each.
+- MYOB Business fits Australian and New Zealand entities — each MYOB company file is AU/NZ-based, and the ledger's local currency is AUD or NZD.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/myob` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

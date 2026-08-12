@@ -13,6 +13,9 @@ metadata:
   tier: "1a"
   verified: true
   status: beta
+  difficulty: straightforward
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # FreeAgent (via Apideck)
@@ -30,6 +33,25 @@ Access FreeAgent through Apideck's **Accounting** unified API — one of 34 Acco
 - **Gotchas:** [page](https://developers.apideck.com/apis/accounting/freeagent/gotchas)
 - **FreeAgent docs:** https://dev.freeagent.com
 - **Homepage:** https://www.freeagent.com/
+
+## At a glance
+
+- **Implementation difficulty:** straightforward — Self-Service OAuth App + Free Sandbox — No Partnership or App Review
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** available — Available for testing (Apideck sandbox app; OAuth shows "Apideck"); production requires your own FreeAgent app.
+- **Account type required:** Any active FreeAgent subscription
+- **Consumer access level:** Any FreeAgent user can authorize; the connection operates at the authorizing user's permission level, so a full-access user is recommended for complete data.
+- **Sandbox:** available ([signup](https://dev.freeagent.com/signup)) — Free via the FreeAgent Developer Dashboard.
+- **Costs:** FreeAgent developer account and sandbox are free; consumers need an active FreeAgent subscription (30-day free trial available).
+- **Rate limits:** 120 requests/minute and 3,600 requests/hour, per user.
+- **Authentication:** OAuth 2.0 authorization code flow.
+- **Webhooks:** Not supported — no native or virtual webhooks; data sync is polling-based.
+
+**Important to know:**
+
+- FreeAgent is UK-centric — optimised for UK tax compliance (VAT, MTD, Self Assessment); confirm fit for non-UK consumers.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/freeagent` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

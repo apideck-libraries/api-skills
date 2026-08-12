@@ -143,7 +143,7 @@ npx skills add apideck/api-skills
 
 **Authoring workflow:**
 
-Connector skills are generated from [`connectors/manifest.json`](connectors/manifest.json) and optional per-connector enhancement files in `connectors/_enhancements/`. Generator output lands at `skills/{slug}/` alongside the apideck-* skills — do not hand-edit those files, regenerate instead:
+Connector skills are generated from [`connectors/manifest.json`](connectors/manifest.json), optional per-connector enhancement files in `connectors/_enhancements/`, and the connector-overview snapshot in `connectors/overviews.json`. Generator output lands at `skills/{slug}/` alongside the apideck-* skills — do not hand-edit those files, regenerate instead:
 
 ```bash
 node connectors/generate.js          # regenerate all into skills/
@@ -151,7 +151,13 @@ node connectors/generate.js --only=salesforce
 node connectors/generate.js --tier=1a
 
 node connectors/validate.js          # lint skills/ connector entries against manifest
+
+# refresh "At a glance" facts (difficulty, partnership, sandbox, rate limits)
+# from Apideck's connector metadata API, then regenerate:
+APIDECK_API_KEY=... APIDECK_APP_ID=... node connectors/sync-overviews.js
 ```
+
+Connectors with an entry in `connectors/overviews.json` carry an **At a glance** section — feasibility facts (implementation difficulty, vendor partnership, sandbox availability, costs, rate limits, important-to-know) synced from `GET /connector/connectors/{id}` → `overview`, so agents can reason about connector feasibility before writing any code. The connector metadata API stays the single source of truth; the snapshot is machine-synced, never hand-edited, and coverage grows as Apideck publishes more connector overviews.
 
 ## IDE Plugins
 
