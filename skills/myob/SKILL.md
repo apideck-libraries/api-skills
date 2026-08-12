@@ -34,7 +34,7 @@ Access MYOB through Apideck's **Accounting** unified API — one of 34 Accountin
 
 - **Implementation difficulty:** moderate — Sandbox access is tied to the paid Developer Program — there is no free self-service sandbox
 - **Vendor partnership required:** no ([MYOB Developer Program](https://developer.myob.com/become-a-myob-developer-partner/)) — No partner program gates API access; the optional Developer Program adds software entitlements and an App Marketplace listing.
-- **Apideck-managed credentials:** available — Available for testing — the OAuth consent screen shows "Apideck". Use your own registered MYOB app for production.
+- **Apideck-managed credentials:** Available for testing — the OAuth consent screen shows "Apideck". Use your own registered MYOB app for production.
 - **Account type required:** Active MYOB Business subscription (formerly Essentials); AccountRight is also supported.
 - **Consumer access level:** Account holder, or any user with access to the company file.
 - **Sandbox:** available ([signup](https://www.myob.com/au)) — Shared sandbox company file, included with Developer Program membership.

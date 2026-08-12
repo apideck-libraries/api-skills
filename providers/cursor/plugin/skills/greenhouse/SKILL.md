@@ -35,7 +35,7 @@ Access Greenhouse through Apideck's **ATS** unified API — one of 11 ATS connec
 
 - **Implementation difficulty:** involved — Greenhouse-Issued Partner Credentials Per Organization — No Self-Service Signup or Sandbox
 - **Vendor partnership required:** yes ([Greenhouse Integration Partner Program](https://www.greenhouse.com/integration-partner)) — Required — apply through the Greenhouse Integration Partner Program. There is no self-service developer signup.
-- **Apideck-managed credentials:** not available — consumers supply their own Greenhouse-issued OAuth credentials in every environment.
+- **Apideck-managed credentials:** Not available — consumers supply their own Greenhouse-issued OAuth credentials in every environment.
 - **Account type required:** An active Greenhouse account with a Harvest V3 partner integration provisioned.
 - **Consumer access level:** Authorization requires a Greenhouse Site Admin, or a user with the "can manage ALL organization's API credentials" permission; the connection then operates with exactly that user's permissions.
 - **Sandbox:** available — Partner-only — Greenhouse grants sandbox and demo organizations through its partner program during onboarding. There is no self-service developer sandbox.

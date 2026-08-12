@@ -194,14 +194,16 @@ function atAGlanceBlock(connector) {
     );
   }
   {
-    // Authored notes often restate the availability ("Available — ...");
-    // strip that prefix since the bullet already leads with it.
-    const credNote = (o.apideck_credentials_note || "").replace(
-      /^(not\s+available|available)\s*[—–-]\s*/i,
-      ""
-    );
+    // Authored notes usually lead with their own availability wording
+    // ("Available for testing — ..."); when they do, the note IS the value —
+    // prepending the bare boolean would duplicate the lead-in, and stripping
+    // the prefix would lose qualifiers like "for testing". Only fall back to
+    // the boolean when the note doesn't state availability itself.
+    const credNote = o.apideck_credentials_note || "";
     lines.push(
-      `- **Apideck-managed credentials:** ${o.apideck_credentials_available ? "available" : "not available"}${credNote ? ` — ${credNote}` : ""}`
+      /^(not\s+)?available\b/i.test(credNote)
+        ? `- **Apideck-managed credentials:** ${credNote}`
+        : `- **Apideck-managed credentials:** ${o.apideck_credentials_available ? "available" : "not available"}${credNote ? ` — ${credNote}` : ""}`
     );
   }
   if (o.account_type_required) {
@@ -285,9 +287,17 @@ function renderSkill(connector) {
   if (overviewMeta) {
     // Startup-tier feasibility signals (cheap tokens, always loaded).
     // Full facts live in the "At a glance" section of the body.
-    lines.push(`  difficulty: ${overviewMeta.difficulty}`);
-    lines.push(`  partnershipRequired: ${overviewMeta.partnership_required}`);
-    lines.push(`  sandboxAvailable: ${overviewMeta.sandbox_available}`);
+    // Per-field guards: a missing field must omit the key, not emit
+    // the literal string "undefined" into the YAML frontmatter.
+    if (overviewMeta.difficulty) {
+      lines.push(`  difficulty: ${overviewMeta.difficulty}`);
+    }
+    if (typeof overviewMeta.partnership_required === "boolean") {
+      lines.push(`  partnershipRequired: ${overviewMeta.partnership_required}`);
+    }
+    if (typeof overviewMeta.sandbox_available === "boolean") {
+      lines.push(`  sandboxAvailable: ${overviewMeta.sandbox_available}`);
+    }
   }
   lines.push("---");
   lines.push("");
@@ -614,9 +624,17 @@ function renderProxyOnlySkill(connector) {
   if (overviewMeta) {
     // Startup-tier feasibility signals (cheap tokens, always loaded).
     // Full facts live in the "At a glance" section of the body.
-    lines.push(`  difficulty: ${overviewMeta.difficulty}`);
-    lines.push(`  partnershipRequired: ${overviewMeta.partnership_required}`);
-    lines.push(`  sandboxAvailable: ${overviewMeta.sandbox_available}`);
+    // Per-field guards: a missing field must omit the key, not emit
+    // the literal string "undefined" into the YAML frontmatter.
+    if (overviewMeta.difficulty) {
+      lines.push(`  difficulty: ${overviewMeta.difficulty}`);
+    }
+    if (typeof overviewMeta.partnership_required === "boolean") {
+      lines.push(`  partnershipRequired: ${overviewMeta.partnership_required}`);
+    }
+    if (typeof overviewMeta.sandbox_available === "boolean") {
+      lines.push(`  sandboxAvailable: ${overviewMeta.sandbox_available}`);
+    }
   }
   lines.push("---");
   lines.push("");

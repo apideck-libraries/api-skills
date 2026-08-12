@@ -38,7 +38,7 @@ Access Exact Online NL through Apideck's **Accounting** unified API — one of 3
 
 - **Implementation difficulty:** moderate — Paid Developer Subscription + App Review Required for External Consumers
 - **Vendor partnership required:** yes ([Exact Online App Store (Manage my apps)](https://apps.exactonline.com/nl/)) — Yes — registering your app requires a paid Exact Online developer subscription (per country); App Store listing is optional.
-- **Apideck-managed credentials:** available — Available for testing — OAuth shows Apideck; production requires your own app. The only Exact Online connector with Apideck credentials.
+- **Apideck-managed credentials:** Available for testing — OAuth shows Apideck; production requires your own app. The only Exact Online connector with Apideck credentials.
 - **Account type required:** Active Exact Online subscription on the Dutch instance
 - **Consumer access level:** Any user who can authorise third-party app connections; at consent time the app must be granted access to each division (administration) it needs to access.
 - **Sandbox:** available — No isolated sandbox — test with your Dutch developer subscription, a free 30-day NL trial, or Apideck's temporary shared test credentials.

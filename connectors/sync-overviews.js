@@ -16,6 +16,12 @@
  * connector on the Apideck side. Connectors without one are simply absent
  * from the snapshot and their skills render unchanged.
  *
+ * The snapshot stores each overview object verbatim (minus $schema), even
+ * fields generate.js doesn't render yet (supported_resource_categories,
+ * responsibility_matrix, external_guides, environment_notes) — deliberate,
+ * so the snapshot stays diffable 1:1 against the API and future rendering
+ * needs no sync change.
+ *
  * Usage:
  *   APIDECK_API_KEY=... APIDECK_APP_ID=... node connectors/sync-overviews.js
  *
@@ -57,21 +63,29 @@ async function fromApi() {
   }
 
   const overviews = {};
+  const failures = [];
   for (const connector of manifest.connectors) {
     const url = `${API_BASE}/connector/connectors/${connector.serviceId}`;
-    const res = await fetch(url, {
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "x-apideck-app-id": appId,
-      },
-    });
+    let res;
+    try {
+      res = await fetch(url, {
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          "x-apideck-app-id": appId,
+        },
+      });
+    } catch (err) {
+      failures.push(`${connector.serviceId}: ${err.message}`);
+      console.error(`  !! ${connector.serviceId}: ${err.message}`);
+      continue;
+    }
     if (res.status === 404) {
       console.log(`  -- ${connector.serviceId} (not found)`);
       continue;
     }
     if (!res.ok) {
+      failures.push(`${connector.serviceId}: HTTP ${res.status}`);
       console.error(`  !! ${connector.serviceId}: HTTP ${res.status}`);
-      process.exitCode = 1;
       continue;
     }
     const body = await res.json();
@@ -81,6 +95,17 @@ async function fromApi() {
       console.log(`  OK ${connector.serviceId}`);
     }
   }
+
+  // A partial sync must never overwrite the previous good snapshot — a
+  // dropped entry would silently strip that connector's "At a glance"
+  // section on the next generate. Fail without writing instead.
+  if (failures.length) {
+    console.error(
+      `\n${failures.length} request(s) failed — snapshot NOT written. Fix and re-run:\n  ${failures.join("\n  ")}`
+    );
+    process.exit(1);
+  }
+
   return overviews;
 }
 
@@ -125,4 +150,7 @@ async function main() {
   console.log(`\nWrote ${slugs.length} overview(s) to connectors/overviews.json.\n`);
 }
 
-main();
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});

@@ -38,7 +38,7 @@ Access Clear Books through Apideck's **Accounting** unified API — one of 34 Ac
 
 - **Implementation difficulty:** moderate — API access is granted by Clear Books on request; no self-service credentials.
 - **Vendor partnership required:** no ([developer portal](https://www.clearbooks.co.uk/support/api/)) — No partner program — request access from Clear Books support.
-- **Apideck-managed credentials:** not available — each consumer supplies their own API key.
+- **Apideck-managed credentials:** Not available — each consumer supplies their own API key.
 - **Account type required:** An active Clear Books account.
 - **Consumer access level:** Permission to create an API key in Clear Books.
 - **Sandbox:** not available — A free Clear Books trial account serves for testing.

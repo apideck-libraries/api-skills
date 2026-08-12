@@ -39,7 +39,7 @@ Access Pennylane through Apideck's **Accounting** unified API — one of 34 Acco
 
 - **Implementation difficulty:** moderate — Partner-Issued Credentials Required — OAuth apps are provisioned manually by Pennylane's Partnerships team (no self-service portal); otherwise a standard OAuth authorization-code connect.
 - **Vendor partnership required:** yes ([developer portal](https://www.pennylane.com/fr/contact-demande-de-partenariat/)) — OAuth Client ID and Secret are issued by Pennylane's Partnerships team after manual validation (no fee). The Client Secret is shown only once and cannot be retrieved again — store it immediately, or create a new OAuth app if it is lost. There is no self-service developer portal (developer.pennylane.com does not exist); request credentials via the partnership form.
-- **Apideck-managed credentials:** not available — consumers supply their own partnership-issued OAuth credentials in every environment.
+- **Apideck-managed credentials:** Not available — consumers supply their own partnership-issued OAuth credentials in every environment.
 - **Account type required:** Active Pennylane account (app.pennylane.com) with at least one company set up.
 - **Consumer access level:** A user with permission to authorize third-party (OAuth) apps for the company.
 - **Sandbox:** available — Provisioned by the Pennylane Partnerships team on request as part of the partnership process — there is no self-service sandbox. Same rate limits as production.

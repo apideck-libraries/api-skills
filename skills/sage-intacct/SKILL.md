@@ -35,7 +35,7 @@ Access Sage Intacct through Apideck's **Accounting** unified API — one of 34 A
 
 - **Implementation difficulty:** involved — Partnership + Custom Auth + Multiple Approvals
 - **Vendor partnership required:** yes ([Sage Intacct Marketplace](https://marketplace.intacct.com/BecomeAPartner)) — Sage Intacct Marketplace Partner Program is required. Apideck can facilitate the introduction.
-- **Apideck-managed credentials:** not available — consumers supply their own Sage Intacct credentials (Sender ID plus company/user login).
+- **Apideck-managed credentials:** Not available — consumers supply their own Sage Intacct credentials (Sender ID plus company/user login).
 - **Account type required:** Sage Intacct with Web Services subscription enabled
 - **Consumer access level:** Any Sage Intacct user with Web Services enabled and the Sender ID authorized in their company
 - **Sandbox:** available — Provisioned by Sage Intacct upon contract execution; also available via Apideck temporary shared sandbox (enterprise contract required — contact Apideck Support).
