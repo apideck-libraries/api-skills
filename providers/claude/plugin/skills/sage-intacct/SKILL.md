@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "1a"
   verified: true
+  difficulty: involved
+  partnershipRequired: true
+  sandboxAvailable: true
 ---
 
 # Sage Intacct (via Apideck)
@@ -27,6 +30,27 @@ Access Sage Intacct through Apideck's **Accounting** unified API — one of 34 A
 - **Gotchas:** [page](https://developers.apideck.com/apis/accounting/sage-intacct/gotchas)
 - **Sage Intacct docs:** https://developer.intacct.com
 - **Homepage:** https://www.sageintacct.com/
+
+## At a glance
+
+- **Implementation difficulty:** involved — Partnership + Custom Auth + Multiple Approvals
+- **Vendor partnership required:** yes ([Sage Intacct Marketplace](https://marketplace.intacct.com/BecomeAPartner)) — Sage Intacct Marketplace Partner Program is required. Apideck can facilitate the introduction.
+- **Apideck-managed credentials:** Not available — consumers supply their own Sage Intacct credentials (Sender ID plus company/user login).
+- **Account type required:** Sage Intacct with Web Services subscription enabled
+- **Consumer access level:** Any Sage Intacct user with Web Services enabled and the Sender ID authorized in their company
+- **Sandbox:** available — Provisioned by Sage Intacct upon contract execution; also available via Apideck temporary shared sandbox (enterprise contract required — contact Apideck Support).
+- **Costs:** Partnership costs: $2,500/year (due net 30 from contract execution) + $0.015 per API call once consumers are live.
+- **Rate limits:** Vary by the consumer's Sage Intacct service level (not publicly documented); the Standard service level allows 2 concurrent jobs per company.
+- **Authentication:** Custom authentication — Sage Intacct XML Web Services using a Sender ID. Despite an OAuth2 label in the connector config, this is not a standard OAuth grant: consumers provide Company ID / User ID / password credentials manually, exchanged for a session token.
+- **Webhooks:** No native webhooks — Apideck provides Virtual Webhooks (polling-based change detection).
+
+**Important to know:**
+
+- Each consumer must explicitly authorize your Sender ID in their company's Web Services settings — connections fail silently if this step is missed.
+- Approval process is multi-step (security questionnaire, discovery meeting, contract execution, development, API review, technical documentation, live demo call) and takes 4–8+ weeks from request to production approval.
+- Multi-entity companies require the entity/location ID in API calls — misconfiguration causes data access failures.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/sage-intacct` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

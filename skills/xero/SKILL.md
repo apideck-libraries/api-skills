@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "1a"
   verified: true
+  difficulty: moderate
+  partnershipRequired: true
+  sandboxAvailable: true
 ---
 
 # Xero (via Apideck)
@@ -26,6 +29,28 @@ Access Xero through Apideck's **Accounting** unified API — one of 34 Accountin
 - **Gotchas:** [page](https://developers.apideck.com/apis/accounting/xero/gotchas)
 - **Xero docs:** https://developer.xero.com
 - **Homepage:** https://www.xero.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Self-Service OAuth + App Partner Certification Required to Scale
+- **Vendor partnership required:** yes ([Xero App Partner Program](https://developer.xero.com/documentation/xero-app-store/app-partner-guides/app-partner-steps/)) — Required for >25 connections. Xero App Partner Program — certification involves multiple technical checkpoints.
+- **Apideck-managed credentials:** not available
+- **Account type required:** Any active Xero subscription
+- **Consumer access level:** Standard or Adviser level user (Admin recommended for full data access)
+- **Sandbox:** available ([signup](https://developer.xero.com/)) — Free via Xero Developer Portal (demo company included).
+- **Costs:** Free at Starter tier (up to 5 connections). Tiered, usage-based pricing applies at scale — Core, Plus, Advanced (~$895/mo, 10k connections), and Enterprise tiers, effective March 2, 2026 (replacing the previous 15% App Store revenue share). Premium endpoints (Journals, Xero Practice Manager) require the Advanced tier or above. Separate from Apideck pricing.
+- **Rate limits:** 5,000 calls/day per organisation; 60 calls/minute per organisation; 5 concurrent calls/second.
+- **Authentication:** OAuth 2.0 (Authorization Code).
+- **Webhooks:** Native — invoice and bill events (created and updated).
+
+**Important to know:**
+
+- App Partner certification requires onboarding 3 active customer connections within a 30-day period.
+- Refresh tokens expire after 60 days if unused — consumer must re-authorise.
+- Consumers can install a maximum of 2 uncertified apps — if at the limit they must remove another uncertified app first.
+- Certification compliance requires hiding the Apideck callback — a custom Vault domain must be configured before certification.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/xero` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

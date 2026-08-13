@@ -12,6 +12,9 @@ metadata:
   authType: basic
   tier: "1a"
   verified: true
+  difficulty: involved
+  partnershipRequired: true
+  sandboxAvailable: true
 ---
 
 # Greenhouse (via Apideck)
@@ -27,6 +30,28 @@ Access Greenhouse through Apideck's **ATS** unified API — one of 11 ATS connec
 - **Gotchas:** [page](https://developers.apideck.com/apis/ats/greenhouse/gotchas)
 - **Greenhouse docs:** https://developers.greenhouse.io
 - **Homepage:** https://www.greenhouse.io/
+
+## At a glance
+
+- **Implementation difficulty:** involved — Greenhouse-Issued Partner Credentials Per Organization — No Self-Service Signup or Sandbox
+- **Vendor partnership required:** yes ([Greenhouse Integration Partner Program](https://www.greenhouse.com/integration-partner)) — Required — apply through the Greenhouse Integration Partner Program. There is no self-service developer signup.
+- **Apideck-managed credentials:** Not available — consumers supply their own Greenhouse-issued OAuth credentials in every environment.
+- **Account type required:** An active Greenhouse account with a Harvest V3 partner integration provisioned.
+- **Consumer access level:** Authorization requires a Greenhouse Site Admin, or a user with the "can manage ALL organization's API credentials" permission; the connection then operates with exactly that user's permissions.
+- **Sandbox:** available — Partner-only — Greenhouse grants sandbox and demo organizations through its partner program during onboarding. There is no self-service developer sandbox.
+- **Costs:** Quote-based — Greenhouse sells three plans (Core, Plus, and Pro) priced by hiring volume and organizational complexity, with no public price list. No free trial is offered.
+- **Rate limits:** Fixed 30-second window; the ceiling varies by integration type (partner vs custom) and is returned per response — Greenhouse's documented example is 75 per window.
+- **Authentication:** OAuth 2.0 Authorization Code Grant against Harvest V3.
+- **Webhooks:** Virtual webhooks — Apideck polls Greenhouse and emits ats.applicant.created, ats.applicant.updated, ats.job.created, and ats.job.updated.
+
+**Important to know:**
+
+- Greenhouse shuts down Harvest V1 and V2 on August 31, 2026. Connections created with the older API-key authentication stop working on that date — every existing consumer must re-authorize through the Harvest V3 OAuth flow before then.
+- Greenhouse must approve the integration before customers can migrate to Harvest V3.
+- Refresh tokens rotate on every use and idle-expire after 24 hours. A connection that goes a full day without activity cannot refresh itself and must be re-authorized from Vault, which makes low-traffic or seasonal integrations especially prone to dropping out.
+- Every record the integration creates or updates is attributed in Greenhouse to the individual user who authorized the connection — Greenhouse does offer Site-Admin-only service accounts as a dedicated authorizing identity — so have consumers authorize deliberately rather than with whoever happens to be signed in.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/greenhouse` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

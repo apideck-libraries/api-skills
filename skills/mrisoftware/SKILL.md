@@ -13,6 +13,9 @@ metadata:
   tier: "1a"
   verified: true
   status: beta
+  difficulty: highly_complex
+  partnershipRequired: true
+  sandboxAvailable: false
 ---
 
 # MRI Software (via Apideck)
@@ -30,6 +33,29 @@ Access MRI Software through Apideck's **Accounting** unified API — one of 34 A
 - **Gotchas:** [page](https://developers.apideck.com/apis/accounting/mrisoftware/gotchas)
 - **MRI Software docs:** https://www.mrisoftware.com
 - **Homepage:** https://www.mrisoftware.com/
+
+## At a glance
+
+- **Implementation difficulty:** highly complex — Partnership Required + Custom Composite Credential + Manual Per-Consumer Web Services User Setup
+- **Vendor partnership required:** yes ([myMRI Partner Portal](https://www.mrisoftware.com/become-a-partner/)) — Yes — an MRI relationship supplies the required MIX Partner Key.
+- **Apideck-managed credentials:** not available
+- **Account type required:** An MRI client with Web Services (MIX APIs) licensed on their own MRI installation; the consumer supplies their own installation credentials.
+- **Consumer access level:** A dedicated MRI Web Services user with a role granting rights to each API in use — a plain client login is not sufficient.
+- **Sandbox:** not available — None for integration providers — testing runs against a consumer's own MRI installation.
+- **Costs:** No published self-serve API pricing — access and economic terms are negotiated individually with MRI. MIX API licensing may carry a fee.
+- **Rate limits:** Partner keys: 1,000 requests per rolling 5-minute window. Developer keys carry a lower, unpublished rate. MRI documents no per-day figure.
+- **Authentication:** HTTP Basic Authentication with an MRI-issued composite credential — not OAuth. There are no scopes and no token expiry.
+- **Webhooks:** No webhooks — change detection is polling-based.
+
+**Important to know:**
+
+- MRI grants API access through its Partner Connect programme or a customer-led introduction — engage MRI early and ask your contact for current onboarding expectations.
+- The two key tiers are not interchangeable: a Partner key only executes APIs MRI has registered in its manifest, while a Developer key runs ad-hoc APIs. Requesting the wrong tier blocks calls you expect to work.
+- There is no shared, multi-tenant MRI API host — every connection targets that consumer's own installation at https://{domain}/MRIAPIServices, so every consumer onboards with their own installation hostname.
+- A 401 from MRI does not identify its own cause, so an authentication failure cannot be self-diagnosed — expect support round-trips with MRI when a connection will not validate.
+- Public API documentation is minimal and dated — the main openly available reference is MRI's API Design Guide from 2016. Current technical specifics reach you only through the MRI relationship, so you cannot fully scope the build before entering it.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/mrisoftware` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

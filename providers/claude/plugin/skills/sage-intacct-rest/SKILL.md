@@ -14,6 +14,9 @@ metadata:
   tier: "2"
   verified: true
   status: live
+  difficulty: involved
+  partnershipRequired: true
+  sandboxAvailable: true
 ---
 
 # Sage Intacct REST (via Apideck Proxy)
@@ -32,6 +35,28 @@ Access Sage Intacct REST through Apideck's **Proxy API** with managed Vault auth
 - **Gotchas:** [page](https://developers.apideck.com/apis/proxy/sage-intacct-rest/gotchas)
 - **Sage Intacct REST docs:** https://developer.intacct.com/api/
 - **Homepage:** https://www.sageintacct.com/
+
+## At a glance
+
+- **Implementation difficulty:** involved — Marketplace Partnership + App Registry Registration Required
+- **Vendor partnership required:** yes ([Sage Intacct Marketplace](https://marketplace.intacct.com/BecomeAPartner)) — Sage Intacct Marketplace Partner Program is required, plus a separate OAuth application registered in the Sage App Registry. Apideck can facilitate the partnership introduction.
+- **Apideck-managed credentials:** Available for testing and evaluation — consumers authorize against Apideck's registered Sage application, so the consent screen shows Apideck branding. Production requires your own App Registry application, registered once the Marketplace partnership is in place.
+- **Account type required:** Sage Intacct company with REST API access enabled
+- **Consumer access level:** The connection acts as the authorizing Sage Intacct user, so that user's role permissions become the connection's effective access. Permissions are granted per module and per operation, and a company Admin must authorize the client application in each consumer's Sage Intacct company before any connection works.
+- **Sandbox:** available — The App Registry application carries a Non-production client scope for testing. Sage's own sandbox companies are restricted — offered to new direct customers with smaller tenants and refreshable up to 4 times a year — and are not available to customers whose companies are managed through a Sage Intacct console, or who bought Intacct through a reseller.
+- **Costs:** Sage Intacct Marketplace Partner Program: $2,500/year plus $0.015 per API call once consumers are live (as of Q4 2025). Confirm current terms with Sage during onboarding.
+- **Rate limits:** Each company is allowed one API transaction job (online or offline) plus one offline report job concurrently on the standard level of service; a third concurrent request is held about 30 seconds and then errors. Sage also returns its live budget on every response, which Apideck surfaces as x-downstream-ratelimit-limit / -remaining / -reset — read those rather than assuming, as the concurrency Sage grants a given company can differ from the documented default.
+- **Authentication:** OAuth 2.0 authorization code grant — a real OAuth flow, unlike the sage-intacct (XML) connector, which uses a Sender ID plus company/user credentials.
+- **Webhooks:** No native webhooks — Apideck provides virtual webhooks (polling-based change detection, https://help.apideck.com/en/articles/4231234) with created, updated and deleted events across 13 of the supported accounting resources.
+
+**Important to know:**
+
+- Financial reports are not available through the REST API — no balance sheet, profit and loss, aged debtors or account hierarchies. Sage's REST reporting endpoints generate downloadable files asynchronously instead of returning queryable data.
+- Two Sage Intacct connectors exist with different capabilities: customer refunds and quote creation are REST-only, while the financial reports above remain exclusive to sage-intacct (XML). Attachments work on both — here they cover invoices, bills, expenses, expense reports and quotes. Choosing the wrong one means rebuilding.
+- API tokens are session-bound: signing in to the Sage Intacct web UI as the authorizing user invalidates the token (error REST-2102). Authorize with a dedicated integration user that nobody signs in as interactively.
+- Customer refunds are switched off by default in Sage, and the permission to grant does not appear until the feature is enabled in the Accounts Receivable configuration.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/sage-intacct-rest` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

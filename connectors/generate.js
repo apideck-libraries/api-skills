@@ -11,8 +11,9 @@
  * template.
  *
  * The connectors/ directory holds tooling only: manifest.json, this generator,
- * validate.js, and _enhancements/. Generated SKILL.md output lives under
- * skills/{slug}/ alongside the apideck-* skills.
+ * validate.js, sync-overviews.js (+ its overviews.json snapshot), and
+ * _enhancements/. Generated SKILL.md output lives under skills/{slug}/
+ * alongside the apideck-* skills.
  *
  * Usage:
  *   node connectors/generate.js                # Generate all from manifest
@@ -36,6 +37,18 @@ const onlySlug = onlyArg ? onlyArg.split("=")[1] : null;
 const onlyTier = tierArg ? tierArg.split("=")[1] : null;
 
 const manifest = JSON.parse(fs.readFileSync(MANIFEST_PATH, "utf-8"));
+
+// ── Connector overviews (synced from the connector metadata API) ────────────
+// connectors/overviews.json is a machine-synced snapshot of each connector's
+// `overview` object from GET /connector/connectors/{id} — editorial facts
+// (difficulty, partnership, sandbox, rate limits, important-to-know) authored
+// on the Apideck side. Refresh with `node connectors/sync-overviews.js`.
+// Connectors without an entry simply skip the "At a glance" section.
+
+const OVERVIEWS_PATH = path.join(CONNECTORS_DIR, "overviews.json");
+const OVERVIEWS = fs.existsSync(OVERVIEWS_PATH)
+  ? JSON.parse(fs.readFileSync(OVERVIEWS_PATH, "utf-8")).overviews
+  : {};
 
 // ── Sibling connector index (for "portable across N" framing) ──────────────
 // For each unified API, list the other live connectors that share it. Used to
@@ -152,6 +165,82 @@ function authBlock(authType, connectorName) {
 
 // ── Skill name used in description/trigger ──────────────────────────────────
 
+// ── "At a glance" from synced overview facts ────────────────────────────────
+// The feasibility facts an agent needs before committing to a connector: how
+// hard it is to stand up, whether a vendor partnership is needed, sandbox
+// availability, costs, and rate limits. Rendered only when the overview
+// snapshot has an entry for this connector.
+
+function atAGlanceBlock(connector) {
+  const o = OVERVIEWS[connector.serviceId];
+  if (!o) return null;
+
+  const lines = [];
+  lines.push("## At a glance");
+  lines.push("");
+
+  if (o.difficulty) {
+    const rating = o.difficulty.replace(/_/g, " ");
+    lines.push(
+      `- **Implementation difficulty:** ${rating}${o.difficulty_reason ? ` — ${o.difficulty_reason}` : ""}`
+    );
+  }
+  {
+    const portal = o.partnership_url
+      ? ` ([${o.partnership_portal_name || "developer portal"}](${o.partnership_url}))`
+      : "";
+    lines.push(
+      `- **Vendor partnership required:** ${o.partnership_required ? "yes" : "no"}${portal}${o.partnership_note ? ` — ${o.partnership_note}` : ""}`
+    );
+  }
+  {
+    // Authored notes usually lead with their own availability wording
+    // ("Available for testing — ..."); when they do, the note IS the value —
+    // prepending the bare boolean would duplicate the lead-in, and stripping
+    // the prefix would lose qualifiers like "for testing". Only fall back to
+    // the boolean when the note doesn't state availability itself.
+    const credNote = o.apideck_credentials_note || "";
+    lines.push(
+      /^(not\s+)?available\b/i.test(credNote)
+        ? `- **Apideck-managed credentials:** ${credNote}`
+        : `- **Apideck-managed credentials:** ${o.apideck_credentials_available ? "available" : "not available"}${credNote ? ` — ${credNote}` : ""}`
+    );
+  }
+  if (o.account_type_required) {
+    lines.push(`- **Account type required:** ${o.account_type_required}`);
+  }
+  if (o.consumer_access_level) {
+    lines.push(`- **Consumer access level:** ${o.consumer_access_level}`);
+  }
+  {
+    const sandboxLink = o.sandbox_url ? ` ([signup](${o.sandbox_url}))` : "";
+    lines.push(
+      `- **Sandbox:** ${o.sandbox_available ? "available" : "not available"}${sandboxLink}${o.sandbox_note ? ` — ${o.sandbox_note}` : ""}`
+    );
+  }
+  if (o.costs) lines.push(`- **Costs:** ${o.costs}`);
+  if (o.rate_limits) lines.push(`- **Rate limits:** ${o.rate_limits}`);
+  if (o.authentication_note) lines.push(`- **Authentication:** ${o.authentication_note}`);
+  if (o.webhooks) lines.push(`- **Webhooks:** ${o.webhooks}`);
+  lines.push("");
+
+  if (o.important_to_know && o.important_to_know.length) {
+    lines.push("**Important to know:**");
+    lines.push("");
+    for (const fact of o.important_to_know) {
+      lines.push(`- ${fact}`);
+    }
+    lines.push("");
+  }
+
+  lines.push(
+    `> Facts synced from Apideck's connector metadata API — \`GET /connector/connectors/${connector.serviceId}\` (\`overview\` field) is the live, authoritative version.`
+  );
+  lines.push("");
+
+  return lines;
+}
+
 function describe(connector, unifiedApiInfo) {
   const apis = connector.unifiedApis.map((a) => manifest.unifiedApis[a].displayName).join(", ");
   const ctx = API_CONTEXT[connector.unifiedApis[0]];
@@ -194,6 +283,22 @@ function renderSkill(connector) {
   lines.push(`  tier: "${connector.tier}"`);
   if (connector.verified) lines.push(`  verified: true`);
   if (connector.status) lines.push(`  status: ${connector.status}`);
+  const overviewMeta = OVERVIEWS[connector.serviceId];
+  if (overviewMeta) {
+    // Startup-tier feasibility signals (cheap tokens, always loaded).
+    // Full facts live in the "At a glance" section of the body.
+    // Per-field guards: a missing field must omit the key, not emit
+    // the literal string "undefined" into the YAML frontmatter.
+    if (overviewMeta.difficulty) {
+      lines.push(`  difficulty: ${overviewMeta.difficulty}`);
+    }
+    if (typeof overviewMeta.partnership_required === "boolean") {
+      lines.push(`  partnershipRequired: ${overviewMeta.partnership_required}`);
+    }
+    if (typeof overviewMeta.sandbox_available === "boolean") {
+      lines.push(`  sandboxAvailable: ${overviewMeta.sandbox_available}`);
+    }
+  }
   lines.push("---");
   lines.push("");
 
@@ -256,6 +361,10 @@ function renderSkill(connector) {
     lines.push(`- **Homepage:** ${connector.homepage}`);
   }
   lines.push("");
+
+  // At a glance — feasibility facts synced from the connector metadata API
+  const atAGlance = atAGlanceBlock(connector);
+  if (atAGlance) lines.push(...atAGlance);
 
   // When to use
   lines.push("## When to use this skill");
@@ -511,6 +620,22 @@ function renderProxyOnlySkill(connector) {
   lines.push(`  tier: "${connector.tier}"`);
   if (connector.verified) lines.push(`  verified: true`);
   if (connector.status) lines.push(`  status: ${connector.status}`);
+  const overviewMeta = OVERVIEWS[connector.serviceId];
+  if (overviewMeta) {
+    // Startup-tier feasibility signals (cheap tokens, always loaded).
+    // Full facts live in the "At a glance" section of the body.
+    // Per-field guards: a missing field must omit the key, not emit
+    // the literal string "undefined" into the YAML frontmatter.
+    if (overviewMeta.difficulty) {
+      lines.push(`  difficulty: ${overviewMeta.difficulty}`);
+    }
+    if (typeof overviewMeta.partnership_required === "boolean") {
+      lines.push(`  partnershipRequired: ${overviewMeta.partnership_required}`);
+    }
+    if (typeof overviewMeta.sandbox_available === "boolean") {
+      lines.push(`  sandboxAvailable: ${overviewMeta.sandbox_available}`);
+    }
+  }
   lines.push("---");
   lines.push("");
 
@@ -558,6 +683,10 @@ function renderProxyOnlySkill(connector) {
     lines.push(`- **Homepage:** ${connector.homepage}`);
   }
   lines.push("");
+
+  // At a glance — feasibility facts synced from the connector metadata API
+  const atAGlance = atAGlanceBlock(connector);
+  if (atAGlance) lines.push(...atAGlance);
 
   // When to use
   lines.push("## When to use this skill");

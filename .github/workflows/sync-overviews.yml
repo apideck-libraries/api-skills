@@ -1,0 +1,105 @@
+name: Sync Connector Overviews
+
+# Keeps connectors/overviews.json (and the generated "At a glance" sections)
+# in step with Apideck's connector metadata API — the single source of truth.
+# Runs daily; when the synced output differs from main, opens a PR with the
+# regenerated files and arms auto-merge on it, so it lands on its own once
+# required checks pass. When nothing changed, no PR is opened.
+#
+# Same shape as developer-docs' regenerate-markdown workflow (cron → sync
+# from the connector API → regenerate committed artifacts → auto-PR via
+# peter-evans/create-pull-request).
+#
+# Requires three repo secrets:
+#   APIDECK_API_KEY, APIDECK_APP_ID — connector metadata API access
+#   SYNC_GH_PAT — PAT with repo access, used for the PR step. Needed because
+#     PRs opened with the default GITHUB_TOKEN don't trigger workflows, so
+#     validate-skills CI would never run on the auto-PR and auto-merge would
+#     wait forever on its required check.
+#
+# Repo settings this depends on (admin):
+#   - "Allow auto-merge" enabled (Settings → General)
+#   - branch protection on main requiring the validate check — that's the
+#     gate auto-merge waits for before merging
+
+on:
+  schedule:
+    - cron: "17 6 * * *" # daily, 06:17 UTC
+  workflow_dispatch:
+
+concurrency:
+  group: sync-overviews
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check credentials are configured
+        env:
+          APIDECK_API_KEY: ${{ secrets.APIDECK_API_KEY }}
+          APIDECK_APP_ID: ${{ secrets.APIDECK_APP_ID }}
+          SYNC_GH_PAT: ${{ secrets.SYNC_GH_PAT }}
+        run: |
+          if [ -z "$APIDECK_API_KEY" ] || [ -z "$APIDECK_APP_ID" ]; then
+            echo "::error::APIDECK_API_KEY / APIDECK_APP_ID repo secrets are not set — cannot sync."
+            exit 1
+          fi
+          if [ -z "$SYNC_GH_PAT" ]; then
+            echo "::error::SYNC_GH_PAT repo secret is not set — the auto-PR would not trigger CI or auto-merge."
+            exit 1
+          fi
+
+      - name: Sync overviews from the connector metadata API
+        env:
+          APIDECK_API_KEY: ${{ secrets.APIDECK_API_KEY }}
+          APIDECK_APP_ID: ${{ secrets.APIDECK_APP_ID }}
+        # Fails (and writes nothing) on any HTTP/network error, so a partial
+        # sync can never reach the PR step.
+        run: node connectors/sync-overviews.js
+
+      - name: Regenerate skills and provider mirrors
+        run: |
+          node connectors/generate.js
+          node skills/sync.js --skills-only
+
+      - name: Validate
+        run: |
+          node connectors/validate.js --strict
+          node skills/test.js
+
+      - name: Open PR if overviews drifted
+        id: cpr
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.SYNC_GH_PAT }}
+          branch: auto/sync-overviews
+          delete-branch: true
+          commit-message: "chore: sync connector overviews from the metadata API"
+          title: "chore: sync connector overviews"
+          body: |
+            Automated daily sync of `connectors/overviews.json` from Apideck's
+            connector metadata API (`GET /connector/connectors/{id}` →
+            `overview`), with skills regenerated and provider mirrors re-synced.
+
+            Produced by the `sync-overviews` workflow — content is machine-synced
+            and validated (`connectors/validate.js --strict`, `skills/test.js`)
+            before this PR was opened, and auto-merge is armed: it lands on its
+            own once required checks pass. Do not edit the generated files by
+            hand.
+
+            If nothing changed, this PR is not opened; if it already exists, the
+            branch is updated in place.
+
+      - name: Arm auto-merge on the sync PR
+        if: steps.cpr.outputs.pull-request-operation == 'created' || steps.cpr.outputs.pull-request-operation == 'updated'
+        env:
+          GH_TOKEN: ${{ secrets.SYNC_GH_PAT }}
+        run: |
+          gh pr merge --squash --auto "${{ steps.cpr.outputs.pull-request-number }}" \
+            -R "${{ github.repository }}"

@@ -13,6 +13,9 @@ metadata:
   tier: "1a"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Campfire (via Apideck)
@@ -31,6 +34,23 @@ Access Campfire through Apideck's **Accounting** unified API — one of 34 Accou
 - **Gotchas:** [page](https://developers.apideck.com/apis/accounting/campfire/gotchas)
 - **Campfire docs:** https://www.campfire.com
 - **Homepage:** https://campfire.ai/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — API Key authentication — consumers create credentials manually
+- **Vendor partnership required:** no ([developer portal](https://hi.meetcampfire.com/partnerships)) — optional, but may include sandbox access and other benefits
+- **Apideck-managed credentials:** not available
+- **Account type required:** Campfire account
+- **Consumer access level:** Admin role (required for full read and write access to all resources)
+- **Sandbox:** available — Via consumer's own account, or via Campfire integration partner sandbox (optional partnership)
+- **Authentication:** API Key — the consumer supplies a token sent as an Authorization: Token <key> header.
+- **Webhooks:** Not supported — no native or virtual webhooks; data sync is polling-based.
+
+**Important to know:**
+
+- Consumers generate their own API key in Campfire account settings, and it is displayed only once — it must be copied immediately.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/campfire` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

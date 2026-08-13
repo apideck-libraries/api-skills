@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "1a"
   verified: true
+  difficulty: moderate
+  partnershipRequired: true
+  sandboxAvailable: true
 ---
 
 # QuickBooks (via Apideck)
@@ -26,6 +29,27 @@ Access QuickBooks through Apideck's **Accounting** unified API — one of 34 Acc
 - **Gotchas:** [page](https://developers.apideck.com/apis/accounting/quickbooks/gotchas)
 - **QuickBooks docs:** https://developer.intuit.com/app/developer/qbo/docs
 - **Homepage:** https://quickbooks.intuit.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Self-Service Signup + App Review Required
+- **Vendor partnership required:** yes ([Intuit Developer Portal](https://developer.intuit.com/app/developer/homepage)) — Intuit Developer Account required (free, self-service).
+- **Apideck-managed credentials:** Available — OAuth shows "Apideck" as the requesting application.
+- **Account type required:** QuickBooks Online (Simple Start, Essentials, Plus, or Advanced)
+- **Consumer access level:** Any user with QuickBooks Online access (Admin recommended for full data access)
+- **Sandbox:** available ([signup](https://developer.intuit.com/app/developer/qbo/docs/develop/sandboxes)) — Free sandbox via Intuit Developer Portal (up to 10 companies, valid for 2 years).
+- **Costs:** Free at Builder tier (500,000 CorePlus API calls/month); paid tiers from $300/month (Silver) unlock higher volumes and Premium APIs.
+- **Rate limits:** 500 requests/minute per company, 10 concurrent maximum; batch endpoint 120 requests/minute.
+- **Authentication:** OAuth 2.0 authorization code flow.
+- **Webhooks:** Native — invoice, customer, and payment events (20+ event types)
+
+**Important to know:**
+
+- Access tokens expire after 1 hour (auto-refreshed by Apideck); refresh tokens expire after 100 days of inactivity and rotate on each refresh — dormant connections must be re-authorized by the consumer.
+- App Assessment Questionnaire required before production access is granted.
+- The free Builder tier's monthly CorePlus (data retrieval) call cap is hard — calls above it are blocked, not throttled, until the next billing cycle or a tier upgrade.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/quickbooks` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

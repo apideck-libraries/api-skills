@@ -13,6 +13,9 @@ metadata:
   tier: "1a"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # Clear Books (via Apideck)
@@ -30,6 +33,25 @@ Access Clear Books through Apideck's **Accounting** unified API — one of 34 Ac
 - **Gotchas:** [page](https://developers.apideck.com/apis/accounting/clearbooks-uk/gotchas)
 - **Clear Books docs:** https://www.clearbooks.co.uk/support/api/
 - **Homepage:** https://www.clearbooks.co.uk/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — API access is granted by Clear Books on request; no self-service credentials.
+- **Vendor partnership required:** no ([developer portal](https://www.clearbooks.co.uk/support/api/)) — No partner program — request access from Clear Books support.
+- **Apideck-managed credentials:** Not available — each consumer supplies their own API key.
+- **Account type required:** An active Clear Books account.
+- **Consumer access level:** Permission to create an API key in Clear Books.
+- **Sandbox:** not available — A free Clear Books trial account serves for testing.
+- **Costs:** No API fees published.
+- **Rate limits:** No rate limits published; expect throttling on sustained load.
+- **Authentication:** API key — the consumer's Clear Books SOAP API key; not OAuth.
+- **Webhooks:** No webhooks — change detection is polling-based.
+
+**Important to know:**
+
+- Clear Books has discontinued the SOAP API this connector uses — no new applications will be approved for it. Existing API keys continue to work, but new integrations cannot obtain SOAP access; Clear Books now grants API access for its REST API instead.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/clearbooks-uk` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

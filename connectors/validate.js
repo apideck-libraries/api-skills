@@ -26,8 +26,13 @@ const path = require("path");
 
 const CONNECTORS_DIR = __dirname;
 const MANIFEST_PATH = path.join(CONNECTORS_DIR, "manifest.json");
+const OVERVIEWS_PATH = path.join(CONNECTORS_DIR, "overviews.json");
 const SKILLS_DIR = path.join(CONNECTORS_DIR, "..", "skills");
 const LINE_SOFT_LIMIT = 500;
+
+const OVERVIEWS = fs.existsSync(OVERVIEWS_PATH)
+  ? JSON.parse(fs.readFileSync(OVERVIEWS_PATH, "utf-8")).overviews
+  : {};
 
 const SECRET_PATTERNS = [
   /Bearer\s+[A-Za-z0-9\-._~+/]{32,}/,
@@ -161,6 +166,61 @@ function validateConnector(connector) {
         connector.slug,
         `metadata.unifiedApis mismatch: missing=${missing}, extra=${extra}`
       );
+    }
+  }
+
+  // "At a glance" overview facts (synced snapshot in connectors/overviews.json)
+  const overview = OVERVIEWS[connector.serviceId];
+  const atAGlanceCount = (content.match(/^## At a glance$/gm) || []).length;
+  if (overview) {
+    if (atAGlanceCount !== 1) {
+      fail(
+        connector.slug,
+        `expected exactly one "## At a glance" section (has overview entry), found ${atAGlanceCount}`
+      );
+    }
+    if (overview.difficulty && md.difficulty !== overview.difficulty) {
+      fail(
+        connector.slug,
+        `metadata.difficulty "${md.difficulty}" != overview snapshot "${overview.difficulty}"`
+      );
+    }
+    if (
+      typeof overview.partnership_required === "boolean" &&
+      md.partnershipRequired !== overview.partnership_required
+    ) {
+      fail(connector.slug, `metadata.partnershipRequired != overview snapshot`);
+    }
+    if (
+      typeof overview.sandbox_available === "boolean" &&
+      md.sandboxAvailable !== overview.sandbox_available
+    ) {
+      fail(connector.slug, `metadata.sandboxAvailable != overview snapshot`);
+    }
+    // A missing snapshot field must omit the frontmatter key, never emit
+    // the literal string "undefined".
+    for (const key of ["difficulty", "partnershipRequired", "sandboxAvailable"]) {
+      if (md[key] === "undefined") {
+        fail(connector.slug, `metadata.${key} is the literal string "undefined"`);
+      }
+    }
+    // The availability lead-in must not be duplicated by a note that
+    // restates it ("available — Available for testing — ...").
+    if (/\*\*:?\s*(not )?available — (Not )?[Aa]vailable\b/.test(content)) {
+      fail(
+        connector.slug,
+        `"At a glance" bullet duplicates its availability lead-in (generator note-handling regression)`
+      );
+    }
+  } else {
+    if (atAGlanceCount !== 0) {
+      fail(
+        connector.slug,
+        `has "## At a glance" section but no entry in connectors/overviews.json (stale generate?)`
+      );
+    }
+    if (md.difficulty !== undefined) {
+      fail(connector.slug, `metadata.difficulty present but no overview snapshot entry`);
     }
   }
 
