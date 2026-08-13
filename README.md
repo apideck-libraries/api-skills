@@ -159,7 +159,7 @@ APIDECK_API_KEY=... APIDECK_APP_ID=... node connectors/sync-overviews.js
 
 Connectors with an entry in `connectors/overviews.json` carry an **At a glance** section — feasibility facts (implementation difficulty, vendor partnership, sandbox availability, costs, rate limits, important-to-know) synced from `GET /connector/connectors/{id}` → `overview`, so agents can reason about connector feasibility before writing any code. The connector metadata API stays the single source of truth; the snapshot is machine-synced, never hand-edited, and coverage grows as Apideck publishes more connector overviews.
 
-The sync runs automatically: the [`sync-overviews` workflow](.github/workflows/sync-overviews.yml) refreshes the snapshot daily (plus on manual dispatch), regenerates the skills, validates, and opens a PR when anything changed. Manual `node connectors/sync-overviews.js` runs are only needed for local development.
+The sync runs automatically: the [`sync-overviews` workflow](.github/workflows/sync-overviews.yml) refreshes the snapshot daily (plus on manual dispatch), regenerates the skills, validates, and opens an auto-merging PR when anything changed. Manual `node connectors/sync-overviews.js` runs are only needed for local development.
 
 ## IDE Plugins
 
