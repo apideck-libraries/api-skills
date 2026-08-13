@@ -3,7 +3,11 @@ name: Sync Connector Overviews
 # Keeps connectors/overviews.json (and the generated "At a glance" sections)
 # in step with Apideck's connector metadata API — the single source of truth.
 # When the synced output differs from main, this opens/updates a PR with the
-# regenerated files; when nothing changed, it exits quietly with no PR.
+# regenerated files; when nothing changed, no PR is opened.
+#
+# Same shape as developer-docs' regenerate-markdown workflow (weekly cron →
+# sync from the connector API → regenerate committed artifacts → auto-PR via
+# peter-evans/create-pull-request).
 #
 # Triggers:
 #   - weekly schedule (overviews change at documentation pace)
@@ -11,18 +15,17 @@ name: Sync Connector Overviews
 #   - repository_dispatch type "sync-overviews" (lets the unify repo ping this
 #     the moment a connector overview merges, if/when that hook is added)
 #
-# Requires two repo secrets: APIDECK_API_KEY, APIDECK_APP_ID.
+# Requires two repo secrets: APIDECK_API_KEY, APIDECK_APP_ID (same values as
+# developer-docs' API_KEY / APP_ID).
 
 on:
   schedule:
-    - cron: "17 6 * * 1" # Mondays 06:17 UTC
+    # Mondays 06:17 UTC — a PR is waiting at the start of the week, after
+    # any Friday connector/doc updates.
+    - cron: "17 6 * * 1"
   workflow_dispatch:
   repository_dispatch:
     types: [sync-overviews]
-
-permissions:
-  contents: write
-  pull-requests: write
 
 concurrency:
   group: sync-overviews
@@ -31,6 +34,9 @@ concurrency:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
 
@@ -62,40 +68,21 @@ jobs:
           node connectors/validate.js --strict
           node skills/test.js
 
-      - name: Detect changes
-        id: diff
-        run: |
-          if git diff --quiet; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "Overviews are already in sync — nothing to do."
-          else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-            git diff --stat
-          fi
+      - name: Open PR if overviews drifted
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: auto/sync-overviews
+          commit-message: "chore: sync connector overviews from the metadata API"
+          title: "chore: sync connector overviews"
+          body: |
+            Automated sync of `connectors/overviews.json` from Apideck's connector
+            metadata API (`GET /connector/connectors/{id}` → `overview`), with
+            skills regenerated and provider mirrors re-synced.
 
-      - name: Open or update sync PR
-        if: steps.diff.outputs.changed == 'true'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          BRANCH=auto/sync-overviews
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -B "$BRANCH"
-          git add -A
-          git commit -m "chore: sync connector overviews from the metadata API"
-          git push -f origin "$BRANCH"
+            Produced by the `sync-overviews` workflow — content is machine-synced
+            and validated (`connectors/validate.js --strict`, `skills/test.js`)
+            before this PR was opened. Review and merge; do not edit the generated
+            files by hand.
 
-          if [ -z "$(gh pr list --head "$BRANCH" --state open --json number --jq '.[].number')" ]; then
-            cat > /tmp/pr-body.md <<'BODY'
-          Automated sync of `connectors/overviews.json` from Apideck's connector metadata API (`GET /connector/connectors/{id}` → `overview`), with skills regenerated and provider mirrors re-synced.
-
-          Produced by the `sync-overviews` workflow — content is machine-synced, validated by `connectors/validate.js --strict` and `skills/test.js` before this PR was opened. Review and merge; do not edit the generated files by hand.
-          BODY
-            gh pr create \
-              --head "$BRANCH" \
-              --title "chore: sync connector overviews" \
-              --body-file /tmp/pr-body.md
-          else
-            echo "Open PR for $BRANCH already exists — branch updated in place."
-          fi
+            If nothing changed, this PR is not opened; if it already exists, the
+            branch is updated in place.
