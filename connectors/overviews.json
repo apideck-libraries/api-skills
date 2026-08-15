@@ -1409,17 +1409,28 @@
       ]
     },
     "sage-intacct-rest": {
+      "apideck_credentials_available": true,
+      "costs": "The Web Services developer license is paid: one third-party example is $2,500/year plus $0.015 per API call (Q4 2025). Confirm current terms with Sage.",
+      "important_to_know": [
+        "API tokens are session-bound: signing in to the Sage Intacct web UI as the authorizing user invalidates the token (error REST-2102). Authorize with a dedicated integration user that nobody signs in as interactively.",
+        "Financial reports stay exclusive to the sage-intacct (XML) connector: REST's reporting endpoints only generate downloadable files asynchronously, never queryable data — a permanent platform gap. Other uncovered Sage endpoints remain reachable via the Apideck Proxy API.",
+        "The two Sage Intacct connectors are not interchangeable and nothing migrates automatically: switching means authorizing a brand-new connection, and record identifiers do not carry over. Choose one before you build.",
+        "Two module permissions are easy to miss: quotes need Order Entry — without it, listing returns 403 and creating fails with an error that reads like a company misconfiguration — and customer refunds stay hidden until the feature is enabled in Accounts Receivable.",
+        "The REST API reached General Availability with Sage's 2025 Release 1 and is the platform Sage recommends for new integrations. The legacy XML/SOAP gateway is frozen and receives no new API objects, so customer refunds and quote creation live only here."
+      ],
+      "webhooks": "Virtual webhooks — created, updated and deleted events across 13 of the supported accounting resources. Sage Intacct has no native webhooks.",
       "supported_resource_categories": [
         {
+          "name": "Core Financial",
           "resources": [
             "ledger-accounts",
             "journal-entries",
             "tax-rates",
             "tracking-categories"
-          ],
-          "name": "Core Financial"
+          ]
         },
         {
+          "name": "Accounts Receivable",
           "resources": [
             "customers",
             "invoices",
@@ -1428,27 +1439,25 @@
             "credit-notes",
             "quotes",
             "refunds"
-          ],
-          "name": "Accounts Receivable"
+          ]
         },
         {
-          "name": "Accounts Payable",
           "resources": [
             "suppliers",
             "bills",
             "bill-payments"
-          ]
+          ],
+          "name": "Accounts Payable"
         },
         {
-          "name": "Expenses",
           "resources": [
             "expenses",
             "expense-reports",
             "expense-categories"
-          ]
+          ],
+          "name": "Expenses"
         },
         {
-          "name": "Organizational",
           "resources": [
             "companies",
             "company-info",
@@ -1457,14 +1466,15 @@
             "locations",
             "projects",
             "employees"
-          ]
+          ],
+          "name": "Organizational"
         },
         {
-          "name": "Banking",
           "resources": [
             "bank-accounts",
             "bank-feed-statements"
-          ]
+          ],
+          "name": "Banking"
         },
         {
           "name": "Documents",
@@ -1473,55 +1483,38 @@
           ]
         }
       ],
-      "external_guides": [
+      "environment_notes": [
         {
-          "url": "https://developer.sage.com/intacct",
-          "source": "Sage Intacct Developer",
-          "title": "Sage Intacct REST API — Get Started"
+          "environment": "Sandbox",
+          "description": "Testing runs against an application registered at developer.sage.com/console with the Non-production client scope, pointed at a sandbox, trial or developer company. The scope cannot be changed after the application is created, so each environment needs its own registration, and its client credentials are separate from the production ones. A full sandbox company (a copy of production) is requested through a Sage support case and refreshed at most 4 times a year; it is not offered to companies managed through a Sage Intacct multi-entity console or purchased through a reseller."
         },
         {
-          "title": "OAuth 2.0 Authorization & Security",
-          "url": "https://developer.sage.com/intacct/docs/1/sage-intacct-rest-api/authorization-and-security/oauth2",
-          "source": "Sage Intacct Developer"
-        },
-        {
-          "source": "Sage Intacct",
-          "title": "Marketplace Partner Program — Become a Partner",
-          "url": "https://marketplace.intacct.com/BecomeAPartner"
-        },
-        {
-          "title": "Developer FAQs (concurrency & levels of service)",
-          "source": "Sage Intacct Developer",
-          "url": "https://developer.intacct.com/support/faq/"
-        },
-        {
-          "url": "https://www.intacct.com/ia/docs/en_US/help_action/Company/Sandboxes/about-sandboxes.htm",
-          "source": "Sage Intacct",
-          "title": "About Sandboxes"
+          "environment": "Production",
+          "description": "Live companies require an application registered at developer.sage.com/console with the Production client scope, issued once your Web Services developer license is in place. ⚠️ Development credentials CANNOT be used with production accounts."
         }
       ],
+      "partnership_portal_name": "Sage Intacct Marketplace",
+      "partnership_note": "A Sage Web Services developer license is required — via the Sage Intacct Marketplace Partner Program, or directly from Sage through your account manager.",
       "account_type_required": "Sage Intacct company with REST API access enabled",
-      "partnership_required": true,
-      "apideck_credentials_available": true,
       "responsibility_matrix": [
         {
-          "area": "Initiate Sage Intacct Marketplace Partnership",
           "customer": "✓",
-          "apideck": "Facilitates introduction"
+          "apideck": "Facilitates introduction",
+          "area": "Obtain Sage Web Services Developer License"
         },
         {
           "area": "Execute Marketplace Partner Contract",
+          "customer": "✓ (if taking the Marketplace route)"
+        },
+        {
+          "apideck": "Instructions provided",
+          "area": "Register OAuth Application at developer.sage.com/console",
           "customer": "✓"
         },
         {
-          "area": "Register OAuth Application in the Sage App Registry",
-          "customer": "✓",
-          "apideck": "Instructions provided"
-        },
-        {
-          "apideck": "Secure connection form",
+          "area": "Authorize Connection",
           "consumer": "✓",
-          "area": "Authorize Connection"
+          "apideck": "Secure connection form"
         },
         {
           "consumer": "✓",
@@ -1534,46 +1527,59 @@
           "apideck": "Instructions provided"
         },
         {
-          "apideck": "Maintains connector",
+          "area": "Build via Unified API",
           "customer": "✓",
-          "area": "Build via Unified API"
+          "apideck": "Maintains connector"
         },
         {
-          "area": "Monitor Connections",
-          "customer": "✓ Via dashboard",
           "consumer": "Can revoke anytime",
-          "apideck": "Logs & alerts"
+          "apideck": "Logs & alerts",
+          "area": "Monitor Connections",
+          "customer": "✓ Via dashboard"
         }
       ],
-      "difficulty": "involved",
-      "sandbox_note": "The App Registry application carries a Non-production client scope for testing. Sage's own sandbox companies are restricted — offered to new direct customers with smaller tenants and refreshable up to 4 times a year — and are not available to customers whose companies are managed through a Sage Intacct console, or who bought Intacct through a reseller.",
-      "partnership_url": "https://marketplace.intacct.com/BecomeAPartner",
-      "authentication_note": "OAuth 2.0 authorization code grant — a real OAuth flow, unlike the sage-intacct (XML) connector, which uses a Sender ID plus company/user credentials.",
-      "environment_notes": [
+      "partnership_required": true,
+      "external_guides": [
         {
-          "environment": "Sandbox",
-          "description": "Testing runs against a Sage App Registry application created with the Non-production client scope, pointed at a sandbox, trial or developer company. Its client credentials are separate from the production ones."
+          "title": "Sage Intacct REST API — Get Started",
+          "url": "https://developer.sage.com/intacct",
+          "source": "Sage Intacct Developer"
         },
         {
-          "description": "Live companies require an App Registry application created with the Production client scope, issued once the Marketplace partnership is in place. ⚠️ Development credentials CANNOT be used with production accounts.",
-          "environment": "Production"
+          "title": "OAuth 2.0 Authorization & Security",
+          "url": "https://developer.sage.com/intacct/docs/1/sage-intacct-rest-api/authorization-and-security/oauth2",
+          "source": "Sage Intacct Developer"
+        },
+        {
+          "source": "Sage Intacct",
+          "url": "https://marketplace.intacct.com/BecomeAPartner",
+          "title": "Marketplace Partner Program — Become a Partner"
+        },
+        {
+          "url": "https://developer.sage.com/intacct/docs/developer-portal/getting-started/metrics/",
+          "source": "Sage Intacct Developer",
+          "title": "API usage & transaction metrics"
+        },
+        {
+          "title": "Developer FAQs (concurrency & levels of service)",
+          "url": "https://developer.intacct.com/support/faq/",
+          "source": "Sage Intacct Developer"
+        },
+        {
+          "source": "Sage Intacct",
+          "url": "https://www.intacct.com/ia/docs/en_US/help_action/Company/Sandboxes/about-sandboxes.htm",
+          "title": "About Sandboxes"
         }
       ],
-      "rate_limits": "Each company is allowed one API transaction job (online or offline) plus one offline report job concurrently on the standard level of service; a third concurrent request is held about 30 seconds and then errors. Sage also returns its live budget on every response, which Apideck surfaces as x-downstream-ratelimit-limit / -remaining / -reset — read those rather than assuming, as the concurrency Sage grants a given company can differ from the documented default.",
-      "webhooks": "No native webhooks — Apideck provides virtual webhooks (polling-based change detection, https://help.apideck.com/en/articles/4231234) with created, updated and deleted events across 13 of the supported accounting resources.",
-      "difficulty_reason": "Marketplace Partnership + App Registry Registration Required",
-      "apideck_credentials_note": "Available for testing and evaluation — consumers authorize against Apideck's registered Sage application, so the consent screen shows Apideck branding. Production requires your own App Registry application, registered once the Marketplace partnership is in place.",
-      "partnership_portal_name": "Sage Intacct Marketplace",
-      "partnership_note": "Sage Intacct Marketplace Partner Program is required, plus a separate OAuth application registered in the Sage App Registry. Apideck can facilitate the partnership introduction.",
-      "consumer_access_level": "The connection acts as the authorizing Sage Intacct user, so that user's role permissions become the connection's effective access. Permissions are granted per module and per operation, and a company Admin must authorize the client application in each consumer's Sage Intacct company before any connection works.",
-      "important_to_know": [
-        "Financial reports are not available through the REST API — no balance sheet, profit and loss, aged debtors or account hierarchies. Sage's REST reporting endpoints generate downloadable files asynchronously instead of returning queryable data.",
-        "Two Sage Intacct connectors exist with different capabilities: customer refunds and quote creation are REST-only, while the financial reports above remain exclusive to sage-intacct (XML). Attachments work on both — here they cover invoices, bills, expenses, expense reports and quotes. Choosing the wrong one means rebuilding.",
-        "API tokens are session-bound: signing in to the Sage Intacct web UI as the authorizing user invalidates the token (error REST-2102). Authorize with a dedicated integration user that nobody signs in as interactively.",
-        "Customer refunds are switched off by default in Sage, and the permission to grant does not appear until the feature is enabled in the Accounts Receivable configuration."
-      ],
-      "costs": "Sage Intacct Marketplace Partner Program: $2,500/year plus $0.015 per API call once consumers are live (as of Q4 2025). Confirm current terms with Sage during onboarding.",
-      "sandbox_available": true
+      "rate_limits": "Tier 1 (automatic): 100,000 API transactions/month — each written record and each read call, per page, is one transaction. One API job at a time per company.",
+      "partnership_url": "https://marketplace.intacct.com/BecomeAPartner",
+      "sandbox_available": true,
+      "difficulty": "involved",
+      "sandbox_note": "Free — choose the Non-production client scope when registering the app, or use a Sage Intacct Developer Portal test account.",
+      "authentication_note": "OAuth 2.0 authorization code grant — a real OAuth flow, unlike the sage-intacct (XML) connector, which uses a Sender ID plus company/user credentials.",
+      "consumer_access_level": "The connection inherits the authorizing Sage Intacct user's role permissions, and a company Admin must authorize the application in each consumer's company.",
+      "difficulty_reason": "Paid Web Services Developer License + Per-Consumer Admin Authorization Required",
+      "apideck_credentials_note": "Available for testing and evaluation — consumers authorize against Apideck's registered Sage application, so the consent screen shows Apideck branding."
     },
     "xero": {
       "partnership_required": true,
