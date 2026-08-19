@@ -780,69 +780,14 @@
       "authentication_note": "OAuth 2.0 (Authorization Code)"
     },
     "netsuite": {
-      "difficulty": "highly_complex",
-      "consumer_access_level": "Administrator or role with User Access Tokens and SOAP Web Services permissions",
-      "partnership_portal_name": "NetSuite Partner Program",
-      "important_to_know": [
-        "SuiteTax not supported — tax data is unavailable when SuiteTax is enabled on a consumer's account.",
-        "Oracle has scheduled SOAP removal: 2025.2 is the last SOAP endpoint, release 2027.1 blocks new SOAP integrations, and 2028.2 removes SOAP entirely. Apideck has made a NetSuite REST integration available via Proxy.",
-        "TBA tokens never expire on their own — a connection keeps working until the consumer regenerates the token or deletes the integration record.",
-        "Custom forms can break writes: a mandatory custom field on a standard NetSuite form makes API writes to that record type fail, blocking creates you had tested successfully."
-      ],
-      "rate_limits": "Vary by the consumer's NetSuite subscription and are not publicly documented by Oracle; Apideck handles retries automatically.",
       "apideck_credentials_available": false,
-      "partnership_url": "https://www.netsuite.com/portal/partners.shtml",
+      "consumer_access_level": "Administrator or role with User Access Tokens and SOAP Web Services permissions",
       "environment_notes": [
         {
           "environment": "Sandbox & Production (shared credential structure)",
           "description": "NetSuite uses the same credential structure for both — the Account ID determines which instance is reached, and sandbox Account IDs carry a suffix such as _SB1. Testing options: the Apideck temporary shared sandbox, the consumer's own sandbox, or a time-limited NetSuite Partner Trial; Oracle does not offer direct trial accounts. ⚠️ Tokens do not survive a sandbox refresh — the consumer must recreate the integration record and access token afterwards, which is expected NetSuite behavior."
         }
       ],
-      "responsibility_matrix": [
-        {
-          "apideck": "Provides (enterprise contract)",
-          "area": "Request Sandbox Access",
-          "customer": "✓"
-        },
-        {
-          "area": "Enable TBA & SuiteTalk",
-          "apideck": "Instructions provided",
-          "consumer": "✓"
-        },
-        {
-          "area": "Create Integration Record",
-          "consumer": "✓",
-          "apideck": "Instructions provided"
-        },
-        {
-          "consumer": "✓",
-          "area": "Configure Role & Permissions",
-          "apideck": "Instructions provided"
-        },
-        {
-          "area": "Generate Access Token",
-          "apideck": "Instructions provided",
-          "consumer": "✓"
-        },
-        {
-          "area": "Provide Credentials",
-          "consumer": "✓",
-          "apideck": "Secure connection form"
-        },
-        {
-          "area": "Build via Unified API",
-          "customer": "✓",
-          "apideck": "Maintains connector"
-        },
-        {
-          "consumer": "Can regenerate tokens",
-          "apideck": "Logs & alerts",
-          "customer": "✓ Via dashboard",
-          "area": "Monitor Connections"
-        }
-      ],
-      "authentication_note": "Token-Based Authentication (TBA), NetSuite's OAuth 1.0-based scheme — consumers create an integration record and credentials manually; no interactive OAuth flow.",
-      "partnership_required": false,
       "external_guides": [
         {
           "source": "Oracle",
@@ -850,9 +795,9 @@
           "url": "https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/section_4247337262.html"
         },
         {
-          "source": "Oracle",
+          "url": "https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/chapter_1540391670.html",
           "title": "SuiteTalk Web Services",
-          "url": "https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/chapter_1540391670.html"
+          "source": "Oracle"
         },
         {
           "url": "https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/chapter_N295957.html",
@@ -866,11 +811,66 @@
         }
       ],
       "sandbox_note": "Via Apideck's temporary shared sandbox (enterprise contract required — contact Apideck Support).",
-      "costs": "No additional platform fees, and no connection limits imposed.",
-      "difficulty_reason": "Custom Auth + Manual Token Setup",
+      "webhooks": "Native webhooks not supported — Apideck provides Virtual Webhooks (polling-based change detection) instead.",
+      "partnership_url": "https://www.netsuite.com/portal/partners.shtml",
       "account_type_required": "NetSuite with SuiteTalk (Web Services) enabled",
       "sandbox_available": true,
-      "webhooks": "Native webhooks not supported — Apideck provides Virtual Webhooks (polling-based change detection) instead."
+      "partnership_portal_name": "NetSuite Partner Program",
+      "difficulty": "highly_complex",
+      "costs": "No additional platform fees, and no connection limits imposed.",
+      "partnership_required": false,
+      "important_to_know": [
+        "SuiteTax not supported — tax data is unavailable when SuiteTax is enabled on a consumer's account.",
+        "Oracle has scheduled SOAP removal: 2025.2 is the last SOAP endpoint, release 2027.1 blocks new SOAP integrations, and 2028.2 removes SOAP entirely. Apideck has made a NetSuite REST integration available via Proxy.",
+        "TBA tokens never expire on their own — a connection keeps working until the consumer regenerates the token or deletes the integration record.",
+        "Custom forms can break writes: a mandatory custom field on a standard NetSuite form makes API writes to that record type fail, blocking creates you had tested successfully."
+      ],
+      "difficulty_reason": "Custom Auth + Manual Token Setup",
+      "responsibility_matrix": [
+        {
+          "customer": "✓",
+          "area": "Request Sandbox Access",
+          "apideck": "Provides (enterprise contract)"
+        },
+        {
+          "area": "Enable TBA & SuiteTalk",
+          "apideck": "Instructions provided",
+          "consumer": "✓"
+        },
+        {
+          "consumer": "✓",
+          "area": "Create Integration Record",
+          "apideck": "Instructions provided"
+        },
+        {
+          "consumer": "✓",
+          "area": "Configure Role & Permissions",
+          "apideck": "Instructions provided"
+        },
+        {
+          "area": "Generate Access Token",
+          "consumer": "✓",
+          "apideck": "Instructions provided"
+        },
+        {
+          "area": "Provide Credentials",
+          "apideck": "Secure connection form",
+          "consumer": "✓"
+        },
+        {
+          "area": "Build via Unified API",
+          "apideck": "Maintains connector",
+          "customer": "✓"
+        },
+        {
+          "apideck": "Logs & alerts",
+          "area": "Monitor Connections",
+          "consumer": "Can regenerate tokens",
+          "customer": "✓ Via dashboard"
+        }
+      ],
+      "authentication_note": "Token-Based Authentication (TBA), NetSuite's OAuth 1.0-based scheme — consumers create an integration record and credentials manually; no interactive OAuth flow.",
+      "rate_limits": "Vary by the consumer's NetSuite subscription and are not publicly documented by Oracle; Apideck handles retries automatically."
     },
     "pennylane": {
       "supported_resource_categories": [
@@ -1582,10 +1582,31 @@
       "apideck_credentials_note": "Available for testing and evaluation — consumers authorize against Apideck's registered Sage application, so the consent screen shows Apideck branding."
     },
     "xero": {
+      "webhooks": "Native — invoice and bill events (created and updated).",
+      "environment_notes": [
+        {
+          "environment": "Sandbox & Production (shared credentials)",
+          "description": "Xero uses the same credential structure for sandbox and production — the connected Xero organisation determines which data is accessed. Testing options: the Xero Demo Company (included with every developer account, sample data) and a 30-day full-featured free trial via xero.com/signup."
+        },
+        {
+          "description": "When a consumer authorises your app, they choose which Xero organisation to connect. Consumers with multiple organisations require a separate connection per organisation.",
+          "environment": "Multi-Organisation"
+        }
+      ],
+      "partnership_note": "Required for >25 connections. Xero App Partner Program — certification involves multiple technical checkpoints.",
       "partnership_required": true,
+      "sandbox_note": "Free via Xero Developer Portal (demo company included).",
+      "partnership_url": "https://developer.xero.com/documentation/xero-app-store/app-partner-guides/app-partner-steps/",
+      "sandbox_url": "https://developer.xero.com/",
+      "consumer_access_level": "Standard or Adviser level user (Admin recommended for full data access)",
+      "rate_limits": "5,000 calls/day per organisation; 60 calls/minute per organisation; 5 concurrent calls/second.",
+      "account_type_required": "Any active Xero subscription",
+      "difficulty_reason": "Self-Service OAuth + App Partner Certification Required to Scale",
+      "apideck_credentials_available": false,
+      "costs": "Free at Starter tier (up to 5 connections). Tiered, usage-based pricing applies at scale — Core, Plus, Advanced (~$895/mo, 10k connections), and Enterprise tiers, effective March 2, 2026 (replacing the previous 15% App Store revenue share). Premium endpoints (Journals, Xero Practice Manager) require the Advanced tier or above. Separate from Apideck pricing.",
+      "sandbox_available": true,
       "supported_resource_categories": [
         {
-          "name": "Core Financial",
           "resources": [
             "ledger-accounts",
             "tax-rates",
@@ -1593,7 +1614,8 @@
             "company-info",
             "balance-sheet",
             "profit-and-loss"
-          ]
+          ],
+          "name": "Core Financial"
         },
         {
           "name": "Accounts Receivable",
@@ -1623,49 +1645,34 @@
           "name": "Organizational"
         }
       ],
-      "partnership_note": "Required for >25 connections. Xero App Partner Program — certification involves multiple technical checkpoints.",
-      "sandbox_available": true,
-      "partnership_portal_name": "Xero App Partner Program",
-      "difficulty": "moderate",
-      "account_type_required": "Any active Xero subscription",
-      "sandbox_note": "Free via Xero Developer Portal (demo company included).",
-      "apideck_credentials_available": false,
-      "difficulty_reason": "Self-Service OAuth + App Partner Certification Required to Scale",
-      "consumer_access_level": "Standard or Adviser level user (Admin recommended for full data access)",
-      "environment_notes": [
-        {
-          "description": "Xero uses the same credential structure for sandbox and production — the connected Xero organisation determines which data is accessed. Testing options: the Xero Demo Company (included with every developer account, sample data) and a 30-day full-featured free trial via xero.com/signup.",
-          "environment": "Sandbox & Production (shared credentials)"
-        },
-        {
-          "environment": "Multi-Organisation",
-          "description": "When a consumer authorises your app, they choose which Xero organisation to connect. Consumers with multiple organisations require a separate connection per organisation."
-        }
+      "important_to_know": [
+        "App Partner certification requires onboarding 3 active customer connections within a 30-day period.",
+        "Refresh tokens expire after 60 days if unused — consumer must re-authorise.",
+        "Consumers can install a maximum of 2 uncertified apps — if at the limit they must remove another uncertified app first.",
+        "Certification compliance requires hiding the Apideck callback — a custom Vault domain must be configured before certification."
       ],
-      "authentication_note": "OAuth 2.0 (Authorization Code).",
-      "rate_limits": "5,000 calls/day per organisation; 60 calls/minute per organisation; 5 concurrent calls/second.",
       "responsibility_matrix": [
         {
-          "area": "Create Xero Developer Account",
-          "customer": "✓"
+          "customer": "✓",
+          "area": "Create Xero Developer Account"
         },
         {
-          "customer": "✓",
           "area": "Register Xero App",
+          "customer": "✓",
           "apideck": "Docs provided"
         },
         {
-          "area": "Add Credentials to Apideck",
-          "customer": "✓"
+          "customer": "✓",
+          "area": "Add Credentials to Apideck"
         },
         {
+          "apideck": "Support available",
           "area": "Apply for App Partner Certification",
-          "customer": "✓ (if >25 connections)",
-          "apideck": "Support available"
+          "customer": "✓ (if >25 connections)"
         },
         {
-          "customer": "✓ (if certifying)",
           "area": "Set Up Custom Domain (Vault)",
+          "customer": "✓ (if certifying)",
           "apideck": "Configures on request"
         },
         {
@@ -1674,41 +1681,34 @@
           "area": "Register Webhook (Optional)"
         },
         {
-          "area": "Authorize Connection (OAuth)",
           "consumer": "✓",
-          "apideck": "Handles OAuth flow"
+          "apideck": "Handles OAuth flow",
+          "area": "Authorize Connection (OAuth)"
         },
         {
-          "customer": "✓",
           "area": "Build via Unified API",
-          "apideck": "Maintains connector"
+          "apideck": "Maintains connector",
+          "customer": "✓"
         },
         {
-          "apideck": "✓ Automatic",
-          "area": "Token Refresh"
+          "area": "Token Refresh",
+          "apideck": "✓ Automatic"
         },
         {
+          "customer": "Via dashboard",
           "consumer": "Can revoke anytime",
           "apideck": "Logs and alerts",
-          "customer": "Via dashboard",
           "area": "Monitor Connections"
         }
       ],
-      "webhooks": "Native — invoice and bill events (created and updated).",
-      "sandbox_url": "https://developer.xero.com/",
-      "important_to_know": [
-        "App Partner certification requires onboarding 3 active customer connections within a 30-day period.",
-        "Refresh tokens expire after 60 days if unused — consumer must re-authorise.",
-        "Consumers can install a maximum of 2 uncertified apps — if at the limit they must remove another uncertified app first.",
-        "Certification compliance requires hiding the Apideck callback — a custom Vault domain must be configured before certification."
-      ],
-      "partnership_url": "https://developer.xero.com/documentation/xero-app-store/app-partner-guides/app-partner-steps/",
-      "costs": "Free at Starter tier (up to 5 connections). Tiered, usage-based pricing applies at scale — Core, Plus, Advanced (~$895/mo, 10k connections), and Enterprise tiers, effective March 2, 2026 (replacing the previous 15% App Store revenue share). Premium endpoints (Journals, Xero Practice Manager) require the Advanced tier or above. Separate from Apideck pricing.",
+      "partnership_portal_name": "Xero App Partner Program",
+      "difficulty": "moderate",
+      "authentication_note": "OAuth 2.0 (Authorization Code).",
       "external_guides": [
         {
-          "source": "Xero",
           "title": "Xero API Overview",
-          "url": "https://developer.xero.com/documentation/api/accounting/overview"
+          "url": "https://developer.xero.com/documentation/api/accounting/overview",
+          "source": "Xero"
         },
         {
           "url": "https://developer.xero.com/documentation/guides/oauth2/overview/",
@@ -1716,18 +1716,18 @@
           "title": "OAuth 2.0 Guide"
         },
         {
+          "source": "Xero",
           "title": "App Partner Steps",
-          "url": "https://developer.xero.com/documentation/xero-app-store/app-partner-guides/app-partner-steps/",
+          "url": "https://developer.xero.com/documentation/xero-app-store/app-partner-guides/app-partner-steps/"
+        },
+        {
+          "title": "Certification Checkpoints",
+          "url": "https://developer.xero.com/documentation/xero-app-store/app-partner-guides/certification-checkpoints/",
           "source": "Xero"
         },
         {
-          "url": "https://developer.xero.com/documentation/xero-app-store/app-partner-guides/certification-checkpoints/",
-          "source": "Xero",
-          "title": "Certification Checkpoints"
-        },
-        {
-          "source": "Xero",
           "url": "https://developer.xero.com/documentation/best-practices/api-call-efficiencies/rate-limits",
+          "source": "Xero",
           "title": "Rate Limits & API Efficiency"
         },
         {
