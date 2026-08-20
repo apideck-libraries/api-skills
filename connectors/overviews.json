@@ -780,52 +780,14 @@
       "authentication_note": "OAuth 2.0 (Authorization Code)"
     },
     "netsuite": {
-      "apideck_credentials_available": false,
-      "consumer_access_level": "Administrator or role with User Access Tokens and SOAP Web Services permissions",
-      "environment_notes": [
-        {
-          "environment": "Sandbox & Production (shared credential structure)",
-          "description": "NetSuite uses the same credential structure for both — the Account ID determines which instance is reached, and sandbox Account IDs carry a suffix such as _SB1. Testing options: the Apideck temporary shared sandbox, the consumer's own sandbox, or a time-limited NetSuite Partner Trial; Oracle does not offer direct trial accounts. ⚠️ Tokens do not survive a sandbox refresh — the consumer must recreate the integration record and access token afterwards, which is expected NetSuite behavior."
-        }
-      ],
-      "external_guides": [
-        {
-          "source": "Oracle",
-          "title": "Token-Based Authentication Guide",
-          "url": "https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/section_4247337262.html"
-        },
-        {
-          "url": "https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/chapter_1540391670.html",
-          "title": "SuiteTalk Web Services",
-          "source": "Oracle"
-        },
-        {
-          "url": "https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/chapter_N295957.html",
-          "source": "Oracle",
-          "title": "OneWorld Multi-Subsidiary"
-        },
-        {
-          "title": "NetSuite Partner Program",
-          "url": "https://www.netsuite.com/portal/partners.shtml",
-          "source": "NetSuite"
-        }
-      ],
-      "sandbox_note": "Via Apideck's temporary shared sandbox (enterprise contract required — contact Apideck Support).",
-      "webhooks": "Native webhooks not supported — Apideck provides Virtual Webhooks (polling-based change detection) instead.",
       "partnership_url": "https://www.netsuite.com/portal/partners.shtml",
+      "authentication_note": "Token-Based Authentication (TBA), NetSuite's OAuth 1.0-based scheme — consumers create an integration record and credentials manually; no interactive OAuth flow.",
       "account_type_required": "NetSuite with SuiteTalk (Web Services) enabled",
-      "sandbox_available": true,
-      "partnership_portal_name": "NetSuite Partner Program",
-      "difficulty": "highly_complex",
-      "costs": "No additional platform fees, and no connection limits imposed.",
       "partnership_required": false,
-      "important_to_know": [
-        "SuiteTax not supported — tax data is unavailable when SuiteTax is enabled on a consumer's account.",
-        "Oracle has scheduled SOAP removal: 2025.2 is the last SOAP endpoint, release 2027.1 blocks new SOAP integrations, and 2028.2 removes SOAP entirely. Apideck has made a NetSuite REST integration available via Proxy.",
-        "TBA tokens never expire on their own — a connection keeps working until the consumer regenerates the token or deletes the integration record.",
-        "Custom forms can break writes: a mandatory custom field on a standard NetSuite form makes API writes to that record type fail, blocking creates you had tested successfully."
-      ],
-      "difficulty_reason": "Custom Auth + Manual Token Setup",
+      "costs": "No additional platform fees, and no connection limits imposed.",
+      "rate_limits": "Vary by the consumer's NetSuite subscription and are not publicly documented by Oracle; Apideck handles retries automatically.",
+      "sandbox_available": true,
+      "sandbox_note": "Via Apideck's temporary shared sandbox (enterprise contract required — contact Apideck Support).",
       "responsibility_matrix": [
         {
           "customer": "✓",
@@ -833,18 +795,18 @@
           "apideck": "Provides (enterprise contract)"
         },
         {
-          "area": "Enable TBA & SuiteTalk",
           "apideck": "Instructions provided",
+          "area": "Enable TBA & SuiteTalk",
           "consumer": "✓"
         },
         {
           "consumer": "✓",
-          "area": "Create Integration Record",
-          "apideck": "Instructions provided"
+          "apideck": "Instructions provided",
+          "area": "Create Integration Record"
         },
         {
-          "consumer": "✓",
           "area": "Configure Role & Permissions",
+          "consumer": "✓",
           "apideck": "Instructions provided"
         },
         {
@@ -853,14 +815,14 @@
           "apideck": "Instructions provided"
         },
         {
-          "area": "Provide Credentials",
+          "consumer": "✓",
           "apideck": "Secure connection form",
-          "consumer": "✓"
+          "area": "Provide Credentials"
         },
         {
-          "area": "Build via Unified API",
+          "customer": "✓",
           "apideck": "Maintains connector",
-          "customer": "✓"
+          "area": "Build via Unified API"
         },
         {
           "apideck": "Logs & alerts",
@@ -869,8 +831,46 @@
           "customer": "✓ Via dashboard"
         }
       ],
-      "authentication_note": "Token-Based Authentication (TBA), NetSuite's OAuth 1.0-based scheme — consumers create an integration record and credentials manually; no interactive OAuth flow.",
-      "rate_limits": "Vary by the consumer's NetSuite subscription and are not publicly documented by Oracle; Apideck handles retries automatically."
+      "important_to_know": [
+        "SuiteTax not supported — tax data is unavailable when SuiteTax is enabled on a consumer's account.",
+        "Oracle has scheduled SOAP removal: 2025.2 is the last SOAP endpoint, release 2027.1 blocks new SOAP integrations, and 2028.2 removes SOAP entirely. Apideck has made a NetSuite REST integration available via Proxy.",
+        "TBA tokens never expire on their own — a connection keeps working until the consumer regenerates the token or deletes the integration record.",
+        "Custom forms can break writes: a mandatory custom field on a standard NetSuite form makes API writes to that record type fail, blocking creates you had tested successfully."
+      ],
+      "environment_notes": [
+        {
+          "environment": "Sandbox & Production (shared credential structure)",
+          "description": "NetSuite uses the same credential structure for both — the Account ID determines which instance is reached, and sandbox Account IDs carry a suffix such as _SB1. Testing options: the Apideck temporary shared sandbox, the consumer's own sandbox, or a time-limited NetSuite Partner Trial; Oracle does not offer direct trial accounts. ⚠️ Tokens do not survive a sandbox refresh — the consumer must recreate the integration record and access token afterwards, which is expected NetSuite behavior."
+        }
+      ],
+      "partnership_portal_name": "NetSuite Partner Program",
+      "difficulty": "highly_complex",
+      "webhooks": "Native webhooks not supported — Apideck provides Virtual Webhooks (polling-based change detection) instead.",
+      "apideck_credentials_available": false,
+      "consumer_access_level": "Administrator or role with User Access Tokens and SOAP Web Services permissions",
+      "difficulty_reason": "Custom Auth + Manual Token Setup",
+      "external_guides": [
+        {
+          "url": "https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/section_4247337262.html",
+          "source": "Oracle",
+          "title": "Token-Based Authentication Guide"
+        },
+        {
+          "url": "https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/chapter_1540391670.html",
+          "source": "Oracle",
+          "title": "SuiteTalk Web Services"
+        },
+        {
+          "source": "Oracle",
+          "url": "https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/chapter_N295957.html",
+          "title": "OneWorld Multi-Subsidiary"
+        },
+        {
+          "source": "NetSuite",
+          "title": "NetSuite Partner Program",
+          "url": "https://www.netsuite.com/portal/partners.shtml"
+        }
+      ]
     },
     "pennylane": {
       "supported_resource_categories": [
