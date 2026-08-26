@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "1a"
   verified: true
+  difficulty: moderate
+  partnershipRequired: true
+  sandboxAvailable: true
 ---
 
 # Intuit Enterprise Suite (via Apideck)
@@ -26,6 +29,29 @@ Access Intuit Enterprise Suite through Apideck's **Accounting** unified API — 
 - **Gotchas:** [page](https://developers.apideck.com/apis/accounting/intuit-enterprise-suite/gotchas)
 - **Intuit Enterprise Suite docs:** https://developer.intuit.com
 - **Homepage:** https://developer.intuit.com
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Self-Service Signup + App Review Required
+- **Vendor partnership required:** yes ([Intuit Developer Account](https://developer.intuit.com/app/developer/homepage)) — Free, self-service signup; an App Assessment Questionnaire must be approved before Intuit issues production credentials.
+- **Apideck-managed credentials:** Not available — you register your own Intuit Developer app and supply its Client ID and Secret.
+- **Account type required:** Active Intuit Enterprise Suite subscription
+- **Consumer access level:** Any user with Intuit Enterprise Suite access can authorize (Admin recommended for full data access)
+- **Sandbox:** available ([signup](https://developer.intuit.com/app/developer/qbo/docs/develop/sandboxes)) — QuickBooks Online sandbox companies, plus a dedicated single-entity Intuit Enterprise Suite sandbox, available from the Builder tier.
+- **Costs:** Free at the Builder tier (500,000 CorePlus read calls/month); paid tiers from $300/month (Silver) to $1,700/month (Gold) for higher volumes.
+- **Rate limits:** 500 requests/minute per company (realm), 10 concurrent per second; batch 120/minute (30 operations max). Paid tiers do not raise these limits.
+- **Authentication:** OAuth 2.0 (authorization code). Custom scopes supported.
+- **Webhooks:** Native — 13 event families including invoice, bill, payment, customer, and supplier (created/updated/deleted).
+
+**Important to know:**
+
+- Intuit Enterprise Suite shares its API, developer program, and OAuth client with QuickBooks Online — an existing QuickBooks integration on Apideck works with IES on the same production credentials with no code changes, and migration between the two connectors is supported.
+- Each entity in a multi-entity IES organization needs its own OAuth connection (one connection = one company realm), and the API supports no cross-entity transactions or intercompany postings.
+- Refresh tokens expire after 100 days of inactivity and, under Intuit's November 2025 policy, have a hard 5-year maximum lifetime regardless of activity (standard accounting scopes from October 2028; granular scopes from February 2027) — the consumer must then re-authorize.
+- The free Builder tier's CorePlus (read) cap is hard: calls above the monthly volume are blocked, not throttled, until the next billing cycle or a tier upgrade. Because the connector uses your own Intuit app, Intuit's Platform Service Fees bill to you, not to Apideck.
+- The IES-exclusive Dimensions API (GraphQL) is gated behind the paid Silver tier or higher — the free Builder tier has no access.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/intuit-enterprise-suite` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

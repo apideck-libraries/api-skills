@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "1a"
   verified: true
+  difficulty: straightforward
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # Zoho Books (via Apideck)
@@ -26,6 +29,28 @@ Access Zoho Books through Apideck's **Accounting** unified API — one of 34 Acc
 - **Gotchas:** [page](https://developers.apideck.com/apis/accounting/zoho-books/gotchas)
 - **Zoho Books docs:** https://www.zoho.com/books/api/v3/
 - **Homepage:** https://www.zoho.com/books/
+
+## At a glance
+
+- **Implementation difficulty:** straightforward — Self-Service OAuth, No Partnership Required
+- **Vendor partnership required:** no — No partner programme — self-service OAuth client registration is free. An optional Zoho Marketplace listing adds discoverability, not API access.
+- **Apideck-managed credentials:** Available for testing — the OAuth consent screen shows "Apideck"; use your own Zoho OAuth client for production.
+- **Account type required:** Active Zoho Books subscription (Free plan or higher)
+- **Consumer access level:** A user with organization-level access in the Zoho Books organization being authorized
+- **Sandbox:** not available — No separate sandbox environment is offered.
+- **Costs:** Free — Zoho charges nothing for API access on any Zoho Books plan, including the Free plan.
+- **Rate limits:** 100 requests/minute per organization; daily cap set by the consumer's plan (1,000 Free to 10,000 Premium); 5 concurrent calls on Free, 10 on paid plans.
+- **Authentication:** OAuth 2.0 (Authorization Code).
+- **Webhooks:** Virtual webhooks — created/updated/deleted events on 10 resources, including invoices, bills, payments, customers and suppliers.
+
+**Important to know:**
+
+- Zoho hosts each organization in one of seven regional data centres (US, EU, IN, AU, JP, CA, SA — verified June 2026). Apideck resolves the right region during authorization.
+- A Zoho Books account can hold several organizations and each is authorized separately, so a consumer running three organizations needs three connections.
+- Each consumer's own Zoho Books subscription sets their daily API quota, not yours — you cannot raise it for them. Design syncs around the lowest tier your consumers run on; heavier users unlock more frequent syncs by upgrading their own plan.
+- Refresh tokens never expire, but Zoho stores at most 20 per user: authorizing a 21st silently revokes the oldest, which can break a long-standing connection with no error or warning.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/zoho-books` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

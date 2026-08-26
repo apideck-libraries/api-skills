@@ -12,6 +12,9 @@ metadata:
   authType: custom
   tier: "1a"
   verified: true
+  difficulty: highly_complex
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # Workday (via Apideck)
@@ -27,6 +30,27 @@ Access Workday through Apideck's **Accounting, HRIS, ATS** unified API — one o
 - **Gotchas:** [Accounting](https://developers.apideck.com/apis/accounting/workday/gotchas) · [HRIS](https://developers.apideck.com/apis/hris/workday/gotchas) · [ATS](https://developers.apideck.com/apis/ats/workday/gotchas)
 - **Workday docs:** https://community.workday.com
 - **Homepage:** https://workday.com
+
+## At a glance
+
+- **Implementation difficulty:** highly complex — Custom Auth + Manual Per-Consumer Setup + Complex Permissions
+- **Vendor partnership required:** no ([Workday Partner Program](https://www.workday.com/en-us/company/partners/partner-program-overview.html)) — Apideck holds the Workday partnership; joining the Workday Partner Program yourself is optional.
+- **Apideck-managed credentials:** not available — Authentication is per consumer rather than per application, so there are no app-level credentials for Apideck to provide.
+- **Account type required:** Workday tenant with Web Services access
+- **Consumer access level:** Administrator with privileges to create Integration System Users and manage security groups and domain security policies
+- **Sandbox:** not available — Testing runs against a consumer's own Workday tenant — no free trial, and Development tenants are contract-gated to existing Workday customers.
+- **Costs:** No additional platform fees from Workday, and no connection limits imposed by Apideck.
+- **Rate limits:** No published hard limits; Workday throttles under high tenant load.
+- **Authentication:** Basic Authentication through a per-consumer Integration System User (ISU) — not OAuth.
+- **Webhooks:** Virtual webhooks — no native webhooks in Workday; Apideck polls employees, applicants, jobs, bills, suppliers, purchase orders, and customers.
+
+**Important to know:**
+
+- Permission setup differs per Unified API: the consumer's Workday admin grants domain security policies separately for HRIS (13+), ATS (11+) and Accounting (22+), plus Business Process Security Policy edits before any write succeeds.
+- Accounting writes are worktag-gated: invoices and purchase orders reject line items without a cost-center worktag (tracking_categories.id), and journal entries silently fall back to draft without one.
+- AP bills cannot be incrementally synced: Workday returns empty updated_at/created_at on Bills and rejects filter[updated_since] with an UnsupportedFiltersError, so plan full re-fetches.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/workday` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

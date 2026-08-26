@@ -45,7 +45,7 @@ Access Xero through Apideck's **Accounting** unified API — one of 34 Accountin
 
 **Important to know:**
 
-- App Partner certification requires onboarding 3 active customer connections within a 30-day period.
+- App Partner certification requires onboarding at least 10 active customer connections.
 - Refresh tokens expire after 60 days if unused — consumer must re-authorise.
 - Consumers can install a maximum of 2 uncertified apps — if at the limit they must remove another uncertified app first.
 - Certification compliance requires hiding the Apideck callback — a custom Vault domain must be configured before certification.
