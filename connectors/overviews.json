@@ -109,270 +109,13 @@
       ]
     },
     "exact-online": {
-      "partnership_note": "Yes — registering your app requires a paid Exact Online developer subscription (per country); App Store listing is optional.",
-      "difficulty_reason": "Paid Developer Subscription + App Review Required for External Consumers",
-      "account_type_required": "Active Exact Online subscription in any supported country edition (NL, BE, DE, ES, UK, US)",
-      "webhooks": "No webhooks — data sync is polling-based.",
-      "costs": "Developer subscription approx. €15/month per country (excl. VAT); no per-call charges. Consumers need a paid subscription after the 30-day trial.",
       "important_to_know": [
-        "Exact Online runs separate country instances (NL, BE, DE, FR, UK, US, ES) — an app registered in one country cannot serve consumers in another. On this connector the region is a per-connection setting; a connection left on the default Dutch domain fails to authorize elsewhere.",
+        "Exact Online runs separate country instances — an app registered in one country cannot serve consumers in another. Select and save the connection's region **before** authorizing; it defaults to the Dutch domain, so non-NL consumers fail otherwise.",
         "Your app must pass Exact's review before consumers outside your own Exact instance can connect — until it does, only your own subscription can be linked, which blocks pilot consumers.",
-        "Refresh tokens are single-use and expire after 30 days of inactivity — a dormant connection must be re-authorised by the consumer.",
         "Write-back is limited to transactions (invoices, bills, invoice items, payments, bill payments, journal entries); master data — customers, suppliers, ledger accounts, tax rates and credit notes — is read-only, so consumers maintain it in Exact Online.",
-        "If you are integrating for a single consumer, that consumer can register an internal app (an API key in their own Exact Online environment) instead — this avoids the developer's subscription, but the app can only ever be linked to that one subscription."
-      ],
-      "responsibility_matrix": [
-        {
-          "customer": "✓",
-          "area": "Sign Up for Developer's Subscription"
-        },
-        {
-          "customer": "✓",
-          "area": "Register & Configure App",
-          "apideck": "Docs provided"
-        },
-        {
-          "area": "Submit App for Exact Review",
-          "customer": "✓"
-        },
-        {
-          "area": "Add Credentials to Apideck",
-          "customer": "✓"
-        },
-        {
-          "apideck": "Handles OAuth flow",
-          "consumer": "✓",
-          "area": "Authorize Connection (OAuth)"
-        },
-        {
-          "area": "Grant Division Access",
-          "consumer": "✓"
-        },
-        {
-          "area": "Build via Unified API",
-          "customer": "✓",
-          "apideck": "Maintains connector"
-        },
-        {
-          "apideck": "✓ Automatic",
-          "area": "Token Refresh"
-        },
-        {
-          "apideck": "Logs & alerts",
-          "customer": "✓ Via Apideck Dashboard",
-          "area": "Monitor Connections",
-          "consumer": "✓ Can revoke anytime"
-        }
-      ],
-      "difficulty": "moderate",
-      "environment_notes": [
-        {
-          "description": "Testing and production share the same app credentials, and every environment holds live data — treat anything you write during testing as production data.",
-          "environment": "Single environment"
-        }
-      ],
-      "partnership_url": "https://apps.exactonline.com",
-      "partnership_portal_name": "Exact Online App Store (Manage my apps)",
-      "rate_limits": "60 requests/minute and 5,000 requests/day per app per division; Exact Online Premium raises the daily cap to 30,000.",
-      "authentication_note": "OAuth 2.0 (Authorization Code). Access tokens last 10 minutes.",
-      "sandbox_available": true,
-      "supported_resource_categories": [
-        {
-          "resources": [
-            "ledger-accounts",
-            "journal-entries",
-            "companies",
-            "balance-sheet",
-            "profit-and-loss",
-            "tax-rates"
-          ],
-          "name": "Core Financial"
-        },
-        {
-          "name": "Accounts Receivable",
-          "resources": [
-            "invoices",
-            "invoice-items",
-            "customers",
-            "credit-notes",
-            "payments"
-          ]
-        },
-        {
-          "resources": [
-            "bills",
-            "suppliers",
-            "bill-payments"
-          ],
-          "name": "Accounts Payable"
-        }
-      ],
-      "consumer_access_level": "Any user who can authorise third-party app connections; at consent time the app must be granted access to each division (administration) it needs to access.",
-      "partnership_required": true,
-      "apideck_credentials_available": false,
-      "sandbox_note": "No isolated sandbox — test with your developer subscription or a free 30-day trial (includes demo data)."
-    },
-    "exact-online-nl": {
-      "partnership_url": "https://apps.exactonline.com/nl/",
-      "authentication_note": "OAuth 2.0 (Authorization Code). Access tokens last 10 minutes.",
-      "consumer_access_level": "Any user who can authorise third-party app connections; at consent time the app must be granted access to each division (administration) it needs to access.",
-      "important_to_know": [
-        "Exact Online runs separate country instances — an app registered in one country cannot serve consumers in another. For regions beyond this instance, use exact-online (per-connection region) or exact-online-uk.",
-        "Your app must pass Exact's review before consumers outside your own Exact instance can connect — until it does, only your own subscription can be linked, which blocks pilot consumers.",
         "Refresh tokens are single-use and expire after 30 days of inactivity — a dormant connection must be re-authorised by the consumer.",
-        "Write-back is limited to transactions (invoices, bills, invoice items, payments, bill payments, journal entries); master data — customers, suppliers, ledger accounts, tax rates and credit notes — is read-only, so consumers maintain it in Exact Online.",
-        "If you are integrating for a single consumer, that consumer can register an internal app (an API key in their own Exact Online environment) instead — this avoids the developer's subscription, but the app can only ever be linked to that one subscription."
+        "Exact requires sequential API calls — parallel or multi-threaded requests are explicitly disallowed, so a high-volume sync must be serialised rather than fanned out."
       ],
-      "sandbox_note": "No isolated sandbox — test with your Dutch developer subscription, a free 30-day NL trial, or Apideck's temporary shared test credentials.",
-      "rate_limits": "60 requests/minute and 5,000 requests/day per app per division; Exact Online Premium raises the daily cap to 30,000.",
-      "account_type_required": "Active Exact Online subscription on the Dutch instance",
-      "partnership_note": "Yes — registering your app requires a paid Exact Online developer subscription (per country); App Store listing is optional.",
-      "difficulty": "moderate",
-      "costs": "Developer subscription approx. €15/month per country (excl. VAT); no per-call charges. Consumers need a paid subscription after the 30-day trial.",
-      "difficulty_reason": "Paid Developer Subscription + App Review Required for External Consumers",
-      "partnership_required": true,
-      "apideck_credentials_available": true,
-      "environment_notes": [
-        {
-          "description": "Testing and production share the same app credentials, and every environment holds live data — treat anything you write during testing as production data.",
-          "environment": "Single environment"
-        }
-      ],
-      "webhooks": "No webhooks — data sync is polling-based.",
-      "partnership_portal_name": "Exact Online App Store (Manage my apps)",
-      "apideck_credentials_note": "Available for testing — OAuth shows Apideck; production requires your own app. The only Exact Online connector with Apideck credentials.",
-      "sandbox_available": true,
-      "responsibility_matrix": [
-        {
-          "customer": "✓",
-          "area": "Sign Up for Developer's Subscription"
-        },
-        {
-          "apideck": "Docs provided",
-          "customer": "✓",
-          "area": "Register & Configure App"
-        },
-        {
-          "area": "Submit App for Exact Review",
-          "customer": "✓"
-        },
-        {
-          "area": "Add Credentials to Apideck",
-          "customer": "✓"
-        },
-        {
-          "area": "Authorize Connection (OAuth)",
-          "consumer": "✓",
-          "apideck": "Handles OAuth flow"
-        },
-        {
-          "consumer": "✓",
-          "area": "Grant Division Access"
-        },
-        {
-          "area": "Build via Unified API",
-          "customer": "✓",
-          "apideck": "Maintains connector"
-        },
-        {
-          "area": "Token Refresh",
-          "apideck": "✓ Automatic"
-        },
-        {
-          "customer": "✓ Via Apideck Dashboard",
-          "apideck": "Logs & alerts",
-          "consumer": "✓ Can revoke anytime",
-          "area": "Monitor Connections"
-        }
-      ],
-      "supported_resource_categories": [
-        {
-          "resources": [
-            "ledger-accounts",
-            "journal-entries",
-            "companies",
-            "balance-sheet",
-            "profit-and-loss",
-            "tax-rates"
-          ],
-          "name": "Core Financial"
-        },
-        {
-          "name": "Accounts Receivable",
-          "resources": [
-            "invoices",
-            "invoice-items",
-            "customers",
-            "credit-notes",
-            "payments"
-          ]
-        },
-        {
-          "resources": [
-            "bills",
-            "suppliers",
-            "bill-payments"
-          ],
-          "name": "Accounts Payable"
-        }
-      ]
-    },
-    "exact-online-uk": {
-      "webhooks": "No webhooks — data sync is polling-based.",
-      "costs": "Developer subscription approx. €15/month per country (excl. VAT); no per-call charges. Consumers need a paid subscription after the 30-day trial.",
-      "important_to_know": [
-        "Exact Online runs separate country instances — an app registered in one country cannot serve consumers in another. For regions beyond this instance, use exact-online (per-connection region) or exact-online-nl.",
-        "Your app must pass Exact's review before consumers outside your own Exact instance can connect — until it does, only your own subscription can be linked, which blocks pilot consumers.",
-        "Refresh tokens are single-use and expire after 30 days of inactivity — a dormant connection must be re-authorised by the consumer.",
-        "Write coverage is narrowest here: master data is read-only on all three Exact Online connectors, and on this UK connector bills are read-only too. Invoices, invoice items, payments, bill payments and journal entries accept writes.",
-        "If you are integrating for a single consumer, that consumer can register an internal app (an API key in their own Exact Online environment) instead — this avoids the developer's subscription, but the app can only ever be linked to that one subscription."
-      ],
-      "partnership_url": "https://apps.exactonline.com/gb/",
-      "responsibility_matrix": [
-        {
-          "customer": "✓",
-          "area": "Sign Up for Developer's Subscription"
-        },
-        {
-          "customer": "✓",
-          "area": "Register & Configure App",
-          "apideck": "Docs provided"
-        },
-        {
-          "area": "Submit App for Exact Review",
-          "customer": "✓"
-        },
-        {
-          "customer": "✓",
-          "area": "Add Credentials to Apideck"
-        },
-        {
-          "consumer": "✓",
-          "apideck": "Handles OAuth flow",
-          "area": "Authorize Connection (OAuth)"
-        },
-        {
-          "area": "Grant Division Access",
-          "consumer": "✓"
-        },
-        {
-          "customer": "✓",
-          "area": "Build via Unified API",
-          "apideck": "Maintains connector"
-        },
-        {
-          "apideck": "✓ Automatic",
-          "area": "Token Refresh"
-        },
-        {
-          "consumer": "✓ Can revoke anytime",
-          "area": "Monitor Connections",
-          "customer": "✓ Via Apideck Dashboard",
-          "apideck": "Logs & alerts"
-        }
-      ],
-      "difficulty": "moderate",
-      "partnership_portal_name": "Exact Online App Store (Manage my apps)",
       "supported_resource_categories": [
         {
           "resources": [
@@ -404,22 +147,275 @@
           "name": "Accounts Payable"
         }
       ],
-      "sandbox_available": true,
-      "consumer_access_level": "Any user who can authorise third-party app connections; at consent time the app must be granted access to each division (administration) it needs to access.",
-      "partnership_note": "Yes — registering your app requires a paid Exact Online developer subscription (per country); App Store listing is optional.",
-      "sandbox_note": "No isolated sandbox — test with your UK developer subscription or a free 30-day UK trial (includes demo data).",
-      "account_type_required": "Active Exact Online subscription on the UK instance",
       "difficulty_reason": "Paid Developer Subscription + App Review Required for External Consumers",
-      "rate_limits": "60 requests/minute and 5,000 requests/day per app per division; Exact Online Premium raises the daily cap to 30,000.",
+      "partnership_url": "https://apps.exactonline.com",
       "apideck_credentials_available": false,
+      "webhooks": "No webhooks — sync is polling-based; Exact Online's native webhooks are not surfaced through this connector.",
+      "sandbox_available": true,
+      "account_type_required": "Active Exact Online subscription in any supported country edition (NL, BE, DE, ES, UK, US)",
+      "responsibility_matrix": [
+        {
+          "customer": "✓",
+          "area": "Sign Up for Developer's Subscription"
+        },
+        {
+          "area": "Register & Configure App",
+          "apideck": "Docs provided",
+          "customer": "✓"
+        },
+        {
+          "customer": "✓",
+          "area": "Submit App for Exact Review"
+        },
+        {
+          "area": "Add Credentials to Apideck",
+          "customer": "✓"
+        },
+        {
+          "area": "Authorize Connection (OAuth)",
+          "consumer": "✓",
+          "apideck": "Handles OAuth flow"
+        },
+        {
+          "customer": "✓",
+          "apideck": "Maintains connector",
+          "area": "Build via Unified API"
+        },
+        {
+          "area": "Token Refresh",
+          "apideck": "✓ Automatic"
+        },
+        {
+          "apideck": "Logs & alerts",
+          "customer": "✓ Via Apideck Dashboard",
+          "area": "Monitor Connections",
+          "consumer": "✓ Can revoke anytime"
+        }
+      ],
+      "difficulty": "moderate",
+      "authentication_note": "OAuth 2.0 (Authorization Code).",
+      "costs": "Developer subscription approx. €15/month per country (excl. VAT); no per-call API charges.",
+      "partnership_portal_name": "Exact Online App Store (Manage my apps)",
+      "sandbox_note": "No isolated sandbox — test with your developer subscription or a free 30-day trial.",
+      "partnership_note": "Yes — registering your app requires a paid Exact Online developer subscription (per country); App Store listing is optional.",
+      "partnership_required": true,
+      "consumer_access_level": "Any user who can authorise third-party app connections; at consent time the app must be granted access to each division (administration) it needs to access.",
+      "rate_limits": "60 requests/minute and 5,000 requests/day per app per division; Exact Online Premium raises the daily cap to 30,000.",
       "environment_notes": [
         {
-          "description": "Testing and production share the same app credentials, and every environment holds live data — treat anything you write during testing as production data.",
+          "environment": "Single environment",
+          "description": "Testing and production share the same app credentials, and every environment holds live data — treat anything you write during testing as production data."
+        }
+      ]
+    },
+    "exact-online-nl": {
+      "partnership_url": "https://apps.exactonline.com/nl/",
+      "apideck_credentials_note": "Available for testing — OAuth shows Apideck; production requires your own app. The only Exact Online connector with Apideck credentials.",
+      "consumer_access_level": "Any user who can authorise third-party app connections.",
+      "rate_limits": "60 requests/minute and 5,000 requests/day per app per division; Exact Online Premium raises the daily cap to 30,000.",
+      "responsibility_matrix": [
+        {
+          "customer": "✓",
+          "area": "Sign Up for Developer's Subscription"
+        },
+        {
+          "apideck": "Docs provided",
+          "area": "Register & Configure App",
+          "customer": "✓"
+        },
+        {
+          "customer": "✓",
+          "area": "Submit App for Exact Review"
+        },
+        {
+          "customer": "✓",
+          "area": "Add Credentials to Apideck"
+        },
+        {
+          "area": "Authorize Connection (OAuth)",
+          "apideck": "Handles OAuth flow",
+          "consumer": "✓"
+        },
+        {
+          "area": "Grant Division Access",
+          "consumer": "✓"
+        },
+        {
+          "area": "Build via Unified API",
+          "customer": "✓",
+          "apideck": "Maintains connector"
+        },
+        {
+          "area": "Token Refresh",
+          "apideck": "✓ Automatic"
+        },
+        {
+          "apideck": "Logs & alerts",
+          "consumer": "✓ Can revoke anytime",
+          "customer": "✓ Via Apideck Dashboard",
+          "area": "Monitor Connections"
+        }
+      ],
+      "supported_resource_categories": [
+        {
+          "resources": [
+            "ledger-accounts",
+            "journal-entries",
+            "companies",
+            "balance-sheet",
+            "profit-and-loss",
+            "tax-rates"
+          ],
+          "name": "Core Financial"
+        },
+        {
+          "resources": [
+            "invoices",
+            "invoice-items",
+            "customers",
+            "credit-notes",
+            "payments"
+          ],
+          "name": "Accounts Receivable"
+        },
+        {
+          "name": "Accounts Payable",
+          "resources": [
+            "bills",
+            "suppliers",
+            "bill-payments"
+          ]
+        }
+      ],
+      "webhooks": "No webhooks — Exact Online has native webhooks, but Apideck does not surface them for this connector; sync by polling.",
+      "difficulty": "moderate",
+      "partnership_note": "Yes — registering your app requires a paid Exact Online developer subscription (per country); App Store listing is optional.",
+      "authentication_note": "OAuth 2.0 (Authorization Code).",
+      "sandbox_note": "No isolated sandbox — testing runs against live Dutch Exact Online environments.",
+      "costs": "Developer subscription approx. €15/month per country (excl. VAT); no per-call charges.",
+      "environment_notes": [
+        {
+          "description": "Testing and production share the same app credentials, and every environment holds live data. Test with your Dutch developer subscription, a free 30-day trial on the Dutch production instance, or Apideck's temporary shared test credentials (request access through Apideck Support) — treat anything you write during testing as production data.",
           "environment": "Single environment"
         }
       ],
       "partnership_required": true,
-      "authentication_note": "OAuth 2.0 (Authorization Code). Access tokens last 10 minutes."
+      "partnership_portal_name": "Exact Online App Store (Manage my apps)",
+      "sandbox_available": true,
+      "important_to_know": [
+        "Exact Online runs separate country instances — an app registered in one country cannot serve consumers in another. For regions beyond this instance, use exact-online (per-connection region) or exact-online-uk.",
+        "Your app must pass Exact's review before consumers outside your own Exact instance can connect — until it does, only your own subscription can be linked, which blocks pilot consumers.",
+        "Refresh tokens are single-use and expire after 30 days of inactivity — a dormant connection must be re-authorised by the consumer.",
+        "Write-back is limited to transactions (invoices, bills, invoice items, payments, bill payments, journal entries); master data — customers, suppliers, ledger accounts, tax rates and credit notes — is read-only, so consumers maintain it in Exact Online."
+      ],
+      "apideck_credentials_available": true,
+      "account_type_required": "Active Exact Online subscription on the Dutch instance",
+      "difficulty_reason": "Paid Developer Subscription + App Review Required for External Consumers"
+    },
+    "exact-online-uk": {
+      "environment_notes": [
+        {
+          "environment": "Single environment",
+          "description": "Testing and production share the same app credentials, and every environment holds live data. Test with your UK developer subscription or a free 30-day trial on the UK production instance (no credit card, example data preloaded) — treat anything you write during testing as production data."
+        }
+      ],
+      "authentication_note": "OAuth 2.0 (Authorization Code).",
+      "sandbox_available": true,
+      "partnership_note": "Yes — registering your app requires a paid Exact Online developer subscription (per country); App Store listing is optional.",
+      "account_type_required": "Active Exact Online subscription on the UK instance",
+      "costs": "Developer subscription approx. €15/month per country (excl. VAT); no per-call charges.",
+      "consumer_access_level": "Any user who can authorise third-party app connections.",
+      "apideck_credentials_available": false,
+      "webhooks": "No webhooks — Exact Online has native webhooks, but Apideck does not surface them for this connector; sync by polling.",
+      "partnership_url": "https://apps.exactonline.com/gb/",
+      "supported_resource_categories": [
+        {
+          "name": "Core Financial",
+          "resources": [
+            "ledger-accounts",
+            "journal-entries",
+            "companies",
+            "balance-sheet",
+            "profit-and-loss",
+            "tax-rates"
+          ]
+        },
+        {
+          "resources": [
+            "invoices",
+            "invoice-items",
+            "customers",
+            "credit-notes",
+            "payments"
+          ],
+          "name": "Accounts Receivable"
+        },
+        {
+          "resources": [
+            "bills",
+            "suppliers",
+            "bill-payments"
+          ],
+          "name": "Accounts Payable"
+        }
+      ],
+      "apideck_credentials_note": "Not available for this region — Apideck test credentials exist only for the exact-online-nl variant.",
+      "responsibility_matrix": [
+        {
+          "area": "Sign Up for Developer's Subscription",
+          "customer": "✓"
+        },
+        {
+          "apideck": "Docs provided",
+          "area": "Register & Configure App",
+          "customer": "✓"
+        },
+        {
+          "customer": "✓",
+          "area": "Submit App for Exact Review"
+        },
+        {
+          "customer": "✓",
+          "area": "Add Credentials to Apideck"
+        },
+        {
+          "consumer": "✓",
+          "apideck": "Handles OAuth flow",
+          "area": "Authorize Connection (OAuth)"
+        },
+        {
+          "consumer": "✓",
+          "area": "Grant Division Access"
+        },
+        {
+          "apideck": "Maintains connector",
+          "area": "Build via Unified API",
+          "customer": "✓"
+        },
+        {
+          "area": "Token Refresh",
+          "apideck": "✓ Automatic"
+        },
+        {
+          "customer": "✓ Via Apideck Dashboard",
+          "consumer": "✓ Can revoke anytime",
+          "apideck": "Logs & alerts",
+          "area": "Monitor Connections"
+        }
+      ],
+      "important_to_know": [
+        "Exact Online runs separate country instances — an app registered in one country cannot serve consumers in another. For regions beyond this instance, use exact-online (per-connection region) or exact-online-nl.",
+        "Your app must pass Exact's review before consumers outside your own Exact instance can connect — until it does, only your own subscription can be linked, which blocks pilot consumers.",
+        "Refresh tokens are single-use and expire after 30 days of inactivity — a dormant connection must be re-authorised by the consumer.",
+        "Write coverage is narrowest here: master data is read-only on all three Exact Online connectors, and on this UK connector bills are read-only too. Invoices, invoice items, payments, bill payments and journal entries accept writes.",
+        "Balance Sheet and Profit & Loss classification defaults follow Dutch RGS headings, so a UK administration normally needs the classification-title connection settings configured — otherwise report sections fall back to coarser groupings."
+      ],
+      "sandbox_note": "No isolated sandbox — testing runs against live UK Exact Online environments.",
+      "difficulty": "moderate",
+      "difficulty_reason": "Paid Developer Subscription + App Review Required for External Consumers",
+      "partnership_required": true,
+      "rate_limits": "60 requests/minute and 5,000 requests/day per app per division; Exact Online Premium raises the daily cap to 30,000.",
+      "partnership_portal_name": "Exact Online App Store (Manage my apps)"
     },
     "freeagent": {
       "difficulty_reason": "Self-Service OAuth App + Free Sandbox — No Partnership or App Review",
@@ -615,6 +611,260 @@
       "webhooks": "Virtual webhooks — Apideck polls Greenhouse and emits ats.applicant.created, ats.applicant.updated, ats.job.created, and ats.job.updated.",
       "account_type_required": "An active Greenhouse account with a Harvest V3 partner integration provisioned."
     },
+    "intuit-enterprise-suite": {
+      "partnership_note": "Free, self-service signup; an App Assessment Questionnaire must be approved before Intuit issues production credentials.",
+      "partnership_url": "https://developer.intuit.com/app/developer/homepage",
+      "costs": "Free at the Builder tier (500,000 CorePlus read calls/month); paid tiers from $300/month (Silver) to $1,700/month (Gold) for higher volumes.",
+      "authentication_note": "OAuth 2.0 (authorization code). Custom scopes supported.",
+      "partnership_required": true,
+      "apideck_credentials_available": false,
+      "apideck_credentials_note": "Not available — you register your own Intuit Developer app and supply its Client ID and Secret.",
+      "sandbox_available": true,
+      "sandbox_url": "https://developer.intuit.com/app/developer/qbo/docs/develop/sandboxes",
+      "difficulty": "moderate",
+      "sandbox_note": "QuickBooks Online sandbox companies, plus a dedicated single-entity Intuit Enterprise Suite sandbox, available from the Builder tier.",
+      "consumer_access_level": "Any user with Intuit Enterprise Suite access can authorize (Admin recommended for full data access)",
+      "partnership_portal_name": "Intuit Developer Account",
+      "rate_limits": "500 requests/minute per company (realm), 10 concurrent per second; batch 120/minute (30 operations max). Paid tiers do not raise these limits.",
+      "important_to_know": [
+        "Intuit Enterprise Suite shares its API, developer program, and OAuth client with QuickBooks Online — an existing QuickBooks integration on Apideck works with IES on the same production credentials with no code changes, and migration between the two connectors is supported.",
+        "Each entity in a multi-entity IES organization needs its own OAuth connection (one connection = one company realm), and the API supports no cross-entity transactions or intercompany postings.",
+        "Refresh tokens expire after 100 days of inactivity and, under Intuit's November 2025 policy, have a hard 5-year maximum lifetime regardless of activity (standard accounting scopes from October 2028; granular scopes from February 2027) — the consumer must then re-authorize.",
+        "The free Builder tier's CorePlus (read) cap is hard: calls above the monthly volume are blocked, not throttled, until the next billing cycle or a tier upgrade. Because the connector uses your own Intuit app, Intuit's Platform Service Fees bill to you, not to Apideck.",
+        "The IES-exclusive Dimensions API (GraphQL) is gated behind the paid Silver tier or higher — the free Builder tier has no access."
+      ],
+      "responsibility_matrix": [
+        {
+          "customer": "✓",
+          "area": "Create Intuit Developer Account"
+        },
+        {
+          "area": "Register & Configure App",
+          "customer": "✓",
+          "apideck": "Docs provided"
+        },
+        {
+          "customer": "✓",
+          "area": "Complete App Assessment",
+          "apideck": "Support available"
+        },
+        {
+          "customer": "✓",
+          "area": "Add Credentials to Apideck"
+        },
+        {
+          "apideck": "Handles OAuth flow",
+          "area": "Authorize Connection (OAuth, per entity)",
+          "consumer": "✓"
+        },
+        {
+          "customer": "✓",
+          "area": "Build via Unified API",
+          "apideck": "Maintains connector"
+        },
+        {
+          "apideck": "✓ Automatic",
+          "area": "Token Refresh"
+        },
+        {
+          "customer": "✓ Via Dashboard",
+          "area": "Monitor Connections",
+          "consumer": "✓ Can revoke anytime",
+          "apideck": "Logs & alerts"
+        }
+      ],
+      "environment_notes": [
+        {
+          "environment": "Sandbox",
+          "description": "Development and testing with sample data. Credentials: development keys from the Intuit Developer Portal (https://developer.intuit.com/app/developer/dashboard). Access: QuickBooks Online sandbox companies for core API testing, plus a dedicated single-entity Intuit Enterprise Suite sandbox created from the portal. Limitations: US-only; valid for 2 years, then recreated (sample data cannot be reset in place, and data cannot be imported or exported); 10 sandboxes maximum per developer account; QuickBooks Online sandboxes exclude IES-specific features such as multi-entity. Sandbox calls are never metered."
+        },
+        {
+          "environment": "Production",
+          "description": "Live consumer data. Credentials: production keys, issued only after App Assessment approval. **Development credentials CANNOT be used with production accounts**, and vice versa."
+        }
+      ],
+      "webhooks": "Native — 13 event families including invoice, bill, payment, customer, and supplier (created/updated/deleted).",
+      "account_type_required": "Active Intuit Enterprise Suite subscription",
+      "supported_resource_categories": [
+        {
+          "resources": [
+            "ledger-accounts",
+            "tax-rates",
+            "tax-codes",
+            "journal-entries",
+            "company-info",
+            "balance-sheet",
+            "profit-and-loss"
+          ],
+          "name": "Core Financial"
+        },
+        {
+          "name": "Accounts Receivable",
+          "resources": [
+            "invoices",
+            "invoice-items",
+            "customers",
+            "payments",
+            "payment-methods",
+            "credit-notes",
+            "refunds",
+            "sales-receipts"
+          ]
+        },
+        {
+          "name": "Accounts Payable",
+          "resources": [
+            "bills",
+            "bill-payments",
+            "suppliers",
+            "purchase-orders",
+            "expenses"
+          ]
+        },
+        {
+          "name": "Organizational",
+          "resources": [
+            "departments",
+            "locations",
+            "tracking-categories",
+            "projects"
+          ]
+        },
+        {
+          "name": "Other",
+          "resources": [
+            "attachments",
+            "aged-debtors",
+            "aged-creditors",
+            "quotes",
+            "preferences"
+          ]
+        }
+      ],
+      "difficulty_reason": "Self-Service Signup + App Review Required"
+    },
+    "microsoft-dynamics-365-business-central": {
+      "difficulty": "moderate",
+      "apideck_credentials_note": "Available for testing — OAuth shows \"Apideck\" as the requesting application. Production is bring-your-own Entra app.",
+      "webhooks": "No webhooks — Business Central changes must be polled.",
+      "responsibility_matrix": [
+        {
+          "apideck": "Docs provided",
+          "area": "Register App in Microsoft Entra",
+          "customer": "✓ (or use Apideck credentials)"
+        },
+        {
+          "area": "Grant Admin Consent",
+          "consumer": "✓ (Entra admin)",
+          "apideck": "Docs provided"
+        },
+        {
+          "area": "Rotate Client Secret",
+          "customer": "✓ (before expiry)"
+        },
+        {
+          "customer": "✓ (or use Apideck credentials)",
+          "area": "Add Credentials to Apideck"
+        },
+        {
+          "area": "Authorize Connection (OAuth)",
+          "apideck": "Handles OAuth flow",
+          "consumer": "✓"
+        },
+        {
+          "apideck": "Prompts in Vault",
+          "area": "Select Environment & Company",
+          "consumer": "✓"
+        },
+        {
+          "apideck": "Maintains connector",
+          "customer": "✓",
+          "area": "Build via Unified API"
+        },
+        {
+          "area": "Token Refresh",
+          "apideck": "✓ Automatic"
+        },
+        {
+          "consumer": "✓ Can revoke anytime",
+          "customer": "✓ Via Apideck Dashboard",
+          "area": "Monitor Connections",
+          "apideck": "Logs & alerts"
+        }
+      ],
+      "sandbox_url": "https://www.microsoft.com/en-us/dynamics-365/products/business-central",
+      "difficulty_reason": "Self-Service OAuth + Required Per-Consumer Environment & Company Setup",
+      "apideck_credentials_available": true,
+      "partnership_url": "https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app",
+      "account_type_required": "Business Central online (SaaS), any edition — on-premises deployments are not supported.",
+      "authentication_note": "OAuth 2.0 (Authorization Code) via a Microsoft Entra ID app registration.",
+      "environment_notes": [
+        {
+          "environment": "Single environment (sandbox and production share the same credential structure)",
+          "description": "Business Central uses one credential structure for both: the Environment the consumer selects during setup (Sandbox or Production) decides which instance is accessed, and there are no separate development credentials. To test, use a free 30-day Business Central trial, a sandbox environment included with an active Essentials or Premium subscription (CRONUS demo data or a copy of production data, created in the Business Central admin center), or a Microsoft Business Central Partner Sandbox license. Per-user rate limits apply in every environment, so take care when testing against a company that holds production data."
+        }
+      ],
+      "consumer_access_level": "Any Business Central user can authorize; a Microsoft Entra admin grants consent once per tenant.",
+      "rate_limits": "6,000 requests per user per 5-minute sliding window; 5 concurrent requests per user.",
+      "important_to_know": [
+        "Purchase orders post as header-only documents: line items are accepted on write but never reach Business Central. Reads return line items correctly.",
+        "Posting-group fields (Vendor Posting Group, and the G/L Account Card's posting groups) are not settable through the API: configure them in Business Central — or link a Vendor Template in API Setup — before creating suppliers, bills, or expenses.",
+        "Two silent-breakage traps: an Entra client secret expires after at most 24 months (rotate it, or every connection on that app stops working), and a refresh token expires after 90 days of inactivity, so dormant connections need re-authorizing.",
+        "Authorizing is not the last step — the consumer must then select an Environment, save it, and select a Company before the connection returns data."
+      ],
+      "partnership_note": "No — no partner programme or app review required.",
+      "supported_resource_categories": [
+        {
+          "name": "Core Financial",
+          "resources": [
+            "ledger-accounts",
+            "journal-entries",
+            "tax-rates",
+            "tracking-categories",
+            "bank-accounts",
+            "company-info",
+            "companies"
+          ]
+        },
+        {
+          "name": "Accounts Receivable",
+          "resources": [
+            "invoices",
+            "credit-notes",
+            "payments",
+            "customers",
+            "invoice-items"
+          ]
+        },
+        {
+          "resources": [
+            "bills",
+            "bill-payments",
+            "purchase-orders",
+            "suppliers",
+            "expenses"
+          ],
+          "name": "Accounts Payable"
+        },
+        {
+          "resources": [
+            "locations",
+            "employees"
+          ],
+          "name": "Organizational"
+        },
+        {
+          "resources": [
+            "attachments"
+          ],
+          "name": "Other"
+        }
+      ],
+      "costs": "No Apideck fee. Business Central licence: Essentials $80, Premium $110, Team Members $8 per user/month, billed yearly (list price, varies by region).",
+      "sandbox_available": true,
+      "sandbox_note": "Free 30-day trial (fastest route), or up to three sandbox environments included with an active Essentials or Premium subscription.",
+      "partnership_required": false
+    },
     "mrisoftware": {
       "rate_limits": "Partner keys: 1,000 requests per rolling 5-minute window. Developer keys carry a lower, unpublished rate. MRI documents no per-day figure.",
       "sandbox_available": false,
@@ -780,14 +1030,62 @@
       "authentication_note": "OAuth 2.0 (Authorization Code)"
     },
     "netsuite": {
+      "sandbox_url": "https://help.apideck.com/en/articles/7774658",
+      "partnership_note": "Optional — Partner Trial accounts are available for extended testing.",
+      "important_to_know": [
+        "Oracle has scheduled SOAP removal: 2025.2 is the last SOAP endpoint, release 2027.1 blocks new SOAP integrations, and 2028.2 removes SOAP entirely. Apideck already offers NetSuite REST support via Proxy.",
+        "Missing role permissions can fail silently: a filtered list call the role is not permitted for returns 200 OK with an empty result set instead of an error, so an under-permissioned connection looks healthy while returning no data.",
+        "Custom forms can break writes: a mandatory custom field on a standard NetSuite form makes API writes to that record type fail, blocking creates you had tested successfully.",
+        "SuiteTax accounts are supported, but the connection must declare SuiteTax via an optional connection setting — without it, tax data is served from the wrong records.",
+        "OneWorld (multi-subsidiary) accounts need one connection per subsidiary — there is no per-request company-context switching, and company-info resolves to the root subsidiary."
+      ],
+      "consumer_access_level": "Administrator, or a custom role with access-token login, both SOAP and REST Web Services, and accounting list/setup permissions",
+      "environment_notes": [
+        {
+          "description": "NetSuite uses one credential structure everywhere — the Account ID alone determines which instance is reached, and sandbox Account IDs carry a suffix such as _SB1.",
+          "environment": "General"
+        },
+        {
+          "description": "Purpose: development and testing. Routes: Apideck's temporary shared sandbox or an Apideck-assisted NetSuite sandbox, both requested through Apideck Support (the shared sandbox requires an enterprise contract, and NetSuite charges its own fee for sandbox accounts); the consumer's own sandbox; or a time-limited NetSuite Partner Trial. Oracle does not offer direct trial accounts. ⚠️ Tokens do not survive a sandbox refresh — the integration record and access token must be recreated afterwards, which is expected NetSuite behavior.",
+          "environment": "Sandbox"
+        },
+        {
+          "environment": "Production",
+          "description": "Purpose: live customer data. Credentials: the consumer's own Account ID plus Token ID and Token Secret (and Consumer Key/Secret on the manual route)."
+        }
+      ],
+      "rate_limits": "Per-account concurrency (not requests/minute): 5 Standard, 15 Premium, 20 Enterprise/Ultimate, +10 per SuiteCloud Plus license; Apideck retries automatically.",
+      "difficulty": "highly_complex",
+      "difficulty_reason": "Custom Auth + Manual Per-Consumer Token Setup",
+      "apideck_credentials_available": true,
+      "apideck_credentials_note": "Shared Consumer Key/Secret ship with Apideck's NetSuite SuiteBundle (ID 705521); consumers still supply their own Account ID and Token ID/Secret.",
+      "webhooks": "Virtual webhooks — created/updated/deleted across 11 accounting resources (invoices, bills, payments, customers, suppliers, projects and more).",
       "partnership_url": "https://www.netsuite.com/portal/partners.shtml",
-      "authentication_note": "Token-Based Authentication (TBA), NetSuite's OAuth 1.0-based scheme — consumers create an integration record and credentials manually; no interactive OAuth flow.",
-      "account_type_required": "NetSuite with SuiteTalk (Web Services) enabled",
-      "partnership_required": false,
+      "account_type_required": "NetSuite with SuiteTalk (Web Services) and Token-Based Authentication enabled",
+      "authentication_note": "Token-Based Authentication (TBA), NetSuite's OAuth 1.0-based scheme — consumers create an integration record and credentials manually; no OAuth redirect.",
+      "external_guides": [
+        {
+          "url": "https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/section_4247337262.html",
+          "title": "Token-Based Authentication Guide",
+          "source": "Oracle"
+        },
+        {
+          "url": "https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/chapter_1540391670.html",
+          "title": "SuiteTalk Web Services",
+          "source": "Oracle"
+        },
+        {
+          "title": "OneWorld Multi-Subsidiary",
+          "source": "Oracle",
+          "url": "https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/chapter_N295957.html"
+        },
+        {
+          "title": "NetSuite Partner Program",
+          "source": "NetSuite",
+          "url": "https://www.netsuite.com/portal/partners.shtml"
+        }
+      ],
       "costs": "No additional platform fees, and no connection limits imposed.",
-      "rate_limits": "Vary by the consumer's NetSuite subscription and are not publicly documented by Oracle; Apideck handles retries automatically.",
-      "sandbox_available": true,
-      "sandbox_note": "Via Apideck's temporary shared sandbox (enterprise contract required — contact Apideck Support).",
       "responsibility_matrix": [
         {
           "customer": "✓",
@@ -795,9 +1093,9 @@
           "apideck": "Provides (enterprise contract)"
         },
         {
-          "apideck": "Instructions provided",
+          "consumer": "✓",
           "area": "Enable TBA & SuiteTalk",
-          "consumer": "✓"
+          "apideck": "Instructions provided"
         },
         {
           "consumer": "✓",
@@ -805,72 +1103,36 @@
           "area": "Create Integration Record"
         },
         {
+          "apideck": "Instructions provided",
           "area": "Configure Role & Permissions",
-          "consumer": "✓",
-          "apideck": "Instructions provided"
-        },
-        {
-          "area": "Generate Access Token",
-          "consumer": "✓",
-          "apideck": "Instructions provided"
+          "consumer": "✓"
         },
         {
           "consumer": "✓",
+          "apideck": "Instructions provided",
+          "area": "Generate Access Token"
+        },
+        {
           "apideck": "Secure connection form",
-          "area": "Provide Credentials"
+          "area": "Provide Credentials",
+          "consumer": "✓"
         },
         {
-          "customer": "✓",
           "apideck": "Maintains connector",
-          "area": "Build via Unified API"
+          "area": "Build via Unified API",
+          "customer": "✓"
         },
         {
-          "apideck": "Logs & alerts",
           "area": "Monitor Connections",
+          "customer": "✓ Via dashboard",
           "consumer": "Can regenerate tokens",
-          "customer": "✓ Via dashboard"
-        }
-      ],
-      "important_to_know": [
-        "SuiteTax not supported — tax data is unavailable when SuiteTax is enabled on a consumer's account.",
-        "Oracle has scheduled SOAP removal: 2025.2 is the last SOAP endpoint, release 2027.1 blocks new SOAP integrations, and 2028.2 removes SOAP entirely. Apideck has made a NetSuite REST integration available via Proxy.",
-        "TBA tokens never expire on their own — a connection keeps working until the consumer regenerates the token or deletes the integration record.",
-        "Custom forms can break writes: a mandatory custom field on a standard NetSuite form makes API writes to that record type fail, blocking creates you had tested successfully."
-      ],
-      "environment_notes": [
-        {
-          "environment": "Sandbox & Production (shared credential structure)",
-          "description": "NetSuite uses the same credential structure for both — the Account ID determines which instance is reached, and sandbox Account IDs carry a suffix such as _SB1. Testing options: the Apideck temporary shared sandbox, the consumer's own sandbox, or a time-limited NetSuite Partner Trial; Oracle does not offer direct trial accounts. ⚠️ Tokens do not survive a sandbox refresh — the consumer must recreate the integration record and access token afterwards, which is expected NetSuite behavior."
+          "apideck": "Logs & alerts"
         }
       ],
       "partnership_portal_name": "NetSuite Partner Program",
-      "difficulty": "highly_complex",
-      "webhooks": "Native webhooks not supported — Apideck provides Virtual Webhooks (polling-based change detection) instead.",
-      "apideck_credentials_available": false,
-      "consumer_access_level": "Administrator or role with User Access Tokens and SOAP Web Services permissions",
-      "difficulty_reason": "Custom Auth + Manual Token Setup",
-      "external_guides": [
-        {
-          "url": "https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/section_4247337262.html",
-          "source": "Oracle",
-          "title": "Token-Based Authentication Guide"
-        },
-        {
-          "url": "https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/chapter_1540391670.html",
-          "source": "Oracle",
-          "title": "SuiteTalk Web Services"
-        },
-        {
-          "source": "Oracle",
-          "url": "https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/chapter_N295957.html",
-          "title": "OneWorld Multi-Subsidiary"
-        },
-        {
-          "source": "NetSuite",
-          "title": "NetSuite Partner Program",
-          "url": "https://www.netsuite.com/portal/partners.shtml"
-        }
-      ]
+      "sandbox_available": true,
+      "sandbox_note": "Via Apideck's temporary shared sandbox (enterprise contract required — contact Apideck Support).",
+      "partnership_required": false
     },
     "pennylane": {
       "supported_resource_categories": [
@@ -1581,32 +1843,267 @@
       "difficulty_reason": "Paid Web Services Developer License + Per-Consumer Admin Authorization Required",
       "apideck_credentials_note": "Available for testing and evaluation — consumers authorize against Apideck's registered Sage application, so the consent screen shows Apideck branding."
     },
+    "workday": {
+      "partnership_required": false,
+      "environment_notes": [
+        {
+          "description": "Testing options: ask a consumer to share a testing tenant, test against a consumer's production tenant using a dedicated limited-permission ISU, or — for enterprise customers who cannot obtain a testing tenant through a consumer — contact Apideck Support to discuss options. Be cautious when testing against production data.",
+          "environment": "Single environment (testing and production share credentials)"
+        }
+      ],
+      "external_guides": [
+        {
+          "source": "Workday Developers",
+          "title": "Workday APIs (REST/SOAP/Graph overview)",
+          "url": "https://developer.workday.com/api-overview"
+        },
+        {
+          "url": "https://developer.workday.com/documentation/GUID-cb3e0fcd-bb97-4005-8d10-3a02e88dab71-enHYPHENus/ConceptISUAuthentication",
+          "source": "Workday Developers",
+          "title": "Concept: ISU Authentication"
+        },
+        {
+          "source": "Workday Administrator Guide",
+          "title": "Reference: Integrations and Web Service Limits",
+          "url": "https://doc.workday.com/admin-guide/en-us/manage-workday/tenant-configuration/it-administrator-resources/limitations-and-availability/dan1370797408285.html"
+        },
+        {
+          "title": "Partner Program Overview",
+          "url": "https://www.workday.com/en-us/company/partners/partner-program-overview.html",
+          "source": "Workday"
+        }
+      ],
+      "apideck_credentials_available": false,
+      "partnership_note": "Apideck holds the Workday partnership; joining the Workday Partner Program yourself is optional.",
+      "webhooks": "Virtual webhooks — no native webhooks in Workday; Apideck polls employees, applicants, jobs, bills, suppliers, purchase orders, and customers.",
+      "difficulty": "highly_complex",
+      "account_type_required": "Workday tenant with Web Services access",
+      "sandbox_note": "Testing runs against a consumer's own Workday tenant — no free trial, and Development tenants are contract-gated to existing Workday customers.",
+      "authentication_note": "Basic Authentication through a per-consumer Integration System User (ISU) — not OAuth.",
+      "apideck_credentials_note": "Authentication is per consumer rather than per application, so there are no app-level credentials for Apideck to provide.",
+      "consumer_access_level": "Administrator with privileges to create Integration System Users and manage security groups and domain security policies",
+      "responsibility_matrix": [
+        {
+          "consumer": "✓",
+          "apideck": "Instructions provided",
+          "area": "Create Integration System User (ISU)"
+        },
+        {
+          "consumer": "✓",
+          "apideck": "Instructions provided",
+          "area": "Create Security Group"
+        },
+        {
+          "area": "Grant Domain Permissions",
+          "consumer": "✓",
+          "apideck": "Required domains documented"
+        },
+        {
+          "area": "Activate Security Policy Changes",
+          "consumer": "✓",
+          "apideck": "Instructions provided"
+        },
+        {
+          "area": "Provide Credentials",
+          "consumer": "✓",
+          "apideck": "Secure connection form"
+        },
+        {
+          "area": "Build via Unified API",
+          "customer": "✓",
+          "apideck": "Maintains connector"
+        },
+        {
+          "apideck": "Logs & alerts",
+          "consumer": "Can revoke by disabling ISU",
+          "area": "Monitor Connections",
+          "customer": "✓ Via Dashboard"
+        }
+      ],
+      "rate_limits": "No published hard limits; Workday throttles under high tenant load.",
+      "sandbox_available": false,
+      "difficulty_reason": "Custom Auth + Manual Per-Consumer Setup + Complex Permissions",
+      "partnership_url": "https://www.workday.com/en-us/company/partners/partner-program-overview.html",
+      "costs": "No additional platform fees from Workday, and no connection limits imposed by Apideck.",
+      "important_to_know": [
+        "Permission setup differs per Unified API: the consumer's Workday admin grants domain security policies separately for HRIS (13+), ATS (11+) and Accounting (22+), plus Business Process Security Policy edits before any write succeeds.",
+        "Accounting writes are worktag-gated: invoices and purchase orders reject line items without a cost-center worktag (tracking_categories.id), and journal entries silently fall back to draft without one.",
+        "AP bills cannot be incrementally synced: Workday returns empty updated_at/created_at on Bills and rejects filter[updated_since] with an UnsupportedFiltersError, so plan full re-fetches."
+      ],
+      "partnership_portal_name": "Workday Partner Program",
+      "supported_resource_categories": [
+        {
+          "name": "HR & Organization (HRIS)",
+          "resources": [
+            "employees",
+            "companies",
+            "departments",
+            "job-profiles"
+          ]
+        },
+        {
+          "name": "Recruiting (ATS)",
+          "resources": [
+            "applicants",
+            "jobs"
+          ]
+        },
+        {
+          "resources": [
+            "invoices",
+            "invoice-items",
+            "payments",
+            "customers",
+            "customer-categories",
+            "revenue-categories"
+          ],
+          "name": "Accounts Receivable (Accounting)"
+        },
+        {
+          "name": "Accounts Payable & Spend (Accounting)",
+          "resources": [
+            "bills",
+            "bill-payments",
+            "suppliers",
+            "purchase-orders",
+            "purchase-items",
+            "expenses",
+            "expense-credit-cards"
+          ]
+        },
+        {
+          "resources": [
+            "journal-entries",
+            "ledger-accounts",
+            "bank-accounts",
+            "tax-rates",
+            "subsidiaries",
+            "categories",
+            "resource-categories",
+            "projects",
+            "attachments"
+          ],
+          "name": "General Ledger & Reference Data (Accounting)"
+        }
+      ]
+    },
     "xero": {
-      "webhooks": "Native — invoice and bill events (created and updated).",
       "environment_notes": [
         {
           "environment": "Sandbox & Production (shared credentials)",
           "description": "Xero uses the same credential structure for sandbox and production — the connected Xero organisation determines which data is accessed. Testing options: the Xero Demo Company (included with every developer account, sample data) and a 30-day full-featured free trial via xero.com/signup."
         },
         {
-          "description": "When a consumer authorises your app, they choose which Xero organisation to connect. Consumers with multiple organisations require a separate connection per organisation.",
-          "environment": "Multi-Organisation"
+          "environment": "Multi-Organisation",
+          "description": "When a consumer authorises your app, they choose which Xero organisation to connect. Consumers with multiple organisations require a separate connection per organisation."
         }
       ],
-      "partnership_note": "Required for >25 connections. Xero App Partner Program — certification involves multiple technical checkpoints.",
-      "partnership_required": true,
-      "sandbox_note": "Free via Xero Developer Portal (demo company included).",
       "partnership_url": "https://developer.xero.com/documentation/xero-app-store/app-partner-guides/app-partner-steps/",
-      "sandbox_url": "https://developer.xero.com/",
-      "consumer_access_level": "Standard or Adviser level user (Admin recommended for full data access)",
-      "rate_limits": "5,000 calls/day per organisation; 60 calls/minute per organisation; 5 concurrent calls/second.",
       "account_type_required": "Any active Xero subscription",
-      "difficulty_reason": "Self-Service OAuth + App Partner Certification Required to Scale",
-      "apideck_credentials_available": false,
+      "important_to_know": [
+        "App Partner certification requires onboarding at least 10 active customer connections.",
+        "Refresh tokens expire after 60 days if unused — consumer must re-authorise.",
+        "Consumers can install a maximum of 2 uncertified apps — if at the limit they must remove another uncertified app first.",
+        "Certification compliance requires hiding the Apideck callback — a custom Vault domain must be configured before certification."
+      ],
+      "rate_limits": "5,000 calls/day per organisation; 60 calls/minute per organisation; 5 concurrent calls/second.",
+      "responsibility_matrix": [
+        {
+          "customer": "✓",
+          "area": "Create Xero Developer Account"
+        },
+        {
+          "customer": "✓",
+          "apideck": "Docs provided",
+          "area": "Register Xero App"
+        },
+        {
+          "area": "Add Credentials to Apideck",
+          "customer": "✓"
+        },
+        {
+          "customer": "✓ (if >25 connections)",
+          "area": "Apply for App Partner Certification",
+          "apideck": "Support available"
+        },
+        {
+          "customer": "✓ (if certifying)",
+          "apideck": "Configures on request",
+          "area": "Set Up Custom Domain (Vault)"
+        },
+        {
+          "area": "Register Webhook (Optional)",
+          "customer": "✓",
+          "apideck": "Webhook URL provided"
+        },
+        {
+          "area": "Authorize Connection (OAuth)",
+          "apideck": "Handles OAuth flow",
+          "consumer": "✓"
+        },
+        {
+          "area": "Build via Unified API",
+          "customer": "✓",
+          "apideck": "Maintains connector"
+        },
+        {
+          "area": "Token Refresh",
+          "apideck": "✓ Automatic"
+        },
+        {
+          "customer": "Via dashboard",
+          "area": "Monitor Connections",
+          "consumer": "Can revoke anytime",
+          "apideck": "Logs and alerts"
+        }
+      ],
       "costs": "Free at Starter tier (up to 5 connections). Tiered, usage-based pricing applies at scale — Core, Plus, Advanced (~$895/mo, 10k connections), and Enterprise tiers, effective March 2, 2026 (replacing the previous 15% App Store revenue share). Premium endpoints (Journals, Xero Practice Manager) require the Advanced tier or above. Separate from Apideck pricing.",
+      "difficulty": "moderate",
+      "sandbox_url": "https://developer.xero.com/",
+      "external_guides": [
+        {
+          "title": "Xero API Overview",
+          "url": "https://developer.xero.com/documentation/api/accounting/overview",
+          "source": "Xero"
+        },
+        {
+          "source": "Xero",
+          "url": "https://developer.xero.com/documentation/guides/oauth2/overview/",
+          "title": "OAuth 2.0 Guide"
+        },
+        {
+          "title": "App Partner Steps",
+          "source": "Xero",
+          "url": "https://developer.xero.com/documentation/xero-app-store/app-partner-guides/app-partner-steps/"
+        },
+        {
+          "url": "https://developer.xero.com/documentation/xero-app-store/app-partner-guides/certification-checkpoints/",
+          "title": "Certification Checkpoints",
+          "source": "Xero"
+        },
+        {
+          "url": "https://developer.xero.com/documentation/best-practices/api-call-efficiencies/rate-limits",
+          "title": "Rate Limits & API Efficiency",
+          "source": "Xero"
+        },
+        {
+          "source": "Xero",
+          "title": "API Pricing (Effective March 2026)",
+          "url": "https://developer.xero.com/pricing"
+        }
+      ],
       "sandbox_available": true,
+      "partnership_required": true,
+      "difficulty_reason": "Self-Service OAuth + App Partner Certification Required to Scale",
+      "partnership_note": "Required for >25 connections. Xero App Partner Program — certification involves multiple technical checkpoints.",
+      "webhooks": "Native — invoice and bill events (created and updated).",
+      "apideck_credentials_available": false,
+      "sandbox_note": "Free via Xero Developer Portal (demo company included).",
+      "partnership_portal_name": "Xero App Partner Program",
+      "consumer_access_level": "Standard or Adviser level user (Admin recommended for full data access)",
       "supported_resource_categories": [
         {
+          "name": "Core Financial",
           "resources": [
             "ledger-accounts",
             "tax-rates",
@@ -1614,18 +2111,17 @@
             "company-info",
             "balance-sheet",
             "profit-and-loss"
-          ],
-          "name": "Core Financial"
+          ]
         },
         {
-          "name": "Accounts Receivable",
           "resources": [
             "invoices",
             "invoice-items",
             "customers",
             "payments",
             "credit-notes"
-          ]
+          ],
+          "name": "Accounts Receivable"
         },
         {
           "name": "Accounts Payable",
@@ -1645,45 +2141,95 @@
           "name": "Organizational"
         }
       ],
-      "important_to_know": [
-        "App Partner certification requires onboarding 3 active customer connections within a 30-day period.",
-        "Refresh tokens expire after 60 days if unused — consumer must re-authorise.",
-        "Consumers can install a maximum of 2 uncertified apps — if at the limit they must remove another uncertified app first.",
-        "Certification compliance requires hiding the Apideck callback — a custom Vault domain must be configured before certification."
+      "authentication_note": "OAuth 2.0 (Authorization Code)."
+    },
+    "zoho-books": {
+      "supported_resource_categories": [
+        {
+          "resources": [
+            "ledger-accounts",
+            "journal-entries",
+            "tax-rates",
+            "currencies"
+          ],
+          "name": "Core Financial"
+        },
+        {
+          "resources": [
+            "invoices",
+            "invoice-items",
+            "customers",
+            "payments",
+            "invoices-payments",
+            "credit-notes"
+          ],
+          "name": "Accounts Receivable"
+        },
+        {
+          "name": "Accounts Payable",
+          "resources": [
+            "bills",
+            "bill-payments",
+            "suppliers",
+            "purchase-orders",
+            "expenses"
+          ]
+        },
+        {
+          "name": "Organization",
+          "resources": [
+            "organization",
+            "projects"
+          ]
+        }
       ],
+      "partnership_note": "No partner programme — self-service OAuth client registration is free. An optional Zoho Marketplace listing adds discoverability, not API access.",
+      "sandbox_note": "No separate sandbox environment is offered.",
+      "important_to_know": [
+        "Zoho hosts each organization in one of seven regional data centres (US, EU, IN, AU, JP, CA, SA — verified June 2026). Apideck resolves the right region during authorization.",
+        "A Zoho Books account can hold several organizations and each is authorized separately, so a consumer running three organizations needs three connections.",
+        "Each consumer's own Zoho Books subscription sets their daily API quota, not yours — you cannot raise it for them. Design syncs around the lowest tier your consumers run on; heavier users unlock more frequent syncs by upgrading their own plan.",
+        "Refresh tokens never expire, but Zoho stores at most 20 per user: authorizing a 21st silently revokes the oldest, which can break a long-standing connection with no error or warning."
+      ],
+      "webhooks": "Virtual webhooks — created/updated/deleted events on 10 resources, including invoices, bills, payments, customers and suppliers.",
+      "account_type_required": "Active Zoho Books subscription (Free plan or higher)",
+      "consumer_access_level": "A user with organization-level access in the Zoho Books organization being authorized",
+      "sandbox_available": false,
+      "difficulty": "straightforward",
+      "difficulty_reason": "Self-Service OAuth, No Partnership Required",
+      "beta": false,
+      "environment_notes": [
+        {
+          "environment": "Single Environment",
+          "description": "Zoho Books uses the same credentials for testing and production — there is no distinct-credential sandbox tier. To test, start a free Zoho Books trial at https://www.zoho.com/books/signup/ or add a dedicated test organization to your own Zoho Books account. A dedicated test organization is the safer choice during development, since anything else you connect is live production data."
+        }
+      ],
+      "apideck_credentials_available": true,
+      "partnership_required": false,
+      "apideck_credentials_note": "Available for testing — the OAuth consent screen shows \"Apideck\"; use your own Zoho OAuth client for production.",
+      "costs": "Free — Zoho charges nothing for API access on any Zoho Books plan, including the Free plan.",
       "responsibility_matrix": [
         {
-          "customer": "✓",
-          "area": "Create Xero Developer Account"
+          "area": "Create Zoho Developer Account",
+          "customer": "✓ (or use Apideck credentials)"
         },
         {
-          "area": "Register Xero App",
-          "customer": "✓",
-          "apideck": "Docs provided"
+          "customer": "✓ (or use Apideck credentials)",
+          "apideck": "Docs provided",
+          "area": "Create OAuth Application"
         },
         {
-          "customer": "✓",
+          "customer": "✓ (or use Apideck credentials)",
           "area": "Add Credentials to Apideck"
         },
         {
-          "apideck": "Support available",
-          "area": "Apply for App Partner Certification",
-          "customer": "✓ (if >25 connections)"
-        },
-        {
-          "area": "Set Up Custom Domain (Vault)",
-          "customer": "✓ (if certifying)",
-          "apideck": "Configures on request"
-        },
-        {
-          "customer": "✓",
-          "apideck": "Webhook URL provided",
-          "area": "Register Webhook (Optional)"
-        },
-        {
           "consumer": "✓",
-          "apideck": "Handles OAuth flow",
-          "area": "Authorize Connection (OAuth)"
+          "area": "Authorize Connection (OAuth)",
+          "apideck": "Handles OAuth flow"
+        },
+        {
+          "area": "Select Organization",
+          "consumer": "✓"
         },
         {
           "area": "Build via Unified API",
@@ -1691,51 +2237,18 @@
           "customer": "✓"
         },
         {
-          "area": "Token Refresh",
-          "apideck": "✓ Automatic"
+          "apideck": "✓ Automatic",
+          "area": "Token Refresh"
         },
         {
-          "customer": "Via dashboard",
-          "consumer": "Can revoke anytime",
-          "apideck": "Logs and alerts",
+          "customer": "✓ Via Dashboard",
+          "apideck": "Logs & alerts",
+          "consumer": "✓ Can revoke anytime",
           "area": "Monitor Connections"
         }
       ],
-      "partnership_portal_name": "Xero App Partner Program",
-      "difficulty": "moderate",
       "authentication_note": "OAuth 2.0 (Authorization Code).",
-      "external_guides": [
-        {
-          "title": "Xero API Overview",
-          "url": "https://developer.xero.com/documentation/api/accounting/overview",
-          "source": "Xero"
-        },
-        {
-          "url": "https://developer.xero.com/documentation/guides/oauth2/overview/",
-          "source": "Xero",
-          "title": "OAuth 2.0 Guide"
-        },
-        {
-          "source": "Xero",
-          "title": "App Partner Steps",
-          "url": "https://developer.xero.com/documentation/xero-app-store/app-partner-guides/app-partner-steps/"
-        },
-        {
-          "title": "Certification Checkpoints",
-          "url": "https://developer.xero.com/documentation/xero-app-store/app-partner-guides/certification-checkpoints/",
-          "source": "Xero"
-        },
-        {
-          "url": "https://developer.xero.com/documentation/best-practices/api-call-efficiencies/rate-limits",
-          "source": "Xero",
-          "title": "Rate Limits & API Efficiency"
-        },
-        {
-          "url": "https://developer.xero.com/pricing",
-          "source": "Xero",
-          "title": "API Pricing (Effective March 2026)"
-        }
-      ]
+      "rate_limits": "100 requests/minute per organization; daily cap set by the consumer's plan (1,000 Free to 10,000 Premium); 5 concurrent calls on Free, 10 on paid plans."
     }
   }
 }

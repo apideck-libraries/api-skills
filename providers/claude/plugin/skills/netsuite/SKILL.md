@@ -33,23 +33,24 @@ Access NetSuite through Apideck's **Accounting** unified API — one of 34 Accou
 
 ## At a glance
 
-- **Implementation difficulty:** highly complex — Custom Auth + Manual Token Setup
-- **Vendor partnership required:** no ([NetSuite Partner Program](https://www.netsuite.com/portal/partners.shtml))
-- **Apideck-managed credentials:** not available
-- **Account type required:** NetSuite with SuiteTalk (Web Services) enabled
-- **Consumer access level:** Administrator or role with User Access Tokens and SOAP Web Services permissions
-- **Sandbox:** available — Via Apideck's temporary shared sandbox (enterprise contract required — contact Apideck Support).
+- **Implementation difficulty:** highly complex — Custom Auth + Manual Per-Consumer Token Setup
+- **Vendor partnership required:** no ([NetSuite Partner Program](https://www.netsuite.com/portal/partners.shtml)) — Optional — Partner Trial accounts are available for extended testing.
+- **Apideck-managed credentials:** available — Shared Consumer Key/Secret ship with Apideck's NetSuite SuiteBundle (ID 705521); consumers still supply their own Account ID and Token ID/Secret.
+- **Account type required:** NetSuite with SuiteTalk (Web Services) and Token-Based Authentication enabled
+- **Consumer access level:** Administrator, or a custom role with access-token login, both SOAP and REST Web Services, and accounting list/setup permissions
+- **Sandbox:** available ([signup](https://help.apideck.com/en/articles/7774658)) — Via Apideck's temporary shared sandbox (enterprise contract required — contact Apideck Support).
 - **Costs:** No additional platform fees, and no connection limits imposed.
-- **Rate limits:** Vary by the consumer's NetSuite subscription and are not publicly documented by Oracle; Apideck handles retries automatically.
-- **Authentication:** Token-Based Authentication (TBA), NetSuite's OAuth 1.0-based scheme — consumers create an integration record and credentials manually; no interactive OAuth flow.
-- **Webhooks:** Native webhooks not supported — Apideck provides Virtual Webhooks (polling-based change detection) instead.
+- **Rate limits:** Per-account concurrency (not requests/minute): 5 Standard, 15 Premium, 20 Enterprise/Ultimate, +10 per SuiteCloud Plus license; Apideck retries automatically.
+- **Authentication:** Token-Based Authentication (TBA), NetSuite's OAuth 1.0-based scheme — consumers create an integration record and credentials manually; no OAuth redirect.
+- **Webhooks:** Virtual webhooks — created/updated/deleted across 11 accounting resources (invoices, bills, payments, customers, suppliers, projects and more).
 
 **Important to know:**
 
-- SuiteTax not supported — tax data is unavailable when SuiteTax is enabled on a consumer's account.
-- Oracle has scheduled SOAP removal: 2025.2 is the last SOAP endpoint, release 2027.1 blocks new SOAP integrations, and 2028.2 removes SOAP entirely. Apideck has made a NetSuite REST integration available via Proxy.
-- TBA tokens never expire on their own — a connection keeps working until the consumer regenerates the token or deletes the integration record.
+- Oracle has scheduled SOAP removal: 2025.2 is the last SOAP endpoint, release 2027.1 blocks new SOAP integrations, and 2028.2 removes SOAP entirely. Apideck already offers NetSuite REST support via Proxy.
+- Missing role permissions can fail silently: a filtered list call the role is not permitted for returns 200 OK with an empty result set instead of an error, so an under-permissioned connection looks healthy while returning no data.
 - Custom forms can break writes: a mandatory custom field on a standard NetSuite form makes API writes to that record type fail, blocking creates you had tested successfully.
+- SuiteTax accounts are supported, but the connection must declare SuiteTax via an optional connection setting — without it, tax data is served from the wrong records.
+- OneWorld (multi-subsidiary) accounts need one connection per subsidiary — there is no per-request company-context switching, and company-info resolves to the root subsidiary.
 
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/netsuite` (`overview` field) is the live, authoritative version.
 

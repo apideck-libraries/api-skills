@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "1a"
   verified: true
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Microsoft Dynamics 365 Business Central (via Apideck)
@@ -26,6 +29,28 @@ Access Microsoft Dynamics 365 Business Central through Apideck's **Accounting** 
 - **Gotchas:** [page](https://developers.apideck.com/apis/accounting/microsoft-dynamics-365-business-central/gotchas)
 - **Microsoft Dynamics 365 Business Central docs:** https://learn.microsoft.com/dynamics365/business-central/
 - **Homepage:** https://dynamics.microsoft.com/en-us/business-central/overview/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Self-Service OAuth + Required Per-Consumer Environment & Company Setup
+- **Vendor partnership required:** no ([developer portal](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app)) — No — no partner programme or app review required.
+- **Apideck-managed credentials:** Available for testing — OAuth shows "Apideck" as the requesting application. Production is bring-your-own Entra app.
+- **Account type required:** Business Central online (SaaS), any edition — on-premises deployments are not supported.
+- **Consumer access level:** Any Business Central user can authorize; a Microsoft Entra admin grants consent once per tenant.
+- **Sandbox:** available ([signup](https://www.microsoft.com/en-us/dynamics-365/products/business-central)) — Free 30-day trial (fastest route), or up to three sandbox environments included with an active Essentials or Premium subscription.
+- **Costs:** No Apideck fee. Business Central licence: Essentials $80, Premium $110, Team Members $8 per user/month, billed yearly (list price, varies by region).
+- **Rate limits:** 6,000 requests per user per 5-minute sliding window; 5 concurrent requests per user.
+- **Authentication:** OAuth 2.0 (Authorization Code) via a Microsoft Entra ID app registration.
+- **Webhooks:** No webhooks — Business Central changes must be polled.
+
+**Important to know:**
+
+- Purchase orders post as header-only documents: line items are accepted on write but never reach Business Central. Reads return line items correctly.
+- Posting-group fields (Vendor Posting Group, and the G/L Account Card's posting groups) are not settable through the API: configure them in Business Central — or link a Vendor Template in API Setup — before creating suppliers, bills, or expenses.
+- Two silent-breakage traps: an Entra client secret expires after at most 24 months (rotate it, or every connection on that app stops working), and a refresh token expires after 90 days of inactivity, so dormant connections need re-authorizing.
+- Authorizing is not the last step — the consumer must then select an Environment, save it, and select a Company before the connection returns data.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/microsoft-dynamics-365-business-central` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 
