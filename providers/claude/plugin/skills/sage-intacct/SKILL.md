@@ -34,20 +34,21 @@ Access Sage Intacct through Apideck's **Accounting** unified API — one of 34 A
 ## At a glance
 
 - **Implementation difficulty:** involved — Partnership + Custom Auth + Multiple Approvals
-- **Vendor partnership required:** yes ([Sage Intacct Marketplace](https://marketplace.intacct.com/BecomeAPartner)) — Sage Intacct Marketplace Partner Program is required. Apideck can facilitate the introduction.
-- **Apideck-managed credentials:** Not available — consumers supply their own Sage Intacct credentials (Sender ID plus company/user login).
+- **Vendor partnership required:** yes ([Sage Intacct Marketplace](https://marketplace.intacct.com/BecomeAPartner)) — A Sage Web Services developer license is required, via the Marketplace Partner Program. Apideck facilitates the introduction to Sage's Marketplace Partner team.
+- **Apideck-managed credentials:** Not available — you supply the Sender ID once at integration level, and each consumer supplies their own Sage Intacct company login.
 - **Account type required:** Sage Intacct with Web Services subscription enabled
 - **Consumer access level:** Any Sage Intacct user with Web Services enabled and the Sender ID authorized in their company
-- **Sandbox:** available — Provisioned by Sage Intacct upon contract execution; also available via Apideck temporary shared sandbox (enterprise contract required — contact Apideck Support).
-- **Costs:** Partnership costs: $2,500/year (due net 30 from contract execution) + $0.015 per API call once consumers are live.
-- **Rate limits:** Vary by the consumer's Sage Intacct service level (not publicly documented); the Standard service level allows 2 concurrent jobs per company.
-- **Authentication:** Custom authentication — Sage Intacct XML Web Services using a Sender ID. Despite an OAuth2 label in the connector config, this is not a standard OAuth grant: consumers provide Company ID / User ID / password credentials manually, exchanged for a session token.
-- **Webhooks:** No native webhooks — Apideck provides Virtual Webhooks (polling-based change detection).
+- **Sandbox:** available — Sage provisions a sandbox with its own Sender ID on contract execution. Apideck's temporary shared sandbox requires an enterprise contract.
+- **Costs:** Sage Intacct Marketplace Partner Program membership is $2,500/year, plus $0.015 per API call once your consumers are live. Effective August 2026.
+- **Rate limits:** Sage Performance Tier 1 (default): 100K API transactions/month. One API plus one offline report job per company; a third waits 30s and errors if no spot opens.
+- **Authentication:** Custom authentication — Sage Intacct XML Web Services using a Sender ID. Despite an OAuth2 label in the connector config, this is not a standard OAuth grant.
+- **Webhooks:** Virtual webhooks — created, updated and deleted events across 9 resource families. Sage Intacct has no native webhooks.
 
 **Important to know:**
 
-- Each consumer must explicitly authorize your Sender ID in their company's Web Services settings — connections fail silently if this step is missed.
-- Approval process is multi-step (security questionnaire, discovery meeting, contract execution, development, API review, technical documentation, live demo call) and takes 4–8+ weeks from request to production approval.
+- Sage titles this surface "About the XML API (Legacy)" and steers new work to REST. No sunset is announced and existing integrations stay supported, but legacy functions get no enhancements and individual legacy objects have been retired — weigh that on a long-term build.
+- If a consumer skips authorizing your Sender ID in their company's Web Services settings, every call fails with errorno XL03000006, "Invalid Web Services Authorization", naming the unauthorized Sender ID.
+- Approval process is multi-step (security questionnaire, discovery meeting, contract execution, development, API review, technical documentation, live demo call).
 - Multi-entity companies require the entity/location ID in API calls — misconfiguration causes data access failures.
 
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/sage-intacct` (`overview` field) is the live, authoritative version.

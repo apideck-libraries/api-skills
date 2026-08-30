@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "2"
   verified: true
+  difficulty: highly_complex
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # SAP SuccessFactors (via Apideck)
@@ -27,6 +30,26 @@ Access SAP SuccessFactors through Apideck's **HRIS, ATS** unified API — one of
 - **Gotchas:** [HRIS](https://developers.apideck.com/apis/hris/sap-successfactors/gotchas) · [ATS](https://developers.apideck.com/apis/ats/sap-successfactors/gotchas)
 - **SAP SuccessFactors docs:** https://help.sap.com/docs/SAP_SUCCESSFACTORS_PLATFORM
 - **Homepage:** https://successfactors.com
+
+## At a glance
+
+- **Implementation difficulty:** highly complex — Custom SAML2-Bearer Auth + Multi-Step Admin Setup (OAuth Client Registration + X.509 Certificate)
+- **Vendor partnership required:** no ([SAP PartnerEdge — Build track](https://www.sap.com/partners/partner-program/build.html)) — Not required — a consumer connects their existing SuccessFactors instance with credentials from their own tenant.
+- **Apideck-managed credentials:** Not available — each connection uses OAuth client credentials created in the consumer's own SuccessFactors tenant.
+- **Account type required:** SuccessFactors instance with OData API access enabled — Employee Central for HRIS, Recruiting for ATS.
+- **Consumer access level:** Admin Center access sufficient to register an OAuth2 Client Application, bind the technical user to it, and upload the X.509 certificate.
+- **Sandbox:** not available — No self-serve sandbox — testing runs against the consumer's own SuccessFactors test instance.
+- **Costs:** No separate API fee from Apideck. SAP does not publish SuccessFactors API or licensing pricing.
+- **Rate limits:** Apideck enforces 40 requests/second per connection.
+- **Authentication:** Custom OAuth 2.0 SAML2-Bearer assertion signed with an X.509 certificate — not a standard OAuth consent flow.
+- **Webhooks:** Virtual webhooks — polling for hris.employee.* plus ats.applicant.*, ats.application.* and ats.job.* events; SuccessFactors sends no native push.
+
+**Important to know:**
+
+- An existing SAP contract usually already includes a test instance, which connects fine — but provisioning a brand-new test or demo tenant requires certified SAP partner status, so an organization not already running SuccessFactors has no path to a first tenant.
+- SAP applies tenant-wide soft rate limits with Retry-After responses across OData v2, REST and SOAP as of its 2608 release (effective 17 August 2026); exact thresholds are published only behind an SAP for Me login.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/sap-successfactors` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

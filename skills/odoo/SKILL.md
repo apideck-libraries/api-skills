@@ -13,6 +13,9 @@ metadata:
   tier: "1a"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Odoo (via Apideck)
@@ -31,6 +34,27 @@ Access Odoo through Apideck's **CRM, Accounting** unified API — one of 21 CRM 
 - **Gotchas:** [CRM](https://developers.apideck.com/apis/crm/odoo/gotchas) · [Accounting](https://developers.apideck.com/apis/accounting/odoo/gotchas)
 - **Odoo docs:** https://www.odoo.com/documentation/
 - **Homepage:** https://www.odoo.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — API Key Authentication — Consumers Create Credentials Manually
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** Not available — Odoo has no OAuth app concept; every consumer connects with their own Odoo instance and their own API key.
+- **Account type required:** Odoo 14+ (Community or Enterprise); some resources need Enterprise-only modules (e.g. account_accountant for bank feeds/tracking categories)
+- **Consumer access level:** Admin, or a user with permissions to generate an API key from their own Account Security preferences
+- **Sandbox:** available ([signup](https://demo.odoo.com/start)) — Free, no-signup scratch database via demo.odoo.com/start — sits outside Odoo Online plan tiers.
+- **Costs:** No developer-side cost. Odoo Online requires the paid Custom plan; Odoo.sh/self-hosted (incl. free Community) have no plan restriction.
+- **Rate limits:** No published numeric limit. Odoo's Acceptable Use Policy guideline: ~1 call/second, no parallel calls.
+- **Authentication:** HTTP Basic Auth with a manually generated API key — not OAuth.
+- **Webhooks:** Virtual webhooks — created/updated events across CRM and Accounting resources.
+
+**Important to know:**
+
+- Odoo Online (SaaS) gates the External API to the Custom plan — consumers on One App Free or Standard cannot connect at all. Odoo.sh and self-hosted instances (including free Community) have no such restriction.
+- Resource availability depends on installed Odoo modules — a missing module fails only that resource (e.g. Purchase Orders needs the Purchase module).
+- A connection is scoped to one Odoo company: the API user's default company. Consumers with multiple companies need one connection per company, each using a user whose default company differs.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/odoo` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

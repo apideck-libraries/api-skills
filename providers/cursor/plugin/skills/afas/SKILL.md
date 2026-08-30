@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: highly_complex
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # AFAS Software (via Apideck)
@@ -31,6 +34,27 @@ Access AFAS Software through Apideck's **HRIS** unified API — one of 58 HRIS c
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/afas/gotchas)
 - **AFAS Software docs:** https://www.afas.nl
 - **Homepage:** https://www.afas.nl/
+
+## At a glance
+
+- **Implementation difficulty:** highly complex — Non-OAuth Token Auth + Multi-Step Per-Consumer App Connector Setup
+- **Vendor partnership required:** no ([AFAS Partner Program](https://partner.afas.nl/koppeling-registreren)) — Not required. The Partner Program is optional, for certifying your own AFAS integration.
+- **Apideck-managed credentials:** Not available — every consumer connects with their own AFAS environment name and App Connector token.
+- **Account type required:** A licensed AFAS Profit or AFAS Online environment with the modules you need (HRM for HRIS; Financieel, Facturering and Inkoop for accounting).
+- **Consumer access level:** AFAS administrator, to create the App Connector and issue the token.
+- **Sandbox:** not available — No public sandbox — every AFAS environment is licensed. Customers can self-service clone a Test or Acceptance copy of their production environment.
+- **Costs:** No separate API or connector fee — REST access is included in an AFAS Profit or AFAS Online license. No free trial for non-customers.
+- **Rate limits:** No published per-minute or per-day limit — AFAS applies a fair-use policy.
+- **Authentication:** API key — an AFAS App Connector token sent in the Authorization header, prefixed with AfasToken. Not OAuth.
+- **Webhooks:** Virtual webhooks — polling-based created/updated events for 14 HRIS and accounting resource families (employees, customers, invoices, bills, and 10 more).
+
+**Important to know:**
+
+- One AFAS environment and token serves two unified APIs: HRIS (live) and Accounting (beta). Employees and departments are HRIS-only — those operations are disabled on the Accounting API — so which resources you get depends on the API you build against.
+- A connection can authorize and still return no data: each consumer's AFAS administrator must first publish the named GetConnectors (and UpdateConnectors for writes) to the App Connector. Credit notes, payments and aged debtors/creditors need one the tenant authors itself.
+- AFAS is retiring classic token authentication: tokens receive automatic end-dates on 15 February 2027 and stop working on 31 August 2027, when OAuth 2.1 replaces them. An administrator can also time-limit or revoke a token at any point, which silently breaks the connection.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/afas` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

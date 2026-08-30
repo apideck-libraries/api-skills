@@ -13,6 +13,9 @@ metadata:
   tier: "1a"
   verified: true
   status: beta
+  difficulty: highly_complex
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Acumatica (via Apideck)
@@ -31,6 +34,21 @@ Access Acumatica through Apideck's **Accounting** unified API — one of 34 Acco
 - **Gotchas:** [page](https://developers.apideck.com/apis/accounting/acumatica/gotchas)
 - **Acumatica docs:** https://help.acumatica.com
 - **Homepage:** https://www.acumatica.com/
+
+## At a glance
+
+- **Implementation difficulty:** highly complex — Every consumer must manually register their own Connected Application (Authorization Code flow, shared secret, redirect URI) inside their Acumatica instance before connecting.
+- **Vendor partnership required:** no ([Acumatica Developer Network (ADN)](https://www.acumatica.com/partners/)) — Optional — the Acumatica Developer Network (ADN) is not required to build; free Level 1 covers a trial instance and training.
+- **Apideck-managed credentials:** not available — Not possible — every Acumatica instance registers its own Connected Application; each consumer provides their own Client ID, Secret, and instance URL.
+- **Account type required:** An Acumatica instance (cloud or self-hosted) with the Web Services API enabled.
+- **Consumer access level:** Administrator role, or a custom role granted API/Web Services permissions.
+- **Sandbox:** available ([signup](https://builds.acumatica.com/)) — Free local developer instance (Windows required, 2-user demo mode); a cloud trial is also available via ADN.
+- **Costs:** Free to build — the local developer instance and ADN Level 1 membership are both free.
+- **Rate limits:** Set by the consumer's instance license tier: ~100 req/min, 3 concurrent (standard) or ~150 req/min, 6 concurrent (L-series).
+- **Authentication:** OAuth 2.0 (Authorization Code).
+- **Webhooks:** No webhooks — neither native nor virtual.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/acumatica` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 
