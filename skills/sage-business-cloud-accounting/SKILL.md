@@ -13,6 +13,9 @@ metadata:
   tier: "1a"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Sage Business Cloud Accounting (via Apideck)
@@ -30,6 +33,28 @@ Access Sage Business Cloud Accounting through Apideck's **Accounting** unified A
 - **Gotchas:** [page](https://developers.apideck.com/apis/accounting/sage-business-cloud-accounting/gotchas)
 - **Sage Business Cloud Accounting docs:** https://developer.sage.com/accounting/
 - **Homepage:** https://www.sage.com/en-za/sage-business-cloud/accounting/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Self-Service OAuth Signup + Manual Sage Account Authorization Required for Production
+- **Vendor partnership required:** no ([Sage Partner Central](https://partnercentral.sage.com/prm/English/s/applicant)) — An optional Sage Marketplace listing is available through Sage Partner Central, but is not needed to integrate.
+- **Apideck-managed credentials:** Not available for production — Apideck credentials cover evaluation and testing only; going live means registering your own Sage app.
+- **Account type required:** Active Sage Business Cloud Accounting subscription in Canada, the United Kingdom or Ireland.
+- **Consumer access level:** Sage account holder, or any user with permission to authorise applications.
+- **Sandbox:** available ([signup](https://developer.sage.com/accounting/quick-start/set-up-the-basics/)) — Free trial Accounting business created from the Sage Developer Portal, extendable for longer testing.
+- **Costs:** Free — Sage charges nothing for API access or developer registration. Your consumers pay for their own Sage Accounting subscription.
+- **Rate limits:** 1,296,000 requests per app per day; 150 concurrent requests maximum per app. Exceeding either returns HTTP 429.
+- **Authentication:** OAuth 2.0 authorization code flow.
+- **Webhooks:** No webhooks — Sage Accounting exposes none, native or virtual; sync by polling the unified API.
+
+**Important to know:**
+
+- The connector's country setting lists seven options, but only Sage Accounting's three supported countries authenticate — choosing France, Germany, Spain or the United States fails at authorization.
+- Every connection needs a Default Company selected before it can be used, even when the consumer's Sage login can reach only one business — the connection stays incomplete until it is set.
+- Refresh tokens expire after 31 days and rotate on every use, so a consumer whose integration sits unused for over a month has to re-authorise.
+- Feature and endpoint availability depends on your consumer's Sage subscription tier, so a workflow that succeeds for one consumer can fail for another on a cheaper plan.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/sage-business-cloud-accounting` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

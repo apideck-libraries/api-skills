@@ -33,22 +33,23 @@ Access Xero through Apideck's **Accounting** unified API — one of 34 Accountin
 ## At a glance
 
 - **Implementation difficulty:** moderate — Self-Service OAuth + App Partner Certification Required to Scale
-- **Vendor partnership required:** yes ([Xero App Partner Program](https://developer.xero.com/documentation/xero-app-store/app-partner-guides/app-partner-steps/)) — Required for >25 connections. Xero App Partner Program — certification involves multiple technical checkpoints.
+- **Vendor partnership required:** yes ([Xero App Partner Program](https://developer.xero.com/documentation/xero-app-store/app-partner-guides/app-partner-steps/)) — Required to scale: App Partner Program certification is mandatory from the Plus tier and to list on the Xero App Store. Free-tier access needs no approval.
 - **Apideck-managed credentials:** not available
 - **Account type required:** Any active Xero subscription
 - **Consumer access level:** Standard or Adviser level user (Admin recommended for full data access)
 - **Sandbox:** available ([signup](https://developer.xero.com/)) — Free via Xero Developer Portal (demo company included).
-- **Costs:** Free at Starter tier (up to 5 connections). Tiered, usage-based pricing applies at scale — Core, Plus, Advanced (~$895/mo, 10k connections), and Enterprise tiers, effective March 2, 2026 (replacing the previous 15% App Store revenue share). Premium endpoints (Journals, Xero Practice Manager) require the Advanced tier or above. Separate from Apideck pricing.
-- **Rate limits:** 5,000 calls/day per organisation; 60 calls/minute per organisation; 5 concurrent calls/second.
+- **Costs:** Free Starter tier; paid Core to Advanced ($895/mo) and Enterprise (custom), plus per-GB egress overage, effective March 2, 2026. Separate from Apideck pricing.
+- **Rate limits:** 60 calls/minute and 5 concurrent calls per organisation; daily cap of 1,000 calls on Starter and 5,000 on Core and above; 10,000 calls/minute app-wide.
 - **Authentication:** OAuth 2.0 (Authorization Code).
 - **Webhooks:** Native — invoice and bill events (created and updated).
 
 **Important to know:**
 
-- App Partner certification requires onboarding at least 10 active customer connections.
+- Connection caps are tier-based: 5 active connections on the free Starter tier, 50 on Core, and more only from Plus upward. Certification unlocks the higher tiers but itself requires at least 10 active customer connections, so start the process before you hit the cap.
 - Refresh tokens expire after 60 days if unused — consumer must re-authorise.
 - Consumers can install a maximum of 2 uncertified apps — if at the limit they must remove another uncertified app first.
 - Certification compliance requires hiding the Apideck callback — a custom Vault domain must be configured before certification.
+- From March 2, 2026 the Journals API is gated to the Advanced tier and new apps must use granular OAuth scopes (legacy umbrella scopes are rejected). General-ledger reads also need accounting.journals.read, which Apideck no longer requests by default; manual journals still work.
 
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/xero` (`overview` field) is the live, authoritative version.
 

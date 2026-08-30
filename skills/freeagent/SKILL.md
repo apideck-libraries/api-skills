@@ -37,19 +37,20 @@ Access FreeAgent through Apideck's **Accounting** unified API — one of 34 Acco
 ## At a glance
 
 - **Implementation difficulty:** straightforward — Self-Service OAuth App + Free Sandbox — No Partnership or App Review
-- **Vendor partnership required:** no
+- **Vendor partnership required:** no — Free self-service app registration at the FreeAgent Developer Dashboard: https://dev.freeagent.com/signup
 - **Apideck-managed credentials:** Available for testing (Apideck sandbox app; OAuth shows "Apideck"); production requires your own FreeAgent app.
 - **Account type required:** Any active FreeAgent subscription
 - **Consumer access level:** Any FreeAgent user can authorize; the connection operates at the authorizing user's permission level, so a full-access user is recommended for complete data.
-- **Sandbox:** available ([signup](https://dev.freeagent.com/signup)) — Free via the FreeAgent Developer Dashboard.
-- **Costs:** FreeAgent developer account and sandbox are free; consumers need an active FreeAgent subscription (30-day free trial available).
+- **Sandbox:** available ([signup](https://signup.sandbox.freeagent.com/signup)) — Free self-service sandbox account.
+- **Costs:** API access is free (API Terms v2.1, February 2025; fees possible on 30 days' notice); consumers need an active FreeAgent subscription (30-day free trial).
 - **Rate limits:** 120 requests/minute and 3,600 requests/hour, per user.
 - **Authentication:** OAuth 2.0 authorization code flow.
-- **Webhooks:** Not supported — no native or virtual webhooks; data sync is polling-based.
+- **Webhooks:** No webhooks — no native or virtual webhooks; data sync is polling-based.
 
 **Important to know:**
 
 - FreeAgent is UK-centric — optimised for UK tax compliance (VAT, MTD, Self Assessment); confirm fit for non-UK consumers.
+- The standard Company API is fully self-serve; the Accountancy Practice API (accountants reading client data across companies) is not — it requires requesting a Practice sandbox from FreeAgent at integrationsrequests@freeagent.com first.
 
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/freeagent` (`overview` field) is the live, authoritative version.
 

@@ -41,11 +41,11 @@ Access Sage Intacct REST through Apideck's **Proxy API** with managed Vault auth
 - **Implementation difficulty:** involved — Paid Web Services Developer License + Per-Consumer Admin Authorization Required
 - **Vendor partnership required:** yes ([Sage Intacct Marketplace](https://marketplace.intacct.com/BecomeAPartner)) — A Sage Web Services developer license is required — via the Sage Intacct Marketplace Partner Program, or directly from Sage through your account manager.
 - **Apideck-managed credentials:** Available for testing and evaluation — consumers authorize against Apideck's registered Sage application, so the consent screen shows Apideck branding.
-- **Account type required:** Sage Intacct company with REST API access enabled
+- **Account type required:** Sage Intacct company with a Web Services subscription
 - **Consumer access level:** The connection inherits the authorizing Sage Intacct user's role permissions, and a company Admin must authorize the application in each consumer's company.
-- **Sandbox:** available — Free — choose the Non-production client scope when registering the app, or use a Sage Intacct Developer Portal test account.
-- **Costs:** The Web Services developer license is paid: one third-party example is $2,500/year plus $0.015 per API call (Q4 2025). Confirm current terms with Sage.
-- **Rate limits:** Tier 1 (automatic): 100,000 API transactions/month — each written record and each read call, per page, is one transaction. One API job at a time per company.
+- **Sandbox:** available — Registering a Non-production OAuth app is free; a Sage Intacct sandbox company itself is a paid, licensed feature, gated by eligibility and not self-serve.
+- **Costs:** Sage Intacct Marketplace Partner Program membership is $2,500/year, plus $0.015 per API call once your consumers are live. Effective August 2026.
+- **Rate limits:** Sage Performance Tier 1: 100,000 API transactions/month per company, shared with the XML API. Over-limit: 429 (GW-0010). Headroom: x-downstream-ratelimit-*.
 - **Authentication:** OAuth 2.0 authorization code grant — a real OAuth flow, unlike the sage-intacct (XML) connector, which uses a Sender ID plus company/user credentials.
 - **Webhooks:** Virtual webhooks — created, updated and deleted events across 13 of the supported accounting resources. Sage Intacct has no native webhooks.
 
