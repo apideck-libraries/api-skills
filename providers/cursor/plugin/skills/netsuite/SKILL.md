@@ -34,7 +34,7 @@ Access NetSuite through Apideck's **Accounting** unified API — one of 34 Accou
 ## At a glance
 
 - **Implementation difficulty:** highly complex — Custom Auth + Manual Per-Consumer Token Setup
-- **Vendor partnership required:** no ([NetSuite Partner Program](https://www.netsuite.com/portal/partners.shtml)) — Optional — Partner Trial accounts are available for extended testing.
+- **Vendor partnership required:** no ([NetSuite Partner Program](https://www.netsuite.com/portal/partners.shtml)) — Partner Trial accounts are available for extended testing.
 - **Apideck-managed credentials:** available — Shared Consumer Key/Secret ship with Apideck's NetSuite SuiteBundle (ID 705521); consumers still supply their own Account ID and Token ID/Secret.
 - **Account type required:** NetSuite with SuiteTalk (Web Services) and Token-Based Authentication enabled
 - **Consumer access level:** Administrator, or a custom role with access-token login, both SOAP and REST Web Services, and accounting list/setup permissions
@@ -50,7 +50,7 @@ Access NetSuite through Apideck's **Accounting** unified API — one of 34 Accou
 - Missing role permissions can fail silently: a filtered list call the role is not permitted for returns 200 OK with an empty result set instead of an error, so an under-permissioned connection looks healthy while returning no data.
 - Custom forms can break writes: a mandatory custom field on a standard NetSuite form makes API writes to that record type fail, blocking creates you had tested successfully.
 - SuiteTax accounts are supported, but the connection must declare SuiteTax via an optional connection setting — without it, tax data is served from the wrong records.
-- OneWorld (multi-subsidiary) accounts need one connection per subsidiary — there is no per-request company-context switching, and company-info resolves to the root subsidiary.
+- A single connection covers a whole OneWorld account: a Default Subsidiary setting scopes most list and report reads to one subsidiary, and a per-request override reaches any other. A parent subsidiary excludes its children; company-info always returns the root.
 
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/netsuite` (`overview` field) is the live, authoritative version.
 

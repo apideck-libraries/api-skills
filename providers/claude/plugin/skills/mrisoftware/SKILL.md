@@ -37,14 +37,14 @@ Access MRI Software through Apideck's **Accounting** unified API — one of 34 A
 ## At a glance
 
 - **Implementation difficulty:** highly complex — Partnership Required + Custom Composite Credential + Manual Per-Consumer Web Services User Setup
-- **Vendor partnership required:** yes ([myMRI Partner Portal](https://www.mrisoftware.com/become-a-partner/)) — Yes — an MRI relationship supplies the required MIX Partner Key.
+- **Vendor partnership required:** yes ([myMRI Partner Portal](https://www.mrisoftware.com/become-a-partner/)) — An MRI relationship supplies the required MIX Partner Key.
 - **Apideck-managed credentials:** not available
 - **Account type required:** An MRI client with Web Services (MIX APIs) licensed on their own MRI installation; the consumer supplies their own installation credentials.
 - **Consumer access level:** A dedicated MRI Web Services user with a role granting rights to each API in use — a plain client login is not sufficient.
-- **Sandbox:** not available — None for integration providers — testing runs against a consumer's own MRI installation.
+- **Sandbox:** not available — Integration providers get no sandbox of their own; testing runs against a consumer's own MRI installation.
 - **Costs:** No published self-serve API pricing — access and economic terms are negotiated individually with MRI. MIX API licensing may carry a fee.
 - **Rate limits:** Partner keys: 1,000 requests per rolling 5-minute window. Developer keys carry a lower, unpublished rate. MRI documents no per-day figure.
-- **Authentication:** HTTP Basic Authentication with an MRI-issued composite credential — not OAuth. There are no scopes and no token expiry.
+- **Authentication:** An MRI-issued composite credential over HTTP Basic; not OAuth. There are no scopes and no token expiry.
 - **Webhooks:** No webhooks — change detection is polling-based.
 
 **Important to know:**

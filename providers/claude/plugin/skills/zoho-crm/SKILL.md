@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "1b"
   verified: true
+  difficulty: straightforward
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Zoho CRM (via Apideck)
@@ -26,6 +29,28 @@ Access Zoho CRM through Apideck's **CRM** unified API — one of 21 CRM connecto
 - **Gotchas:** [page](https://developers.apideck.com/apis/crm/zoho-crm/gotchas)
 - **Zoho CRM docs:** https://www.zoho.com/crm/developer/docs/api/
 - **Homepage:** https://www.zoho.com/crm/
+
+## At a glance
+
+- **Implementation difficulty:** straightforward — Self-Service OAuth Client + Free Edition for Testing, No Review or Partnership
+- **Vendor partnership required:** no ([Zoho API console](https://api-console.zoho.com/)) — No partner programme and no app review: you register a Server-based client yourself.
+- **Apideck-managed credentials:** available — The Zoho consent screen shows "Apideck"; use your own Zoho client in production.
+- **Account type required:** Any Zoho CRM edition, including Free
+- **Consumer access level:** Any user whose profile has the Zoho CRM API Access permission (Administrators have it by default)
+- **Sandbox:** available ([signup](https://www.zoho.com/crm/developer/developer-edition.html)) — A Free edition org for your own testing, or a Developer Edition org by invitation from a sandbox-enabled customer.
+- **Costs:** None. Registering a Zoho API client is free and API calls draw on the consumer's own edition credits.
+- **Rate limits:** Daily credits per org by edition: 5,000 (Free) to 50,000 plus 250 to 2,000 per user (paid); 5 to 25 concurrent calls; HTTP 429 on excess
+- **Authentication:** Authorization Code flow via Zoho Accounts.
+- **Webhooks:** No webhooks — Zoho CRM changes are not surfaced as Apideck events; sync by polling the CRM and Lead APIs
+
+**Important to know:**
+
+- Zoho runs nine data centres (US, EU, India, Australia, Japan, China, Canada, Saudi Arabia, UK). Your client needs Multi-DC enabled for every data centre your consumers' accounts live in, or their authorisation fails; the connector detects each consumer's data centre itself.
+- Zoho keeps at most 20 refresh tokens per user per client and 15 live access tokens per refresh token: a 21st authorisation by the same user silently invalidates the oldest connection. Refresh tokens otherwise never expire unless revoked.
+- Your consumers' other Zoho apps draw on the same daily credit pool as your integration, so a busy organisation can throttle your sync well before its edition's headline limit.
+- Zoho's Sandbox feature is included only from the Enterprise edition up, so a consumer on a lower edition has no test copy of their org.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/zoho-crm` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

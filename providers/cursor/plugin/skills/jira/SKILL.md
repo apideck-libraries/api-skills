@@ -13,6 +13,9 @@ metadata:
   tier: "1a"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # Jira (via Apideck)
@@ -30,6 +33,27 @@ Access Jira through Apideck's **Issue Tracking** unified API — one of 6 Issue 
 - **Gotchas:** [page](https://developers.apideck.com/apis/issue-tracking/jira/gotchas)
 - **Jira docs:** https://developer.atlassian.com/cloud/jira/platform/rest/v3/
 - **Homepage:** https://www.atlassian.com/software/jira
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Self-Service OAuth App + Atlassian Review Needed to Scale Past One Shared Hourly Quota
+- **Vendor partnership required:** no ([Atlassian developer console](https://developer.atlassian.com/console/myapps/)) — No partner programme or Marketplace listing needed. Atlassian reviews an app only if you submit it.
+- **Apideck-managed credentials:** available — You can connect and test before registering an app of your own.
+- **Account type required:** Any Jira Cloud plan, including the free one. Registering the app needs a free Atlassian developer account.
+- **Consumer access level:** Any Jira user on the site can authorise, with no admin rights needed. The connection then reaches what that user can already see there.
+- **Sandbox:** not available — Atlassian's Sandbox feature belongs to the Premium and Enterprise plans. A separate free Jira Cloud site serves as a test environment at no cost.
+- **Costs:** Atlassian publishes no separate charge for API access. What a connection can reach follows the Jira Cloud plan the site is already on.
+- **Rate limits:** 65,000 points an hour, enforced since 2 March 2026, plus per-second burst and per-issue write caps. Most reads cost one point.
+- **Authentication:** Authorization Code flow.
+- **Webhooks:** Native - ticket created, updated and deleted.
+
+**Important to know:**
+
+- The hourly request quota belongs to the app, not to each connected Jira site: every site draws from the same pool, so the tenth consumer competes with the first. A larger per-site pool exists, but Atlassian assigns it only after reviewing an app with sustained heavy use.
+- Until Atlassian has reviewed the app, everyone who authorises it is warned that it has not been reviewed by Atlassian. Nothing but that review removes the warning.
+- This connector speaks Atlassian's Cloud authorisation, so a self-hosted Jira Data Center or Server site cannot connect through it. Those run a different mechanism that their own administrator has to set up.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/jira` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

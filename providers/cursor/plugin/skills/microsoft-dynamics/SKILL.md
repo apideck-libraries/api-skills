@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "1c"
   verified: true
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Microsoft Dynamics CRM (via Apideck)
@@ -27,6 +30,28 @@ Access Microsoft Dynamics CRM through Apideck's **CRM** unified API — one of 2
 - **Gotchas:** [page](https://developers.apideck.com/apis/crm/microsoft-dynamics/gotchas)
 - **Microsoft Dynamics CRM docs:** https://learn.microsoft.com/dynamics365/
 - **Homepage:** https://dynamics.microsoft.com/en-us/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Self-Service OAuth + Publisher Verification Required for Cross-Tenant Consent
+- **Vendor partnership required:** no ([Microsoft Entra publisher verification](https://learn.microsoft.com/en-us/entra/identity-platform/publisher-verification-overview)) — No partnership contract; publisher verification requires a Microsoft AI Cloud Partner Program account.
+- **Apideck-managed credentials:** available — For testing: the Microsoft consent screen shows "Apideck". Use your own Microsoft Entra app in production.
+- **Account type required:** Dynamics 365 Sales or Customer Engagement environment (online) with a full user licence
+- **Consumer access level:** Any licensed user with access to the records; the tenant's consent policy may require an admin to approve the app
+- **Sandbox:** available ([signup](https://learn.microsoft.com/en-us/dynamics365/sales/sign-up-for-sales-trial)) — 30-day Dynamics 365 Sales trial; sign-up needs a work account and card details.
+- **Costs:** None. App registration, publisher verification and Dataverse Web API calls are free.
+- **Rate limits:** 6,000 requests per 5 minutes per user (plus 20 minutes execution time and 52 concurrent requests); HTTP 429 with Retry-After.
+- **Authentication:** Authorization Code flow through Microsoft Entra ID; the consumer enters their Dynamics 365 organisation URL when connecting.
+- **Webhooks:** No webhooks — Dynamics 365 changes are not surfaced as Apideck events; sync by polling the CRM and Lead APIs
+
+**Important to know:**
+
+- Publisher verification is the hidden gate: since November 2020 Microsoft blocks users in other tenants from consenting to a new multitenant app that is not publisher verified. Plan for it before onboarding, including a publisher domain you own.
+- A connection covers exactly one Dynamics 365 environment (for example https://yourorg.crm.dynamics.com), so a consumer running several environments needs a separate connection, and a separate authorization, for each one.
+- There is no free long-lived test environment: Power Apps developer environments cannot install Dynamics 365 apps and the Microsoft 365 developer sandbox is gated to Visual Studio subscribers, partners and support customers. Plan testing around the 30-day trial.
+- Refresh tokens expire after 90 days without use, so a consumer whose integration sits idle for three months has to re-authorize the connection.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/microsoft-dynamics` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

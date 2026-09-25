@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "1a"
   verified: true
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # SharePoint (via Apideck)
@@ -26,6 +29,29 @@ Access SharePoint through Apideck's **File Storage** unified API — one of 5 Fi
 - **Gotchas:** [page](https://developers.apideck.com/apis/file-storage/sharepoint/gotchas)
 - **SharePoint docs:** https://learn.microsoft.com/sharepoint/dev/
 - **Homepage:** https://products.office.com
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Self-Service OAuth + Publisher Verification Required for Cross-Tenant Consent
+- **Vendor partnership required:** no ([Microsoft Entra publisher verification](https://learn.microsoft.com/en-us/entra/identity-platform/publisher-verification-overview)) — No partnership contract; publisher verification requires a Microsoft AI Cloud Partner Program account.
+- **Apideck-managed credentials:** available — For testing: the Microsoft consent screen shows "Apideck". Use your own Microsoft Entra app in production.
+- **Account type required:** Microsoft 365 work or school account with SharePoint Online
+- **Consumer access level:** Any user with access to the chosen site; the user's SharePoint permissions govern what the connection can see
+- **Sandbox:** available ([signup](https://developer.microsoft.com/microsoft-365/dev-program)) — Microsoft 365 E5 developer sandbox (25 users), or a dedicated test site in your own Microsoft 365 tenant.
+- **Costs:** None. App registration, publisher verification and standard Microsoft Graph calls are free.
+- **Rate limits:** Per app per tenant: 1,250 to 6,250 resource units/min (1 to 2 units per call), scaling with tenant size; HTTP 429/503 with Retry-After on excess.
+- **Authentication:** Authorization Code flow through Microsoft Entra ID.
+- **Webhooks:** Native — drive.updated only (a document-library-level change notification; per-file events are not emitted)
+
+**Important to know:**
+
+- Publisher verification and tenant consent policies gate onboarding: since November 2020 users in other tenants cannot consent to an unverified multitenant app, and Sites.ReadWrite.All is broad enough that many tenants require a tenant admin to approve it anyway.
+- Each connection is scoped to one SharePoint site: the consumer must pick a site from a live list when connecting, and only that site's document libraries are visible. A consumer with several sites needs one connection per site.
+- SharePoint Online only: the connector reaches SharePoint through Microsoft Graph, which does not serve on-premises SharePoint Server. Consumers still on SharePoint Server cannot connect.
+- A free Microsoft 365 developer tenant is no longer open to everyone: the Developer Program sandbox now requires a Visual Studio Professional or Enterprise subscription, an eligible Microsoft partner tier or a Premier/Unified Support contract.
+- Refresh tokens expire after 90 days without use, so a consumer whose integration is idle for three months has to re-authorise the connection.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/sharepoint` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

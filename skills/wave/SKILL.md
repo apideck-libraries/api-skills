@@ -13,6 +13,9 @@ metadata:
   tier: "1a"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # Wave (via Apideck)
@@ -31,6 +34,28 @@ Access Wave through Apideck's **Accounting** unified API — one of 34 Accountin
 - **Gotchas:** [page](https://developers.apideck.com/apis/accounting/wave/gotchas)
 - **Wave docs:** https://developer.waveapps.com
 - **Homepage:** https://www.waveapps.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Self-Service OAuth App + Wave Approval Required to Distribute
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** not available — Register your own Wave application and add its Client ID and Secret to Apideck.
+- **Account type required:** A Wave business in the US or Canada with an active Pro or Advisors subscription. Testing your own app against your own account needs neither.
+- **Consumer access level:** Any user with access to the business can authorise the connection; Wave publishes no role requirement.
+- **Sandbox:** not available — A free Starter account is a sufficient test environment and exposes the same API surface as Pro; Wave runs no sandbox.
+- **Costs:** Wave charges no API access fees and commits to advance notice before introducing any. The subscription requirement sits on the connecting business, not you.
+- **Rate limits:** Wave publishes no rate limits; its documented error codes include no throttling or rate-limit code.
+- **Authentication:** Authorization Code flow. Wave's API is GraphQL-only, and each connection also needs the consumer's Wave Business ID.
+- **Webhooks:** No webhooks — none surfaced by this connector, so poll for changes.
+
+**Important to know:**
+
+- A live connection can break with nothing changing on your side. If a connected business's Wave Pro or Advisors subscription lapses, the next token refresh returns 403 and the integration stops working until the subscription is reactivated.
+- Distributing your integration to other Wave businesses requires Wave's approval. Creating the application and testing it against your own account is self-service, but Wave's Permitted Use policy covers any integration that is not direct-to-your-own-business.
+- Wave serves the US and Canada only, and signup from elsewhere is geo-blocked. The block sticks to the email address on the first failed attempt, so a European team cannot simply retry behind a VPN.
+- Connecting is not purely one-click. Alongside the OAuth authorisation, each consumer must supply their Wave Business ID — a base64 string taken from the business's Wave app URL — so your onboarding needs a step that tells them where to find it.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/wave` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

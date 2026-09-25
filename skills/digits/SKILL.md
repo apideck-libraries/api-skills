@@ -13,6 +13,9 @@ metadata:
   tier: "1a"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Digits (via Apideck)
@@ -30,6 +33,27 @@ Access Digits through Apideck's **Accounting** unified API — one of 34 Account
 - **Gotchas:** [page](https://developers.apideck.com/apis/accounting/digits/gotchas)
 - **Digits docs:** https://digits.com
 - **Homepage:** https://www.digits.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Self-service signup and sandbox — app approval required before other organisations can install your app
+- **Vendor partnership required:** no — No partner programme, certification or marketplace listing to complete — a free developer account is all you need.
+- **Apideck-managed credentials:** available — OAuth consent shows "Apideck" as the requesting application. Register your own Digits app for production.
+- **Account type required:** Digits account (the connecting organisation's own Digits ledger)
+- **Consumer access level:** Any user who can authorise third-party access to the Digits organisation — Digits documents no minimum role.
+- **Sandbox:** available ([signup](https://developer.digits.com/docs/developer-sandbox-testing-your-app)) — Free, resettable Developer Sandbox with demo data, one per developer account. No live bank connections, and collaborator invites are disabled.
+- **Costs:** No cost for API access — Digits charges no fees, usage paywalls or marketplace commissions (verified June 2026).
+- **Rate limits:** 180 requests/minute per client ID and 60 requests/minute per access token. Approved production apps can request higher limits.
+- **Authentication:** Authorization Code flow.
+- **Webhooks:** No webhooks — neither native nor virtual; poll for changes. Digits has a webhook contract of its own, but it is in private beta and unused here.
+
+**Important to know:**
+
+- Connecting your own Digits businesses works from day one. Installing your app into any organisation outside your own requires Digits to approve it first, requested by email.
+- The Digits Connect API launched publicly in October 2025 and its surface is still expanding, so expect capability to grow between releases.
+- Uninstalling your app from an organisation revokes its tokens — that connection stops working until the consumer authorises again.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/digits` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

@@ -13,6 +13,9 @@ metadata:
   tier: "1a"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Shopify (via Apideck)
@@ -31,6 +34,28 @@ Access Shopify through Apideck's **Ecommerce** unified API — one of 17 Ecommer
 - **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/shopify/gotchas)
 - **Shopify docs:** https://shopify.dev/docs/api
 - **Homepage:** https://www.shopify.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Merchant Self-Service Custom App via Shopify Dev Dashboard (Client Credentials) — No Partnership or App Review Required
+- **Vendor partnership required:** no — No Shopify Partner account needed: custom distribution skips the app-store review process that public apps must pass.
+- **Apideck-managed credentials:** not available — There is no shared Apideck-managed Shopify app; every connection uses the merchant's own app credentials.
+- **Account type required:** Any paid Shopify plan; reading customer name, address, phone or email needs the merchant's store on Grow or higher (Level 2 protected customer data).
+- **Consumer access level:** Store owner, or a staff member granted the App development > Develop permission; collaborator accounts cannot reach the Dev Dashboard.
+- **Sandbox:** available ([signup](https://shopify.dev/docs/apps/build/stores/development-stores)) — Free Shopify development store via the Dev Dashboard or Shopify CLI — fully featured, but it cannot take real payments or become a production store.
+- **Costs:** No separate charge for API access: it is included in every paid Shopify plan (Basic $39/month through Plus from $2,300/month). Free trial available.
+- **Rate limits:** GraphQL Admin API: 100 to 2,000 cost points per second by plan. Legacy REST Admin API: 2 to 40 requests per second by plan.
+- **Authentication:** Client Credentials against the merchant's own store; Shop, Client ID and Client Secret are entered per connection.
+- **Webhooks:** Native — order, product and customer created, updated and deleted events.
+
+**Important to know:**
+
+- This is Shopify's custom-app route: every merchant creates and owns the app for their own store, so you register nothing centrally. Shopify's Protected Customer Data review applies to public apps, not here; custom apps meet that same protection through the store's plan instead.
+- Apideck's separate Shopify (Public App) connector is the other route, where one app you own serves every merchant through a standard OAuth authorize. Pick that connector instead when you do not want each merchant creating an app.
+- Shopify stopped allowing new custom apps to be created inside the Shopify admin on January 1, 2026. This connector already targets the current Dev Dashboard route, so there is nothing to migrate and no legacy credential to carry over.
+- A custom app installs on one store. Covering several of a merchant's storefronts means either an app and connection per store, or stores that all sit inside a single Shopify Plus organization.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/shopify` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

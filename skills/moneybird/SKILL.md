@@ -13,6 +13,9 @@ metadata:
   tier: "1a"
   verified: true
   status: beta
+  difficulty: straightforward
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Moneybird (via Apideck)
@@ -31,6 +34,27 @@ Access Moneybird through Apideck's **Accounting** unified API — one of 34 Acco
 - **Gotchas:** [page](https://developers.apideck.com/apis/accounting/moneybird/gotchas)
 - **Moneybird docs:** https://developer.moneybird.com
 - **Homepage:** https://www.moneybird.com/
+
+## At a glance
+
+- **Implementation difficulty:** straightforward — Self-Service OAuth App + Free Sandbox — No Partnership or App Review
+- **Vendor partnership required:** no ([developer portal](https://developer.moneybird.com/)) — No partner programme; register an OAuth application yourself from the developer portal, free and without approval, for an immediate Client ID and Secret.
+- **Apideck-managed credentials:** available — For testing: Apideck's shared app shows "Apideck" on the consent screen. Register your own Moneybird application for production.
+- **Account type required:** An active Moneybird administration on any paid tier; API access is not documented as gated to a specific plan.
+- **Consumer access level:** The owner of the administration — Moneybird requires this during authorization; a regular user cannot connect.
+- **Sandbox:** available ([signup](https://moneybird.com/administrations/sandboxes/new)) — Free sandbox administrations with full feature access, creatable from any Moneybird account; invoices carry watermarks.
+- **Costs:** No API-specific cost — included in the consumer's Moneybird subscription. App registration and sandbox administrations are free.
+- **Rate limits:** 150 requests per 5 minutes per IP address; 50 per 5 minutes for reports endpoints. 429 responses carry a Retry-After header.
+- **Authentication:** Authorization Code flow.
+- **Webhooks:** No webhooks
+
+**Important to know:**
+
+- Rate limits are counted per IP address, not per application or per administration — every consumer you connect shares your integration's outbound IPs, so heavy use by one can throttle the rest.
+- Plan for the account owner to be personally involved in every connection. Where bookkeeping is delegated to an accountant or a colleague, that person cannot complete the authorisation on the owner's behalf.
+- Each connection covers one administration. A consumer running several companies in Moneybird needs one connection per administration, selected during setup.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/moneybird` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

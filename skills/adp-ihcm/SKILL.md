@@ -13,6 +13,9 @@ metadata:
   tier: "1c"
   verified: true
   status: beta
+  difficulty: highly_complex
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # ADP iHCM (via Apideck)
@@ -30,6 +33,28 @@ Access ADP iHCM through Apideck's **HRIS** unified API — one of 58 HRIS connec
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/adp-ihcm/gotchas)
 - **ADP iHCM docs:** https://developers.adp.com
 - **Homepage:** https://www.adp.com/
+
+## At a glance
+
+- **Implementation difficulty:** highly complex — Custom Auth + Multi-Step Per-Consumer Setup
+- **Vendor partnership required:** no — The ADP Marketplace Partner Program is a separate route that adds a sandbox and partner API access under a partner agreement; API Central needs no partnership.
+- **Apideck-managed credentials:** not available — Each consumer provisions their own ADP credentials and certificate.
+- **Account type required:** An ADP iHCM account, ADP's HR and payroll platform outside the US and Canada, with ADP API Central enabled.
+- **Consumer access level:** An ADP administrator who can enable API Central for the account and obtain the certificate and credentials.
+- **Sandbox:** not available — A test instance exists only inside ADP's Marketplace Partner enrollment, which this connection model does not use.
+- **Costs:** Paid by the consumer: ADP bills API Central International as a recurring subscription; prices are shown after signing in. No free trial.
+- **Rate limits:** 120 requests/minute per API Central project and a maximum of 10 concurrent requests; ADP returns HTTP 429 beyond either limit.
+- **Authentication:** Client credentials over mutual TLS on ADP's EU infrastructure, not a user-consent flow. Needs an X.509 client certificate, Client ID and Secret.
+- **Webhooks:** Virtual webhooks - Apideck polls for employee created and updated events
+
+**Important to know:**
+
+- An iHCM subscription alone never yields credentials: the consumer must have ADP API Central enabled first. Plan for that decision landing inside your onboarding flow rather than before it.
+- Consumers in the US or Canada are not on iHCM: ADP sells Workforce Now there, which Apideck supports through a separate connector. Confirm which ADP platform a consumer runs before pointing them at this one.
+- The connection depends on a client certificate and stops working the moment it lapses: a dated, per-connection failure that lands long after the build is finished.
+- You cannot de-risk this build before a consumer commits: your first end-to-end test necessarily runs against that consumer's live iHCM tenant.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/adp-ihcm` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

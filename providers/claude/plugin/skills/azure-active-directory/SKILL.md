@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # Microsoft Entra (via Apideck)
@@ -29,6 +32,27 @@ Access Microsoft Entra through Apideck's **HRIS** unified API — one of 58 HRIS
 - **Status:** beta
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/azure-active-directory/gotchas)
 - **Homepage:** https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-whatis
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Self-Service OAuth App + Approval Required
+- **Vendor partnership required:** no ([Microsoft Entra admin center](https://learn.microsoft.com/en-us/entra/identity-platform/publisher-verification-overview)) — A multi-tenant app may need Microsoft publisher verification: free, but it requires a Partner Center account, not just a Microsoft sign-in.
+- **Apideck-managed credentials:** not available — You register your own Microsoft Entra app, so the consent screen carries your own branding and verified publisher.
+- **Account type required:** A Microsoft work or school account in the tenant being connected, on any Microsoft Entra ID tier.
+- **Consumer access level:** A Microsoft administrator, or a user in a tenant where an administrator has already consented to the directory scopes.
+- **Sandbox:** not available — Create a free Microsoft Entra tenant and populate it with test users and groups.
+- **Costs:** No separate charge: Microsoft Entra ID is included in every Microsoft 365 and Azure tenant, and Microsoft Graph has no per-call fee.
+- **Rate limits:** Microsoft Graph throttles dynamically by resource and tenant size rather than by a fixed quota, under a ceiling of 130,000 requests per 10 seconds per tenant.
+- **Authentication:** Authorization Code flow via the Microsoft identity platform, reading directory data through Microsoft Graph.
+- **Webhooks:** Virtual webhooks (Apideck polls for employee created and updated events only, no terminated event)
+
+**Important to know:**
+
+- The Graph scopes this connector requests require administrator approval in the consumer's tenant, so design your onboarding around an administrator completing or pre-approving the authorisation. An ordinary employee cannot connect on their own.
+- Microsoft Entra ID is a directory, not an HR system. Field coverage depends on what each organisation maintains in its user profiles, HR data such as compensation does not exist there, and the connector is read-only, so Entra cannot be your write target for people records.
+- Microsoft renamed the product from Azure Active Directory to Microsoft Entra ID in 2023, but Apideck's service id remains azure-active-directory: that is the value you use in API paths and see in the Apideck Dashboard.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/azure-active-directory` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

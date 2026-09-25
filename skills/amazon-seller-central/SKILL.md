@@ -13,6 +13,9 @@ metadata:
   tier: "1c"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Amazon Seller Central (via Apideck)
@@ -30,6 +33,27 @@ Access Amazon Seller Central through Apideck's **Ecommerce** unified API — one
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/amazon-seller-central/docs/consumer+connection)
 - **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/amazon-seller-central/gotchas)
 - **Amazon Seller Central docs:** https://developer-docs.amazon.com/sp-api/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Self-Service Developer Signup + Mandatory Production/Published App Review Required
+- **Vendor partnership required:** no ([Amazon Selling Partner API — Public Developer Registration](https://developer-docs.amazon.com/sp-api/docs/register-as-a-public-developer)) — No signed contract. Registration as a Public SP-API Developer is free and self-service.
+- **Apideck-managed credentials:** not available — Every application owner registers and publishes their own SP-API app with Amazon.
+- **Account type required:** An active Amazon Seller Central account, in a marketplace the integration covers.
+- **Consumer access level:** A Seller Central user with the account's Develop Apps (API authorization) permission completes the consent.
+- **Sandbox:** available ([signup](https://developer-docs.amazon.com/sp-api/docs/sp-api-sandbox)) — Amazon's own SP-API sandbox returns mock responses, but sits on Amazon's sandbox endpoints and cannot be reached through this connector.
+- **Costs:** Free to build. Amazon charges nothing for access to the Selling Partner API itself.
+- **Rate limits:** Per-operation token buckets (a refill rate plus a burst), scoped per seller account and application; some operations use limits Amazon adjusts dynamically.
+- **Authentication:** Authorization Code flow via Login with Amazon (LWA).
+- **Webhooks:** No webhooks — Amazon Seller Central offers no native or virtual webhook support here, so data is kept in sync by polling.
+
+**Important to know:**
+
+- Amazon's consent screen rejects a Draft or Sandbox SP-API app, so no connection, not even a test one, can be made through Apideck until the app reaches Published status. Amazon returns error MD9100.
+- Every SP-API application's Login with Amazon client secret must be rotated every 180 days, or Amazon blocks all API calls for that application. Amazon gives 90 days' notice, but this is a standing operational duty for the life of the integration, not a one-off setup step.
+- Amazon requires each selling partner to reauthorise a public application every 365 days, and again whenever a role is added to it, so annual re-consent by every connected seller has to be planned into the integration.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/amazon-seller-central` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

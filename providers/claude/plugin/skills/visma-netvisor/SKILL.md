@@ -13,6 +13,9 @@ metadata:
   tier: "1a"
   verified: true
   status: beta
+  difficulty: highly_complex
+  partnershipRequired: true
+  sandboxAvailable: true
 ---
 
 # Visma Netvisor (via Apideck)
@@ -30,6 +33,28 @@ Access Visma Netvisor through Apideck's **Accounting** unified API — one of 34
 - **Gotchas:** [page](https://developers.apideck.com/apis/accounting/visma-netvisor/gotchas)
 - **Visma Netvisor docs:** https://support.netvisor.fi
 - **Homepage:** https://netvisor.fi/accounting-software/
+
+## At a glance
+
+- **Implementation difficulty:** highly complex — Custom HMAC Authentication + Multi-Step Per-Consumer Credential Setup
+- **Vendor partnership required:** yes ([Netvisor software partnership](https://netvisor.fi/ohjelmistokumppanuus/)) — Production credentials follow a partner agreement signed with Visma, issued after Netvisor reviews your finished integration.
+- **Apideck-managed credentials:** not available — Netvisor issues credentials per integration, so there is no shared app to supply.
+- **Account type required:** A Netvisor package that includes the Web Service Interface — Professional, Premium or Payroll. Basic, Starter and Core cannot connect.
+- **Consumer access level:** Any Netvisor user with editing rights to at least one function can create the API identifiers; granting your integration its rights needs an administrator.
+- **Sandbox:** available — Netvisor provisions a free test environment with its own credentials on sign-up. It arrives empty; Netvisor support can seed it with sample data.
+- **Costs:** Free to build — Netvisor charges nothing to join, nor for test or production credentials.
+- **Rate limits:** No published per-minute or per-day limit. Netvisor enforces limits server-side and may add endpoint-, partner- or company-specific ceilings.
+- **Authentication:** Each request carries a freshly computed HMAC-SHA256 signature; not OAuth.
+- **Webhooks:** No webhooks — Netvisor publishes none, so keep data fresh by polling.
+
+**Important to know:**
+
+- Credentials come in two tiers that are not interchangeable: integration-level values registered once, and customer-level values each consumer generates inside their own Netvisor account. Both must be in place before any call succeeds.
+- Valid credentials alone are not enough. Each consumer must also grant your integration rights in Netvisor's own API security panel, looking it up by the access key you give them.
+- Three Netvisor import resources — accounting entries with attachments, purchase invoices and eScan documents — carry a customer-specific per-transaction fee on top of the package price. Everything else is included in the package.
+- Netvisor is Visma's Finnish accounting platform, sold mainly in Finland and Sweden, so treat it as regional coverage rather than a connector your whole user base can use.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/visma-netvisor` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

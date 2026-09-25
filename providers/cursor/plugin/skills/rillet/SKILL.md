@@ -13,6 +13,9 @@ metadata:
   tier: "1a"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Rillet (via Apideck)
@@ -31,6 +34,25 @@ Access Rillet through Apideck's **Accounting** unified API — one of 34 Account
 - **Gotchas:** [page](https://developers.apideck.com/apis/accounting/rillet/gotchas)
 - **Rillet docs:** https://rillet.com
 - **Homepage:** https://rillet.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — API Key Authentication + API Access Enabled per Organisation by Rillet
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** not available — Each consumer connects with their own Rillet organisation API key; there is no app to register.
+- **Account type required:** A Rillet account. Any plan works; there is no edition gate on API access.
+- **Consumer access level:** Admin access to Organization Settings, which is where API keys are created.
+- **Sandbox:** available — A separate sandbox environment at sandbox.api.rillet.com with its own API keys, arranged through your Rillet team.
+- **Costs:** No API-specific fee. Rillet itself is a paid platform and does not publish pricing.
+- **Rate limits:** 60 requests per rolling one-minute window; requests above it return HTTP 429.
+- **Authentication:** Presented as a Bearer token in the Authorization header; not OAuth. Keys are scoped to a single Rillet organisation.
+- **Webhooks:** No webhooks
+
+**Important to know:**
+
+- API access is not self-service. Rillet has to enable it for each organisation before any API key can be created, so your consumer starts by contacting their Rillet team rather than by opening a settings page.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/rillet` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "1b"
   verified: true
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # Google Drive (via Apideck)
@@ -26,6 +29,29 @@ Access Google Drive through Apideck's **File Storage** unified API — one of 5 
 - **Gotchas:** [page](https://developers.apideck.com/apis/file-storage/google-drive/gotchas)
 - **Google Drive docs:** https://developers.google.com/drive
 - **Homepage:** https://www.google.com/drive/index.html
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Self-Service OAuth + Google OAuth App Verification Required
+- **Vendor partnership required:** no ([Google Cloud](https://console.cloud.google.com/)) — No partner programme, contract or fee to join.
+- **Apideck-managed credentials:** available — For testing only: Apideck's shared Google app is not Google-verified; production needs your own app.
+- **Account type required:** Any Google account (personal or Google Workspace)
+- **Consumer access level:** Any user who can access the files being connected; no admin role required to authorize
+- **Sandbox:** not available — Test with any Google account against an app left in Testing publishing status.
+- **Costs:** Drive API free up to 400,000,000 quota units/day per project; higher usage due to become billable later in 2026. CASA assessment paid to your assessor.
+- **Rate limits:** 1,000,000 quota units/min per project and 325,000 quota units/min per user per project (quotas effective 1 May 2026); HTTP 403 or 429 on excess
+- **Authentication:** Authorization Code flow with Google.
+- **Webhooks:** No webhooks — Google Drive change notifications are not surfaced as Apideck events; sync by polling the File Storage API
+
+**Important to know:**
+
+- Full Drive access is a Google restricted scope: production needs restricted-scope OAuth verification, an annual CASA security assessment, and your app must be a backup and sync, productivity and education, or reporting and security product.
+- Until verification completes the app is capped: in Testing status only 100 named test users can connect and every consent expires after 7 days; a published but unverified app is capped at 100 new users for its lifetime, with an 'unverified app' warning.
+- Restricted-scope verification 'can potentially take several weeks' by Google's own guidance, and brand verification first requires a domain you own and have verified with Google, covering your home page, privacy policy and the OAuth redirect URI.
+- Google's non-sensitive drive.file scope avoids the restricted-scope review, but it only reaches files your app created or the consumer explicitly picked, and the connector does not offer it today: contact Apideck Support if that trade-off suits your product.
+- Google revokes a refresh token after 6 months without use, so a consumer whose integration sits idle must re-authorise; Google also deletes OAuth clients that see no token activity for 6 months (restorable for 30 days).
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/google-drive` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

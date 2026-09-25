@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "1b"
   verified: true
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Personio (via Apideck)
@@ -27,6 +30,27 @@ Access Personio through Apideck's **HRIS** unified API — one of 58 HRIS connec
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/personio/gotchas)
 - **Personio docs:** https://developer.personio.de
 - **Homepage:** https://www.personio.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Consumer-Supplied API Credentials Instead of a User-Consent OAuth Flow
+- **Vendor partnership required:** no ([developer portal](https://www.personio.com/partner/tech/)) — Apideck is already an approved Personio iPaaS partner. Personio's free Tech Partner programme is optional and adds a Marketplace listing.
+- **Apideck-managed credentials:** not available — Each consumer supplies their own Personio API credentials.
+- **Account type required:** A Personio account on a plan that includes API access (Core Pro at the time of writing).
+- **Consumer access level:** Administrator: only a Personio administrator can generate the API credentials.
+- **Sandbox:** available ([signup](https://www.personio.com/partner-trial/)) — Free, self-service Partner Developer Account from Personio's partner trial. A Personio free trial or a consumer's own account also work for testing.
+- **Costs:** No separate API fee; the API requires the Core Pro plan, whose pricing is quote-based.
+- **Rate limits:** 2,000 requests/minute per IP overall, with tighter per-endpoint caps (300/minute on the employee list); HTTP 429 beyond either.
+- **Authentication:** Each consumer's Personio administrator generates a Client ID and Secret in their own Personio account. Nothing for you to register.
+- **Webhooks:** Virtual webhooks (Apideck polls for employee created, updated and terminated events)
+
+**Important to know:**
+
+- Access is scoped at credential creation: the administrator picks which resources are readable or writable and which employee attributes are exposed, so a credential created too narrowly returns partial or empty data.
+- Personio can exclude individual employees from API transfer. An 'Include in transfer' field on each employee record governs whether that person is shared, so a consumer's own configuration can legitimately hide records from your integration.
+- Personio's 1 December 2026 cutoff for passing API credentials as query-string parameters does not affect this connector: it already sends them in the request body, so nothing changes for you.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/personio` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

@@ -38,22 +38,23 @@ Access Pennylane through Apideck's **Accounting** unified API — one of 34 Acco
 ## At a glance
 
 - **Implementation difficulty:** moderate — Partner-Issued Credentials Required — OAuth apps are provisioned manually by Pennylane's Partnerships team (no self-service portal); otherwise a standard OAuth authorization-code connect.
-- **Vendor partnership required:** yes ([developer portal](https://www.pennylane.com/fr/contact-demande-de-partenariat/)) — OAuth Client ID and Secret are issued by Pennylane's Partnerships team after manual validation (no fee). The Client Secret is shown only once and cannot be retrieved again — store it immediately, or create a new OAuth app if it is lost. There is no self-service developer portal (developer.pennylane.com does not exist); request credentials via the partnership form.
-- **Apideck-managed credentials:** Not available — consumers supply their own partnership-issued OAuth credentials in every environment.
+- **Vendor partnership required:** yes ([developer portal](https://www.pennylane.com/fr/contact-demande-de-partenariat/)) — OAuth Client ID and Secret are issued by Pennylane's Partnerships team after manual validation. No fee.
+- **Apideck-managed credentials:** not available — Consumers supply their own partnership-issued OAuth credentials in every environment.
 - **Account type required:** Active Pennylane account (app.pennylane.com) with at least one company set up.
 - **Consumer access level:** A user with permission to authorize third-party (OAuth) apps for the company.
-- **Sandbox:** available — Provisioned by the Pennylane Partnerships team on request as part of the partnership process — there is no self-service sandbox. Same rate limits as production.
-- **Costs:** No partnership or API fees; consumers need an active Pennylane subscription.
+- **Sandbox:** available — Existing accounts self-serve a developer API token for testing. OAuth partner-app credentials still require the Partnerships team. Same limits as production.
+- **Costs:** No partnership or API fees; consumers need a Pennylane subscription that includes API access.
 - **Rate limits:** 25 requests per 5 seconds per token (production and sandbox).
-- **Authentication:** OAuth 2.0 (Authorization Code).
-- **Webhooks:** Virtual webhooks (polling-based change detection) for customer, supplier, invoice, invoice-item, and bill events — created and updated, 10 events across 5 resources. Pennylane's native webhooks are not used.
+- **Authentication:** Authorization Code flow.
+- **Webhooks:** Virtual webhooks — created and updated events for customers, suppliers, invoices, invoice items and bills.
 
 **Important to know:**
 
 - There is no stated turnaround for OAuth credential issuance, so provisioning can gate your go-live — budget an unpredictable lead time rather than assuming instant self-service access.
-- Pennylane is available in France and Germany only — consumers based in other countries will not have a Pennylane account to connect, so confirm geographic fit before committing.
+- Pennylane is available in France and Germany, so confirm your consumers are in one of those markets before committing.
 - Access tokens last 24 hours and refresh tokens are valid for 90 days, rotating on every refresh; both are refreshed automatically by Apideck, but a connection left dormant beyond 90 days must be re-authorized by the consumer.
 - The partner onboarding journey is French-first — the partnership request form and parts of Pennylane's documentation are in French.
+- API access requires the consumer's own Pennylane subscription to be on the Essentiel plan (24 EUR/month) or above for independents — confirm this before assuming a lower-tier account can connect; pricing for other business sizes may differ.
 
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/pennylane` (`overview` field) is the live, authoritative version.
 

@@ -12,6 +12,9 @@ metadata:
   authType: apiKey
   tier: "2"
   verified: true
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Breathe HR (via Apideck)
@@ -26,6 +29,26 @@ Access Breathe HR through Apideck's **HRIS** unified API — one of 58 HRIS conn
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/breathehr/gotchas)
 - **Breathe HR docs:** https://developer.breathehr.com
 - **Homepage:** https://www.breathehr.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — API key authentication, where the consumer creates the credential manually
+- **Vendor partnership required:** no ([developer portal](https://www.breathehr.com/en-gb/partners)) — Breathe's partner programme is a commercial referral arrangement for HR consultants and resellers, not a gate on API access.
+- **Apideck-managed credentials:** not available — Each Breathe API key is tied to one Breathe account, so every consumer supplies their own.
+- **Account type required:** Any active Breathe account.
+- **Consumer access level:** Account Admin. Only an Admin can switch the API on and read the key.
+- **Sandbox:** available ([signup](https://developer.breathehr.com/)) — Free developer sandbox, available self-service from developer.breathehr.com.
+- **Costs:** Included in a Breathe subscription at no extra charge. Consumers need an active plan: Breathe offers a 14-day free trial but no permanent free tier.
+- **Rate limits:** 60 requests per 60 seconds per Breathe account; beyond that Breathe returns HTTP 429.
+- **Authentication:** Sent in the x-api-key header, not OAuth. The key carries the permissions of the whole Breathe account and does not expire on a schedule.
+- **Webhooks:** Virtual webhooks (Apideck polls Breathe for employee created, updated and terminated events)
+
+**Important to know:**
+
+- One API key grants full access to the consumer's Breathe account: Breathe has no scoped permissions, and the only way to withdraw access is to regenerate the key. Make clear what the consumer is granting before they hand it over.
+- Breathe is a UK-focused SME platform, so its HR data follows UK conventions such as holiday allowances and UK leave types. Expect that shape in the unified model, and check the fit if your integration targets other regions.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/breathehr` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

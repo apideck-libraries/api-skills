@@ -13,6 +13,9 @@ metadata:
   tier: "1a"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: true
+  sandboxAvailable: true
 ---
 
 # MYOB Acumatica (via Apideck)
@@ -31,6 +34,27 @@ Access MYOB Acumatica through Apideck's **Accounting** unified API — one of 34
 - **Gotchas:** [page](https://developers.apideck.com/apis/accounting/myob-acumatica/gotchas)
 - **MYOB Acumatica docs:** https://developer.myob.com
 - **Homepage:** https://www.myob.com/au/erp-software/products/myob-acumatica
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Developer Program Certification Required for Sandbox and Scale
+- **Vendor partnership required:** yes ([MYOB Developer Program](https://enterprise-support.myob.com/acudev/join-the-myob-developer-program)) — Membership is required to build a connected integration.
+- **Apideck-managed credentials:** not available — A MYOB Acumatica client id is bound to the instance that issued it, so no credential can be shared across consumers.
+- **Account type required:** A MYOB Acumatica (also sold as MYOB Advanced) instance.
+- **Consumer access level:** An administrator who can reach the instance's Integration menu (Connected Applications, Web Service Endpoints).
+- **Sandbox:** available ([signup](https://enterprise-support.myob.com/acudev/downloading-test-sandbox-and-demo-data)) — Not self-service: MYOB issues a developer instance once a team member completes the Acumatica web services certification and joins the partner portal.
+- **Costs:** Free to build. The optional paid tiers cost AUD$200 (Developer Partner) or AUD$500 (Premium Developer Partner) + GST per month.
+- **Rate limits:** Free Full User API licence: 1,500 calls/day, 1 named API user. Paid Full Access API licence: unlimited calls/day, up to 100 named users.
+- **Authentication:** Authorization Code flow against the consumer's own instance URL.
+- **Webhooks:** No webhooks — neither native nor virtual; change detection is polling-based.
+
+**Important to know:**
+
+- Outgrowing the free API licence is a MYOB licensing step, not a configuration change: the upgrade has to be arranged on the MYOB side before call volume grows past the daily cap.
+- MYOB Acumatica is the Australia/New Zealand build on the Acumatica platform. A customer running generic Acumatica ERP belongs on the separate Acumatica connector, not this one.
+- MYOB Acumatica sessions do not tolerate parallel requests that reuse the same session or token: concurrent calls trigger throttling or timeouts, so plan for sequential rather than fanned-out calls.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/myob-acumatica` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

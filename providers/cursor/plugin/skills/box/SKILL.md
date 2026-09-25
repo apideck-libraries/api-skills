@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "1b"
   verified: true
+  difficulty: straightforward
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # Box (via Apideck)
@@ -26,6 +29,27 @@ Access Box through Apideck's **File Storage** unified API — one of 5 File Stor
 - **Gotchas:** [page](https://developers.apideck.com/apis/file-storage/box/gotchas)
 - **Box docs:** https://developer.box.com
 - **Homepage:** https://www.box.com/
+
+## At a glance
+
+- **Implementation difficulty:** straightforward — Self-Service OAuth App — No Box Review, No Partnership, Free Account Sufficient
+- **Vendor partnership required:** no ([Box Developer console](https://app.box.com/developers/console)) — Box reviews an app only if you choose to publish it to the Box marketplace, which is optional.
+- **Apideck-managed credentials:** available — Temporary shared credentials for trying the connector, branded Apideck on the Box authorisation screen. Going live needs your own Box app.
+- **Account type required:** Any Box account, including a free individual one.
+- **Consumer access level:** Any Box user can authorise access to their own account.
+- **Sandbox:** not available — Box developer sandboxes are provisioned by an enterprise administrator, so they cannot be obtained on a free account.
+- **Costs:** Free to build. A free Box account includes full API access; paid plans bundle a monthly call allowance.
+- **Rate limits:** 1,000 API calls per minute per user, with tighter limits on uploads and search.
+- **Authentication:** Authorization Code flow.
+- **Webhooks:** No webhooks — Box changes are picked up by polling instead.
+
+**Important to know:**
+
+- Some Box enterprises switch on a setting that blocks unpublished applications. A user there cannot connect until their own Box administrator enables the app once, by its Client ID. There is nothing to submit to Box and no review, and most enterprises leave the setting off.
+- Box scopes are account-wide: the connection reaches everything the connecting user can already see in Box, and cannot be confined to a single folder.
+- Box expires a refresh token after 60 days, but Apideck renews it before that, so a connection does not lapse merely from sitting idle. It needs authorising again only if the authorisation is withdrawn in Box or a renewal fails.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/box` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

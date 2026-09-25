@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: highly_complex
+  partnershipRequired: true
+  sandboxAvailable: true
 ---
 
 # RUN Powered by ADP (via Apideck)
@@ -30,6 +33,28 @@ Access RUN Powered by ADP through Apideck's **HRIS** unified API — one of 58 H
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/adp-run/gotchas)
 - **RUN Powered by ADP docs:** https://developers.adp.com
 - **Homepage:** https://www.adp.com/what-we-offer/products/run-powered-by-adp.aspx
+
+## At a glance
+
+- **Implementation difficulty:** highly complex — ADP Marketplace Partnership + Security Review + Custom Auth
+- **Vendor partnership required:** yes ([ADP Marketplace Partner Program](https://partners.adp.com/gettingstarted/)) — ADP offers no API Central for RUN, so the ADP Marketplace Partner Program is the only route to RUN data; joining provides sandbox access.
+- **Apideck-managed credentials:** not available — You supply your own ADP credentials.
+- **Account type required:** A RUN Powered by ADP account in the United States; RUN is ADP's small-business product, aimed at roughly 1 to 49 employees.
+- **Consumer access level:** A RUN administrator with authority to add an app to the account and grant it consent.
+- **Sandbox:** available — Provided once you are enrolled as an ADP Marketplace partner.
+- **Costs:** ADP publishes no fee: partner terms are a negotiated revenue share, on your side rather than your consumer's. No add-on for them to buy.
+- **Rate limits:** 300 requests/minute per integration project and a maximum of 50 concurrent requests; ADP returns HTTP 429 beyond either limit.
+- **Authentication:** Client credentials over mutual TLS, not a user-consent flow. Credentials are held once for your integration, not per connection.
+- **Webhooks:** Virtual webhooks - Apideck polls for employee created and updated events
+
+**Important to know:**
+
+- This connector is in beta and has never been verified against a live RUN account: it was mapped from ADP's documentation alone. Treat connectivity and field-level behaviour alike as unproven, and prove both on your own tenant before committing to a build.
+- Enrolling is a real gate, not a form: ADP requires a signed Developer's Participation Agreement and puts your integration through a security review that includes a penetration test.
+- Consumer onboarding happens in ADP Marketplace, not in your product: each consumer must add your listed app there before any of their data can be read, and you cannot do that step on their behalf.
+- Check which ADP product a prospective consumer actually runs before scoping this connector. Those on ADP Workforce Now or ADP iHCM need a different route entirely, and Apideck supports both as separate connectors.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/adp-run` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

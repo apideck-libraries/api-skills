@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "1b"
   verified: true
+  difficulty: straightforward
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # HubSpot (via Apideck)
@@ -26,6 +29,27 @@ Access HubSpot through Apideck's **CRM** unified API — one of 21 CRM connector
 - **Gotchas:** [page](https://developers.apideck.com/apis/crm/hubspot/gotchas)
 - **HubSpot docs:** https://developers.hubspot.com
 - **Homepage:** https://www.hubspot.com/
+
+## At a glance
+
+- **Implementation difficulty:** straightforward — Self-Service OAuth + Free Developer Tooling — No Partnership or App Review
+- **Vendor partnership required:** no ([HubSpot App Marketplace](https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements)) — Listing in the App Marketplace makes you a HubSpot Technology Partner and adds a free listing page; developer test accounts need no partnership.
+- **Apideck-managed credentials:** available — For testing: OAuth shows "Apideck" as the requesting application; production integrations use your own HubSpot app.
+- **Account type required:** Any HubSpot edition, including the free CRM.
+- **Consumer access level:** The authorizing user needs the App Marketplace Access permission (super admins have it by default).
+- **Sandbox:** available ([signup](https://developers.hubspot.com/docs/getting-started/account-types)) — Free developer test accounts, self-service from your regular HubSpot account (up to 10).
+- **Costs:** None — HubSpot developer tooling and public apps are free to build and distribute.
+- **Rate limits:** 110 requests per 10 seconds per connected account for publicly-distributed OAuth apps; the CRM Search API is separate at 5 requests/second.
+- **Authentication:** Authorization Code flow.
+- **Webhooks:** Native — contact, company and opportunity created/updated/deleted events; no engagement (activity or note) events.
+
+**Important to know:**
+
+- The scopes configured on your HubSpot app must match exactly the scopes Apideck requests during OAuth. Any mismatch fails consumer authorization with an insufficient-scopes error, so update the app whenever the connector's scope set changes.
+- HubSpot retired its legacy app-building flow in 2026 — legacy developer accounts began migrating on March 9, 2026, and legacy public app creation was disabled for all accounts on June 23, 2026. New apps are built on the Projects-based platform; existing apps keep working.
+- Webhook subscriptions are app-level, not per-connection: one set, registered manually in your HubSpot app, delivers events for every connected consumer — you cannot vary event coverage per consumer.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/hubspot` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

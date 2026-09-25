@@ -13,6 +13,9 @@ metadata:
   tier: "1b"
   verified: true
   status: beta
+  difficulty: straightforward
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # Linear (via Apideck)
@@ -30,6 +33,27 @@ Access Linear through Apideck's **Issue Tracking** unified API — one of 6 Issu
 - **Gotchas:** [page](https://developers.apideck.com/apis/issue-tracking/linear/gotchas)
 - **Linear docs:** https://developers.linear.app
 - **Homepage:** https://linear.app/
+
+## At a glance
+
+- **Implementation difficulty:** straightforward — Self-Service OAuth App - No Linear Review, No Partnership, Free Workspace Sufficient
+- **Vendor partnership required:** no ([Linear workspace settings](https://linear.app/settings/api/applications/new)) — Linear reviews an application only if you choose to submit it to the Linear integration directory, which is optional.
+- **Apideck-managed credentials:** available — Consumers can connect before you register a Linear application of your own.
+- **Account type required:** Any Linear plan. Creating the OAuth application needs a workspace admin; the person who connects does not.
+- **Consumer access level:** The connection reaches what the authorising Linear user can already see, across the workspace's public teams.
+- **Sandbox:** not available — Develop against a second free Linear workspace of your own; there is no separate test environment.
+- **Costs:** No separate charge for API access. Linear includes it on every plan, the free one included.
+- **Rate limits:** 5,000 requests an hour for each connected workspace, within a budget of 2,000,000 GraphQL complexity points over the same hour.
+- **Authentication:** Authorization Code flow.
+- **Webhooks:** Native - ticket created, updated and deleted.
+
+**Important to know:**
+
+- Linear attaches the webhook destination to the OAuth application itself, so events reach only an application owner running their own Linear OAuth application. Apideck's shared credentials cannot carry them.
+- A new Linear OAuth application is private until it is switched to public distribution. Until then every consumer outside the workspace that created it is turned away, with nothing in the authorisation flow to explain why.
+- Tickets and comments the integration writes land in Linear under the application's own name rather than under the person who authorised the connection. That is the opposite of Linear's default, so anyone who knows Linear will expect the other behaviour.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/linear` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

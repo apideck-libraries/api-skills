@@ -13,6 +13,9 @@ metadata:
   tier: "1a"
   verified: true
   status: beta
+  difficulty: highly_complex
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Access Financials (via Apideck)
@@ -31,6 +34,27 @@ Access Access Financials through Apideck's **Accounting** unified API — one of
 - **Gotchas:** [page](https://developers.apideck.com/apis/accounting/access-financials/gotchas)
 - **Access Financials docs:** https://www.theaccessgroup.com/en-gb/finance/
 - **Homepage:** https://www.theaccessgroup.com/en-gb/finance/products/access-financials/
+
+## At a glance
+
+- **Implementation difficulty:** highly complex — Custom Auth + Manual Per-Consumer Token and Subscription-Key Setup
+- **Vendor partnership required:** no — No partner programme or app review gates Financials API access.
+- **Apideck-managed credentials:** not available — Credentials are issued per Access Financials organisation, so each consumer generates and supplies their own.
+- **Account type required:** An Access Financials organisation with the ERP Application Register enabled.
+- **Consumer access level:** Organisation Administrator — no other role can generate the credentials.
+- **Sandbox:** available — No self-serve signup — request a separate Access Financials test instance from The Access Group.
+- **Costs:** Pay-as-you-go on the Access ERP API platform, with a free tier of 1 million API calls per month.
+- **Rate limits:** No per-minute or per-day rate limit is published for the Financials API.
+- **Authentication:** Bearer access token plus an Ocp-Apim-Subscription-Key header — not OAuth.
+- **Webhooks:** No webhooks — neither native nor virtual; change detection is polling-based.
+
+**Important to know:**
+
+- Invoices, payments and credit notes post as live transactions immediately, and a posted transaction cannot be updated through the API because it is already accounted for.
+- Access Financials offers a Corrections module for amending already-posted records inside the application, enabled per user through a Security Profile. It is not exposed through the API, so it does not change how an integration corrects records.
+- Access tokens last at most 365 days and there is no refresh flow: each consumer regenerates the token in the ERP Token Generator and re-enters it before it lapses, or the connection stops returning data.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/access-financials` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

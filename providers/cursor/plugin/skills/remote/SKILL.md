@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Remote (via Apideck)
@@ -31,6 +34,24 @@ Access Remote through Apideck's **HRIS** unified API — one of 58 HRIS connecto
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/remote/gotchas)
 - **Remote docs:** https://developer.remote.com
 - **Homepage:** https://remote.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — API Token Authentication - Each Consumer Generates Their Own Token in Remote
+- **Vendor partnership required:** no — Nothing has to be registered with Remote to use this connector.
+- **Apideck-managed credentials:** not available — Each consumer supplies their own Remote API token.
+- **Account type required:** Remote company account (any plan).
+- **Consumer access level:** A company admin or owner, since only those roles can generate an API token in Remote.
+- **Sandbox:** available ([signup](https://gateway.remote-sandbox.com)) — Free on request from Remote: they email a pre-seeded demo company and a test token, no sales conversation. Access runs for 14 days.
+- **Costs:** Free. Remote charges nothing extra for API access, and sets no limit on the number of connections you create.
+- **Rate limits:** 300 requests a minute for each company.
+- **Authentication:** API token, sent as a bearer token.
+
+**Important to know:**
+
+- A token belongs to one Remote company and to one environment. Production tokens begin ra_live_ and sandbox tokens begin ra_test_, and the environment selected when connecting must match the token, or the connection fails.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/remote` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

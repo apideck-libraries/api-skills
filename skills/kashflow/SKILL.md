@@ -13,6 +13,9 @@ metadata:
   tier: "1a"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Kashflow (via Apideck)
@@ -31,6 +34,27 @@ Access Kashflow through Apideck's **Accounting** unified API — one of 34 Accou
 - **Gotchas:** [page](https://developers.apideck.com/apis/accounting/kashflow/gotchas)
 - **Kashflow docs:** https://developer.kashflow.com
 - **Homepage:** https://www.kashflow.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Basic Authentication — consumers must enable the SOAP API in their account first
+- **Vendor partnership required:** no ([KashFlow App Partner Programme](https://www.kashflow.com/become-an-app-partner/)) — The KashFlow App Partner programme is optional co-marketing, not a prerequisite for API access.
+- **Apideck-managed credentials:** not available — Every consumer supplies their own KashFlow credentials.
+- **Account type required:** Any KashFlow account on the Business package
+- **Consumer access level:** A KashFlow user who can change the account's API settings — typically the account owner.
+- **Sandbox:** available ([signup](https://www.kashflow.com/try-kashflow/)) — A free 14-day KashFlow trial on the Business package is enough to build against, and KashFlow issues a dedicated developer test account on request.
+- **Costs:** KashFlow subscription required — the API needs the Business package, RRP £27.50/month. API access itself carries no separate charge.
+- **Rate limits:** Not published by KashFlow — no per-minute or per-day limit is documented for this API.
+- **Authentication:** The consumer's own KashFlow username and password (not OAuth).
+- **Webhooks:** No webhooks — KashFlow publishes no events, so keep the integration on polling.
+
+**Important to know:**
+
+- KashFlow is read-only through Apideck: every mapped operation is a read, so there is no create, update or delete path for any resource.
+- KashFlow lets each account choose whether the API accepts the web login password or a separate API password — sending the wrong one is the most common connection failure.
+- The connector runs on KashFlow's SOAP/XML API. KashFlow also publishes a newer REST API, but its own documentation says it is not ready for public use, so it is not an alternative here.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/kashflow` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

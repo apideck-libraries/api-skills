@@ -13,6 +13,9 @@ metadata:
   tier: "1a"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # Yuki (via Apideck)
@@ -31,6 +34,27 @@ Access Yuki through Apideck's **Accounting** unified API — one of 34 Accountin
 - **Gotchas:** [page](https://developers.apideck.com/apis/accounting/yuki/gotchas)
 - **Yuki docs:** https://api.yukiworks.nl
 - **Homepage:** https://www.yuki.nl/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — API key authentication over SOAP
+- **Vendor partnership required:** no — There is no app registration, review or partner agreement for Yuki's web services.
+- **Apideck-managed credentials:** not available — Each consumer connects with their own web service key, so there is no shared Apideck application.
+- **Account type required:** Yuki account on any bundle, including the free Minimal bundle, with web service access activated on the domain.
+- **Consumer access level:** A user with the Portal administrator or Management role — only those roles can create web service keys.
+- **Sandbox:** not available — Yuki's free Minimal bundle is a real account, not a test environment; there is no developer sandbox or demo administration.
+- **Costs:** Free to 1,000 calls/day. Above that: EUR 10.50/month for 1,001-5,000 calls/day, EUR 105/month for 5,001-10,000 — added by the consumer's accountant.
+- **Rate limits:** 1,000 web service calls per day per domain; paid add-ons raise the ceiling.
+- **Authentication:** A WebserviceAccessKey; not OAuth, and no redirect for your consumer to complete.
+- **Webhooks:** No webhooks — Yuki documents no event or subscription mechanism, and this connector adds no virtual webhooks, so poll for changes.
+
+**Important to know:**
+
+- Turning on web service access is not something your consumer does alone — it is a domain feature their accountant or administrative office switches on. Build that hand-off into onboarding and confirm it is enabled before a consumer tries to connect.
+- Each operation opens a Yuki session before the request itself, so one Unify call becomes two calls to Yuki. Yuki does not document whether the session call counts against the daily quota, so size capacity conservatively.
+- On the free Minimal bundle the Sales web service has to be added as an accountant feature on top of general web service access; the paid bundles include it. Worth confirming with a Minimal-bundle consumer before you plan an invoicing flow.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/yuki` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

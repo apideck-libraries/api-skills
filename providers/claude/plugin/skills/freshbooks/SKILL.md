@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "1a"
   verified: true
+  difficulty: straightforward
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # FreshBooks (via Apideck)
@@ -26,6 +29,27 @@ Access FreshBooks through Apideck's **Accounting** unified API — one of 34 Acc
 - **Gotchas:** [page](https://developers.apideck.com/apis/accounting/freshbooks/gotchas)
 - **FreshBooks docs:** https://www.freshbooks.com/api/start
 - **Homepage:** https://www.freshbooks.com/
+
+## At a glance
+
+- **Implementation difficulty:** straightforward — Self-Service OAuth App, Free to Register — No Partnership or App Review
+- **Vendor partnership required:** no ([FreshBooks Developer Hub](https://www.freshbooks.com/developers)) — No partner program to join — register your own OAuth app free in the Developer Hub. A public FreshBooks App Store listing is optional.
+- **Apideck-managed credentials:** available — For testing, the consent screen shows "Apideck"; production connections use your own FreshBooks OAuth app.
+- **Account type required:** Any FreshBooks account (trial or paid); no specific plan tier required.
+- **Consumer access level:** Owner or admin role on the FreshBooks Business being connected.
+- **Sandbox:** available ([signup](https://www.freshbooks.com/signup))
+- **Costs:** API access is free; consumers need an active FreshBooks subscription, and a free trial covers evaluation.
+- **Rate limits:** No daily cap and no published numeric limit — FreshBooks throttles bursts of requests.
+- **Authentication:** Authorization code flow.
+- **Webhooks:** No webhooks — FreshBooks offers none, so data sync is polling-based.
+
+**Important to know:**
+
+- The FreshBooks Bills API is still in beta, so the accounts-payable side rides on an interface FreshBooks has not finalised yet.
+- A customisable chart of accounts is only available on FreshBooks' Plus, Premium and Select plans, so a consumer on Lite exposes just the default accounts — two customers on different plans can return different ledger-account data.
+- One FreshBooks login can hold several Businesses, but a connection covers exactly one of them — a customer spanning multiple entities needs a separate connection per Business.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/freshbooks` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 
