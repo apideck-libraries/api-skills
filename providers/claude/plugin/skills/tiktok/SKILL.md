@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: involved
+  partnershipRequired: true
+  sandboxAvailable: true
 ---
 
 # TikTok Shop (via Apideck)
@@ -30,6 +33,27 @@ Access TikTok Shop through Apideck's **Ecommerce** unified API — one of 17 Eco
 - **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/tiktok/gotchas)
 - **TikTok Shop docs:** https://partner.tiktokshop.com/doc
 - **Homepage:** https://www.tiktok.com/
+
+## At a glance
+
+- **Implementation difficulty:** involved — Partner Center App-Developer Registration + Mandatory Compliance and Legal Review
+- **Vendor partnership required:** yes ([TikTok Shop Partner Center](https://partner.tiktokshop.com/account/sign-up)) — Register as an App developer (ISV), not a Seller developer. US partners sign up at partner.us.tiktokshop.com instead. A compliance and legal review follows.
+- **Apideck-managed credentials:** not available — You bring your own TikTok Shop Partner Center app key and secret, for testing as well as production.
+- **Account type required:** A TikTok Shop Partner Center account with an app created, and the shop, order and product APIs enabled on it.
+- **Consumer access level:** Any TikTok Shop seller who can approve the authorization for their own shop; TikTok documents no separate staff permission level.
+- **Sandbox:** available — TikTok Shop's Developer Guide covers development shops and an API testing tool; the access route is not documented publicly.
+- **Rate limits:** No fixed published figure — TikTok allocates request capacity dynamically per shop and per endpoint. Check an endpoint's own reference doc for a stated limit.
+- **Authentication:** OAuth-style code exchange, then a custom access-token header and mandatory request signing on every call rather than Bearer. Apideck handles all of it.
+- **Webhooks:** No webhooks — neither native nor virtual, so TikTok Shop data is kept in sync by polling.
+
+**Important to know:**
+
+- Each connection currently asks the connecting seller for your app key, secret and service id in Vault, rather than those being set once for the integration, so plan to supply them per connection.
+- TikTok releases dated API versions about monthly and guarantees a previous version stays callable for only two months after its successor ships, with retirements announced in its changelog, so integrations need an upgrade habit.
+- TikTok ties the refresh token's expiry to the authorization period the seller granted rather than to a fixed lifetime, so a connection can lapse on the seller's schedule and need re-authorizing.
+- One seller authorization can cover several shops, and each connection is bound to the single shop chosen after authorizing, so a seller running more than one shop needs a connection per shop.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/tiktok` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

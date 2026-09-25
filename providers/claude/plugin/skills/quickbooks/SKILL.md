@@ -34,20 +34,22 @@ Access QuickBooks through Apideck's **Accounting** unified API — one of 34 Acc
 
 - **Implementation difficulty:** moderate — Self-Service Signup + App Review Required
 - **Vendor partnership required:** yes ([Intuit Developer Portal](https://developer.intuit.com/app/developer/homepage)) — Intuit Developer Account required (free, self-service).
-- **Apideck-managed credentials:** Available — OAuth shows "Apideck" as the requesting application.
+- **Apideck-managed credentials:** available — OAuth shows "Apideck" as the requesting application.
 - **Account type required:** QuickBooks Online (Simple Start, Essentials, Plus, or Advanced)
 - **Consumer access level:** Any user with QuickBooks Online access (Admin recommended for full data access)
 - **Sandbox:** available ([signup](https://developer.intuit.com/app/developer/qbo/docs/develop/sandboxes)) — Free sandbox via Intuit Developer Portal (up to 10 companies, valid for 2 years).
-- **Costs:** Free at Builder tier (500,000 CorePlus API calls/month); paid tiers from $300/month (Silver) unlock higher volumes and Premium APIs.
-- **Rate limits:** 500 requests/minute per company, 10 concurrent maximum; batch endpoint 120 requests/minute.
-- **Authentication:** OAuth 2.0 authorization code flow.
+- **Costs:** Reads are metered, writes are not: Builder is free with 500K CorePlus calls/month then blocks; Silver $300/month includes 1M.
+- **Rate limits:** 500 requests/minute per company (realm) and 10 concurrent requests/second per realm and app. Enforced on every tier; upgrading does not raise them.
+- **Authentication:** Authorization Code flow.
 - **Webhooks:** Native — invoice, customer, and payment events (20+ event types)
 
 **Important to know:**
 
-- Access tokens expire after 1 hour (auto-refreshed by Apideck); refresh tokens expire after 100 days of inactivity and rotate on each refresh — dormant connections must be re-authorized by the consumer.
-- App Assessment Questionnaire required before production access is granted.
-- The free Builder tier's monthly CorePlus (data retrieval) call cap is hard — calls above it are blocked, not throttled, until the next billing cycle or a tier upgrade.
+- Only successful production calls (list/get-one, query, reports, attachment downloads) count as CorePlus; sandbox/OAuth never do. Builder's free cap blocks calls outright until reset, not throttled — a payment method moves you to Silver, which bills overage instead.
+- Intuit's platform fees fall on whoever owns the Intuit app, not on the end QuickBooks company. Apideck-provided credentials are for evaluation and testing; a production integration uses your own Intuit app, so the tier and any fees are yours.
+- The projects resource is served by Intuit's Projects API, which is a Premium API available only to Silver, Gold and Platinum partners. On the free Builder tier this resource is unavailable regardless of your CorePlus allowance.
+- Intuit refresh tokens expire after 100 days of inactivity and, since a November 2025 policy change, after a hard maximum of 5 years regardless of activity. Dormant and aged-out connections need consumer re-authorization.
+- A 400 with an Intuit `SystemFault`, or a 401 citing error code 100/140 or a "company locked out" (`LOCKED_BY_SERVER`) message, is QuickBooks' concurrent-request lockout — it happens when two requests hit the same company file at the same time, not because the credentials are invalid. Apideck treats these as transient: the connection is not invalidated and no reconnect is needed. Retry after a short backoff.
 
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/quickbooks` (`overview` field) is the live, authoritative version.
 

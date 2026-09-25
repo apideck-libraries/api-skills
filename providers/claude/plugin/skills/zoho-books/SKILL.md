@@ -34,13 +34,13 @@ Access Zoho Books through Apideck's **Accounting** unified API — one of 34 Acc
 
 - **Implementation difficulty:** straightforward — Self-Service OAuth, No Partnership Required
 - **Vendor partnership required:** no — No partner programme — self-service OAuth client registration is free. An optional Zoho Marketplace listing adds discoverability, not API access.
-- **Apideck-managed credentials:** Available for testing — the OAuth consent screen shows "Apideck"; use your own Zoho OAuth client for production.
+- **Apideck-managed credentials:** available — For testing: the OAuth consent screen shows "Apideck"; use your own Zoho OAuth client for production.
 - **Account type required:** Active Zoho Books subscription (Free plan or higher)
 - **Consumer access level:** A user with organization-level access in the Zoho Books organization being authorized
-- **Sandbox:** not available — No separate sandbox environment is offered.
+- **Sandbox:** not available ([signup](https://www.zoho.com/books/signup/)) — Start a free Zoho Books trial or add a dedicated test organization to your own account; there is no separate sandbox environment.
 - **Costs:** Free — Zoho charges nothing for API access on any Zoho Books plan, including the Free plan.
 - **Rate limits:** 100 requests/minute per organization; daily cap set by the consumer's plan (1,000 Free to 10,000 Premium); 5 concurrent calls on Free, 10 on paid plans.
-- **Authentication:** OAuth 2.0 (Authorization Code).
+- **Authentication:** Authorization Code flow.
 - **Webhooks:** Virtual webhooks — created/updated/deleted events on 10 resources, including invoices, bills, payments, customers and suppliers.
 
 **Important to know:**

@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "1b"
   verified: true
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # OneDrive (via Apideck)
@@ -26,6 +29,28 @@ Access OneDrive through Apideck's **File Storage** unified API — one of 5 File
 - **Gotchas:** [page](https://developers.apideck.com/apis/file-storage/onedrive/gotchas)
 - **OneDrive docs:** https://learn.microsoft.com/onedrive/developer/
 - **Homepage:** https://onedrive.live.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Self-Service OAuth + Publisher Verification Needed for Cross-Tenant Consent
+- **Vendor partnership required:** no ([Microsoft Entra publisher verification](https://learn.microsoft.com/en-us/entra/identity-platform/publisher-verification-overview)) — No partner programme or contract. Publisher verification, via a Microsoft AI Cloud Partner Program account, is the only review step.
+- **Apideck-managed credentials:** available — The Microsoft consent screen shows "Apideck". Use your own Microsoft Entra app in production.
+- **Account type required:** A personal Microsoft account with OneDrive, or a work or school account whose Microsoft 365 licence includes OneDrive
+- **Consumer access level:** Any user with access to the drive they connect
+- **Sandbox:** available ([signup](https://developer.microsoft.com/microsoft-365/dev-program)) — A free personal Microsoft account gives you a OneDrive to test against; the Microsoft 365 E5 developer tenant (25 users) is eligibility-gated.
+- **Costs:** None. App registration, publisher verification and standard Microsoft Graph calls are free.
+- **Rate limits:** Per app per tenant: 1,250 to 6,250 resource units/min (1 to 2 units per call), scaling with tenant size; HTTP 429/503 with Retry-After on excess
+- **Authentication:** Authorization Code flow through Microsoft Entra ID.
+- **Webhooks:** Native — drive.updated only (a library-level change notification; per-file events are not emitted)
+
+**Important to know:**
+
+- Publisher verification is the hidden gate: since November 2020 Microsoft blocks users in other tenants from consenting to a new multitenant app that is not publisher verified. Plan for it before onboarding, including a publisher domain you own.
+- Many work and school tenants switch off user consent, so a tenant admin has to approve the app before anyone in that organisation can connect; plan for an admin-consent step in your onboarding.
+- A connection is pinned to one drive: after authorizing, the consumer can point it at a specific drive from a live list of their own drives; left unset, the account's default drive is used. A consumer with several drives, or shared libraries, needs one connection per drive.
+- Refresh tokens expire after 90 days without use, so a consumer whose integration is idle for three months has to re-authorise the connection.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/onedrive` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

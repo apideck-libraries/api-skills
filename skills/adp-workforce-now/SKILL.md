@@ -13,6 +13,9 @@ metadata:
   tier: "1c"
   verified: true
   status: beta
+  difficulty: highly_complex
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # ADP Workforce Now (via Apideck)
@@ -31,6 +34,28 @@ Access ADP Workforce Now through Apideck's **HRIS** unified API — one of 58 HR
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/adp-workforce-now/gotchas)
 - **ADP Workforce Now docs:** https://developers.adp.com
 - **Homepage:** https://www.adp.com/what-we-offer/products/adp-workforce-now.aspx
+
+## At a glance
+
+- **Implementation difficulty:** highly complex — Custom Auth + Multi-Step Per-Consumer Setup
+- **Vendor partnership required:** no — The ADP Marketplace Partner Program is a separate route that adds a sandbox and partner API access under a partner agreement; API Central needs no partnership.
+- **Apideck-managed credentials:** not available — Each consumer provisions their own ADP credentials and certificate.
+- **Account type required:** ADP Workforce Now or Workforce Now Next Generation, ADP's US and Canada product, with ADP API Central purchased.
+- **Consumer access level:** An ADP administrator who can purchase the add-on, create a project, set Workforce Now permissions and generate a certificate.
+- **Sandbox:** not available — A test instance exists only inside ADP's Marketplace Partner enrollment, which this connection model does not use.
+- **Costs:** Paid by the consumer: ADP bills API Central monthly by employee count on their own ADP invoice; prices are shown after signing in. No free trial.
+- **Rate limits:** 120 requests/minute per API Central project and a maximum of 10 concurrent requests; ADP returns HTTP 429 beyond either limit.
+- **Authentication:** Client credentials over mutual TLS, not a user-consent flow. ADP requires an X.509 client certificate on every call, plus Client ID and Secret.
+- **Webhooks:** Virtual webhooks (Apideck polls for employee created, updated and terminated events)
+
+**Important to know:**
+
+- Credentials only exist once the consumer buys ADP API Central, which ADP publishes on its US storefront only. Workforce Now is ADP's US and Canada product; elsewhere use the ADP iHCM connector instead. Every consumer meets a purchase decision inside your onboarding flow.
+- The API Central project must explicitly include the Workers API. A project created with only the intuitive Employee Demographic Data use case returns 403 Invalid Scope on the worker list, so confirm the project covers it before treating the connection as broken.
+- The client certificate expires two years after issuance, and the connection stops working the moment it lapses. That is a dated, per-connection failure that lands long after the build is finished.
+- You cannot de-risk this build before a consumer commits: your first end-to-end test necessarily runs against that consumer's live Workforce Now tenant.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/adp-workforce-now` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

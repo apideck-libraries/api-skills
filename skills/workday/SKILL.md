@@ -39,9 +39,9 @@ Access Workday through Apideck's **Accounting, HRIS, ATS** unified API — one o
 - **Account type required:** Workday tenant with Web Services access
 - **Consumer access level:** Administrator with privileges to create Integration System Users and manage security groups and domain security policies
 - **Sandbox:** not available — Testing runs against a consumer's own Workday tenant — no free trial, and Development tenants are contract-gated to existing Workday customers.
-- **Costs:** No additional platform fees from Workday, and no connection limits imposed by Apideck.
+- **Costs:** No additional platform fees from Workday.
 - **Rate limits:** No published hard limits; Workday throttles under high tenant load.
-- **Authentication:** Basic Authentication through a per-consumer Integration System User (ISU) — not OAuth.
+- **Authentication:** A per-consumer Integration System User (ISU); not OAuth.
 - **Webhooks:** Virtual webhooks — no native webhooks in Workday; Apideck polls employees, applicants, jobs, bills, suppliers, purchase orders, and customers.
 
 **Important to know:**

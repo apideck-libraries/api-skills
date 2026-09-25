@@ -33,21 +33,21 @@ Access Exact Online through Apideck's **Accounting** unified API — one of 34 A
 ## At a glance
 
 - **Implementation difficulty:** moderate — Paid Developer Subscription + App Review Required for External Consumers
-- **Vendor partnership required:** yes ([Exact Online App Store (Manage my apps)](https://apps.exactonline.com)) — Yes — registering your app requires a paid Exact Online developer subscription (per country); App Store listing is optional.
+- **Vendor partnership required:** yes ([developer portal](https://www.exact.com/nl/app-store/developer)) — Registering your app requires a paid Exact Online developer subscription (per country); App Store listing is optional.
 - **Apideck-managed credentials:** not available
 - **Account type required:** Active Exact Online subscription in any supported country edition (NL, BE, DE, ES, UK, US)
 - **Consumer access level:** Any user who can authorise third-party app connections; at consent time the app must be granted access to each division (administration) it needs to access.
-- **Sandbox:** available — No isolated sandbox — test with your developer subscription or a free 30-day trial.
+- **Sandbox:** available — Test with your developer subscription or a free 30-day trial; every environment holds live data.
 - **Costs:** Developer subscription approx. €15/month per country (excl. VAT); no per-call API charges.
 - **Rate limits:** 60 requests/minute and 5,000 requests/day per app per division; Exact Online Premium raises the daily cap to 30,000.
-- **Authentication:** OAuth 2.0 (Authorization Code).
+- **Authentication:** Authorization Code flow.
 - **Webhooks:** No webhooks — sync is polling-based; Exact Online's native webhooks are not surfaced through this connector.
 
 **Important to know:**
 
 - Exact Online runs separate country instances — an app registered in one country cannot serve consumers in another. Select and save the connection's region **before** authorizing; it defaults to the Dutch domain, so non-NL consumers fail otherwise.
 - Your app must pass Exact's review before consumers outside your own Exact instance can connect — until it does, only your own subscription can be linked, which blocks pilot consumers.
-- Write-back is limited to transactions (invoices, bills, invoice items, payments, bill payments, journal entries); master data — customers, suppliers, ledger accounts, tax rates and credit notes — is read-only, so consumers maintain it in Exact Online.
+- Write-back is limited to transactions (invoices, bills, invoice items, payments, bill payments, bill credit notes, journal entries); master data — customers, suppliers, ledger accounts, tax rates and credit notes — is read-only, so consumers maintain it in Exact Online.
 - Refresh tokens are single-use and expire after 30 days of inactivity — a dormant connection must be re-authorised by the consumer.
 - Exact requires sequential API calls — parallel or multi-threaded requests are explicitly disallowed, so a high-volume sync must be serialised rather than fanned out.
 

@@ -12,6 +12,9 @@ metadata:
   authType: apiKey
   tier: "2"
   verified: true
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Holded (via Apideck)
@@ -26,6 +29,27 @@ Access Holded through Apideck's **HRIS** unified API — one of 58 HRIS connecto
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/holded/docs/consumer+connection) · [image](https://developers.apideck.com/connectors/holded/docs/consumer+image)
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/holded/gotchas)
 - **Homepage:** https://www.holded.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — API Key Authentication - Each Consumer Creates Their Own Key in Holded
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** not available — Each consumer supplies their own Holded API key.
+- **Account type required:** A Holded account on a paid plan: the free plan carries no API access.
+- **Consumer access level:** A user who can reach the Developers section in Holded, which the default developer role grants.
+- **Sandbox:** available — Every Holded account includes a demo environment, switched into from the account menu. It takes sample data, can be reset, and the API reaches it too.
+- **Costs:** Holded does not sell API access separately, so the cost is the subscription your consumer already pays, on whichever plan carries the quota you need.
+- **Rate limits:** 60 to 600 calls a minute by plan, plus a monthly quota from 500 on the entry plan to 100,000 at the top. Lower plans 429 at the cap; the top meters overage.
+- **Authentication:** Sent as a request header; not OAuth.
+- **Webhooks:** Virtual webhooks - created and updated events across 11 resources, from invoices, bills and payments to employees. Deletions raise nothing.
+
+**Important to know:**
+
+- The monthly quota, not the per-minute rate, is what usually decides whether Holded can carry an integration: it is a single allowance for the whole account, drawn down by every key on it rather than granted per integration.
+- A Holded API key belongs to the account rather than to the person who created it. Anyone holding it reaches everything the account exposes within the module permissions picked at creation, so choose those permissions deliberately.
+- Holded serves both the accounting and HRIS APIs, and Vault keys a connection to one unified API, so each vertical is a separate connection using the same Holded API key. Employees are reachable only through HRIS: the accounting side excludes them.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/holded` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

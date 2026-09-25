@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "1a"
   verified: true
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Stripe (via Apideck)
@@ -27,6 +30,28 @@ Access Stripe through Apideck's **Accounting** unified API — one of 34 Account
 - **Gotchas:** [page](https://developers.apideck.com/apis/accounting/stripe/gotchas)
 - **Stripe docs:** https://stripe.com/docs/api
 - **Homepage:** https://stripe.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Self-Service OAuth + Stripe App Marketplace Review Required to Scale
+- **Vendor partnership required:** no — None: no partner programme, contract or fee.
+- **Apideck-managed credentials:** not available — Apideck holds no shared Stripe App, so you supply your own app's credentials.
+- **Account type required:** Any activated Stripe account
+- **Consumer access level:** Administrator on the Stripe account (required to install a Stripe App)
+- **Sandbox:** available ([signup](https://docs.stripe.com/sandboxes)) — Free and built in: every Stripe account includes test mode plus up to 5 isolated sandboxes.
+- **Costs:** Free: Stripe charges no API, setup or monthly fees. Its per-transaction payment processing fees do not apply to API access.
+- **Rate limits:** 100 requests/second per connected Stripe account in live mode; 25/second in test mode and sandboxes, and on most individual endpoints.
+- **Authentication:** Authorization Code flow through a Stripe App that you build and own.
+- **Webhooks:** Native — customer, invoice, credit note, invoice item, payment, expense, refund, tax rate and company info events (21 Stripe events mapped).
+
+**Important to know:**
+
+- Consumers connect through your Stripe App's External test install link, the route this connector uses today. Stripe caps external testing at 25 tester accounts per app, badges the app as a test version, and requires you to tell users it has not been reviewed by Stripe.
+- Stripe's route past external testing is publishing the app on the Stripe App Marketplace: Stripe reviews it and replies within 4 business days, the account must be activated, one public app is allowed per Stripe account, and the name cannot contain Stripe, app, free or paid.
+- Creating that app is a small build rather than a portal form: you create and upload it with the Stripe CLI and configure it through a JSON manifest, so this step needs a developer.
+- Stripe is a payments and billing platform rather than a general ledger, so what the connector exposes is Stripe's billing data mapped onto accounting resources: expect invoicing and payments coverage rather than bookkeeping.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/stripe` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

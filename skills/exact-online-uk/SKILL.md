@@ -37,14 +37,14 @@ Access Exact Online UK through Apideck's **Accounting** unified API — one of 3
 ## At a glance
 
 - **Implementation difficulty:** moderate — Paid Developer Subscription + App Review Required for External Consumers
-- **Vendor partnership required:** yes ([Exact Online App Store (Manage my apps)](https://apps.exactonline.com/gb/)) — Yes — registering your app requires a paid Exact Online developer subscription (per country); App Store listing is optional.
-- **Apideck-managed credentials:** Not available for this region — Apideck test credentials exist only for the exact-online-nl variant.
+- **Vendor partnership required:** yes ([developer portal](https://www.exact.com/uk/developers)) — Registering your app requires a paid Exact Online developer subscription (per country); App Store listing is optional.
+- **Apideck-managed credentials:** not available — Apideck test credentials exist only for the exact-online-nl variant.
 - **Account type required:** Active Exact Online subscription on the UK instance
 - **Consumer access level:** Any user who can authorise third-party app connections.
-- **Sandbox:** available — No isolated sandbox — testing runs against live UK Exact Online environments.
+- **Sandbox:** available — Test with your UK developer subscription or a free 30-day trial on the UK production instance (no credit card); every environment holds live data.
 - **Costs:** Developer subscription approx. €15/month per country (excl. VAT); no per-call charges.
 - **Rate limits:** 60 requests/minute and 5,000 requests/day per app per division; Exact Online Premium raises the daily cap to 30,000.
-- **Authentication:** OAuth 2.0 (Authorization Code).
+- **Authentication:** Authorization Code flow.
 - **Webhooks:** No webhooks — Exact Online has native webhooks, but Apideck does not surface them for this connector; sync by polling.
 
 **Important to know:**
@@ -52,7 +52,7 @@ Access Exact Online UK through Apideck's **Accounting** unified API — one of 3
 - Exact Online runs separate country instances — an app registered in one country cannot serve consumers in another. For regions beyond this instance, use exact-online (per-connection region) or exact-online-nl.
 - Your app must pass Exact's review before consumers outside your own Exact instance can connect — until it does, only your own subscription can be linked, which blocks pilot consumers.
 - Refresh tokens are single-use and expire after 30 days of inactivity — a dormant connection must be re-authorised by the consumer.
-- Write coverage is narrowest here: master data is read-only on all three Exact Online connectors, and on this UK connector bills are read-only too. Invoices, invoice items, payments, bill payments and journal entries accept writes.
+- Write coverage is narrowest here: master data is read-only on all three Exact Online connectors, and on this UK connector bills are read-only too — though bill credit notes are not. Invoices, invoice items, payments, bill payments, bill credit notes and journal entries accept writes.
 - Balance Sheet and Profit & Loss classification defaults follow Dutch RGS headings, so a UK administration normally needs the classification-title connection settings configured — otherwise report sections fall back to coarser groupings.
 
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/exact-online-uk` (`overview` field) is the live, authoritative version.

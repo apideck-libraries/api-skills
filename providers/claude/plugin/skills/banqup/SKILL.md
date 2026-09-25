@@ -13,6 +13,9 @@ metadata:
   tier: "1a"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # banqUP (via Apideck)
@@ -30,6 +33,27 @@ Access banqUP through Apideck's **Accounting** unified API — one of 34 Account
 - **Gotchas:** [page](https://developers.apideck.com/apis/accounting/banqup/gotchas)
 - **banqUP docs:** https://banqup.com
 - **Homepage:** https://banqup.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Self-Service OAuth Credentials + Per-Business App Whitelisting Required
+- **Vendor partnership required:** no — No partnership or certification gates API access; developer-portal registration is self-service. Banqup Group's reseller programme is unrelated.
+- **Apideck-managed credentials:** not available — You register your own app on the Banqup Developer Portal and supply its credentials.
+- **Account type required:** A banqUP business account for the data, plus a free Banqup Developer Portal account to register the app.
+- **Consumer access level:** The banqUP space's legal representative, or a space admin acting for them.
+- **Sandbox:** available — Self-service: register on banqUP's separate CVE sandbox developer portal, documented at docs.cve.btx.banqup.com, to obtain sandbox credentials.
+- **Costs:** Developer-portal access and API use carry no separate charge; they come with the consumer's banqUP subscription.
+- **Rate limits:** No published numeric limit. Limits apply per credential set; raising one is arranged with a banqUP contact and may require a higher plan.
+- **Authentication:** Client-credentials flow: the app authenticates as itself, so consumers never see a login screen.
+- **Webhooks:** No webhooks — banqUP publishes none for this API, so changes are picked up by polling.
+
+**Important to know:**
+
+- banqUP is read-only through Apideck: there is no create, update or delete path, so plan a one-way sync out of banqUP.
+- Access is granted inside banqUP, not by the credentials alone: your app has to be whitelisted in the connected business's own space before it can retrieve anything. Until that happens, a correctly configured connection returns no data rather than an error.
+- Each connection is scoped to a single seller. banqUP requires a seller id, which the list operations use as a path parameter, so your consumer needs to know which seller their credentials represent, and each additional seller is its own connection.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/banqup` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

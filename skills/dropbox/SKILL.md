@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "1b"
   verified: true
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # Dropbox (via Apideck)
@@ -26,6 +29,27 @@ Access Dropbox through Apideck's **File Storage** unified API — one of 5 File 
 - **Gotchas:** [page](https://developers.apideck.com/apis/file-storage/dropbox/gotchas)
 - **Dropbox docs:** https://www.dropbox.com/developers
 - **Homepage:** https://www.dropbox.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Self-Service App Registration + Dropbox Production Approval Required to Connect Users at Scale
+- **Vendor partnership required:** no ([Dropbox App console](https://www.dropbox.com/developers/apps)) — No contract and no partner programme. Registering an app is free and self-service.
+- **Apideck-managed credentials:** available — Temporary shared credentials for trying the connector; going live needs the app owner's own Dropbox app.
+- **Account type required:** Any Dropbox account, including a free individual one.
+- **Consumer access level:** Any Dropbox user can authorize access to their own account; no administrator role is involved.
+- **Sandbox:** not available — Dropbox has no separate test environment.
+- **Costs:** No published fee for API access. What an account can do follows its own Dropbox plan.
+- **Rate limits:** No published figures. Limits apply per authorized user, or per team for team apps, and Dropbox returns 429 with a Retry-After header.
+- **Authentication:** Authorization Code flow.
+- **Webhooks:** No webhooks — Dropbox changes are picked up by polling instead.
+
+**Important to know:**
+
+- A Dropbox app starts in Development status. Its 50th connected user starts a two-week clock to obtain Production approval, and Dropbox will not usually review before that point, so applying early does not avoid it. Missing it stops new connections; existing ones keep working.
+- An app is created with either App folder or Full Dropbox access, and Dropbox does not allow that choice to be changed afterwards. Correcting it means registering a new app, which every already-connected consumer then has to authorize again.
+- Adding a scope later does not reach consumers who already connected: Dropbox keeps an existing authorization exactly as it was granted and never re-prompts, so each of them has to authorize again before the new permission works.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/dropbox` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

@@ -12,6 +12,9 @@ metadata:
   authType: basic
   tier: "1a"
   verified: true
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # BambooHR (via Apideck)
@@ -27,6 +30,26 @@ Access BambooHR through Apideck's **HRIS** unified API — one of 58 HRIS connec
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/bamboohr/gotchas)
 - **BambooHR docs:** https://documentation.bamboohr.com/docs
 - **Homepage:** https://www.bamboohr.com
+
+## At a glance
+
+- **Implementation difficulty:** moderate — API key authentication, with no partnership or app review
+- **Vendor partnership required:** no ([BambooHR Apps Marketplace Program](https://www.bamboohr.com/partner-programs/marketplace-program)) — Joining the optional BambooHR Marketplace Program adds a sandbox account and a Marketplace listing.
+- **Apideck-managed credentials:** not available — Each consumer generates and supplies their own API key and subdomain.
+- **Account type required:** Any BambooHR account (Core, Pro or Elite).
+- **Consumer access level:** Account Owner recommended, otherwise a custom access level carrying the permissions your integration needs.
+- **Sandbox:** available ([signup](https://www.bamboohr.com/signup/)) — Sign up for a free BambooHR trial and test against it. Joining the Marketplace Program additionally provides a dedicated sandbox account.
+- **Costs:** No separate API fee, and no cost to you — API access is included in each consumer's own BambooHR subscription.
+- **Rate limits:** Not published. BambooHR throttles at its discretion and returns Retry-After; from 14 September 2026 that response changes from 503 to 429.
+- **Authentication:** The consumer's API key over HTTP Basic, not OAuth, plus their BambooHR subdomain.
+- **Webhooks:** Virtual webhooks (Apideck polls BambooHR for employee created, updated and terminated events)
+
+**Important to know:**
+
+- An API key carries the permissions of the BambooHR user who created it. An under-privileged key returns a narrower set of employees and blank fields instead of an error, so missing data reads as a mapping bug rather than a permissions problem.
+- BambooHR has retired its custom-report endpoint in favour of its Datasets API. This matters only if you planned to pull report-shaped data; the unified HRIS resources are unaffected.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/bamboohr` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

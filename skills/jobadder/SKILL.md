@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: true
+  sandboxAvailable: false
 ---
 
 # JobAdder (via Apideck)
@@ -29,6 +32,26 @@ Access JobAdder through Apideck's **ATS** unified API — one of 11 ATS connecto
 - **Status:** beta
 - **Gotchas:** [page](https://developers.apideck.com/apis/ats/jobadder/gotchas)
 - **Homepage:** https://www.jobadder.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Self-Service OAuth App + JobAdder Approval Required Before Credentials Work
+- **Vendor partnership required:** yes ([JobAdder developer portal](https://developers.jobadder.com/register)) — Registration is self-service, but JobAdder approves the developer account, then each application inside it. API team: api@jobadder.com.
+- **Apideck-managed credentials:** not available — Each application owner registers their own JobAdder application.
+- **Account type required:** JobAdder account on a plan that includes API access.
+- **Consumer access level:** Any JobAdder user who can complete the authorisation. The connection then reaches only the data that user's account can access.
+- **Sandbox:** not available — JobAdder provisions one only for contracted customers, and offers no free trial to develop against.
+- **Costs:** JobAdder prices on quotation, with no published list price. API access is included only from the mid plans upward, so an entry-level plan cannot connect.
+- **Rate limits:** None published. JobAdder's API terms reserve the right to impose limits at its own discretion, without stating a number.
+- **Authentication:** Authorization Code flow.
+- **Webhooks:** No webhooks (poll the API for changes).
+
+**Important to know:**
+
+- A refresh token expires after two weeks without use, and every use resets that two-week window. A connection in regular use therefore stays alive on its own, while one that goes quiet for a fortnight stops working and the consumer has to authorise again.
+- Raise the approval with JobAdder's API team at the start of a build rather than at the end: until both approvals land, the client id and secret return errors, so there is nothing to build or test against.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/jobadder` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

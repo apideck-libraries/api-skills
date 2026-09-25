@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # Folk (via Apideck)
@@ -31,6 +34,26 @@ Access Folk through Apideck's **CRM** unified API — one of 21 CRM connectors t
 - **Gotchas:** [page](https://developers.apideck.com/apis/crm/folk/gotchas)
 - **Folk docs:** https://developer.folk.app
 - **Homepage:** https://www.folk.app/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — API Key Authentication - Each Consumer Creates Their Own Key in Folk
+- **Vendor partnership required:** no — Folk has no developer programme to join and no application review.
+- **Apideck-managed credentials:** not available — Each consumer supplies their own Folk API key.
+- **Account type required:** Folk workspace on the Premium plan.
+- **Consumer access level:** Any workspace member can create an API key. Workspace admins can see every key that exists in the workspace.
+- **Sandbox:** not available — A new workspace starts on a two-week trial that includes the Premium features and the API; there is no separate test environment.
+- **Costs:** Premium costs $48 for each member a month billed yearly, or $60 billed monthly. Prices as at June 2026.
+- **Rate limits:** 600 requests a minute. Folk applies the limit to the member who owns the key, so several keys belonging to one person share one budget.
+- **Authentication:** Sent as a bearer token; not OAuth.
+- **Webhooks:** Native (contact, company and note events for create, update and delete).
+
+**Important to know:**
+
+- An API key belongs to the member who created it: Folk states that when a member is removed from a workspace, the integrations they set up stop working, and documents no way to hand a key over. Restoring it means pasting a new key from somebody still in the workspace.
+- Folk sets no expiry on a healthy webhook subscription, but it switches off one whose deliveries keep failing and emails the workspace about it. Reconnecting in Vault is what restores delivery.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/folk` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

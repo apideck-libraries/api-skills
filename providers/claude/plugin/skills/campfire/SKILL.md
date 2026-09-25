@@ -37,14 +37,16 @@ Access Campfire through Apideck's **Accounting** unified API — one of 34 Accou
 
 ## At a glance
 
-- **Implementation difficulty:** moderate — API Key authentication — consumers create credentials manually
-- **Vendor partnership required:** no ([developer portal](https://hi.meetcampfire.com/partnerships)) — optional, but may include sandbox access and other benefits
-- **Apideck-managed credentials:** not available
-- **Account type required:** Campfire account
-- **Consumer access level:** Admin role (required for full read and write access to all resources)
-- **Sandbox:** available — Via consumer's own account, or via Campfire integration partner sandbox (optional partnership)
-- **Authentication:** API Key — the consumer supplies a token sent as an Authorization: Token <key> header.
-- **Webhooks:** Not supported — no native or virtual webhooks; data sync is polling-based.
+- **Implementation difficulty:** moderate — API Key authentication — the consumer creates a dedicated API user and key in Campfire
+- **Vendor partnership required:** no ([developer portal](https://hi.meetcampfire.com/partnerships)) — The Campfire Partner Program is a commercial referral programme, unrelated to API access.
+- **Apideck-managed credentials:** not available — Each consumer supplies their own Campfire API key.
+- **Account type required:** Campfire account (any plan)
+- **Consumer access level:** Admin role on a dedicated API user (full read and write); clerk or view only for narrower integrations.
+- **Sandbox:** available — On request — Campfire has publicly said it provisions evaluation sandboxes; there is no documented self-service signup, so ask Campfire.
+- **Costs:** No public price list — Campfire pricing is quote-based and no free tier is documented. No separate fee for API access is documented either.
+- **Rate limits:** 5 requests/second per API user, shared across all endpoints; exceeding it returns 429 with a Retry-After header.
+- **Authentication:** The consumer supplies a token sent as an Authorization: Token <key> header. Not OAuth; the key is static with no documented expiry.
+- **Webhooks:** No webhooks — neither native nor virtual; poll for changes. Campfire's own API offers webhook subscriptions, but this connector does not use them.
 
 **Important to know:**
 
