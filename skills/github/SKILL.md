@@ -13,6 +13,9 @@ metadata:
   tier: "1b"
   verified: true
   status: beta
+  difficulty: straightforward
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # GitHub (via Apideck)
@@ -30,6 +33,20 @@ Access GitHub through Apideck's **Issue Tracking** unified API — one of 6 Issu
 - **Gotchas:** [page](https://developers.apideck.com/apis/issue-tracking/github/gotchas)
 - **GitHub docs:** https://docs.github.com/en/rest
 - **Homepage:** https://github.com/
+
+## At a glance
+
+- **Implementation difficulty:** straightforward — Self-Service GitHub App + Free Account, No Partnership
+- **Vendor partnership required:** no — A GitHub App can be registered under any personal account or organisation you own.
+- **Apideck-managed credentials:** not available — Each customer registers their own GitHub App and supplies its Client ID and Secret.
+- **Account type required:** A GitHub organisation; one organisation per connection.
+- **Consumer access level:** Organisation owner, since only owners can install the GitHub App on the organisation.
+- **Sandbox:** available ([signup](https://github.com/signup)) — Test with a free GitHub account.
+- **Rate limits:** 5,000 requests per hour per user for a GitHub App acting on a user's behalf; 15,000 per hour when the app is owned by a GitHub Enterprise Cloud organisation.
+- **Authentication:** Authorization Code flow; access follows the GitHub App's permissions, not OAuth scopes.
+- **Webhooks:** Native - issue events (opened, edited, closed, deleted and other issue changes).
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/github` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

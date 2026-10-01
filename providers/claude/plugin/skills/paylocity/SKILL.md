@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "1c"
   verified: true
+  difficulty: involved
+  partnershipRequired: true
+  sandboxAvailable: true
 ---
 
 # Paylocity (via Apideck)
@@ -26,6 +29,25 @@ Access Paylocity through Apideck's **HRIS** unified API — one of 58 HRIS conne
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/paylocity/gotchas)
 - **Paylocity docs:** https://developer.paylocity.com
 - **Homepage:** https://www.paylocity.com/
+
+## At a glance
+
+- **Implementation difficulty:** involved — Vendor-Issued Credentials + Partner Agreement Needed for a Sandbox
+- **Vendor partnership required:** yes ([Paylocity Technology Partner programme](https://www.paylocity.com/contact/partner-form/)) — Signing the Marketplace Partner Agreement unlocks sandbox credentials and, later, a Paylocity Marketplace listing.
+- **Apideck-managed credentials:** not available — Each consumer supplies the credentials Paylocity issues to their own company.
+- **Account type required:** A Paylocity customer company with API access enabled.
+- **Consumer access level:** A company admin of the consumer's Paylocity company.
+- **Sandbox:** available ([signup](https://www.paylocity.com/contact/partner-form/)) — Open to existing Paylocity customers, or to partners once the agreement is signed.
+- **Costs:** Not published; Paylocity quotes integration and API pricing through the Paylocity account executive.
+- **Rate limits:** Set per endpoint by Paylocity; no single headline figure is published.
+- **Authentication:** Client credentials flow; each connection also needs the consumer's Paylocity Company ID.
+- **Webhooks:** Virtual webhooks - employee created and updated events
+
+**Important to know:**
+
+- Paylocity issues API credentials by hand: each consumer requests a Client ID and Secret through their Paylocity account executive or webservices@paylocity.com, so when a connection can go live depends on Paylocity, not on you.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/paylocity` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

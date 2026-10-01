@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: involved
+  partnershipRequired: true
+  sandboxAvailable: false
 ---
 
 # Liantis (via Apideck)
@@ -30,6 +33,24 @@ Access Liantis through Apideck's **HRIS** unified API — one of 58 HRIS connect
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/liantis/gotchas)
 - **Liantis docs:** https://www.liantis.be
 - **Homepage:** https://www.liantis.be
+
+## At a glance
+
+- **Implementation difficulty:** involved — Partner Contract Required + Liantis Activates Each Employer
+- **Vendor partnership required:** yes — Onboarding with Liantis Integration Services gives you the client credentials and API access.
+- **Apideck-managed credentials:** not available — Liantis issues the client credentials to each integration partner.
+- **Account type required:** A Liantis employer client with a Belgian company number (KBO)
+- **Consumer access level:** Liantis must activate API access for each employer's company number, requested through the employer's Liantis advisor
+- **Sandbox:** not available — Testing is done with a participating employer.
+- **Costs:** Liantis charges a monthly fee per employer for API access; the amount is agreed with Liantis.
+- **Authentication:** Client credentials flow, with one client ID and secret for your integration.
+- **Webhooks:** No webhooks - data is read by polling.
+
+**Important to know:**
+
+- You need at least one participating Liantis employer before Liantis issues your credentials and a test setup.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/liantis` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

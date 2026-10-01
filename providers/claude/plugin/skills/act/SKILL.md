@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "2"
   verified: true
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # Act (via Apideck)
@@ -25,6 +28,25 @@ Access Act through Apideck's **CRM** unified API — one of 21 CRM connectors th
 - **Auth type:** oauth2
 - **Gotchas:** [page](https://developers.apideck.com/apis/crm/act/gotchas)
 - **Homepage:** https://act.com
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Custom Auth: Consumer Enters Their Own Act! Login
+- **Vendor partnership required:** no ([Act! Development Partner Program](https://www.act.com/development-partner-program/)) — Joining (by emailing act.developers@act.com) gives complimentary licences, SDK support and a marketplace listing after approval.
+- **Apideck-managed credentials:** not available — Each consumer connects with their own Act! login.
+- **Account type required:** Act! Premium Cloud, or self-hosted Act! Premium for Web with the Web API installed.
+- **Consumer access level:** An Act! user with API access permission.
+- **Sandbox:** not available ([signup](https://www.act.com/trial/act/)) — Free Act! trial with no credit card; confirm the trial database exposes the Web API before building on it.
+- **Costs:** Needs an Act! subscription licence for the consumer's database; no separate API charge is published.
+- **Rate limits:** Per-minute limit on Act! Premium Cloud, reported in the X-RateLimit-Limit header; Act! publishes no number.
+- **Authentication:** Password grant; no redirect or consent screen.
+- **Webhooks:** No webhooks - data changes are only visible by polling the unified API.
+
+**Important to know:**
+
+- Act! Premium Desktop cannot connect: its API host is internal-only, so Desktop consumers must first move to Act! Premium Cloud or self-hosted Act! Premium for Web (IIS, a CA-signed certificate, external access). Act! Connect Link, the old Desktop bridge, retired 31 December 2024.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/act` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

@@ -13,6 +13,9 @@ metadata:
   tier: "1b"
   verified: true
   status: beta
+  difficulty: straightforward
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Workable (via Apideck)
@@ -30,6 +33,21 @@ Access Workable through Apideck's **ATS** unified API — one of 11 ATS connecto
 - **Gotchas:** [page](https://developers.apideck.com/apis/ats/workable/gotchas)
 - **Workable docs:** https://workable.readme.io
 - **Homepage:** https://workable.com
+
+## At a glance
+
+- **Implementation difficulty:** straightforward — Self-Service OAuth via Apideck's Approved Workable App, No Partnership of Your Own
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** available — OAuth shows "Apideck" as the requesting application.
+- **Account type required:** Workable account, identified by its account subdomain.
+- **Consumer access level:** Workable does not state a minimum role for the authorisation. The connection then reaches only the jobs and candidates the authorising user can access.
+- **Sandbox:** available ([signup](https://www.workable.com/free-trial)) — 15-day free Workable trial, no card required; Workable does not say whether trial accounts can use the API.
+- **Costs:** Workable publishes no API fee and does not say which plans include API access.
+- **Rate limits:** 50 requests per 10 seconds.
+- **Authentication:** Authorization Code flow.
+- **Webhooks:** Virtual webhooks - applicant and job created and updated events.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/workable` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

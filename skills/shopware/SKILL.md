@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Shopware (via Apideck)
@@ -31,6 +34,25 @@ Access Shopware through Apideck's **Ecommerce** unified API — one of 17 Ecomme
 - **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/shopware/gotchas)
 - **Shopware docs:** https://developer.shopware.com
 - **Homepage:** https://en.shopware.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Consumer Creates Integration Credentials in Shopware
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** not available — Credentials belong to each shop's own Integration, so there is no shared app to lend.
+- **Account type required:** A Shopware 6 shop, self-hosted or Shopware cloud.
+- **Consumer access level:** An admin user in the shop's Administration who can create an Integration.
+- **Sandbox:** available ([signup](https://docs.shopware.com/en/shopware-account-en/general/cloud-sandbox)) — Free 30-day Developer Cloud Environment from a Shopware Account; one at a time, limited capacity, not extendable.
+- **Costs:** Admin API access comes with the shop, including the free self-hosted Community Edition.
+- **Rate limits:** No general cap documented for Admin API requests; on Shopware SaaS the token endpoint allows 10 requests per minute per IP address.
+- **Authentication:** Client credentials grant with an Integration's Access key ID and Secret access key; no consent screen.
+- **Webhooks:** Native - order, customer and product update and delete events
+
+**Important to know:**
+
+- Every Shopware shop runs on its own domain, so a connection only works if that domain serves the Admin API and can be reached from outside. Shops behind Cloudflare protections, a WAF or a firewall must allow Apideck's static IPs.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/shopware` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

@@ -14,6 +14,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # monday.com (via Apideck Proxy)
@@ -32,6 +35,25 @@ Access monday.com through Apideck's **Proxy API** with managed Vault auth. Apide
 - **Gotchas:** [page](https://developers.apideck.com/apis/proxy/monday/gotchas)
 - **monday.com docs:** https://developer.monday.com/api-reference/docs
 - **Homepage:** https://monday.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Personal API Token - Each Consumer Copies Their Own Token from monday.com
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** not available — Apideck holds no shared monday.com test account.
+- **Account type required:** A monday.com account where the connecting user is an admin or member; viewers, guests, deactivated users and student accounts cannot use a personal API token.
+- **Consumer access level:** The token mirrors the connecting user's permissions in monday.com, so the connection sees only the workspaces, boards and items that user can open.
+- **Sandbox:** available ([signup](https://developer.monday.com/api-reference/docs/developer-sandbox-account)) — A free monday.com developer account, kept separate from production data, gives you a token to test with.
+- **Costs:** API access is included in every monday.com plan.
+- **Rate limits:** Daily call cap by plan: 1,000 (Free, Standard, Basic), 10,000 (Pro), 25,000 (Enterprise); per-minute query cap of 1,000 to 5,000 by plan.
+- **Authentication:** The consumer's personal API token sent in the Authorization header; not OAuth.
+- **Webhooks:** No webhooks - monday.com events are not surfaced; poll for changes through the Proxy API instead.
+
+**Important to know:**
+
+- monday.com is an auth-only connector: there are no unified Project Management or Issue Tracking endpoints. Every read and write goes through the Proxy API as a GraphQL request against monday.com's own API.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/monday` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

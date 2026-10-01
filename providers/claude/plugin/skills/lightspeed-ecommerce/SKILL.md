@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # Lightspeed eCom (C-Series) (via Apideck)
@@ -30,6 +33,25 @@ Access Lightspeed eCom (C-Series) through Apideck's **Ecommerce** unified API �
 - **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/lightspeed-ecommerce/gotchas)
 - **Lightspeed eCom (C-Series) docs:** https://developers.lightspeedhq.com
 - **Homepage:** https://www.lightspeedhq.com/ecommerce
+
+## At a glance
+
+- **Implementation difficulty:** moderate — API Key + Secret Created Manually per Shop, No Partnership or App Review
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** not available — Each consumer creates their own API key and secret in their Lightspeed eCom back office.
+- **Account type required:** Lightspeed eCom (C-Series) shop on the eu1 or us1 cluster.
+- **Consumer access level:** Back-office access to Settings > Store Settings > Developers.
+- **Sandbox:** not available ([signup](https://www.lightspeedhq.com/ecom/app-developers/)) — Test on a real shop: create a Lightspeed eCom store, then ask Lightspeed's Apps team to upgrade it to a paid plan, since trial shops cannot create API keys.
+- **Costs:** API keys need an Advanced plan or higher, which includes three keys.
+- **Rate limits:** 300 requests per 5 minutes, 3,000 per hour and 12,000 per day per shop API key; plus 20 requests per second.
+- **Authentication:** The shop's API key and secret, sent as HTTP Basic credentials; not OAuth.
+- **Webhooks:** No webhooks - Apideck does not subscribe to Lightspeed events for this connector; read changes by listing.
+
+**Important to know:**
+
+- This connector covers Lightspeed eCom (C-Series) only. Consumers on Lightspeed eCom E-Series (Ecwid-based) connect through the separate Lightspeed connector instead.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/lightspeed-ecommerce` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

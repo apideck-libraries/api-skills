@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: highly_complex
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Microsoft Outlook (via Apideck)
@@ -30,6 +33,25 @@ Access Microsoft Outlook through Apideck's **CRM** unified API — one of 21 CRM
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/microsoft-outlook/docs/consumer+connection)
 - **Gotchas:** [page](https://developers.apideck.com/apis/crm/microsoft-outlook/gotchas)
 - **Microsoft Outlook docs:** https://learn.microsoft.com/graph/api/overview
+
+## At a glance
+
+- **Implementation difficulty:** highly complex — Consumer-Registered Entra App + Tenant Admin Consent
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** not available — Each consumer's organisation registers its own Entra app and supplies its credentials.
+- **Account type required:** Microsoft Entra work or school tenant; personal Microsoft accounts cannot be used.
+- **Consumer access level:** A Microsoft Entra administrator who can grant admin consent (registering the app alone needs the Application Developer role).
+- **Sandbox:** available ([signup](https://developer.microsoft.com/en-us/microsoft-365/dev-program)) — Free Microsoft 365 E5 developer subscription with sample data, only for Visual Studio Professional or Enterprise subscribers and qualifying programmes.
+- **Rate limits:** 10,000 requests per 10 minutes and 4 concurrent requests, per app and mailbox combination.
+- **Authentication:** Client credentials (app-only): no user signs in.
+- **Webhooks:** No webhooks - the connector does not subscribe to Microsoft Graph change notifications, so contacts and users are read by polling.
+
+**Important to know:**
+
+- The application permissions cover every mailbox in the consumer's Microsoft 365 tenant, not just the people who use your product, so expect a security review on the consumer side; Microsoft lets an administrator narrow the app's contacts access to specific mailboxes.
+- The consumer creates the client secret in Microsoft Entra with a lifetime of 24 months at most, and the connection cannot obtain a token once that secret expires, so someone has to issue a new secret and update it in Vault before then.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/microsoft-outlook` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

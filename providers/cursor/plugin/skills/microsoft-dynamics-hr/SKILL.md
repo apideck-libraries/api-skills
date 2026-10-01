@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "2"
   verified: true
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Microsoft Dynamics 365 Human Resources (via Apideck)
@@ -27,6 +30,24 @@ Access Microsoft Dynamics 365 Human Resources through Apideck's **HRIS** unified
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/microsoft-dynamics-hr/gotchas)
 - **Microsoft Dynamics 365 Human Resources docs:** https://learn.microsoft.com/dynamics365/human-resources/
 - **Homepage:** https://dynamics.microsoft.com/en-us/human-resources/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Own Microsoft Entra App Registration Required
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** available — For testing: the Microsoft consent screen shows "Apideck" as the requesting application.
+- **Account type required:** Dynamics 365 Human Resources environment on the Finance & Operations infrastructure (https://<org>.operations.dynamics.com)
+- **Consumer access level:** A Finance & Operations user whose security role grants Data Services access to the Workers and Employments data entities
+- **Sandbox:** available ([signup](https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/fin-ops/get-started/before-you-buy)) — Free 30-day Finance & Operations trial with demo data via email signup; a paid subscription also includes a sandbox environment next to production.
+- **Rate limits:** Resource-based service protection (version 10.0.19 and later) returns "Too many requests" when environment health is affected; no fixed quota is published.
+- **Authentication:** Delegated sign-in through Microsoft Entra ID.
+- **Webhooks:** Virtual webhooks - employee created, updated and terminated events, detected by polling
+
+**Important to know:**
+
+- Standalone Human Resources environments are moving onto the Finance & Operations infrastructure, and one that has not moved yet has no operations URL to connect. Microsoft gives customers 12 months to migrate, counted from when its migration tooling becomes available.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/microsoft-dynamics-hr` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

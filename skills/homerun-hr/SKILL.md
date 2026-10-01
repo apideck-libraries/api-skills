@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # Homerun HR (via Apideck)
@@ -30,6 +33,23 @@ Access Homerun HR through Apideck's **HRIS** unified API — one of 58 HRIS conn
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/homerun-hr/gotchas)
 - **Homerun HR docs:** https://www.homerun.co
 - **Homepage:** https://www.homerun.co/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Consumer Supplies Own Client ID and Client Secret
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** not available — Each consumer supplies their own Homerun HR client ID and secret.
+- **Account type required:** A Homerun HR (formerly Staff Squared) account.
+- **Consumer access level:** A Homerun HR user who can obtain the API client ID and secret for the account.
+- **Sandbox:** not available — The HR API documents no sandbox or test route.
+- **Authentication:** Client credentials flow.
+- **Webhooks:** No webhooks - data is read by polling.
+
+**Important to know:**
+
+- Homerun runs two separate APIs. This connector uses the HR product API (formerly Staff Squared), not the recruiting Public API: API keys created on the Integrations page of the recruiting product will not work here.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/homerun-hr` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

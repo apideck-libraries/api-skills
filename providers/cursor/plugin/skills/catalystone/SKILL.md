@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # CatalystOne (via Apideck)
@@ -31,6 +34,24 @@ Access CatalystOne through Apideck's **HRIS** unified API — one of 58 HRIS con
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/catalystone/gotchas)
 - **CatalystOne docs:** https://www.catalystone.com
 - **Homepage:** https://www.catalystone.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Each Consumer Creates API Credentials in the CatalystOne Admin
+- **Vendor partnership required:** no — Nothing has to be registered with CatalystOne to use this connector.
+- **Apideck-managed credentials:** not available — Each consumer creates their own API setup in CatalystOne.
+- **Account type required:** A CatalystOne customer tenant.
+- **Consumer access level:** A CatalystOne administrator with access to the API configuration.
+- **Sandbox:** not available — Test the integration against a consumer's CatalystOne tenant.
+- **Rate limits:** Not published for the API this connector uses.
+- **Authentication:** Client ID and secret, one pair per consumer tenant.
+- **Webhooks:** Virtual webhooks - employee created, updated and terminated events.
+
+**Important to know:**
+
+- Field names and custom fields differ between CatalystOne instances, and the connector matches some fields, such as termination date, by field name rather than field id. A tenant that renamed or moved a field can return empty values until the mapping is checked for that tenant.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/catalystone` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

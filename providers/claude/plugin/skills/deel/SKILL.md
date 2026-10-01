@@ -13,6 +13,9 @@ metadata:
   tier: "1b"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: true
+  sandboxAvailable: true
 ---
 
 # Deel (via Apideck)
@@ -30,6 +33,24 @@ Access Deel through Apideck's **HRIS** unified API — one of 58 HRIS connectors
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/deel/gotchas)
 - **Deel docs:** https://developer.deel.com
 - **Homepage:** https://www.deel.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — OAuth App Store Review Required
+- **Vendor partnership required:** yes ([developer portal](https://developer.deel.com/api/partners/publishing-to-app-store)) — Once Deel approves your app for its App Store, it is available to all Deel customers and may be promoted as a Deel integration.
+- **Apideck-managed credentials:** available — Covers testing against the Deel sandbox only; production needs your own Deel OAuth app.
+- **Account type required:** Deel organisation account.
+- **Consumer access level:** Org Admin or IT Developer Admin on Deel.
+- **Sandbox:** available ([signup](https://developer.deel.com/api/quickstart)) — Self-service from the Developer Center API Sandbox tab after a Deel sign-up, with sample workers and organisations and no cap on test records.
+- **Rate limits:** 5 requests per second for each organisation, shared across all its tokens.
+- **Authentication:** Authorization Code flow.
+- **Webhooks:** Virtual webhooks - employee created, updated and terminated events
+
+**Important to know:**
+
+- While Deel reviews your OAuth app for its App Store, the app stays accessible only to your own organisation, so plan for that review before other Deel organisations need to connect.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/deel` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

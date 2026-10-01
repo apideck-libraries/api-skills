@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "2"
   verified: true
+  difficulty: involved
+  partnershipRequired: true
+  sandboxAvailable: true
 ---
 
 # Loket.nl (via Apideck)
@@ -26,6 +29,25 @@ Access Loket.nl through Apideck's **HRIS** unified API — one of 58 HRIS connec
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/loket-nl/gotchas)
 - **Loket.nl docs:** https://developer.loket.nl
 - **Homepage:** https://www.loket.nl/
+
+## At a glance
+
+- **Implementation difficulty:** involved — Required Loket Partner Application + Production Approval
+- **Vendor partnership required:** yes ([Koppelen met Loket](https://loket.nl/koppelen-met-loket/)) — Apply as an integration partner; approval gives a development account (OAuth client and test user) on the acceptance environment.
+- **Apideck-managed credentials:** not available — Loket issues OAuth clients to each integration partner, so you register with Loket and use your own client.
+- **Account type required:** Loket employer account; accountants can also manage employers through a provider account.
+- **Consumer access level:** A Loket user authorised for the employer, with the rights the integration needs.
+- **Sandbox:** available ([signup](https://loket.nl/koppelen-met-loket/)) — Acceptance environment with a limited set of test data; issued once Loket accepts your application.
+- **Rate limits:** No explicit usage limits are enforced; Loket monitors usage and may contact you about extreme volumes such as many error calls.
+- **Authentication:** Authorization Code flow; the only supported scope is all.
+- **Webhooks:** Virtual webhooks - employee created and updated events
+
+**Important to know:**
+
+- Production access is granted per API activity: Loket asks for the list of operations your integration uses when you request production access, and a production client can only call those.
+- Loket registers every redirect URI by hand and matches it exactly, so plan one shared redirect URI for all your customers; a separate URI per customer is impractical.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/loket-nl` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

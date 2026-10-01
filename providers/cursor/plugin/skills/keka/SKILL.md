@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Keka HR (via Apideck)
@@ -30,6 +33,25 @@ Access Keka HR through Apideck's **HRIS** unified API — one of 58 HRIS connect
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/keka/gotchas)
 - **Keka HR docs:** https://developers.keka.com
 - **Homepage:** https://www.keka.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Custom Client Credentials Auth: Consumers Create Credentials Manually
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** not available — Each consumer creates their own Keka API credentials.
+- **Account type required:** A Keka HR organisation.
+- **Consumer access level:** Global Admin (one Keka help article also lists IT Admins).
+- **Sandbox:** available ([signup](https://developers.keka.com/docs/keka-partner-integration-guide)) — Request one through Keka's Partner Program (after an MSA and NDA), a paid App Portal account, or the consumer's Keka CSM.
+- **Costs:** API access is a paid add-on to the Keka subscription; Keka does not publish its price.
+- **Rate limits:** 50 requests per minute.
+- **Authentication:** Keka-specific client credentials exchange; no consent screen.
+- **Webhooks:** No webhooks - poll the API for changes
+
+**Important to know:**
+
+- A Keka organisation can hold at most five active API keys in total, so plan key use across all of its integrations.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/keka` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

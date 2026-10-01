@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # JumpCloud (via Apideck)
@@ -29,6 +32,23 @@ Access JumpCloud through Apideck's **HRIS** unified API — one of 58 HRIS conne
 - **Status:** beta
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/jumpcloud/gotchas)
 - **Homepage:** https://jumpcloud.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — API Key Authentication - Each Consumer Generates Their Own Key in JumpCloud
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** not available — Not needed: there is no JumpCloud app to register.
+- **Account type required:** JumpCloud admin account with API access enabled.
+- **Consumer access level:** API access is off by default; only a Billing-role admin can switch it on.
+- **Sandbox:** available ([signup](https://console.jumpcloud.com/signup)) — A free 30-day trial of the full platform serves as the test organisation.
+- **Rate limits:** No numeric limit published.
+- **Webhooks:** No webhooks - changes are picked up by polling.
+
+**Important to know:**
+
+- A JumpCloud API key can expire. New keys default to 90 days, and admin accounts created before 15 July 2024 default to no expiry. Apideck does not renew API keys, so when a key expires the consumer must generate a new one and reconnect.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/jumpcloud` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

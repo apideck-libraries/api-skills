@@ -13,6 +13,9 @@ metadata:
   tier: "1c"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # eBay (via Apideck)
@@ -30,6 +33,25 @@ Access eBay through Apideck's **Ecommerce** unified API — one of 17 Ecommerce 
 - **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/ebay/gotchas)
 - **eBay docs:** https://developer.ebay.com
 - **Homepage:** https://www.ebay.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Self-Service OAuth Keyset + Production Activation Requirement
+- **Vendor partnership required:** no ([eBay Developers Program](https://developer.ebay.com/join)) — Joining the eBay Developers Program gives you sandbox and production keysets for the Sell APIs this connector calls.
+- **Apideck-managed credentials:** not available — You register your own eBay keyset.
+- **Account type required:** An eBay seller account holding the listings and orders to sync.
+- **Consumer access level:** The account owner signs in to eBay and grants read access to their selling data.
+- **Sandbox:** available ([signup](https://developer.ebay.com/join)) — It returns no orders and none can be created through the API, so eBay advises testing on production with a seller account that has test listings.
+- **Costs:** eBay publishes no API access fee. The Stores resource needs an active eBay store subscription on the seller's account.
+- **Rate limits:** Default daily quotas: 100,000 calls on the Fulfillment API order resource, 5,000 on the Trading API; higher after eBay's Application Growth Check.
+- **Authentication:** Authorization Code flow; eBay uses a RuName in place of a redirect URL.
+- **Webhooks:** No webhooks - orders, listings and the store are read on request.
+
+**Important to know:**
+
+- Before your keyset's first production call, eBay requires you to subscribe to its marketplace account deletion notifications or apply for an exemption; eBay's guide states that non-compliance can end or reduce API access.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/ebay` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "2"
   verified: true
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # Officient (via Apideck)
@@ -26,6 +29,20 @@ Access Officient through Apideck's **HRIS** unified API — one of 58 HRIS conne
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/officient-io/gotchas)
 - **Officient docs:** https://developers.officient.io
 - **Homepage:** https://officient.io
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Self-Service OAuth App + No Developer Sandbox
+- **Vendor partnership required:** no — You register your own OAuth app under Developers in Officient. Officient's API documentation names Apideck as its iPaaS partner.
+- **Apideck-managed credentials:** not available — Credentials come from your own Officient developer access.
+- **Account type required:** Any Exact Officient account.
+- **Consumer access level:** Officient admin able to authorise the OAuth app.
+- **Sandbox:** not available ([signup](https://www.exact.com/benl/software/exact-officient/demo)) — Request a demo; after the introduction conversation you can test the product for 14 days without commitment.
+- **Rate limits:** 30 requests every 5 seconds.
+- **Authentication:** Authorization Code flow.
+- **Webhooks:** Native - employee created, updated and terminated events.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/officient-io` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # Cezanne HR (via Apideck)
@@ -31,6 +34,24 @@ Access Cezanne HR through Apideck's **HRIS** unified API — one of 58 HRIS conn
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/cezannehr/gotchas)
 - **Cezanne HR docs:** https://cezannehr.com
 - **Homepage:** https://cezannehr.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Client Credentials Created Manually by Each Consumer's Cezanne Admin
+- **Vendor partnership required:** no — Cezanne's API documentation describes adding an API application with no partner step.
+- **Apideck-managed credentials:** not available — Each consumer creates their own API application in Cezanne.
+- **Account type required:** A Cezanne HR customer subscription with API access enabled.
+- **Consumer access level:** A Cezanne system administrator; the connection then runs with the permissions of the chosen service account user.
+- **Sandbox:** not available — Testing needs a real Cezanne tenant, as no self-service sandbox is documented.
+- **Costs:** The API is listed among the features included in the Cezanne subscription; no separate API fee is published.
+- **Authentication:** Client credentials grant, with no user sign-in step.
+- **Webhooks:** No webhooks - changes are picked up by polling.
+
+**Important to know:**
+
+- If the service account user's password expires, the connection stops working until the password is changed, so choose a user whose password never expires.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/cezannehr` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

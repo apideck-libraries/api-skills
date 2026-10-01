@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "2"
   verified: true
+  difficulty: involved
+  partnershipRequired: true
+  sandboxAvailable: true
 ---
 
 # Walmart (via Apideck)
@@ -26,6 +29,26 @@ Access Walmart through Apideck's **Ecommerce** unified API — one of 17 Ecommer
 - **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/walmart/gotchas)
 - **Walmart docs:** https://developer.walmart.com
 - **Homepage:** https://www.walmart.com/
+
+## At a glance
+
+- **Implementation difficulty:** involved — Solution Provider Approval Required + App Review Before Sellers Can Connect
+- **Vendor partnership required:** yes ([Walmart Solution Provider Center](https://gecrm.my.site.com/channelpartnerprospectform/)) — Approved Solution Providers get sandbox access, production OAuth app credentials and a listing in the Walmart Seller Center App Store.
+- **Apideck-managed credentials:** not available — Walmart issues OAuth app credentials only to approved Solution Providers, so you register your own app.
+- **Account type required:** Approved Walmart Marketplace seller account.
+- **Consumer access level:** A user who can sign in to Walmart Seller Center for the seller account and authorise the app.
+- **Sandbox:** available ([signup](https://developer.walmart.com/us-marketplace/docs/sandbox-testing-for-marketplace-partners)) — Issued in the Solution Provider Center once you are approved; for API testing only.
+- **Costs:** Walmart publishes no fee for API access.
+- **Rate limits:** Orders: 5,000 requests a minute. Items: 300 a minute, or 60 a minute with query parameters.
+- **Authentication:** Authorization Code flow.
+- **Webhooks:** No webhooks - orders, products and the store are read on demand through the API.
+
+**Important to know:**
+
+- Sellers connect only by authorising an approved Solution Provider app; they cannot connect with their own Walmart API keys, and Walmart no longer supports Delegated Access.
+- United States sellers can connect today; the connector authorises against the US marketplace only, so sellers on Walmart Canada, Mexico or Chile cannot be connected.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/walmart` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

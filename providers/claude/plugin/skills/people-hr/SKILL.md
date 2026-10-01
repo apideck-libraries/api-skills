@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # People HR (via Apideck)
@@ -30,6 +33,24 @@ Access People HR through Apideck's **HRIS** unified API — one of 58 HRIS conne
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/people-hr/gotchas)
 - **People HR docs:** https://help.peoplehr.com
 - **Homepage:** https://www.peoplehr.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — API Key Authentication - Each Consumer Creates Their Own Key in People HR
+- **Vendor partnership required:** no — Nothing has to be registered with People HR to use this connector.
+- **Apideck-managed credentials:** not available — Each consumer creates their own People HR API key.
+- **Account type required:** A People HR account.
+- **Consumer access level:** HR admin access, needed to create API keys.
+- **Sandbox:** available ([signup](https://www.peoplehr.net/Pages/9886841E9DBC-7887-44B1-AE92-1BF0C46F-1BCABBC6-0CC7-41EA-BB0E-80B8DAF59EFE/Signup.aspx)) — Free 14-day trial site: add (SANDBOX) to the company name, then tell People HR account management the name, site URL and expiry; they handle extensions.
+- **Rate limits:** 50 requests a minute by default.
+- **Authentication:** Sent in the apikey header.
+- **Webhooks:** Virtual webhooks - employee created, updated and terminated events, detected by polling.
+
+**Important to know:**
+
+- An API key only reaches the endpoints ticked when it was created. Tick at least Employee (and Salary and QueryBuilder, as the connection form suggests), or the connector cannot read employees.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/people-hr` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

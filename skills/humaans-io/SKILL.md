@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Humaans (via Apideck)
@@ -31,6 +34,25 @@ Access Humaans through Apideck's **HRIS** unified API — one of 58 HRIS connect
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/humaans-io/gotchas)
 - **Humaans docs:** https://docs.humaans.io
 - **Homepage:** https://humaans.io/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — API Token Authentication: Each Consumer Creates Their Own Token in Humaans
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** not available — Each consumer supplies their own Humaans API access token.
+- **Account type required:** Humaans account on the Growth plan or above.
+- **Consumer access level:** Owner role, since a token reaches only what its creator can; a user-role token sees only public company data and its creator's own profile.
+- **Sandbox:** available ([signup](https://docs.google.com/forms/d/e/1FAIpQLSfvsENhiZgum1DTEsqM3-LSJaBM6Ee2e3zfW71YtW112iAGyw/viewform)) — Request an isolated sandbox account through Humaans' form; Humaans verifies the request, then emails the sandbox credentials.
+- **Costs:** Included from the Growth plan (listed as Integrations & API access); Humaans publishes no prices, plans are sold through its sales team.
+- **Rate limits:** Roughly 400 requests a minute per token.
+- **Authentication:** Humaans API access token, sent as a bearer token.
+- **Webhooks:** Virtual webhooks - employee created, updated and terminated events
+
+**Important to know:**
+
+- A Humaans token set to expire (1 to 365 days) stops working on that date with a 401 and cannot be renewed automatically, so the connection fails until the consumer creates a new token and updates it. A token created without an expiry avoids this.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/humaans-io` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

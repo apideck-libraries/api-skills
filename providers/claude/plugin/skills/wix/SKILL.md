@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Wix  (via Apideck)
@@ -29,6 +32,24 @@ Access Wix  through Apideck's **Ecommerce** unified API — one of 17 Ecommerce 
 - **Status:** beta
 - **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/wix/gotchas)
 - **Homepage:** https://wix.com
+
+## At a glance
+
+- **Implementation difficulty:** moderate — API Key Created by the Wix Account Owner
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** not available — Each consumer creates their own Wix API key.
+- **Account type required:** Wix site with the Wix Stores app installed.
+- **Consumer access level:** Account owner or co-owner, the only roles that can create an API key.
+- **Sandbox:** available ([signup](https://dev.wix.com/docs/build-apps/develop-your-app/development-sites/about-development-sites)) — Free development site with Premium capabilities, created from a Wix developer app dashboard.
+- **Costs:** Wix documents no separate fee for API keys.
+- **Authentication:** Account-level key, supplied together with the Site ID and Shop Domain; not OAuth.
+- **Webhooks:** Virtual webhooks - order, product and customer created, updated and deleted events
+
+**Important to know:**
+
+- The API key has to come from the Wix account that owns the site, and its site access must include that site. A key from an agency or another account, or one restricted to other sites, is rejected even with the right permissions.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/wix` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

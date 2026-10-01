@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: highly_complex
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Ceridian Dayforce (via Apideck)
@@ -31,6 +34,25 @@ Access Ceridian Dayforce through Apideck's **HRIS** unified API — one of 58 HR
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/ceridian-dayforce/gotchas)
 - **Ceridian Dayforce docs:** https://developers.ceridian.com
 - **Homepage:** https://www.ceridian.com/products/dayforce
+
+## At a glance
+
+- **Implementation difficulty:** highly complex — Custom Auth + Multi-Step Per-Consumer Web Services Setup
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** not available — Each consumer supplies their own Web Services user credentials.
+- **Account type required:** A Dayforce customer account with Web Services enabled.
+- **Consumer access level:** A Client Admin, who creates a custom role and a dedicated non-employee integration user for the connection.
+- **Sandbox:** available ([signup](https://developers.dayforce.com/Special-Pages/Registration.aspx)) — Register on the Dayforce Developer Network to test against your own company's environment, or a shared sample environment if you have no namespace.
+- **Costs:** No charge for web services, provided the integration follows Dayforce's acceptable-use conditions (system-to-system, built without engaging Dayforce resources).
+- **Rate limits:** Per Dayforce client and per operation; for example 10 lookups a second or 100 a minute, lower for reports.
+- **Authentication:** Username, password and Company ID of a Dayforce Web Services user; no OAuth redirect.
+- **Webhooks:** Virtual webhooks - employee created events
+
+**Important to know:**
+
+- The connection signs in as the integration user, so a password change or expiry on that Dayforce user breaks it until the consumer re-enters the password in Vault; Dayforce advises a non-expiring password policy for these users.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/ceridian-dayforce` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

@@ -13,6 +13,9 @@ metadata:
   tier: "1c"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Paychex (via Apideck)
@@ -31,6 +34,23 @@ Access Paychex through Apideck's **HRIS** unified API — one of 58 HRIS connect
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/paychex/gotchas)
 - **Paychex docs:** https://developer.paychex.com
 - **Homepage:** https://www.paychex.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Consumer Creates the App Credentials by Hand in Paychex Flex
+- **Vendor partnership required:** no ([Paychex Developer Partner programme](https://developer.paychex.com/partner)) — Joining gives a Paychex-provided sandbox and a production key and secret.
+- **Apideck-managed credentials:** not available — Each Paychex client connects with its own app credentials.
+- **Account type required:** A Paychex Flex client company.
+- **Consumer access level:** Super Admin or Security Admin in Paychex Flex (permission to manage connected applications).
+- **Sandbox:** available ([signup](https://developer.paychex.com/partner)) — Request it through the Developer Partner programme; Paychex provides it once approved.
+- **Authentication:** Client ID and secret pasted in Vault; no OAuth sign-in.
+- **Webhooks:** Virtual webhooks - employee created and updated events
+
+**Important to know:**
+
+- After connecting, the consumer must grant their company access to the credentials in Paychex. Until then the company list stays empty and the Company field cannot be selected.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/paychex` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

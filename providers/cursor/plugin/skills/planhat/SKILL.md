@@ -12,6 +12,9 @@ metadata:
   authType: apiKey
   tier: "2"
   verified: true
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # Planhat (via Apideck)
@@ -26,6 +29,24 @@ Access Planhat through Apideck's **CRM** unified API — one of 21 CRM connector
 - **Gotchas:** [page](https://developers.apideck.com/apis/crm/planhat/gotchas)
 - **Planhat docs:** https://docs.planhat.com
 - **Homepage:** https://planhat.com
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Manual API Token Created by Each Consumer in a Planhat Private App
+- **Vendor partnership required:** no ([developer portal](https://www.planhat.com/partners)) — Joining the Technology Partner track gives a listing on Planhat's website and in-app marketplace.
+- **Apideck-managed credentials:** not available — Each consumer generates their own Planhat API access token.
+- **Account type required:** Planhat tenant with Private Apps (Service Accounts) enabled.
+- **Consumer access level:** A Planhat user with the ServiceAccount data-model permission, typically an admin.
+- **Sandbox:** not available
+- **Rate limits:** 200 calls a minute (soft quota); hard limit of 150 requests a second, with bursts of up to 50 parallel requests.
+- **Authentication:** Access token from a Planhat Private App, sent as a bearer token; not OAuth.
+- **Webhooks:** No webhooks - changes are picked up by polling the Planhat API.
+
+**Important to know:**
+
+- Planhat API tokens now expire: a new token defaults to 30 days and can be set to at most 365. At expiry the connection stops working until the consumer generates a new token in Planhat and updates it in Vault; Apideck cannot renew it.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/planhat` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

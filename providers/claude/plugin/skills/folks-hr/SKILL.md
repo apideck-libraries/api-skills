@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "2"
   verified: true
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Folks HR (via Apideck)
@@ -26,6 +29,25 @@ Access Folks HR through Apideck's **HRIS** unified API — one of 58 HRIS connec
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/folks-hr/gotchas)
 - **Folks HR docs:** https://www.folkshr.com
 - **Homepage:** https://folksrh.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Folks Must Activate API Access on Request
+- **Vendor partnership required:** no — API access is granted through Folks' request form, not a partner programme.
+- **Apideck-managed credentials:** not available — Each Folks company generates its own API key.
+- **Account type required:** A Folks HR company account with the API key management page activated.
+- **Consumer access level:** Company administrator; only administrators can generate API keys.
+- **Sandbox:** available ([signup](https://support.folkshr.com/hc/en-ca/requests/new?ticket_form_id=22748731575188)) — Request it through Folks' API request form, choosing Sandbox as the access type.
+- **Rate limits:** 60 requests per minute per client.
+- **Authentication:** Client ID and secret from a Folks V2 API key, plus the company UUID.
+- **Webhooks:** Virtual webhooks - employee created, updated and terminated events.
+
+**Important to know:**
+
+- Production access is its own request, which Folks reviews with heightened security measures. Sandbox access alone does not let you go live, so plan for that vendor approval before launch.
+- Each API key carries access levels for employees, departments, working sites and sensitive data, chosen by the consumer's administrator. A key without the levels you need limits what you can read, and editing a key later invalidates the access tokens already issued from it.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/folks-hr` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

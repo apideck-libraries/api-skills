@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: straightforward
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Attio (via Apideck)
@@ -30,6 +33,25 @@ Access Attio through Apideck's **CRM** unified API — one of 21 CRM connectors 
 - **Gotchas:** [page](https://developers.apideck.com/apis/crm/attio/gotchas)
 - **Attio docs:** https://developers.attio.com
 - **Homepage:** https://attio.com/
+
+## At a glance
+
+- **Implementation difficulty:** straightforward — Self-Service OAuth + Free Plan, No Partnership or App Review Required
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** available — For testing: the consent screen shows Apideck; production needs your own Attio app.
+- **Account type required:** Any Attio workspace, including the Free plan.
+- **Consumer access level:** Workspace admin; a non-admin can only send an install request for an admin to approve.
+- **Sandbox:** available ([signup](https://app.attio.com/welcome/sign-in)) — Test in a free workspace or a 14-day Pro trial; Attio support also provides development workspaces on request.
+- **Costs:** No API add-on or fee is listed by Attio.
+- **Rate limits:** 100 requests per second for reads and 25 per second for writes, across the whole API.
+- **Authentication:** Authorization Code flow.
+- **Webhooks:** Native - company, contact, opportunity, user and note events (created, updated, deleted)
+
+**Important to know:**
+
+- The connection acts as the whole workspace, not as the person who connects. Attio workspace-level tokens are independent of any one member, so what the integration can see is set by the app's scopes rather than that person's own permissions.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/attio` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

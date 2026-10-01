@@ -13,6 +13,9 @@ metadata:
   tier: "1c"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # Etsy (via Apideck)
@@ -31,6 +34,24 @@ Access Etsy through Apideck's **Ecommerce** unified API — one of 17 Ecommerce 
 - **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/etsy/gotchas)
 - **Etsy docs:** https://developers.etsy.com
 - **Homepage:** https://etsy.com
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Self-Service App Registration + Etsy App Review
+- **Vendor partnership required:** no ([Etsy developer portal](https://www.etsy.com/developers/register)) — Etsy runs no partner programme; any Etsy account holder can register an app.
+- **Apideck-managed credentials:** not available — Each connection supplies its own Etsy app's Keystring and Shared Secret.
+- **Account type required:** Etsy account with an active shop
+- **Consumer access level:** Sign-in to the Etsy account that holds the shop being connected
+- **Sandbox:** not available — Etsy's testing policy is to test on production with a real shop, where listing fees apply.
+- **Rate limits:** Per-app QPS and QPD limits, shown in the Etsy Developer Portal.
+- **Authentication:** Authorization Code flow with PKCE; requests also carry the app's key in the x-api-key header.
+- **Webhooks:** No webhooks - data is read by polling.
+
+**Important to know:**
+
+- Etsy gates access by app type. A Seller App is approved within minutes but can only ever connect the shop of the person who registered it; connecting other sellers' shops needs a Personal App and, at scale, Commercial Access, which Etsy reviews manually.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/etsy` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

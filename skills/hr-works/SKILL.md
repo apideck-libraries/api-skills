@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # HR Works (via Apideck)
@@ -31,6 +34,18 @@ Access HR Works through Apideck's **HRIS** unified API — one of 58 HRIS connec
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/hr-works/gotchas)
 - **HR Works docs:** https://www.hrworks.de
 - **Homepage:** https://hrworks-inc.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Access Key Pair: Each Consumer Creates Their Own in HRworks
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** not available — Each consumer generates their own key pair in HRworks.
+- **Account type required:** An HRworks company account.
+- **Consumer access level:** The API-Administrator role in HRworks: only that role can generate the key pair.
+- **Sandbox:** available ([signup](https://www.hrworks.de/kontakt/kostenlos-testen/)) — Free test access on request: a vendor contact gets in touch to set it up. HRworks does not say whether the test access includes the API.
+- **Authentication:** Access Key and Secret Access Key pair; no consent screen.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/hr-works` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

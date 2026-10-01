@@ -13,6 +13,9 @@ metadata:
   tier: "1b"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # WooCommerce (via Apideck)
@@ -30,6 +33,25 @@ Access WooCommerce through Apideck's **Ecommerce** unified API — one of 17 Eco
 - **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/woocommerce/gotchas)
 - **WooCommerce docs:** https://woocommerce.github.io/woocommerce-rest-api-docs/
 - **Homepage:** https://woocommerce.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — REST API Keys - Each Consumer Creates a Key Pair in Their Own Store
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** not available — Each store owner creates their own key pair.
+- **Account type required:** A WordPress site running WooCommerce 3.5+ (WordPress 4.4+) with pretty permalinks enabled.
+- **Consumer access level:** A WordPress administrator, creating the key with Read/Write permission.
+- **Sandbox:** available ([signup](https://wordpress.com/ecommerce/)) — A free trial WordPress site or a self-installed WooCommerce store serves as the test store; WooCommerce hosts no separate sandbox.
+- **Costs:** None. The REST API ships with the free WooCommerce plugin.
+- **Rate limits:** WooCommerce documents no rate limit for the REST API; practical limits depend on the store's hosting.
+- **Authentication:** Consumer Key and Consumer Secret, sent as HTTP Basic Auth.
+- **Webhooks:** Native - order, customer and product events (created, updated, deleted)
+
+**Important to know:**
+
+- WooCommerce stores are self-hosted, so the store's own firewall, security plugin or Cloudflare can block Apideck's requests even when the connection shows as connected. The consumer has to allowlist Apideck's static egress IPs; the connection guide lists them.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/woocommerce` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

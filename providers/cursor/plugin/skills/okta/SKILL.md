@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Okta (via Apideck)
@@ -29,6 +32,26 @@ Access Okta through Apideck's **HRIS** unified API — one of 58 HRIS connectors
 - **Status:** beta
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/okta/gotchas)
 - **Homepage:** https://www.okta.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — API Token Authentication - Each Consumer Creates Their Own Token in Okta
+- **Vendor partnership required:** no — No partner programme gates API access.
+- **Apideck-managed credentials:** not available — Each consumer creates their own API token in their own Okta org.
+- **Account type required:** An Okta organisation (Workforce Identity).
+- **Consumer access level:** An Okta administrator; the token inherits that admin's privileges.
+- **Sandbox:** available ([signup](https://developer.okta.com/signup/)) — Integrator Free Plan org, signed up with a business email, for building and testing; it deactivates after 90 days without a sign-in.
+- **Costs:** API access is included with an Okta org.
+- **Rate limits:** Set per Okta org by plan; a new API token gets 50 percent of each API's maximum by default.
+- **Authentication:** An Okta API token plus the consumer's Okta domain.
+- **Webhooks:** Native - employee created, updated, deleted and terminated events
+
+**Important to know:**
+
+- Okta is an identity provider, not an HR system of record. Employees are Okta users, so what comes back depends on the profile attributes the consumer's org has configured.
+- Each connection with webhooks registers an event hook in the consumer's Okta org, which allows at most 25 active and verified event hooks, so consumers with many existing hooks may hit that cap.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/okta` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

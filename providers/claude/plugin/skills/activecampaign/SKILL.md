@@ -12,6 +12,9 @@ metadata:
   authType: apiKey
   tier: "1c"
   verified: true
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # ActiveCampaign (via Apideck)
@@ -26,6 +29,26 @@ Access ActiveCampaign through Apideck's **CRM** unified API — one of 21 CRM co
 - **Gotchas:** [page](https://developers.apideck.com/apis/crm/activecampaign/gotchas)
 - **ActiveCampaign docs:** https://developers.activecampaign.com
 - **Homepage:** https://www.activecampaign.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — API Key Authentication - Each Consumer Copies Their Own Key from ActiveCampaign
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** not available — Each consumer supplies their own ActiveCampaign API URL and key.
+- **Account type required:** An ActiveCampaign account.
+- **Consumer access level:** A user who can open Settings > Developer; their key must be able to list users.
+- **Sandbox:** available ([signup](https://developers.activecampaign.com/page/developer-sandbox-accounts)) — A free developer sandbox on request (1,000 contacts, 5 users; expires after two years, renewable by email), or a 14-day free trial that includes opportunities.
+- **Costs:** Opportunities and pipelines need the Pipelines or Sales Engagement Enhanced CRM add-on, sold on the Plus, Professional and Enterprise plans, not on Starter.
+- **Rate limits:** 5 requests a second for each account, shared by every integration and user on it.
+- **Authentication:** Sent in the Api-Token header; not OAuth.
+- **Webhooks:** No webhooks - neither native nor virtual; poll for changes.
+
+**Important to know:**
+
+- An API key belongs to the ActiveCampaign user who copied it, and there is no account default key. Deleting that user, or resetting their key, breaks the connection until another user's URL and key are pasted into Vault.
+- ActiveCampaign has a single contact record: leads in the Lead API and contacts in the CRM API are the same people, so a change made through one appears in the other. Vault keys a connection to one unified API, so using both means two connections with the same URL and key.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/activecampaign` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

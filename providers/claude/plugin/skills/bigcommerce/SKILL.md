@@ -13,6 +13,9 @@ metadata:
   tier: "1b"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # BigCommerce (via Apideck)
@@ -30,6 +33,25 @@ Access BigCommerce through Apideck's **Ecommerce** unified API — one of 17 Eco
 - **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/bigcommerce/gotchas)
 - **BigCommerce docs:** https://developer.bigcommerce.com
 - **Homepage:** https://www.bigcommerce.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Store-Level API Account - Each Consumer Creates Their Own Token
+- **Vendor partnership required:** no ([developer portal](https://docs.bigcommerce.com/developer/docs/integrations/becoming-a-partner)) — BigCommerce's Technology Partner Program is for companies building apps and integrations on BigCommerce.
+- **Apideck-managed credentials:** not available — Each consumer creates a store-level API account in their own store.
+- **Account type required:** A BigCommerce store.
+- **Consumer access level:** The store owner, or a user the owner has granted high-risk permissions.
+- **Sandbox:** available ([signup](https://www.bigcommerce.com/free-trial/)) — Free 15-day trial store, no credit card. It is a real store, so API accounts work as in production. Program members can also create partner sandbox stores.
+- **Costs:** API access comes with the store plan; calls are capped per hour by plan.
+- **Rate limits:** 20,000 API calls per hour on Core and Growth; 60,000 on Scale. Enterprise plans can have an unlimited rate plan.
+- **Authentication:** Store-level API account access token, sent in the X-Auth-Token header with the store hash.
+- **Webhooks:** Native - order, product and customer events (created, updated, deleted)
+
+**Important to know:**
+
+- A store-level API account cannot have its scopes changed after creation. If a consumer leaves out a scope, they must create a new API account and reconnect with its token.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/bigcommerce` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

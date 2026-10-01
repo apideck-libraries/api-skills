@@ -13,6 +13,9 @@ metadata:
   tier: "1c"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Teamtailor (via Apideck)
@@ -31,6 +34,24 @@ Access Teamtailor through Apideck's **ATS** unified API — one of 11 ATS connec
 - **Gotchas:** [page](https://developers.apideck.com/apis/ats/teamtailor/gotchas)
 - **Teamtailor docs:** https://docs.teamtailor.com
 - **Homepage:** https://www.teamtailor.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — API Key Created by a Company Admin in Teamtailor
+- **Vendor partnership required:** no ([developer portal](https://support.teamtailor.com/en/articles/5477200-integrate-your-hr-recruitment-tool-with-teamtailor)) — Only for a listed, official integration through Teamtailor's Tech Partner programme.
+- **Apideck-managed credentials:** not available — Each consumer creates their own Teamtailor API key.
+- **Account type required:** A Teamtailor company account.
+- **Consumer access level:** A Company Admin: only that role reaches Teamtailor's API keys page.
+- **Sandbox:** available ([signup](https://support.teamtailor.com/en/articles/5477200-integrate-your-hr-recruitment-tool-with-teamtailor)) — Invite-only: Teamtailor invites accepted Tech Partners.
+- **Rate limits:** 50 requests per 10 seconds.
+- **Authentication:** Sent as a bearer token; not OAuth.
+- **Webhooks:** Virtual webhooks - created and updated events for applicants, applications and jobs.
+
+**Important to know:**
+
+- Candidate data is restricted to Admin-scope API keys: a key created with a lower scope cannot read candidates.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/teamtailor` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

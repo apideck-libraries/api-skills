@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # Linear Multiworkspace (via Apideck)
@@ -31,6 +34,23 @@ Access Linear Multiworkspace through Apideck's **Issue Tracking** unified API �
 - **Gotchas:** [page](https://developers.apideck.com/apis/issue-tracking/linear-multiworkspace/gotchas)
 - **Linear Multiworkspace docs:** https://developers.linear.app
 - **Homepage:** https://linear.app/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Consumer-Created Personal API Key - No OAuth App, No Partnership
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** not available — Each consumer supplies their own Linear API key, so there is no shared application to use.
+- **Account type required:** A Linear workspace where the person can create a personal API key. Admins always can; Members can unless an admin has turned member key creation off.
+- **Consumer access level:** What the key's creator can see, narrowed by any permission or team limits on the key; Apideck's setup guide asks for full access to all teams.
+- **Sandbox:** not available ([signup](https://linear.app/signup)) — Test against a separate free Linear workspace.
+- **Rate limits:** 2,500 requests and 3,000,000 complexity points an hour per Linear user, shared across all of that user's API keys.
+- **Authentication:** A Linear personal API key in the Authorization header; not OAuth.
+
+**Important to know:**
+
+- Built for consumers who work across several Linear workspaces: each workspace is its own connection, using a key created while that workspace was active. For a single workspace, the standard Linear connector is the simpler route.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/linear-multiworkspace` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

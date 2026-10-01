@@ -12,6 +12,9 @@ metadata:
   authType: basic
   tier: "2"
   verified: true
+  difficulty: involved
+  partnershipRequired: true
+  sandboxAvailable: true
 ---
 
 # Sympa (via Apideck)
@@ -26,6 +29,25 @@ Access Sympa through Apideck's **HRIS** unified API — one of 58 HRIS connector
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/sympa/gotchas)
 - **Sympa docs:** https://www.sympa.com
 - **Homepage:** https://www.sympa.com/
+
+## At a glance
+
+- **Implementation difficulty:** involved — Sympa Technology Partner Programme + Key and Secret Assigned by Sympa
+- **Vendor partnership required:** yes ([Sympa Partner Programme](https://www.sympa.com/product/partner-programme/)) — Apply to the Technology Partner programme and accept Sympa's partnership terms; membership gives access to a Marketplace listing.
+- **Apideck-managed credentials:** not available — Sympa issues the API key and secret itself, so there are no shared credentials.
+- **Account type required:** A Sympa HRIS customer account with the Generic API interface enabled.
+- **Consumer access level:** A Sympa administrator able to obtain the interface's API key and secret.
+- **Sandbox:** available — Test credentials issued by Sympa's partner team on request (partners@sympa.com); no self-serve sandbox.
+- **Costs:** Sympa publishes no fee for API access.
+- **Rate limits:** 100 requests per hour per interface, shared across all request types.
+- **Authentication:** Not OAuth: the API key is sent as the username and the secret as the password.
+- **Webhooks:** No webhooks - data is fetched by polling.
+
+**Important to know:**
+
+- Plan on a scheduled sync rather than near-real-time updates: Sympa sends no change events and caps each interface at a low hourly request volume.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/sympa` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

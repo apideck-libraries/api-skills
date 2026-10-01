@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: involved
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Fourth (via Apideck)
@@ -30,6 +33,25 @@ Access Fourth through Apideck's **HRIS** unified API — one of 58 HRIS connecto
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/fourth/gotchas)
 - **Fourth docs:** https://www.fourth.com
 - **Homepage:** https://www.fourth.com/
+
+## At a glance
+
+- **Implementation difficulty:** involved — Credentials Only Via a Mutual Fourth Customer + Basic Auth With Vendor-Issued Keys
+- **Vendor partnership required:** no ([developer portal](https://developer.fourth.com/en-gb/docs/getting-started)) — No partner programme to join.
+- **Apideck-managed credentials:** not available — Fourth issues credentials against each customer account.
+- **Account type required:** A Fourth UK Employee API account, with Fourth as employee master record and payroll system.
+- **Consumer access level:** A Fourth account admin able to request API keys from Fourth.
+- **Sandbox:** available ([signup](https://developer.fourth.com/en-gb/docs/getting-started)) — Test credentials come from the Fourth consultant assigned to the mutual customer's project; not self-serve.
+- **Rate limits:** No numeric limit published; Fourth advises at most one retry a minute on 5xx errors.
+- **Authentication:** Organisation ID, API key and secret key, all issued by Fourth.
+- **Webhooks:** Virtual webhooks - employee created and updated events
+
+**Important to know:**
+
+- Fourth does not sell or issue API access directly: live credentials are linked to a customer account, so a mutual Fourth customer requests them, and Fourth does not publish the API host, so you also obtain it from Fourth.
+- This connector runs on Fourth's UK Employee API, so it serves Fourth customers in the United Kingdom only.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/fourth` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

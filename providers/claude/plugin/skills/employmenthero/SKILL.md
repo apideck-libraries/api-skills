@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Employment Hero (via Apideck)
@@ -30,6 +33,20 @@ Access Employment Hero through Apideck's **HRIS** unified API — one of 58 HRIS
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/employmenthero/gotchas)
 - **Employment Hero docs:** https://developer.employmenthero.com
 - **Homepage:** https://employmenthero.com
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Platinum-Tier Plan Required for API Access
+- **Vendor partnership required:** no ([Employment Hero Partner Program](https://employmenthero.com/partner-network/technology-integration/))
+- **Apideck-managed credentials:** available — For testing only: OAuth shows "Apideck" as the requesting application; production integrations use your own Employment Hero OAuth app.
+- **Account type required:** Employment Hero HR organisation.
+- **Consumer access level:** Admin or owner recommended, so that all API endpoints are accessible.
+- **Sandbox:** available ([signup](https://employmenthero.com/free-trial/)) — Free trial organisation with 2 weeks of Developer Portal access; email partner@employmenthero.com to extend it or request a permanent sandbox.
+- **Costs:** API access needs a Platinum subscription or above.
+- **Rate limits:** 20 requests per second and 100 requests per minute.
+- **Authentication:** Authorization Code flow.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/employmenthero` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

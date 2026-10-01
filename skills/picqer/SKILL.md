@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Picqer (via Apideck)
@@ -30,6 +33,25 @@ Access Picqer through Apideck's **Ecommerce** unified API — one of 17 Ecommerc
 - **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/picqer/gotchas)
 - **Picqer docs:** https://picqer.com/en/api
 - **Homepage:** https://picqer.com
+
+## At a glance
+
+- **Implementation difficulty:** moderate — API Key Authentication - Each Consumer Creates Their Own Key in Picqer
+- **Vendor partnership required:** no ([developer portal](https://picqer.com/en/partners-and-integrations)) — Picqer's partner route adds a free developer account, test data and direct support from Picqer.
+- **Apideck-managed credentials:** not available — Each consumer creates their own Picqer API key.
+- **Account type required:** Picqer account (any plan).
+- **Consumer access level:** A Picqer administrator, since administrators create API keys.
+- **Sandbox:** available ([signup](https://picqer.com/en/support/articles/picqer-api)) — Free developer account that does not expire: Picqer support converts a normal account on request and can add sample products and orders.
+- **Costs:** Included in every Picqer plan at no extra cost.
+- **Rate limits:** 500 requests a minute for each API key, which Picqer may adjust with platform load.
+- **Authentication:** Needs the consumer's Picqer account subdomain alongside the key.
+- **Webhooks:** Native - order and product events (orders created and closed, products created and changed).
+
+**Important to know:**
+
+- An API key has no scopes: any key gives the connection access to the whole Picqer account. Limiting a key is possible only by tying it to a fulfilment customer, and only on the fulfilment version of Picqer.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/picqer` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Acerta (via Apideck)
@@ -30,6 +33,23 @@ Access Acerta through Apideck's **HRIS** unified API — one of 58 HRIS connecto
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/acerta/gotchas)
 - **Acerta docs:** https://www.acerta.be
 - **Homepage:** https://www.acerta.be/nl
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Credentials Issued by Acerta Per Employer
+- **Vendor partnership required:** no ([developer portal](https://www.acerta.be/en/software-integrations)) — Contacting Acerta's integrations team opens API access, with advice on architecture and integration.
+- **Apideck-managed credentials:** not available — Acerta issues credentials per employer and does not allow them to be shared.
+- **Account type required:** An Acerta employer account; the Employer ID identifies which employer's agreements are listed.
+- **Consumer access level:** No user sign-in: the connection runs on the credentials Acerta issues, not on a user role.
+- **Sandbox:** available — An Acceptance environment; the Client ID is shared across environments and Acerta issues a separate secret for Acceptance.
+- **Authentication:** Client credentials flow; no user-consent step.
+- **Webhooks:** No webhooks - data is read by polling.
+
+**Important to know:**
+
+- Acerta publishes no self-service signup, so each consumer must request API access from Acerta before a connection can be tested.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/acerta` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

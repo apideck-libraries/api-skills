@@ -13,6 +13,9 @@ metadata:
   tier: "1b"
   verified: true
   status: beta
+  difficulty: straightforward
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # GitLab (via Apideck)
@@ -30,6 +33,25 @@ Access GitLab through Apideck's **Issue Tracking** unified API — one of 6 Issu
 - **Gotchas:** [page](https://developers.apideck.com/apis/issue-tracking/gitlab/gotchas)
 - **GitLab docs:** https://docs.gitlab.com/ee/api/
 - **Homepage:** https://www.gitlab.com/
+
+## At a glance
+
+- **Implementation difficulty:** straightforward — Self-Service OAuth App + Free GitLab.com Account Sufficient, No Partnership or Review
+- **Vendor partnership required:** no ([GitLab OAuth application settings](https://docs.gitlab.com/integration/oauth_provider/)) — Anyone with a GitLab account, or a group they manage, registers the application in GitLab settings and gets the client ID and secret straight away.
+- **Apideck-managed credentials:** available — OAuth shows "Apideck" as the requesting application.
+- **Account type required:** Any GitLab.com plan, the free one included.
+- **Consumer access level:** Any GitLab user with access to the group being connected. The connection reaches what that user can already see in it.
+- **Sandbox:** not available ([signup](https://gitlab.com/users/sign_up)) — Test in a separate free GitLab.com account with its own group. The free plan allows 5 users per top-level group.
+- **Costs:** No separate charge for API access.
+- **Rate limits:** 2,000 requests a minute for each authenticated user on GitLab.com.
+- **Authentication:** Authorization Code flow.
+- **Webhooks:** Virtual webhooks - ticket created and updated, detected by polling the group's issues.
+
+**Important to know:**
+
+- Each connection reaches one GitLab group, chosen by the Group ID entered when connecting, and all data comes from that group. A consumer with several groups needs a connection for each.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/gitlab` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

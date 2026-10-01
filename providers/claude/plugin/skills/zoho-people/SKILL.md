@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: straightforward
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Zoho People (via Apideck)
@@ -30,6 +33,25 @@ Access Zoho People through Apideck's **HRIS** unified API — one of 58 HRIS con
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/zoho-people/gotchas)
 - **Zoho People docs:** https://www.zoho.com/people/api/
 - **Homepage:** https://www.zoho.com/people/
+
+## At a glance
+
+- **Implementation difficulty:** straightforward — Self-Service OAuth Client + Free Trial, No Partnership or App Review
+- **Vendor partnership required:** no — Zoho runs no partner programme or app review for API access.
+- **Apideck-managed credentials:** available — For testing only; production connections use your own Zoho OAuth client.
+- **Account type required:** Zoho People account on Essential HR or higher.
+- **Consumer access level:** Zoho People publishes no minimum role for authorising a connection.
+- **Sandbox:** available ([signup](https://www.zoho.com/people/signup.html)) — 30-day free trial with all plan features; Zoho People's in-product Sandbox (a copy of your configuration) is an Enterprise plan feature.
+- **Costs:** API included with Essential HR and higher paid plans; Zoho publishes no separate API fee.
+- **Rate limits:** Per day by plan: 5,000 (Essential HR), 10,000 (Professional), 15,000 (Premium), 25,000 (Enterprise); 250 calls per user licence, 500 on Enterprise.
+- **Authentication:** Authorization Code flow.
+- **Webhooks:** Virtual webhooks - employee created, updated and terminated events
+
+**Important to know:**
+
+- Each Zoho People account sits in one regional data centre. Consumers pick theirs when connecting, and your Zoho OAuth client must be enabled for every data centre your consumers use, or their authorisation fails.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/zoho-people` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

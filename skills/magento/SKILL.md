@@ -13,6 +13,9 @@ metadata:
   tier: "1c"
   verified: true
   status: beta
+  difficulty: involved
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Magento (via Apideck)
@@ -31,6 +34,26 @@ Access Magento through Apideck's **Ecommerce** unified API — one of 17 Ecommer
 - **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/magento/gotchas)
 - **Magento docs:** https://developer.adobe.com/commerce/webapi/
 - **Homepage:** https://magento.com/
+
+## At a glance
+
+- **Implementation difficulty:** involved — Custom Auth + Manual Per-Consumer Integration Setup
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** not available — Each consumer creates an integration in their own Magento store.
+- **Account type required:** Magento Open Source 2.x, or Adobe Commerce 2.x on-premises or on Adobe's cloud infrastructure (PaaS).
+- **Consumer access level:** A Magento Admin user with permission to manage integrations.
+- **Sandbox:** available ([signup](https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/overview)) — Install Magento Open Source on your own server or container and create an integration there; Adobe hosts no test store, so this takes server skills.
+- **Costs:** Integration tokens are a built-in Admin feature of the store; Adobe publishes no separate API fee.
+- **Rate limits:** No general REST quota is published; Adobe's opt-in rate limiting covers checkout and payment endpoints only.
+- **Authentication:** Four credentials from a Magento integration sign each request, OAuth 1.0a style; no redirect flow.
+- **Webhooks:** Virtual webhooks - order, product and customer events (created, updated, deleted)
+
+**Important to know:**
+
+- Check the store's edition before you commit: Adobe Commerce as a Cloud Service (SaaS) offers no integration tokens and uses Adobe IMS OAuth 2 instead, which this connector does not use, so SaaS stores cannot connect.
+- The store's /rest endpoints must be reachable from the internet. Stores behind Cloudflare, a WAF or bot protection need Apideck's requests let through; otherwise calls fail with an HTML error while the connection still shows as connected.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/magento` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # Cegid Talentsoft (via Apideck)
@@ -30,6 +33,19 @@ Access Cegid Talentsoft through Apideck's **HRIS** unified API — one of 58 HRI
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/cegid-talentsoft/gotchas)
 - **Cegid Talentsoft docs:** https://www.cegid.com
 - **Homepage:** https://www.cegid.com/en/products/cegid-talentsoft/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Client Credentials Created by Each Consumer's Admin in Their Own Cegid Instance
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** not available — Each consumer connects with credentials from their own Cegid instance.
+- **Account type required:** A Cegid Talentsoft (Cegid HR) instance with API access enabled.
+- **Consumer access level:** An administrator with the rights to view and edit users' API keys.
+- **Sandbox:** not available — Testing needs access to an existing Cegid customer instance.
+- **Authentication:** Client credentials flow with a client ID and secret; no sign-in or consent screen.
+- **Webhooks:** No webhooks - poll for changes.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/cegid-talentsoft` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

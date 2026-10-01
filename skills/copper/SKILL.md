@@ -12,6 +12,9 @@ metadata:
   authType: apiKey
   tier: "2"
   verified: true
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Copper (via Apideck)
@@ -26,6 +29,24 @@ Access Copper through Apideck's **CRM** unified API — one of 21 CRM connectors
 - **Gotchas:** [page](https://developers.apideck.com/apis/crm/copper/gotchas)
 - **Copper docs:** https://developer.copper.com
 - **Homepage:** https://www.copper.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — API Key Authentication - Each Consumer Generates Their Own Key in Copper
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** not available — Each consumer generates their own Copper API key.
+- **Account type required:** Copper account. The API sees only the records the key owner's Team Permissions allow.
+- **Consumer access level:** A Copper Admin, since only Admin users can generate API keys.
+- **Sandbox:** available ([signup](https://www.copper.com/signup)) — Free 14-day trial on the Business plan, no credit card; sign-up needs a Google or Gmail account.
+- **Rate limits:** 180 requests a minute; bulk APIs also allow 3 requests a second.
+- **Authentication:** Sent in request headers.
+- **Webhooks:** No webhooks - read the resources to detect changes.
+
+**Important to know:**
+
+- Copper requires the API key together with the email address of the user who generated it, so the consumer supplies both when connecting.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/copper` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

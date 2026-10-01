@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # Sapling (via Apideck)
@@ -30,6 +33,24 @@ Access Sapling through Apideck's **HRIS** unified API — one of 58 HRIS connect
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/sapling/gotchas)
 - **Sapling docs:** https://developer.saplinghr.com
 - **Homepage:** https://www.saplinghr.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — API Key Authentication - Each Consumer Generates Their Own Key in Sapling
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** not available — Each consumer uses their own Sapling API key.
+- **Account type required:** Sapling account (Kallidus suite); API access is restricted, so confirm with Kallidus that it is enabled for the tenant.
+- **Consumer access level:** A Sapling admin who can generate API keys.
+- **Sandbox:** not available — Test on an existing Sapling customer's tenant; no self-service sandbox is documented.
+- **Rate limits:** Kallidus advises at most 100 requests per minute per API key.
+- **Authentication:** Sent in the Authorization header.
+- **Webhooks:** Virtual webhooks - employee created, updated and terminated events.
+
+**Important to know:**
+
+- The connector reaches US-hosted Sapling tenants on saplingapp.io. UK-hosted tenants (kallidus-suite.com) are not covered by the subdomain setting, so check where a customer's tenant is hosted before you commit.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/sapling` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

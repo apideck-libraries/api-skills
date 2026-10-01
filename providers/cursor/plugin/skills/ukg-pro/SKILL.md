@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # UKG Pro (via Apideck)
@@ -29,6 +32,20 @@ Access UKG Pro through Apideck's **HRIS** unified API — one of 58 HRIS connect
 - **Status:** beta
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/ukg-pro/gotchas)
 - **Homepage:** https://www.ukg.com/solutions/ukg-pro
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Web Services Account Created by a UKG Administrator for Each Consumer
+- **Vendor partnership required:** no — UKG reserves only a few API areas, such as Background Check and Benefits Integration, for official partners; this connector uses none of them.
+- **Apideck-managed credentials:** not available — Each consumer supplies the credentials of their own UKG Pro Web Services account.
+- **Account type required:** UKG Pro HCM tenant
+- **Consumer access level:** System administrator, to create the Web Services account and read the Customer API Key
+- **Sandbox:** not available — Test against a consumer's own UKG Pro test environment.
+- **Rate limits:** No numeric limit published; UKG applies gateway quotas over roughly one minute.
+- **Authentication:** Uses a Web Services account's username and password, plus a Customer API Key sent in a header.
+- **Webhooks:** Virtual webhooks - employee created and updated events
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/ukg-pro` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

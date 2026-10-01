@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # Simployer One (via Apideck)
@@ -31,6 +34,24 @@ Access Simployer One through Apideck's **HRIS** unified API — one of 58 HRIS c
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/alexishr/gotchas)
 - **Simployer One docs:** https://www.simployer.com
 - **Homepage:** https://www.simployer.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — API Token Authentication: Each Consumer's Owner Generates a Token
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** not available — Each consumer generates their own access token in Simployer One.
+- **Account type required:** A Simployer One company account.
+- **Consumer access level:** Owner permission: only Owners can create access tokens.
+- **Sandbox:** not available — Ask Simployer for a test account; there is no free trial.
+- **Authentication:** Access token, sent as a bearer token.
+- **Webhooks:** Virtual webhooks - employee created, updated and terminated events
+
+**Important to know:**
+
+- The token is tied to the Owner who created it. If that person's permissions change or they are removed from Simployer One, the token becomes invalid and the consumer has to generate a new one and reconnect.
+- Simployer describes its public API as in preview, so small backward-incompatible changes can be introduced; the vendor says they will be documented and communicated.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/alexishr` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 
