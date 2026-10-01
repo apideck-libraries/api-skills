@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # CharlieHR (via Apideck)
@@ -31,6 +34,20 @@ Access CharlieHR through Apideck's **HRIS** unified API — one of 58 HRIS conne
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/charliehr/gotchas)
 - **CharlieHR docs:** https://charliehr.com
 - **Homepage:** https://www.charliehr.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — API Key Authentication: Consumers Create Credentials Manually
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** not available — Each consumer generates their own Client ID and Secret in CharlieHR.
+- **Account type required:** A CharlieHR company account.
+- **Consumer access level:** Super Admin: only that role can generate API keys.
+- **Sandbox:** available ([signup](https://app.charliehr.com/join)) — Free 7-day trial, no credit card. CharlieHR does not say whether API keys can be generated during the trial.
+- **Rate limits:** Not published in CharlieHR's API documentation.
+- **Authentication:** Client ID and Client Secret sent together in the Authorization header; not OAuth.
+- **Webhooks:** Virtual webhooks - employee created and employee updated events
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/charliehr` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

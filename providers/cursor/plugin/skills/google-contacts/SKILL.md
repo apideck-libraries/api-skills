@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # Google Contacts (via Apideck)
@@ -30,6 +33,24 @@ Access Google Contacts through Apideck's **CRM** unified API — one of 21 CRM c
 - **Gotchas:** [page](https://developers.apideck.com/apis/crm/google-contacts/gotchas)
 - **Google Contacts docs:** https://developers.google.com/people
 - **Homepage:** https://www.google.com/contacts
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Self-Service OAuth App + Google Verification Required Beyond 100 Users
+- **Vendor partnership required:** no — Google verification is a review of your own app, open to any developer, with no contract or fee.
+- **Apideck-managed credentials:** available — For testing only: Apideck's shared Google app is not Google-verified; production needs your own app.
+- **Account type required:** Any Google account (personal or Google Workspace)
+- **Consumer access level:** Any user who can access the contacts being connected; no admin role required to authorize
+- **Sandbox:** not available — Test with any Google account against an app left in Testing publishing status.
+- **Authentication:** Authorization Code flow with Google.
+- **Webhooks:** No webhooks - sync changes by polling the CRM API
+
+**Important to know:**
+
+- The contacts scope is a Google sensitive scope: production needs brand and sensitive-scope verification (a justification and video demo), and your authorized domains, including the redirect URI's, verified with Google. No paid CASA assessment: that is for restricted scopes.
+- Until Google verifies the app it is capped: in Testing status only 100 named test users can connect and every refresh token expires after 7 days; a published but unverified app is capped at 100 total users, with an 'unverified app' warning.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/google-contacts` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

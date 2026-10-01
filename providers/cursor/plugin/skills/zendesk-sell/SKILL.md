@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "1c"
   verified: true
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # Zendesk Sell (via Apideck)
@@ -26,6 +29,24 @@ Access Zendesk Sell through Apideck's **CRM** unified API — one of 21 CRM conn
 - **Gotchas:** [page](https://developers.apideck.com/apis/crm/zendesk-sell/gotchas)
 - **Zendesk Sell docs:** https://developer.zendesk.com/api-reference/sales-crm/
 - **Homepage:** https://www.zendesk.com/sell/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Self-Service OAuth App + No Confirmed Test Account
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** not available — The shared Apideck OAuth app for Zendesk Sell is deprecated.
+- **Account type required:** Zendesk Sell account (the CRM product, not Zendesk Support).
+- **Consumer access level:** A Sell user with the Agent or Admin role can authorize.
+- **Sandbox:** not available — New Sell trials are not confirmed; testing needs an existing Zendesk Sell account.
+- **Rate limits:** 36,000 requests per hour (10 per second), counted per token.
+- **Authentication:** Authorization Code flow.
+- **Webhooks:** No webhooks - changes are read by polling.
+
+**Important to know:**
+
+- Zendesk retires Zendesk Sell on 31 August 2027. Existing Sell accounts keep full access until then, so plan the integration around that end date; Zendesk has partnered with Pipedrive as the migration path.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/zendesk-sell` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

@@ -12,6 +12,9 @@ metadata:
   authType: basic
   tier: "2"
   verified: true
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Flexmail (via Apideck)
@@ -26,6 +29,25 @@ Access Flexmail through Apideck's **CRM** unified API — one of 21 CRM connecto
 - **Gotchas:** [page](https://developers.apideck.com/apis/crm/flexmail/gotchas)
 - **Flexmail docs:** https://help.flexmail.eu
 - **Homepage:** https://flexmail.be
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Personal Access Token Authentication - Each Consumer Creates Their Own Token in Flexmail
+- **Vendor partnership required:** no — Nothing has to be registered with Flexmail to use this connector.
+- **Apideck-managed credentials:** not available — Flexmail has no app to register or share; each consumer connects their own account.
+- **Account type required:** Flexmail account on a plan that includes API access.
+- **Consumer access level:** A Flexmail user who can create personal access tokens in Settings.
+- **Sandbox:** available ([signup](https://flexmail.be/en/signup)) — Free 30-day trial account with Pro features, the API and up to 1,000 contacts.
+- **Costs:** API calls are included in Flexmail plans, up to a monthly API request cap set by plan.
+- **Rate limits:** 60 requests per minute for each account, client IP address and endpoint.
+- **Authentication:** Account ID as the username and a personal access token as the password.
+- **Webhooks:** No webhooks - poll for changes.
+
+**Important to know:**
+
+- Flexmail has no built-in company field. Company name is read and written through a custom field each consumer selects when connecting, separately for contacts and leads, so that custom field must exist in their Flexmail account first.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/flexmail` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

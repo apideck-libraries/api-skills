@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: true
+  sandboxAvailable: true
 ---
 
 # Lightspeed (via Apideck)
@@ -30,6 +33,21 @@ Access Lightspeed through Apideck's **Ecommerce** unified API — one of 17 Ecom
 - **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/lightspeed/gotchas)
 - **Lightspeed docs:** https://developers.lightspeedhq.com
 - **Homepage:** https://lightspeedhq.com
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Ecwid App Registration + Review Required
+- **Vendor partnership required:** yes ([developer portal](https://docs.ecwid.com/develop-apps/private-and-public-ecwid-apps)) — Registering an app with Ecwid is what lets your integration connect to other merchants' stores; App Market listing adds a revenue-share partner contract.
+- **Apideck-managed credentials:** not available — Ecwid issues OAuth client credentials per registered app, so you register your own.
+- **Account type required:** An Ecwid by Lightspeed store (Lightspeed eCom E-Series).
+- **Consumer access level:** Store owner; Ecwid does not document a lower role that can authorise apps.
+- **Sandbox:** available ([signup](https://portal.ecwid.com/en-us/app-market-request)) — Ecwid has no API test mode: an approved app request comes with a free Premium-plan test store and a development app; more staging stores on request.
+- **Costs:** Only stores on a paid Ecwid plan can access the API.
+- **Rate limits:** 600 requests per minute per token.
+- **Authentication:** Authorization Code flow against the merchant's Ecwid store.
+- **Webhooks:** No webhooks - event delivery is not wired up for this connector.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/lightspeed` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

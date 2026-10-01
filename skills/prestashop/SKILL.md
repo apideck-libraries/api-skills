@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Prestashop (via Apideck)
@@ -30,6 +33,24 @@ Access Prestashop through Apideck's **Ecommerce** unified API — one of 17 Ecom
 - **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/prestashop/gotchas)
 - **Prestashop docs:** https://devdocs.prestashop-project.org
 - **Homepage:** https://www.prestashop.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Webservice Key Authentication, No Partnership or App Review
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** not available — Each consumer creates a Webservice key in their own shop.
+- **Account type required:** A PrestaShop 8 shop with the Webservice enabled.
+- **Consumer access level:** Back-office access to the shop's Webservice settings.
+- **Sandbox:** available ([signup](https://www.prestashop-project.org/download/)) — Install a free copy of PrestaShop on a test server reachable over HTTPS.
+- **Costs:** No API fee, add-on or paid tier: the Webservice is built into PrestaShop's free, open-source software.
+- **Authentication:** Webservice key, sent as the Basic auth username with an empty password.
+- **Webhooks:** Virtual webhooks - order, product and customer events.
+
+**Important to know:**
+
+- Any shop reachable from the internet over HTTPS at its /api address can connect. A shop behind a firewall, on localhost, or without working URL rewriting cannot, so check where each consumer's shop is hosted before you commit.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/prestashop` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

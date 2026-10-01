@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # GitLab server (on-prem) (via Apideck)
@@ -31,6 +34,27 @@ Access GitLab server (on-prem) through Apideck's **Issue Tracking** unified API 
 - **Gotchas:** [page](https://developers.apideck.com/apis/issue-tracking/gitlab-server/gotchas)
 - **GitLab server (on-prem) docs:** https://docs.gitlab.com/ee/api/
 - **Homepage:** https://www.gitlab.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Personal Access Token Auth: Each Consumer Creates Their Own Token on Their Instance
+- **Vendor partnership required:** no — GitLab runs no partner programme that gates or unlocks API access.
+- **Apideck-managed credentials:** not available — Each consumer supplies their own instance address and token.
+- **Account type required:** Any GitLab self-managed instance.
+- **Consumer access level:** Any user who can see the connected group; the token reaches only what that user can see.
+- **Sandbox:** not available ([signup](https://about.gitlab.com/install/)) — Install a GitLab Free instance of your own and test against it; there is no vendor-hosted test environment. Free self-managed has no user cap.
+- **Costs:** No separate charge for API access. Personal access tokens are offered on the Free, Premium and Ultimate tiers of self-managed GitLab.
+- **Rate limits:** Set by each instance's administrator, so no single figure applies.
+- **Authentication:** Personal access token with the api scope, sent as a bearer token; not OAuth.
+- **Webhooks:** Virtual webhooks - ticket created and updated, detected by polling the group's issues.
+
+**Important to know:**
+
+- The GitLab instance must be reachable from Apideck over the internet with a valid certificate. An instance behind a VPN, private network or restrictive firewall cannot connect until access is opened.
+- A personal access token always expires: GitLab requires an expiry date, at most 365 days out by default, and an administrator can set it shorter. Apideck cannot renew it, so the connection stops at expiry until the consumer issues a new token.
+- Each connection reaches one GitLab group, chosen by the Group ID entered when connecting, and all data comes from that group. A consumer with several groups needs a connection for each.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/gitlab-server` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "2"
   verified: true
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # Namely (via Apideck)
@@ -26,6 +29,24 @@ Access Namely through Apideck's **HRIS** unified API — one of 58 HRIS connecto
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/namely/gotchas)
 - **Namely docs:** https://developers.namely.com
 - **Homepage:** https://www.namely.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Partner Enquiry or Admin Access Needed for OAuth Credentials
+- **Vendor partnership required:** no ([developer portal](https://namely.com/partners/)) — Namely's partner page takes integration enquiries at hello@namely.com.
+- **Apideck-managed credentials:** not available — Apideck holds no Namely OAuth app.
+- **Account type required:** Paid Namely account with API access enabled.
+- **Consumer access level:** A Namely administrator, or a user an administrator has granted API access.
+- **Sandbox:** not available — Test against a live Namely account; Namely documents no public route to request a sandbox tenant.
+- **Rate limits:** 100 requests per minute on GET /profiles.
+- **Authentication:** Authorization Code flow.
+- **Webhooks:** Virtual webhooks - employee created, updated and terminated events.
+
+**Important to know:**
+
+- You connect Namely with your own OAuth client ID and secret. Sources disagree on whether a tenant admin can create these directly or they come through Namely's partner route, so confirm the route with Namely before you plan around it.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/namely` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

@@ -12,6 +12,9 @@ metadata:
   authType: apiKey
   tier: "2"
   verified: true
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Recruitee (via Apideck)
@@ -26,6 +29,25 @@ Access Recruitee through Apideck's **ATS** unified API — one of 11 ATS connect
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/recruitee/docs/consumer+connection)
 - **Gotchas:** [page](https://developers.apideck.com/apis/ats/recruitee/gotchas)
 - **Homepage:** https://recruitee.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Personal API Token + Company ID Each Consumer Supplies
+- **Vendor partnership required:** no ([Recruitee Marketplace Technology Partner programme](https://tellent.com/technology-partner-application)) — Joining the Marketplace Technology Partner programme gives you a Recruitee test environment to build in, and a Marketplace listing after a demo and approval.
+- **Apideck-managed credentials:** not available — Each consumer creates their own personal API token in Recruitee.
+- **Account type required:** Recruitee account on a plan with API access. The token belongs to one company; an owner with several companies needs one token per company.
+- **Consumer access level:** A user whose Hiring role includes the Manage API tokens permission; the connection reaches only what that user can see.
+- **Sandbox:** available ([signup](https://auth.tellent.com/sign-up)) — 18-day free trial of the Advance plan, as account administrator; no automatic subscription.
+- **Costs:** No separate API fee is published. The pricing page lists API access from the Start plan; direct API support from Recruitee is limited to the Optimize plan.
+- **Rate limits:** 1,000 requests a minute per API token.
+- **Authentication:** Personal API token sent as a bearer token, plus the Company ID; not OAuth.
+- **Webhooks:** Virtual webhooks - applicant created and updated, job created and updated
+
+**Important to know:**
+
+- The token is personal: it stops working if its creator revokes it or leaves the company, and only that user can see it, so a lost token means creating a new one and reconnecting.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/recruitee` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

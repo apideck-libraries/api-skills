@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "2"
   verified: true
+  difficulty: involved
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # IRIS Cascade HR (via Apideck)
@@ -26,6 +29,26 @@ Access IRIS Cascade HR through Apideck's **HRIS** unified API — one of 58 HRIS
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/cascade-hr/gotchas)
 - **IRIS Cascade HR docs:** https://www.iris.co.uk
 - **Homepage:** https://www.iris.co.uk/products/iris-cascade-b/
+
+## At a glance
+
+- **Implementation difficulty:** involved — Credentials Issued by IRIS on Request + Data-Owner Approval
+- **Vendor partnership required:** no ([developer portal](https://help-iris.co.uk/hr/cascade/api/getstart/request-access-api.htm)) — IRIS states it works with software developers.
+- **Apideck-managed credentials:** not available — Each consumer uses the client key and secret IRIS issued to them.
+- **Account type required:** An IRIS Cascade HR system (Production or Practice); writes need a read/write key, not a read-only one.
+- **Consumer access level:** A named person receives the credentials, and whoever owns the consumer's HR data must approve the request.
+- **Sandbox:** available ([signup](https://help-iris.co.uk/hr/cascade/api/getstart/request-access-api.htm)) — Partner Sandbox on email request: basic data and UI access, shared with other third parties. Cascade customers can also ask for a Practice system.
+- **Costs:** No additional API charge for IRIS Cascade HR customers, per IRIS's API FAQ (October 2022).
+- **Rate limits:** 1.6 requests/second and 100/minute per IP; 144,000/day per application (hard quota).
+- **Authentication:** Client credentials flow; no user consent step.
+- **Webhooks:** Virtual webhooks - employee created, updated and terminated events
+
+**Important to know:**
+
+- Each consumer requests API credentials from IRIS by email; the connection works only once IRIS issues the client key and secret.
+- IRIS's Fair Use Policy allows it to throttle, cap or disable API access without warning, and forbids using the API to build a product that competes with IRIS's services.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/cascade-hr` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

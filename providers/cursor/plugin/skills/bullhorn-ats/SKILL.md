@@ -13,6 +13,9 @@ metadata:
   tier: "1c"
   verified: true
   status: beta
+  difficulty: highly_complex
+  partnershipRequired: true
+  sandboxAvailable: true
 ---
 
 # Bullhorn ATS (via Apideck)
@@ -30,6 +33,25 @@ Access Bullhorn ATS through Apideck's **ATS** unified API — one of 11 ATS conn
 - **Gotchas:** [page](https://developers.apideck.com/apis/ats/bullhorn-ats/gotchas)
 - **Bullhorn ATS docs:** https://bullhorn.github.io/rest-api-docs/
 - **Homepage:** https://www.bullhorn.com/
+
+## At a glance
+
+- **Implementation difficulty:** highly complex — Paid API Access Contract + Security Assessment + Custom Consumer Credentials
+- **Vendor partnership required:** yes ([Bullhorn API Access Program](https://www.bullhorn.com/bullhorn-api-access-faqs/)) — Apideck has no relationship or affiliation with Bullhorn. Bullhorn's API Access Program gives vendors a sandbox and technical resources.
+- **Apideck-managed credentials:** not available — Each customer requests its own OAuth client ID and secret from Bullhorn.
+- **Account type required:** A Bullhorn ATS edition that includes API access; ATS Growth (formerly Team Edition) does not.
+- **Consumer access level:** The connection needs the Bullhorn API username and the corptoken for the account.
+- **Sandbox:** available ([signup](https://www.bullhorn.com/bullhorn-api-access-faqs/)) — Issued after the API Access contract is signed, a security assessment is passed and the invoice is cleared.
+- **Costs:** Annual platform fee for Bullhorn's API Access Program (amount not published); includes 200,000 API calls a month, with overage charges above that.
+- **Rate limits:** Up to 1,500 requests a minute, shared across all calls under the same OAuth client ID.
+- **Authentication:** Authorization Code flow.
+- **Webhooks:** Virtual webhooks - job, applicant and application created and updated events.
+
+**Important to know:**
+
+- Please keep in mind that Apideck has no existing relationship or affiliation with Bullhorn, but Apideck is able to implement integrations with the Bullhorn system for customers and has done so previously.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/bullhorn-ats` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

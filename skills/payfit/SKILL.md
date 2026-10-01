@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "2"
   verified: true
+  difficulty: involved
+  partnershipRequired: true
+  sandboxAvailable: true
 ---
 
 # PayFit (via Apideck)
@@ -26,6 +29,25 @@ Access PayFit through Apideck's **HRIS** unified API — one of 58 HRIS connecto
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/payfit/gotchas)
 - **PayFit docs:** https://developers.payfit.com
 - **Homepage:** https://payfit.com/
+
+## At a glance
+
+- **Implementation difficulty:** involved — Required PayFit Product Partnership + Per-Partner Scope Approval
+- **Vendor partnership required:** yes ([PayFit Developer Portal](https://developers.payfit.io/docs/how-to-become-a-partner)) — Joining gives you a client ID and secret plus a test company; PayFit validates each use case first.
+- **Apideck-managed credentials:** not available — PayFit issues client credentials only to its own product partners.
+- **Account type required:** A PayFit company in France, the UK or Spain; some endpoints exist only in specific markets.
+- **Consumer access level:** A PayFit admin of the company, since only an admin can approve access.
+- **Sandbox:** available ([signup](https://developers.payfit.io/docs/how-to-become-a-partner)) — Test company credentials are issued to accepted partners; PayFit documents no self-serve signup.
+- **Rate limits:** 50 requests per second for reads and 20 per second for writes, per client application.
+- **Authentication:** Authorization Code flow.
+- **Webhooks:** Virtual webhooks - employee created, updated and terminated events
+
+**Important to know:**
+
+- PayFit has temporarily stopped accepting new API integration requests and gives no reopening date. If you are not yet a PayFit product partner, you cannot start the partner process until PayFit reopens intake.
+- PayFit whitelists the scopes each partner may request, and a request outside that whitelist is rejected. Settle your use cases with PayFit up front, because the connector can only read what your approved scopes allow.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/payfit` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

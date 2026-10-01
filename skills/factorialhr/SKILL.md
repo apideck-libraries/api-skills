@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "2"
   verified: true
+  difficulty: moderate
+  partnershipRequired: true
+  sandboxAvailable: true
 ---
 
 # Factorial (via Apideck)
@@ -25,6 +28,24 @@ Access Factorial through Apideck's **HRIS** unified API — one of 58 HRIS conne
 - **Auth type:** oauth2
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/factorialhr/gotchas)
 - **Homepage:** https://factorialhr.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Official OAuth App Requested From Factorial for Multi-Company Use
+- **Vendor partnership required:** yes ([Factorial Integrations Partner Program](https://factorialhr.com/integrations-partner-program)) — Factorial creates your production OAuth app and shares its client ID and secret; the programme also offers a listing in Factorial's integration store.
+- **Apideck-managed credentials:** not available — Each customer brings its own Factorial OAuth app.
+- **Account type required:** Factorial company account.
+- **Consumer access level:** Factorial administrator.
+- **Sandbox:** available — Ask your Factorial account manager or account executive for a demo company.
+- **Rate limits:** 200 POST requests a minute.
+- **Authentication:** Authorization Code flow.
+- **Webhooks:** Native - employee created, updated and terminated events
+
+**Important to know:**
+
+- An OAuth app a company creates in its own Factorial account covers only that one Factorial company, so it cannot connect your consumers' companies.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/factorialhr` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: involved
+  partnershipRequired: true
+  sandboxAvailable: true
 ---
 
 # Blackbaud (via Apideck)
@@ -30,6 +33,26 @@ Access Blackbaud through Apideck's **CRM** unified API — one of 21 CRM connect
 - **Gotchas:** [page](https://developers.apideck.com/apis/crm/blackbaud/gotchas)
 - **Blackbaud docs:** https://developer.blackbaud.com
 - **Homepage:** https://blackbaud.com
+
+## At a glance
+
+- **Implementation difficulty:** involved — ISV Partner Status Needed Beyond 10 Environments + Subscription Key and Admin Connect Step
+- **Vendor partnership required:** yes ([Blackbaud Partner Program (ISV)](https://www.blackbaud.com/become-a-partner)) — Needed to scale past the per-application environment cap; ISV Partner status gives unlimited environment connections and a Marketplace listing.
+- **Apideck-managed credentials:** not available — Each Apideck customer registers their own SKY application and uses their own SKY API subscription key.
+- **Account type required:** A Blackbaud Raiser's Edge NXT environment.
+- **Consumer access level:** An organisation admin, or a user with Marketplace permission, connects the application first; the consenting user's permissions then limit the data.
+- **Sandbox:** available ([signup](https://developer.blackbaud.com/skyapi/docs/getting-started/cohort)) — Email skyapi@blackbaud.com to request a SKY Developer Cohort sandbox and name Raiser's Edge NXT. Shared environment, read-only at first, test data only.
+- **Costs:** Free tier has no fee; quota upgrades $5,000 a year (100,000 calls/day) or $10,000 (250,000), for Blackbaud customers and ISV Partners only. Subject to change.
+- **Rate limits:** 10 calls per second; daily quota of 1,000 calls on Free, 25,000 on Standard and 100,000 per connection on Partner.
+- **Authentication:** Authorization Code flow, plus a SKY API subscription key sent in the Bb-Api-Subscription-Key header.
+- **Webhooks:** No webhooks - data is read by polling.
+
+**Important to know:**
+
+- One application connects up to 10 consumer environments without Partner status; an eleventh needs ISV Partner status for the application owner.
+- Outside the Partner tier the daily call quota is shared by every connected environment, so each new consumer draws on the same fixed ceiling. Size sync frequency to all consumers together, not to one account.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/blackbaud` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

@@ -12,6 +12,9 @@ metadata:
   authType: apiKey
   tier: "2"
   verified: true
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Freshworks CRM (via Apideck)
@@ -27,6 +30,20 @@ Access Freshworks CRM through Apideck's **CRM** unified API — one of 21 CRM co
 - **Gotchas:** [page](https://developers.apideck.com/apis/crm/freshsales/gotchas)
 - **Freshworks CRM docs:** https://developers.freshworks.com
 - **Homepage:** https://www.freshworks.com/freshsales-crm/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — API Key Authentication - Each Consumer Copies Their Own Key and Bundle Alias
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** not available — Each consumer supplies their own Freshsales API key.
+- **Account type required:** A Freshworks CRM (Freshsales) account.
+- **Consumer access level:** Any user; the key mirrors that user's role, so an admin is the simplest choice.
+- **Sandbox:** available ([signup](https://www.freshworks.com/crm/signup/)) — 21-day full-featured free trial, no credit card; the account is suspended if no plan is chosen. The vendor sandbox is Enterprise only.
+- **Rate limits:** 400 requests a minute, plus an hourly cap per account of 1,000 to 5,000 requests depending on plan.
+- **Authentication:** Sent in the Authorization header as Token token=<key>.
+- **Webhooks:** No webhooks - data is read by polling.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/freshsales` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

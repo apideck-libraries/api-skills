@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "2"
   verified: true
+  difficulty: moderate
+  partnershipRequired: true
+  sandboxAvailable: true
 ---
 
 # Visma Nmbrs (via Apideck)
@@ -26,6 +29,21 @@ Access Visma Nmbrs through Apideck's **HRIS** unified API — one of 58 HRIS con
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/nmbrs/gotchas)
 - **Visma Nmbrs docs:** https://support.nmbrs.com
 - **Homepage:** https://www.nmbrs.com
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Demo Validation Required for Production Subscription
+- **Vendor partnership required:** yes ([Nmbrs App Store](https://www.nmbrs.com/nl/payroll/building-a-nmbrs-integration)) — Joining gives the production subscription, approved after a demo video and the Ready-to-demo form.
+- **Apideck-managed credentials:** available — For testing only, through a shared Apideck partner app.
+- **Account type required:** A Nmbrs Payroll (formerly Nmbrs) environment.
+- **Consumer access level:** A client login or company login created at debtor level; a master login in an Accountant environment does not work.
+- **Sandbox:** available ([signup](https://developer.payroll.nmbrs.com/docs/create-nmbrs-account)) — Free demo environment: sign up with a domain named extdev-{AppName} and affiliate code DEMO, or it is deleted after 30 days.
+- **Costs:** Nmbrs publishes no fee for API access.
+- **Rate limits:** Set by the developer-portal subscription product; the development subscription has lower limits than the production one.
+- **Authentication:** Authorization Code flow with pushed authorization requests; a Nmbrs subscription key is also sent with each call.
+- **Webhooks:** Virtual webhooks - employee created and updated events, detected by polling.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/nmbrs` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

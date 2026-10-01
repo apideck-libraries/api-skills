@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "1b"
   verified: true
+  difficulty: straightforward
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Lever (via Apideck)
@@ -26,6 +29,20 @@ Access Lever through Apideck's **ATS** unified API — one of 11 ATS connectors 
 - **Gotchas:** [page](https://developers.apideck.com/apis/ats/lever/gotchas)
 - **Lever docs:** https://hire.lever.co/developer
 - **Homepage:** https://www.lever.co/
+
+## At a glance
+
+- **Implementation difficulty:** straightforward — Apideck OAuth App Available; No Partnership Required
+- **Vendor partnership required:** no ([developer portal](https://www.lever.co/partnershipinterest)) — Only for your own OAuth app: joining gives you a client ID and secret plus an Integrator Sandbox, with production credentials after a Lever QA run-through.
+- **Apideck-managed credentials:** available — OAuth consent shows Apideck as the requesting application.
+- **Account type required:** Any Lever account.
+- **Consumer access level:** A Lever Super Admin, who authorises the connection for the whole organisation.
+- **Sandbox:** available ([signup](https://www.lever.co/partnershipinterest)) — An Integrator Sandbox account, issued once Lever approves your partnership interest form. Email is switched off in it, so invited users get no invitation.
+- **Rate limits:** 10 requests per second steady state, with bursts up to 20 when possible.
+- **Authentication:** Authorization Code flow; Lever issues no API keys to integrations.
+- **Webhooks:** Virtual webhooks - applicant and job created and updated events, detected by polling.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/lever` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

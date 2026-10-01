@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # CIPHR (via Apideck)
@@ -30,6 +33,23 @@ Access CIPHR through Apideck's **HRIS** unified API — one of 58 HRIS connector
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/ciphr/gotchas)
 - **CIPHR docs:** https://www.ciphr.com
 - **Homepage:** https://www.ciphr.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — API Key Authentication + No Public Developer Documentation
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** not available — Each consumer supplies their own CIPHR subdomain and API key.
+- **Account type required:** A CIPHR account with API access enabled by CIPHR.
+- **Consumer access level:** CIPHR publishes no minimum role for obtaining the API key.
+- **Sandbox:** not available — CIPHR provides test environments only under a commercial relationship, so request one through a consumer who is a CIPHR customer.
+- **Authentication:** Sent in the apikey header; not OAuth.
+- **Webhooks:** No webhooks - data is read by polling.
+
+**Important to know:**
+
+- CIPHR publishes no public developer documentation and makes some fields visible in the API only when CIPHR enables them for the customer, so confirm field visibility with CIPHR before relying on it.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/ciphr` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

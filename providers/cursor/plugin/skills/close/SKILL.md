@@ -12,6 +12,9 @@ metadata:
   authType: basic
   tier: "1c"
   verified: true
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Close (via Apideck)
@@ -26,6 +29,25 @@ Access Close through Apideck's **CRM** unified API — one of 21 CRM connectors 
 - **Gotchas:** [page](https://developers.apideck.com/apis/crm/close/gotchas)
 - **Close docs:** https://developer.close.com
 - **Homepage:** https://close.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — API Key Authentication - Each Consumer Creates Their Own Key in Close
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** not available — Each consumer creates their own Close API key.
+- **Account type required:** Any Close account, paid or on trial.
+- **Consumer access level:** A Close user who can create an API key in their settings; Close does not name a required role.
+- **Sandbox:** available ([signup](https://app.close.com/signup/)) — Test with a free trial account, which runs 14 days and needs no credit card; Close documents no separate sandbox.
+- **Costs:** Nothing extra: every Close plan includes API access.
+- **Rate limits:** No single published figure; Close limits requests per endpoint group, per organisation and, lower, per API key.
+- **Authentication:** Sent as the username in HTTP Basic authentication.
+- **Webhooks:** No webhooks - Close events are not delivered to Apideck; data is read by polling the API.
+
+**Important to know:**
+
+- The key acts as the Close user who created it, with that user's full access and no way to narrow it. If that key is deleted, the connection stops working immediately and cannot be undone, so have each consumer create a dedicated key for the integration rather than reusing one.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/close` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

@@ -12,6 +12,9 @@ metadata:
   authType: apiKey
   tier: "2"
   verified: true
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Salesflare (via Apideck)
@@ -26,6 +29,19 @@ Access Salesflare through Apideck's **CRM** unified API — one of 21 CRM connec
 - **Gotchas:** [page](https://developers.apideck.com/apis/crm/salesflare/gotchas)
 - **Salesflare docs:** https://api.salesflare.com/docs
 - **Homepage:** https://salesflare.com
+
+## At a glance
+
+- **Implementation difficulty:** moderate — API Key Authentication - Each Consumer Creates Their Own Key in Salesflare
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** not available — Each consumer creates their own Salesflare API key.
+- **Account type required:** Salesflare account on a paid plan or the 30-day trial.
+- **Consumer access level:** A Salesflare user who can create an API key in Settings.
+- **Sandbox:** available ([signup](https://app.salesflare.com/#/signup/)) — 30-day free trial, no credit card required; create the API key in the trial account to test.
+- **Authentication:** Sent as a bearer token; not OAuth.
+- **Webhooks:** No webhooks - not supported by this connector; poll the Unified API for changes.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/salesflare` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

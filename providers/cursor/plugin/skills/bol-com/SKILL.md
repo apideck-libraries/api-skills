@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # bol.com (via Apideck)
@@ -31,6 +34,25 @@ Access bol.com through Apideck's **Ecommerce** unified API — one of 17 Ecommer
 - **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/bol-com/gotchas)
 - **bol.com docs:** https://api.bol.com
 - **Homepage:** https://www.bol.com
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Each Seller Creates Client Credentials in the bol.com Seller Dashboard
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** not available — Each seller creates their own Client ID and Client Secret.
+- **Account type required:** A bol.com seller account: a business registered in the Netherlands or Belgium with a VAT number.
+- **Consumer access level:** Someone with access to the seller account's API settings in the bol.com Seller Dashboard.
+- **Sandbox:** not available — bol.com's demo environment returns fixed example responses, not your own shop's data.
+- **Costs:** No fee (Retailer API Terms of Service, article 4.1).
+- **Rate limits:** Set per endpoint: listing orders allows 25 requests a minute and retrieving a single order 25 a second.
+- **Authentication:** Client credentials flow; no user consent step.
+- **Webhooks:** No webhooks - data is read by polling.
+
+**Important to know:**
+
+- bol.com only issues API credentials after the seller registers a technical contact in the Seller Dashboard. bol.com contacts that person about API use, expects an answer within 2 working days, and may block API access if they cannot be reached.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/bol-com` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

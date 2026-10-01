@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # OneLogin (via Apideck)
@@ -30,6 +33,22 @@ Access OneLogin through Apideck's **HRIS** unified API — one of 58 HRIS connec
 - **Apideck setup guide:** [Connection guide](https://developers.apideck.com/connectors/onelogin/docs/consumer+connection)
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/onelogin/gotchas)
 - **Homepage:** https://www.onelogin.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — API Credentials - Each Consumer Creates a Client ID and Secret in OneLogin
+- **Vendor partnership required:** no — Nothing has to be registered with OneLogin to use this connector.
+- **Apideck-managed credentials:** not available — Each consumer creates their own OneLogin API credentials.
+- **Account type required:** Any OneLogin account where the consumer can open Developers > API Credentials.
+- **Consumer access level:** A OneLogin account owner or administrator, since only those roles can create API credentials.
+- **Sandbox:** available — Start a OneLogin free trial to get a test account, then create API credentials in it the same way as in production.
+- **Authentication:** Client credentials grant, using a client ID and secret.
+
+**Important to know:**
+
+- OneLogin ties API credentials to the user who created them. If that user is later deleted, the credentials fail with HTTP 500 and the consumer must create a new pair and reconnect, so have them create the pair from a long-lived admin account.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/onelogin` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

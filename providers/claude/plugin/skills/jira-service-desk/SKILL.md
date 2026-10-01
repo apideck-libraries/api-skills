@@ -14,6 +14,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: false
 ---
 
 # Jira Service Desk (via Apideck Proxy)
@@ -32,6 +35,25 @@ Access Jira Service Desk through Apideck's **Proxy API** with managed Vault auth
 - **Gotchas:** [page](https://developers.apideck.com/apis/proxy/jira-service-desk/gotchas)
 - **Jira Service Desk docs:** https://developer.atlassian.com/cloud/jira/service-desk/rest/intro/
 - **Homepage:** https://www.atlassian.com/software/jira/service-management
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Self-Service OAuth App + No Dedicated Sandbox
+- **Vendor partnership required:** no ([Atlassian developer console](https://developer.atlassian.com/console/myapps/)) — Registering your own OAuth 2.0 app there gives you the client ID and secret.
+- **Apideck-managed credentials:** available — Apideck's test credentials, for trying the connection; production connections use your own OAuth app.
+- **Account type required:** A Jira Service Management site on Atlassian Cloud.
+- **Consumer access level:** A Jira user on the site who can authorise the app; the connection then reaches what that user can already see.
+- **Sandbox:** not available — Test on a free Jira Service Management site (up to three agents).
+- **Rate limits:** 65,000 points an hour, enforced since 2 March 2026, plus per-second burst limits. Listing customers on a service desk is capped at 5 requests a second.
+- **Authentication:** Authorization Code flow.
+- **Webhooks:** No webhooks - poll for changes instead.
+
+**Important to know:**
+
+- Jira Service Desk is an auth-only connector: there are no unified Issue Tracking endpoints. Apideck handles the OAuth connection, and every read and write goes through the Proxy API against Atlassian's own Service Desk API shape.
+- The hourly request quota belongs to the app, not to each connected site: every site draws from the same pool by default, so later consumers compete with earlier ones.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/jira-service-desk` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

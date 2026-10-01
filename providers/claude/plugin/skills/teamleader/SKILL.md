@@ -12,6 +12,9 @@ metadata:
   authType: oauth2
   tier: "1c"
   verified: true
+  difficulty: straightforward
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Teamleader (via Apideck)
@@ -26,6 +29,26 @@ Access Teamleader through Apideck's **CRM** unified API — one of 21 CRM connec
 - **Gotchas:** [page](https://developers.apideck.com/apis/crm/teamleader/gotchas)
 - **Teamleader docs:** https://developer.teamleader.eu
 - **Homepage:** https://www.teamleader.eu/
+
+## At a glance
+
+- **Implementation difficulty:** straightforward — Self-Service OAuth App + Free Trial — No Partnership or App Review
+- **Vendor partnership required:** no ([Teamleader Focus Marketplace developer portal](https://marketplace.focus.teamleader.eu/eu/en/build)) — The developer portal issues an integration's Client ID and Secret self-service.
+- **Apideck-managed credentials:** available — OAuth shows "Apideck" as the requesting application.
+- **Account type required:** Any Teamleader Focus plan
+- **Consumer access level:** Any Teamleader Focus user with access to the contacts, companies and deals being synced
+- **Sandbox:** available ([signup](https://signup.focus.teamleader.eu/)) — Free Teamleader Focus trial works for API testing; there is no separate sandbox environment. Teamleader can set up a test account via api@teamleader.eu.
+- **Costs:** API access is included on every Teamleader Focus plan at no extra fee.
+- **Rate limits:** 200 requests/minute per integration per Teamleader account.
+- **Authentication:** Authorization Code flow.
+- **Webhooks:** No webhooks — neither native nor virtual; poll for changes.
+
+**Important to know:**
+
+- Leads are Teamleader contacts: the Lead API and the CRM contacts resource read and write the same Teamleader contact records, so a lead created through one appears in the other.
+- A full notes sync has to walk every contact, company and deal; there is no account-wide notes feed.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/teamleader` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

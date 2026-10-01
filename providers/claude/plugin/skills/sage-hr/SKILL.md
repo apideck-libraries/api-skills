@@ -12,6 +12,9 @@ metadata:
   authType: apiKey
   tier: "2"
   verified: true
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Sage HR (via Apideck)
@@ -25,6 +28,24 @@ Access Sage HR through Apideck's **HRIS, ATS** unified API — one of 58 HRIS co
 - **Auth type:** apiKey
 - **Gotchas:** [HRIS](https://developers.apideck.com/apis/hris/sage-hr/gotchas) · [ATS](https://developers.apideck.com/apis/ats/sage-hr/gotchas)
 - **Homepage:** https://sage.hr/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — API Key Authentication - Each Consumer Enables API Access and Copies Their Own Key
+- **Vendor partnership required:** no
+- **Apideck-managed credentials:** not available — Each consumer supplies their own Sage HR subdomain and API key.
+- **Account type required:** A Sage HR company account.
+- **Consumer access level:** A Sage HR admin, since only admins can enable API access.
+- **Sandbox:** available — Free 30-day Sage HR trial, no card required. Whether the API can be enabled during the trial is not confirmed.
+- **Authentication:** Sent in the X-Auth-Token header; not OAuth.
+- **Webhooks:** Virtual webhooks - employee created, updated and terminated (HRIS); applicant and job created and updated (ATS).
+
+**Important to know:**
+
+- Sage HR serves both the HRIS and ATS APIs, and Vault keys a connection to one unified API, so each vertical is a separate connection using the same subdomain and API key.
+- The API key belongs to the admin who enabled API access and is tied to that person's admin rights: if they lose admin permissions, Sage HR invalidates the key and the connection stops working, so create it from a stable admin account.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/sage-hr` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

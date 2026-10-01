@@ -12,6 +12,9 @@ metadata:
   authType: apiKey
   tier: "2"
   verified: true
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Lucca (via Apideck)
@@ -26,6 +29,24 @@ Access Lucca through Apideck's **HRIS** unified API — one of 58 HRIS connector
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/lucca-hr/gotchas)
 - **Lucca docs:** https://developers.lucca.fr
 - **Homepage:** https://www.lucca-hr.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — API Key Authentication - Each Consumer Creates Their Own Key in Lucca
+- **Vendor partnership required:** no — Nothing has to be registered with Lucca to use this connector.
+- **Apideck-managed credentials:** not available — Each consumer creates their own Lucca API key.
+- **Account type required:** A Lucca account on the consumer's own Lucca domain.
+- **Consumer access level:** Access to the 'Authentification, SSO et API' administration interface, where Lucca API keys are managed.
+- **Sandbox:** available — Ask Lucca for a Test environment (ilucca-test) on the customer account, one per customer. Snapshot-restorable sandboxes are a paid Lucca feature.
+- **Rate limits:** 50 requests a minute for each Lucca domain, shared by every integration connected to that domain.
+- **Authentication:** Sent in the Authorization header.
+- **Webhooks:** Virtual webhooks - employee created, updated and terminated events.
+
+**Important to know:**
+
+- Use an API key created in the same Lucca environment as the subdomain you enter.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/lucca-hr` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 

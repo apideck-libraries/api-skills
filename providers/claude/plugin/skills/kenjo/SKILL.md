@@ -13,6 +13,9 @@ metadata:
   tier: "2"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: false
+  sandboxAvailable: true
 ---
 
 # Kenjo (via Apideck)
@@ -30,6 +33,25 @@ Access Kenjo through Apideck's **HRIS** unified API — one of 58 HRIS connector
 - **Gotchas:** [page](https://developers.apideck.com/apis/hris/kenjo/gotchas)
 - **Kenjo docs:** https://developers.kenjo.io
 - **Homepage:** https://www.kenjo.io/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Kenjo Customer Success Must Activate API Access
+- **Vendor partnership required:** no ([developer portal](https://www.kenjo.io/partner-program-kenjo)) — Kenjo's software partner programme offers co-marketing and referral bonuses; API access does not depend on it.
+- **Apideck-managed credentials:** not available — Each consumer generates their own Kenjo API key.
+- **Account type required:** A Kenjo account on which Kenjo has activated API access.
+- **Consumer access level:** Kenjo admin, since only admins can generate API keys.
+- **Sandbox:** available ([signup](https://kenjo.readme.io/reference/generate-the-api-key)) — Ask Kenjo Customer Success to activate the API on a sandbox instead of production.
+- **Costs:** Kenjo lists APIs and integrations under its Connect plan.
+- **Rate limits:** Not published by Kenjo.
+- **Authentication:** The consumer's Kenjo API key, not an OAuth consent flow.
+- **Webhooks:** No webhooks - changes are picked up by polling.
+
+**Important to know:**
+
+- Keys are limited to five per Kenjo organisation. Deleting or regenerating a key, or changing its permissions, invalidates its tokens, so the connection stops until the new key is entered.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/kenjo` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 
