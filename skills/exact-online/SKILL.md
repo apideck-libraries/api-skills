@@ -48,7 +48,7 @@ Access Exact Online through Apideck's **Accounting** unified API — one of 34 A
 - Exact Online runs separate country instances — an app registered in one country cannot serve consumers in another. Select and save the connection's region **before** authorizing; it defaults to the Dutch domain, so non-NL consumers fail otherwise.
 - Your app must pass Exact's review before consumers outside your own Exact instance can connect — until it does, only your own subscription can be linked, which blocks pilot consumers.
 - Write-back is limited to transactions (invoices, bills, invoice items, payments, bill payments, bill credit notes, journal entries); master data — customers, suppliers, ledger accounts, tax rates and credit notes — is read-only, so consumers maintain it in Exact Online.
-- Refresh tokens are single-use and expire after 30 days of inactivity — a dormant connection must be re-authorised by the consumer.
+- Refresh tokens are single-use and expire after 30 days of inactivity, but Apideck renews them before then, so a dormant connection does not lapse. Re-authorising is needed if access is revoked or a renewal fails.
 - Exact requires sequential API calls — parallel or multi-threaded requests are explicitly disallowed, so a high-volume sync must be serialised rather than fanned out.
 
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/exact-online` (`overview` field) is the live, authoritative version.

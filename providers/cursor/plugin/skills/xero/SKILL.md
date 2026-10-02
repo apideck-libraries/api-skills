@@ -46,7 +46,7 @@ Access Xero through Apideck's **Accounting** unified API — one of 34 Accountin
 **Important to know:**
 
 - Connection caps are tier-based: 5 active connections on the free Starter tier, 50 on Core, and more only from Plus upward. Certification unlocks the higher tiers but itself requires at least 10 active customer connections, so start the process before you hit the cap.
-- Refresh tokens expire after 60 days if unused — consumer must re-authorise.
+- Xero expires a refresh token after 60 days unused, but Apideck renews it before then, so an idle connection does not lapse. Re-authorising is needed if access is withdrawn in Xero, a renewal fails, or a new permission is requested.
 - Consumers can install a maximum of 2 uncertified apps — if at the limit they must remove another uncertified app first.
 - Certification compliance requires hiding the Apideck callback — a custom Vault domain must be configured before certification.
 - From March 2, 2026 the Journals API is gated to the Advanced tier and new apps must use granular OAuth scopes; older apps must migrate by September 2027. General-ledger reads need accounting.journals.read, which Apideck no longer requests by default; manual journals still work.
