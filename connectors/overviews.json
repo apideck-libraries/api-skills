@@ -9506,19 +9506,8 @@
       "difficulty_reason": "Vendor-Issued Credentials — API access is requested from Procountor rather than created in a self-service developer portal."
     },
     "quickbooks": {
-      "partnership_note": "Intuit Developer Account required (free, self-service).",
-      "rate_limits": "500 requests/minute per company (realm) and 10 concurrent requests/second per realm and app. Enforced on every tier; upgrading does not raise them.",
-      "environment_notes": [
-        {
-          "description": "Development keys from the Intuit Developer Portal. Sandbox rate limits match production; some email-related features are restricted.",
-          "environment": "Sandbox"
-        },
-        {
-          "environment": "Production",
-          "description": "Production keys are issued after app approval. Development credentials CANNOT be used with production accounts and vice versa."
-        }
-      ],
-      "authentication_note": "Authorization Code flow.",
+      "consumer_access_level": "Any user with QuickBooks Online access (Admin recommended for full data access)",
+      "difficulty": "moderate",
       "important_to_know": [
         "Only successful production calls (list/get-one, query, reports, attachment downloads) count as CorePlus; sandbox/OAuth never do. Builder's free cap blocks calls outright until reset, not throttled — a payment method moves you to Silver, which bills overage instead.",
         "Intuit's platform fees fall on whoever owns the Intuit app, not on the end QuickBooks company. Apideck-provided credentials are for evaluation and testing; a production integration uses your own Intuit app, so the tier and any fees are yours.",
@@ -9526,14 +9515,39 @@
         "Intuit refresh tokens expire after 100 days of inactivity and, since a November 2025 policy change, after a hard maximum of 5 years regardless of activity. Dormant and aged-out connections need consumer re-authorization.",
         "A 400 with an Intuit `SystemFault`, or a 401 citing error code 100/140 or a \"company locked out\" (`LOCKED_BY_SERVER`) message, is QuickBooks' concurrent-request lockout — it happens when two requests hit the same company file at the same time, not because the credentials are invalid. Apideck treats these as transient: the connection is not invalidated and no reconnect is needed. Retry after a short backoff."
       ],
-      "partnership_portal_name": "Intuit Developer Portal",
-      "difficulty_reason": "Self-Service Signup + App Review Required",
-      "difficulty": "moderate",
-      "partnership_url": "https://developer.intuit.com/app/developer/homepage",
-      "apideck_credentials_note": "OAuth shows \"Apideck\" as the requesting application.",
-      "sandbox_url": "https://developer.intuit.com/app/developer/qbo/docs/develop/sandboxes",
-      "partnership_required": true,
-      "consumer_access_level": "Any user with QuickBooks Online access (Admin recommended for full data access)",
+      "apideck_credentials_available": true,
+      "external_guides": [
+        {
+          "source": "Intuit",
+          "title": "Departments and Classes in QuickBooks Online",
+          "url": "https://developer.intuit.com/app/developer/qbo/docs/workflows/manage-business-units"
+        },
+        {
+          "title": "Multi-Currency Support",
+          "source": "Intuit",
+          "url": "https://developer.intuit.com/app/developer/qbo/docs/workflows/multi-currency"
+        },
+        {
+          "url": "https://help.developer.intuit.com/s/questionnaire",
+          "source": "Intuit",
+          "title": "App Assessment Questionnaire"
+        },
+        {
+          "title": "Platform service fees and pricing model",
+          "source": "Intuit",
+          "url": "https://help.developer.intuit.com/s/article/platform-service-fees"
+        },
+        {
+          "url": "https://help.developer.intuit.com/s/article/API-classification-for-the-Intuit-App-Partner-Program",
+          "title": "Core vs CorePlus API classification",
+          "source": "Intuit"
+        },
+        {
+          "title": "App Partner Program FAQ",
+          "url": "https://developer.intuit.com/app/developer/qbo/docs/get-started/partner-faq",
+          "source": "Intuit"
+        }
+      ],
       "supported_resource_categories": [
         {
           "name": "Core Financial",
@@ -9570,13 +9584,13 @@
           ]
         },
         {
+          "name": "Organizational",
           "resources": [
             "departments",
             "locations",
             "tracking-categories",
             "projects"
-          ],
-          "name": "Organizational"
+          ]
         },
         {
           "resources": [
@@ -9589,51 +9603,24 @@
           "name": "Other"
         }
       ],
-      "external_guides": [
-        {
-          "source": "Intuit",
-          "title": "Departments and Classes in QuickBooks Online",
-          "url": "https://developer.intuit.com/app/developer/qbo/docs/workflows/manage-business-units"
-        },
-        {
-          "url": "https://developer.intuit.com/app/developer/qbo/docs/workflows/multi-currency",
-          "source": "Intuit",
-          "title": "Multi-Currency Support"
-        },
-        {
-          "url": "https://help.developer.intuit.com/s/questionnaire",
-          "source": "Intuit",
-          "title": "App Assessment Questionnaire"
-        },
-        {
-          "url": "https://help.developer.intuit.com/s/article/platform-service-fees",
-          "title": "Platform service fees and pricing model",
-          "source": "Intuit"
-        },
-        {
-          "url": "https://help.developer.intuit.com/s/article/API-classification-for-the-Intuit-App-Partner-Program",
-          "title": "Core vs CorePlus API classification",
-          "source": "Intuit"
-        },
-        {
-          "source": "Intuit",
-          "title": "App Partner Program FAQ",
-          "url": "https://developer.intuit.com/app/developer/qbo/docs/get-started/partner-faq"
-        }
-      ],
+      "sandbox_available": true,
+      "authentication_note": "Authorization Code flow.",
+      "partnership_url": "https://developer.intuit.com/app/developer/homepage",
+      "sandbox_url": "https://developer.intuit.com/app/developer/qbo/docs/develop/sandboxes",
+      "partnership_portal_name": "Intuit Developer Portal",
       "responsibility_matrix": [
         {
-          "area": "Create Intuit Developer Account",
-          "customer": "✓"
+          "customer": "✓",
+          "area": "Create Intuit Developer Account"
         },
         {
-          "apideck": "Docs provided",
+          "area": "Register & Configure App",
           "customer": "✓",
-          "area": "Register & Configure App"
+          "apideck": "Docs provided"
         },
         {
-          "customer": "✓",
           "area": "Complete App Assessment",
+          "customer": "✓",
           "apideck": "Support available"
         },
         {
@@ -9641,32 +9628,45 @@
           "customer": "✓"
         },
         {
-          "area": "Authorize Connection (OAuth)",
           "consumer": "✓",
+          "area": "Authorize Connection (OAuth)",
           "apideck": "Handles OAuth flow"
         },
         {
           "area": "Build via Unified API",
-          "apideck": "Maintains connector",
-          "customer": "✓"
+          "customer": "✓",
+          "apideck": "Maintains connector"
         },
         {
           "area": "Token Refresh",
           "apideck": "✓ Automatic"
         },
         {
-          "customer": "✓ Via dashboard",
           "apideck": "Logs & alerts",
           "area": "Monitor Connections",
+          "customer": "✓ Via dashboard",
           "consumer": "✓ Can revoke anytime"
         }
       ],
-      "apideck_credentials_available": true,
-      "sandbox_note": "Free sandbox via Intuit Developer Portal (up to 10 companies, valid for 2 years).",
-      "sandbox_available": true,
+      "rate_limits": "500 requests/minute per company (realm) and 10 concurrent requests/second per realm and app. Enforced on every tier; upgrading does not raise them.",
+      "costs": "Reads are metered, writes are not: Builder is free with 500K CorePlus calls/month then blocks; Silver $300/month includes 1M.",
+      "environment_notes": [
+        {
+          "environment": "Sandbox",
+          "description": "Development keys from the Intuit Developer Portal. Sandbox rate limits match production; some email-related features are restricted."
+        },
+        {
+          "environment": "Production",
+          "description": "Production keys are issued after app approval. Development credentials CANNOT be used with production accounts and vice versa."
+        }
+      ],
+      "difficulty_reason": "Self-Service Signup + App Review Required",
+      "apideck_credentials_note": "OAuth shows \"Apideck\" as the requesting application.",
       "account_type_required": "QuickBooks Online (Simple Start, Essentials, Plus, or Advanced)",
+      "partnership_note": "Intuit Developer Account required (free, self-service).",
       "webhooks": "Native — invoice, customer, and payment events (20+ event types)",
-      "costs": "Reads are metered, writes are not: Builder is free with 500K CorePlus calls/month then blocks; Silver $300/month includes 1M."
+      "partnership_required": true,
+      "sandbox_note": "Free sandbox via Intuit Developer Portal (up to 10 companies, valid for 2 years)."
     },
     "recruitee": {
       "responsibility_matrix": [
@@ -12421,48 +12421,122 @@
       "webhooks": "Virtual webhooks — no native webhooks in Workday; Apideck polls employees, applicants, jobs, bills, suppliers, purchase orders, and customers."
     },
     "xero": {
-      "sandbox_note": "Free via Xero Developer Portal (demo company included).",
+      "difficulty": "moderate",
+      "partnership_required": true,
+      "apideck_credentials_available": false,
+      "authentication_note": "Authorization Code flow.",
+      "account_type_required": "Any active Xero subscription",
+      "difficulty_reason": "Self-Service OAuth + App Partner Certification Required to Scale",
+      "costs": "Free Starter tier; Core ~$22, Plus ~$152, Advanced ~$895 USD/month by connection count; Enterprise custom; plus per-GB egress overage. Effective March 2, 2026.",
+      "sandbox_url": "https://developer.xero.com/",
+      "consumer_access_level": "Standard or Adviser level user (Admin recommended for full data access)",
       "partnership_note": "App Partner Program certification is mandatory from the Plus tier and to list on the Xero App Store; Starter and Core tiers need no approval.",
+      "partnership_url": "https://developer.xero.com/documentation/xero-app-store/app-partner-guides/pathways-to-grow",
+      "webhooks": "Native — invoice and bill events (created and updated).",
+      "sandbox_available": true,
+      "sandbox_note": "Free via Xero Developer Portal (demo company included).",
+      "partnership_portal_name": "Xero App Partner Program",
+      "environment_notes": [
+        {
+          "description": "Xero uses the same credential structure for sandbox and production — the connected Xero organisation determines which data is accessed. Testing options: the Xero Demo Company (included with every developer account, sample data) and a 30-day full-featured free trial via xero.com/signup.",
+          "environment": "Sandbox & Production (shared credentials)"
+        },
+        {
+          "description": "When a consumer authorises your app, they choose which Xero organisation to connect. Consumers with multiple organisations require a separate connection per organisation.",
+          "environment": "Multi-Organisation"
+        }
+      ],
       "external_guides": [
         {
-          "source": "Xero",
           "title": "Xero API Overview",
-          "url": "https://developer.xero.com/documentation/api/accounting/overview"
+          "url": "https://developer.xero.com/documentation/api/accounting/overview",
+          "source": "Xero"
         },
         {
-          "title": "OAuth 2.0 Guide",
+          "source": "Xero",
           "url": "https://developer.xero.com/documentation/guides/oauth2/overview/",
-          "source": "Xero"
+          "title": "OAuth 2.0 Guide"
         },
         {
+          "title": "OAuth 2.0 Limits",
           "url": "https://developer.xero.com/documentation/guides/oauth2/limits/",
-          "source": "Xero",
-          "title": "OAuth 2.0 Limits"
+          "source": "Xero"
         },
         {
+          "source": "Xero",
           "url": "https://developer.xero.com/documentation/guides/oauth2/token-types",
-          "title": "Token Types & Lifetimes",
-          "source": "Xero"
+          "title": "Token Types & Lifetimes"
         },
         {
-          "url": "https://developer.xero.com/documentation/xero-app-store/app-partner-guides/app-partner-steps/",
           "title": "App Partner Steps",
-          "source": "Xero"
+          "source": "Xero",
+          "url": "https://developer.xero.com/documentation/xero-app-store/app-partner-guides/app-partner-steps/"
         },
         {
-          "source": "Xero",
           "title": "Certification Checkpoints",
-          "url": "https://developer.xero.com/documentation/xero-app-store/app-partner-guides/certification-checkpoints/"
+          "url": "https://developer.xero.com/documentation/xero-app-store/app-partner-guides/certification-checkpoints/",
+          "source": "Xero"
         },
         {
           "title": "Rate Limits & API Efficiency",
-          "source": "Xero",
-          "url": "https://developer.xero.com/documentation/best-practices/api-call-efficiencies/rate-limits"
+          "url": "https://developer.xero.com/documentation/best-practices/api-call-efficiencies/rate-limits",
+          "source": "Xero"
         },
         {
+          "source": "Xero",
           "url": "https://developer.xero.com/pricing",
-          "title": "API Pricing (Effective March 2026)",
-          "source": "Xero"
+          "title": "API Pricing (Effective March 2026)"
+        }
+      ],
+      "rate_limits": "60 calls/minute and 5 concurrent calls per organisation; daily cap of 1,000 calls on Starter and 5,000 on Core and above; 10,000 calls/minute app-wide.",
+      "responsibility_matrix": [
+        {
+          "customer": "✓",
+          "area": "Create Xero Developer Account"
+        },
+        {
+          "apideck": "Docs provided",
+          "area": "Register Xero App",
+          "customer": "✓"
+        },
+        {
+          "area": "Add Credentials to Apideck",
+          "customer": "✓"
+        },
+        {
+          "customer": "✓ (if scaling to the Plus tier or above)",
+          "apideck": "Support available",
+          "area": "Apply for App Partner Certification"
+        },
+        {
+          "area": "Set Up Custom Domain (Vault)",
+          "customer": "✓ (if certifying)",
+          "apideck": "Configures on request"
+        },
+        {
+          "apideck": "Webhook URL provided",
+          "customer": "✓",
+          "area": "Register Webhook (Optional)"
+        },
+        {
+          "area": "Authorize Connection (OAuth)",
+          "consumer": "✓",
+          "apideck": "Handles OAuth flow"
+        },
+        {
+          "area": "Build via Unified API",
+          "customer": "✓",
+          "apideck": "Maintains connector"
+        },
+        {
+          "area": "Token Refresh",
+          "apideck": "✓ Automatic"
+        },
+        {
+          "area": "Monitor Connections",
+          "consumer": "Can revoke anytime",
+          "customer": "Via dashboard",
+          "apideck": "Logs and alerts"
         }
       ],
       "important_to_know": [
@@ -12472,26 +12546,6 @@
         "Certification compliance requires hiding the Apideck callback — a custom Vault domain must be configured before certification.",
         "From March 2, 2026 the Journals API is gated to the Advanced tier and new apps must use granular OAuth scopes; older apps must migrate by September 2027. General-ledger reads need accounting.journals.read, which Apideck no longer requests by default; manual journals still work."
       ],
-      "difficulty_reason": "Self-Service OAuth + App Partner Certification Required to Scale",
-      "apideck_credentials_available": false,
-      "costs": "Free Starter tier; Core ~$22, Plus ~$152, Advanced ~$895 USD/month by connection count; Enterprise custom; plus per-GB egress overage. Effective March 2, 2026.",
-      "environment_notes": [
-        {
-          "environment": "Sandbox & Production (shared credentials)",
-          "description": "Xero uses the same credential structure for sandbox and production — the connected Xero organisation determines which data is accessed. Testing options: the Xero Demo Company (included with every developer account, sample data) and a 30-day full-featured free trial via xero.com/signup."
-        },
-        {
-          "description": "When a consumer authorises your app, they choose which Xero organisation to connect. Consumers with multiple organisations require a separate connection per organisation.",
-          "environment": "Multi-Organisation"
-        }
-      ],
-      "difficulty": "moderate",
-      "authentication_note": "Authorization Code flow.",
-      "rate_limits": "60 calls/minute and 5 concurrent calls per organisation; daily cap of 1,000 calls on Starter and 5,000 on Core and above; 10,000 calls/minute app-wide.",
-      "consumer_access_level": "Standard or Adviser level user (Admin recommended for full data access)",
-      "partnership_portal_name": "Xero App Partner Program",
-      "partnership_url": "https://developer.xero.com/documentation/xero-app-store/app-partner-guides/pathways-to-grow",
-      "sandbox_available": true,
       "supported_resource_categories": [
         {
           "name": "Core Financial",
@@ -12514,6 +12568,7 @@
           "name": "Reports"
         },
         {
+          "name": "Accounts Receivable",
           "resources": [
             "invoices",
             "invoice-items",
@@ -12521,8 +12576,7 @@
             "payments",
             "credit-notes",
             "credit-allocations"
-          ],
-          "name": "Accounts Receivable"
+          ]
         },
         {
           "name": "Accounts Payable",
@@ -12550,61 +12604,7 @@
             "linked-transactions"
           ]
         }
-      ],
-      "partnership_required": true,
-      "sandbox_url": "https://developer.xero.com/",
-      "account_type_required": "Any active Xero subscription",
-      "responsibility_matrix": [
-        {
-          "area": "Create Xero Developer Account",
-          "customer": "✓"
-        },
-        {
-          "customer": "✓",
-          "area": "Register Xero App",
-          "apideck": "Docs provided"
-        },
-        {
-          "area": "Add Credentials to Apideck",
-          "customer": "✓"
-        },
-        {
-          "area": "Apply for App Partner Certification",
-          "apideck": "Support available",
-          "customer": "✓ (if scaling to the Plus tier or above)"
-        },
-        {
-          "apideck": "Configures on request",
-          "customer": "✓ (if certifying)",
-          "area": "Set Up Custom Domain (Vault)"
-        },
-        {
-          "customer": "✓",
-          "apideck": "Webhook URL provided",
-          "area": "Register Webhook (Optional)"
-        },
-        {
-          "area": "Authorize Connection (OAuth)",
-          "consumer": "✓",
-          "apideck": "Handles OAuth flow"
-        },
-        {
-          "apideck": "Maintains connector",
-          "area": "Build via Unified API",
-          "customer": "✓"
-        },
-        {
-          "apideck": "✓ Automatic",
-          "area": "Token Refresh"
-        },
-        {
-          "area": "Monitor Connections",
-          "consumer": "Can revoke anytime",
-          "apideck": "Logs and alerts",
-          "customer": "Via dashboard"
-        }
-      ],
-      "webhooks": "Native — invoice and bill events (created and updated)."
+      ]
     },
     "yuki": {
       "beta": true,
@@ -12789,35 +12789,82 @@
       "account_type_required": "Zendesk Sell account (the CRM product, not Zendesk Support)."
     },
     "zoho-books": {
-      "beta": false,
-      "authentication_note": "Authorization Code flow.",
-      "webhooks": "Virtual webhooks — created/updated/deleted events on 10 resources, including invoices, bills, payments, customers and suppliers.",
-      "apideck_credentials_available": true,
-      "costs": "Free — Zoho charges nothing for API access on any Zoho Books plan, including the Free plan.",
-      "rate_limits": "100 requests/minute per organization; daily cap set by the consumer's plan (1,000 Free to 10,000 Premium); 5 concurrent calls on Free, 10 on paid plans.",
-      "partnership_required": false,
-      "difficulty_reason": "Self-Service OAuth, No Partnership Required",
-      "account_type_required": "Active Zoho Books subscription (Free plan or higher)",
-      "sandbox_available": false,
-      "sandbox_note": "Start a free Zoho Books trial or add a dedicated test organization to your own account; there is no separate sandbox environment.",
       "important_to_know": [
         "Zoho hosts each organization in one of seven regional data centres (US, EU, IN, AU, JP, CA, SA — verified June 2026). Apideck resolves the right region during authorization.",
         "A Zoho Books account can hold several organizations and each is authorized separately, so a consumer running three organizations needs three connections.",
         "Each consumer's own Zoho Books subscription sets their daily API quota, not yours — you cannot raise it for them. Design syncs around the lowest tier your consumers run on; heavier users unlock more frequent syncs by upgrading their own plan.",
         "Refresh tokens never expire, but Zoho stores at most 20 per user: authorizing a 21st silently revokes the oldest, which can break a long-standing connection with no error or warning."
       ],
+      "apideck_credentials_available": true,
+      "responsibility_matrix": [
+        {
+          "area": "Create Zoho Developer Account",
+          "customer": "✓ (or use Apideck credentials)"
+        },
+        {
+          "apideck": "Docs provided",
+          "customer": "✓ (or use Apideck credentials)",
+          "area": "Create OAuth Application"
+        },
+        {
+          "area": "Add Credentials to Apideck",
+          "customer": "✓ (or use Apideck credentials)"
+        },
+        {
+          "area": "Authorize Connection (OAuth)",
+          "consumer": "✓",
+          "apideck": "Handles OAuth flow"
+        },
+        {
+          "consumer": "✓",
+          "area": "Select Organization"
+        },
+        {
+          "area": "Build via Unified API",
+          "customer": "✓",
+          "apideck": "Maintains connector"
+        },
+        {
+          "apideck": "✓ Automatic",
+          "area": "Token Refresh"
+        },
+        {
+          "apideck": "Logs & alerts",
+          "customer": "✓ Via Dashboard",
+          "area": "Monitor Connections",
+          "consumer": "✓ Can revoke anytime"
+        }
+      ],
       "apideck_credentials_note": "For testing: the OAuth consent screen shows \"Apideck\"; use your own Zoho OAuth client for production.",
+      "partnership_note": "No partner programme — self-service OAuth client registration is free. An optional Zoho Marketplace listing adds discoverability, not API access.",
+      "account_type_required": "Active Zoho Books subscription (Free plan or higher)",
+      "sandbox_note": "Start a free Zoho Books trial or add a dedicated test organization to your own account; there is no separate sandbox environment.",
+      "environment_notes": [
+        {
+          "environment": "Single Environment",
+          "description": "Zoho Books uses the same credentials for testing and production — there is no distinct-credential sandbox tier. To test, start a free Zoho Books trial at https://www.zoho.com/books/signup/ or add a dedicated test organization to your own Zoho Books account. A dedicated test organization is the safer choice during development, since anything else you connect is live production data."
+        }
+      ],
+      "beta": false,
+      "partnership_required": false,
+      "rate_limits": "100 requests/minute per organization; daily cap set by the consumer's plan (1,000 Free to 10,000 Premium); 5 concurrent calls on Free, 10 on paid plans.",
+      "sandbox_url": "https://www.zoho.com/books/signup/",
+      "costs": "Free — Zoho charges nothing for API access on any Zoho Books plan, including the Free plan.",
+      "difficulty_reason": "Self-Service OAuth, No Partnership Required",
+      "sandbox_available": false,
+      "authentication_note": "Authorization Code flow.",
       "supported_resource_categories": [
         {
+          "name": "Core Financial",
           "resources": [
             "ledger-accounts",
             "journal-entries",
             "tax-rates",
             "currencies"
-          ],
-          "name": "Core Financial"
+          ]
         },
         {
+          "name": "Accounts Receivable",
           "resources": [
             "invoices",
             "invoice-items",
@@ -12825,18 +12872,17 @@
             "payments",
             "invoices-payments",
             "credit-notes"
-          ],
-          "name": "Accounts Receivable"
+          ]
         },
         {
+          "name": "Accounts Payable",
           "resources": [
             "bills",
             "bill-payments",
             "suppliers",
             "purchase-orders",
             "expenses"
-          ],
-          "name": "Accounts Payable"
+          ]
         },
         {
           "name": "Financial Reports",
@@ -12848,61 +12894,15 @@
           ]
         },
         {
+          "name": "Organization",
           "resources": [
             "organization",
             "projects"
-          ],
-          "name": "Organization"
-        }
-      ],
-      "environment_notes": [
-        {
-          "description": "Zoho Books uses the same credentials for testing and production — there is no distinct-credential sandbox tier. To test, start a free Zoho Books trial at https://www.zoho.com/books/signup/ or add a dedicated test organization to your own Zoho Books account. A dedicated test organization is the safer choice during development, since anything else you connect is live production data.",
-          "environment": "Single Environment"
-        }
-      ],
-      "partnership_note": "No partner programme — self-service OAuth client registration is free. An optional Zoho Marketplace listing adds discoverability, not API access.",
-      "sandbox_url": "https://www.zoho.com/books/signup/",
-      "responsibility_matrix": [
-        {
-          "area": "Create Zoho Developer Account",
-          "customer": "✓ (or use Apideck credentials)"
-        },
-        {
-          "area": "Create OAuth Application",
-          "customer": "✓ (or use Apideck credentials)",
-          "apideck": "Docs provided"
-        },
-        {
-          "area": "Add Credentials to Apideck",
-          "customer": "✓ (or use Apideck credentials)"
-        },
-        {
-          "consumer": "✓",
-          "area": "Authorize Connection (OAuth)",
-          "apideck": "Handles OAuth flow"
-        },
-        {
-          "consumer": "✓",
-          "area": "Select Organization"
-        },
-        {
-          "customer": "✓",
-          "area": "Build via Unified API",
-          "apideck": "Maintains connector"
-        },
-        {
-          "apideck": "✓ Automatic",
-          "area": "Token Refresh"
-        },
-        {
-          "customer": "✓ Via Dashboard",
-          "consumer": "✓ Can revoke anytime",
-          "area": "Monitor Connections",
-          "apideck": "Logs & alerts"
+          ]
         }
       ],
       "difficulty": "straightforward",
+      "webhooks": "Virtual webhooks — created/updated/deleted events on 10 resources, including invoices, bills, payments, customers and suppliers.",
       "consumer_access_level": "A user with organization-level access in the Zoho Books organization being authorized"
     },
     "zoho-crm": {
