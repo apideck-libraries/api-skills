@@ -40,7 +40,7 @@ Access BambooHR through Apideck's **HRIS** unified API — one of 58 HRIS connec
 - **Consumer access level:** Account Owner recommended, otherwise a custom access level carrying the permissions your integration needs.
 - **Sandbox:** available ([signup](https://www.bamboohr.com/signup/)) — Sign up for a free BambooHR trial and test against it. Joining the Marketplace Program additionally provides a dedicated sandbox account.
 - **Costs:** No separate API fee, and no cost to you — API access is included in each consumer's own BambooHR subscription.
-- **Rate limits:** Not published. BambooHR throttles at its discretion and returns Retry-After; from 14 September 2026 that response changes from 503 to 429.
+- **Rate limits:** Not published; BambooHR throttles at its discretion.
 - **Authentication:** The consumer's API key over HTTP Basic, not OAuth, plus their BambooHR subdomain.
 - **Webhooks:** Virtual webhooks (Apideck polls BambooHR for employee created, updated and terminated events)
 

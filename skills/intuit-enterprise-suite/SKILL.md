@@ -49,7 +49,7 @@ Access Intuit Enterprise Suite through Apideck's **Accounting** unified API — 
 - Each entity in a multi-entity IES organization needs its own OAuth connection (one connection = one company realm), and the API supports no cross-entity transactions or intercompany postings.
 - Refresh tokens expire after 100 days of inactivity and, under Intuit's November 2025 policy, have a hard 5-year maximum lifetime regardless of activity (standard accounting scopes from October 2028; granular scopes from February 2027) — the consumer must then re-authorize.
 - The free Builder tier's CorePlus (read) cap is hard — calls above it are blocked, not throttled, until next cycle or upgrade — and Silver+ is required for the IES-exclusive Dimensions API (GraphQL). Platform Service Fees bill to your own Intuit app, not to Apideck.
-- A 400 or 401 with an Intuit `SystemFault`, a 401 citing error code 100/140 or a "company locked out" (`LOCKED_BY_SERVER`) message, or a 403 `AuthorizatonFault`/`AuthorizationFault`, is Intuit's concurrent-request lockout — it happens when two requests hit the same company file at the same time, not because the credentials are invalid. Apideck treats these as transient: the connection is not invalidated and no reconnect is needed. Retry after a short backoff.
+- Intuit sometimes errors on healthy connections: a SystemFault, a company lockout (codes 100/140, LOCKED_BY_SERVER), a 403 AuthorizationFault or a 400 Permission Denied (code 5020). Apideck treats these as transient and keeps the connection valid. Retry after a backoff.
 
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/intuit-enterprise-suite` (`overview` field) is the live, authoritative version.
 
