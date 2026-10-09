@@ -49,7 +49,7 @@ Access QuickBooks through Apideck's **Accounting** unified API — one of 34 Acc
 - Intuit's platform fees fall on whoever owns the Intuit app, not on the end QuickBooks company. Apideck-provided credentials are for evaluation and testing; a production integration uses your own Intuit app, so the tier and any fees are yours.
 - The projects resource is served by Intuit's Projects API, which is a Premium API available only to Silver, Gold and Platinum partners. On the free Builder tier this resource is unavailable regardless of your CorePlus allowance.
 - Intuit refresh tokens expire after 100 days of inactivity and, since a November 2025 policy change, after a hard maximum of 5 years regardless of activity. Dormant and aged-out connections need consumer re-authorization.
-- A 400 with an Intuit `SystemFault`, or a 401 citing error code 100/140 or a "company locked out" (`LOCKED_BY_SERVER`) message, is QuickBooks' concurrent-request lockout — it happens when two requests hit the same company file at the same time, not because the credentials are invalid. Apideck treats these as transient: the connection is not invalidated and no reconnect is needed. Retry after a short backoff.
+- Intuit sometimes returns errors on healthy connections: a SystemFault, a company lockout (codes 100/140, LOCKED_BY_SERVER) or a 400 Permission Denied (code 5020). Apideck treats these as transient and keeps the connection valid, so no reconnect is needed. Retry after a backoff.
 
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/quickbooks` (`overview` field) is the live, authoritative version.
 

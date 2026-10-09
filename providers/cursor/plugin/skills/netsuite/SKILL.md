@@ -42,7 +42,7 @@ Access NetSuite through Apideck's **Accounting** unified API — one of 34 Accou
 - **Costs:** No additional platform fees, and no connection limits imposed.
 - **Rate limits:** Per-account concurrency (not requests/minute): 5 Standard, 15 Premium, 20 Enterprise/Ultimate, +10 per SuiteCloud Plus license; Apideck retries automatically.
 - **Authentication:** Token-Based Authentication (TBA), NetSuite's OAuth 1.0-based scheme — consumers create an integration record and credentials manually; no OAuth redirect.
-- **Webhooks:** Virtual webhooks — created/updated/deleted across 11 accounting resources (invoices, bills, payments, customers, suppliers, projects and more).
+- **Webhooks:** Virtual webhooks — created/updated/deleted across 14 accounting resources (invoices, credit notes, quotes, bills, expenses, payments, customers, suppliers, projects and more).
 
 **Important to know:**
 

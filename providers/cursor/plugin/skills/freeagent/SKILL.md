@@ -38,7 +38,7 @@ Access FreeAgent through Apideck's **Accounting** unified API — one of 34 Acco
 
 - **Implementation difficulty:** straightforward — Self-Service OAuth App + Free Sandbox — No Partnership or App Review
 - **Vendor partnership required:** no — Free self-service app registration at the FreeAgent Developer Dashboard: https://dev.freeagent.com/signup
-- **Apideck-managed credentials:** available — For testing (Apideck sandbox app; OAuth shows "Apideck"); production requires your own FreeAgent app.
+- **Apideck-managed credentials:** available — Testing only: Apideck's shared app connects to the production FreeAgent API, so use a test company, not live books. Go live with your own app.
 - **Account type required:** Any active FreeAgent subscription
 - **Consumer access level:** Any FreeAgent user can authorize; the connection operates at the authorizing user's permission level, so a full-access user is recommended for complete data.
 - **Sandbox:** available ([signup](https://signup.sandbox.freeagent.com/signup)) — Free self-service sandbox account.

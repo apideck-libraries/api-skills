@@ -13,6 +13,9 @@ metadata:
   tier: "1b"
   verified: true
   status: beta
+  difficulty: moderate
+  partnershipRequired: true
+  sandboxAvailable: true
 ---
 
 # Shopify (Public App) (via Apideck)
@@ -31,6 +34,27 @@ Access Shopify (Public App) through Apideck's **Ecommerce** unified API — one 
 - **Gotchas:** [page](https://developers.apideck.com/apis/ecommerce/shopify-public-app/gotchas)
 - **Shopify (Public App) docs:** https://shopify.dev/docs/apps
 - **Homepage:** https://www.shopify.com/
+
+## At a glance
+
+- **Implementation difficulty:** moderate — Public Distribution Requires Shopify App Review
+- **Vendor partnership required:** yes ([Shopify Partner Program](https://www.shopify.com/partners)) — A Shopify Partner account gives you app creation, unlimited test stores and the Client ID and Client secret for your own app.
+- **Apideck-managed credentials:** not available — Each connection uses your own Shopify app.
+- **Account type required:** A Shopify store.
+- **Consumer access level:** Someone who can approve an app installation on the store, typically the store owner.
+- **Sandbox:** available ([signup](https://shopify.dev/docs/apps/build/stores/development-stores)) — Development stores from the Dev Dashboard or the Shopify CLI; they cannot process real transactions or become production stores.
+- **Costs:** The Shopify Partner Program is free to join.
+- **Rate limits:** GraphQL Admin API, per app and store: 100 points per second on Standard, 200 on Advanced, 1,000 on Plus and 2,000 on enterprise plans.
+- **Authentication:** Authorization code grant; each connection also supplies a shop name.
+- **Webhooks:** Native - order, product and customer events (created, updated, deleted), plus paid, shipped, refunded and delivered order events.
+
+**Important to know:**
+
+- Reaching merchants beyond one store needs public distribution: an App Store listing that passes Shopify app review. Custom distribution skips review but installs on one store or one Plus organisation's stores, and the method cannot be changed once selected.
+- Shopify reviews access to protected customer data for public apps, including a data protection review before an app may read customer name, address, phone or email. Apps installed only on development stores skip that review.
+- Apideck's separate Shopify connector is the custom-app route for a single merchant's store; this connector fits when one app you own should serve every merchant through a standard OAuth authorize.
+
+> Facts synced from Apideck's connector metadata API — `GET /connector/connectors/shopify-public-app` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
 
