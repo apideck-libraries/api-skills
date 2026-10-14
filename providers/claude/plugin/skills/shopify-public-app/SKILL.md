@@ -45,7 +45,7 @@ Access Shopify (Public App) through Apideck's **Ecommerce** unified API — one 
 - **Sandbox:** available ([signup](https://shopify.dev/docs/apps/build/stores/development-stores)) — Development stores from the Dev Dashboard or the Shopify CLI; they cannot process real transactions or become production stores.
 - **Costs:** The Shopify Partner Program is free to join.
 - **Rate limits:** GraphQL Admin API, per app and store: 100 points per second on Standard, 200 on Advanced, 1,000 on Plus and 2,000 on enterprise plans.
-- **Authentication:** Authorization code grant; each connection also supplies a shop name.
+- **Authentication:** Authorization code grant with Shopify's expiring offline access tokens, refreshed automatically by Apideck; each connection also supplies a shop name.
 - **Webhooks:** Native - order, product and customer events (created, updated, deleted), plus paid, shipped, refunded and delivered order events.
 
 **Important to know:**
@@ -53,6 +53,7 @@ Access Shopify (Public App) through Apideck's **Ecommerce** unified API — one 
 - Reaching merchants beyond one store needs public distribution: an App Store listing that passes Shopify app review. Custom distribution skips review but installs on one store or one Plus organisation's stores, and the method cannot be changed once selected.
 - Shopify reviews access to protected customer data for public apps, including a data protection review before an app may read customer name, address, phone or email. Apps installed only on development stores skip that review.
 - Apideck's separate Shopify connector is the custom-app route for a single merchant's store; this connector fits when one app you own should serve every merchant through a standard OAuth authorize.
+- Shopify requires every public app to use expiring offline access tokens from January 1, 2027 (apps created since April 1, 2026 already must). The connector requests and refreshes them automatically; connections authorized before October 2026 need one re-authorization.
 
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/shopify-public-app` (`overview` field) is the live, authoritative version.
 
