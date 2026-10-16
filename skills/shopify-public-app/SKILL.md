@@ -50,6 +50,7 @@ Access Shopify (Public App) through Apideck's **Ecommerce** unified API — one 
 
 **Important to know:**
 
+- Shopify returns only orders from the last 60 days by default. To read older orders, your app needs the read_all_orders scope, which Shopify must approve before you can add it.
 - Reaching merchants beyond one store needs public distribution: an App Store listing that passes Shopify app review. Custom distribution skips review but installs on one store or one Plus organisation's stores, and the method cannot be changed once selected.
 - Shopify reviews access to protected customer data for public apps, including a data protection review before an app may read customer name, address, phone or email. Apps installed only on development stores skip that review.
 - Apideck's separate Shopify connector is the custom-app route for a single merchant's store; this connector fits when one app you own should serve every merchant through a standard OAuth authorize.

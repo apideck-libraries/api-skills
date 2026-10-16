@@ -10913,20 +10913,61 @@
       "apideck_credentials_note": "For testing: the Microsoft consent screen shows \"Apideck\". Use your own Microsoft Entra app in production."
     },
     "shopify": {
-      "consumer_access_level": "Store owner, or a staff member granted the App development > Develop permission; collaborator accounts cannot reach the Dev Dashboard.",
-      "difficulty_reason": "Merchant Self-Service Custom App via Shopify Dev Dashboard (Client Credentials) — No Partnership or App Review Required",
       "account_type_required": "Any paid Shopify plan; reading customer name, address, phone or email needs the merchant's store on Grow or higher (Level 2 protected customer data).",
-      "sandbox_available": true,
       "apideck_credentials_available": false,
-      "responsibility_matrix": [
+      "apideck_credentials_note": "There is no shared Apideck-managed Shopify app; every connection uses the merchant's own app credentials.",
+      "authentication_note": "Client Credentials against the merchant's own store; Shop, Client ID and Client Secret are entered per connection.",
+      "consumer_access_level": "Store owner, or a staff member granted the App development > Develop permission; collaborator accounts cannot reach the Dev Dashboard.",
+      "costs": "No separate charge for API access: it is included in every paid Shopify plan (Basic $39/month through Plus from $2,300/month). Free trial available.",
+      "difficulty": "moderate",
+      "difficulty_reason": "Merchant Self-Service Custom App via Shopify Dev Dashboard (Client Credentials) — No Partnership or App Review Required",
+      "environment_notes": [
         {
-          "customer": "✓",
-          "area": "Enable the Shopify connector in the Apideck Dashboard"
+          "description": "Shopify has no separate sandbox API: the connector talks to whichever store's credentials it is given, so testing and production use the same setup. For testing, create a free Shopify development store and build a custom app on it exactly as you would for a live store. Apideck has no temporary shared test credentials for this connector, because every connection supplies its own credentials, so take care not to point test flows at a live merchant's store. Questions about testing options: Apideck Support (https://help.apideck.com/en/articles/7774658).",
+          "environment": "Testing and production"
+        }
+      ],
+      "external_guides": [
+        {
+          "source": "Shopify",
+          "title": "Client credentials grant",
+          "url": "https://shopify.dev/docs/apps/build/authentication-authorization/access-tokens/client-credentials-grant"
         },
         {
-          "consumer": "✓",
+          "source": "Shopify",
+          "title": "Select a distribution method",
+          "url": "https://shopify.dev/docs/apps/launch/distribution/select-distribution-method"
+        },
+        {
+          "source": "Shopify",
+          "title": "Protected customer data",
+          "url": "https://shopify.dev/docs/apps/launch/protected-customer-data"
+        },
+        {
+          "source": "Shopify",
+          "title": "Rate limits (GraphQL Admin API)",
+          "url": "https://shopify.dev/docs/api/usage/limits"
+        }
+      ],
+      "important_to_know": [
+        "Shopify returns only orders from the last 60 days by default. Older orders need the read_all_orders scope on the merchant's app, which Shopify must approve before it can be added.",
+        "This is Shopify's custom-app route: every merchant creates and owns the app for their own store, so you register nothing centrally. Shopify's Protected Customer Data review applies to public apps, not here; custom apps meet that same protection through the store's plan instead.",
+        "Apideck's separate Shopify (Public App) connector is the other route, where one app you own serves every merchant through a standard OAuth authorize. Pick that connector instead when you do not want each merchant creating an app.",
+        "Shopify stopped allowing new custom apps to be created inside the Shopify admin on January 1, 2026. This connector already targets the current Dev Dashboard route, so there is nothing to migrate and no legacy credential to carry over.",
+        "A custom app installs on one store. Covering several of a merchant's storefronts means either an app and connection per store, or stores that all sit inside a single Shopify Plus organization."
+      ],
+      "partnership_note": "No Shopify Partner account needed: custom distribution skips the app-store review process that public apps must pass.",
+      "partnership_required": false,
+      "rate_limits": "GraphQL Admin API: 100 to 2,000 cost points per second by plan. Legacy REST Admin API: 2 to 40 requests per second by plan.",
+      "responsibility_matrix": [
+        {
+          "area": "Enable the Shopify connector in the Apideck Dashboard",
+          "customer": "✓"
+        },
+        {
+          "apideck": "Docs provided",
           "area": "Create a custom app in the Shopify Dev Dashboard (per store)",
-          "apideck": "Docs provided"
+          "consumer": "✓"
         },
         {
           "area": "Configure Admin API scopes, release and install the app",
@@ -10949,40 +10990,15 @@
           "area": "Maintain the connector and the unified Ecommerce API"
         }
       ],
-      "partnership_note": "No Shopify Partner account needed: custom distribution skips the app-store review process that public apps must pass.",
-      "external_guides": [
-        {
-          "title": "Client credentials grant",
-          "url": "https://shopify.dev/docs/apps/build/authentication-authorization/access-tokens/client-credentials-grant",
-          "source": "Shopify"
-        },
-        {
-          "title": "Select a distribution method",
-          "url": "https://shopify.dev/docs/apps/launch/distribution/select-distribution-method",
-          "source": "Shopify"
-        },
-        {
-          "title": "Protected customer data",
-          "url": "https://shopify.dev/docs/apps/launch/protected-customer-data",
-          "source": "Shopify"
-        },
-        {
-          "source": "Shopify",
-          "title": "Rate limits (GraphQL Admin API)",
-          "url": "https://shopify.dev/docs/api/usage/limits"
-        }
-      ],
-      "partnership_required": false,
+      "sandbox_available": true,
       "sandbox_note": "Free Shopify development store via the Dev Dashboard or Shopify CLI — fully featured, but it cannot take real payments or become a production store.",
-      "authentication_note": "Client Credentials against the merchant's own store; Shop, Client ID and Client Secret are entered per connection.",
-      "difficulty": "moderate",
-      "apideck_credentials_note": "There is no shared Apideck-managed Shopify app; every connection uses the merchant's own app credentials.",
+      "sandbox_url": "https://shopify.dev/docs/apps/build/stores/development-stores",
       "supported_resource_categories": [
         {
+          "name": "Store",
           "resources": [
             "shops"
-          ],
-          "name": "Store"
+          ]
         },
         {
           "name": "Catalog",
@@ -10991,10 +11007,10 @@
           ]
         },
         {
+          "name": "Sales",
           "resources": [
             "orders"
-          ],
-          "name": "Sales"
+          ]
         },
         {
           "name": "Customers",
@@ -11009,22 +11025,7 @@
           ]
         }
       ],
-      "important_to_know": [
-        "This is Shopify's custom-app route: every merchant creates and owns the app for their own store, so you register nothing centrally. Shopify's Protected Customer Data review applies to public apps, not here; custom apps meet that same protection through the store's plan instead.",
-        "Apideck's separate Shopify (Public App) connector is the other route, where one app you own serves every merchant through a standard OAuth authorize. Pick that connector instead when you do not want each merchant creating an app.",
-        "Shopify stopped allowing new custom apps to be created inside the Shopify admin on January 1, 2026. This connector already targets the current Dev Dashboard route, so there is nothing to migrate and no legacy credential to carry over.",
-        "A custom app installs on one store. Covering several of a merchant's storefronts means either an app and connection per store, or stores that all sit inside a single Shopify Plus organization."
-      ],
-      "rate_limits": "GraphQL Admin API: 100 to 2,000 cost points per second by plan. Legacy REST Admin API: 2 to 40 requests per second by plan.",
-      "environment_notes": [
-        {
-          "description": "Shopify has no separate sandbox API: the connector talks to whichever store's credentials it is given, so testing and production use the same setup. For testing, create a free Shopify development store and build a custom app on it exactly as you would for a live store. Apideck has no temporary shared test credentials for this connector, because every connection supplies its own credentials, so take care not to point test flows at a live merchant's store. Questions about testing options: Apideck Support (https://help.apideck.com/en/articles/7774658).",
-          "environment": "Testing and production"
-        }
-      ],
-      "webhooks": "Native — order, product and customer created, updated and deleted events.",
-      "costs": "No separate charge for API access: it is included in every paid Shopify plan (Basic $39/month through Plus from $2,300/month). Free trial available.",
-      "sandbox_url": "https://shopify.dev/docs/apps/build/stores/development-stores"
+      "webhooks": "Native — order, product and customer created, updated and deleted events."
     },
     "shopify-public-app": {
       "account_type_required": "A Shopify store.",
@@ -11070,6 +11071,7 @@
         }
       ],
       "important_to_know": [
+        "Shopify returns only orders from the last 60 days by default. To read older orders, your app needs the read_all_orders scope, which Shopify must approve before you can add it.",
         "Reaching merchants beyond one store needs public distribution: an App Store listing that passes Shopify app review. Custom distribution skips review but installs on one store or one Plus organisation's stores, and the method cannot be changed once selected.",
         "Shopify reviews access to protected customer data for public apps, including a data protection review before an app may read customer name, address, phone or email. Apps installed only on development stores skip that review.",
         "Apideck's separate Shopify connector is the custom-app route for a single merchant's store; this connector fits when one app you own should serve every merchant through a standard OAuth authorize.",
