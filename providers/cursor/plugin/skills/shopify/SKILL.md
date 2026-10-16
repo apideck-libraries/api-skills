@@ -50,6 +50,7 @@ Access Shopify through Apideck's **Ecommerce** unified API — one of 17 Ecommer
 
 **Important to know:**
 
+- Shopify returns only orders from the last 60 days by default. Older orders need the read_all_orders scope on the merchant's app, which Shopify must approve before it can be added.
 - This is Shopify's custom-app route: every merchant creates and owns the app for their own store, so you register nothing centrally. Shopify's Protected Customer Data review applies to public apps, not here; custom apps meet that same protection through the store's plan instead.
 - Apideck's separate Shopify (Public App) connector is the other route, where one app you own serves every merchant through a standard OAuth authorize. Pick that connector instead when you do not want each merchant creating an app.
 - Shopify stopped allowing new custom apps to be created inside the Shopify admin on January 1, 2026. This connector already targets the current Dev Dashboard route, so there is nothing to migrate and no legacy credential to carry over.
