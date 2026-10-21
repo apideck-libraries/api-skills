@@ -3280,21 +3280,76 @@
       "consumer_access_level": "The account owner signs in to eBay and grants read access to their selling data."
     },
     "employmenthero": {
+      "account_type_required": "Employment Hero HR organisation.",
       "apideck_credentials_available": true,
-      "beta": false,
-      "sandbox_note": "Free trial organisation with 2 weeks of Developer Portal access; email partner@employmenthero.com to extend it or request a permanent sandbox.",
-      "difficulty": "moderate",
-      "important_to_know": [],
-      "consumer_access_level": "Admin or owner recommended, so that all API endpoints are accessible.",
-      "partnership_portal_name": "Employment Hero Partner Program",
       "apideck_credentials_note": "For testing only: OAuth shows \"Apideck\" as the requesting application; production integrations use your own Employment Hero OAuth app.",
-      "partnership_required": false,
+      "authentication_note": "Authorization Code flow.",
+      "beta": false,
+      "consumer_access_level": "Admin or owner recommended, so that all API endpoints are accessible.",
+      "costs": "API access needs a Platinum subscription or above.",
+      "difficulty": "moderate",
+      "difficulty_reason": "Platinum-Tier Plan Required for API Access",
       "environment_notes": [
         {
           "description": "Employment Hero documents one API host (https://api.employmenthero.com/api/v1) and no separate sandbox host, and one OAuth app serves every organisation, so testing and production share credentials. Test with a free trial organisation, your own Employment Hero organisation, or Apideck's temporary shared test credentials (request access through Apideck Support). Be careful when testing against production data.",
           "environment": "Single environment (shared credentials)"
         }
       ],
+      "external_guides": [
+        {
+          "source": "Employment Hero",
+          "title": "Employment Hero API documentation",
+          "url": "https://developer.employmenthero.com/api-references"
+        },
+        {
+          "source": "Employment Hero",
+          "title": "Employment Hero partner guides",
+          "url": "https://developer.employmenthero.com/partner-guides"
+        }
+      ],
+      "important_to_know": [],
+      "partnership_portal_name": "Employment Hero Partner Program",
+      "partnership_required": false,
+      "partnership_url": "https://employmenthero.com/partner-network/technology-integration/",
+      "rate_limits": "20 requests per second and 100 requests per minute.",
+      "responsibility_matrix": [
+        {
+          "apideck": "Docs provided",
+          "area": "Create OAuth App in the Employment Hero Developer Portal",
+          "customer": "✓"
+        },
+        {
+          "area": "Add Client ID & Secret to Apideck",
+          "customer": "✓"
+        },
+        {
+          "apideck": "Handles OAuth flow",
+          "area": "Authorize Connection (OAuth)",
+          "consumer": "✓"
+        },
+        {
+          "area": "Select the Default Company in Vault",
+          "consumer": "✓"
+        },
+        {
+          "apideck": "Maintains connector",
+          "area": "Build via Unified API",
+          "customer": "✓"
+        },
+        {
+          "apideck": "✓ Automatic",
+          "area": "Token Refresh"
+        },
+        {
+          "apideck": "Logs & alerts",
+          "area": "Monitor Connections",
+          "consumer": "✓ Can revoke anytime",
+          "customer": "✓ Via Apideck Dashboard"
+        }
+      ],
+      "sandbox_available": true,
+      "sandbox_note": "Free trial organisation with 2 weeks of Developer Portal access; email partner@employmenthero.com to extend it or request a permanent sandbox.",
+      "sandbox_url": "https://employmenthero.com/free-trial/",
       "supported_resource_categories": [
         {
           "name": "People",
@@ -3303,11 +3358,11 @@
           ]
         },
         {
+          "name": "Company Structure",
           "resources": [
             "companies",
             "departments"
-          ],
-          "name": "Company Structure"
+          ]
         },
         {
           "name": "Time Off",
@@ -3316,68 +3371,13 @@
           ]
         },
         {
+          "name": "Payroll",
           "resources": [
             "pay-details",
             "bank-accounts"
-          ],
-          "name": "Payroll"
+          ]
         }
-      ],
-      "difficulty_reason": "Platinum-Tier Plan Required for API Access",
-      "responsibility_matrix": [
-        {
-          "area": "Create OAuth App in the Employment Hero Developer Portal",
-          "customer": "✓",
-          "apideck": "Docs provided"
-        },
-        {
-          "customer": "✓",
-          "area": "Add Client ID & Secret to Apideck"
-        },
-        {
-          "consumer": "✓",
-          "apideck": "Handles OAuth flow",
-          "area": "Authorize Connection (OAuth)"
-        },
-        {
-          "consumer": "✓",
-          "area": "Select the Default Company in Vault"
-        },
-        {
-          "area": "Build via Unified API",
-          "apideck": "Maintains connector",
-          "customer": "✓"
-        },
-        {
-          "area": "Token Refresh",
-          "apideck": "✓ Automatic"
-        },
-        {
-          "area": "Monitor Connections",
-          "consumer": "✓ Can revoke anytime",
-          "apideck": "Logs & alerts",
-          "customer": "✓ Via Apideck Dashboard"
-        }
-      ],
-      "account_type_required": "Employment Hero HR organisation.",
-      "sandbox_url": "https://employmenthero.com/free-trial/",
-      "authentication_note": "Authorization Code flow.",
-      "external_guides": [
-        {
-          "title": "Employment Hero API documentation",
-          "source": "Employment Hero",
-          "url": "https://developer.employmenthero.com/api-references"
-        },
-        {
-          "title": "Employment Hero partner guides",
-          "source": "Employment Hero",
-          "url": "https://developer.employmenthero.com/partner-guides"
-        }
-      ],
-      "partnership_url": "https://employmenthero.com/partner-network/technology-integration/",
-      "sandbox_available": true,
-      "costs": "API access needs a Platinum subscription or above.",
-      "rate_limits": "20 requests per second and 100 requests per minute."
+      ]
     },
     "etsy": {
       "partnership_required": false,
@@ -5487,27 +5487,61 @@
       "costs": "None — HubSpot developer tooling and public apps are free to build and distribute."
     },
     "humaans-io": {
+      "account_type_required": "Humaans account on the Growth plan or above.",
+      "apideck_credentials_available": false,
+      "apideck_credentials_note": "Each consumer supplies their own Humaans API access token.",
       "authentication_note": "Humaans API access token, sent as a bearer token.",
-      "sandbox_available": true,
+      "beta": false,
       "consumer_access_level": "Owner role, since a token reaches only what its creator can; a user-role token sees only public company data and its creator's own profile.",
+      "costs": "Included from the Growth plan (listed as Integrations & API access); Humaans publishes no prices, plans are sold through its sales team.",
+      "difficulty": "moderate",
+      "difficulty_reason": "API Token Authentication: Each Consumer Creates Their Own Token in Humaans",
+      "environment_notes": [
+        {
+          "description": "Humaans has one API host, so testing and production use the same kind of access token.",
+          "environment": "Single environment"
+        },
+        {
+          "description": "A Humaans sandbox account is kept apart from production accounts, and its token reaches only sandbox data. Any other Humaans account holds live data, so treat anything the integration writes there as production data.",
+          "environment": "Testing"
+        }
+      ],
+      "external_guides": [
+        {
+          "source": "Humaans",
+          "title": "Humaans API documentation",
+          "url": "https://docs.humaans.io/api/"
+        }
+      ],
       "important_to_know": [
         "A Humaans token set to expire (1 to 365 days) stops working on that date with a 401 and cannot be renewed automatically, so the connection fails until the consumer creates a new token and updates it. A token created without an expiry avoids this."
       ],
-      "environment_notes": [
+      "partnership_required": false,
+      "rate_limits": "Roughly 400 requests a minute per token.",
+      "responsibility_matrix": [
         {
-          "environment": "Single environment",
-          "description": "Humaans has one API host, so testing and production use the same kind of access token."
+          "area": "Enable the Humaans Connector",
+          "customer": "✓ Via Apideck Dashboard"
         },
         {
-          "environment": "Testing",
-          "description": "A Humaans sandbox account is kept apart from production accounts, and its token reaches only sandbox data. Any other Humaans account holds live data, so treat anything the integration writes there as production data."
+          "area": "Create the Humaans API Access Token",
+          "consumer": "✓ Owner role"
+        },
+        {
+          "area": "Supply the Token in Vault",
+          "consumer": "✓"
+        },
+        {
+          "apideck": "✓",
+          "area": "Store Credentials & Send Authenticated Requests"
+        },
+        {
+          "area": "Replace an Expired Token",
+          "consumer": "✓ (if the token has an expiry)"
         }
       ],
-      "difficulty": "moderate",
-      "account_type_required": "Humaans account on the Growth plan or above.",
-      "webhooks": "Virtual webhooks - employee created, updated and terminated events",
-      "apideck_credentials_available": false,
-      "rate_limits": "Roughly 400 requests a minute per token.",
+      "sandbox_available": true,
+      "sandbox_note": "Request an isolated sandbox account through Humaans' form; Humaans verifies the request, then emails the sandbox credentials.",
       "sandbox_url": "https://docs.google.com/forms/d/e/1FAIpQLSfvsENhiZgum1DTEsqM3-LSJaBM6Ee2e3zfW71YtW112iAGyw/viewform",
       "supported_resource_categories": [
         {
@@ -5525,56 +5559,22 @@
           ]
         },
         {
+          "name": "Time Off",
           "resources": [
             "time-off-requests"
-          ],
-          "name": "Time Off"
+          ]
         },
         {
+          "name": "Company Structure",
           "resources": [
             "companies",
             "departments",
             "locations",
             "job-roles"
-          ],
-          "name": "Company Structure"
+          ]
         }
       ],
-      "difficulty_reason": "API Token Authentication: Each Consumer Creates Their Own Token in Humaans",
-      "responsibility_matrix": [
-        {
-          "customer": "✓ Via Apideck Dashboard",
-          "area": "Enable the Humaans Connector"
-        },
-        {
-          "area": "Create the Humaans API Access Token",
-          "consumer": "✓ Owner role"
-        },
-        {
-          "area": "Supply the Token in Vault",
-          "consumer": "✓"
-        },
-        {
-          "area": "Store Credentials & Send Authenticated Requests",
-          "apideck": "✓"
-        },
-        {
-          "area": "Replace an Expired Token",
-          "consumer": "✓ (if the token has an expiry)"
-        }
-      ],
-      "external_guides": [
-        {
-          "url": "https://docs.humaans.io/api/",
-          "title": "Humaans API documentation",
-          "source": "Humaans"
-        }
-      ],
-      "costs": "Included from the Growth plan (listed as Integrations & API access); Humaans publishes no prices, plans are sold through its sales team.",
-      "partnership_required": false,
-      "sandbox_note": "Request an isolated sandbox account through Humaans' form; Humaans verifies the request, then emails the sandbox credentials.",
-      "beta": false,
-      "apideck_credentials_note": "Each consumer supplies their own Humaans API access token."
+      "webhooks": "Virtual webhooks - employee created, updated and terminated events"
     },
     "intuit-enterprise-suite": {
       "account_type_required": "Active Intuit Enterprise Suite subscription",
@@ -8307,15 +8307,33 @@
       "webhooks": "Virtual webhooks — created/updated events across CRM and Accounting resources."
     },
     "officient-io": {
-      "apideck_credentials_available": false,
-      "partnership_required": false,
+      "account_type_required": "Any Exact Officient account.",
+      "apideck_credentials_available": true,
+      "apideck_credentials_note": "For testing: OAuth shows \"Apideck\" as the requesting application; production integrations use your own Officient app.",
+      "authentication_note": "Authorization Code flow.",
       "beta": false,
+      "consumer_access_level": "Officient admin able to authorise the OAuth app.",
       "difficulty": "moderate",
       "difficulty_reason": "Self-Service OAuth App + No Developer Sandbox",
-      "sandbox_note": "Request a demo; after the introduction conversation you can test the product for 14 days without commitment.",
+      "environment_notes": [
+        {
+          "description": "One production host, https://api.officient.io/1.0. Testing and production share credentials: you test on a real Officient account through the 14-day trial (see Sandbox row). The trial is a real Officient account, not an isolated test tenant, so treat any data in it as production data.",
+          "environment": "Production"
+        }
+      ],
+      "external_guides": [
+        {
+          "source": "Officient",
+          "title": "Officient API documentation",
+          "url": "https://apidocs.officient.io/docs/rate-limiting"
+        }
+      ],
+      "partnership_note": "You register your own OAuth app under Developers in Officient. Officient's API documentation names Apideck as its iPaaS partner.",
+      "partnership_required": false,
       "rate_limits": "30 requests every 5 seconds.",
-      "webhooks": "Native - employee created, updated and terminated events.",
-      "consumer_access_level": "Officient admin able to authorise the OAuth app.",
+      "sandbox_available": false,
+      "sandbox_note": "Request a demo; after the introduction conversation you can test the product for 14 days without commitment.",
+      "sandbox_url": "https://www.exact.com/benl/software/exact-officient/demo",
       "supported_resource_categories": [
         {
           "name": "People",
@@ -8324,11 +8342,11 @@
           ]
         },
         {
+          "name": "Company Structure",
           "resources": [
             "companies",
             "departments"
-          ],
-          "name": "Company Structure"
+          ]
         },
         {
           "name": "Compensation",
@@ -8337,25 +8355,7 @@
           ]
         }
       ],
-      "apideck_credentials_note": "Credentials come from your own Officient developer access.",
-      "sandbox_available": false,
-      "authentication_note": "Authorization Code flow.",
-      "account_type_required": "Any Exact Officient account.",
-      "sandbox_url": "https://www.exact.com/benl/software/exact-officient/demo",
-      "environment_notes": [
-        {
-          "description": "One production host, https://api.officient.io/1.0. Testing and production share credentials: you test on a real Officient account through the 14-day trial (see Sandbox row). The trial is a real Officient account, not an isolated test tenant, so treat any data in it as production data.",
-          "environment": "Production"
-        }
-      ],
-      "partnership_note": "You register your own OAuth app under Developers in Officient. Officient's API documentation names Apideck as its iPaaS partner.",
-      "external_guides": [
-        {
-          "title": "Officient API documentation",
-          "url": "https://apidocs.officient.io/docs/rate-limiting",
-          "source": "Officient"
-        }
-      ]
+      "webhooks": "Native - employee created, updated and terminated events."
     },
     "okta": {
       "costs": "API access is included with an Okta org.",
@@ -9926,8 +9926,8 @@
     },
     "sage-business-cloud-accounting": {
       "account_type_required": "Active Sage Business Cloud Accounting subscription in Canada, the United Kingdom or Ireland.",
-      "apideck_credentials_available": false,
-      "apideck_credentials_note": "Apideck credentials cover evaluation and testing only; going live means registering your own Sage app.",
+      "apideck_credentials_available": true,
+      "apideck_credentials_note": "For testing: OAuth shows \"Apideck\" as the requesting application; production integrations use your own Sage app.",
       "authentication_note": "Authorization Code flow.",
       "consumer_access_level": "Sage account holder, or any user with permission to authorise applications.",
       "costs": "Free — Sage charges nothing for API access or developer registration. Your consumers pay for their own Sage Accounting subscription.",

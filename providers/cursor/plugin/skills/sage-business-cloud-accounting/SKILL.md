@@ -38,7 +38,7 @@ Access Sage Business Cloud Accounting through Apideck's **Accounting** unified A
 
 - **Implementation difficulty:** moderate — Self-Service OAuth Signup + Manual Sage Account Authorization Required for Production
 - **Vendor partnership required:** no ([Sage Partner Central](https://partnercentral.sage.com/prm/English/s/applicant)) — Trial businesses and API access need no enrollment; Sage Partner Central adds a Sage Marketplace listing for your integration.
-- **Apideck-managed credentials:** not available — Apideck credentials cover evaluation and testing only; going live means registering your own Sage app.
+- **Apideck-managed credentials:** available — For testing: OAuth shows "Apideck" as the requesting application; production integrations use your own Sage app.
 - **Account type required:** Active Sage Business Cloud Accounting subscription in Canada, the United Kingdom or Ireland.
 - **Consumer access level:** Sage account holder, or any user with permission to authorise applications.
 - **Sandbox:** available ([signup](https://developer.sage.com/accounting/docs/v1.0.0/guides/quick-start/getting-started)) — Free trial Accounting business created from the Sage Developer Portal, extendable for longer testing.
