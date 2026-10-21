@@ -34,7 +34,7 @@ Access Officient through Apideck's **HRIS** unified API — one of 58 HRIS conne
 
 - **Implementation difficulty:** moderate — Self-Service OAuth App + No Developer Sandbox
 - **Vendor partnership required:** no — You register your own OAuth app under Developers in Officient. Officient's API documentation names Apideck as its iPaaS partner.
-- **Apideck-managed credentials:** not available — Credentials come from your own Officient developer access.
+- **Apideck-managed credentials:** available — For testing: OAuth shows "Apideck" as the requesting application; production integrations use your own Officient app.
 - **Account type required:** Any Exact Officient account.
 - **Consumer access level:** Officient admin able to authorise the OAuth app.
 - **Sandbox:** not available ([signup](https://www.exact.com/benl/software/exact-officient/demo)) — Request a demo; after the introduction conversation you can test the product for 14 days without commitment.
