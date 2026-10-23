@@ -40,9 +40,9 @@ Access Wave through Apideck's **Accounting** unified API — one of 34 Accountin
 - **Implementation difficulty:** moderate — Self-Service OAuth App + Wave Approval Required to Distribute
 - **Vendor partnership required:** no
 - **Apideck-managed credentials:** not available — Register your own Wave application and add its Client ID and Secret to Apideck.
-- **Account type required:** A Wave business in the US or Canada with an active Pro or Advisors subscription. Testing your own app against your own account needs neither.
+- **Account type required:** A Wave business in the US or Canada with an active Pro or Advisors subscription. This includes the business you test your own app with.
 - **Consumer access level:** Any user with access to the business can authorise the connection; Wave publishes no role requirement.
-- **Sandbox:** not available — A free Starter account is a sufficient test environment and exposes the same API surface as Pro; Wave runs no sandbox.
+- **Sandbox:** not available — Test with a Wave Pro or Advisors business; Wave's authorization screen blocks Starter businesses, even the app owner's own.
 - **Costs:** Wave charges no API access fees and commits to advance notice before introducing any. The subscription requirement sits on the connecting business, not you.
 - **Rate limits:** Wave publishes no rate limits; its documented error codes include no throttling or rate-limit code.
 - **Authentication:** Authorization Code flow. Wave's API is GraphQL-only, and each connection also needs the consumer's Wave Business ID.
