@@ -43,7 +43,7 @@ Access Wix  through Apideck's **Ecommerce** unified API — one of 17 Ecommerce 
 - **Sandbox:** available ([signup](https://dev.wix.com/docs/build-apps/develop-your-app/development-sites/about-development-sites)) — Free development site with Premium capabilities, created from a Wix developer app dashboard.
 - **Costs:** Wix documents no separate fee for API keys.
 - **Authentication:** Account-level key, supplied together with the Site ID and Shop Domain; not OAuth.
-- **Webhooks:** Virtual webhooks - order, product and customer created, updated and deleted events
+- **Webhooks:** Virtual webhooks - order, product and customer created and updated events; deletes are not detected
 
 **Important to know:**
 

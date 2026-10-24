@@ -42,7 +42,7 @@ Access Sage Intacct through Apideck's **Accounting** unified API — one of 34 A
 - **Costs:** Sage Intacct Marketplace Partner Program membership is $2,500/year, plus $0.015 per API call once your consumers are live. Effective August 2026.
 - **Rate limits:** Sage Performance Tier 1 (default): 100K API transactions/month. One API plus one offline report job per company; a third waits 30s and errors if no spot opens.
 - **Authentication:** Sender ID plus each company's Web Services login (Company ID, User ID, password), exchanged for an XML Web Services session; not OAuth.
-- **Webhooks:** Virtual webhooks — created, updated and deleted events across 9 resource families. Sage Intacct has no native webhooks.
+- **Webhooks:** Virtual webhooks — created and updated events across 9 resource families; deletes are not detected. Sage Intacct has no native webhooks.
 
 **Important to know:**
 
