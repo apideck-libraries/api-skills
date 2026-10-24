@@ -6932,11 +6932,15 @@
       ]
     },
     "magento": {
-      "authentication_note": "Four credentials from a Magento integration sign each request, OAuth 1.0a style; no redirect flow.",
-      "difficulty": "involved",
       "account_type_required": "Magento Open Source 2.x, or Adobe Commerce 2.x on-premises or on Adobe's cloud infrastructure (PaaS).",
-      "sandbox_url": "https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/overview",
+      "apideck_credentials_available": false,
+      "apideck_credentials_note": "Each consumer creates an integration in their own Magento store.",
+      "authentication_note": "Four credentials from a Magento integration sign each request, OAuth 1.0a style; no redirect flow.",
       "beta": false,
+      "consumer_access_level": "A Magento Admin user with permission to manage integrations.",
+      "costs": "Integration tokens are a built-in Admin feature of the store; Adobe publishes no separate API fee.",
+      "difficulty": "involved",
+      "difficulty_reason": "Custom Auth + Manual Per-Consumer Integration Setup",
       "environment_notes": [
         {
           "description": "Magento has no separate test credentials: each store is its own endpoint at its domain's /rest/V1 path, with no shared Adobe host, and one connection covers one store.",
@@ -6947,50 +6951,49 @@
           "environment": "Testing"
         }
       ],
+      "external_guides": [
+        {
+          "source": "Adobe",
+          "title": "Adobe Commerce: integration tokens",
+          "url": "https://developer.adobe.com/commerce/webapi/get-started/authentication/gs-authentication-token"
+        },
+        {
+          "source": "Adobe",
+          "title": "Adobe Commerce: creating an integration in the Admin",
+          "url": "https://experienceleague.adobe.com/en/docs/commerce-admin/systems/integrations"
+        }
+      ],
+      "important_to_know": [
+        "Check the store's edition before you commit: Adobe Commerce as a Cloud Service (SaaS) offers no integration tokens and uses Adobe IMS OAuth 2 instead, which this connector does not use, so SaaS stores cannot connect.",
+        "The store's /rest endpoints must be reachable from the internet. Stores behind Cloudflare, a WAF or bot protection need Apideck's requests let through; otherwise calls fail with an HTML error while the connection still shows as connected."
+      ],
+      "partnership_required": false,
       "rate_limits": "No general REST quota is published; Adobe's opt-in rate limiting covers checkout and payment endpoints only.",
-      "webhooks": "Virtual webhooks - order, product and customer events (created, updated, deleted)",
       "responsibility_matrix": [
         {
-          "customer": "✓ Via Apideck Dashboard",
-          "area": "Enable the Magento Connector"
+          "area": "Enable the Magento Connector",
+          "customer": "✓ Via Apideck Dashboard"
         },
         {
-          "consumer": "✓",
-          "area": "Create & Activate the Magento Integration"
+          "area": "Create & Activate the Magento Integration",
+          "consumer": "✓"
         },
         {
-          "consumer": "✓",
-          "area": "Set the Integration's Resource Access"
+          "area": "Set the Integration's Resource Access",
+          "consumer": "✓"
         },
         {
-          "consumer": "✓",
-          "area": "Enter Store Details & Credentials in Vault"
+          "area": "Enter Store Details & Credentials in Vault",
+          "consumer": "✓"
         },
         {
           "apideck": "✓",
           "area": "Sign Requests & Store Credentials"
         }
       ],
-      "costs": "Integration tokens are a built-in Admin feature of the store; Adobe publishes no separate API fee.",
-      "important_to_know": [
-        "Check the store's edition before you commit: Adobe Commerce as a Cloud Service (SaaS) offers no integration tokens and uses Adobe IMS OAuth 2 instead, which this connector does not use, so SaaS stores cannot connect.",
-        "The store's /rest endpoints must be reachable from the internet. Stores behind Cloudflare, a WAF or bot protection need Apideck's requests let through; otherwise calls fail with an HTML error while the connection still shows as connected."
-      ],
       "sandbox_available": true,
-      "partnership_required": false,
-      "external_guides": [
-        {
-          "url": "https://developer.adobe.com/commerce/webapi/get-started/authentication/gs-authentication-token",
-          "title": "Adobe Commerce: integration tokens",
-          "source": "Adobe"
-        },
-        {
-          "url": "https://experienceleague.adobe.com/en/docs/commerce-admin/systems/integrations",
-          "source": "Adobe",
-          "title": "Adobe Commerce: creating an integration in the Admin"
-        }
-      ],
-      "apideck_credentials_note": "Each consumer creates an integration in their own Magento store.",
+      "sandbox_note": "Install Magento Open Source on your own server or container and create an integration there; Adobe hosts no test store, so this takes server skills.",
+      "sandbox_url": "https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/overview",
       "supported_resource_categories": [
         {
           "name": "Orders",
@@ -7012,16 +7015,13 @@
           ]
         },
         {
+          "name": "Store",
           "resources": [
             "stores"
-          ],
-          "name": "Store"
+          ]
         }
       ],
-      "difficulty_reason": "Custom Auth + Manual Per-Consumer Integration Setup",
-      "apideck_credentials_available": false,
-      "sandbox_note": "Install Magento Open Source on your own server or container and create an integration there; Adobe hosts no test store, so this takes server skills.",
-      "consumer_access_level": "A Magento Admin user with permission to manage integrations."
+      "webhooks": "Virtual webhooks - order, product and customer events (created, updated); deletes are not detected"
     },
     "microsoft-dynamics": {
       "partnership_required": false,
@@ -8025,10 +8025,10 @@
       ],
       "important_to_know": [
         "Oracle has scheduled SOAP removal: 2025.2 is the last SOAP endpoint, release 2027.1 blocks new SOAP integrations, and 2028.2 removes SOAP entirely. Apideck already offers NetSuite REST support via Proxy.",
-        "Missing role permissions can fail silently: a filtered list call the role is not permitted for returns 200 OK with an empty result set instead of an error, so an under-permissioned connection looks healthy while returning no data.",
+        "Missing role permissions can fail silently: a filtered list the role cannot read returns 200 OK with no rows. Delete events, read from NetSuite's deleted-records log after each sync (not a resource's first), need the Deleted Records and SuiteAnalytics Workbook permissions.",
         "Custom forms can break writes: a mandatory custom field on a standard NetSuite form makes API writes to that record type fail, blocking creates you had tested successfully.",
         "SuiteTax accounts are supported, but the connection must declare SuiteTax via an optional connection setting — without it, tax data is served from the wrong records.",
-        "A single connection covers a whole OneWorld account: a Default Subsidiary setting scopes most list and report reads to one subsidiary, and a per-request override reaches any other. A parent subsidiary excludes its children; company-info always returns the root."
+        "A single connection covers a whole OneWorld account: a Default Subsidiary setting scopes most list and report reads to one subsidiary (a per-request override reaches others), but delete events cover the whole account. Parents exclude children; company-info returns the root."
       ],
       "partnership_note": "Partner Trial accounts are available for extended testing.",
       "partnership_portal_name": "NetSuite Partner Program",
@@ -8081,7 +8081,7 @@
       "sandbox_available": true,
       "sandbox_note": "Via Apideck's temporary shared sandbox (enterprise contract required — contact Apideck Support).",
       "sandbox_url": "https://help.apideck.com/en/articles/7774658",
-      "webhooks": "Virtual webhooks — created/updated/deleted across 14 accounting resources (invoices, credit notes, quotes, bills, expenses, payments, customers, suppliers, projects and more)."
+      "webhooks": "Virtual webhooks — created, updated and deleted events across 14 accounting resources (invoices, bills, customers and more); no deletes for tax rates."
     },
     "nmbrs": {
       "account_type_required": "A Nmbrs Payroll (formerly Nmbrs) environment.",
@@ -9344,31 +9344,20 @@
     },
     "prestashop": {
       "account_type_required": "A PrestaShop 8 shop with the Webservice enabled.",
-      "responsibility_matrix": [
+      "apideck_credentials_available": false,
+      "apideck_credentials_note": "Each consumer creates a Webservice key in their own shop.",
+      "authentication_note": "Webservice key, sent as the Basic auth username with an empty password.",
+      "beta": false,
+      "consumer_access_level": "Back-office access to the shop's Webservice settings.",
+      "costs": "No API fee, add-on or paid tier: the Webservice is built into PrestaShop's free, open-source software.",
+      "difficulty": "moderate",
+      "difficulty_reason": "Webservice Key Authentication, No Partnership or App Review",
+      "environment_notes": [
         {
-          "customer": "✓",
-          "area": "Enable the PrestaShop connector in the Apideck Dashboard"
-        },
-        {
-          "consumer": "✓",
-          "area": "Enable the Webservice and create a key",
-          "apideck": "Docs provided"
-        },
-        {
-          "area": "Enter the shop details and Webservice key in Vault",
-          "consumer": "✓"
-        },
-        {
-          "area": "Store and encrypt credentials, call the shop's API",
-          "apideck": "✓"
-        },
-        {
-          "apideck": "✓ Maintains connector",
-          "customer": "✓ Builds the requests",
-          "area": "Build via the unified Ecommerce API"
+          "description": "PrestaShop has no shared production or sandbox host: each connection points at one shop, and testing and production use the same kind of Webservice key. Keep test flows on a test shop, never a live merchant's shop.",
+          "environment": "Testing and production"
         }
       ],
-      "sandbox_url": "https://www.prestashop-project.org/download/",
       "external_guides": [
         {
           "source": "PrestaShop",
@@ -9376,20 +9365,43 @@
           "url": "https://devdocs.prestashop-project.org/8/webservice/"
         }
       ],
-      "beta": false,
-      "authentication_note": "Webservice key, sent as the Basic auth username with an empty password.",
-      "apideck_credentials_available": false,
-      "costs": "No API fee, add-on or paid tier: the Webservice is built into PrestaShop's free, open-source software.",
-      "consumer_access_level": "Back-office access to the shop's Webservice settings.",
       "important_to_know": [
         "Any shop reachable from the internet over HTTPS at its /api address can connect. A shop behind a firewall, on localhost, or without working URL rewriting cannot, so check where each consumer's shop is hosted before you commit."
       ],
+      "partnership_required": false,
+      "responsibility_matrix": [
+        {
+          "area": "Enable the PrestaShop connector in the Apideck Dashboard",
+          "customer": "✓"
+        },
+        {
+          "apideck": "Docs provided",
+          "area": "Enable the Webservice and create a key",
+          "consumer": "✓"
+        },
+        {
+          "area": "Enter the shop details and Webservice key in Vault",
+          "consumer": "✓"
+        },
+        {
+          "apideck": "✓",
+          "area": "Store and encrypt credentials, call the shop's API"
+        },
+        {
+          "apideck": "✓ Maintains connector",
+          "area": "Build via the unified Ecommerce API",
+          "customer": "✓ Builds the requests"
+        }
+      ],
+      "sandbox_available": true,
+      "sandbox_note": "Install a free copy of PrestaShop on a test server reachable over HTTPS.",
+      "sandbox_url": "https://www.prestashop-project.org/download/",
       "supported_resource_categories": [
         {
+          "name": "Orders",
           "resources": [
             "orders"
-          ],
-          "name": "Orders"
+          ]
         },
         {
           "name": "Catalogue",
@@ -9404,25 +9416,13 @@
           ]
         },
         {
+          "name": "Store",
           "resources": [
             "stores"
-          ],
-          "name": "Store"
+          ]
         }
       ],
-      "difficulty_reason": "Webservice Key Authentication, No Partnership or App Review",
-      "apideck_credentials_note": "Each consumer creates a Webservice key in their own shop.",
-      "webhooks": "Virtual webhooks - order, product and customer events.",
-      "sandbox_available": true,
-      "difficulty": "moderate",
-      "partnership_required": false,
-      "sandbox_note": "Install a free copy of PrestaShop on a test server reachable over HTTPS.",
-      "environment_notes": [
-        {
-          "description": "PrestaShop has no shared production or sandbox host: each connection points at one shop, and testing and production use the same kind of Webservice key. Keep test flows on a test shop, never a live merchant's shop.",
-          "environment": "Testing and production"
-        }
-      ]
+      "webhooks": "Virtual webhooks - order, product and customer events."
     },
     "procountor-fi": {
       "account_type_required": "Active Procountor environment",
@@ -10298,94 +10298,17 @@
           ]
         }
       ],
-      "webhooks": "Virtual webhooks — created, updated and deleted events across 9 resource families. Sage Intacct has no native webhooks."
+      "webhooks": "Virtual webhooks — created and updated events across 9 resource families; deletes are not detected. Sage Intacct has no native webhooks."
     },
     "sage-intacct-rest": {
-      "responsibility_matrix": [
-        {
-          "customer": "✓",
-          "apideck": "Facilitates introduction",
-          "area": "Obtain Sage Web Services Developer License"
-        },
-        {
-          "customer": "✓ (if taking the Marketplace route)",
-          "area": "Execute Marketplace Partner Contract"
-        },
-        {
-          "area": "Register OAuth Application at developer.sage.com/console",
-          "customer": "✓",
-          "apideck": "Instructions provided"
-        },
-        {
-          "area": "Authorize Connection",
-          "apideck": "Secure connection form",
-          "consumer": "✓"
-        },
-        {
-          "area": "Grant Sage Intacct Role Permissions",
-          "apideck": "Instructions provided",
-          "consumer": "✓"
-        },
-        {
-          "consumer": "✓",
-          "apideck": "Instructions provided",
-          "area": "Enable Optional Sage Intacct Features"
-        },
-        {
-          "apideck": "Maintains connector",
-          "area": "Build via Unified API",
-          "customer": "✓"
-        },
-        {
-          "area": "Monitor Connections",
-          "apideck": "Logs & alerts",
-          "consumer": "Can revoke anytime",
-          "customer": "✓ Via dashboard"
-        }
-      ],
-      "partnership_note": "A Sage Web Services developer license is required — via the Sage Intacct Marketplace Partner Program, or directly from Sage through your account manager.",
       "account_type_required": "Sage Intacct company with a Web Services subscription",
-      "webhooks": "Virtual webhooks — created, updated and deleted events across 13 of the supported accounting resources. Sage Intacct has no native webhooks.",
-      "external_guides": [
-        {
-          "url": "https://developer.sage.com/intacct",
-          "source": "Sage Intacct Developer",
-          "title": "Sage Intacct REST API — Get Started"
-        },
-        {
-          "source": "Sage Intacct Developer",
-          "title": "OAuth 2.0 Authorization & Security",
-          "url": "https://developer.sage.com/intacct/docs/1/sage-intacct-rest-api/authorization-and-security/oauth2"
-        },
-        {
-          "title": "Marketplace Partner Program — Become a Partner",
-          "source": "Sage Intacct",
-          "url": "https://marketplace.intacct.com/BecomeAPartner"
-        },
-        {
-          "title": "API usage & transaction metrics",
-          "source": "Sage Intacct Developer",
-          "url": "https://developer.sage.com/intacct/docs/developer-portal/getting-started/metrics/"
-        },
-        {
-          "title": "Developer FAQs (concurrency & levels of service)",
-          "url": "https://developer.intacct.com/support/faq/",
-          "source": "Sage Intacct Developer"
-        },
-        {
-          "source": "Sage Intacct",
-          "url": "https://www.intacct.com/ia/docs/en_US/help_action/Company/Sandboxes/about-sandboxes.htm",
-          "title": "About Sandboxes"
-        }
-      ],
-      "partnership_url": "https://marketplace.intacct.com/BecomeAPartner",
-      "partnership_portal_name": "Sage Intacct Marketplace",
-      "costs": "Sage Intacct Marketplace Partner Program membership is $2,500/year, plus $0.015 per API call once your consumers are live. Effective August 2026.",
-      "difficulty_reason": "Paid Web Services Developer License + Per-Consumer Admin Authorization Required",
-      "sandbox_available": true,
-      "difficulty": "involved",
-      "rate_limits": "Sage Performance Tier 1: 100,000 API transactions/month per company, shared with the XML API. Over-limit: 429 (GW-0010). Headroom: x-downstream-ratelimit-*.",
+      "apideck_credentials_available": true,
+      "apideck_credentials_note": "For testing and evaluation: consumers authorize against Apideck's registered Sage application, so the consent screen shows Apideck branding.",
       "authentication_note": "Authorization Code grant, a real OAuth flow, unlike the sage-intacct (XML) connector, which uses a Sender ID plus company/user credentials.",
+      "consumer_access_level": "The connection inherits the authorizing Sage Intacct user's role permissions, and a company Admin must authorize the application in each consumer's company.",
+      "costs": "Sage Intacct Marketplace Partner Program membership is $2,500/year, plus $0.015 per API call once your consumers are live. Effective August 2026.",
+      "difficulty": "involved",
+      "difficulty_reason": "Paid Web Services Developer License + Per-Consumer Admin Authorization Required",
       "environment_notes": [
         {
           "description": "Testing runs against an application registered at developer.sage.com/console with the Non-production client scope, pointed at a sandbox, trial or developer company. The scope cannot be changed after the application is created, so each environment needs its own registration, and its client credentials are separate from the production ones. A full sandbox company (a copy of production) is requested through a Sage support case and refreshed at most 4 times a year; it is not offered to companies managed through a Sage Intacct multi-entity console or purchased through a reseller. Several modules are unavailable inside a sandbox, including Fixed Assets, Collections, Prepaid Expense Amortization, Advanced Audit Trail and the interactive reporting tools, and a sandbox is valid only to the end of the production billing cycle.",
@@ -10396,11 +10319,38 @@
           "environment": "Production"
         }
       ],
-      "partnership_required": true,
-      "apideck_credentials_note": "For testing and evaluation: consumers authorize against Apideck's registered Sage application, so the consent screen shows Apideck branding.",
-      "consumer_access_level": "The connection inherits the authorizing Sage Intacct user's role permissions, and a company Admin must authorize the application in each consumer's company.",
-      "apideck_credentials_available": true,
-      "sandbox_note": "Registering a Non-production OAuth app is free; a Sage Intacct sandbox company itself is a paid, licensed feature, gated by eligibility and not self-serve.",
+      "external_guides": [
+        {
+          "source": "Sage Intacct Developer",
+          "title": "Sage Intacct REST API — Get Started",
+          "url": "https://developer.sage.com/intacct"
+        },
+        {
+          "source": "Sage Intacct Developer",
+          "title": "OAuth 2.0 Authorization & Security",
+          "url": "https://developer.sage.com/intacct/docs/1/sage-intacct-rest-api/authorization-and-security/oauth2"
+        },
+        {
+          "source": "Sage Intacct",
+          "title": "Marketplace Partner Program — Become a Partner",
+          "url": "https://marketplace.intacct.com/BecomeAPartner"
+        },
+        {
+          "source": "Sage Intacct Developer",
+          "title": "API usage & transaction metrics",
+          "url": "https://developer.sage.com/intacct/docs/developer-portal/getting-started/metrics/"
+        },
+        {
+          "source": "Sage Intacct Developer",
+          "title": "Developer FAQs (concurrency & levels of service)",
+          "url": "https://developer.intacct.com/support/faq/"
+        },
+        {
+          "source": "Sage Intacct",
+          "title": "About Sandboxes",
+          "url": "https://www.intacct.com/ia/docs/en_US/help_action/Company/Sandboxes/about-sandboxes.htm"
+        }
+      ],
       "important_to_know": [
         "API tokens are session-bound: signing in to the Sage Intacct web UI as the authorizing user invalidates the token (error REST-2102). Authorize with a dedicated integration user that nobody signs in as interactively.",
         "Financial reports stay exclusive to the sage-intacct (XML) connector: REST's reporting endpoints only generate downloadable files asynchronously, never queryable data — a permanent platform gap. Other uncovered Sage endpoints remain reachable via the Apideck Proxy API.",
@@ -10408,15 +10358,64 @@
         "Two module permissions are easy to miss: quotes need Order Entry — without it, listing returns 403 and creating fails with an error that reads like a company misconfiguration — and customer refunds stay hidden until the feature is enabled in Accounts Receivable.",
         "The REST API reached General Availability with Sage's 2025 Release 1 and is the platform Sage recommends for new integrations. The legacy XML/SOAP gateway is frozen and receives no new API objects, so customer refunds and quote creation live only here."
       ],
+      "partnership_note": "A Sage Web Services developer license is required — via the Sage Intacct Marketplace Partner Program, or directly from Sage through your account manager.",
+      "partnership_portal_name": "Sage Intacct Marketplace",
+      "partnership_required": true,
+      "partnership_url": "https://marketplace.intacct.com/BecomeAPartner",
+      "rate_limits": "Sage Performance Tier 1: 100,000 API transactions/month per company, shared with the XML API. Over-limit: 429 (GW-0010). Headroom: x-downstream-ratelimit-*.",
+      "responsibility_matrix": [
+        {
+          "apideck": "Facilitates introduction",
+          "area": "Obtain Sage Web Services Developer License",
+          "customer": "✓"
+        },
+        {
+          "area": "Execute Marketplace Partner Contract",
+          "customer": "✓ (if taking the Marketplace route)"
+        },
+        {
+          "apideck": "Instructions provided",
+          "area": "Register OAuth Application at developer.sage.com/console",
+          "customer": "✓"
+        },
+        {
+          "apideck": "Secure connection form",
+          "area": "Authorize Connection",
+          "consumer": "✓"
+        },
+        {
+          "apideck": "Instructions provided",
+          "area": "Grant Sage Intacct Role Permissions",
+          "consumer": "✓"
+        },
+        {
+          "apideck": "Instructions provided",
+          "area": "Enable Optional Sage Intacct Features",
+          "consumer": "✓"
+        },
+        {
+          "apideck": "Maintains connector",
+          "area": "Build via Unified API",
+          "customer": "✓"
+        },
+        {
+          "apideck": "Logs & alerts",
+          "area": "Monitor Connections",
+          "consumer": "Can revoke anytime",
+          "customer": "✓ Via dashboard"
+        }
+      ],
+      "sandbox_available": true,
+      "sandbox_note": "Registering a Non-production OAuth app is free; a Sage Intacct sandbox company itself is a paid, licensed feature, gated by eligibility and not self-serve.",
       "supported_resource_categories": [
         {
+          "name": "Core Financial",
           "resources": [
             "ledger-accounts",
             "journal-entries",
             "tax-rates",
             "tracking-categories"
-          ],
-          "name": "Core Financial"
+          ]
         },
         {
           "name": "Accounts Receivable",
@@ -10432,12 +10431,12 @@
           ]
         },
         {
+          "name": "Accounts Payable",
           "resources": [
             "suppliers",
             "bills",
             "bill-payments"
-          ],
-          "name": "Accounts Payable"
+          ]
         },
         {
           "name": "Expenses",
@@ -10460,11 +10459,11 @@
           ]
         },
         {
+          "name": "Banking",
           "resources": [
             "bank-accounts",
             "bank-feed-statements"
-          ],
-          "name": "Banking"
+          ]
         },
         {
           "name": "Documents",
@@ -10472,7 +10471,8 @@
             "attachments"
           ]
         }
-      ]
+      ],
+      "webhooks": "Virtual webhooks — created and updated events across 13 accounting resources; deletes are not detected. Sage Intacct has no native webhooks."
     },
     "salesflare": {
       "consumer_access_level": "A Salesflare user who can create an API key in Settings.",
@@ -12148,29 +12148,94 @@
       "webhooks": "No webhooks — none surfaced by this connector, so poll for changes."
     },
     "wix": {
+      "account_type_required": "Wix site with the Wix Stores app installed.",
+      "apideck_credentials_available": false,
       "apideck_credentials_note": "Each consumer creates their own Wix API key.",
+      "authentication_note": "Account-level key, supplied together with the Site ID and Shop Domain; not OAuth.",
+      "beta": false,
+      "consumer_access_level": "Account owner or co-owner, the only roles that can create an API key.",
+      "costs": "Wix documents no separate fee for API keys.",
+      "difficulty": "moderate",
+      "difficulty_reason": "API Key Created by the Wix Account Owner",
+      "environment_notes": [
+        {
+          "description": "All calls go to https://www.wixapis.com. A test site and a live store use the same kind of credential, so there is no separate test key; the site the Site ID points at decides which data you reach, so point test connections at a development site to keep live store data out of tests.",
+          "environment": "Single environment"
+        }
+      ],
+      "external_guides": [
+        {
+          "source": "Wix",
+          "title": "Wix API keys",
+          "url": "https://dev.wix.com/docs/api-reference/articles/authentication/api-keys/about-api-keys"
+        },
+        {
+          "source": "Wix",
+          "title": "Make API calls with an API key",
+          "url": "https://dev.wix.com/docs/api-reference/articles/authentication/api-keys/make-api-calls-with-an-api-key"
+        }
+      ],
+      "important_to_know": [
+        "The API key has to come from the Wix account that owns the site, and its site access must include that site. A key from an agency or another account, or one restricted to other sites, is rejected even with the right permissions."
+      ],
+      "partnership_required": false,
+      "responsibility_matrix": [
+        {
+          "area": "Enable the Wix Connector",
+          "customer": "✓ Via Apideck Dashboard"
+        },
+        {
+          "area": "Create the Wix API Key",
+          "consumer": "✓"
+        },
+        {
+          "area": "Enter the Credentials in Vault",
+          "consumer": "✓"
+        },
+        {
+          "apideck": "✓",
+          "area": "Store & Encrypt Credentials"
+        },
+        {
+          "apideck": "✓ After connecting",
+          "area": "Detect the Store Catalogue Version"
+        },
+        {
+          "apideck": "✓ Maintains connector",
+          "area": "Build via the Unified API",
+          "customer": "✓ Builds the requests"
+        },
+        {
+          "apideck": "✓ Logs & alerts",
+          "area": "Monitor Connections",
+          "consumer": "✓ Can revoke the key anytime",
+          "customer": "✓ Via Apideck Dashboard"
+        }
+      ],
       "sandbox_available": true,
+      "sandbox_note": "Free development site with Premium capabilities, created from a Wix developer app dashboard.",
+      "sandbox_url": "https://dev.wix.com/docs/build-apps/develop-your-app/development-sites/about-development-sites",
       "supported_resource_categories": [
         {
+          "name": "Orders",
           "resources": [
             "orders",
             "fulfillments"
-          ],
-          "name": "Orders"
+          ]
         },
         {
+          "name": "Products",
           "resources": [
             "products",
             "products-v3",
             "inventory-items"
-          ],
-          "name": "Products"
+          ]
         },
         {
+          "name": "Customers",
           "resources": [
             "customers"
-          ],
-          "name": "Customers"
+          ]
         },
         {
           "name": "Store",
@@ -12180,72 +12245,7 @@
           ]
         }
       ],
-      "difficulty": "moderate",
-      "authentication_note": "Account-level key, supplied together with the Site ID and Shop Domain; not OAuth.",
-      "responsibility_matrix": [
-        {
-          "area": "Enable the Wix Connector",
-          "customer": "✓ Via Apideck Dashboard"
-        },
-        {
-          "consumer": "✓",
-          "area": "Create the Wix API Key"
-        },
-        {
-          "consumer": "✓",
-          "area": "Enter the Credentials in Vault"
-        },
-        {
-          "area": "Store & Encrypt Credentials",
-          "apideck": "✓"
-        },
-        {
-          "area": "Detect the Store Catalogue Version",
-          "apideck": "✓ After connecting"
-        },
-        {
-          "apideck": "✓ Maintains connector",
-          "area": "Build via the Unified API",
-          "customer": "✓ Builds the requests"
-        },
-        {
-          "area": "Monitor Connections",
-          "customer": "✓ Via Apideck Dashboard",
-          "consumer": "✓ Can revoke the key anytime",
-          "apideck": "✓ Logs & alerts"
-        }
-      ],
-      "difficulty_reason": "API Key Created by the Wix Account Owner",
-      "sandbox_note": "Free development site with Premium capabilities, created from a Wix developer app dashboard.",
-      "important_to_know": [
-        "The API key has to come from the Wix account that owns the site, and its site access must include that site. A key from an agency or another account, or one restricted to other sites, is rejected even with the right permissions."
-      ],
-      "webhooks": "Virtual webhooks - order, product and customer created, updated and deleted events",
-      "costs": "Wix documents no separate fee for API keys.",
-      "consumer_access_level": "Account owner or co-owner, the only roles that can create an API key.",
-      "apideck_credentials_available": false,
-      "account_type_required": "Wix site with the Wix Stores app installed.",
-      "beta": false,
-      "external_guides": [
-        {
-          "source": "Wix",
-          "url": "https://dev.wix.com/docs/api-reference/articles/authentication/api-keys/about-api-keys",
-          "title": "Wix API keys"
-        },
-        {
-          "title": "Make API calls with an API key",
-          "url": "https://dev.wix.com/docs/api-reference/articles/authentication/api-keys/make-api-calls-with-an-api-key",
-          "source": "Wix"
-        }
-      ],
-      "partnership_required": false,
-      "environment_notes": [
-        {
-          "description": "All calls go to https://www.wixapis.com. A test site and a live store use the same kind of credential, so there is no separate test key; the site the Site ID points at decides which data you reach, so point test connections at a development site to keep live store data out of tests.",
-          "environment": "Single environment"
-        }
-      ],
-      "sandbox_url": "https://dev.wix.com/docs/build-apps/develop-your-app/development-sites/about-development-sites"
+      "webhooks": "Virtual webhooks - order, product and customer created and updated events; deletes are not detected"
     },
     "woocommerce": {
       "rate_limits": "WooCommerce documents no rate limit for the REST API; practical limits depend on the store's hosting.",
@@ -12417,6 +12417,52 @@
       "consumer_access_level": "Workable does not state a minimum role for the authorisation. The connection then reaches only the jobs and candidates the authorising user can access."
     },
     "workday": {
+      "account_type_required": "Workday tenant with Web Services access",
+      "apideck_credentials_available": false,
+      "apideck_credentials_note": "Authentication is per consumer rather than per application, so there are no app-level credentials for Apideck to provide.",
+      "authentication_note": "A per-consumer Integration System User (ISU); not OAuth.",
+      "consumer_access_level": "Administrator with privileges to create Integration System Users and manage security groups and domain security policies",
+      "costs": "No additional platform fees from Workday.",
+      "difficulty": "highly_complex",
+      "difficulty_reason": "Custom Auth + Manual Per-Consumer Setup + Complex Permissions",
+      "environment_notes": [
+        {
+          "description": "Testing options: ask a consumer to share a testing tenant, test against a consumer's production tenant using a dedicated limited-permission ISU, or — for enterprise customers who cannot obtain a testing tenant through a consumer — contact Apideck Support to discuss options. Be cautious when testing against production data.",
+          "environment": "Single environment (testing and production share credentials)"
+        }
+      ],
+      "external_guides": [
+        {
+          "source": "Workday Developers",
+          "title": "Workday APIs (REST/SOAP/Graph overview)",
+          "url": "https://developer.workday.com/api-overview"
+        },
+        {
+          "source": "Workday Developers",
+          "title": "Concept: ISU Authentication",
+          "url": "https://developer.workday.com/documentation/GUID-cb3e0fcd-bb97-4005-8d10-3a02e88dab71-enHYPHENus/ConceptISUAuthentication"
+        },
+        {
+          "source": "Workday Administrator Guide",
+          "title": "Reference: Integrations and Web Service Limits",
+          "url": "https://doc.workday.com/admin-guide/en-us/manage-workday/tenant-configuration/it-administrator-resources/limitations-and-availability/dan1370797408285.html"
+        },
+        {
+          "source": "Workday",
+          "title": "Partner Program Overview",
+          "url": "https://www.workday.com/en-us/company/partners/partner-program-overview.html"
+        }
+      ],
+      "important_to_know": [
+        "Permission setup differs per Unified API: the consumer's Workday admin grants domain security policies separately for HRIS (13+), ATS (11+) and Accounting (22+), plus Business Process Security Policy edits before any write succeeds.",
+        "Accounting writes are worktag-gated: invoices and purchase orders reject line items without a cost-center worktag (tracking_categories.id), and journal entries silently fall back to draft without one.",
+        "AP bills cannot be incrementally synced: Workday returns empty updated_at/created_at on Bills and rejects filter[updated_since] with an UnsupportedFiltersError, so plan full re-fetches."
+      ],
+      "partnership_note": "Apideck holds the Workday partnership; joining the Workday Partner Program yourself is optional.",
+      "partnership_portal_name": "Workday Partner Program",
+      "partnership_required": false,
+      "partnership_url": "https://www.workday.com/en-us/company/partners/partner-program-overview.html",
+      "rate_limits": "No published hard limits; Workday throttles under high tenant load.",
       "responsibility_matrix": [
         {
           "apideck": "Instructions provided",
@@ -12424,54 +12470,48 @@
           "consumer": "✓"
         },
         {
+          "apideck": "Instructions provided",
           "area": "Create Security Group",
-          "consumer": "✓",
-          "apideck": "Instructions provided"
-        },
-        {
-          "area": "Grant Domain Permissions",
-          "apideck": "Required domains documented",
           "consumer": "✓"
         },
         {
+          "apideck": "Required domains documented",
+          "area": "Grant Domain Permissions",
+          "consumer": "✓"
+        },
+        {
+          "apideck": "Instructions provided",
           "area": "Activate Security Policy Changes",
-          "consumer": "✓",
-          "apideck": "Instructions provided"
+          "consumer": "✓"
         },
         {
+          "apideck": "Secure connection form",
           "area": "Provide Credentials",
-          "consumer": "✓",
-          "apideck": "Secure connection form"
+          "consumer": "✓"
         },
         {
+          "apideck": "Maintains connector",
           "area": "Build via Unified API",
-          "customer": "✓",
-          "apideck": "Maintains connector"
+          "customer": "✓"
         },
         {
           "apideck": "Logs & alerts",
-          "consumer": "Can revoke by disabling ISU",
           "area": "Monitor Connections",
+          "consumer": "Can revoke by disabling ISU",
           "customer": "✓ Via Dashboard"
         }
       ],
-      "partnership_required": false,
-      "difficulty": "highly_complex",
-      "partnership_note": "Apideck holds the Workday partnership; joining the Workday Partner Program yourself is optional.",
-      "important_to_know": [
-        "Permission setup differs per Unified API: the consumer's Workday admin grants domain security policies separately for HRIS (13+), ATS (11+) and Accounting (22+), plus Business Process Security Policy edits before any write succeeds.",
-        "Accounting writes are worktag-gated: invoices and purchase orders reject line items without a cost-center worktag (tracking_categories.id), and journal entries silently fall back to draft without one.",
-        "AP bills cannot be incrementally synced: Workday returns empty updated_at/created_at on Bills and rejects filter[updated_since] with an UnsupportedFiltersError, so plan full re-fetches."
-      ],
+      "sandbox_available": false,
+      "sandbox_note": "Testing runs against a consumer's own Workday tenant — no free trial, and Development tenants are contract-gated to existing Workday customers.",
       "supported_resource_categories": [
         {
+          "name": "HR & Organization (HRIS)",
           "resources": [
             "employees",
             "companies",
             "departments",
             "job-profiles"
-          ],
-          "name": "HR & Organization (HRIS)"
+          ]
         },
         {
           "name": "Recruiting (ATS)",
@@ -12492,6 +12532,7 @@
           ]
         },
         {
+          "name": "Accounts Payable & Spend (Accounting)",
           "resources": [
             "bills",
             "bill-payments",
@@ -12500,8 +12541,7 @@
             "purchase-items",
             "expenses",
             "expense-credit-cards"
-          ],
-          "name": "Accounts Payable & Spend (Accounting)"
+          ]
         },
         {
           "name": "General Ledger & Reference Data (Accounting)",
@@ -12518,46 +12558,6 @@
           ]
         }
       ],
-      "partnership_url": "https://www.workday.com/en-us/company/partners/partner-program-overview.html",
-      "sandbox_available": false,
-      "costs": "No additional platform fees from Workday.",
-      "apideck_credentials_available": false,
-      "account_type_required": "Workday tenant with Web Services access",
-      "environment_notes": [
-        {
-          "environment": "Single environment (testing and production share credentials)",
-          "description": "Testing options: ask a consumer to share a testing tenant, test against a consumer's production tenant using a dedicated limited-permission ISU, or — for enterprise customers who cannot obtain a testing tenant through a consumer — contact Apideck Support to discuss options. Be cautious when testing against production data."
-        }
-      ],
-      "external_guides": [
-        {
-          "title": "Workday APIs (REST/SOAP/Graph overview)",
-          "url": "https://developer.workday.com/api-overview",
-          "source": "Workday Developers"
-        },
-        {
-          "url": "https://developer.workday.com/documentation/GUID-cb3e0fcd-bb97-4005-8d10-3a02e88dab71-enHYPHENus/ConceptISUAuthentication",
-          "source": "Workday Developers",
-          "title": "Concept: ISU Authentication"
-        },
-        {
-          "title": "Reference: Integrations and Web Service Limits",
-          "source": "Workday Administrator Guide",
-          "url": "https://doc.workday.com/admin-guide/en-us/manage-workday/tenant-configuration/it-administrator-resources/limitations-and-availability/dan1370797408285.html"
-        },
-        {
-          "url": "https://www.workday.com/en-us/company/partners/partner-program-overview.html",
-          "source": "Workday",
-          "title": "Partner Program Overview"
-        }
-      ],
-      "apideck_credentials_note": "Authentication is per consumer rather than per application, so there are no app-level credentials for Apideck to provide.",
-      "consumer_access_level": "Administrator with privileges to create Integration System Users and manage security groups and domain security policies",
-      "difficulty_reason": "Custom Auth + Manual Per-Consumer Setup + Complex Permissions",
-      "authentication_note": "A per-consumer Integration System User (ISU); not OAuth.",
-      "partnership_portal_name": "Workday Partner Program",
-      "rate_limits": "No published hard limits; Workday throttles under high tenant load.",
-      "sandbox_note": "Testing runs against a consumer's own Workday tenant — no free trial, and Development tenants are contract-gated to existing Workday customers.",
       "webhooks": "Virtual webhooks — no native webhooks in Workday; Apideck polls employees, applicants, jobs, bills, suppliers, purchase orders, and customers."
     },
     "xero": {
@@ -13045,7 +13045,7 @@
           ]
         }
       ],
-      "webhooks": "Virtual webhooks — created/updated/deleted events on 10 resources, including invoices, bills, payments, customers and suppliers."
+      "webhooks": "Virtual webhooks — created and updated events on 10 resources, including invoices, bills, payments, customers and suppliers; deletes are not detected."
     },
     "zoho-crm": {
       "authentication_note": "Authorization Code flow via Zoho Accounts.",

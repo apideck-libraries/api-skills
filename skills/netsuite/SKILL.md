@@ -42,15 +42,15 @@ Access NetSuite through Apideck's **Accounting** unified API — one of 34 Accou
 - **Costs:** No additional platform fees, and no connection limits imposed.
 - **Rate limits:** Per-account concurrency (not requests/minute): 5 Standard, 15 Premium, 20 Enterprise/Ultimate, +10 per SuiteCloud Plus license; Apideck retries automatically.
 - **Authentication:** Token-Based Authentication (TBA), NetSuite's OAuth 1.0-based scheme — consumers create an integration record and credentials manually; no OAuth redirect.
-- **Webhooks:** Virtual webhooks — created/updated/deleted across 14 accounting resources (invoices, credit notes, quotes, bills, expenses, payments, customers, suppliers, projects and more).
+- **Webhooks:** Virtual webhooks — created, updated and deleted events across 14 accounting resources (invoices, bills, customers and more); no deletes for tax rates.
 
 **Important to know:**
 
 - Oracle has scheduled SOAP removal: 2025.2 is the last SOAP endpoint, release 2027.1 blocks new SOAP integrations, and 2028.2 removes SOAP entirely. Apideck already offers NetSuite REST support via Proxy.
-- Missing role permissions can fail silently: a filtered list call the role is not permitted for returns 200 OK with an empty result set instead of an error, so an under-permissioned connection looks healthy while returning no data.
+- Missing role permissions can fail silently: a filtered list the role cannot read returns 200 OK with no rows. Delete events, read from NetSuite's deleted-records log after each sync (not a resource's first), need the Deleted Records and SuiteAnalytics Workbook permissions.
 - Custom forms can break writes: a mandatory custom field on a standard NetSuite form makes API writes to that record type fail, blocking creates you had tested successfully.
 - SuiteTax accounts are supported, but the connection must declare SuiteTax via an optional connection setting — without it, tax data is served from the wrong records.
-- A single connection covers a whole OneWorld account: a Default Subsidiary setting scopes most list and report reads to one subsidiary, and a per-request override reaches any other. A parent subsidiary excludes its children; company-info always returns the root.
+- A single connection covers a whole OneWorld account: a Default Subsidiary setting scopes most list and report reads to one subsidiary (a per-request override reaches others), but delete events cover the whole account. Parents exclude children; company-info returns the root.
 
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/netsuite` (`overview` field) is the live, authoritative version.
 

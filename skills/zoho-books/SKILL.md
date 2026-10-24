@@ -41,7 +41,7 @@ Access Zoho Books through Apideck's **Accounting** unified API — one of 34 Acc
 - **Costs:** Free — Zoho charges nothing for API access on any Zoho Books plan, including the Free plan.
 - **Rate limits:** 100 requests/minute per organization; daily cap set by the consumer's plan (1,000 Free to 10,000 Premium); 5 concurrent calls on Free, 10 on paid plans.
 - **Authentication:** Authorization Code flow.
-- **Webhooks:** Virtual webhooks — created/updated/deleted events on 10 resources, including invoices, bills, payments, customers and suppliers.
+- **Webhooks:** Virtual webhooks — created and updated events on 10 resources, including invoices, bills, payments, customers and suppliers; deletes are not detected.
 
 **Important to know:**
 

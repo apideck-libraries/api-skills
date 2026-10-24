@@ -46,7 +46,7 @@ Access Magento through Apideck's **Ecommerce** unified API — one of 17 Ecommer
 - **Costs:** Integration tokens are a built-in Admin feature of the store; Adobe publishes no separate API fee.
 - **Rate limits:** No general REST quota is published; Adobe's opt-in rate limiting covers checkout and payment endpoints only.
 - **Authentication:** Four credentials from a Magento integration sign each request, OAuth 1.0a style; no redirect flow.
-- **Webhooks:** Virtual webhooks - order, product and customer events (created, updated, deleted)
+- **Webhooks:** Virtual webhooks - order, product and customer events (created, updated); deletes are not detected
 
 **Important to know:**
 
