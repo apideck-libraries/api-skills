@@ -47,6 +47,8 @@ Access MYOB through Apideck's **Accounting** unified API — one of 34 Accountin
 
 - One connection covers one company file — consumers running several MYOB company files need a separate connection for each.
 - MYOB Business fits Australian and New Zealand entities — each MYOB company file is AU/NZ-based.
+- Supplier addresses are positional — MYOB keeps up to 5 (position 1 reads as primary, 2 as secondary) and addresses[].id is the position; update by id, since an address sent without one is appended and addresses cannot be removed.
+- Supplier contacts live on the addresses — emails and websites accept primary and secondary, phone_numbers also mobile and fax — and a supplier holds one bank account, its name uppercased and limited to 32 letters, digits, spaces and - / * & .
 
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/myob` (`overview` field) is the live, authoritative version.
 

@@ -7703,61 +7703,40 @@
       "apideck_credentials_available": false
     },
     "myob": {
-      "webhooks": "No webhooks — MYOB Business exposes no native webhook API and virtual webhooks are not enabled for this connector; sync by polling.",
       "account_type_required": "Active MYOB Business subscription (formerly Essentials); AccountRight is also supported.",
-      "partnership_url": "https://apisupport.myob.com/hc/en-us/requests/new?ticket_form_id=13228298199055",
-      "costs": "API access is free. The optional Developer Program costs AUD $110, $220, or $630 per month incl. GST (2026 pricing).",
-      "sandbox_url": "https://developer.myob.com/developer-program-details/",
-      "rate_limits": "Not published — MYOB shows the current per-API-key limits on the app registration page after you register.",
+      "apideck_credentials_available": true,
+      "apideck_credentials_note": "For testing: the OAuth consent screen shows \"Apideck\".",
       "authentication_note": "Authorization Code flow.",
-      "sandbox_note": "Shared sandbox company file, included with Developer Program membership.",
-      "supported_resource_categories": [
-        {
-          "resources": [
-            "ledger-accounts",
-            "tax-rates",
-            "currency",
-            "company-info",
-            "company-files"
-          ],
-          "name": "Core Financial"
-        },
-        {
-          "name": "Accounts Receivable",
-          "resources": [
-            "invoices",
-            "invoice-items",
-            "customers",
-            "payments",
-            "credit-notes"
-          ]
-        },
-        {
-          "name": "Accounts Payable",
-          "resources": [
-            "bills",
-            "bill-payments"
-          ]
-        }
-      ],
-      "partnership_required": false,
-      "partnership_portal_name": "MYOB Developer Program",
-      "sandbox_available": true,
+      "consumer_access_level": "Account holder, or any user with access to the company file.",
+      "costs": "API access is free. The optional Developer Program costs AUD $110, $220, or $630 per month incl. GST (2026 pricing).",
+      "difficulty": "moderate",
+      "difficulty_reason": "Requires registering for MYOB API access before credentials can be generated — no partnership or paid program required.",
       "environment_notes": [
         {
-          "environment": "Single environment (shared credentials)",
-          "description": "MYOB Business uses the same API credentials for testing and production — you test in a separate company file, not a separate environment. Testing options: the shared sandbox company file included with Developer Program membership, a free MYOB Business trial, or a test company file in your own MYOB account. Be careful when testing against a company file that holds production data."
+          "description": "MYOB Business uses the same API credentials for testing and production — you test in a separate company file, not a separate environment. Testing options: the shared sandbox company file included with Developer Program membership, a free MYOB Business trial, or a test company file in your own MYOB account. Be careful when testing against a company file that holds production data.",
+          "environment": "Single environment (shared credentials)"
         }
       ],
+      "important_to_know": [
+        "One connection covers one company file — consumers running several MYOB company files need a separate connection for each.",
+        "MYOB Business fits Australian and New Zealand entities — each MYOB company file is AU/NZ-based.",
+        "Supplier addresses are positional — MYOB keeps up to 5 (position 1 reads as primary, 2 as secondary) and addresses[].id is the position; update by id, since an address sent without one is appended and addresses cannot be removed.",
+        "Supplier contacts live on the addresses — emails and websites accept primary and secondary, phone_numbers also mobile and fax — and a supplier holds one bank account, its name uppercased and limited to 32 letters, digits, spaces and - / * & ."
+      ],
+      "partnership_note": "No partner program gates API access; the optional Developer Program adds software entitlements and an App Marketplace listing.",
+      "partnership_portal_name": "MYOB Developer Program",
+      "partnership_required": false,
+      "partnership_url": "https://apisupport.myob.com/hc/en-us/requests/new?ticket_form_id=13228298199055",
+      "rate_limits": "Not published — MYOB shows the current per-API-key limits on the app registration page after you register.",
       "responsibility_matrix": [
         {
-          "customer": "✓ (or use Apideck credentials)",
-          "area": "Register for MYOB API access"
+          "area": "Register for MYOB API access",
+          "customer": "✓ (or use Apideck credentials)"
         },
         {
+          "apideck": "Support available",
           "area": "Join Developer Program",
-          "customer": "✓ (optional)",
-          "apideck": "Support available"
+          "customer": "✓ (optional)"
         },
         {
           "area": "Add Credentials to Apideck",
@@ -7773,31 +7752,55 @@
           "consumer": "✓"
         },
         {
-          "customer": "✓",
           "apideck": "Maintains connector",
-          "area": "Build via Unified API"
+          "area": "Build via Unified API",
+          "customer": "✓"
         },
         {
-          "area": "Token Refresh",
-          "apideck": "✓ Automatic"
+          "apideck": "✓ Automatic",
+          "area": "Token Refresh"
         },
         {
-          "consumer": "✓ Can revoke anytime",
           "apideck": "Logs & alerts",
           "area": "Monitor Connections",
+          "consumer": "✓ Can revoke anytime",
           "customer": "✓ Via Apideck Dashboard"
         }
       ],
-      "important_to_know": [
-        "One connection covers one company file — consumers running several MYOB company files need a separate connection for each.",
-        "MYOB Business fits Australian and New Zealand entities — each MYOB company file is AU/NZ-based."
+      "sandbox_available": true,
+      "sandbox_note": "Shared sandbox company file, included with Developer Program membership.",
+      "sandbox_url": "https://developer.myob.com/developer-program-details/",
+      "supported_resource_categories": [
+        {
+          "name": "Core Financial",
+          "resources": [
+            "ledger-accounts",
+            "tax-rates",
+            "currency",
+            "company-info",
+            "company-files"
+          ]
+        },
+        {
+          "name": "Accounts Receivable",
+          "resources": [
+            "invoices",
+            "invoice-items",
+            "customers",
+            "payments",
+            "credit-notes"
+          ]
+        },
+        {
+          "name": "Accounts Payable",
+          "resources": [
+            "suppliers",
+            "bills",
+            "bill-payments"
+          ]
+        }
       ],
-      "apideck_credentials_available": true,
-      "partnership_note": "No partner program gates API access; the optional Developer Program adds software entitlements and an App Marketplace listing.",
-      "difficulty_reason": "Requires registering for MYOB API access before credentials can be generated — no partnership or paid program required.",
-      "difficulty": "moderate",
-      "consumer_access_level": "Account holder, or any user with access to the company file.",
-      "apideck_credentials_note": "For testing: the OAuth consent screen shows \"Apideck\"."
+      "webhooks": "No webhooks — MYOB Business exposes no native webhook API and virtual webhooks are not enabled for this connector; sync by polling."
     },
     "myob-acumatica": {
       "account_type_required": "A MYOB Acumatica (also sold as MYOB Advanced) instance.",
