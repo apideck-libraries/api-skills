@@ -8037,7 +8037,7 @@
       "partnership_portal_name": "NetSuite Partner Program",
       "partnership_required": false,
       "partnership_url": "https://www.netsuite.com/portal/partners.shtml",
-      "rate_limits": "Per-account concurrency (not requests/minute): 5 Standard, 15 Premium, 20 Enterprise/Ultimate, +10 per SuiteCloud Plus license; Apideck retries automatically.",
+      "rate_limits": "Per-account concurrency (not requests/minute): 5 Standard, 15 Premium, 20 Enterprise/Ultimate, +10 per SuiteCloud Plus license; requests over the limit come back as HTTP 429, so retry with backoff.",
       "responsibility_matrix": [
         {
           "apideck": "Provides (enterprise contract)",
