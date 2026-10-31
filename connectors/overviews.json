@@ -8027,7 +8027,7 @@
         }
       ],
       "important_to_know": [
-        "Oracle has scheduled SOAP removal: 2025.2 is the last SOAP endpoint, release 2027.1 blocks new SOAP integrations, and 2028.2 removes SOAP entirely. Apideck already offers NetSuite REST support via Proxy.",
+        "Oracle is ending TBA (tentatively 2028.2) and removing SOAP in 2028.2. From 2027.1, integration records created in 2027.1 or later can't use TBA; the Apideck bundle's record predates that, so bundle connections keep working after 2027.1.",
         "Missing role permissions can fail silently: a filtered list the role cannot read returns 200 OK with no rows. Delete events, read from NetSuite's deleted-records log after each sync (not a resource's first), need the Deleted Records and SuiteAnalytics Workbook permissions.",
         "Custom forms can break writes: a mandatory custom field on a standard NetSuite form makes API writes to that record type fail, blocking creates you had tested successfully.",
         "SuiteTax accounts are supported, but the connection must declare SuiteTax via an optional connection setting — without it, tax data is served from the wrong records.",
