@@ -36,9 +36,9 @@ Access Amazon Seller Central through Apideck's **Ecommerce** unified API — one
 
 ## At a glance
 
-- **Implementation difficulty:** moderate — Self-Service Developer Signup + Mandatory Production/Published App Review Required
+- **Implementation difficulty:** moderate — Self-Service Developer Signup + Developer Profile Review Required
 - **Vendor partnership required:** no ([Amazon Selling Partner API — Public Developer Registration](https://developer-docs.amazon.com/sp-api/docs/register-as-a-public-developer)) — No signed contract. Registration as a Public SP-API Developer is free and self-service.
-- **Apideck-managed credentials:** not available — Every application owner registers and publishes their own SP-API app with Amazon.
+- **Apideck-managed credentials:** not available — Every application owner registers their own SP-API app with Amazon.
 - **Account type required:** An active Amazon Seller Central account, in a marketplace the integration covers.
 - **Consumer access level:** A Seller Central user with the account's Develop Apps (API authorization) permission completes the consent.
 - **Sandbox:** available ([signup](https://developer-docs.amazon.com/sp-api/docs/sp-api-sandbox)) — Amazon's own SP-API sandbox returns mock responses, but sits on Amazon's sandbox endpoints and cannot be reached through this connector.
@@ -49,7 +49,7 @@ Access Amazon Seller Central through Apideck's **Ecommerce** unified API — one
 
 **Important to know:**
 
-- Amazon's consent screen rejects a Draft or Sandbox SP-API app, so no connection, not even a test one, can be made through Apideck until the app reaches Published status. Amazon returns error MD9100.
+- Amazon allows up to 25 seller authorisations for an app not listed on the Selling Partner Appstore. Set Selling Partner Appstore listing to Listed on the Selling Partner Appstore (Published) only once your app is published there, or sellers see error MD1000.
 - Every SP-API application's Login with Amazon client secret must be rotated every 180 days, or Amazon blocks all API calls for that application. Amazon gives 90 days' notice, but this is a standing operational duty for the life of the integration, not a one-off setup step.
 - Amazon requires each selling partner to reauthorise a public application every 365 days, and again whenever a role is added to it, so annual re-consent by every connected seller has to be planned into the integration.
 
