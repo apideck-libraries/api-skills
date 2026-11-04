@@ -46,7 +46,7 @@ Access SharePoint through Apideck's **File Storage** unified API — one of 5 Fi
 **Important to know:**
 
 - Publisher verification and tenant consent policies gate onboarding: since November 2020 users in other tenants cannot consent to an unverified multitenant app, and Sites.ReadWrite.All is broad enough that many tenants require a tenant admin to approve it anyway.
-- Each connection is scoped to one SharePoint site: the consumer must pick a site from a live list when connecting, and only that site's document libraries are visible. A consumer with several sites needs one connection per site.
+- Each connection defaults to the one SharePoint site the consumer picks from a live list when connecting; other sites and document libraries the authorizing user can open are reached by passing their ID as a filter.
 - SharePoint Online only: the connector reaches SharePoint through Microsoft Graph, which does not serve on-premises SharePoint Server. Consumers still on SharePoint Server cannot connect.
 - A free Microsoft 365 developer tenant is no longer open to everyone: the Developer Program sandbox now requires a Visual Studio Professional or Enterprise subscription, an eligible Microsoft partner tier or a Premier/Unified Support contract.
 - Refresh tokens expire after 90 days without use, so a consumer whose integration is idle for three months has to re-authorise the connection.
