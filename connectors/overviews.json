@@ -10805,101 +10805,30 @@
       "difficulty": "moderate"
     },
     "sharepoint": {
-      "partnership_required": false,
-      "responsibility_matrix": [
-        {
-          "area": "Register a multitenant app in Microsoft Entra ID",
-          "customer": "✓ (or use Apideck credentials)",
-          "apideck": "Docs provided"
-        },
-        {
-          "area": "Complete publisher verification",
-          "customer": "✓"
-        },
-        {
-          "customer": "✓",
-          "area": "Add Client ID and Client Secret in the Apideck Dashboard"
-        },
-        {
-          "consumer": "✓ (tenant admin, if the consent policy requires it)",
-          "area": "Grant admin consent for the organisation"
-        },
-        {
-          "consumer": "✓",
-          "area": "Authorize the connection and select the SharePoint site in Vault"
-        },
-        {
-          "area": "Token refresh and credential storage",
-          "apideck": "✓"
-        },
-        {
-          "apideck": "✓ (automatic per connection)",
-          "area": "Register and renew webhook subscriptions"
-        },
-        {
-          "area": "Maintain the connector and unified File Storage API",
-          "apideck": "✓"
-        }
-      ],
-      "partnership_note": "No partnership contract; publisher verification requires a Microsoft AI Cloud Partner Program account.",
-      "webhooks": "Native — drive.updated only (a document-library-level change notification; per-file events are not emitted)",
-      "partnership_url": "https://learn.microsoft.com/en-us/entra/identity-platform/publisher-verification-overview",
-      "apideck_credentials_available": true,
-      "costs": "None. App registration, publisher verification and standard Microsoft Graph calls are free.",
-      "rate_limits": "Per app per tenant: 1,250 to 6,250 resource units/min (1 to 2 units per call), scaling with tenant size; HTTP 429/503 with Retry-After on excess.",
-      "sandbox_url": "https://developer.microsoft.com/microsoft-365/dev-program",
-      "sandbox_note": "Microsoft 365 E5 developer sandbox (25 users), or a dedicated test site in your own Microsoft 365 tenant.",
       "account_type_required": "Microsoft 365 work or school account with SharePoint Online",
+      "apideck_credentials_available": true,
+      "apideck_credentials_note": "For testing: the Microsoft consent screen shows \"Apideck\". Use your own Microsoft Entra app in production.",
+      "authentication_note": "Authorization Code flow through Microsoft Entra ID.",
       "consumer_access_level": "Any user with access to the chosen site; the user's SharePoint permissions govern what the connection can see",
+      "costs": "None. App registration, publisher verification and standard Microsoft Graph calls are free.",
+      "difficulty": "moderate",
+      "difficulty_reason": "Self-Service OAuth + Publisher Verification Required for Cross-Tenant Consent",
       "environment_notes": [
         {
           "description": "SharePoint has no sandbox API: the same Entra app and Graph endpoints serve testing and production, so separate them by tenant. Test in a Microsoft 365 E5 developer sandbox if you qualify for one, a Microsoft 365 trial, or a dedicated test site in your own tenant. Apideck's temporary shared test credentials are an alternative for early evaluation (request access via https://help.apideck.com/en/articles/7774658). Take care when testing against live company documents.",
           "environment": "Testing and production"
         }
       ],
-      "difficulty": "moderate",
-      "difficulty_reason": "Self-Service OAuth + Publisher Verification Required for Cross-Tenant Consent",
-      "sandbox_available": true,
-      "important_to_know": [
-        "Publisher verification and tenant consent policies gate onboarding: since November 2020 users in other tenants cannot consent to an unverified multitenant app, and Sites.ReadWrite.All is broad enough that many tenants require a tenant admin to approve it anyway.",
-        "Each connection is scoped to one SharePoint site: the consumer must pick a site from a live list when connecting, and only that site's document libraries are visible. A consumer with several sites needs one connection per site.",
-        "SharePoint Online only: the connector reaches SharePoint through Microsoft Graph, which does not serve on-premises SharePoint Server. Consumers still on SharePoint Server cannot connect.",
-        "A free Microsoft 365 developer tenant is no longer open to everyone: the Developer Program sandbox now requires a Visual Studio Professional or Enterprise subscription, an eligible Microsoft partner tier or a Premier/Unified Support contract.",
-        "Refresh tokens expire after 90 days without use, so a consumer whose integration is idle for three months has to re-authorise the connection."
-      ],
-      "authentication_note": "Authorization Code flow through Microsoft Entra ID.",
-      "supported_resource_categories": [
-        {
-          "name": "Sites & Libraries",
-          "resources": [
-            "drive-groups",
-            "drives"
-          ]
-        },
-        {
-          "resources": [
-            "files",
-            "folders"
-          ],
-          "name": "Files & Folders"
-        },
-        {
-          "name": "Uploads",
-          "resources": [
-            "upload-sessions"
-          ]
-        }
-      ],
       "external_guides": [
         {
+          "source": "Microsoft",
           "title": "Register an application with the Microsoft identity platform",
-          "url": "https://learn.microsoft.com/en-us/graph/auth-register-app-v2",
-          "source": "Microsoft"
+          "url": "https://learn.microsoft.com/en-us/graph/auth-register-app-v2"
         },
         {
+          "source": "Microsoft",
           "title": "Avoid getting throttled or blocked in SharePoint Online",
-          "url": "https://learn.microsoft.com/en-us/sharepoint/dev/general-development/how-to-avoid-getting-throttled-or-blocked-in-sharepoint-online",
-          "source": "Microsoft"
+          "url": "https://learn.microsoft.com/en-us/sharepoint/dev/general-development/how-to-avoid-getting-throttled-or-blocked-in-sharepoint-online"
         },
         {
           "source": "Microsoft",
@@ -10912,8 +10841,79 @@
           "url": "https://learn.microsoft.com/en-us/graph/permissions-reference"
         }
       ],
+      "important_to_know": [
+        "Publisher verification and tenant consent policies gate onboarding: since November 2020 users in other tenants cannot consent to an unverified multitenant app, and Sites.ReadWrite.All is broad enough that many tenants require a tenant admin to approve it anyway.",
+        "Each connection defaults to the one SharePoint site the consumer picks from a live list when connecting; other sites and document libraries the authorizing user can open are reached by passing their ID as a filter.",
+        "SharePoint Online only: the connector reaches SharePoint through Microsoft Graph, which does not serve on-premises SharePoint Server. Consumers still on SharePoint Server cannot connect.",
+        "A free Microsoft 365 developer tenant is no longer open to everyone: the Developer Program sandbox now requires a Visual Studio Professional or Enterprise subscription, an eligible Microsoft partner tier or a Premier/Unified Support contract.",
+        "Refresh tokens expire after 90 days without use, so a consumer whose integration is idle for three months has to re-authorise the connection."
+      ],
+      "partnership_note": "No partnership contract; publisher verification requires a Microsoft AI Cloud Partner Program account.",
       "partnership_portal_name": "Microsoft Entra publisher verification",
-      "apideck_credentials_note": "For testing: the Microsoft consent screen shows \"Apideck\". Use your own Microsoft Entra app in production."
+      "partnership_required": false,
+      "partnership_url": "https://learn.microsoft.com/en-us/entra/identity-platform/publisher-verification-overview",
+      "rate_limits": "Per app per tenant: 1,250 to 6,250 resource units/min (1 to 2 units per call), scaling with tenant size; HTTP 429/503 with Retry-After on excess.",
+      "responsibility_matrix": [
+        {
+          "apideck": "Docs provided",
+          "area": "Register a multitenant app in Microsoft Entra ID",
+          "customer": "✓ (or use Apideck credentials)"
+        },
+        {
+          "area": "Complete publisher verification",
+          "customer": "✓"
+        },
+        {
+          "area": "Add Client ID and Client Secret in the Apideck Dashboard",
+          "customer": "✓"
+        },
+        {
+          "area": "Grant admin consent for the organisation",
+          "consumer": "✓ (tenant admin, if the consent policy requires it)"
+        },
+        {
+          "area": "Authorize the connection and select the SharePoint site in Vault",
+          "consumer": "✓"
+        },
+        {
+          "apideck": "✓",
+          "area": "Token refresh and credential storage"
+        },
+        {
+          "apideck": "✓ (automatic per connection)",
+          "area": "Register and renew webhook subscriptions"
+        },
+        {
+          "apideck": "✓",
+          "area": "Maintain the connector and unified File Storage API"
+        }
+      ],
+      "sandbox_available": true,
+      "sandbox_note": "Microsoft 365 E5 developer sandbox (25 users), or a dedicated test site in your own Microsoft 365 tenant.",
+      "sandbox_url": "https://developer.microsoft.com/microsoft-365/dev-program",
+      "supported_resource_categories": [
+        {
+          "name": "Sites & Libraries",
+          "resources": [
+            "drive-groups",
+            "drives"
+          ]
+        },
+        {
+          "name": "Files & Folders",
+          "resources": [
+            "files",
+            "folders"
+          ]
+        },
+        {
+          "name": "Uploads",
+          "resources": [
+            "upload-sessions"
+          ]
+        }
+      ],
+      "webhooks": "Native — drive.updated only (a document-library-level change notification; per-file events are not emitted)"
     },
     "shopify": {
       "account_type_required": "Any paid Shopify plan; reading customer name, address, phone or email needs the merchant's store on Grow or higher (Level 2 protected customer data).",
@@ -12751,16 +12751,42 @@
       "webhooks": "Native — invoice and bill events (created and updated)."
     },
     "yuki": {
+      "account_type_required": "Yuki account on any bundle, including the free Minimal bundle, with web service access activated on the domain.",
+      "apideck_credentials_available": false,
+      "apideck_credentials_note": "Each consumer connects with their own web service key, so there is no shared Apideck application.",
+      "authentication_note": "A WebserviceAccessKey; not OAuth, and no redirect for your consumer to complete.",
       "beta": true,
+      "consumer_access_level": "A user with the Portal administrator or Management role — only those roles can create web service keys.",
+      "costs": "Free to 1,000 calls/day. Above that: EUR 10.50/month for 1,001-5,000 calls/day, EUR 105/month for 5,001-10,000 — added by the consumer's accountant.",
       "difficulty": "moderate",
+      "difficulty_reason": "API key authentication over SOAP",
+      "environment_notes": [
+        {
+          "description": "Testing and production share the same credentials — Yuki has no separate host for either. Test against a real Yuki administration you control, and pick the region (Netherlands or Belgium) that matches it. Treat everything you write as production data.",
+          "environment": "Single environment"
+        }
+      ],
+      "external_guides": [
+        {
+          "source": "Yuki",
+          "title": "Set up web services in the portal",
+          "url": "https://support.yuki.nl/en/support/solutions/articles/80000788031-set-up-web-services-in-portal"
+        },
+        {
+          "source": "Yuki",
+          "title": "Yuki API documentation",
+          "url": "https://support.yuki.be/en/support/solutions/articles/80000787603-yuki-api-documentation"
+        }
+      ],
       "important_to_know": [
         "Turning on web service access is not something your consumer does alone — it is a domain feature their accountant or administrative office switches on. Build that hand-off into onboarding and confirm it is enabled before a consumer tries to connect.",
         "Each operation opens a Yuki session before the request itself, so one Unify call becomes two calls to Yuki. Yuki does not document whether the session call counts against the daily quota, so size capacity conservatively.",
-        "On the free Minimal bundle the Sales web service has to be added as an accountant feature on top of general web service access; the paid bundles include it. Worth confirming with a Minimal-bundle consumer before you plan an invoicing flow."
+        "On the free Minimal bundle the Sales web service has to be added as an accountant feature on top of general web service access; the paid bundles include it. Worth confirming with a Minimal-bundle consumer before you plan an invoicing flow.",
+        "Bank feed statements go into the archive as a bank file that Yuki books on its own a little later, so a created statement reads pending until Yuki has booked it, and a period sent twice is stored but silently not booked. Send each period once."
       ],
+      "partnership_note": "There is no app registration, review or partner agreement for Yuki's web services.",
       "partnership_required": false,
-      "webhooks": "No webhooks — Yuki documents no event or subscription mechanism, and this connector adds no virtual webhooks, so poll for changes.",
-      "account_type_required": "Yuki account on any bundle, including the free Minimal bundle, with web service access activated on the domain.",
+      "rate_limits": "1,000 web service calls per day per domain; paid add-ons raise the ceiling.",
       "responsibility_matrix": [
         {
           "apideck": "Docs provided",
@@ -12768,9 +12794,9 @@
           "consumer": "✓ Consumer or their accountant"
         },
         {
-          "consumer": "✓",
+          "apideck": "Docs provided",
           "area": "Generate Web Service Key & Set Its Access Rights",
-          "apideck": "Docs provided"
+          "consumer": "✓"
         },
         {
           "area": "Supply Key, Administration ID & Region",
@@ -12778,49 +12804,54 @@
           "customer": "✓ Surfaces the connection form"
         },
         {
+          "apideck": "Maintains connector & handles session authentication",
           "area": "Build via Unified API",
-          "customer": "✓",
-          "apideck": "Maintains connector & handles session authentication"
+          "customer": "✓"
         },
         {
-          "customer": "✓ Via dashboard",
-          "consumer": "✓ Can revoke the key anytime",
+          "apideck": "Logs & alerts",
           "area": "Monitor Connections",
-          "apideck": "Logs & alerts"
+          "consumer": "✓ Can revoke the key anytime",
+          "customer": "✓ Via dashboard"
         }
       ],
-      "rate_limits": "1,000 web service calls per day per domain; paid add-ons raise the ceiling.",
-      "partnership_note": "There is no app registration, review or partner agreement for Yuki's web services.",
-      "consumer_access_level": "A user with the Portal administrator or Management role — only those roles can create web service keys.",
+      "sandbox_available": false,
+      "sandbox_note": "Yuki's free Minimal bundle is a real account, not a test environment; there is no developer sandbox or demo administration.",
       "supported_resource_categories": [
         {
+          "name": "Core Financial",
           "resources": [
             "ledger-accounts",
             "journal-entries",
             "tax-rates"
-          ],
-          "name": "Core Financial"
+          ]
         },
         {
+          "name": "Accounts Receivable",
           "resources": [
             "customers",
             "invoices"
-          ],
-          "name": "Accounts Receivable"
+          ]
         },
         {
+          "name": "Accounts Payable",
           "resources": [
             "suppliers",
             "bills"
-          ],
-          "name": "Accounts Payable"
+          ]
         },
         {
+          "name": "Organizational",
           "resources": [
             "company-info",
             "tracking-categories"
-          ],
-          "name": "Organizational"
+          ]
+        },
+        {
+          "name": "Banking",
+          "resources": [
+            "bank-feed-statements"
+          ]
         },
         {
           "name": "Other",
@@ -12829,31 +12860,7 @@
           ]
         }
       ],
-      "authentication_note": "A WebserviceAccessKey; not OAuth, and no redirect for your consumer to complete.",
-      "sandbox_available": false,
-      "apideck_credentials_note": "Each consumer connects with their own web service key, so there is no shared Apideck application.",
-      "sandbox_note": "Yuki's free Minimal bundle is a real account, not a test environment; there is no developer sandbox or demo administration.",
-      "environment_notes": [
-        {
-          "description": "Testing and production share the same credentials — Yuki has no separate host for either. Test against a real Yuki administration you control, and pick the region (Netherlands or Belgium) that matches it. Treat everything you write as production data.",
-          "environment": "Single environment"
-        }
-      ],
-      "difficulty_reason": "API key authentication over SOAP",
-      "external_guides": [
-        {
-          "title": "Set up web services in the portal",
-          "url": "https://support.yuki.nl/en/support/solutions/articles/80000788031-set-up-web-services-in-portal",
-          "source": "Yuki"
-        },
-        {
-          "title": "Yuki API documentation",
-          "url": "https://support.yuki.be/en/support/solutions/articles/80000787603-yuki-api-documentation",
-          "source": "Yuki"
-        }
-      ],
-      "apideck_credentials_available": false,
-      "costs": "Free to 1,000 calls/day. Above that: EUR 10.50/month for 1,001-5,000 calls/day, EUR 105/month for 5,001-10,000 — added by the consumer's accountant."
+      "webhooks": "No webhooks — Yuki documents no event or subscription mechanism, and this connector adds no virtual webhooks, so poll for changes."
     },
     "zendesk-sell": {
       "important_to_know": [

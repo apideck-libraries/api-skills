@@ -53,6 +53,7 @@ Access Yuki through Apideck's **Accounting** unified API — one of 34 Accountin
 - Turning on web service access is not something your consumer does alone — it is a domain feature their accountant or administrative office switches on. Build that hand-off into onboarding and confirm it is enabled before a consumer tries to connect.
 - Each operation opens a Yuki session before the request itself, so one Unify call becomes two calls to Yuki. Yuki does not document whether the session call counts against the daily quota, so size capacity conservatively.
 - On the free Minimal bundle the Sales web service has to be added as an accountant feature on top of general web service access; the paid bundles include it. Worth confirming with a Minimal-bundle consumer before you plan an invoicing flow.
+- Bank feed statements go into the archive as a bank file that Yuki books on its own a little later, so a created statement reads pending until Yuki has booked it, and a period sent twice is stored but silently not booked. Send each period once.
 
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/yuki` (`overview` field) is the live, authoritative version.
 
