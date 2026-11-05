@@ -51,7 +51,7 @@ Access Sage Intacct REST through Apideck's **Proxy API** with managed Vault auth
 
 **Important to know:**
 
-- API tokens are session-bound: signing in to the Sage Intacct web UI as the authorizing user invalidates the token (error REST-2102). Authorize with a dedicated integration user that nobody signs in as interactively.
+- Authorizing a second connection with the same Sage user on the same OAuth application can break the first one at its next token refresh. Authorize each connection with a different Sage user.
 - Financial reports stay exclusive to the sage-intacct (XML) connector: REST's reporting endpoints only generate downloadable files asynchronously, never queryable data — a permanent platform gap. Other uncovered Sage endpoints remain reachable via the Apideck Proxy API.
 - The two Sage Intacct connectors are not interchangeable and nothing migrates automatically: switching means authorizing a brand-new connection, and record identifiers do not carry over. Choose one before you build.
 - Two module permissions are easy to miss: quotes need Order Entry — without it, listing returns 403 and creating fails with an error that reads like a company misconfiguration — and customer refunds stay hidden until the feature is enabled in Accounts Receivable.
