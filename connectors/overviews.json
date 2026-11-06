@@ -10557,46 +10557,82 @@
       "important_to_know": []
     },
     "salesforce": {
-      "difficulty": "moderate",
-      "apideck_credentials_note": "The OAuth consent screen shows \"Apideck\" while testing; use your own External Client App in production.",
-      "partnership_note": "A free, self-service Salesforce Developer account is all you need — no partner program or app review.",
-      "authentication_note": "Authorization Code flow with PKCE.",
-      "partnership_portal_name": "Salesforce Developers",
-      "sandbox_url": "https://www.salesforce.com/products/free-trial/developer/",
-      "partnership_url": "https://www.salesforce.com/products/free-trial/developer/",
+      "account_type_required": "Salesforce edition with API access (Enterprise, Unlimited, Performance or Developer; Professional via paid add-on)",
       "apideck_credentials_available": true,
+      "apideck_credentials_note": "The OAuth consent screen shows \"Apideck\" while testing; use your own External Client App in production.",
+      "authentication_note": "Authorization Code flow with PKCE.",
       "consumer_access_level": "User with the \"API Enabled\" permission (System Administrator profile includes it)",
+      "costs": "No Salesforce-side fees to build or test; additional daily API calls can be bought from Salesforce.",
+      "difficulty": "moderate",
+      "difficulty_reason": "Edition-Gated API Access",
       "environment_notes": [
         {
-          "environment": "Sandbox",
-          "description": "Development and testing. A free Developer Edition org is standalone, ships with sample data, and authenticates via login.salesforce.com just like production. A consumer's own Salesforce sandbox (Developer, Developer Pro, Partial Copy or Full Copy of a paid org) authenticates via test.salesforce.com instead — for those the consumer selects Sandbox in the connection's Environment setting. One set of External Client App credentials is configured once in Apideck and used for both hosts — the Environment setting only chooses whether authorization goes through login.salesforce.com or test.salesforce.com."
+          "description": "Development and testing. A free Developer Edition org is standalone, ships with sample data, and authenticates via login.salesforce.com just like production. A consumer's own Salesforce sandbox (Developer, Developer Pro, Partial Copy or Full Copy of a paid org) authenticates via test.salesforce.com instead — for those the consumer selects Sandbox in the connection's Environment setting. One set of External Client App credentials is configured once in Apideck and used for both hosts — the Environment setting only chooses whether authorization goes through login.salesforce.com or test.salesforce.com.",
+          "environment": "Sandbox"
         },
         {
           "description": "Live consumer data. The consumer authorizes via OAuth with their own Salesforce login, and the org's instance URL is captured automatically during authorization. To test against a consumer's real configuration rather than sample data, ask them to connect a Salesforce sandbox copy of their org.",
           "environment": "Production"
         }
       ],
-      "difficulty_reason": "Edition-Gated API Access",
-      "webhooks": "Virtual webhooks — contacts, companies, leads, opportunities, activities, notes, pipelines and users (created/updated)",
       "important_to_know": [
         "Starter Suite and the legacy Group and Essentials editions have no API access at all, so consumers on those editions cannot connect until they upgrade. Check your consumers' editions early.",
         "Since Spring '26 (March 2026) Salesforce blocks creation of new Connected Apps by default — new setups use an External Client App. Existing Connected Apps keep working, but migrating one reissues its Consumer Key and Secret, so the credentials stored in Apideck must be updated.",
         "The connecting user's profile decides what the API can see: Salesforce enforces sharing rules and field-level security, so connect with a user whose profile can see the records you need; a narrowly-scoped user returns partial data rather than an error.",
-        "Refresh tokens never expire by default, but an org admin can apply an inactivity or fixed-duration refresh-token policy — when they do, affected consumers are dropped and have to authorize again.",
+        "Salesforce expires refresh tokens after 30 idle days in every org; Apideck refreshes them in the background so idle connections stay alive. A stricter refresh-token policy set by an org admin can still end a connection sooner and needs re-authorization.",
         "Virtual webhooks poll Salesforce on the consumer's behalf, so change detection draws on the same daily API quota as your reads. An org that exhausts the quota returns 403 REQUEST_LIMIT_EXCEEDED for both until usage falls back under the limit."
       ],
-      "costs": "No Salesforce-side fees to build or test; additional daily API calls can be bought from Salesforce.",
-      "sandbox_note": "Free Developer Edition org: 2 user licenses, 5 MB data / 20 MB file storage; create more orgs as needed.",
+      "partnership_note": "A free, self-service Salesforce Developer account is all you need — no partner program or app review.",
+      "partnership_portal_name": "Salesforce Developers",
       "partnership_required": false,
+      "partnership_url": "https://www.salesforce.com/products/free-trial/developer/",
       "rate_limits": "100,000 requests/24 hours (Enterprise) plus 1,000 per user license; 25 concurrent long-running requests.",
+      "responsibility_matrix": [
+        {
+          "area": "Create Salesforce Developer Account",
+          "customer": "✓ (or use Apideck credentials)"
+        },
+        {
+          "apideck": "Docs provided",
+          "area": "Create External Client App",
+          "customer": "✓ (or use Apideck credentials)"
+        },
+        {
+          "area": "Add Credentials to Apideck",
+          "customer": "✓ (or use Apideck credentials)"
+        },
+        {
+          "apideck": "Handles OAuth flow",
+          "area": "Authorize Connection (OAuth)",
+          "consumer": "✓"
+        },
+        {
+          "apideck": "Maintains connector",
+          "area": "Build via Unified API",
+          "customer": "✓"
+        },
+        {
+          "apideck": "✓ Automatic",
+          "area": "Token Refresh"
+        },
+        {
+          "apideck": "Logs & alerts",
+          "area": "Monitor Connections",
+          "consumer": "✓ Can revoke anytime",
+          "customer": "✓ Via Dashboard"
+        }
+      ],
+      "sandbox_available": true,
+      "sandbox_note": "Free Developer Edition org: 2 user licenses, 5 MB data / 20 MB file storage; create more orgs as needed.",
+      "sandbox_url": "https://www.salesforce.com/products/free-trial/developer/",
       "supported_resource_categories": [
         {
+          "name": "Companies & Contacts",
           "resources": [
             "companies",
             "contacts",
             "users"
-          ],
-          "name": "Companies & Contacts"
+          ]
         },
         {
           "name": "Sales Pipeline",
@@ -10615,51 +10651,15 @@
           ]
         },
         {
+          "name": "Custom Objects & Lists",
           "resources": [
             "custom-objects",
             "custom-object-schemas",
             "lists"
-          ],
-          "name": "Custom Objects & Lists"
+          ]
         }
       ],
-      "account_type_required": "Salesforce edition with API access (Enterprise, Unlimited, Performance or Developer; Professional via paid add-on)",
-      "sandbox_available": true,
-      "responsibility_matrix": [
-        {
-          "area": "Create Salesforce Developer Account",
-          "customer": "✓ (or use Apideck credentials)"
-        },
-        {
-          "customer": "✓ (or use Apideck credentials)",
-          "area": "Create External Client App",
-          "apideck": "Docs provided"
-        },
-        {
-          "customer": "✓ (or use Apideck credentials)",
-          "area": "Add Credentials to Apideck"
-        },
-        {
-          "area": "Authorize Connection (OAuth)",
-          "consumer": "✓",
-          "apideck": "Handles OAuth flow"
-        },
-        {
-          "area": "Build via Unified API",
-          "customer": "✓",
-          "apideck": "Maintains connector"
-        },
-        {
-          "area": "Token Refresh",
-          "apideck": "✓ Automatic"
-        },
-        {
-          "apideck": "Logs & alerts",
-          "consumer": "✓ Can revoke anytime",
-          "customer": "✓ Via Dashboard",
-          "area": "Monitor Connections"
-        }
-      ]
+      "webhooks": "Virtual webhooks — contacts, companies, leads, opportunities, activities, notes, pipelines and users (created/updated)"
     },
     "sap-successfactors": {
       "account_type_required": "SuccessFactors instance with OData API access enabled — Employee Central for HRIS, Recruiting for ATS.",

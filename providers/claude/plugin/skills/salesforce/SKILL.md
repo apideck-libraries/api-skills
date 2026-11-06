@@ -48,7 +48,7 @@ Access Salesforce through Apideck's **CRM** unified API — one of 21 CRM connec
 - Starter Suite and the legacy Group and Essentials editions have no API access at all, so consumers on those editions cannot connect until they upgrade. Check your consumers' editions early.
 - Since Spring '26 (March 2026) Salesforce blocks creation of new Connected Apps by default — new setups use an External Client App. Existing Connected Apps keep working, but migrating one reissues its Consumer Key and Secret, so the credentials stored in Apideck must be updated.
 - The connecting user's profile decides what the API can see: Salesforce enforces sharing rules and field-level security, so connect with a user whose profile can see the records you need; a narrowly-scoped user returns partial data rather than an error.
-- Refresh tokens never expire by default, but an org admin can apply an inactivity or fixed-duration refresh-token policy — when they do, affected consumers are dropped and have to authorize again.
+- Salesforce expires refresh tokens after 30 idle days in every org; Apideck refreshes them in the background so idle connections stay alive. A stricter refresh-token policy set by an org admin can still end a connection sooner and needs re-authorization.
 - Virtual webhooks poll Salesforce on the consumer's behalf, so change detection draws on the same daily API quota as your reads. An org that exhausts the quota returns 403 REQUEST_LIMIT_EXCEEDED for both until usage falls back under the limit.
 
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/salesforce` (`overview` field) is the live, authoritative version.
