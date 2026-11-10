@@ -10188,7 +10188,8 @@
         "Sage titles this surface \"About the XML API (Legacy)\" and steers new work to REST. No sunset is announced and existing integrations stay supported, but legacy functions get no enhancements and individual legacy objects have been retired — weigh that on a long-term build.",
         "If a consumer skips authorizing your Sender ID in their company's Web Services settings, every call fails with errorno XL03000006, \"Invalid Web Services Authorization\", naming the unauthorized Sender ID.",
         "Approval process is multi-step (security questionnaire, discovery meeting, contract execution, development, API review, technical documentation, live demo call).",
-        "Multi-entity companies require the entity/location ID in API calls — misconfiguration causes data access failures."
+        "Multi-entity companies require the entity/location ID in API calls — misconfiguration causes data access failures.",
+        "Delete events are read from the company audit trail; if the Web Services user cannot read it, no delete events are sent. Customers, suppliers, items and tax rates never send deletes, and a delete can arrive twice or one sync late."
       ],
       "partnership_note": "A Sage Web Services developer license is required, via the Marketplace Partner Program. Apideck facilitates the introduction to Sage's Marketplace Partner team.",
       "partnership_portal_name": "Sage Intacct Marketplace",
@@ -10301,7 +10302,7 @@
           ]
         }
       ],
-      "webhooks": "Virtual webhooks — created and updated events across 9 resource families; deletes are not detected. Sage Intacct has no native webhooks."
+      "webhooks": "Virtual webhooks — created and updated events across 9 resource families; deleted events for invoices, bills, payments, bill payments and ledger accounts."
     },
     "sage-intacct-rest": {
       "account_type_required": "Sage Intacct company with a Web Services subscription",
@@ -10475,7 +10476,7 @@
           ]
         }
       ],
-      "webhooks": "Virtual webhooks — created and updated events across 13 accounting resources; deletes are not detected. Sage Intacct has no native webhooks."
+      "webhooks": "Virtual webhooks — created and updated events on 13 resources; deleted events for invoices, bills, payments, bill payments, credit notes, GL accounts, classes."
     },
     "salesflare": {
       "consumer_access_level": "A Salesflare user who can create an API key in Settings.",

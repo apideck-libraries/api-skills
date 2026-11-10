@@ -42,7 +42,7 @@ Access Sage Intacct through Apideck's **Accounting** unified API — one of 34 A
 - **Costs:** Sage Intacct Marketplace Partner Program membership is $2,500/year, plus $0.015 per API call once your consumers are live. Effective August 2026.
 - **Rate limits:** Sage Performance Tier 1 (default): 100K API transactions/month. One API plus one offline report job per company; a third waits 30s and errors if no spot opens.
 - **Authentication:** Sender ID plus each company's Web Services login (Company ID, User ID, password), exchanged for an XML Web Services session; not OAuth.
-- **Webhooks:** Virtual webhooks — created and updated events across 9 resource families; deletes are not detected. Sage Intacct has no native webhooks.
+- **Webhooks:** Virtual webhooks — created and updated events across 9 resource families; deleted events for invoices, bills, payments, bill payments and ledger accounts.
 
 **Important to know:**
 
@@ -50,6 +50,7 @@ Access Sage Intacct through Apideck's **Accounting** unified API — one of 34 A
 - If a consumer skips authorizing your Sender ID in their company's Web Services settings, every call fails with errorno XL03000006, "Invalid Web Services Authorization", naming the unauthorized Sender ID.
 - Approval process is multi-step (security questionnaire, discovery meeting, contract execution, development, API review, technical documentation, live demo call).
 - Multi-entity companies require the entity/location ID in API calls — misconfiguration causes data access failures.
+- Delete events are read from the company audit trail; if the Web Services user cannot read it, no delete events are sent. Customers, suppliers, items and tax rates never send deletes, and a delete can arrive twice or one sync late.
 
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/sage-intacct` (`overview` field) is the live, authoritative version.
 
