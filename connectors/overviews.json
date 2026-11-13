@@ -1180,6 +1180,29 @@
       "authentication_note": "Authorization Code flow via the Microsoft identity platform, reading directory data through Microsoft Graph."
     },
     "bamboohr": {
+      "account_type_required": "Any BambooHR account (Core, Pro or Elite).",
+      "apideck_credentials_available": false,
+      "apideck_credentials_note": "Each consumer generates and supplies their own API key and subdomain.",
+      "authentication_note": "The consumer's API key over HTTP Basic, not OAuth, plus their BambooHR subdomain.",
+      "consumer_access_level": "Account Owner recommended, otherwise a custom access level carrying the permissions your integration needs.",
+      "costs": "No separate API fee, and no cost to you — API access is included in each consumer's own BambooHR subscription.",
+      "difficulty": "moderate",
+      "difficulty_reason": "API key authentication, with no partnership or app review",
+      "environment_notes": [
+        {
+          "description": "BambooHR uses one set of credentials, an API key plus the account subdomain, for both testing and production, so there is no separate sandbox with its own credentials. To test, use a free BambooHR trial, a Marketplace Program sandbox account, or the consumer's own account. Apideck cannot supply temporary shared test credentials for BambooHR, because the connector has no Apideck-hosted application. Take care when testing against a live account holding real employee records.",
+          "environment": "Single environment"
+        }
+      ],
+      "important_to_know": [
+        "An API key carries the permissions of the BambooHR user who created it. An under-privileged key returns a narrower set of employees and blank fields instead of an error, so missing data reads as a mapping bug rather than a permissions problem.",
+        "BambooHR has deprecated its custom-report endpoint in favour of its Datasets API but still serves it. Employee lists read report fields per page, so a page makes two BambooHR requests once field and list metadata are cached (refreshed every five minutes)."
+      ],
+      "partnership_note": "Joining the optional BambooHR Marketplace Program adds a sandbox account and a Marketplace listing.",
+      "partnership_portal_name": "BambooHR Apps Marketplace Program",
+      "partnership_required": false,
+      "partnership_url": "https://www.bamboohr.com/partner-programs/marketplace-program",
+      "rate_limits": "Not published; BambooHR throttles at its discretion.",
       "responsibility_matrix": [
         {
           "area": "BambooHR account",
@@ -1187,57 +1210,35 @@
           "customer": "Share the access-level requirements"
         },
         {
-          "consumer": "✓",
+          "apideck": "Instructions provided",
           "area": "Generate the API key",
-          "apideck": "Instructions provided"
+          "consumer": "✓"
         },
         {
-          "customer": "Implement Vault",
-          "consumer": "✓",
+          "apideck": "Stores credentials securely",
           "area": "Enter API key and subdomain in Vault",
-          "apideck": "Stores credentials securely"
+          "consumer": "✓",
+          "customer": "Implement Vault"
         },
         {
-          "area": "Change detection",
-          "apideck": "✓ Polls via virtual webhooks"
+          "apideck": "✓ Polls via virtual webhooks",
+          "area": "Change detection"
         },
         {
-          "customer": "✓",
           "apideck": "Maintains the connector",
-          "area": "Build via the Unified API"
+          "area": "Build via the Unified API",
+          "customer": "✓"
         },
         {
-          "area": "Monitor connections",
           "apideck": "Logs and alerts",
+          "area": "Monitor connections",
           "consumer": "Can revoke the API key",
           "customer": "✓ Via the Apideck Dashboard"
         }
       ],
-      "consumer_access_level": "Account Owner recommended, otherwise a custom access level carrying the permissions your integration needs.",
-      "difficulty_reason": "API key authentication, with no partnership or app review",
-      "environment_notes": [
-        {
-          "environment": "Single environment",
-          "description": "BambooHR uses one set of credentials, an API key plus the account subdomain, for both testing and production, so there is no separate sandbox with its own credentials. To test, use a free BambooHR trial, a Marketplace Program sandbox account, or the consumer's own account. Apideck cannot supply temporary shared test credentials for BambooHR, because the connector has no Apideck-hosted application. Take care when testing against a live account holding real employee records."
-        }
-      ],
-      "partnership_note": "Joining the optional BambooHR Marketplace Program adds a sandbox account and a Marketplace listing.",
-      "account_type_required": "Any BambooHR account (Core, Pro or Elite).",
-      "partnership_required": false,
-      "sandbox_note": "Sign up for a free BambooHR trial and test against it. Joining the Marketplace Program additionally provides a dedicated sandbox account.",
       "sandbox_available": true,
-      "rate_limits": "Not published; BambooHR throttles at its discretion.",
+      "sandbox_note": "Sign up for a free BambooHR trial and test against it. Joining the Marketplace Program additionally provides a dedicated sandbox account.",
       "sandbox_url": "https://www.bamboohr.com/signup/",
-      "partnership_url": "https://www.bamboohr.com/partner-programs/marketplace-program",
-      "apideck_credentials_note": "Each consumer generates and supplies their own API key and subdomain.",
-      "costs": "No separate API fee, and no cost to you — API access is included in each consumer's own BambooHR subscription.",
-      "important_to_know": [
-        "An API key carries the permissions of the BambooHR user who created it. An under-privileged key returns a narrower set of employees and blank fields instead of an error, so missing data reads as a mapping bug rather than a permissions problem.",
-        "BambooHR has retired its custom-report endpoint in favour of its Datasets API. This matters only if you planned to pull report-shaped data; the unified HRIS resources are unaffected."
-      ],
-      "partnership_portal_name": "BambooHR Apps Marketplace Program",
-      "webhooks": "Virtual webhooks (Apideck polls BambooHR for employee created, updated and terminated events)",
-      "apideck_credentials_available": false,
       "supported_resource_categories": [
         {
           "name": "People",
@@ -1262,8 +1263,7 @@
           ]
         }
       ],
-      "difficulty": "moderate",
-      "authentication_note": "The consumer's API key over HTTP Basic, not OAuth, plus their BambooHR subdomain."
+      "webhooks": "Virtual webhooks (Apideck polls BambooHR for employee created, updated and terminated events)"
     },
     "banqup": {
       "rate_limits": "No published numeric limit. Limits apply per credential set; raising one is arranged with a banqUP contact and may require a higher plan.",
@@ -5354,32 +5354,25 @@
       ]
     },
     "hubspot": {
-      "apideck_credentials_note": "For testing: OAuth shows \"Apideck\" as the requesting application; production integrations use your own HubSpot app.",
-      "partnership_url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
-      "partnership_note": "Listing in the App Marketplace makes you a HubSpot Technology Partner and adds a free listing page; developer test accounts need no partnership.",
-      "authentication_note": "Authorization Code flow.",
-      "difficulty": "straightforward",
+      "account_type_required": "Any HubSpot edition, including the free CRM.",
       "apideck_credentials_available": true,
-      "sandbox_available": true,
-      "partnership_portal_name": "HubSpot App Marketplace",
-      "sandbox_url": "https://developers.hubspot.com/docs/getting-started/account-types",
-      "important_to_know": [
-        "The scopes configured on your HubSpot app must match exactly the scopes Apideck requests during OAuth. Any mismatch fails consumer authorization with an insufficient-scopes error, so update the app whenever the connector's scope set changes.",
-        "HubSpot retired its legacy app-building flow in 2026 — legacy developer accounts began migrating on March 9, 2026, and legacy public app creation was disabled for all accounts on June 23, 2026. New apps are built on the Projects-based platform; existing apps keep working.",
-        "Webhook subscriptions are app-level, not per-connection: one set, registered manually in your HubSpot app, delivers events for every connected consumer — you cannot vary event coverage per consumer."
-      ],
+      "apideck_credentials_note": "For testing: OAuth shows \"Apideck\" as the requesting application; production integrations use your own HubSpot app.",
+      "authentication_note": "Authorization Code flow.",
+      "consumer_access_level": "The authorizing user needs the App Marketplace Access permission (super admins have it by default).",
+      "costs": "None — HubSpot developer tooling and public apps are free to build and distribute.",
+      "difficulty": "straightforward",
       "difficulty_reason": "Self-Service OAuth + Free Developer Tooling — No Partnership or App Review",
       "environment_notes": [
         {
-          "environment": "Single environment (shared credentials)",
-          "description": "HubSpot uses the same app credentials for testing and production, and the API host is always api.hubapi.com. Test with a free developer test account (up to 10 per HubSpot account; expires after 90 days without API activity, renewable), your own HubSpot account, or Apideck's temporary shared test credentials (request access through Apideck Support). Be careful when testing against production data."
+          "description": "HubSpot uses the same app credentials for testing and production, and the API host is always api.hubapi.com. Test with a free developer test account (up to 10 per HubSpot account; expires after 90 days without API activity, renewable), your own HubSpot account, or Apideck's temporary shared test credentials (request access through Apideck Support). Be careful when testing against production data.",
+          "environment": "Single environment (shared credentials)"
         }
       ],
       "external_guides": [
         {
           "source": "HubSpot",
-          "url": "https://developers.hubspot.com/docs/developer-tooling/platform/usage-guidelines",
-          "title": "API usage guidelines and rate limits"
+          "title": "API usage guidelines and rate limits",
+          "url": "https://developers.hubspot.com/docs/developer-tooling/platform/usage-guidelines"
         },
         {
           "source": "HubSpot",
@@ -5387,22 +5380,31 @@
           "url": "https://developers.hubspot.com/docs/api-reference/latest/authentication/manage-oauth-tokens"
         },
         {
-          "title": "App Marketplace listing requirements",
           "source": "HubSpot",
+          "title": "App Marketplace listing requirements",
           "url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/listing-your-app/app-marketplace-listing-requirements"
         },
         {
-          "url": "https://developers.hubspot.com/changelog/legacy-public-app-creation-sunset",
           "source": "HubSpot",
-          "title": "Legacy public app creation sunset"
+          "title": "Legacy public app creation sunset",
+          "url": "https://developers.hubspot.com/changelog/legacy-public-app-creation-sunset"
         }
       ],
+      "important_to_know": [
+        "The scopes configured on your HubSpot app must match exactly the scopes Apideck requests during OAuth. Any mismatch fails consumer authorization with an insufficient-scopes error, so update the app whenever the connector's scope set changes.",
+        "HubSpot retired its legacy app-building flow in 2026 — legacy developer accounts began migrating on March 9, 2026, and legacy public app creation was disabled for all accounts on June 23, 2026. New apps are built on the Projects-based platform; existing apps keep working.",
+        "Webhook subscriptions are app-level, not per-connection: one set, registered manually in your HubSpot app, delivers events for every connected consumer — you cannot vary event coverage per consumer."
+      ],
+      "partnership_note": "Listing in the App Marketplace makes you a HubSpot Technology Partner and adds a free listing page; developer test accounts need no partnership.",
+      "partnership_portal_name": "HubSpot App Marketplace",
       "partnership_required": false,
+      "partnership_url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/apply-for-certification/certification-requirements",
+      "rate_limits": "110 requests per 10 seconds per connected account for publicly-distributed OAuth apps; the CRM Search API is separate at 5 requests/second.",
       "responsibility_matrix": [
         {
           "apideck": "Docs provided",
-          "customer": "✓",
-          "area": "Create HubSpot App"
+          "area": "Create HubSpot App",
+          "customer": "✓"
         },
         {
           "apideck": "Docs provided",
@@ -5415,8 +5417,8 @@
         },
         {
           "apideck": "Receives & forwards events",
-          "customer": "✓ (in your HubSpot app)",
-          "area": "Register Webhook Subscriptions"
+          "area": "Register Webhook Subscriptions",
+          "customer": "✓ (in your HubSpot app)"
         },
         {
           "apideck": "Handles OAuth flow",
@@ -5424,33 +5426,32 @@
           "consumer": "✓"
         },
         {
+          "apideck": "Maintains connector",
           "area": "Build via Unified API",
-          "customer": "✓",
-          "apideck": "Maintains connector"
+          "customer": "✓"
         },
         {
-          "area": "Token Refresh",
-          "apideck": "✓ Automatic"
+          "apideck": "✓ Automatic",
+          "area": "Token Refresh"
         },
         {
-          "consumer": "✓ Can revoke anytime",
-          "customer": "✓ Via Apideck Dashboard",
           "apideck": "Logs & alerts",
-          "area": "Monitor Connections"
+          "area": "Monitor Connections",
+          "consumer": "✓ Can revoke anytime",
+          "customer": "✓ Via Apideck Dashboard"
         }
       ],
+      "sandbox_available": true,
       "sandbox_note": "Free developer test accounts, self-service from your regular HubSpot account (up to 10).",
-      "consumer_access_level": "The authorizing user needs the App Marketplace Access permission (super admins have it by default).",
-      "webhooks": "Native — contact, company and opportunity created/updated/deleted events; no engagement (activity or note) events.",
-      "account_type_required": "Any HubSpot edition, including the free CRM.",
+      "sandbox_url": "https://developers.hubspot.com/docs/getting-started/account-types",
       "supported_resource_categories": [
         {
+          "name": "Contacts & Companies",
           "resources": [
             "contacts",
             "leads",
             "companies"
-          ],
-          "name": "Contacts & Companies"
+          ]
         },
         {
           "name": "Sales Pipeline",
@@ -5469,11 +5470,11 @@
           ]
         },
         {
+          "name": "Lists & Segments",
           "resources": [
             "lists",
             "list-members"
-          ],
-          "name": "Lists & Segments"
+          ]
         },
         {
           "name": "Users & Custom Fields",
@@ -5483,8 +5484,7 @@
           ]
         }
       ],
-      "rate_limits": "110 requests per 10 seconds per connected account for publicly-distributed OAuth apps; the CRM Search API is separate at 5 requests/second.",
-      "costs": "None — HubSpot developer tooling and public apps are free to build and distribute."
+      "webhooks": "Native — contact, company and opportunity created/updated/deleted events; no engagement (activity or note) events."
     },
     "humaans-io": {
       "account_type_required": "Humaans account on the Growth plan or above.",
@@ -6610,25 +6610,46 @@
       ]
     },
     "linear": {
-      "webhooks": "Native - ticket created, updated and deleted.",
-      "partnership_note": "Linear reviews an application only if you choose to submit it to the Linear integration directory, which is optional.",
+      "account_type_required": "Any Linear plan. Creating the OAuth application needs a workspace admin; the person who connects does not.",
+      "apideck_credentials_available": true,
+      "apideck_credentials_note": "Consumers can connect before you register a Linear application of your own.",
+      "authentication_note": "Authorization Code flow.",
+      "consumer_access_level": "The connection reaches what the authorising Linear user can already see, across the workspace's public teams.",
       "costs": "No separate charge for API access. Linear includes it on every plan, the free one included.",
-      "external_guides": [
+      "difficulty": "straightforward",
+      "difficulty_reason": "Self-Service OAuth App - No Linear Review, No Partnership, Free Workspace Sufficient",
+      "environment_notes": [
         {
-          "url": "https://linear.app/developers/oauth-2-0-authentication",
-          "source": "Linear",
-          "title": "Linear OAuth 2.0 authentication"
-        },
-        {
-          "url": "https://linear.app/developers/webhooks",
-          "source": "Linear",
-          "title": "Linear webhooks"
+          "description": "The same credentials work against any Linear workspace, and one workspace is one connection. Point test connections at a second free workspace to keep test data away from live data.",
+          "environment": "Single environment"
         }
       ],
+      "external_guides": [
+        {
+          "source": "Linear",
+          "title": "Linear OAuth 2.0 authentication",
+          "url": "https://linear.app/developers/oauth-2-0-authentication"
+        },
+        {
+          "source": "Linear",
+          "title": "Linear webhooks",
+          "url": "https://linear.app/developers/webhooks"
+        }
+      ],
+      "important_to_know": [
+        "Linear attaches the webhook destination to the OAuth application itself, so events reach only an application owner running their own Linear OAuth application. Apideck's shared credentials cannot carry them.",
+        "A new Linear OAuth application is private until it is switched to public distribution. Until then every consumer outside the workspace that created it is turned away, with nothing in the authorisation flow to explain why.",
+        "Tickets and comments the integration writes land in Linear under the application's own name rather than under the person who authorised the connection. That is the opposite of Linear's default, so anyone who knows Linear will expect the other behaviour."
+      ],
+      "partnership_note": "Linear reviews an application only if you choose to submit it to the Linear integration directory, which is optional.",
+      "partnership_portal_name": "Linear workspace settings",
+      "partnership_required": false,
+      "partnership_url": "https://linear.app/settings/api/applications/new",
+      "rate_limits": "5,000 requests an hour for each connected workspace, within a budget of 2,000,000 GraphQL complexity points over the same hour.",
       "responsibility_matrix": [
         {
-          "customer": "✓ Via the Apideck Dashboard",
-          "area": "Enable the Linear Connector"
+          "area": "Enable the Linear Connector",
+          "customer": "✓ Via the Apideck Dashboard"
         },
         {
           "area": "Register a Linear OAuth Application",
@@ -6639,12 +6660,12 @@
           "consumer": "✓ In Vault"
         },
         {
-          "area": "Store and Encrypt Credentials",
-          "apideck": "✓"
+          "apideck": "✓",
+          "area": "Store and Encrypt Credentials"
         },
         {
-          "area": "Keep the Connection Authenticated",
-          "apideck": "✓ Automatic"
+          "apideck": "✓ Automatic",
+          "area": "Keep the Connection Authenticated"
         },
         {
           "apideck": "Logs and alerts",
@@ -6653,30 +6674,9 @@
           "customer": "✓ Via the Apideck Dashboard"
         }
       ],
-      "important_to_know": [
-        "Linear attaches the webhook destination to the OAuth application itself, so events reach only an application owner running their own Linear OAuth application. Apideck's shared credentials cannot carry them.",
-        "A new Linear OAuth application is private until it is switched to public distribution. Until then every consumer outside the workspace that created it is turned away, with nothing in the authorisation flow to explain why.",
-        "Tickets and comments the integration writes land in Linear under the application's own name rather than under the person who authorised the connection. That is the opposite of Linear's default, so anyone who knows Linear will expect the other behaviour."
-      ],
-      "environment_notes": [
-        {
-          "environment": "Single environment",
-          "description": "The same credentials work against any Linear workspace, and one workspace is one connection. Point test connections at a second free workspace to keep test data away from live data."
-        }
-      ],
-      "apideck_credentials_available": true,
-      "partnership_portal_name": "Linear workspace settings",
-      "apideck_credentials_note": "Consumers can connect before you register a Linear application of your own.",
-      "account_type_required": "Any Linear plan. Creating the OAuth application needs a workspace admin; the person who connects does not.",
-      "partnership_required": false,
-      "rate_limits": "5,000 requests an hour for each connected workspace, within a budget of 2,000,000 GraphQL complexity points over the same hour.",
       "sandbox_available": false,
-      "difficulty_reason": "Self-Service OAuth App - No Linear Review, No Partnership, Free Workspace Sufficient",
-      "partnership_url": "https://linear.app/settings/api/applications/new",
-      "difficulty": "straightforward",
-      "authentication_note": "Authorization Code flow.",
       "sandbox_note": "Develop against a second free Linear workspace of your own; there is no separate test environment.",
-      "consumer_access_level": "The connection reaches what the authorising Linear user can already see, across the workspace's public teams."
+      "webhooks": "Native - ticket created, updated and deleted."
     },
     "linear-multiworkspace": {
       "difficulty_reason": "Consumer-Created Personal API Key - No OAuth App, No Partnership",
