@@ -47,7 +47,7 @@ Access BambooHR through Apideck's **HRIS** unified API — one of 58 HRIS connec
 **Important to know:**
 
 - An API key carries the permissions of the BambooHR user who created it. An under-privileged key returns a narrower set of employees and blank fields instead of an error, so missing data reads as a mapping bug rather than a permissions problem.
-- BambooHR has retired its custom-report endpoint in favour of its Datasets API. This matters only if you planned to pull report-shaped data; the unified HRIS resources are unaffected.
+- BambooHR has deprecated its custom-report endpoint in favour of its Datasets API but still serves it. Employee lists read report fields per page, so a page makes two BambooHR requests once field and list metadata are cached (refreshed every five minutes).
 
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/bamboohr` (`overview` field) is the live, authoritative version.
 
