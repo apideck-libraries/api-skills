@@ -46,11 +46,13 @@ Access Rillet through Apideck's **Accounting** unified API — one of 34 Account
 - **Costs:** No API-specific fee. Rillet itself is a paid platform and does not publish pricing.
 - **Rate limits:** 60 requests per rolling one-minute window; requests above it return HTTP 429.
 - **Authentication:** Presented as a Bearer token in the Authorization header; not OAuth. Keys are scoped to a single Rillet organisation.
-- **Webhooks:** No webhooks
+- **Webhooks:** Native — registered automatically on connect; invoice, credit note, customer, bill and supplier events (created/updated/deleted).
 
 **Important to know:**
 
 - API access is not self-service. Rillet has to enable it for each organisation before any API key can be created, so your consumer starts by contacting their Rillet team rather than by opening a settings page.
+- One Apideck webhook per connection uses 1 of Rillet's 5 per organisation. If all 5 slots are already occupied by other webhooks, no events arrive until the consumer frees one and re-enables the connection.
+- Webhooks need an API key with Read-only unchecked, even when your integration only reads data. Rillet does not let a Read-only key create or remove the Apideck webhook, so a new connection made with one receives no events.
 
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/rillet` (`overview` field) is the live, authoritative version.
 

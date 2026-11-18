@@ -9848,7 +9848,9 @@
         }
       ],
       "important_to_know": [
-        "API access is not self-service. Rillet has to enable it for each organisation before any API key can be created, so your consumer starts by contacting their Rillet team rather than by opening a settings page."
+        "API access is not self-service. Rillet has to enable it for each organisation before any API key can be created, so your consumer starts by contacting their Rillet team rather than by opening a settings page.",
+        "One Apideck webhook per connection uses 1 of Rillet's 5 per organisation. If all 5 slots are already occupied by other webhooks, no events arrive until the consumer frees one and re-enables the connection.",
+        "Webhooks need an API key with Read-only unchecked, even when your integration only reads data. Rillet does not let a Read-only key create or remove the Apideck webhook, so a new connection made with one receives no events."
       ],
       "partnership_required": false,
       "rate_limits": "60 requests per rolling one-minute window; requests above it return HTTP 429.",
@@ -9881,6 +9883,12 @@
           "area": "Monitor connections",
           "consumer": "✓ Can revoke the key anytime",
           "customer": "✓ Via Dashboard"
+        },
+        {
+          "apideck": "Registers and removes the Rillet webhook, forwards events",
+          "area": "Webhooks",
+          "consumer": "Keep a Rillet webhook slot free; re-enable the connection after switching to another organisation's API key",
+          "customer": "Enable an accounting webhook in Apideck"
         }
       ],
       "sandbox_available": true,
@@ -9925,7 +9933,7 @@
           ]
         }
       ],
-      "webhooks": "No webhooks"
+      "webhooks": "Native — registered automatically on connect; invoice, credit note, customer, bill and supplier events (created/updated/deleted)."
     },
     "sage-business-cloud-accounting": {
       "account_type_required": "Active Sage Business Cloud Accounting subscription in Canada, the United Kingdom or Ireland.",
@@ -9943,7 +9951,6 @@
         }
       ],
       "important_to_know": [
-        "The connector's country setting lists seven options, but only Sage Accounting's three supported countries authenticate — choosing France, Germany, Spain or the United States fails at authorization.",
         "Every connection needs a Default Company selected before it can be used, even when the consumer's Sage login can reach only one business — the connection stays incomplete until it is set.",
         "Refresh tokens expire after 31 days and rotate on every use, so a consumer whose integration sits unused for over a month has to re-authorise.",
         "Feature and endpoint availability depends on your consumer's Sage subscription tier, so a workflow that succeeds for one consumer can fail for another on a cheaper plan."
@@ -12043,7 +12050,7 @@
       "account_type_required": "A Wave business in the US or Canada with an active Pro or Advisors subscription. This includes the business you test your own app with.",
       "apideck_credentials_available": false,
       "apideck_credentials_note": "Register your own Wave application and add its Client ID and Secret to Apideck.",
-      "authentication_note": "Authorization Code flow. Wave's API is GraphQL-only, and each connection also needs the consumer's Wave Business ID.",
+      "authentication_note": "Authorization Code flow. Wave's API is GraphQL-only; each connection is tied to one Wave business, whose ID is captured during authorisation.",
       "beta": true,
       "consumer_access_level": "Any user with access to the business can authorise the connection; Wave publishes no role requirement.",
       "costs": "Wave charges no API access fees and commits to advance notice before introducing any. The subscription requirement sits on the connecting business, not you.",
@@ -12067,7 +12074,7 @@
         "A live connection can break with nothing changing on your side. If a connected business's Wave Pro or Advisors subscription lapses, the next token refresh returns 403 and the integration stops working until the subscription is reactivated.",
         "Distributing your integration to other Wave businesses requires Wave's approval. Creating the application and testing it against your own account is self-service, but Wave's Permitted Use policy covers any integration that is not direct-to-your-own-business.",
         "Wave serves the US and Canada only, and signup from elsewhere is geo-blocked. The block sticks to the email address on the first failed attempt, so a European team cannot simply retry behind a VPN.",
-        "Connecting is not purely one-click. Alongside the OAuth authorisation, each consumer must supply their Wave Business ID — a base64 string taken from the business's Wave app URL — so your onboarding needs a step that tells them where to find it."
+        "Each connection is tied to one Wave business. Its Business ID is filled in automatically when the consumer picks a single business while authorising; only if Wave returns no business does the consumer need to paste the ID from the business's Wave app URL."
       ],
       "partnership_required": false,
       "rate_limits": "Wave publishes no rate limits; its documented error codes include no throttling or rate-limit code.",
@@ -12096,7 +12103,7 @@
         {
           "apideck": "Handles the OAuth flow",
           "area": "Authorise the connection",
-          "consumer": "✓ (and supply the Business ID)"
+          "consumer": "✓ (Business ID is captured automatically; entered by hand only if Wave returns none)"
         },
         {
           "apideck": "✓ Automatic",
@@ -12132,7 +12139,9 @@
           "resources": [
             "invoices",
             "invoice-items",
-            "customers"
+            "customers",
+            "quotes",
+            "payments"
           ]
         },
         {
@@ -12144,12 +12153,11 @@
         {
           "name": "Banking",
           "resources": [
-            "bank-accounts",
-            "bank-feed-statements"
+            "bank-accounts"
           ]
         }
       ],
-      "webhooks": "No webhooks — none surfaced by this connector, so poll for changes."
+      "webhooks": "Virtual webhooks — created and updated events: customers, suppliers, invoices, invoice items, quotes, tax rates and ledger accounts."
     },
     "wix": {
       "account_type_required": "Wix site with the Wix Stores app installed.",
