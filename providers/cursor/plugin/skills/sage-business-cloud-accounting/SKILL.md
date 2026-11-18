@@ -49,7 +49,6 @@ Access Sage Business Cloud Accounting through Apideck's **Accounting** unified A
 
 **Important to know:**
 
-- The connector's country setting lists seven options, but only Sage Accounting's three supported countries authenticate — choosing France, Germany, Spain or the United States fails at authorization.
 - Every connection needs a Default Company selected before it can be used, even when the consumer's Sage login can reach only one business — the connection stays incomplete until it is set.
 - Refresh tokens expire after 31 days and rotate on every use, so a consumer whose integration sits unused for over a month has to re-authorise.
 - Feature and endpoint availability depends on your consumer's Sage subscription tier, so a workflow that succeeds for one consumer can fail for another on a cheaper plan.

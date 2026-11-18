@@ -45,15 +45,15 @@ Access Wave through Apideck's **Accounting** unified API — one of 34 Accountin
 - **Sandbox:** not available — Test with a Wave Pro or Advisors business; Wave's authorization screen blocks Starter businesses, even the app owner's own.
 - **Costs:** Wave charges no API access fees and commits to advance notice before introducing any. The subscription requirement sits on the connecting business, not you.
 - **Rate limits:** Wave publishes no rate limits; its documented error codes include no throttling or rate-limit code.
-- **Authentication:** Authorization Code flow. Wave's API is GraphQL-only, and each connection also needs the consumer's Wave Business ID.
-- **Webhooks:** No webhooks — none surfaced by this connector, so poll for changes.
+- **Authentication:** Authorization Code flow. Wave's API is GraphQL-only; each connection is tied to one Wave business, whose ID is captured during authorisation.
+- **Webhooks:** Virtual webhooks — created and updated events: customers, suppliers, invoices, invoice items, quotes, tax rates and ledger accounts.
 
 **Important to know:**
 
 - A live connection can break with nothing changing on your side. If a connected business's Wave Pro or Advisors subscription lapses, the next token refresh returns 403 and the integration stops working until the subscription is reactivated.
 - Distributing your integration to other Wave businesses requires Wave's approval. Creating the application and testing it against your own account is self-service, but Wave's Permitted Use policy covers any integration that is not direct-to-your-own-business.
 - Wave serves the US and Canada only, and signup from elsewhere is geo-blocked. The block sticks to the email address on the first failed attempt, so a European team cannot simply retry behind a VPN.
-- Connecting is not purely one-click. Alongside the OAuth authorisation, each consumer must supply their Wave Business ID — a base64 string taken from the business's Wave app URL — so your onboarding needs a step that tells them where to find it.
+- Each connection is tied to one Wave business. Its Business ID is filled in automatically when the consumer picks a single business while authorising; only if Wave returns no business does the consumer need to paste the ID from the business's Wave app URL.
 
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/wave` (`overview` field) is the live, authoritative version.
 
