@@ -1088,12 +1088,85 @@
       "authentication_note": "Authorization Code flow."
     },
     "azure-active-directory": {
+      "account_type_required": "A Microsoft work or school account in the tenant being connected, on any Microsoft Entra ID tier.",
+      "apideck_credentials_available": false,
+      "apideck_credentials_note": "You register your own Microsoft Entra app, so the consent screen carries your own branding and verified publisher.",
+      "authentication_note": "Authorization Code flow via the Microsoft identity platform, reading directory data through Microsoft Graph.",
+      "consumer_access_level": "A Microsoft administrator, or a user in a tenant where an administrator has already consented to the directory scopes.",
+      "costs": "No separate charge: Microsoft Entra ID is included in every Microsoft 365 and Azure tenant, and Microsoft Graph has no per-call fee.",
+      "difficulty": "moderate",
+      "difficulty_reason": "Self-Service OAuth App + Approval Required",
+      "environment_notes": [
+        {
+          "description": "Microsoft Entra ID uses one set of app credentials for testing and production: there is no separate sandbox with its own client ID and secret. If your organisation already has a tenant, work against a dedicated set of test users rather than real staff records. Note that the Microsoft 365 Developer Program is not a general route to a free sandbox: Microsoft restricted it in 2024 to Visual Studio Professional and Enterprise subscribers and to certain partner programmes. Take care when testing against a live directory.",
+          "environment": "Single environment"
+        }
+      ],
+      "important_to_know": [
+        "The Graph scopes this connector requests require administrator approval in the consumer's tenant, so design your onboarding around an administrator completing or pre-approving the authorisation. An ordinary employee cannot connect on their own.",
+        "Microsoft Entra ID is a directory, not an HR system. Field coverage depends on what each organisation maintains in its user profiles, HR data such as compensation does not exist there, and the connector is read-only, so Entra cannot be your write target for people records.",
+        "Microsoft renamed the product from Azure Active Directory to Microsoft Entra ID in 2023, but Apideck's service id remains azure-active-directory: that is the value you use in API paths and see in the Apideck Dashboard."
+      ],
+      "partnership_note": "A multi-tenant app may need Microsoft publisher verification: free, but it requires a Partner Center account, not just a Microsoft sign-in.",
+      "partnership_portal_name": "Microsoft Entra admin center",
+      "partnership_required": false,
+      "partnership_url": "https://learn.microsoft.com/en-us/entra/identity-platform/publisher-verification-overview",
+      "rate_limits": "Microsoft Graph throttles dynamically by resource and tenant size rather than by a fixed quota, under a ceiling of 130,000 requests per 10 seconds per tenant.",
+      "responsibility_matrix": [
+        {
+          "apideck": "Documentation provided",
+          "area": "Register Microsoft Entra app",
+          "customer": "✓"
+        },
+        {
+          "area": "Complete Microsoft publisher verification",
+          "customer": "✓ (multi-tenant apps)"
+        },
+        {
+          "area": "Configure Graph permissions and add credentials to Apideck",
+          "customer": "✓"
+        },
+        {
+          "area": "Grant administrator consent for the directory scopes",
+          "consumer": "✓",
+          "customer": "Design the flow around it"
+        },
+        {
+          "apideck": "Handles the OAuth flow",
+          "area": "Authorize connection (OAuth)",
+          "consumer": "✓"
+        },
+        {
+          "area": "Set the connection timezone",
+          "consumer": "✓ (optional)"
+        },
+        {
+          "apideck": "✓ Automatic",
+          "area": "Token refresh"
+        },
+        {
+          "apideck": "✓ Polls via virtual webhooks",
+          "area": "Connection sync"
+        },
+        {
+          "apideck": "Maintains the connector",
+          "area": "Build via the Unified API",
+          "customer": "✓"
+        },
+        {
+          "apideck": "Logs and alerts",
+          "area": "Monitor connections",
+          "consumer": "Can revoke consent at any time",
+          "customer": "✓ Via the Apideck Dashboard"
+        }
+      ],
+      "sandbox_available": false,
+      "sandbox_note": "Create a free Microsoft Entra tenant and populate it with test users and groups.",
       "supported_resource_categories": [
         {
           "name": "People",
           "resources": [
-            "employees",
-            "direct-reports"
+            "employees"
           ]
         },
         {
@@ -1103,81 +1176,7 @@
           ]
         }
       ],
-      "responsibility_matrix": [
-        {
-          "apideck": "Documentation provided",
-          "customer": "✓",
-          "area": "Register Microsoft Entra app"
-        },
-        {
-          "customer": "✓ (multi-tenant apps)",
-          "area": "Complete Microsoft publisher verification"
-        },
-        {
-          "customer": "✓",
-          "area": "Configure Graph permissions and add credentials to Apideck"
-        },
-        {
-          "customer": "Design the flow around it",
-          "area": "Grant administrator consent for the directory scopes",
-          "consumer": "✓"
-        },
-        {
-          "apideck": "Handles the OAuth flow",
-          "area": "Authorize connection (OAuth)",
-          "consumer": "✓"
-        },
-        {
-          "consumer": "✓ (optional)",
-          "area": "Set the connection timezone"
-        },
-        {
-          "area": "Token refresh",
-          "apideck": "✓ Automatic"
-        },
-        {
-          "area": "Connection sync",
-          "apideck": "✓ Polls via virtual webhooks"
-        },
-        {
-          "customer": "✓",
-          "area": "Build via the Unified API",
-          "apideck": "Maintains the connector"
-        },
-        {
-          "customer": "✓ Via the Apideck Dashboard",
-          "consumer": "Can revoke consent at any time",
-          "apideck": "Logs and alerts",
-          "area": "Monitor connections"
-        }
-      ],
-      "environment_notes": [
-        {
-          "environment": "Single environment",
-          "description": "Microsoft Entra ID uses one set of app credentials for testing and production: there is no separate sandbox with its own client ID and secret. If your organisation already has a tenant, work against a dedicated set of test users rather than real staff records. Note that the Microsoft 365 Developer Program is not a general route to a free sandbox: Microsoft restricted it in 2024 to Visual Studio Professional and Enterprise subscribers and to certain partner programmes. Take care when testing against a live directory."
-        }
-      ],
-      "sandbox_available": false,
-      "apideck_credentials_available": false,
-      "rate_limits": "Microsoft Graph throttles dynamically by resource and tenant size rather than by a fixed quota, under a ceiling of 130,000 requests per 10 seconds per tenant.",
-      "difficulty": "moderate",
-      "partnership_portal_name": "Microsoft Entra admin center",
-      "consumer_access_level": "A Microsoft administrator, or a user in a tenant where an administrator has already consented to the directory scopes.",
-      "partnership_note": "A multi-tenant app may need Microsoft publisher verification: free, but it requires a Partner Center account, not just a Microsoft sign-in.",
-      "costs": "No separate charge: Microsoft Entra ID is included in every Microsoft 365 and Azure tenant, and Microsoft Graph has no per-call fee.",
-      "difficulty_reason": "Self-Service OAuth App + Approval Required",
-      "account_type_required": "A Microsoft work or school account in the tenant being connected, on any Microsoft Entra ID tier.",
-      "sandbox_note": "Create a free Microsoft Entra tenant and populate it with test users and groups.",
-      "partnership_required": false,
-      "webhooks": "Virtual webhooks (Apideck polls for employee created and updated events only, no terminated event)",
-      "partnership_url": "https://learn.microsoft.com/en-us/entra/identity-platform/publisher-verification-overview",
-      "important_to_know": [
-        "The Graph scopes this connector requests require administrator approval in the consumer's tenant, so design your onboarding around an administrator completing or pre-approving the authorisation. An ordinary employee cannot connect on their own.",
-        "Microsoft Entra ID is a directory, not an HR system. Field coverage depends on what each organisation maintains in its user profiles, HR data such as compensation does not exist there, and the connector is read-only, so Entra cannot be your write target for people records.",
-        "Microsoft renamed the product from Azure Active Directory to Microsoft Entra ID in 2023, but Apideck's service id remains azure-active-directory: that is the value you use in API paths and see in the Apideck Dashboard."
-      ],
-      "apideck_credentials_note": "You register your own Microsoft Entra app, so the consent screen carries your own branding and verified publisher.",
-      "authentication_note": "Authorization Code flow via the Microsoft identity platform, reading directory data through Microsoft Graph."
+      "webhooks": "Virtual webhooks (Apideck polls for employee created and updated events only, no terminated event)"
     },
     "bamboohr": {
       "account_type_required": "Any BambooHR account (Core, Pro or Elite).",
@@ -5799,15 +5798,20 @@
       "costs": "Atlassian publishes no separate charge for API access. What a connection can reach follows the Jira Cloud plan the site is already on."
     },
     "jira-service-desk": {
+      "account_type_required": "A Jira Service Management site on Atlassian Cloud.",
+      "apideck_credentials_available": true,
+      "apideck_credentials_note": "Apideck's test credentials, for trying the connection; production connections use your own OAuth app.",
+      "authentication_note": "Authorization Code flow.",
+      "beta": true,
+      "consumer_access_level": "A Jira user on the site who can authorise the app; the connection then reaches what that user can already see.",
+      "difficulty": "moderate",
+      "difficulty_reason": "Self-Service OAuth App + No Dedicated Sandbox",
       "environment_notes": [
         {
-          "environment": "Single environment",
-          "description": "Testing and production share the same credential shape, so there is no separate test service. Connect a site you are willing to write to, and keep trial runs away from one people rely on."
+          "description": "Testing and production share the same credential shape, so there is no separate test service. Connect a site you are willing to write to, and keep trial runs away from one people rely on.",
+          "environment": "Single environment"
         }
       ],
-      "apideck_credentials_available": true,
-      "account_type_required": "A Jira Service Management site on Atlassian Cloud.",
-      "difficulty_reason": "Self-Service OAuth App + No Dedicated Sandbox",
       "external_guides": [
         {
           "source": "Atlassian",
@@ -5815,34 +5819,33 @@
           "url": "https://developer.atlassian.com/cloud/jira/service-desk/rest"
         },
         {
-          "title": "Atlassian OAuth 2.0 (3LO) apps",
           "source": "Atlassian",
+          "title": "Atlassian OAuth 2.0 (3LO) apps",
           "url": "https://developer.atlassian.com/cloud/jira/service-desk/oauth-2-authorization-code-grants-3lo-for-apps/"
         },
         {
-          "url": "https://developer.atlassian.com/cloud/jira/platform/rate-limiting/",
           "source": "Atlassian",
-          "title": "Jira Cloud rate limiting"
+          "title": "Jira Cloud rate limiting",
+          "url": "https://developer.atlassian.com/cloud/jira/platform/rate-limiting/"
         }
       ],
-      "partnership_portal_name": "Atlassian developer console",
-      "sandbox_available": false,
-      "webhooks": "No webhooks - poll for changes instead.",
       "important_to_know": [
         "Jira Service Desk is an auth-only connector: there are no unified Issue Tracking endpoints. Apideck handles the OAuth connection, and every read and write goes through the Proxy API against Atlassian's own Service Desk API shape.",
         "The hourly request quota belongs to the app, not to each connected site: every site draws from the same pool by default, so later consumers compete with earlier ones."
       ],
       "partnership_note": "Registering your own OAuth 2.0 app there gives you the client ID and secret.",
+      "partnership_portal_name": "Atlassian developer console",
+      "partnership_required": false,
       "partnership_url": "https://developer.atlassian.com/console/myapps/",
-      "sandbox_note": "Test on a free Jira Service Management site (up to three agents).",
+      "rate_limits": "65,000 points an hour, enforced since 2 March 2026, plus per-second burst limits. Listing customers on a service desk is capped at 5 requests a second.",
       "responsibility_matrix": [
         {
-          "customer": "✓",
-          "area": "Create Atlassian developer account"
+          "area": "Create Atlassian developer account",
+          "customer": "✓"
         },
         {
-          "area": "Register OAuth app, grant Service Desk scopes and set the callback URL",
           "apideck": "Docs provided",
+          "area": "Register OAuth app, grant Service Desk scopes and set the callback URL",
           "customer": "✓"
         },
         {
@@ -5850,34 +5853,30 @@
           "customer": "✓"
         },
         {
+          "apideck": "Handles OAuth flow",
           "area": "Authorise connection (OAuth)",
-          "consumer": "✓",
-          "apideck": "Handles OAuth flow"
+          "consumer": "✓"
         },
         {
-          "consumer": "✓ (only when they can reach more than one)",
+          "apideck": "✓ Resolves it automatically for a single site",
           "area": "Choose the Atlassian site",
-          "apideck": "✓ Resolves it automatically for a single site"
+          "consumer": "✓ (only when they can reach more than one)"
         },
         {
-          "customer": "✓ Builds the requests",
+          "apideck": "✓ Routes and authenticates",
           "area": "Call Jira Service Desk data via the Proxy API",
-          "apideck": "✓ Routes and authenticates"
+          "customer": "✓ Builds the requests"
         },
         {
-          "area": "Monitor connections",
-          "customer": "✓ Via the Apideck Dashboard",
           "apideck": "Logs and alerts",
-          "consumer": "✓ Can revoke at any time"
+          "area": "Monitor connections",
+          "consumer": "✓ Can revoke at any time",
+          "customer": "✓ Via the Apideck Dashboard"
         }
       ],
-      "authentication_note": "Authorization Code flow.",
-      "beta": true,
-      "difficulty": "moderate",
-      "rate_limits": "65,000 points an hour, enforced since 2 March 2026, plus per-second burst limits. Listing customers on a service desk is capped at 5 requests a second.",
-      "apideck_credentials_note": "Apideck's test credentials, for trying the connection; production connections use your own OAuth app.",
-      "consumer_access_level": "A Jira user on the site who can authorise the app; the connection then reaches what that user can already see.",
-      "partnership_required": false
+      "sandbox_available": false,
+      "sandbox_note": "Test on a free Jira Service Management site (up to three agents).",
+      "webhooks": "No webhooks - poll for changes instead."
     },
     "jobadder": {
       "consumer_access_level": "Any JobAdder user who can complete the authorisation. The connection then reaches only the data that user's account can access.",
@@ -6282,16 +6281,34 @@
       "consumer_access_level": "Kenjo admin, since only admins can generate API keys."
     },
     "lever": {
-      "external_guides": [
+      "account_type_required": "Any Lever account.",
+      "apideck_credentials_available": true,
+      "apideck_credentials_note": "OAuth consent shows Apideck as the requesting application.",
+      "authentication_note": "Authorization Code flow; Lever issues no API keys to integrations.",
+      "beta": false,
+      "consumer_access_level": "A Lever Super Admin, who authorises the connection for the whole organisation.",
+      "difficulty": "straightforward",
+      "difficulty_reason": "Apideck OAuth App Available; No Partnership Required",
+      "environment_notes": [
         {
-          "url": "https://hire.lever.co/developer/documentation",
-          "source": "Lever",
-          "title": "Lever API Documentation"
+          "description": "Lever's sandbox API at https://api.sandbox.lever.co/v1, selected per connection.",
+          "environment": "Sandbox"
         },
         {
+          "description": "Lever's production API at https://api.lever.co/v1, where live Lever organisations connect. Lever issues one OAuth app per environment, so sandbox credentials do not carry over to production.",
+          "environment": "Production"
+        }
+      ],
+      "external_guides": [
+        {
+          "source": "Lever",
+          "title": "Lever API Documentation",
+          "url": "https://hire.lever.co/developer/documentation"
+        },
+        {
+          "source": "Lever",
           "title": "Lever OAuth Guide",
-          "url": "https://hire.lever.co/developer/oauth",
-          "source": "Lever"
+          "url": "https://hire.lever.co/developer/oauth"
         },
         {
           "source": "Lever",
@@ -6299,30 +6316,46 @@
           "url": "https://hire.lever.co/developer/partner"
         }
       ],
-      "beta": false,
+      "important_to_know": [
+        "Creating an applicant requires owner_id. Lever performs every create on behalf of a Lever user (its perform_as parameter), and Apideck sends the applicant's owner_id as that user, who becomes the applicant's creator and owner.",
+        "Lever matches candidates by email: creating an applicant with an existing candidate's email adds a new opportunity to that candidate, and the existing contact details take precedence over the ones sent."
+      ],
       "partnership_note": "Only for your own OAuth app: joining gives you a client ID and secret plus an Integrator Sandbox, with production credentials after a Lever QA run-through.",
-      "difficulty_reason": "Apideck OAuth App Available; No Partnership Required",
-      "difficulty": "straightforward",
-      "environment_notes": [
+      "partnership_required": false,
+      "partnership_url": "https://www.lever.co/partnershipinterest",
+      "rate_limits": "10 requests per second steady state, with bursts up to 20 when possible.",
+      "responsibility_matrix": [
         {
-          "environment": "Sandbox",
-          "description": "Lever's sandbox API at https://api.sandbox.lever.co/v1, selected per connection."
+          "area": "Enable the Lever connector",
+          "customer": "✓ Via the Apideck Dashboard"
         },
         {
-          "environment": "Production",
-          "description": "Lever's production API at https://api.lever.co/v1, where live Lever organisations connect. Lever issues one OAuth app per environment, so sandbox credentials do not carry over to production."
+          "area": "Register your own Lever OAuth app",
+          "customer": "✓ (optional, instead of Apideck credentials)"
+        },
+        {
+          "apideck": "✓ Handles the OAuth flow",
+          "area": "Authorize the connection in Vault",
+          "consumer": "✓"
+        },
+        {
+          "apideck": "✓",
+          "area": "Store and refresh tokens"
+        },
+        {
+          "apideck": "✓ Polls Lever for changes",
+          "area": "Deliver virtual webhook events"
+        },
+        {
+          "apideck": "✓ Validates and monitors connections",
+          "area": "Monitor connections",
+          "consumer": "✓ Can revoke access in Lever settings",
+          "customer": "✓ Via the Apideck Dashboard"
         }
       ],
-      "authentication_note": "Authorization Code flow; Lever issues no API keys to integrations.",
-      "partnership_required": false,
-      "apideck_credentials_available": true,
-      "rate_limits": "10 requests per second steady state, with bursts up to 20 when possible.",
-      "sandbox_note": "An Integrator Sandbox account, issued once Lever approves your partnership interest form. Email is switched off in it, so invited users get no invitation.",
-      "webhooks": "Virtual webhooks - applicant and job created and updated events, detected by polling.",
-      "important_to_know": [],
       "sandbox_available": true,
-      "consumer_access_level": "A Lever Super Admin, who authorises the connection for the whole organisation.",
-      "account_type_required": "Any Lever account.",
+      "sandbox_note": "An Integrator Sandbox account, issued once Lever approves your partnership interest form. Email is switched off in it, so invited users get no invitation.",
+      "sandbox_url": "https://www.lever.co/partnershipinterest",
       "supported_resource_categories": [
         {
           "name": "Candidates",
@@ -6337,38 +6370,7 @@
           ]
         }
       ],
-      "apideck_credentials_note": "OAuth consent shows Apideck as the requesting application.",
-      "sandbox_url": "https://www.lever.co/partnershipinterest",
-      "responsibility_matrix": [
-        {
-          "customer": "✓ Via the Apideck Dashboard",
-          "area": "Enable the Lever connector"
-        },
-        {
-          "customer": "✓ (optional, instead of Apideck credentials)",
-          "area": "Register your own Lever OAuth app"
-        },
-        {
-          "consumer": "✓",
-          "area": "Authorize the connection in Vault",
-          "apideck": "✓ Handles the OAuth flow"
-        },
-        {
-          "area": "Store and refresh tokens",
-          "apideck": "✓"
-        },
-        {
-          "area": "Deliver virtual webhook events",
-          "apideck": "✓ Polls Lever for changes"
-        },
-        {
-          "apideck": "✓ Validates and monitors connections",
-          "customer": "✓ Via the Apideck Dashboard",
-          "consumer": "✓ Can revoke access in Lever settings",
-          "area": "Monitor connections"
-        }
-      ],
-      "partnership_url": "https://www.lever.co/partnershipinterest"
+      "webhooks": "Virtual webhooks - applicant and job created and updated events, detected by polling."
     },
     "liantis": {
       "partnership_required": true,

@@ -42,6 +42,11 @@ Access Lever through Apideck's **ATS** unified API — one of 11 ATS connectors 
 - **Authentication:** Authorization Code flow; Lever issues no API keys to integrations.
 - **Webhooks:** Virtual webhooks - applicant and job created and updated events, detected by polling.
 
+**Important to know:**
+
+- Creating an applicant requires owner_id. Lever performs every create on behalf of a Lever user (its perform_as parameter), and Apideck sends the applicant's owner_id as that user, who becomes the applicant's creator and owner.
+- Lever matches candidates by email: creating an applicant with an existing candidate's email adds a new opportunity to that candidate, and the existing contact details take precedence over the ones sent.
+
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/lever` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill
