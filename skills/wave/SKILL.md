@@ -54,6 +54,7 @@ Access Wave through Apideck's **Accounting** unified API — one of 34 Accountin
 - Distributing your integration to other Wave businesses requires Wave's approval. Creating the application and testing it against your own account is self-service, but Wave's Permitted Use policy covers any integration that is not direct-to-your-own-business.
 - Wave serves the US and Canada only, and signup from elsewhere is geo-blocked. The block sticks to the email address on the first failed attempt, so a European team cannot simply retry behind a VPN.
 - Each connection is tied to one Wave business. Its Business ID is filled in automatically when the consumer picks a single business while authorising; only if Wave returns no business does the consumer need to paste the ID from the business's Wave app URL.
+- A custom scope list saved in Apideck replaces Wave's defaults: include sales_tax:read/write, estimate:read/write and transaction:write (for expenses), then re-authorise. Without sales_tax:read, invoices and invoice items fail with FORBIDDEN, not only tax rates.
 
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/wave` (`overview` field) is the live, authoritative version.
 
