@@ -12053,7 +12053,7 @@
       "apideck_credentials_available": false,
       "apideck_credentials_note": "Register your own Wave application and add its Client ID and Secret to Apideck.",
       "authentication_note": "Authorization Code flow. Wave's API is GraphQL-only; each connection is tied to one Wave business, whose ID is captured during authorisation.",
-      "beta": true,
+      "beta": false,
       "consumer_access_level": "Any user with access to the business can authorise the connection; Wave publishes no role requirement.",
       "costs": "Wave charges no API access fees and commits to advance notice before introducing any. The subscription requirement sits on the connecting business, not you.",
       "difficulty": "moderate",
@@ -12076,7 +12076,8 @@
         "A live connection can break with nothing changing on your side. If a connected business's Wave Pro or Advisors subscription lapses, the next token refresh returns 403 and the integration stops working until the subscription is reactivated.",
         "Distributing your integration to other Wave businesses requires Wave's approval. Creating the application and testing it against your own account is self-service, but Wave's Permitted Use policy covers any integration that is not direct-to-your-own-business.",
         "Wave serves the US and Canada only, and signup from elsewhere is geo-blocked. The block sticks to the email address on the first failed attempt, so a European team cannot simply retry behind a VPN.",
-        "Each connection is tied to one Wave business. Its Business ID is filled in automatically when the consumer picks a single business while authorising; only if Wave returns no business does the consumer need to paste the ID from the business's Wave app URL."
+        "Each connection is tied to one Wave business. Its Business ID is filled in automatically when the consumer picks a single business while authorising; only if Wave returns no business does the consumer need to paste the ID from the business's Wave app URL.",
+        "A custom scope list saved in Apideck replaces Wave's defaults: include sales_tax:read/write, estimate:read/write and transaction:write (for expenses), then re-authorise. Without sales_tax:read, invoices and invoice items fail with FORBIDDEN, not only tax rates."
       ],
       "partnership_required": false,
       "rate_limits": "Wave publishes no rate limits; its documented error codes include no throttling or rate-limit code.",
