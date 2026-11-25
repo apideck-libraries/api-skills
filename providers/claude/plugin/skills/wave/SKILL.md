@@ -44,7 +44,7 @@ Access Wave through Apideck's **Accounting** unified API — one of 34 Accountin
 - **Consumer access level:** Any user with access to the business can authorise the connection; Wave publishes no role requirement.
 - **Sandbox:** not available — Test with a Wave Pro or Advisors business; Wave's authorization screen blocks Starter businesses, even the app owner's own.
 - **Costs:** Wave charges no API access fees and commits to advance notice before introducing any. The subscription requirement sits on the connecting business, not you.
-- **Rate limits:** Wave publishes no rate limits; its documented error codes include no throttling or rate-limit code.
+- **Rate limits:** About 60 writes a minute per business (observed; Wave publishes no limit). Over it, Apideck returns 429 until it resets, within a minute.
 - **Authentication:** Authorization Code flow. Wave's API is GraphQL-only; each connection is tied to one Wave business, whose ID is captured during authorisation.
 - **Webhooks:** Virtual webhooks — created and updated events: customers, suppliers, invoices, invoice items, quotes, tax rates and ledger accounts.
 

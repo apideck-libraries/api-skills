@@ -12080,7 +12080,7 @@
         "A custom scope list saved in Apideck replaces Wave's defaults: include sales_tax:read/write, estimate:read/write and transaction:write (for expenses), then re-authorise. Without sales_tax:read, invoices and invoice items fail with FORBIDDEN, not only tax rates."
       ],
       "partnership_required": false,
-      "rate_limits": "Wave publishes no rate limits; its documented error codes include no throttling or rate-limit code.",
+      "rate_limits": "About 60 writes a minute per business (observed; Wave publishes no limit). Over it, Apideck returns 429 until it resets, within a minute.",
       "responsibility_matrix": [
         {
           "area": "Create a Wave account",
