@@ -10,7 +10,7 @@ metadata:
 
 # Receive a customer payment (Apideck MCP)
 
-When the user wants to record a payment against an existing invoice, **prefer `apideck-receive-customer-payment`** over stitching `accounting-invoices-get` + `accounting-payments-create` manually. The workflow tool fetches the invoice, reads its outstanding balance, builds the right allocation with `type: "invoice"`, and surfaces structured errors with `failingStep`.
+When the user wants to record a payment against an existing invoice, **prefer `apideck-receive-customer-payment`** over stitching `accounting-invoices-one` + `accounting-payments-add` manually. The workflow tool fetches the invoice, reads its outstanding balance, builds the right allocation with `type: "invoice"`, and surfaces structured errors with `failingStep`.
 
 ## When this is the right tool
 
@@ -18,23 +18,23 @@ When the user wants to record a payment against an existing invoice, **prefer `a
 |---|---|
 | "Customer paid invoice 4", "Apply $500 to invoice 12 from ACME", "Record receipt for invoice 99" | **`apideck-receive-customer-payment`** ✓ |
 | "Pay vendor bill X" | `apideck-pay-bill` (AP — accounts payable, different unified endpoint) |
-| "Create an unallocated customer prepayment" | `accounting-payments-create` directly (no allocation) |
-| "Show me unpaid invoices" | `accounting-invoices-list` with `filter[status]=open` |
+| "Create an unallocated customer prepayment" | `accounting-payments-add` directly (no allocation) |
+| "Show me unpaid invoices" | `accounting-invoices-all` with `filter[status]=open` |
 
 ## IMPORTANT RULES
 
 - **CONFIRM before calling.** Receive-payment is **mutating and not idempotent** — calling twice creates two payments on the connected service. Always show the user the invoice total, currency, deposit account, and customer, and wait for explicit confirmation before invoking.
 - **PASS `payment_method` capitalized for QuickBooks**: `"Check"`, `"CreditCard"`, `"Cash"`. Lower-case fails JSON parsing. Other connectors accept lower-case (`"check"`, `"ach"`, `"wire"`).
 - **OMIT `amount` to settle the full outstanding balance.** The workflow defaults to the invoice's `balance` (outstanding), not the gross `total`, so partial-paid invoices don't get over-settled. Only pass `amount` when the user explicitly wants a partial payment.
-- **DON'T confuse with `apideck-pay-bill`.** Customer payments (someone owes *you*) → `apideck-receive-customer-payment` → `accounting-payments-create`. Vendor bills (you owe someone) → `apideck-pay-bill` → `accounting-bill-payments-create`. The unified APIs split AR and AP into separate endpoints; the wrong one will be rejected by the connector with confusing error messages (e.g. QuickBooks: `VendorRef missing` when there's a customer on the other side).
+- **DON'T confuse with `apideck-pay-bill`.** Customer payments (someone owes *you*) → `apideck-receive-customer-payment` → `accounting-payments-add`. Vendor bills (you owe someone) → `apideck-pay-bill` → `accounting-bill-payments-add`. The unified APIs split AR and AP into separate endpoints; the wrong one will be rejected by the connector with confusing error messages (e.g. QuickBooks: `VendorRef missing` when there's a customer on the other side).
 - **SET `x-apideck-service-id`** when the consumer has multiple accounting connections.
 
 ## Argument map
 
 | Arg | Required | Default | Notes |
 |---|---|---|---|
-| `invoice_id` | yes | — | From `accounting-invoices-list`. |
-| `account_id` | yes | — | The deposit account that received the payment. From `accounting-ledger-accounts-list`. Often a bank or undeposited-funds account. |
+| `invoice_id` | yes | — | From `accounting-invoices-all`. |
+| `account_id` | yes | — | The deposit account that received the payment. From `accounting-ledger-accounts-all`. Often a bank or undeposited-funds account. |
 | `amount` | no | invoice's outstanding balance | Pass smaller for a partial payment. |
 | `transaction_date` | no | today (YYYY-MM-DD) | Some connectors reject future dates. |
 | `payment_method` | no | — | QB requires capitalized. |
@@ -67,22 +67,22 @@ When the user wants to record a payment against an existing invoice, **prefer `a
   "invoice_id": "inv-42",
   "amount": 100,
   "currency": "USD",
-  "error": "accounting-payments-create failed: ...",
-  "failingStep": "accounting-payments-create",
+  "error": "accounting-payments-add failed: ...",
+  "failingStep": "accounting-payments-add",
   "upstream": { ... }
 }
 ```
 
 `failingStep` values:
-- `accounting-invoices-get` — invoice ID wrong or connector lost the record
+- `accounting-invoices-one` — invoice ID wrong or connector lost the record
 - `validate-amount` — invoice has zero outstanding balance (already paid)
-- `accounting-payments-create` — payment write failed; check `upstream`
+- `accounting-payments-add` — payment write failed; check `upstream`
 
 ## Worked example
 
 User: *"ACME paid invoice inv-42 for $250.50 by check. Apply it to our bank account."*
 
-1. The user already gave you the invoice id. Find the deposit account: `accounting-ledger-accounts-list` filtered to bank — say `"acc-bank"`.
+1. The user already gave you the invoice id. Find the deposit account: `accounting-ledger-accounts-all` filtered to bank — say `"acc-bank"`.
 2. **Confirm**: *"Recording $250.50 payment from ACME on invoice inv-42 to bank account acc-bank via Xero, payment method check. Confirm?"*
 3. On confirmation:
    ```json

@@ -20,7 +20,7 @@ Same pattern for accounting (34 connectors), HRIS (58), ATS (11), file storage (
 
 ```bash
 # The front-door meta-skill — teaches the unified-API model
-npx skills add apideck/api-skills --skill apideck-unified-api
+npx skills add apideck-libraries/api-skills --skill apideck-unified-api
 ```
 
 [`apideck-unified-api`](skills/apideck-unified-api/) is the catalog's introduction. Install it alongside any connector or SDK skill to give your agent the routing model upfront.
@@ -33,43 +33,43 @@ Install a skill for your language:
 
 ```bash
 # TypeScript / Node.js
-npx skills add apideck/api-skills --skill apideck-node
+npx skills add apideck-libraries/api-skills --skill apideck-node
 
 # Python
-npx skills add apideck/api-skills --skill apideck-python
+npx skills add apideck-libraries/api-skills --skill apideck-python
 
 # C# / .NET
-npx skills add apideck/api-skills --skill apideck-dotnet
+npx skills add apideck-libraries/api-skills --skill apideck-dotnet
 
 # Java
-npx skills add apideck/api-skills --skill apideck-java
+npx skills add apideck-libraries/api-skills --skill apideck-java
 
 # Go
-npx skills add apideck/api-skills --skill apideck-go
+npx skills add apideck-libraries/api-skills --skill apideck-go
 
 # PHP
-npx skills add apideck/api-skills --skill apideck-php
+npx skills add apideck-libraries/api-skills --skill apideck-php
 
 # REST API (any language)
-npx skills add apideck/api-skills --skill apideck-rest
+npx skills add apideck-libraries/api-skills --skill apideck-rest
 
 # MCP server (for agent-driven integrations: Claude Code, Cursor, OpenAI Agents SDK, Pydantic AI)
-npx skills add apideck/api-skills --skill apideck-mcp
+npx skills add apideck-libraries/api-skills --skill apideck-mcp
 
 # Best practices (recommended with any SDK skill)
-npx skills add apideck/api-skills --skill apideck-best-practices
+npx skills add apideck-libraries/api-skills --skill apideck-best-practices
 
 # API contract testing
-npx skills add apideck/api-skills --skill apideck-portman
+npx skills add apideck-libraries/api-skills --skill apideck-portman
 
 # Code generation from OpenAPI specs
-npx skills add apideck/api-skills --skill apideck-codegen
+npx skills add apideck-libraries/api-skills --skill apideck-codegen
 
 # Connector coverage checking
-npx skills add apideck/api-skills --skill apideck-connector-coverage
+npx skills add apideck-libraries/api-skills --skill apideck-connector-coverage
 
 # Migration from direct integrations
-npx skills add apideck/api-skills --skill apideck-migration
+npx skills add apideck-libraries/api-skills --skill apideck-migration
 ```
 
 Add `--global` to install globally across all projects.
@@ -107,6 +107,10 @@ Apideck-specific API abstractions, SDK wrappers, and tooling. Install individual
 | [apideck-mcp-receive-payment](skills/apideck-mcp-receive-payment/) | MCP playbook | Task playbook for `apideck-receive-customer-payment` — record a customer payment against an invoice (AR) | — |
 | [apideck-mcp-onboard-employee](skills/apideck-mcp-onboard-employee/) | MCP playbook | Task playbook for `apideck-onboard-employee` — convert a hired ATS applicant into an HRIS employee (cross-API) | — |
 | [apideck-mcp-month-end-close](skills/apideck-mcp-month-end-close/) | MCP playbook | Task playbook for `apideck-month-end-close-check` — fetch P&L + balance sheet + aged AP/AR in one shot | — |
+| [apideck-mcp-journal-entry-scan](skills/apideck-mcp-journal-entry-scan/) | MCP playbook | Read-only month-end journal entry review: large, round, weekend, unusual-user and suspense-account entries | — |
+| [apideck-mcp-po-bill-match](skills/apideck-mcp-po-bill-match/) | MCP playbook | Read-only two-way match of vendor bills against purchase orders, with a tolerance | — |
+| [apideck-mcp-accruals-check](skills/apideck-mcp-accruals-check/) | MCP playbook | Read-only check for monthly suppliers with no bill in the period, with estimated accruals | — |
+| [apideck-mcp-close-checklist](skills/apideck-mcp-close-checklist/) | MCP playbook | Read-only pre-close checklist: period lock, unposted journals, overdue and held bills, suspense, trial balance | — |
 
 ### Connector Skills
 
@@ -134,11 +138,11 @@ Per-connector skills for the top apps across seven unified APIs: Ecommerce, Acco
 
 ```bash
 # Install a specific connector skill
-npx skills add apideck/api-skills --skill salesforce
-npx skills add apideck/api-skills --skill sharepoint
+npx skills add apideck-libraries/api-skills --skill salesforce
+npx skills add apideck-libraries/api-skills --skill sharepoint
 
 # Or install the full catalog (all connectors)
-npx skills add apideck/api-skills
+npx skills add apideck-libraries/api-skills
 ```
 
 **Authoring workflow:**

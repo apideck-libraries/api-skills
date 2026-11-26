@@ -50,7 +50,7 @@ APIDECK_API_KEY=...  APIDECK_APP_ID=...  APIDECK_CONSUMER_ID=...  npx -y @apidec
 
 - **PREFER dynamic mode** (`?mode=dynamic` or `--dynamic`, the default). It exposes 4 meta-tools — `list_tools`, `describe_tool_input`, `execute_tool`, `list_scopes` — instead of 330 individual tools, dropping initial token cost from ~25-40K to ~1,300. Switch to static mode only for small fixed tool sets.
 - **CALL `list_tools` first** with relevant `search_terms` (`["accounting", "invoices"]`, `["hris", "employees"]`). Don't enumerate 330 tools.
-- **PREFER workflow tools over manual chains** — see "Intent-grouped workflows" below. The agent that picks `apideck-pay-bill` instead of stitching `accounting-bills-get` + `accounting-bill-payments-create` will succeed more often and leak less context.
+- **PREFER workflow tools over manual chains** — see "Intent-grouped workflows" below. The agent that picks `apideck-pay-bill` instead of stitching `accounting-bills-one` + `accounting-bill-payments-add` will succeed more often and leak less context.
 - **HANDLE URL elicitations**: when an upstream call hits a missing/expired Vault connection, the server throws `UrlElicitationRequiredError` (MCP error code `-32042`) carrying a one-time consent URL. Surface this URL to the user, wait for them to complete OAuth, then retry the original tool call.
 - **USE `x-apideck-service-id`** when a consumer has multiple connections of the same unified API — e.g. the consumer connected both Xero and QuickBooks, and the user wants the call to target Xero. Without this, Apideck routes to whichever connection is first.
 - **USE scopes** to restrict an agent to a subset of capabilities — `?scopes=read` for analysis agents, `?scopes=read,write` to allow non-destructive changes, omit for full access. Scopes are enforced server-side, so a "read-only" agent literally cannot call destructive tools no matter what the prompt says.
@@ -73,7 +73,7 @@ Workflows return a structured result with `failingStep` so you know *which* leg 
 The server supports three operational modes:
 
 - **Dynamic mode** (default): 4 meta-tools, ~1,300 initial tokens, agent discovers via `list_tools`. **Use this.**
-- **Static mode**: All 330+ tools listed up front, ~25-40K tokens. Use only when you're filtering to a tiny subset (e.g. `?include=accounting-invoices-list,accounting-invoices-get`) and want the schemas resolved at handshake.
+- **Static mode**: All 330+ tools listed up front, ~25-40K tokens. Use only when you're filtering to a tiny subset (e.g. `?include=accounting-invoices-all,accounting-invoices-one`) and want the schemas resolved at handshake.
 - **Code mode** (`?mode=code`, experimental): Agent writes JavaScript against an `apideck.*` SDK in a sandbox. Beta — currently uses `vm.createContext` which isn't production-hardened. Skip for production agents.
 
 ## Coverage
@@ -99,14 +99,14 @@ The server supports three operational modes:
 ```
 Agent: list_tools(search_terms: ["accounting", "invoices"])
 → Returns: [
-    "accounting-invoices-list",
-    "accounting-invoices-get",
-    "accounting-invoices-create",
+    "accounting-invoices-all",
+    "accounting-invoices-one",
+    "accounting-invoices-add",
     "accounting-invoices-update",
     "accounting-invoices-delete"
   ]
 
-Agent: describe_tool_input(tool_name: "accounting-invoices-list")
+Agent: describe_tool_input(tool_name: "accounting-invoices-all")
 → Returns: {
     filter: { updated_since, status, ... },
     cursor: string,
@@ -116,7 +116,7 @@ Agent: describe_tool_input(tool_name: "accounting-invoices-list")
   }
 
 Agent: execute_tool(
-  tool_name: "accounting-invoices-list",
+  tool_name: "accounting-invoices-all",
   input: { limit: 10, "x-apideck-service-id": "quickbooks" }
 )
 → Returns: { data: [...], meta: { cursors: { next: "..." } } }

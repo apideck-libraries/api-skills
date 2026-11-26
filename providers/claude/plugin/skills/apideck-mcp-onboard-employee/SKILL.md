@@ -17,7 +17,7 @@ When the user has decided to hire a candidate and wants the new employee record 
 | User intent | Tool |
 |---|---|
 | "Onboard candidate Alice from Greenhouse to BambooHR", "Convert applicant 42 into an employee starting Monday" | **`apideck-onboard-employee`** ✓ |
-| "Create an employee from scratch (no ATS lineage)" | `hris-employees-create` directly |
+| "Create an employee from scratch (no ATS lineage)" | `hris-employees-add` directly |
 | "Move applicant to a different ATS stage without HRIS work" | `ats-applicants-update` directly |
 | "Re-hire an existing employee" | Out of scope — usually a different HRIS endpoint per connector |
 
@@ -33,9 +33,9 @@ When the user has decided to hire a candidate and wants the new employee record 
 
 | Arg | Required | Default | Notes |
 |---|---|---|---|
-| `applicant_id` | yes | — | From `ats-applicants-list`. |
+| `applicant_id` | yes | — | From `ats-applicants-all`. |
 | `employment_start_date` | yes | — | First day of employment, `YYYY-MM-DD`. Most HRIS connectors require this. |
-| `department_id` | no | — | From `hris-departments-list`. Some HRIS connectors require it; others derive from job. |
+| `department_id` | no | — | From `hris-departments-all`. Some HRIS connectors require it; others derive from job. |
 | `title` | no | applicant's `headline` or `title` | Job title. |
 | `manager_id` | no | — | Reporting manager's HRIS employee id. |
 | `employment_status` | no | `"active"` | One of `active`, `inactive`, `pending`, `leave`, `terminated`. |
@@ -84,15 +84,15 @@ When the user has decided to hire a candidate and wants the new employee record 
 {
   "applicant_id": "app-X",
   "error": "...",
-  "failingStep": "ats-applicants-get" | "validate-applicant" | "hris-employees-create",
+  "failingStep": "ats-applicants-one" | "validate-applicant" | "hris-employees-add",
   "upstream": { ... }
 }
 ```
 
 `failingStep` values:
-- `ats-applicants-get` — applicant ID wrong, ATS connection missing, or ATS connector down. Likely an elicitation if connection-level.
+- `ats-applicants-one` — applicant ID wrong, ATS connection missing, or ATS connector down. Likely an elicitation if connection-level.
 - `validate-applicant` — applicant has no first/last name; can't create a usable employee.
-- `hris-employees-create` — HRIS rejected the body. Inspect `upstream` for the per-connector reason (often `department_id required` or `manager_id invalid`).
+- `hris-employees-add` — HRIS rejected the body. Inspect `upstream` for the per-connector reason (often `department_id required` or `manager_id invalid`).
 
 ## Worked example
 
@@ -121,7 +121,7 @@ User: *"Onboard applicant app-1 (Ada Lovelace) into BambooHR starting May 1, eng
 | Symptom | Cause | Fix |
 |---|---|---|
 | `failingStep: validate-applicant` | Applicant record has empty name fields | Verify applicant ID; consider whether the ATS exposes the name under a different field name |
-| `failingStep: hris-employees-create` with `department_id required` | Connector requires explicit department | Pass `department_id` from `hris-departments-list` |
+| `failingStep: hris-employees-add` with `department_id required` | Connector requires explicit department | Pass `department_id` from `hris-departments-all` |
 | `warnings[]` with stage-update failure | Optional ATS update failed after employee was created | Tell user to mark applicant Hired manually; don't retry the workflow (would create a duplicate employee) |
 | `UrlElicitationRequiredError` for ATS or HRIS | Either connection missing | Surface consent URL for the named unified API, retry |
 

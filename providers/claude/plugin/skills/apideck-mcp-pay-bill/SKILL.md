@@ -10,7 +10,7 @@ metadata:
 
 # Pay a vendor bill (Apideck MCP)
 
-When the user wants to pay a known vendor bill, **prefer `apideck-pay-bill`** over stitching `accounting-bills-get` + `accounting-bill-payments-create` manually. The workflow tool fetches the bill, reads its outstanding balance, builds the right allocation, picks the correct AP endpoint, and surfaces structured errors with `failingStep` so you know which leg broke.
+When the user wants to pay a known vendor bill, **prefer `apideck-pay-bill`** over stitching `accounting-bills-one` + `accounting-bill-payments-add` manually. The workflow tool fetches the bill, reads its outstanding balance, builds the right allocation, picks the correct AP endpoint, and surfaces structured errors with `failingStep` so you know which leg broke.
 
 ## When this is the right tool
 
@@ -18,8 +18,8 @@ When the user wants to pay a known vendor bill, **prefer `apideck-pay-bill`** ov
 |---|---|
 | "Pay bill 6", "Settle the LinkedIn invoice", "Close out bill from RocketReach" | **`apideck-pay-bill`** ✓ |
 | "Record that customer paid invoice 4" | `apideck-receive-customer-payment` (AR mirror — different unified endpoint) |
-| "Create a prepayment / unallocated transfer" | `accounting-payments-create` directly (no allocation) |
-| "Show me unpaid bills" | `accounting-bills-list` with `filter[status]=open` |
+| "Create a prepayment / unallocated transfer" | `accounting-payments-add` directly (no allocation) |
+| "Show me unpaid bills" | `accounting-bills-all` with `filter[status]=open` |
 
 ## IMPORTANT RULES
 
@@ -33,8 +33,8 @@ When the user wants to pay a known vendor bill, **prefer `apideck-pay-bill`** ov
 
 | Arg | Required | Default | Notes |
 |---|---|---|---|
-| `bill_id` | yes | — | From `accounting-bills-list`. The numeric or UUID id Apideck returns. |
-| `account_id` | yes | — | The bank/cash account the payment is drawn from. From `accounting-ledger-accounts-list` filtered to `type=bank`. |
+| `bill_id` | yes | — | From `accounting-bills-all`. The numeric or UUID id Apideck returns. |
+| `account_id` | yes | — | The bank/cash account the payment is drawn from. From `accounting-ledger-accounts-all` filtered to `type=bank`. |
 | `amount` | no | bill's outstanding balance | In bill's currency. Pass smaller for a partial payment. |
 | `transaction_date` | no | today (YYYY-MM-DD) | Some connectors reject future dates. |
 | `payment_method` | no | — | QB requires capitalized: `"Check"` etc. Other connectors flexible. |
@@ -67,23 +67,23 @@ When the user wants to pay a known vendor bill, **prefer `apideck-pay-bill`** ov
   "bill_id": "4",
   "amount": 1,
   "currency": "USD",
-  "error": "accounting-bill-payments-create failed: ...",
-  "failingStep": "accounting-bill-payments-create",
+  "error": "accounting-bill-payments-add failed: ...",
+  "failingStep": "accounting-bill-payments-add",
   "upstream": { "status_code": 400, "type_name": "ConnectorExecutionError", ... }
 }
 ```
 
 `failingStep` tells you which leg failed:
-- `accounting-bills-get` — the bill ID is wrong or the connector lost the record
+- `accounting-bills-one` — the bill ID is wrong or the connector lost the record
 - `validate-amount` — the bill has no positive outstanding balance (already paid, or zero-total)
-- `accounting-bill-payments-create` — the payment write itself failed; inspect `upstream` for connector-specific reason
+- `accounting-bill-payments-add` — the payment write itself failed; inspect `upstream` for connector-specific reason
 
 ## Worked example
 
 User: *"Pay the bill from LinkedIn for $742.45 from Business Checking."*
 
-1. `accounting-bills-list` with `filter: { supplier_id: ... }` to find the bill ID — say `"4"`.
-2. `accounting-ledger-accounts-list` with `filter: { type: "bank" }` to find Business Checking — say `"8"`.
+1. `accounting-bills-all` with `filter: { supplier_id: ... }` to find the bill ID — say `"4"`.
+2. `accounting-ledger-accounts-all` with `filter: { type: "bank" }` to find Business Checking — say `"8"`.
 3. **Confirm with the user**: *"Paying bill 4 (LinkedIn, $742.45 USD) from Business Checking via QuickBooks. Confirm?"*
 4. On confirmation, call:
    ```json
@@ -106,7 +106,7 @@ User: *"Pay the bill from LinkedIn for $742.45 from Business Checking."*
 | `failingStep: validate-amount` | Bill has zero outstanding balance | Either it's already paid, or pass an explicit `amount` to override |
 | QuickBooks rejects with `Property Name:failed to parse json object` | `payment_method` lower-case | Pass `"Check"` (capitalized) for QB |
 | QuickBooks rejects with `CustomerRef missing` | Wrong unified endpoint chosen — workflow protects against this | Should not happen via `apideck-pay-bill`; if it does, file a bug |
-| `failingStep: accounting-bill-payments-create` with `Subscription period has ended` | QB sandbox/account billing issue, not a workflow bug | Renew connector subscription |
+| `failingStep: accounting-bill-payments-add` with `Subscription period has ended` | QB sandbox/account billing issue, not a workflow bug | Renew connector subscription |
 | `UrlElicitationRequiredError` thrown | Connection expired or never authorized | Surface the consent URL to user, retry after OAuth |
 
 ## Related
