@@ -1,0 +1,51 @@
+skills/apideck-mcp-close-checklist/SKILL.md
+  s_fb7c71b7b7293a::t_75fbb5bc6b1b25 1-70
+skills/apideck-mcp-accruals-check/SKILL.md
+  s_fb7c71b7b7293a::t_0caab659317b68 1-68
+skills/apideck-mcp-po-bill-match/SKILL.md
+  s_fb7c71b7b7293a::t_520f7531a9333a 1-85
+skills/apideck-mcp-journal-entry-scan/SKILL.md
+  s_fb7c71b7b7293a::t_b0d21a2e719003 1-87
+README.md
+  s_fb7c71b7b7293a::t_d1c47207bb0cc0 110-113
+providers/claude/plugin/skills/apideck-mcp-accruals-check/SKILL.md
+  s_fb7c71b7b7293a::t_adc23f82b52568 1-68
+providers/claude/plugin/skills/apideck-mcp-close-checklist/SKILL.md
+  s_fb7c71b7b7293a::t_4452d365f54e09 1-70
+providers/claude/plugin/skills/apideck-mcp-journal-entry-scan/SKILL.md
+  s_fb7c71b7b7293a::t_49d1d69045e904 1-87
+providers/claude/plugin/skills/apideck-mcp-po-bill-match/SKILL.md
+  s_fb7c71b7b7293a::t_f44d2f7daceb92 1-85
+providers/cursor/plugin/skills/apideck-mcp-accruals-check/SKILL.md
+  s_fb7c71b7b7293a::t_fb94084ef2af27 1-68
+providers/cursor/plugin/skills/apideck-mcp-close-checklist/SKILL.md
+  s_fb7c71b7b7293a::t_e71efce7182c0d 1-70
+providers/cursor/plugin/skills/apideck-mcp-journal-entry-scan/SKILL.md
+  s_fb7c71b7b7293a::t_eb6ea08ed646fb 1-87
+providers/cursor/plugin/skills/apideck-mcp-po-bill-match/SKILL.md
+  s_fb7c71b7b7293a::t_88bf510e3ae299 1-85
+skills/apideck-mcp-accruals-check/metadata.json
+  s_fb7c71b7b7293a::t_aa7ed9c0608665 1
+skills/apideck-mcp-close-checklist/metadata.json
+  s_fb7c71b7b7293a::t_70eaf21db27694 1
+skills/apideck-mcp-journal-entry-scan/metadata.json
+  s_fb7c71b7b7293a::t_4306f990d7c544 1
+skills/apideck-mcp-po-bill-match/metadata.json
+  s_fb7c71b7b7293a::t_d8b92412e9096d 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "663ac65ee2335a0e27095d5c45543bbf75e33420",
+  "prompts": {},
+  "sessions": {
+    "s_fb7c71b7b7293a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "efce1734-1c3b-4888-a78b-a675afde8873",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "GJ <info@gertjandewilde.com>"
+    }
+  }
+}
