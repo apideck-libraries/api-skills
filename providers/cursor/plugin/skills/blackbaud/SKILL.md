@@ -47,6 +47,11 @@ Access Blackbaud through Apideck's **CRM** unified API — one of 21 CRM connect
 - **Authentication:** Authorization Code flow, plus a SKY API subscription key sent in the Bb-Api-Subscription-Key header.
 - **Webhooks:** No webhooks - data is read by polling.
 
+**Supported resources:**
+
+- Contacts: `contacts`
+- Opportunities: `opportunities`
+
 **Important to know:**
 
 - One application connects up to 10 consumer environments without Partner status; an eleventh needs ISV Partner status for the application owner.

@@ -48,6 +48,13 @@ Access Shopware through Apideck's **Ecommerce** unified API — one of 17 Ecomme
 - **Authentication:** Client credentials grant with an Integration's Access key ID and Secret access key; no consent screen.
 - **Webhooks:** Native - order, customer and product update and delete events
 
+**Supported resources:**
+
+- Orders: `orders`
+- Products: `products`
+- Customers: `customers`
+- Store: `stores`
+
 **Important to know:**
 
 - Every Shopware shop runs on its own domain, so a connection only works if that domain serves the Admin API and can be reached from outside. Shops behind Cloudflare protections, a WAF or a firewall must allow Apideck's static IPs.

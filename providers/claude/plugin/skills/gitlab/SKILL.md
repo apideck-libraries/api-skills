@@ -47,6 +47,12 @@ Access GitLab through Apideck's **Issue Tracking** unified API — one of 6 Issu
 - **Authentication:** Authorization Code flow.
 - **Webhooks:** Virtual webhooks - ticket created and updated, detected by polling the group's issues.
 
+**Supported resources:**
+
+- Tickets: `collection-tickets`, `collection-ticket-comments`, `group-issues`
+- Collections: `groups`, `collections`
+- Users and Tags: `collection-users`, `collection-tags`
+
 **Important to know:**
 
 - Each connection reaches one GitLab group, chosen by the Group ID entered when connecting, and all data comes from that group. A consumer with several groups needs a connection for each.

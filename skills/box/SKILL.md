@@ -43,6 +43,12 @@ Access Box through Apideck's **File Storage** unified API — one of 5 File Stor
 - **Authentication:** Authorization Code flow.
 - **Webhooks:** No webhooks — Box changes are picked up by polling instead.
 
+**Supported resources:**
+
+- Files and folders: `files`, `folders`
+- Sharing: `shared-links`
+- Large uploads: `upload-sessions`
+
 **Important to know:**
 
 - Some Box enterprises switch on a setting that blocks unpublished applications. A user there cannot connect until their own Box administrator enables the app once, by its Client ID. There is nothing to submit to Box and no review, and most enterprises leave the setting off.

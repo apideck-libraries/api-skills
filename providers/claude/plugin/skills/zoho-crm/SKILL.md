@@ -43,6 +43,12 @@ Access Zoho CRM through Apideck's **CRM** unified API — one of 21 CRM connecto
 - **Authentication:** Authorization Code flow via Zoho Accounts.
 - **Webhooks:** No webhooks — Zoho CRM changes are not surfaced as Apideck events; sync by polling the CRM and Lead APIs
 
+**Supported resources:**
+
+- Companies & Contacts: `companies`, `contacts`, `users`
+- Sales Pipeline: `leads`, `opportunities`
+- Activities & Notes: `activities`, `notes`
+
 **Important to know:**
 
 - Zoho runs nine data centres (US, EU, India, Australia, Japan, China, Canada, Saudi Arabia, UK). Your client needs Multi-DC enabled for every data centre your consumers' accounts live in, or their authorisation fails; the connector detects each consumer's data centre itself.

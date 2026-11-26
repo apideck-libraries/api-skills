@@ -43,6 +43,15 @@ Access Xero through Apideck's **Accounting** unified API — one of 34 Accountin
 - **Authentication:** Authorization Code flow.
 - **Webhooks:** Native — invoice and bill events (created and updated).
 
+**Supported resources:**
+
+- Core Financial: `ledger-accounts`, `tax-rates`, `journal-entries`, `general-ledger-transactions`, `company-info`, `companies`
+- Reports: `balance-sheet`, `profit-and-loss`, `aged-debtors`, `aged-creditors`
+- Accounts Receivable: `invoices`, `invoice-items`, `customers`, `payments`, `credit-notes`, `credit-allocations`
+- Accounts Payable: `bills`, `bill-payments`, `bill-credit-notes`, `suppliers`, `purchase-orders`, `expenses`
+- Banking: `bank-feed-accounts`, `bank-feed-statements`
+- Organizational: `tracking-categories`, `attachments`, `linked-transactions`
+
 **Important to know:**
 
 - Connection caps are tier-based: 5 active connections on the free Starter tier, 50 on Core, and more only from Plus upward. Certification unlocks the higher tiers but itself requires at least 10 active customer connections, so start the process before you hit the cap.
@@ -125,6 +134,7 @@ Xero is a widely-used cloud accounting platform, strong in UK/AU/NZ markets. Api
 - ✅ Manual journals
 - ✅ Financial reports (P&L, Balance Sheet, Aged Receivables/Payables)
 - ✅ Multi-currency on invoices/bills
+- ✅ Purchase orders, expenses, credit notes, bill payments and attachments
 - ⚠️ Tracking categories / cost centers — surfaced as custom fields
 - ❌ Payroll — separate Xero Payroll API; use Proxy
 

@@ -43,6 +43,12 @@ Access IRIS Cascade HR through Apideck's **HRIS** unified API — one of 58 HRIS
 - **Authentication:** Client credentials flow; no user consent step.
 - **Webhooks:** Virtual webhooks - employee created, updated and terminated events
 
+**Supported resources:**
+
+- People: `employees`, `jobs`
+- Time Off: `time-off-requests`
+- Company Structure: `companies`, `departments`, `hierarchy-path`
+
 **Important to know:**
 
 - Each consumer requests API credentials from IRIS by email; the connection works only once IRIS issues the client key and secret.

@@ -46,6 +46,12 @@ Access Liantis through Apideck's **HRIS** unified API — one of 58 HRIS connect
 - **Authentication:** Client credentials flow, with one client ID and secret for your integration.
 - **Webhooks:** No webhooks - data is read by polling.
 
+**Supported resources:**
+
+- People: `employees`, `employee-contact-info`
+- Employment: `employee-contracts`
+- Payroll: `employee-payroll-info`
+
 **Important to know:**
 
 - You need at least one participating Liantis employer before Liantis issues your credentials and a test setup.

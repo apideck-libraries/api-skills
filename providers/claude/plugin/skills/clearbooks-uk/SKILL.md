@@ -47,6 +47,12 @@ Access Clear Books through Apideck's **Accounting** unified API — one of 34 Ac
 - **Authentication:** The consumer's Clear Books SOAP API key; not OAuth.
 - **Webhooks:** No webhooks — change detection is polling-based.
 
+**Supported resources:**
+
+- Core Financial: `ledger-accounts`, `currencies`
+- Accounts Receivable: `invoices`, `credit-notes`, `customers`
+- Accounts Payable: `bills`, `suppliers`
+
 **Important to know:**
 
 - Clear Books has discontinued the SOAP API this connector uses — no new applications will be approved for it. Existing API keys continue to work, but new integrations cannot obtain SOAP access; Clear Books now grants API access for its REST API instead.

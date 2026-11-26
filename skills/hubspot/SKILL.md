@@ -43,6 +43,14 @@ Access HubSpot through Apideck's **CRM** unified API — one of 21 CRM connector
 - **Authentication:** Authorization Code flow.
 - **Webhooks:** Native — contact, company and opportunity created/updated/deleted events; no engagement (activity or note) events.
 
+**Supported resources:**
+
+- Contacts & Companies: `contacts`, `leads`, `companies`
+- Sales Pipeline: `opportunities`, `pipelines`, `stages`
+- Engagements: `activities`, `notes`, `calls`
+- Lists & Segments: `lists`, `list-members`
+- Users & Custom Fields: `users`, `custom-fields`
+
 **Important to know:**
 
 - The scopes configured on your HubSpot app must match exactly the scopes Apideck requests during OAuth. Any mismatch fails consumer authorization with an insufficient-scopes error, so update the app whenever the connector's scope set changes.
@@ -123,7 +131,7 @@ HubSpot is Apideck's most-installed SMB CRM connector. Strong coverage for conta
 - ✅ Custom properties surfaced as `custom_fields[]`
 - ✅ Associations (contact → company, deal → contact) exposed as ID references
 - ⚠️ HubSpot Marketing Hub (forms, workflows, campaigns) — not in CRM unified; use Proxy
-- ❌ HubSpot Lists API — use Proxy with `/crm/v3/lists`
+- ⚠️ Lists — available as the CRM `lists` resource (beta); use Proxy with `/crm/v3/lists` for list membership operations the unified resource does not cover
 - ❌ HubSpot Timeline events — use Proxy
 
 ### HubSpot auth notes

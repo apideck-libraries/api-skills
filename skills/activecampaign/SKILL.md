@@ -43,6 +43,12 @@ Access ActiveCampaign through Apideck's **CRM** unified API — one of 21 CRM co
 - **Authentication:** Sent in the Api-Token header; not OAuth.
 - **Webhooks:** No webhooks - neither native nor virtual; poll for changes.
 
+**Supported resources:**
+
+- Contacts & Companies: `contacts`, `leads`, `companies`, `users`
+- Sales Pipeline: `opportunities`, `pipelines`
+- Marketing Lists: `lists`
+
 **Important to know:**
 
 - An API key belongs to the ActiveCampaign user who copied it, and there is no account default key. Deleting that user, or resetting their key, breaks the connection until another user's URL and key are pasted into Vault.

@@ -48,6 +48,11 @@ Access ADP Workforce Now through Apideck's **HRIS** unified API — one of 58 HR
 - **Authentication:** Client credentials over mutual TLS, not a user-consent flow. ADP requires an X.509 client certificate on every call, plus Client ID and Secret.
 - **Webhooks:** Virtual webhooks (Apideck polls for employee created, updated and terminated events)
 
+**Supported resources:**
+
+- People: `employees`, `time-off-requests`
+- Payroll: `pay-distributions`
+
 **Important to know:**
 
 - Credentials only exist once the consumer buys ADP API Central, which ADP publishes on its US storefront only. Workforce Now is ADP's US and Canada product; elsewhere use the ADP iHCM connector instead. Every consumer meets a purchase decision inside your onboarding flow.

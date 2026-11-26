@@ -44,6 +44,10 @@ Access JumpCloud through Apideck's **HRIS** unified API — one of 58 HRIS conne
 - **Rate limits:** No numeric limit published.
 - **Webhooks:** No webhooks - changes are picked up by polling.
 
+**Supported resources:**
+
+- People: `employees`
+
 **Important to know:**
 
 - A JumpCloud API key can expire. New keys default to 90 days, and admin accounts created before 15 July 2024 default to no expiry. Apideck does not renew API keys, so when a key expires the consumer must generate a new one and reconnect.

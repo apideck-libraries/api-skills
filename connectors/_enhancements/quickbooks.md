@@ -26,10 +26,10 @@ QuickBooks Online is the most widely used SMB accounting connector on Apideck. C
 - ✅ Financial reports: P&L, Balance Sheet, Aged Receivables/Payables
 - ✅ Multi-currency — invoices created with `currency` field route correctly
 - ✅ Attachments on invoices/bills via the `attachments` sub-resource
+- ✅ Purchase orders (`purchase-orders`)
 - ⚠️ Tax rates read-only (QuickBooks requires tax setup through its UI)
 - ⚠️ Recurring invoices — not exposed; use Proxy
 - ❌ Deposits — use Proxy with the `/deposit` endpoint
-- ❌ Purchase orders — use Proxy
 
 ### QuickBooks-specific auth notes
 

@@ -47,6 +47,13 @@ Access CharlieHR through Apideck's **HRIS** unified API — one of 58 HRIS conne
 - **Authentication:** Client ID and Client Secret sent together in the Authorization header; not OAuth.
 - **Webhooks:** Virtual webhooks - employee created and employee updated events
 
+**Supported resources:**
+
+- People: `employees`, `bank-accounts`
+- Time Off: `time-off-requests`
+- Company Structure: `companies`, `offices`, `teams`
+- Compensation: `team-members-salaries`
+
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/charliehr` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill

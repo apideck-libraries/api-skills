@@ -22,6 +22,7 @@ Xero is a widely-used cloud accounting platform, strong in UK/AU/NZ markets. Api
 - ✅ Manual journals
 - ✅ Financial reports (P&L, Balance Sheet, Aged Receivables/Payables)
 - ✅ Multi-currency on invoices/bills
+- ✅ Purchase orders, expenses, credit notes, bill payments and attachments
 - ⚠️ Tracking categories / cost centers — surfaced as custom fields
 - ❌ Payroll — separate Xero Payroll API; use Proxy
 

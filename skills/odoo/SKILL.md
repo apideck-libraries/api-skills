@@ -48,6 +48,16 @@ Access Odoo through Apideck's **CRM, Accounting** unified API — one of 21 CRM 
 - **Authentication:** A manually generated API key over HTTP Basic; not OAuth.
 - **Webhooks:** Virtual webhooks — created/updated events across CRM and Accounting resources.
 
+**Supported resources:**
+
+- CRM — Sales Pipeline: `opportunities`, `leads`, `activities`
+- CRM — Contacts & Companies: `contacts`, `companies`, `users`
+- Core Financial: `ledger-accounts`, `tax-rates`, `journal-entries`, `company-info`
+- Accounts Receivable: `invoices`, `invoice-items`, `customers`, `payments`, `credit-notes`
+- Accounts Payable: `bills`, `bill-payments`, `suppliers`, `purchase-orders`, `expenses`
+- Banking: `bank-accounts`, `bank-feed-accounts`, `bank-feed-statements`
+- Organizational: `tracking-categories`, `departments`, `subsidiaries`, `locations`, `attachments`
+
 **Important to know:**
 
 - Odoo Online (SaaS) gates the External API to the Custom plan — consumers on One App Free or Standard cannot connect at all. Odoo.sh and self-hosted instances (including free Community) have no such restriction.

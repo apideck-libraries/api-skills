@@ -43,6 +43,12 @@ Access Procountor through Apideck's **Accounting** unified API — one of 34 Acc
 - **Authentication:** Bearer token — not OAuth. Procountor issues an API token that you configure in Apideck; there is no consent-screen redirect flow.
 - **Webhooks:** No webhooks — change detection is polling-based.
 
+**Supported resources:**
+
+- Core Financial: `ledger-accounts`, `journal-entries`, `tax-rates`, `company-info`
+- Accounts Receivable: `invoices`, `invoice-items`, `customers`, `payments`
+- Accounts Payable: `bills`, `purchase-orders`, `suppliers`
+
 **Important to know:**
 
 - Production credentials come last. Procountor releases them only after your integration has been validated against its testing server, so budget for a build-and-validate cycle before you can reach live customer data.

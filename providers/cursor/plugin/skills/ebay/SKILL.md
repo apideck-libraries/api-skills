@@ -47,6 +47,12 @@ Access eBay through Apideck's **Ecommerce** unified API — one of 17 Ecommerce 
 - **Authentication:** Authorization Code flow; eBay uses a RuName in place of a redirect URL.
 - **Webhooks:** No webhooks - orders, listings and the store are read on request.
 
+**Supported resources:**
+
+- Orders: `orders`
+- Products: `products`
+- Store: `stores`
+
 **Important to know:**
 
 - Before your keyset's first production call, eBay requires you to subscribe to its marketplace account deletion notifications or apply for an exemption; eBay's guide states that non-compliance can end or reduce API access.

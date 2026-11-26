@@ -22,7 +22,7 @@ HubSpot is Apideck's most-installed SMB CRM connector. Strong coverage for conta
 - ✅ Custom properties surfaced as `custom_fields[]`
 - ✅ Associations (contact → company, deal → contact) exposed as ID references
 - ⚠️ HubSpot Marketing Hub (forms, workflows, campaigns) — not in CRM unified; use Proxy
-- ❌ HubSpot Lists API — use Proxy with `/crm/v3/lists`
+- ⚠️ Lists — available as the CRM `lists` resource (beta); use Proxy with `/crm/v3/lists` for list membership operations the unified resource does not cover
 - ❌ HubSpot Timeline events — use Proxy
 
 ### HubSpot auth notes

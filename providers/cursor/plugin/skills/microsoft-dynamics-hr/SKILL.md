@@ -43,6 +43,12 @@ Access Microsoft Dynamics 365 Human Resources through Apideck's **HRIS** unified
 - **Authentication:** Delegated sign-in through Microsoft Entra ID.
 - **Webhooks:** Virtual webhooks - employee created, updated and terminated events, detected by polling
 
+**Supported resources:**
+
+- People: `employees`
+- Payroll: `payroll-employees`
+- Compensation: `payroll-fixed-compensation`
+
 **Important to know:**
 
 - Standalone Human Resources environments are moving onto the Finance & Operations infrastructure, and one that has not moved yet has no operations URL to connect. Microsoft gives customers 12 months to migrate, counted from when its migration tooling becomes available.

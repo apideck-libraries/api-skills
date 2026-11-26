@@ -47,6 +47,10 @@ Access banqUP through Apideck's **Accounting** unified API — one of 34 Account
 - **Authentication:** Client-credentials flow: the app authenticates as itself, so consumers never see a login screen.
 - **Webhooks:** No webhooks — banqUP publishes none for this API, so changes are picked up by polling.
 
+**Supported resources:**
+
+- Accounts Receivable: `invoices`, `customers`
+
 **Important to know:**
 
 - banqUP is read-only through Apideck: there is no create, update or delete path, so plan a one-way sync out of banqUP.

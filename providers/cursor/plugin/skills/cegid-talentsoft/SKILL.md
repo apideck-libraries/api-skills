@@ -45,6 +45,11 @@ Access Cegid Talentsoft through Apideck's **HRIS** unified API — one of 58 HRI
 - **Authentication:** Client credentials flow with a client ID and secret; no sign-in or consent screen.
 - **Webhooks:** No webhooks - poll for changes.
 
+**Supported resources:**
+
+- People: `employees`, `postal-adresses`, `com-devices`
+- Company Structure: `employee-organization`
+
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/cegid-talentsoft` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill

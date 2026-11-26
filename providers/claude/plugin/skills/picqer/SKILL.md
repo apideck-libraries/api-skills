@@ -47,6 +47,13 @@ Access Picqer through Apideck's **Ecommerce** unified API — one of 17 Ecommerc
 - **Authentication:** Needs the consumer's Picqer account subdomain alongside the key.
 - **Webhooks:** Native - order and product events (orders created and closed, products created and changed).
 
+**Supported resources:**
+
+- Orders: `orders`
+- Products: `products`
+- Customers: `customers`
+- Store: `stores`
+
 **Important to know:**
 
 - An API key has no scopes: any key gives the connection access to the whole Picqer account. Limiting a key is possible only by tying it to a fulfilment customer, and only on the fulfilment version of Picqer.

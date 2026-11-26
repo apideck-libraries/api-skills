@@ -44,6 +44,12 @@ Access Microsoft Dynamics CRM through Apideck's **CRM** unified API — one of 2
 - **Authentication:** Authorization Code flow through Microsoft Entra ID; the consumer enters their Dynamics 365 organisation URL when connecting.
 - **Webhooks:** No webhooks — Dynamics 365 changes are not surfaced as Apideck events; sync by polling the CRM and Lead APIs
 
+**Supported resources:**
+
+- Companies & Contacts: `companies`, `contacts`, `users`
+- Sales Pipeline: `leads`, `opportunities`
+- Activities & Notes: `activities`, `appointments`, `calls`, `emails`, `letters`, `tasks`, `notes`
+
 **Important to know:**
 
 - Publisher verification is the hidden gate: since November 2020 Microsoft blocks users in other tenants from consenting to a new multitenant app that is not publisher verified. Plan for it before onboarding, including a publisher domain you own.

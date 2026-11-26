@@ -45,6 +45,12 @@ Access UKG Pro through Apideck's **HRIS** unified API — one of 58 HRIS connect
 - **Authentication:** Uses a Web Services account's username and password, plus a Customer API Key sent in a header.
 - **Webhooks:** Virtual webhooks - employee created and updated events
 
+**Supported resources:**
+
+- People: `employees`, `person-details`, `employment-details`, `custom-fields`
+- Company Structure: `companies`
+- Compensation: `compensations`
+
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/ukg-pro` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill

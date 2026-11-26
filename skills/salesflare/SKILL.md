@@ -41,6 +41,11 @@ Access Salesflare through Apideck's **CRM** unified API — one of 21 CRM connec
 - **Authentication:** Sent as a bearer token; not OAuth.
 - **Webhooks:** No webhooks - not supported by this connector; poll the Unified API for changes.
 
+**Supported resources:**
+
+- CRM: `companies`, `contacts`, `opportunities`, `currencies`
+- Lead: `leads`
+
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/salesflare` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill

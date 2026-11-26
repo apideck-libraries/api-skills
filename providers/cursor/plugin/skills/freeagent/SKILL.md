@@ -47,6 +47,13 @@ Access FreeAgent through Apideck's **Accounting** unified API — one of 34 Acco
 - **Authentication:** Authorization Code flow.
 - **Webhooks:** No webhooks — no native or virtual webhooks; data sync is polling-based.
 
+**Supported resources:**
+
+- Core Financial: `ledger-accounts`, `journal-entries`, `general-ledger-transactions`, `company-info`, `balance-sheet`, `profit-and-loss`, `projects`
+- Accounts Receivable: `invoices`, `invoice-items`, `customers`, `credit-notes`, `payments`, `quotes`
+- Accounts Payable: `bills`, `bill-credit-notes`, `bill-payments`, `suppliers`, `expenses`, `attachments`
+- Banking: `bank-accounts`, `bank-feed-statements`
+
 **Important to know:**
 
 - FreeAgent is UK-centric — optimised for UK tax compliance (VAT, MTD, Self Assessment); confirm fit for non-UK consumers.
@@ -129,7 +136,7 @@ FreeAgent is a UK-focused cloud accounting platform for freelancers and small bu
 - ✅ Financial reports (P&L, Balance Sheet)
 - ✅ Bank accounts
 - ⚠️ VAT returns / MTD submission — use Proxy with FreeAgent's `/v2/vat_returns` endpoints
-- ❌ Time tracking, project management — use Proxy
+- ⚠️ Projects — the accounting `projects` resource (beta); time tracking — use Proxy
 - ❌ Self-assessment / Personal tax — use Proxy
 
 ### Auth notes

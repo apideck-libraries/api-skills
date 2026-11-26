@@ -47,6 +47,11 @@ Access Teamtailor through Apideck's **ATS** unified API — one of 11 ATS connec
 - **Authentication:** Sent as a bearer token; not OAuth.
 - **Webhooks:** Virtual webhooks - created and updated events for applicants, applications and jobs.
 
+**Supported resources:**
+
+- Candidates & Applications: `applicants`, `applications`
+- Jobs & Pipeline: `jobs`, `job-candidates`, `stages`
+
 **Important to know:**
 
 - Candidate data is restricted to Admin-scope API keys: a key created with a lower scope cannot read candidates.

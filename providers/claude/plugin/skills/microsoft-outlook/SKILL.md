@@ -46,6 +46,11 @@ Access Microsoft Outlook through Apideck's **CRM** unified API — one of 21 CRM
 - **Authentication:** Client credentials (app-only): no user signs in.
 - **Webhooks:** No webhooks - the connector does not subscribe to Microsoft Graph change notifications, so contacts and users are read by polling.
 
+**Supported resources:**
+
+- Contacts: `contacts`
+- Users: `users`
+
 **Important to know:**
 
 - The application permissions cover every mailbox in the consumer's Microsoft 365 tenant, not just the people who use your product, so expect a security review on the consumer side; Microsoft lets an administrator narrow the app's contacts access to specific mailboxes.

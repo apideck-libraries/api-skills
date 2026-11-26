@@ -46,6 +46,12 @@ Access Deel through Apideck's **HRIS** unified API — one of 58 HRIS connectors
 - **Authentication:** Authorization Code flow.
 - **Webhooks:** Virtual webhooks - employee created, updated and terminated events
 
+**Supported resources:**
+
+- People: `employees`, `contracts`
+- Time Off: `time-off-requests`
+- Company Structure: `companies`, `departments`
+
 **Important to know:**
 
 - While Deel reviews your OAuth app for its App Store, the app stays accessible only to your own organisation, so plan for that review before other Deel organisations need to connect.

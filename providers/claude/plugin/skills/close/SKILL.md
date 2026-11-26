@@ -43,6 +43,15 @@ Access Close through Apideck's **CRM** unified API — one of 21 CRM connectors 
 - **Authentication:** Sent as the username in HTTP Basic authentication.
 - **Webhooks:** No webhooks - Close events are not delivered to Apideck; data is read by polling the API.
 
+**Supported resources:**
+
+- Companies and Leads: `companies`, `leads`
+- Contacts: `contacts`
+- Opportunities: `opportunities`
+- Notes: `notes`
+- Lists: `lists`
+- Users: `users`
+
 **Important to know:**
 
 - The key acts as the Close user who created it, with that user's full access and no way to narrow it. If that key is deleted, the connection stops working immediately and cannot be undone, so have each consumer create a dedicated key for the integration rather than reusing one.

@@ -47,6 +47,10 @@ Access RUN Powered by ADP through Apideck's **HRIS** unified API — one of 58 H
 - **Authentication:** Client credentials over mutual TLS, not a user-consent flow. Credentials are held once for your integration, not per connection.
 - **Webhooks:** Virtual webhooks - Apideck polls for employee created and updated events
 
+**Supported resources:**
+
+- People: `employees`
+
 **Important to know:**
 
 - This connector is in beta and has never been verified against a live RUN account: it was mapped from ADP's documentation alone. Treat connectivity and field-level behaviour alike as unproven, and prove both on your own tenant before committing to a build.

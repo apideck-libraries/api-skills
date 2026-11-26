@@ -47,6 +47,12 @@ Access Cezanne HR through Apideck's **HRIS** unified API — one of 58 HRIS conn
 - **Authentication:** Client credentials grant, with no user sign-in step.
 - **Webhooks:** No webhooks - changes are picked up by polling.
 
+**Supported resources:**
+
+- People: `employees`
+- Organisation: `companies`, `departments`
+- Time Off: `time-off-requests`
+
 **Important to know:**
 
 - If the service account user's password expires, the connection stops working until the password is changed, so choose a user whose password never expires.

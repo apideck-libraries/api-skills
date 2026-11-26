@@ -48,6 +48,13 @@ Access Magento through Apideck's **Ecommerce** unified API — one of 17 Ecommer
 - **Authentication:** Four credentials from a Magento integration sign each request, OAuth 1.0a style; no redirect flow.
 - **Webhooks:** Virtual webhooks - order, product and customer events (created, updated); deletes are not detected
 
+**Supported resources:**
+
+- Orders: `orders`, `shipments`
+- Catalogue: `products`
+- Customers: `customers`
+- Store: `stores`
+
 **Important to know:**
 
 - Check the store's edition before you commit: Adobe Commerce as a Cloud Service (SaaS) offers no integration tokens and uses Adobe IMS OAuth 2 instead, which this connector does not use, so SaaS stores cannot connect.

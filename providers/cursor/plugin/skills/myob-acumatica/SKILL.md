@@ -48,6 +48,12 @@ Access MYOB Acumatica through Apideck's **Accounting** unified API — one of 34
 - **Authentication:** Authorization Code flow against the consumer's own instance URL.
 - **Webhooks:** No webhooks — neither native nor virtual; change detection is polling-based.
 
+**Supported resources:**
+
+- Core Financial: `ledger-accounts`, `journal-entries`, `tax-rates`
+- Accounts Receivable: `invoices`, `invoice-items`, `customers`, `payments`, `credit-notes`, `sales-orders`
+- Accounts Payable: `bills`, `bill-credit-notes`, `suppliers`, `purchase-orders`
+
 **Important to know:**
 
 - Outgrowing the free API licence is a MYOB licensing step, not a configuration change: the upgrade has to be arranged on the MYOB side before call volume grows past the daily cap.

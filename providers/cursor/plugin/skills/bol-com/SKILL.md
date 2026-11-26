@@ -48,6 +48,10 @@ Access bol.com through Apideck's **Ecommerce** unified API — one of 17 Ecommer
 - **Authentication:** Client credentials flow; no user consent step.
 - **Webhooks:** No webhooks - data is read by polling.
 
+**Supported resources:**
+
+- Orders: `orders`
+
 **Important to know:**
 
 - bol.com only issues API credentials after the seller registers a technical contact in the Seller Dashboard. bol.com contacts that person about API use, expects an answer within 2 working days, and may block API access if they cannot be reached.

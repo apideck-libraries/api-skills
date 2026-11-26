@@ -43,6 +43,11 @@ Access Flexmail through Apideck's **CRM** unified API — one of 21 CRM connecto
 - **Authentication:** Account ID as the username and a personal access token as the password.
 - **Webhooks:** No webhooks - poll for changes.
 
+**Supported resources:**
+
+- Contacts: `contacts`
+- Leads: `leads`
+
 **Important to know:**
 
 - Flexmail has no built-in company field. Company name is read and written through a custom field each consumer selects when connecting, separately for contacts and leads, so that custom field must exist in their Flexmail account first.

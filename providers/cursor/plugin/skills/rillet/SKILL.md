@@ -48,6 +48,13 @@ Access Rillet through Apideck's **Accounting** unified API — one of 34 Account
 - **Authentication:** Presented as a Bearer token in the Authorization header; not OAuth. Keys are scoped to a single Rillet organisation.
 - **Webhooks:** Native — registered automatically on connect; invoice, credit note, customer, bill and supplier events (created/updated/deleted).
 
+**Supported resources:**
+
+- Core Financial: `ledger-accounts`, `tax-rates`, `journal-entries`, `company-info`, `subsidiaries`, `balance-sheet`, `profit-and-loss`
+- Accounts Receivable: `invoices`, `invoice-items`, `customers`, `payments`, `credit-notes`
+- Accounts Payable: `bills`, `bill-payments`, `suppliers`, `expenses`
+- Banking: `bank-accounts`, `bank-feed-statements`
+
 **Important to know:**
 
 - API access is not self-service. Rillet has to enable it for each organisation before any API key can be created, so your consumer starts by contacting their Rillet team rather than by opening a settings page.

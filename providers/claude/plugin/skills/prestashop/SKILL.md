@@ -46,6 +46,13 @@ Access Prestashop through Apideck's **Ecommerce** unified API — one of 17 Ecom
 - **Authentication:** Webservice key, sent as the Basic auth username with an empty password.
 - **Webhooks:** Virtual webhooks - order, product and customer events.
 
+**Supported resources:**
+
+- Orders: `orders`
+- Catalogue: `products`
+- Customers: `customers`
+- Store: `stores`
+
 **Important to know:**
 
 - Any shop reachable from the internet over HTTPS at its /api address can connect. A shop behind a firewall, on localhost, or without working URL rewriting cannot, so check where each consumer's shop is hosted before you commit.

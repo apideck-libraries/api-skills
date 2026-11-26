@@ -47,6 +47,11 @@ Access Bullhorn ATS through Apideck's **ATS** unified API — one of 11 ATS conn
 - **Authentication:** Authorization Code flow.
 - **Webhooks:** Virtual webhooks - job, applicant and application created and updated events.
 
+**Supported resources:**
+
+- Jobs: `jobs`
+- Candidates: `applicants`, `applications`
+
 **Important to know:**
 
 - Please keep in mind that Apideck has no existing relationship or affiliation with Bullhorn, but Apideck is able to implement integrations with the Bullhorn system for customers and has done so previously.

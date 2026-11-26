@@ -43,6 +43,14 @@ Access Microsoft Dynamics 365 Business Central through Apideck's **Accounting** 
 - **Authentication:** Authorization Code flow via a Microsoft Entra ID app registration.
 - **Webhooks:** No webhooks — Business Central changes must be polled.
 
+**Supported resources:**
+
+- Core Financial: `ledger-accounts`, `journal-entries`, `tax-rates`, `tracking-categories`, `bank-accounts`, `company-info`, `companies`
+- Accounts Receivable: `invoices`, `credit-notes`, `payments`, `customers`, `invoice-items`
+- Accounts Payable: `bills`, `bill-payments`, `bill-credit-notes`, `purchase-orders`, `suppliers`, `expenses`
+- Organizational: `locations`, `employees`
+- Other: `attachments`
+
 **Important to know:**
 
 - Purchase orders post as header-only documents: line items are accepted on write but never reach Business Central. Reads return line items correctly.

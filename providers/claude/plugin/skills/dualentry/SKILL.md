@@ -44,6 +44,13 @@ Access Dualentry through Apideck's **Accounting** unified API — one of 34 Acco
 - **Authentication:** Sent in the X-API-KEY header, not OAuth. The key is a long-lived organisation credential with no expiry.
 - **Webhooks:** No webhooks — not supported by DualEntry's API.
 
+**Supported resources:**
+
+- Sales & Receivables: `invoices`, `invoice-items`, `customers`, `payments`, `credit-notes`
+- Purchases & Payables: `bills`, `bill-credit-notes`, `bill-payments`, `suppliers`, `purchase-orders`, `expenses`
+- Core Financial: `journal-entries`, `ledger-accounts`, `tax-rates`
+- Organizational: `subsidiaries`, `companies`
+
 **Important to know:**
 
 - The API key is not self-service for you: the consumer's own DualEntry administrator must generate it, and DualEntry shows it only once at creation — if it is lost, a new key must be issued and the old one revoked.

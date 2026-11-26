@@ -46,6 +46,13 @@ Access Employment Hero through Apideck's **HRIS** unified API — one of 58 HRIS
 - **Rate limits:** 20 requests per second and 100 requests per minute.
 - **Authentication:** Authorization Code flow.
 
+**Supported resources:**
+
+- People: `employees`
+- Company Structure: `companies`, `departments`
+- Time Off: `time-off-requests`
+- Payroll: `pay-details`, `bank-accounts`
+
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/employmenthero` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill

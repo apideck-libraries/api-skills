@@ -42,6 +42,12 @@ Access Officient through Apideck's **HRIS** unified API — one of 58 HRIS conne
 - **Authentication:** Authorization Code flow.
 - **Webhooks:** Native - employee created, updated and terminated events.
 
+**Supported resources:**
+
+- People: `employees`
+- Company Structure: `companies`, `departments`
+- Compensation: `wage`
+
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/officient-io` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill

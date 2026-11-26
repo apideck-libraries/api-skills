@@ -47,6 +47,13 @@ Access Visma Netvisor through Apideck's **Accounting** unified API — one of 34
 - **Authentication:** Each request carries a freshly computed HMAC-SHA256 signature; not OAuth.
 - **Webhooks:** No webhooks — Netvisor publishes none, so keep data fresh by polling.
 
+**Supported resources:**
+
+- Accounts Receivable: `invoices`, `credit-notes`, `customers`, `payments`
+- Accounts Payable: `bills`, `purchase-orders`, `suppliers`
+- Core Financial: `journal-entries`
+- Products: `invoice-items`
+
 **Important to know:**
 
 - Credentials come in two tiers that are not interchangeable: integration-level values registered once, and customer-level values each consumer generates inside their own Netvisor account. Both must be in place before any call succeeds.

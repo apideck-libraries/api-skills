@@ -48,6 +48,13 @@ Access Moneybird through Apideck's **Accounting** unified API — one of 34 Acco
 - **Authentication:** Authorization Code flow.
 - **Webhooks:** No webhooks
 
+**Supported resources:**
+
+- Core Financial: `ledger-accounts`, `journal-entries`, `company-info`, `tracking-categories`, `tax-rates`, `subsidiaries`
+- Accounts Receivable: `invoices`, `invoice-items`, `customers`, `payments`
+- Accounts Payable: `bills`, `bill-payments`, `suppliers`, `expenses`
+- Banking: `bank-accounts`, `bank-feed-accounts`, `bank-feed-statements`
+
 **Important to know:**
 
 - Rate limits are counted per IP address, not per application or per administration — every consumer you connect shares your integration's outbound IPs, so heavy use by one can throttle the rest.

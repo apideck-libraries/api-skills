@@ -46,6 +46,12 @@ Access Fourth through Apideck's **HRIS** unified API — one of 58 HRIS connecto
 - **Authentication:** Organisation ID, API key and secret key, all issued by Fourth.
 - **Webhooks:** Virtual webhooks - employee created and updated events
 
+**Supported resources:**
+
+- People: `employees`, `employments`, `addresses`
+- Company Structure: `departments`
+- Time Off: `time-off-requests`
+
 **Important to know:**
 
 - Fourth does not sell or issue API access directly: live credentials are linked to a customer account, so a mutual Fourth customer requests them, and Fourth does not publish the API host, so you also obtain it from Fourth.

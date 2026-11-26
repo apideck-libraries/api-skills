@@ -45,6 +45,10 @@ Access CIPHR through Apideck's **HRIS** unified API — one of 58 HRIS connector
 - **Authentication:** Sent in the apikey header; not OAuth.
 - **Webhooks:** No webhooks - data is read by polling.
 
+**Supported resources:**
+
+- People: `employees`
+
 **Important to know:**
 
 - CIPHR publishes no public developer documentation and makes some fields visible in the API only when CIPHR enables them for the customer, so confirm field visibility with CIPHR before relying on it.

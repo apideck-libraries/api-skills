@@ -43,6 +43,12 @@ Access Freshworks CRM through Apideck's **CRM** unified API — one of 21 CRM co
 - **Authentication:** Sent in the Authorization header as Token token=<key>.
 - **Webhooks:** No webhooks - data is read by polling.
 
+**Supported resources:**
+
+- Contacts & Companies: `contacts`, `leads`, `companies`
+- Sales Pipeline: `opportunities`
+- Engagements: `notes`
+
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/freshsales` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill

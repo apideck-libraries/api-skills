@@ -43,6 +43,12 @@ Access OneDrive through Apideck's **File Storage** unified API — one of 5 File
 - **Authentication:** Authorization Code flow through Microsoft Entra ID.
 - **Webhooks:** Native — drive.updated only (a library-level change notification; per-file events are not emitted)
 
+**Supported resources:**
+
+- Files & Folders: `files`, `folders`
+- Drives: `drives`
+- Uploads: `upload-sessions`
+
 **Important to know:**
 
 - Publisher verification is the hidden gate: since November 2020 Microsoft blocks users in other tenants from consenting to a new multitenant app that is not publisher verified. Plan for it before onboarding, including a publisher domain you own.

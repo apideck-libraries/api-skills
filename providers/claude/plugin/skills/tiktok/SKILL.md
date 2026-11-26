@@ -46,6 +46,11 @@ Access TikTok Shop through Apideck's **Ecommerce** unified API — one of 17 Eco
 - **Authentication:** OAuth-style code exchange, then a custom access-token header and mandatory request signing on every call rather than Bearer. Apideck handles all of it.
 - **Webhooks:** No webhooks — neither native nor virtual, so TikTok Shop data is kept in sync by polling.
 
+**Supported resources:**
+
+- Shops: `stores`
+- Orders & Products: `orders`, `products`
+
 **Important to know:**
 
 - Each connection currently asks the connecting seller for your app key, secret and service id in Vault, rather than those being set once for the integration, so plan to supply them per connection.

@@ -45,6 +45,12 @@ Access HR Works through Apideck's **HRIS** unified API — one of 58 HRIS connec
 - **Sandbox:** available ([signup](https://www.hrworks.de/kontakt/kostenlos-testen/)) — Free test access on request: a vendor contact gets in touch to set it up. HRworks does not say whether the test access includes the API.
 - **Authentication:** Access Key and Secret Access Key pair; no consent screen.
 
+**Supported resources:**
+
+- People: `employees`
+- Time Off: `time-off-requests`
+- Company Structure: `departments`
+
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/hr-works` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill

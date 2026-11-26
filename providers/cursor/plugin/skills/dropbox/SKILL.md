@@ -43,6 +43,11 @@ Access Dropbox through Apideck's **File Storage** unified API — one of 5 File 
 - **Authentication:** Authorization Code flow.
 - **Webhooks:** No webhooks — Dropbox changes are picked up by polling instead.
 
+**Supported resources:**
+
+- Files & Folders: `files`, `folders`
+- Uploads: `upload-sessions`
+
 **Important to know:**
 
 - A Dropbox app starts in Development status. Its 50th connected user starts a two-week clock to obtain Production approval, and Dropbox will not usually review before that point, so applying early does not avoid it. Missing it stops new connections; existing ones keep working.

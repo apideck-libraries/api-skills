@@ -43,6 +43,12 @@ Access Breathe HR through Apideck's **HRIS** unified API — one of 58 HRIS conn
 - **Authentication:** Sent in the x-api-key header, not OAuth. The key carries the permissions of the whole Breathe account and does not expire on a schedule.
 - **Webhooks:** Virtual webhooks (Apideck polls Breathe for employee created, updated and terminated events)
 
+**Supported resources:**
+
+- People: `employees`
+- Time Off: `time-off-requests`
+- Company Structure: `companies`, `departments`, `jobs`
+
 **Important to know:**
 
 - One API key grants full access to the consumer's Breathe account: Breathe has no scoped permissions, and the only way to withdraw access is to regenerate the key. Make clear what the consumer is granting before they hand it over.

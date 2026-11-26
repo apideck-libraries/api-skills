@@ -46,6 +46,11 @@ Access Okta through Apideck's **HRIS** unified API — one of 58 HRIS connectors
 - **Authentication:** An Okta API token plus the consumer's Okta domain.
 - **Webhooks:** Native - employee created, updated, deleted and terminated events
 
+**Supported resources:**
+
+- People: `employees`
+- Company Structure: `companies`
+
 **Important to know:**
 
 - Okta is an identity provider, not an HR system of record. Employees are Okta users, so what comes back depends on the profile attributes the consumer's org has configured.

@@ -43,6 +43,12 @@ Access Exact Online through Apideck's **Accounting** unified API — one of 34 A
 - **Authentication:** Authorization Code flow.
 - **Webhooks:** No webhooks — sync is polling-based; Exact Online's native webhooks are not surfaced through this connector.
 
+**Supported resources:**
+
+- Core Financial: `ledger-accounts`, `journal-entries`, `companies`, `balance-sheet`, `profit-and-loss`, `tax-rates`
+- Accounts Receivable: `invoices`, `invoice-items`, `customers`, `credit-notes`, `payments`
+- Accounts Payable: `bills`, `bill-credit-notes`, `suppliers`, `bill-payments`
+
 **Important to know:**
 
 - Exact Online runs separate country instances — an app registered in one country cannot serve consumers in another. Select and save the connection's region **before** authorizing; it defaults to the Dutch domain, so non-NL consumers fail otherwise.

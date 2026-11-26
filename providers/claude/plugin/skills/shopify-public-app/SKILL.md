@@ -48,6 +48,14 @@ Access Shopify (Public App) through Apideck's **Ecommerce** unified API — one 
 - **Authentication:** Authorization code grant with Shopify's expiring offline access tokens, refreshed automatically by Apideck; each connection also supplies a shop name.
 - **Webhooks:** Native - order, product and customer events (created, updated, deleted), plus paid, shipped, refunded and delivered order events.
 
+**Supported resources:**
+
+- Store: `shops`
+- Catalog: `products`
+- Sales: `orders`
+- Customers: `customers`
+- Webhooks: `webhooks`
+
 **Important to know:**
 
 - Shopify returns only orders from the last 60 days by default. To read older orders, your app needs the read_all_orders scope, which Shopify must approve before you can add it.

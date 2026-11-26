@@ -46,6 +46,10 @@ Access Sapling through Apideck's **HRIS** unified API — one of 58 HRIS connect
 - **Authentication:** Sent in the Authorization header.
 - **Webhooks:** Virtual webhooks - employee created, updated and terminated events.
 
+**Supported resources:**
+
+- People: `employees`
+
 **Important to know:**
 
 - The connector reaches US-hosted Sapling tenants on saplingapp.io. UK-hosted tenants (kallidus-suite.com) are not covered by the subdomain setting, so check where a customer's tenant is hosted before you commit.

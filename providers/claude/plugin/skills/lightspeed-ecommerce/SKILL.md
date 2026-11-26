@@ -47,6 +47,12 @@ Access Lightspeed eCom (C-Series) through Apideck's **Ecommerce** unified API â€
 - **Authentication:** The shop's API key and secret, sent as HTTP Basic credentials; not OAuth.
 - **Webhooks:** No webhooks - Apideck does not subscribe to Lightspeed events for this connector; read changes by listing.
 
+**Supported resources:**
+
+- Orders: `orders`
+- Products: `products`
+- Customers: `customers`
+
 **Important to know:**
 
 - This connector covers Lightspeed eCom (C-Series) only. Consumers on Lightspeed eCom E-Series (Ecwid-based) connect through the separate Lightspeed connector instead.

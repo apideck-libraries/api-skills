@@ -48,6 +48,13 @@ Access Humaans through Apideck's **HRIS** unified API — one of 58 HRIS connect
 - **Authentication:** Humaans API access token, sent as a bearer token.
 - **Webhooks:** Virtual webhooks - employee created, updated and terminated events
 
+**Supported resources:**
+
+- People: `employees`, `bank-accounts`, `custom-values`
+- Compensation: `compensations`
+- Time Off: `time-off-requests`
+- Company Structure: `companies`, `departments`, `locations`, `job-roles`
+
 **Important to know:**
 
 - A Humaans token set to expire (1 to 365 days) stops working on that date with a 401 and cannot be renewed automatically, so the connection fails until the consumer creates a new token and updates it. A token created without an expiry avoids this.

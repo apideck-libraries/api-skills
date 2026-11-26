@@ -42,6 +42,11 @@ Access Copper through Apideck's **CRM** unified API — one of 21 CRM connectors
 - **Authentication:** Sent in request headers.
 - **Webhooks:** No webhooks - read the resources to detect changes.
 
+**Supported resources:**
+
+- CRM: `companies`, `contacts`, `opportunities`
+- Lead: `leads`
+
 **Important to know:**
 
 - Copper requires the API key together with the email address of the user who generated it, so the consumer supplies both when connecting.

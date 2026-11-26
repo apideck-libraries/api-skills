@@ -47,6 +47,14 @@ Access Sage Business Cloud Accounting through Apideck's **Accounting** unified A
 - **Authentication:** Authorization Code flow.
 - **Webhooks:** No webhooks — Sage Accounting exposes none, native or virtual; sync by polling the unified API.
 
+**Supported resources:**
+
+- Core Financial: `ledger-accounts`, `tax-rates`, `journal-entries`, `balance-sheet`, `profit-and-loss`, `companies`, `subsidiaries`
+- Accounts Receivable: `invoices`, `customers`, `payments`, `credit-notes`
+- Accounts Payable: `bills`, `suppliers`, `bill-payments`, `expenses`
+- Products & Services: `invoice-items`, `services`
+- Other: `bank-accounts`, `attachments`
+
 **Important to know:**
 
 - Every connection needs a Default Company selected before it can be used, even when the consumer's Sage login can reach only one business — the connection stays incomplete until it is set.

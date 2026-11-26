@@ -48,6 +48,15 @@ Access Yuki through Apideck's **Accounting** unified API — one of 34 Accountin
 - **Authentication:** A WebserviceAccessKey; not OAuth, and no redirect for your consumer to complete.
 - **Webhooks:** No webhooks — Yuki documents no event or subscription mechanism, and this connector adds no virtual webhooks, so poll for changes.
 
+**Supported resources:**
+
+- Core Financial: `ledger-accounts`, `journal-entries`, `tax-rates`
+- Accounts Receivable: `customers`, `invoices`
+- Accounts Payable: `suppliers`, `bills`
+- Organizational: `company-info`, `tracking-categories`
+- Banking: `bank-feed-statements`
+- Other: `attachments`
+
 **Important to know:**
 
 - Turning on web service access is not something your consumer does alone — it is a domain feature their accountant or administrative office switches on. Build that hand-off into onboarding and confirm it is enabled before a consumer tries to connect.
