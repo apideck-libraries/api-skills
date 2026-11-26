@@ -1,6 +1,6 @@
 ---
 name: apideck-mcp-close-checklist
-description: Read-only month-end close checklist through the Apideck MCP server. Checks whether the period is locked, lists draft or unapproved journal entries, overdue unpaid bills, bills on hold and balances left in suspense accounts, and pulls the P&L, balance sheet and aged AP/AR snapshot, on QuickBooks, Xero, NetSuite, Business Central, Exact Online and every other accounting connector. Use when the user asks "are we ready to close", "close checklist", "month-end checklist", "what's left before close", "is the period locked" or "pre-close review".
+description: Read-only month-end close checklist through the Apideck MCP server. Checks whether the period is locked, lists draft or unapproved journal entries, overdue unpaid bills, bills on hold, unreconciled payments and balances left in suspense accounts, and pulls the P&L, balance sheet and aged AP/AR snapshot, on QuickBooks, Xero, NetSuite, Business Central, Exact Online and every other accounting connector. Use when the user asks "are we ready to close", "close checklist", "month-end checklist", "what's left before close", "is the period locked" or "pre-close review".
 license: Apache-2.0
 alwaysApply: false
 metadata:
@@ -14,7 +14,7 @@ Runs the read-only checks a controller does before calling a month closed and re
 
 ## IMPORTANT RULES
 
-- **READ-ONLY.** Use only `-all`, `-one` and report tools: `accounting-fiscal-periods-all`, `accounting-journal-entries-all`, `accounting-bills-all`, `accounting-ledger-accounts-all`, `accounting-trial-balance-one`, and the `apideck-month-end-close-check` workflow. Locking the period is the user's job in their ledger.
+- **READ-ONLY.** Use only `-all`, `-one` and report tools: `accounting-fiscal-periods-all`, `accounting-journal-entries-all`, `accounting-bills-all`, `accounting-payments-all`, `accounting-bill-payments-all`, `accounting-ledger-accounts-all`, `accounting-trial-balance-one`, and the `apideck-month-end-close-check` workflow. Locking the period is the user's job in their ledger.
 - **Three states per check:** ✅ done, ⚠️ open (with the items), — can't check on this connector (with the reason). Never report a check as done because the tool was unsupported.
 - **Read every page** (`meta.cursors.next`).
 
@@ -35,9 +35,10 @@ Runs the read-only checks a controller does before calling a month closed and re
 | 4 | Draft and held bills | `accounting-bills-all` for the period: `status` `draft` or `submitted` (entered, not yet approved), and `payment_hold: true`. |
 | 5 | Suspense balance | `accounting-ledger-accounts-all`: accounts named suspense, clearing or uncategorized with a non-zero `current_balance`. |
 | 6 | Trial balance | `accounting-trial-balance-one` with `filter.end_date` = period end: `total_debit` equals `total_credit`. |
-| 7 | Snapshot | `apideck-month-end-close-check` with `report_as_of_date` = period end: P&L, balance sheet, aged creditors, aged debtors. Pass through its `warnings[]`. |
+| 7 | Bank reconciliation | `accounting-payments-all` and `accounting-bill-payments-all` with `filter.updated_since` at the period start: payments dated in the period with `reconciled: false` are open. Bank `accounting-ledger-accounts-all` entries with `last_reconciliation_date` before the period end are open too. |
+| 8 | Snapshot | `apideck-month-end-close-check` with `report_as_of_date` = period end. Pass through its `warnings[]`. |
 
-Bank reconciliation is not in the unified API today, so list it as "check in your ledger": the ledger's own reconciliation screen is the place to do it.
+Reconciliation state depends on the ledger. The `reconciled` flag is filled on Xero, Sage Intacct, Holded, SAP S/4HANA Cloud and a few others; `last_reconciliation_date` on MYOB. On QuickBooks, NetSuite, Business Central and Exact Online both come back empty: if `reconciled` is null on every payment, report check 7 as "can't check on <connector>: check in the ledger's reconciliation screen", never as done.
 
 ## Report
 
@@ -50,8 +51,8 @@ Close checklist, Xero, October 2026
 ⚠️ Overdue bills: 6, total 9,812.00 (largest: Acme Supplies 4,200.00, due 12 Oct)
 ✅ Draft and held bills: none
 ⚠️ Suspense: 1,250.00 in Suspense (9999)
+⚠️ Bank reconciliation: 14 October payments not reconciled (Business account)
 ✅ Snapshot: P&L, balance sheet, aged AP/AR fetched
-— Bank reconciliation: check in Xero (not in the unified API)
 ```
 
 Then suggest the next step for each open item, e.g. "run [`apideck-mcp-journal-entry-scan`](../apideck-mcp-journal-entry-scan/) before you lock October".
@@ -61,10 +62,10 @@ Then suggest the next step for each open item, e.g. "run [`apideck-mcp-journal-e
 | Symptom | Cause | Fix |
 |---|---|---|
 | Fiscal periods unsupported | Not every connector exposes periods (fiscal periods are beta on most) | Mark check 1 "can't check"; ask the user for the lock date |
-| Trial balance unsupported | Connector has no trial balance report | Mark check 6 "can't check"; the balance sheet in check 7 still has to balance |
+| Trial balance unsupported | Connector has no trial balance report | Mark check 6 "can't check"; the balance sheet in check 8 still has to balance |
 | `status` filter rejected on journals | Connector can't filter by status | List the period's entries and filter `status` locally |
 
 ## Related
 
-- [`apideck-mcp-month-end-close`](../apideck-mcp-month-end-close/): the snapshot workflow used in check 7
+- [`apideck-mcp-month-end-close`](../apideck-mcp-month-end-close/): the snapshot workflow used in check 8
 - [`apideck-mcp-journal-entry-scan`](../apideck-mcp-journal-entry-scan/), [`apideck-mcp-po-bill-match`](../apideck-mcp-po-bill-match/), [`apideck-mcp-accruals-check`](../apideck-mcp-accruals-check/): the deeper checks

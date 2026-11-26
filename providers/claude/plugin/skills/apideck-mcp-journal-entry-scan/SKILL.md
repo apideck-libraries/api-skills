@@ -56,7 +56,9 @@ Lists the journal entries posted in a period, scores each one against a set of r
 | No description | Both `memo` and every line `description` are empty | `memo`, `line_items[].description` |
 | Not posted | `status` is `draft` or `pending_approval` at period end | `status` |
 
-These follow the characteristics of journal entries that auditing standards ask auditors to examine (PCAOB AS 2401.61; ISA 240.A43): entries to unrelated, unusual or seldom-used accounts, entries by people who don't usually make them, entries at period end or after closing with little or no explanation, and round numbers.
+Five of these come from the characteristics PCAOB AS 2401.61 lists for fraudulent journal entries: unrelated, unusual or seldom-used accounts; entries by people who don't usually make them; entries at period end or after closing with little or no explanation; and round or consistent ending numbers. Weekend postings and suspense accounts are not in the standard; they are common practitioner tests (weekend postings: Journal of Accountancy, July 2007). Say which is which if the user asks.
+
+`created_by` is an edge-case field in the unified API and many connectors leave it empty. When it is empty on every entry, report "unusual user: no user data on <connector>", never "no unusual users".
 
 ## Report
 

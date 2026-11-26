@@ -1,6 +1,6 @@
 ---
 name: apideck-mcp-month-end-close
-description: Task playbook for fetching a month-end financial snapshot via the Apideck MCP server's `apideck-month-end-close-check` workflow tool. Use when the user asks for a P&L, balance sheet, aged creditors, or aged debtors view at a point in time. Read-only, idempotent, returns partial snapshots when some reports aren't supported by the connector.
+description: Task playbook for fetching a month-end financial snapshot via the Apideck MCP server's `apideck-month-end-close-check` workflow tool. Use when the user asks for a P&L, balance sheet, aged creditors, aged debtors, trial balance or "is the period still open" view at a point in time. Read-only, idempotent, returns partial snapshots when some reports aren't supported by the connector.
 license: Apache-2.0
 alwaysApply: false
 metadata:
@@ -10,15 +10,15 @@ metadata:
 
 # Month-end close snapshot (Apideck MCP)
 
-When the user wants a one-shot financial snapshot, **prefer `apideck-month-end-close-check`** over fetching the four reports individually. The workflow fans out aged creditors, aged debtors, balance sheet, and profit-and-loss in parallel against the connected accounting service and returns one aggregated object.
+When the user wants a one-shot financial snapshot, **prefer `apideck-month-end-close-check`** over fetching the six reports individually. The workflow fans out aged creditors, aged debtors, balance sheet, profit-and-loss, trial balance and fiscal periods in parallel against the connected accounting service and returns one aggregated object.
 
 ## When this is the right tool
 
 | User intent | Tool |
 |---|---|
 | "Run the month-end close", "P&L plus balance sheet for last month", "Aged AP/AR snapshot as of March 31" | **`apideck-month-end-close-check`** ✓ |
-| "Just the P&L" | `accounting-profit-and-loss-get` directly |
-| "Just aged creditors" | `accounting-aged-creditors-get` directly |
+| "Just the P&L" | `accounting-profit-and-loss-one` directly |
+| "Just aged creditors" | `accounting-aged-creditors-one` directly |
 | "Reconcile bank statements" | Out of scope — use the connector's native reconciliation |
 
 ## IMPORTANT RULES
@@ -46,7 +46,9 @@ When the user wants a one-shot financial snapshot, **prefer `apideck-month-end-c
   "aged_creditors": { "summary": [...] },
   "aged_debtors":   { "summary": [...] },
   "balance_sheet":  { "assets": 100000, ... },
-  "profit_and_loss":{ "revenue": 250000, ... }
+  "profit_and_loss":{ "revenue": 250000, ... },
+  "trial_balance":  { "total_debit": 412880.10, "total_credit": 412880.10, ... },
+  "fiscal_periods": [ { "name": "Mar 2026", "status": "open", ... } ]
 }
 ```
 
@@ -107,7 +109,7 @@ Then summarize for the user, calling out any `unsupported` rows distinctly:
 
 | Symptom | Cause | Fix |
 |---|---|---|
-| All four reports `unsupported` | Connector doesn't implement these (e.g. Odoo without the Reports module) | Surface the limitation; suggest aggregating from `accounting-bills-list` + `accounting-invoices-list` instead |
+| Every report `unsupported` | Connector doesn't implement these (e.g. Odoo without the Reports module) | Surface the limitation; suggest aggregating from `accounting-bills-all` + `accounting-invoices-all` instead |
 | `UnsupportedFiltersError` on a report | Connector rejects `filter[report_as_of_date]` or `filter[end_date]` | Connector quirk — currently surfaces as `unsupported` with the upstream message |
 | `UrlElicitationRequiredError` | Connection expired/missing | Surface consent URL, retry |
 
