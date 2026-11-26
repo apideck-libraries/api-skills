@@ -47,6 +47,13 @@ Access MRI Software through Apideck's **Accounting** unified API — one of 34 A
 - **Authentication:** An MRI-issued composite credential over HTTP Basic; not OAuth. There are no scopes and no token expiry.
 - **Webhooks:** No webhooks — change detection is polling-based.
 
+**Supported resources:**
+
+- Ledger & Accounts: `ledger-accounts`, `journal-entries`, `tax-rates`
+- Contacts: `customers`, `suppliers`
+- Purchasing: `bills`, `purchase-orders`
+- Organizational: `departments`, `locations`, `subsidiaries`
+
 **Important to know:**
 
 - MRI grants API access through its Partner Connect programme or a customer-led introduction — engage MRI early and ask your contact for current onboarding expectations.

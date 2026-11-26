@@ -43,6 +43,12 @@ Access Google Drive through Apideck's **File Storage** unified API — one of 5 
 - **Authentication:** Authorization Code flow with Google.
 - **Webhooks:** No webhooks — Google Drive change notifications are not surfaced as Apideck events; sync by polling the File Storage API
 
+**Supported resources:**
+
+- Files & Folders: `files`, `folders`
+- Drives: `drives`
+- Uploads: `upload-sessions`
+
 **Important to know:**
 
 - Full Drive access is a Google restricted scope: production needs restricted-scope OAuth verification, an annual CASA security assessment, and your app must be a backup and sync, productivity and education, or reporting and security product.

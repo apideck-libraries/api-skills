@@ -224,6 +224,21 @@ function atAGlanceBlock(connector) {
   if (o.webhooks) lines.push(`- **Webhooks:** ${o.webhooks}`);
   lines.push("");
 
+  // Supported resources, grouped the way the overview groups them. This is
+  // the authoritative list; hand-written enhancement notes can lag behind it
+  // (e.g. QuickBooks purchase orders were listed as unsupported while live).
+  const categories = (o.supported_resource_categories || []).filter(
+    (c) => c && Array.isArray(c.resources) && c.resources.length
+  );
+  if (categories.length) {
+    lines.push("**Supported resources:**");
+    lines.push("");
+    for (const c of categories) {
+      lines.push(`- ${c.name}: ${c.resources.map((r) => `\`${r}\``).join(", ")}`);
+    }
+    lines.push("");
+  }
+
   if (o.important_to_know && o.important_to_know.length) {
     lines.push("**Important to know:**");
     lines.push("");

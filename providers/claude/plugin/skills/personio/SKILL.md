@@ -44,6 +44,10 @@ Access Personio through Apideck's **HRIS** unified API — one of 58 HRIS connec
 - **Authentication:** Each consumer's Personio administrator generates a Client ID and Secret in their own Personio account. Nothing for you to register.
 - **Webhooks:** Virtual webhooks (Apideck polls for employee created, updated and terminated events)
 
+**Supported resources:**
+
+- People: `employees`, `time-off-requests`
+
 **Important to know:**
 
 - Access is scoped at credential creation: the administrator picks which resources are readable or writable and which employee attributes are exposed, so a credential created too narrowly returns partial or empty data.

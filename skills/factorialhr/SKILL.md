@@ -41,6 +41,12 @@ Access Factorial through Apideck's **HRIS** unified API — one of 58 HRIS conne
 - **Authentication:** Authorization Code flow.
 - **Webhooks:** Native - employee created, updated and terminated events
 
+**Supported resources:**
+
+- People: `employees`
+- Company Structure: `divisions`
+- Compensation: `compensations`
+
 **Important to know:**
 
 - An OAuth app a company creates in its own Factorial account covers only that one Factorial company, so it cannot connect your consumers' companies.

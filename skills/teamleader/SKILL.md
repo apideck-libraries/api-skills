@@ -43,6 +43,12 @@ Access Teamleader through Apideck's **CRM** unified API — one of 21 CRM connec
 - **Authentication:** Authorization Code flow.
 - **Webhooks:** No webhooks — neither native nor virtual; poll for changes.
 
+**Supported resources:**
+
+- Contacts & Companies: `contacts`, `leads`, `companies`
+- Sales Pipeline: `opportunities`
+- Activities: `notes`
+
 **Important to know:**
 
 - Leads are Teamleader contacts: the Lead API and the CRM contacts resource read and write the same Teamleader contact records, so a lead created through one appears in the other.

@@ -47,6 +47,12 @@ Access Digits through Apideck's **Accounting** unified API — one of 34 Account
 - **Authentication:** Authorization Code flow.
 - **Webhooks:** No webhooks — neither native nor virtual; poll for changes. Digits has a webhook contract of its own, but it is in private beta and unused here.
 
+**Supported resources:**
+
+- Core Financial: `ledger-accounts`, `journal-entries`, `tracking-categories`
+- Contacts: `customers`, `suppliers`
+- Reports: `balance-sheet`, `profit-and-loss`
+
 **Important to know:**
 
 - Connecting your own Digits businesses works from day one. Installing your app into any organisation outside your own requires Digits to approve it first, requested by email.

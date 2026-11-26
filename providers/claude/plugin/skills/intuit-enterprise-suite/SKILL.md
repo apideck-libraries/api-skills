@@ -43,6 +43,14 @@ Access Intuit Enterprise Suite through Apideck's **Accounting** unified API — 
 - **Authentication:** Authorization Code flow. Custom scopes supported.
 - **Webhooks:** Native — 13 event families including invoice, bill, payment, customer, and supplier (created/updated/deleted).
 
+**Supported resources:**
+
+- Core Financial: `ledger-accounts`, `tax-rates`, `tax-codes`, `journal-entries`, `company-info`, `balance-sheet`, `profit-and-loss`
+- Accounts Receivable: `invoices`, `invoice-items`, `customers`, `payments`, `payment-methods`, `credit-notes`, `refunds`, `sales-receipts`
+- Accounts Payable: `bills`, `bill-payments`, `suppliers`, `purchase-orders`, `expenses`, `bill-credit-notes`
+- Organizational: `departments`, `locations`, `tracking-categories`, `projects`
+- Other: `attachments`, `aged-debtors`, `aged-creditors`, `quotes`, `preferences`
+
 **Important to know:**
 
 - Intuit Enterprise Suite shares its API, developer program, and OAuth client with QuickBooks Online — an existing QuickBooks integration on Apideck works with IES on the same production credentials with no code changes, and migration between the two connectors is supported.

@@ -44,6 +44,12 @@ Access BambooHR through Apideck's **HRIS** unified API — one of 58 HRIS connec
 - **Authentication:** The consumer's API key over HTTP Basic, not OAuth, plus their BambooHR subdomain.
 - **Webhooks:** Virtual webhooks (Apideck polls BambooHR for employee created, updated and terminated events)
 
+**Supported resources:**
+
+- People: `employees`, `compensations`, `employment-status`
+- Time Off: `time-off-requests`
+- Company Structure: `companies`, `departments`, `jobs`
+
 **Important to know:**
 
 - An API key carries the permissions of the BambooHR user who created it. An under-privileged key returns a narrower set of employees and blank fields instead of an error, so missing data reads as a mapping bug rather than a permissions problem.

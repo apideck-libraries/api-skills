@@ -42,6 +42,11 @@ Access Zendesk Sell through Apideck's **CRM** unified API — one of 21 CRM conn
 - **Authentication:** Authorization Code flow.
 - **Webhooks:** No webhooks - changes are read by polling.
 
+**Supported resources:**
+
+- Contacts & Companies: `contacts`, `companies`
+- Leads & Opportunities: `leads`, `opportunities`
+
 **Important to know:**
 
 - Zendesk retires Zendesk Sell on 31 August 2027. Existing Sell accounts keep full access until then, so plan the integration around that end date; Zendesk has partnered with Pipedrive as the migration path.

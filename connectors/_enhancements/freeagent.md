@@ -25,7 +25,7 @@ FreeAgent is a UK-focused cloud accounting platform for freelancers and small bu
 - ✅ Financial reports (P&L, Balance Sheet)
 - ✅ Bank accounts
 - ⚠️ VAT returns / MTD submission — use Proxy with FreeAgent's `/v2/vat_returns` endpoints
-- ❌ Time tracking, project management — use Proxy
+- ⚠️ Projects — the accounting `projects` resource (beta); time tracking — use Proxy
 - ❌ Self-assessment / Personal tax — use Proxy
 
 ### Auth notes

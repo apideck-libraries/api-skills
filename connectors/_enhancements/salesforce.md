@@ -14,7 +14,7 @@ Salesforce is the reference implementation for Apideck CRM. All Tier 1 CRM resou
 | User | `users` |
 | Note (Task with note body) | `notes` |
 | OpportunityStage / pipeline config | `pipelines` |
-| Custom objects (`*__c`) | use Proxy API — not exposed through unified resources |
+| Custom objects (`*__c`) | `custom-objects` and `custom-object-schemas` (beta) |
 
 ### Coverage highlights
 
@@ -22,7 +22,7 @@ Salesforce is the reference implementation for Apideck CRM. All Tier 1 CRM resou
 - ✅ Pagination via cursor (Apideck normalizes SOQL `LIMIT` / `OFFSET` into cursor tokens)
 - ✅ Field-level filtering via `filter[...]` query params
 - ✅ Deep pagination beyond 2,000 records (Apideck uses `queryMore` / `nextRecordsUrl` under the hood)
-- ❌ Custom objects — use Proxy API with the SOQL endpoint
+- ⚠️ Custom objects — `custom-objects` and `custom-object-schemas` resources (beta); use Proxy with the SOQL endpoint for queries they do not cover
 - ❌ Apex REST endpoints — Proxy API
 - ❌ Bulk API (2.0) job creation — Proxy API
 

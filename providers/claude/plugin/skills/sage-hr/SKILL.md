@@ -40,6 +40,13 @@ Access Sage HR through Apideck's **HRIS, ATS** unified API — one of 58 HRIS co
 - **Authentication:** Sent in the X-Auth-Token header; not OAuth.
 - **Webhooks:** Virtual webhooks - employee created, updated and terminated (HRIS); applicant and job created and updated (ATS).
 
+**Supported resources:**
+
+- HRIS: People: `employees`, `terminated-employees`, `custom-fields`
+- HRIS: Time Off: `time-off-requests`
+- HRIS: Compensation: `compensations`
+- ATS: Recruitment: `jobs`, `applicants`
+
 **Important to know:**
 
 - Sage HR serves both the HRIS and ATS APIs, and Vault keys a connection to one unified API, so each vertical is a separate connection using the same subdomain and API key.

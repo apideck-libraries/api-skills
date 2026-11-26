@@ -43,6 +43,12 @@ Access Walmart through Apideck's **Ecommerce** unified API — one of 17 Ecommer
 - **Authentication:** Authorization Code flow.
 - **Webhooks:** No webhooks - orders, products and the store are read on demand through the API.
 
+**Supported resources:**
+
+- Orders: `orders`
+- Products: `products`
+- Store: `stores`
+
 **Important to know:**
 
 - Sellers connect only by authorising an approved Solution Provider app; they cannot connect with their own Walmart API keys, and Walmart no longer supports Delegated Access.

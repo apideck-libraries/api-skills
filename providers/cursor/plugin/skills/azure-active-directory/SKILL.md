@@ -46,6 +46,11 @@ Access Microsoft Entra through Apideck's **HRIS** unified API — one of 58 HRIS
 - **Authentication:** Authorization Code flow via the Microsoft identity platform, reading directory data through Microsoft Graph.
 - **Webhooks:** Virtual webhooks (Apideck polls for employee created and updated events only, no terminated event)
 
+**Supported resources:**
+
+- People: `employees`
+- Organizational: `departments`
+
 **Important to know:**
 
 - The Graph scopes this connector requests require administrator approval in the consumer's tenant, so design your onboarding around an administrator completing or pre-approving the authorisation. An ordinary employee cannot connect on their own.

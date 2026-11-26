@@ -43,6 +43,11 @@ Access Sympa through Apideck's **HRIS** unified API — one of 58 HRIS connector
 - **Authentication:** Not OAuth: the API key is sent as the username and the secret as the password.
 - **Webhooks:** No webhooks - data is fetched by polling.
 
+**Supported resources:**
+
+- People: `employees`
+- Time Off: `time-off-requests`
+
 **Important to know:**
 
 - Plan on a scheduled sync rather than near-real-time updates: Sympa sends no change events and caps each interface at a low hourly request volume.

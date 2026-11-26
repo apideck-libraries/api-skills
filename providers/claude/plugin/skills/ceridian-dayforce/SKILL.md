@@ -48,6 +48,12 @@ Access Ceridian Dayforce through Apideck's **HRIS** unified API — one of 58 HR
 - **Authentication:** Username, password and Company ID of a Dayforce Web Services user; no OAuth redirect.
 - **Webhooks:** Virtual webhooks - employee created events
 
+**Supported resources:**
+
+- People: `employees`
+- Company Structure: `departments`
+- Payroll: `employee-payroll`
+
 **Important to know:**
 
 - The connection signs in as the integration user, so a password change or expiry on that Dayforce user breaks it until the consumer re-enters the password in Vault; Dayforce advises a non-expiring password policy for these users.

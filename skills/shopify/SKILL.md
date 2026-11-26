@@ -48,6 +48,14 @@ Access Shopify through Apideck's **Ecommerce** unified API — one of 17 Ecommer
 - **Authentication:** Client Credentials against the merchant's own store; Shop, Client ID and Client Secret are entered per connection.
 - **Webhooks:** Native — order, product and customer created, updated and deleted events.
 
+**Supported resources:**
+
+- Store: `shops`
+- Catalog: `products`
+- Sales: `orders`
+- Customers: `customers`
+- Webhooks: `webhooks`
+
 **Important to know:**
 
 - Shopify returns only orders from the last 60 days by default. Older orders need the read_all_orders scope on the merchant's app, which Shopify must approve before it can be added.

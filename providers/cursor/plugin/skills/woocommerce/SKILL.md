@@ -47,6 +47,13 @@ Access WooCommerce through Apideck's **Ecommerce** unified API — one of 17 Eco
 - **Authentication:** Consumer Key and Consumer Secret, sent as HTTP Basic Auth.
 - **Webhooks:** Native - order, customer and product events (created, updated, deleted)
 
+**Supported resources:**
+
+- Orders: `orders`
+- Products: `products`
+- Customers: `customers`
+- Store: `stores`
+
 **Important to know:**
 
 - WooCommerce stores are self-hosted, so the store's own firewall, security plugin or Cloudflare can block Apideck's requests even when the connection shows as connected. The consumer has to allowlist Apideck's static egress IPs; the connection guide lists them.

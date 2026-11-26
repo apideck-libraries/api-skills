@@ -45,6 +45,13 @@ Access Wix  through Apideck's **Ecommerce** unified API — one of 17 Ecommerce 
 - **Authentication:** Account-level key, supplied together with the Site ID and Shop Domain; not OAuth.
 - **Webhooks:** Virtual webhooks - order, product and customer created and updated events; deletes are not detected
 
+**Supported resources:**
+
+- Orders: `orders`, `fulfillments`
+- Products: `products`, `products-v3`, `inventory-items`
+- Customers: `customers`
+- Store: `stores`, `catalog-versions`
+
 **Important to know:**
 
 - The API key has to come from the Wix account that owns the site, and its site access must include that site. A key from an agency or another account, or one restricted to other sites, is rejected even with the right permissions.

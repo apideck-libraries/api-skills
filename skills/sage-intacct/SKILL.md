@@ -44,6 +44,14 @@ Access Sage Intacct through Apideck's **Accounting** unified API — one of 34 A
 - **Authentication:** Sender ID plus each company's Web Services login (Company ID, User ID, password), exchanged for an XML Web Services session; not OAuth.
 - **Webhooks:** Virtual webhooks — created and updated events across 9 resource families; deleted events for invoices, bills, payments, bill payments and ledger accounts.
 
+**Supported resources:**
+
+- Core Financial: `ledger-accounts`, `tax-rates`, `journal-entries`, `balance-sheet`, `profit-and-loss`
+- Accounts Receivable: `invoices`, `invoice-items`, `customers`, `payments`, `credit-notes`, `sales-orders`
+- Accounts Payable: `bills`, `bill-payments`, `suppliers`
+- Organizational: `departments`, `locations`, `subsidiaries`, `tracking-categories`
+- Other: `expenses`, `attachments`, `bank-accounts`
+
 **Important to know:**
 
 - Sage titles this surface "About the XML API (Legacy)" and steers new work to REST. No sunset is announced and existing integrations stay supported, but legacy functions get no enhancements and individual legacy objects have been retired — weigh that on a long-term build.

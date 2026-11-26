@@ -48,6 +48,13 @@ Access Wave through Apideck's **Accounting** unified API — one of 34 Accountin
 - **Authentication:** Authorization Code flow. Wave's API is GraphQL-only; each connection is tied to one Wave business, whose ID is captured during authorisation.
 - **Webhooks:** Virtual webhooks — created and updated events: customers, suppliers, invoices, invoice items, quotes, tax rates and ledger accounts.
 
+**Supported resources:**
+
+- Core Financial: `ledger-accounts`, `tax-rates`, `company-info`, `balance-sheet`, `profit-and-loss`
+- Accounts Receivable: `invoices`, `invoice-items`, `customers`, `quotes`, `payments`
+- Accounts Payable: `suppliers`
+- Banking: `bank-accounts`
+
 **Important to know:**
 
 - A live connection can break with nothing changing on your side. If a connected business's Wave Pro or Advisors subscription lapses, the next token refresh returns 403 and the integration stops working until the subscription is reactivated.

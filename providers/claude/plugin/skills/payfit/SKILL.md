@@ -42,6 +42,12 @@ Access PayFit through Apideck's **HRIS** unified API — one of 58 HRIS connecto
 - **Authentication:** Authorization Code flow.
 - **Webhooks:** Virtual webhooks - employee created, updated and terminated events
 
+**Supported resources:**
+
+- People: `employees`
+- Company Structure: `companies`
+- Time Off: `time-off-requests`
+
 **Important to know:**
 
 - PayFit has temporarily stopped accepting new API integration requests and gives no reopening date. If you are not yet a PayFit product partner, you cannot start the partner process until PayFit reopens intake.

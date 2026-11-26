@@ -27,7 +27,7 @@ Zoho Books is Zoho's accounting product, part of the Zoho One suite. Strong in I
 - ✅ Purchase orders
 - ✅ GST / VAT handling (India and other regions)
 - ⚠️ Recurring invoices — not exposed; use Proxy
-- ❌ Projects and time tracking — separate Zoho products (Zoho Projects, Zoho People)
+- ⚠️ Projects — the accounting `projects` resource (beta); time tracking lives in separate Zoho products (Zoho Projects, Zoho People)
 - ❌ Expense claim workflow — use Proxy with Zoho Expense API
 
 ### Auth notes

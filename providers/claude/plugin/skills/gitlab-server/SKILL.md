@@ -48,6 +48,12 @@ Access GitLab server (on-prem) through Apideck's **Issue Tracking** unified API 
 - **Authentication:** Personal access token with the api scope, sent as a bearer token; not OAuth.
 - **Webhooks:** Virtual webhooks - ticket created and updated, detected by polling the group's issues.
 
+**Supported resources:**
+
+- Tickets: `collection-tickets`, `collection-ticket-comments`, `group-issues`
+- Collections: `groups`, `collections`
+- Users and Tags: `collection-users`, `collection-tags`
+
 **Important to know:**
 
 - The GitLab instance must be reachable from Apideck over the internet with a valid certificate. An instance behind a VPN, private network or restrictive firewall cannot connect until access is opened.

@@ -43,6 +43,12 @@ Access MYOB through Apideck's **Accounting** unified API — one of 34 Accountin
 - **Authentication:** Authorization Code flow.
 - **Webhooks:** No webhooks — MYOB Business exposes no native webhook API and virtual webhooks are not enabled for this connector; sync by polling.
 
+**Supported resources:**
+
+- Core Financial: `ledger-accounts`, `tax-rates`, `currency`, `company-info`, `company-files`
+- Accounts Receivable: `invoices`, `invoice-items`, `customers`, `payments`, `credit-notes`
+- Accounts Payable: `suppliers`, `bills`, `bill-payments`
+
 **Important to know:**
 
 - One connection covers one company file — consumers running several MYOB company files need a separate connection for each.

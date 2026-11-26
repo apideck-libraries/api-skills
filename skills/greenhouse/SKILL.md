@@ -44,6 +44,11 @@ Access Greenhouse through Apideck's **ATS** unified API — one of 11 ATS connec
 - **Authentication:** Authorization Code Grant against Harvest V3.
 - **Webhooks:** Virtual webhooks — Apideck polls Greenhouse and emits ats.applicant.created, ats.applicant.updated, ats.job.created, and ats.job.updated.
 
+**Supported resources:**
+
+- Candidates: `applicants`
+- Jobs & Job Posts: `jobs`
+
 **Important to know:**
 
 - Greenhouse shuts down Harvest V1 and V2 on August 31, 2026. Connections created with the older API-key authentication stop working on that date — Greenhouse must sign off on your V3 review, and every existing consumer must re-authorize through the V3 OAuth flow, before then.

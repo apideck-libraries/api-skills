@@ -48,6 +48,12 @@ Access Access Financials through Apideck's **Accounting** unified API — one of
 - **Authentication:** Bearer access token plus an Ocp-Apim-Subscription-Key header — not OAuth.
 - **Webhooks:** No webhooks — neither native nor virtual; change detection is polling-based.
 
+**Supported resources:**
+
+- Contacts: `customers`, `suppliers`
+- Transactions: `invoices`, `credit-notes`, `payments`
+- Accounting Setup: `ledger-accounts`, `tax-rates`, `tracking-categories`
+
 **Important to know:**
 
 - Invoices, payments and credit notes post as live transactions immediately, and a posted transaction cannot be updated through the API because it is already accounted for.

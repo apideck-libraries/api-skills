@@ -47,6 +47,13 @@ Access BigCommerce through Apideck's **Ecommerce** unified API — one of 17 Eco
 - **Authentication:** Store-level API account access token, sent in the X-Auth-Token header with the store hash.
 - **Webhooks:** Native - order, product and customer events (created, updated, deleted)
 
+**Supported resources:**
+
+- Orders: `orders`
+- Products: `products`, `categories`
+- Customers: `customers`
+- Store: `stores`
+
 **Important to know:**
 
 - A store-level API account cannot have its scopes changed after creation. If a consumer leaves out a scope, they must create a new API account and reconnect with its token.

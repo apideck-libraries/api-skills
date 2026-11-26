@@ -47,6 +47,12 @@ Access Etsy through Apideck's **Ecommerce** unified API — one of 17 Ecommerce 
 - **Authentication:** Authorization Code flow with PKCE; requests also carry the app's key in the x-api-key header.
 - **Webhooks:** No webhooks - data is read by polling.
 
+**Supported resources:**
+
+- Orders: `orders`
+- Products: `products`
+- Stores: `stores`
+
 **Important to know:**
 
 - Etsy gates access by app type. A Seller App is approved within minutes but can only ever connect the shop of the person who registered it; connecting other sellers' shops needs a Personal App and, at scale, Commercial Access, which Etsy reviews manually.

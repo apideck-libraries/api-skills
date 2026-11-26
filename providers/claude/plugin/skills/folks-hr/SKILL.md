@@ -42,6 +42,11 @@ Access Folks HR through Apideck's **HRIS** unified API — one of 58 HRIS connec
 - **Authentication:** Client ID and secret from a Folks V2 API key, plus the company UUID.
 - **Webhooks:** Virtual webhooks - employee created, updated and terminated events.
 
+**Supported resources:**
+
+- People: `employees`
+- Company Structure: `companies`, `departments`
+
 **Important to know:**
 
 - Production access is its own request, which Folks reviews with heightened security measures. Sandbox access alone does not let you go live, so plan for that vendor approval before launch.

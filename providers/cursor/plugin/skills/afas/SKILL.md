@@ -48,6 +48,17 @@ Access AFAS Software through Apideck's **HRIS** unified API — one of 58 HRIS c
 - **Authentication:** An AFAS App Connector token sent in the Authorization header, prefixed with AfasToken. Not OAuth.
 - **Webhooks:** Virtual webhooks — polling-based created/updated events for 14 HRIS and accounting resource families (employees, customers, invoices, bills, and 10 more).
 
+**Supported resources:**
+
+- HRIS — People & Organization: `employees`, `departments`
+- Accounting — Company & Structure: `company-info`, `subsidiaries`, `locations`
+- Accounting — Contacts: `customers`, `suppliers`
+- Accounting — General Ledger: `ledger-accounts`, `journal-entries`, `tax-rates`, `tracking-categories`, `bank-accounts`
+- Accounting — Sales & Receivables: `invoices`, `credit-notes`, `quotes`, `payments`, `aged-debtors`
+- Accounting — Purchasing & Payables: `bills`, `purchase-orders`, `bill-payments`, `aged-creditors`
+- Accounting — Products & Catalog: `invoice-items`, `categories`
+- Accounting — Projects & Documents: `projects`, `attachments`
+
 **Important to know:**
 
 - One AFAS environment and token serves two unified APIs: HRIS (live) and Accounting (beta). Employees and departments are HRIS-only — those operations are disabled on the Accounting API — so which resources you get depends on the API you build against.

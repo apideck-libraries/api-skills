@@ -47,6 +47,12 @@ Access Zoho People through Apideck's **HRIS** unified API — one of 58 HRIS con
 - **Authentication:** Authorization Code flow.
 - **Webhooks:** Virtual webhooks - employee created, updated and terminated events
 
+**Supported resources:**
+
+- People: `employees`
+- Company Structure: `departments`
+- Compensation: `salaries`
+
 **Important to know:**
 
 - Each Zoho People account sits in one regional data centre. Consumers pick theirs when connecting, and your Zoho OAuth client must be enabled for every data centre your consumers use, or their authorisation fails.

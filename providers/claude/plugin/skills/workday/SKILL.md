@@ -44,6 +44,14 @@ Access Workday through Apideck's **Accounting, HRIS, ATS** unified API — one o
 - **Authentication:** A per-consumer Integration System User (ISU); not OAuth.
 - **Webhooks:** Virtual webhooks — no native webhooks in Workday; Apideck polls employees, applicants, jobs, bills, suppliers, purchase orders, and customers.
 
+**Supported resources:**
+
+- HR & Organization (HRIS): `employees`, `companies`, `departments`, `job-profiles`
+- Recruiting (ATS): `applicants`, `jobs`
+- Accounts Receivable (Accounting): `invoices`, `invoice-items`, `payments`, `customers`, `customer-categories`, `revenue-categories`
+- Accounts Payable & Spend (Accounting): `bills`, `bill-payments`, `suppliers`, `purchase-orders`, `purchase-items`, `expenses`, `expense-credit-cards`
+- General Ledger & Reference Data (Accounting): `journal-entries`, `ledger-accounts`, `bank-accounts`, `tax-rates`, `subsidiaries`, `categories`, `resource-categories`, `projects`, `attachments`
+
 **Important to know:**
 
 - Permission setup differs per Unified API: the consumer's Workday admin grants domain security policies separately for HRIS (13+), ATS (11+) and Accounting (22+), plus Business Process Security Policy edits before any write succeeds.

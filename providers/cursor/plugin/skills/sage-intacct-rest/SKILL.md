@@ -49,6 +49,16 @@ Access Sage Intacct REST through Apideck's **Proxy API** with managed Vault auth
 - **Authentication:** Authorization Code grant, a real OAuth flow, unlike the sage-intacct (XML) connector, which uses a Sender ID plus company/user credentials.
 - **Webhooks:** Virtual webhooks — created and updated events on 13 resources; deleted events for invoices, bills, payments, bill payments, credit notes, GL accounts, classes.
 
+**Supported resources:**
+
+- Core Financial: `ledger-accounts`, `journal-entries`, `tax-rates`, `tracking-categories`
+- Accounts Receivable: `customers`, `invoices`, `invoice-items`, `payments`, `credit-notes`, `quotes`, `refunds`, `sales-orders`
+- Accounts Payable: `suppliers`, `bills`, `bill-payments`
+- Expenses: `expenses`, `expense-reports`, `expense-categories`
+- Organizational: `companies`, `company-info`, `subsidiaries`, `departments`, `locations`, `projects`, `employees`
+- Banking: `bank-accounts`, `bank-feed-statements`
+- Documents: `attachments`
+
 **Important to know:**
 
 - Authorizing a second connection with the same Sage user on the same OAuth application can break the first one at its next token refresh. Authorize each connection with a different Sage user.

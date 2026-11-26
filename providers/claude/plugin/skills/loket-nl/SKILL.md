@@ -42,6 +42,12 @@ Access Loket.nl through Apideck's **HRIS** unified API — one of 58 HRIS connec
 - **Authentication:** Authorization Code flow; the only supported scope is all.
 - **Webhooks:** Virtual webhooks - employee created and updated events
 
+**Supported resources:**
+
+- People: `employees`, `employee-custom-field`, `employment-custom-field`, `payment-information`
+- Employment: `jobs`, `employment-fiscal-properties`, `employeeSchedules`
+- Company Structure: `companies`, `departments`, `organizational-entities`
+
 **Important to know:**
 
 - Production access is granted per API activity: Loket asks for the list of operations your integration uses when you request production access, and a production client can only call those.

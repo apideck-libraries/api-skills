@@ -47,6 +47,11 @@ Access CatalystOne through Apideck's **HRIS** unified API — one of 58 HRIS con
 - **Authentication:** Client ID and secret, one pair per consumer tenant.
 - **Webhooks:** Virtual webhooks - employee created, updated and terminated events.
 
+**Supported resources:**
+
+- People: `employees`
+- Company Structure: `departments`
+
 **Important to know:**
 
 - Field names and custom fields differ between CatalystOne instances, and the connector matches some fields, such as termination date, by field name rather than field id. A tenant that renamed or moved a field can return empty values until the mapping is checked for that tenant.

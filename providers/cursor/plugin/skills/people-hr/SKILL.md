@@ -46,6 +46,11 @@ Access People HR through Apideck's **HRIS** unified API — one of 58 HRIS conne
 - **Authentication:** Sent in the apikey header.
 - **Webhooks:** Virtual webhooks - employee created, updated and terminated events, detected by polling.
 
+**Supported resources:**
+
+- People: `employees`
+- Time Off: `time-off-requests`
+
 **Important to know:**
 
 - An API key only reaches the endpoints ticked when it was created. Tick at least Employee (and Salary and QueryBuilder, as the connection form suggests), or the connector cannot read employees.

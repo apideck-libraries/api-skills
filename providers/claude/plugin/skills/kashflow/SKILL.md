@@ -48,6 +48,13 @@ Access Kashflow through Apideck's **Accounting** unified API — one of 34 Accou
 - **Authentication:** The consumer's own KashFlow username and password (not OAuth).
 - **Webhooks:** No webhooks — KashFlow publishes no events, so keep the integration on polling.
 
+**Supported resources:**
+
+- Contacts: `customers`, `suppliers`
+- Sales & Receivables: `invoices`, `invoice-items`, `credit-notes`, `payments`
+- Ledger & Accounting: `journal-entries`, `ledger-accounts`, `tax-rates`
+- Company & Reference Data: `company-info`, `currencies`, `customer-currencies`, `supplier-currencies`, `inv-pay-methods`
+
 **Important to know:**
 
 - KashFlow is read-only through Apideck: every mapped operation is a read, so there is no create, update or delete path for any resource.

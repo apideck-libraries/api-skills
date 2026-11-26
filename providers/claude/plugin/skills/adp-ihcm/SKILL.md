@@ -47,6 +47,12 @@ Access ADP iHCM through Apideck's **HRIS** unified API — one of 58 HRIS connec
 - **Authentication:** Client credentials over mutual TLS on ADP's EU infrastructure, not a user-consent flow. Needs an X.509 client certificate, Client ID and Secret.
 - **Webhooks:** Virtual webhooks - Apideck polls for employee created and updated events
 
+**Supported resources:**
+
+- People: `employees`
+- Organisation: `companies`, `departments`
+- Time: `employee-schedules`, `time-off-requests`
+
 **Important to know:**
 
 - An iHCM subscription alone never yields credentials: the consumer must have ADP API Central enabled first. Plan for that decision landing inside your onboarding flow rather than before it.

@@ -45,6 +45,11 @@ Access Google Contacts through Apideck's **CRM** unified API — one of 21 CRM c
 - **Authentication:** Authorization Code flow with Google.
 - **Webhooks:** No webhooks - sync changes by polling the CRM API
 
+**Supported resources:**
+
+- Contacts: `contacts`
+- Directory: `users`
+
 **Important to know:**
 
 - The contacts scope is a Google sensitive scope: production needs brand and sensitive-scope verification (a justification and video demo), and your authorized domains, including the redirect URI's, verified with Google. No paid CASA assessment: that is for restricted scopes.

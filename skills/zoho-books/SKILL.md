@@ -43,6 +43,14 @@ Access Zoho Books through Apideck's **Accounting** unified API — one of 34 Acc
 - **Authentication:** Authorization Code flow.
 - **Webhooks:** Virtual webhooks — created and updated events on 10 resources, including invoices, bills, payments, customers and suppliers; deletes are not detected.
 
+**Supported resources:**
+
+- Core Financial: `ledger-accounts`, `journal-entries`, `general-ledger-transactions`, `tax-rates`, `currencies`
+- Accounts Receivable: `invoices`, `invoice-items`, `customers`, `payments`, `invoices-payments`, `credit-notes`
+- Accounts Payable: `bills`, `bill-payments`, `suppliers`, `purchase-orders`, `expenses`
+- Financial Reports: `profit-and-loss`, `balance-sheet`, `aged-debtors`, `aged-creditors`
+- Organization: `organization`, `projects`
+
 **Important to know:**
 
 - Zoho hosts each organization in one of seven regional data centres (US, EU, IN, AU, JP, CA, SA — verified June 2026). Apideck resolves the right region during authorization.
@@ -129,7 +137,7 @@ Zoho Books is Zoho's accounting product, part of the Zoho One suite. Strong in I
 - ✅ Purchase orders
 - ✅ GST / VAT handling (India and other regions)
 - ⚠️ Recurring invoices — not exposed; use Proxy
-- ❌ Projects and time tracking — separate Zoho products (Zoho Projects, Zoho People)
+- ⚠️ Projects — the accounting `projects` resource (beta); time tracking lives in separate Zoho products (Zoho Projects, Zoho People)
 - ❌ Expense claim workflow — use Proxy with Zoho Expense API
 
 ### Auth notes

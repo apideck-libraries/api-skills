@@ -48,6 +48,16 @@ Access Pennylane through Apideck's **Accounting** unified API — one of 34 Acco
 - **Authentication:** Authorization Code flow.
 - **Webhooks:** Virtual webhooks — created and updated events for customers, suppliers, invoices, invoice items and bills.
 
+**Supported resources:**
+
+- Contacts: `customers`, `suppliers`
+- Sales: `invoices`, `quotes`
+- Purchasing: `bills`, `purchase-orders`
+- Ledger & Accounts: `ledger-accounts`, `journal-entries`, `tracking-categories`
+- Products: `invoice-items`
+- Banking: `bank-accounts`, `bank-feed-statements`
+- Company & Files: `company-info`, `attachments`
+
 **Important to know:**
 
 - There is no stated turnaround for OAuth credential issuance, so provisioning can gate your go-live — budget an unpredictable lead time rather than assuming instant self-service access.

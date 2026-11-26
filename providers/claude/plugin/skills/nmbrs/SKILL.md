@@ -43,6 +43,12 @@ Access Visma Nmbrs through Apideck's **HRIS** unified API — one of 58 HRIS con
 - **Authentication:** Authorization Code flow with pushed authorization requests; a Nmbrs subscription key is also sent with each call.
 - **Webhooks:** Virtual webhooks - employee created and updated events, detected by polling.
 
+**Supported resources:**
+
+- People: `employees`, `employment-history`
+- Company Structure: `companies`, `departments`
+- Compensation: `salaries`
+
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/nmbrs` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill

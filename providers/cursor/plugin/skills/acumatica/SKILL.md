@@ -48,6 +48,12 @@ Access Acumatica through Apideck's **Accounting** unified API — one of 34 Acco
 - **Authentication:** Authorization Code flow.
 - **Webhooks:** No webhooks — neither native nor virtual.
 
+**Supported resources:**
+
+- Core Financial: `ledger-accounts`, `journal-entries`, `tax-rates`
+- Accounts Receivable: `invoices`, `invoice-items`, `customers`, `payments`, `credit-notes`, `stock-items`, `sales-orders`
+- Accounts Payable: `bills`, `bill-credit-notes`, `suppliers`, `purchase-orders`
+
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/acumatica` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill

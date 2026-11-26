@@ -43,6 +43,12 @@ Access SharePoint through Apideck's **File Storage** unified API — one of 5 Fi
 - **Authentication:** Authorization Code flow through Microsoft Entra ID.
 - **Webhooks:** Native — drive.updated only (a document-library-level change notification; per-file events are not emitted)
 
+**Supported resources:**
+
+- Sites & Libraries: `drive-groups`, `drives`
+- Files & Folders: `files`, `folders`
+- Uploads: `upload-sessions`
+
 **Important to know:**
 
 - Publisher verification and tenant consent policies gate onboarding: since November 2020 users in other tenants cannot consent to an unverified multitenant app, and Sites.ReadWrite.All is broad enough that many tenants require a tenant admin to approve it anyway.

@@ -43,6 +43,14 @@ Access QuickBooks through Apideck's **Accounting** unified API — one of 34 Acc
 - **Authentication:** Authorization Code flow.
 - **Webhooks:** Native — invoice, customer, and payment events (20+ event types)
 
+**Supported resources:**
+
+- Core Financial: `ledger-accounts`, `tax-rates`, `tax-codes`, `journal-entries`, `company-info`, `balance-sheet`, `profit-and-loss`
+- Accounts Receivable: `invoices`, `invoice-items`, `customers`, `payments`, `credit-notes`, `refunds`
+- Accounts Payable: `bills`, `bill-payments`, `suppliers`, `purchase-orders`, `expenses`, `bill-credit-notes`
+- Organizational: `departments`, `locations`, `tracking-categories`, `projects`
+- Other: `attachments`, `aged-debtors`, `aged-creditors`, `quotes`, `preferences`
+
 **Important to know:**
 
 - Only successful production calls (list/get-one, query, reports, attachment downloads) count as CorePlus; sandbox/OAuth never do. Builder's free cap blocks calls outright until reset, not throttled — a payment method moves you to Silver, which bills overage instead.
@@ -129,10 +137,10 @@ QuickBooks Online is the most widely used SMB accounting connector on Apideck. C
 - ✅ Financial reports: P&L, Balance Sheet, Aged Receivables/Payables
 - ✅ Multi-currency — invoices created with `currency` field route correctly
 - ✅ Attachments on invoices/bills via the `attachments` sub-resource
+- ✅ Purchase orders (`purchase-orders`)
 - ⚠️ Tax rates read-only (QuickBooks requires tax setup through its UI)
 - ⚠️ Recurring invoices — not exposed; use Proxy
 - ❌ Deposits — use Proxy with the `/deposit` endpoint
-- ❌ Purchase orders — use Proxy
 
 ### QuickBooks-specific auth notes
 

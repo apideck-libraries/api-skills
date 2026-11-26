@@ -46,6 +46,12 @@ Access Paychex through Apideck's **HRIS** unified API — one of 58 HRIS connect
 - **Authentication:** Client ID and secret pasted in Vault; no OAuth sign-in.
 - **Webhooks:** Virtual webhooks - employee created and updated events
 
+**Supported resources:**
+
+- People: `employees`, `direct-deposits`, `bank-accounts`, `communication`, `custom-fields`
+- Company Structure: `companies`, `departments`
+- Payroll: `pay-standards`
+
 **Important to know:**
 
 - After connecting, the consumer must grant their company access to the credentials in Paychex. Until then the company list stays empty and the Company field cannot be selected.

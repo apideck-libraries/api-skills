@@ -43,6 +43,11 @@ Access Paylocity through Apideck's **HRIS** unified API — one of 58 HRIS conne
 - **Authentication:** Client credentials flow; each connection also needs the consumer's Paylocity Company ID.
 - **Webhooks:** Virtual webhooks - employee created and updated events
 
+**Supported resources:**
+
+- People: `employees`
+- Company Structure: `departments`, `cost-centers`, `costcenters1`
+
 **Important to know:**
 
 - Paylocity issues API credentials by hand: each consumer requests a Client ID and Secret through their Paylocity account executive or webservices@paylocity.com, so when a connection can go live depends on Paylocity, not on you.

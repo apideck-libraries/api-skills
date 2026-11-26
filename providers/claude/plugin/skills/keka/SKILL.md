@@ -47,6 +47,10 @@ Access Keka HR through Apideck's **HRIS** unified API — one of 58 HRIS connect
 - **Authentication:** Keka-specific client credentials exchange; no consent screen.
 - **Webhooks:** No webhooks - poll the API for changes
 
+**Supported resources:**
+
+- People: `employees`
+
 **Important to know:**
 
 - A Keka organisation can hold at most five active API keys in total, so plan key use across all of its integrations.

@@ -44,6 +44,11 @@ Access SAP SuccessFactors through Apideck's **HRIS, ATS** unified API — one of
 - **Authentication:** A SAML2-Bearer assertion signed with an X.509 certificate; not a standard OAuth consent flow.
 - **Webhooks:** Virtual webhooks — polling for hris.employee.* plus ats.applicant.*, ats.application.* and ats.job.* events; SuccessFactors sends no native push.
 
+**Supported resources:**
+
+- Employee Central (HRIS): `employees`, `companies`, `departments`, `time-off-requests`
+- Recruiting (ATS): `jobs`, `applicants`, `applications`
+
 **Important to know:**
 
 - An existing SAP contract usually already includes a test instance, which connects fine — but provisioning a brand-new test or demo tenant requires certified SAP partner status, so an organization not already running SuccessFactors has no path to a first tenant.

@@ -44,6 +44,13 @@ Access Stripe through Apideck's **Accounting** unified API — one of 34 Account
 - **Authentication:** Authorization Code flow through a Stripe App that you build and own.
 - **Webhooks:** Native — customer, invoice, credit note, invoice item, payment, expense, refund, tax rate and company info events (21 Stripe events mapped).
 
+**Supported resources:**
+
+- Core Financial: `company-info`, `tax-rates`
+- Accounts Receivable: `customers`, `invoices`, `invoice-items`, `credit-notes`, `payments`, `refunds`
+- Accounts Payable: `expenses`
+- Banking: `bank-accounts`
+
 **Important to know:**
 
 - Consumers connect through your Stripe App's External test install link, the route this connector uses today. Stripe caps external testing at 25 tester accounts per app, badges the app as a test version, and requires you to tell users it has not been reviewed by Stripe.

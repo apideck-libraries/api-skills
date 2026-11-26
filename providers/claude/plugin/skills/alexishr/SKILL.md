@@ -46,6 +46,12 @@ Access Simployer One through Apideck's **HRIS** unified API — one of 58 HRIS c
 - **Authentication:** Access token, sent as a bearer token.
 - **Webhooks:** Virtual webhooks - employee created, updated and terminated events
 
+**Supported resources:**
+
+- People: `employees`
+- Time Off: `time-off-requests`
+- Company Structure: `companies`, `departments`
+
 **Important to know:**
 
 - The token is tied to the Owner who created it. If that person's permissions change or they are removed from Simployer One, the token becomes invalid and the consumer has to generate a new one and reconnect.

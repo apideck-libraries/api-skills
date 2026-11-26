@@ -42,6 +42,12 @@ Access Planhat through Apideck's **CRM** unified API — one of 21 CRM connector
 - **Authentication:** Access token from a Planhat Private App, sent as a bearer token; not OAuth.
 - **Webhooks:** No webhooks - changes are picked up by polling the Planhat API.
 
+**Supported resources:**
+
+- Accounts & People: `companies`, `contacts`, `users`
+- Sales: `opportunities`
+- Engagement: `notes`, `activities`
+
 **Important to know:**
 
 - Planhat API tokens now expire: a new token defaults to 30 days and can be set to at most 365. At expiry the connection stops working until the consumer generates a new token in Planhat and updates it in Vault; Apideck cannot renew it.

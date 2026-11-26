@@ -45,6 +45,11 @@ Access Acerta through Apideck's **HRIS** unified API — one of 58 HRIS connecto
 - **Authentication:** Client credentials flow; no user-consent step.
 - **Webhooks:** No webhooks - data is read by polling.
 
+**Supported resources:**
+
+- People: `employees`
+- Employment: `agreements`, `agreement-employments`
+
 **Important to know:**
 
 - Acerta publishes no self-service signup, so each consumer must request API access from Acerta before a connection can be tested.

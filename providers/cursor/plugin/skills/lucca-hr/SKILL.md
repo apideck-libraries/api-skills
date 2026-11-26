@@ -42,6 +42,12 @@ Access Lucca through Apideck's **HRIS** unified API — one of 58 HRIS connector
 - **Authentication:** Sent in the Authorization header.
 - **Webhooks:** Virtual webhooks - employee created, updated and terminated events.
 
+**Supported resources:**
+
+- People: `employees`
+- Company Structure: `companies`, `departments`
+- Time Off: `time-off-requests`
+
 **Important to know:**
 
 - Use an API key created in the same Lucca environment as the subdomain you enter.

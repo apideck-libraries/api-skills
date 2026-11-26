@@ -47,6 +47,13 @@ Access Lightspeed through Apideck's **Ecommerce** unified API — one of 17 Ecom
 - **Authentication:** Authorization Code flow against the merchant's Ecwid store.
 - **Webhooks:** No webhooks - event delivery is not wired up for this connector.
 
+**Supported resources:**
+
+- Store: `stores`
+- Catalog: `products`
+- Sales: `orders`
+- Customers: `customers`
+
 > Facts synced from Apideck's connector metadata API — `GET /connector/connectors/lightspeed` (`overview` field) is the live, authoritative version.
 
 ## When to use this skill

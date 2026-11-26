@@ -47,6 +47,11 @@ Access Amazon Seller Central through Apideck's **Ecommerce** unified API — one
 - **Authentication:** Authorization Code flow via Login with Amazon (LWA).
 - **Webhooks:** No webhooks — Amazon Seller Central offers no native or virtual webhook support here, so data is kept in sync by polling.
 
+**Supported resources:**
+
+- Orders: `orders`
+- Products: `products`
+
 **Important to know:**
 
 - Amazon allows up to 25 seller authorisations for an app not listed on the Selling Partner Appstore. Set Selling Partner Appstore listing to Listed on the Selling Partner Appstore (Published) only once your app is published there, or sellers see error MD1000.

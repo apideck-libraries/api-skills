@@ -42,6 +42,12 @@ Access Act through Apideck's **CRM** unified API — one of 21 CRM connectors th
 - **Authentication:** Password grant; no redirect or consent screen.
 - **Webhooks:** No webhooks - data changes are only visible by polling the unified API.
 
+**Supported resources:**
+
+- Contacts and Companies: `contacts`, `companies`
+- Sales: `opportunities`
+- Activity and Users: `activities`, `users`
+
 **Important to know:**
 
 - Act! Premium Desktop cannot connect: its API host is internal-only, so Desktop consumers must first move to Act! Premium Cloud or self-hosted Act! Premium for Web (IIS, a CA-signed certificate, external access). Act! Connect Link, the old Desktop bridge, retired 31 December 2024.

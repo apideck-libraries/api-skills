@@ -43,6 +43,13 @@ Access FreshBooks through Apideck's **Accounting** unified API — one of 34 Acc
 - **Authentication:** Authorization code flow.
 - **Webhooks:** No webhooks — FreshBooks offers none, so data sync is polling-based.
 
+**Supported resources:**
+
+- Core Financial: `ledger-accounts`, `journal-entries`, `balance-sheet`, `profit-and-loss`
+- Accounts Receivable: `invoices`, `invoice-items`, `customers`, `credit-notes`, `payments`
+- Accounts Payable: `bills`, `suppliers`, `bill-payments`
+- Company & Tax: `users`, `tax-rates`
+
 **Important to know:**
 
 - The FreshBooks Bills API is still in beta, so the accounts-payable side rides on an interface FreshBooks has not finalised yet.

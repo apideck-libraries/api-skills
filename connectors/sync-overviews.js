@@ -17,8 +17,7 @@
  * from the snapshot and their skills render unchanged.
  *
  * The snapshot stores each overview object verbatim (minus $schema), even
- * fields generate.js doesn't render yet (supported_resource_categories,
- * responsibility_matrix, external_guides, environment_notes) — deliberate,
+ * fields generate.js doesn't render yet (responsibility_matrix, external_guides, environment_notes) — deliberate,
  * so the snapshot stays diffable 1:1 against the API and future rendering
  * needs no sync change.
  *
