@@ -107,6 +107,10 @@ Apideck-specific API abstractions, SDK wrappers, and tooling. Install individual
 | [apideck-mcp-receive-payment](skills/apideck-mcp-receive-payment/) | MCP playbook | Task playbook for `apideck-receive-customer-payment` — record a customer payment against an invoice (AR) | — |
 | [apideck-mcp-onboard-employee](skills/apideck-mcp-onboard-employee/) | MCP playbook | Task playbook for `apideck-onboard-employee` — convert a hired ATS applicant into an HRIS employee (cross-API) | — |
 | [apideck-mcp-month-end-close](skills/apideck-mcp-month-end-close/) | MCP playbook | Task playbook for `apideck-month-end-close-check` — fetch P&L + balance sheet + aged AP/AR in one shot | — |
+| [apideck-mcp-journal-entry-scan](skills/apideck-mcp-journal-entry-scan/) | MCP playbook | Read-only month-end journal entry review: large, round, weekend, unusual-user and suspense-account entries | — |
+| [apideck-mcp-po-bill-match](skills/apideck-mcp-po-bill-match/) | MCP playbook | Read-only two-way match of vendor bills against purchase orders, with a tolerance | — |
+| [apideck-mcp-accruals-check](skills/apideck-mcp-accruals-check/) | MCP playbook | Read-only check for monthly suppliers with no bill in the period, with estimated accruals | — |
+| [apideck-mcp-close-checklist](skills/apideck-mcp-close-checklist/) | MCP playbook | Read-only pre-close checklist: period lock, unposted journals, overdue and held bills, suspense, trial balance | — |
 
 ### Connector Skills
 
