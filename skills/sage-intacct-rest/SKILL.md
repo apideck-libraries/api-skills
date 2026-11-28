@@ -41,17 +41,17 @@ Access Sage Intacct REST through Apideck's **Proxy API** with managed Vault auth
 - **Implementation difficulty:** involved — Paid Web Services Developer License + Per-Consumer Admin Authorization Required
 - **Vendor partnership required:** yes ([Sage Intacct Marketplace](https://marketplace.intacct.com/BecomeAPartner)) — A Sage Web Services developer license is required — via the Sage Intacct Marketplace Partner Program, or directly from Sage through your account manager.
 - **Apideck-managed credentials:** available — For testing and evaluation: consumers authorize against Apideck's registered Sage application, so the consent screen shows Apideck branding.
-- **Account type required:** Sage Intacct company with a Web Services subscription
+- **Account type required:** Sage Intacct company with Web Services access
 - **Consumer access level:** The connection inherits the authorizing Sage Intacct user's role permissions, and a company Admin must authorize the application in each consumer's company.
 - **Sandbox:** available — Registering a Non-production OAuth app is free; a Sage Intacct sandbox company itself is a paid, licensed feature, gated by eligibility and not self-serve.
-- **Costs:** Sage Intacct Marketplace Partner Program membership is $2,500/year, plus $0.015 per API call once your consumers are live. Effective August 2026.
-- **Rate limits:** Sage Performance Tier 1: 100,000 API transactions/month per company, shared with the XML API. Over-limit: 429 (GW-0010). Headroom: x-downstream-ratelimit-*.
+- **Costs:** Marketplace Partner Program: $2,500/year plus $0.015 per API call once consumers go live (effective August 2026). Performance Tier 1 is included at no cost.
+- **Rate limits:** Tier 1: 100,000 transactions/month per company (overage billed, not blocked); 6 concurrent requests per app, 8 per company, 429 above that. No per-minute limit.
 - **Authentication:** Authorization Code grant, a real OAuth flow, unlike the sage-intacct (XML) connector, which uses a Sender ID plus company/user credentials.
 - **Webhooks:** Virtual webhooks — created and updated events on 13 resources; deleted events for invoices, bills, payments, bill payments, credit notes, GL accounts, classes.
 
 **Important to know:**
 
-- Authorizing a second connection with the same Sage user on the same OAuth application can break the first one at its next token refresh. Authorize each connection with a different Sage user.
+- A newer authorization by the same Sage user on the same OAuth application invalidates the earlier connection's refresh token, so the earlier connection fails at its next refresh. Authorize each connection with a different Sage user.
 - Financial reports stay exclusive to the sage-intacct (XML) connector: REST's reporting endpoints only generate downloadable files asynchronously, never queryable data — a permanent platform gap. Other uncovered Sage endpoints remain reachable via the Apideck Proxy API.
 - The two Sage Intacct connectors are not interchangeable and nothing migrates automatically: switching means authorizing a brand-new connection, and record identifiers do not carry over. Choose one before you build.
 - Two module permissions are easy to miss: quotes need Order Entry — without it, listing returns 403 and creating fails with an error that reads like a company misconfiguration — and customer refunds stay hidden until the feature is enabled in Accounts Receivable.
